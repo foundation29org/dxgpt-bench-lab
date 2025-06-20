@@ -9,6 +9,9 @@ venv/
 env/
 ENV/
 
+# Confidential data
+data29/data-repos/raw
+
 # Project specific
 _etc/
 _PRMT_REF/
