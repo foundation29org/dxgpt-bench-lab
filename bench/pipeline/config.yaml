@@ -9,7 +9,8 @@ llm_configs:
     prompt: "../candidate-prompts/candidate_prompt.txt"
     output_schema: "../candidate-prompts/candidate_output_schema.json"
     params:
-      effort: "high"
+      reasoning:
+        effort: "high"
 
   # Alias para el LLM que asigna severidad a los DDX únicos
   severity_assigner_llm:

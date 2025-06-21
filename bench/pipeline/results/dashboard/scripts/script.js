@@ -93,7 +93,7 @@
                         // Assuming exp is just the folder name like "experiment_gpt-3.5-turbo_20230101120000"
                         // The dashboard is in results/dashboard/scripts/, experiments are in results/experiment_...
                         // So, paths should be relative from results/dashboard/scripts/ - need to go up 2 levels
-                        const response = await fetch(`../../${exp}/summary.json`, { method: 'HEAD' });
+                        const response = await fetch(`/${exp}/summary.json`, { method: 'HEAD' });
                         if (response.ok) {
                             knownExperiments.push(exp); // Store the path relative to `results/`
                         }
@@ -110,7 +110,7 @@
         // Fallback: Directory listing (requires server configuration)
         // This is highly dependent on server setup and often disabled for security.
         try {
-            const response = await fetch('../../'); // Fetch parent directory (results/)
+            const response = await fetch('/'); // Fetch parent directory (results/)
             if (response.ok) {
                 const text = await response.text();
                 const parser = new DOMParser();
@@ -136,9 +136,9 @@
     }
 
     async function loadExperiment(experimentFolderName) {
-        // Paths are relative from the results/dashboard/scripts/ directory, where index.html is located.
-        // So, experiment data is in ../../experiment_folder_name/
-        const basePath = `../../${experimentFolderName}`; 
+        // Paths are relative from the server root (results/ directory)
+        // So, experiment data is in /experiment_folder_name/
+        const basePath = `/${experimentFolderName}`; 
         
         try {
             const experiment = {

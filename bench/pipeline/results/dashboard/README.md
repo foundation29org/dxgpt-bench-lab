@@ -9,7 +9,7 @@ cd bench/pipeline/results/dashboard/
 python serve_dashboard.py
 ```
 
-Luego abrir http://localhost:8000 en el navegador.
+Luego abrir http://localhost:8000/dashboard/scripts en el navegador.
 
 ## 📊 Vista Principal: Comparación de Modelos
 
