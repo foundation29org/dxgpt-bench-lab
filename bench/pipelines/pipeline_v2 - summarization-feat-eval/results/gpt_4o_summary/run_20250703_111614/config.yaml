@@ -1,6 +1,6 @@
 experiment_name: "Ramedis Baseline con GPT-4o"
 experiment_description: "Running this as an example to showcase the new pipeline"
-dataset_path: "bench/datasets/ukranian.json" # en bench/datasets tiene que estar
+dataset_path: "bench/datasets/largest_summarized_demo.json" # en bench/datasets tiene que estar
 
 # Alias para el LLM que genera diagnósticos candidatos
 dxgpt_emulator:

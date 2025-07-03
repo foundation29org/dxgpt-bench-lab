@@ -7,8 +7,7 @@ dxgpt_emulator:
   model: "o3-images" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio
   prompt_path: "../../candidate-prompts/dxgpt_dev.txt"
   params:
-    reasoning:
-      effort: "high"
+    none: none
   output_schema: true
   output_schema_path: "../../candidate-prompts/candidate_output_schema.json"
 

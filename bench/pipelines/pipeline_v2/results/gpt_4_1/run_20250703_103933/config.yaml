@@ -1,10 +1,10 @@
 experiment_name: "Ramedis Baseline con GPT-4o"
 experiment_description: "Running this as an example to showcase the new pipeline"
-dataset_path: "bench/datasets/largest_extended.json" # en bench/datasets tiene que estar
+dataset_path: "bench/datasets/all_450.json" # en bench/datasets tiene que estar
 
 # Alias para el LLM que genera diagnósticos candidatos
 dxgpt_emulator:
-  model: "gpt-4o-summary" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio
+  model: "gpt-4-1" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio
   prompt_path: "../../candidate-prompts/dxgpt_dev.txt"
   params:
     temperature: 0.1
