@@ -1,0 +1,65 @@
+================================================================================
+REPORTE DE DATASET GENERADO - 20250702_172906
+================================================================================
+
+Tamaño total del dataset: 250 casos
+
+COMPOSICIÓN POR FUENTE:
+--------------------------------------------------
+Fuente 'B': 20 casos (14.2% del total de la fuente)
+  → Total en fuente original: 141 casos
+Fuente 'J': 2 casos (100.0% del total de la fuente)
+  → Total en fuente original: 2 casos
+Fuente 'Q': 53 casos (0.7% del total de la fuente)
+  → Total en fuente original: 7075 casos
+Fuente 'R': 99 casos (11.6% del total de la fuente)
+  → Total en fuente original: 852 casos
+Fuente 'S': 17 casos (8.5% del total de la fuente)
+  → Total en fuente original: 200 casos
+Fuente 'T': 50 casos (3.6% del total de la fuente)
+  → Total en fuente original: 1398 casos
+Fuente 'U': 9 casos (100.0% del total de la fuente)
+  → Total en fuente original: 9 casos
+
+DISTRIBUCIÓN DE DIAGNÓSTICOS POR CAPÍTULO ICD-10:
+--------------------------------------------------
+Capítulo A: 13 casos
+Capítulo B: 6 casos
+Capítulo C: 18 casos
+Capítulo D: 24 casos
+Capítulo E: 156 casos
+Capítulo F: 4 casos
+Capítulo G: 25 casos
+Capítulo H: 6 casos
+Capítulo I: 27 casos
+Capítulo J: 33 casos
+Capítulo K: 16 casos
+Capítulo L: 8 casos
+Capítulo M: 48 casos
+Capítulo N: 12 casos
+Capítulo O: 1 casos
+Capítulo P: 3 casos
+Capítulo Q: 36 casos
+Capítulo R: 20 casos
+Capítulo S: 9 casos
+Capítulo T: 14 casos
+Capítulo U: 7 casos
+Capítulo Z: 2 casos
+
+DISTRIBUCIÓN DE COMPLEJIDAD:
+--------------------------------------------------
+C10: 33 casos
+C2: 2 casos
+C4: 2 casos
+C5: 3 casos
+C6: 6 casos
+C7: 67 casos
+C8: 61 casos
+C9: 76 casos
+
+MÉTRICAS DE DIVERSIDAD:
+--------------------------------------------------
+Diagnósticos únicos incluidos: 297
+Casos multi-diagnóstico: 142 (56.8%)
+Promedio de diagnósticos por caso: 1.95
+Capítulos ICD-10 representados: 22

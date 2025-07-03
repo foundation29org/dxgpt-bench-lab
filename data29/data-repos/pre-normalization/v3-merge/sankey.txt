@@ -1,0 +1,55 @@
+// ────────── ORIGEN: MedBulletes5op ──────────
+JesseLiu/medbulletes5op [298] test.jsonl
+JesseLiu/medbulletes5op [10]  dev.jsonl
+
+test.jsonl [157] clinical_action.json
+dev.jsonl [*] condition_diagnosis.json
+dev.jsonl [*] clinical_action.json
+
+clinical_action.json [4533] Discarded
+
+// ────────── ORIGEN: MedQA-USMLE-4op ──────────
+GBaker/MedQA-USMLE-4-options [1273]  test.jsonl
+GBaker/MedQA-USMLE-4-options [11451] train.jsonl
+
+test.jsonl [*] condition_diagnosis.json
+test.jsonl [*] clinical_action.json
+train.jsonl [7075] condition_diagnosis.json
+train.jsonl [4376] clinical_action.json
+
+// ────────── ORIGEN: ProCheck ──────────
+ProCheck [7] datalake
+
+// ────────── ORIGEN: URG_TORRE_DIC_IAGEN ──────────
+URG_TORRE_DIC_IAGEN [50]  test_critical.csv
+URG_TORRE_DIC_IAGEN [82]  test_severe.csv
+URG_TORRE_DIC_IAGEN [1654] test_pediatrics.csv
+URG_TORRE_DIC_IAGEN [4486] moderate
+
+test_critical.csv [7]  test_death.csv
+test_critical.csv [*] test_all.csv
+test_death.csv   [7]  test_all.csv
+
+test_severe.csv     [82]   test_all.csv
+test_pediatrics.csv [1654] test_all.csv
+moderate            [4486] test_all.csv
+
+// ────────── ORIGEN: Ramebench (paper) ──────────
+Ramebench_Paper [40]  test_MME.csv
+Ramebench_Paper [369] test_LIRICAL.csv
+Ramebench_Paper [87]  test_HMS.csv
+Ramebench_Paper [624] test_RAMEDIS.csv
+Ramebench_Paper [75]  PUMCHADAM
+
+PUMCHADAM [75] test_PUMCHADAM.csv
+
+test_MME.csv       [40]  test_ramebench.csv
+test_LIRICAL.csv   [369] test_ramebench.csv
+test_HMS.csv       [87]  test_ramebench.csv
+test_RAMEDIS.csv   [*]   test_ramebench.csv
+test_PUMCHADAM.csv [75]  test_ramebench.csv
+
+// ────────── CONVERGENCIA FINAL: Datalake ──────────
+test_all.csv       [*] datalake
+test_ramebench.csv [*] datalake
+condition_diagnosis.json [*] datalake

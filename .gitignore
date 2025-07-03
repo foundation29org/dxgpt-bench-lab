@@ -16,6 +16,11 @@ data29/data-repos/raw
 _etc/
 _PRMT_REF/
 
+# Exclude ALL JSON, CSV and LOG files from entire codebase
+*.json
+*.csv
+*.log
+
 # Python
 __pycache__/
 *.py[cod]

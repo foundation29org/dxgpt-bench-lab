@@ -1,954 +1,713 @@
-LLM Utils v4 🚀
-Wrapper elegante y poderoso para múltiples proveedores de LLM
-Una librería diseñada para desarrolladores que quieren máxima productividad con mínima complejidad. Soporta Azure OpenAI y Hugging Face con una interfaz unificada. Configuración automática, esquemas JSON, plantillas reutilizables y código limpio.
-🎯 Características Principales
+# LLM Utils v4 🚀
 
-✅ Multi-proveedor - Azure OpenAI y Hugging Face (extensible)
-✅ Configuración automática desde variables de entorno
-✅ Salida estructurada con esquemas JSON
-✅ Sistema de plantillas reutilizables
-✅ Procesamiento por lotes (batch) eficiente
-✅ API unificada con alias intuitivos
-✅ Manejo de errores elegante
-✅ Compatibilidad hacia atrás total
-✅ Zero-config para casos simples
+**Powerful multi-provider LLM wrapper with unified interface**
 
-📦 Instalación
-bash# Para Azure OpenAI
+A clean, elegant library for interacting with multiple LLM providers (Azure OpenAI and Hugging Face) using a single, consistent API. Features automatic configuration, structured output with JSON schemas, reusable templates, and efficient batch processing.
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Configuration](#-configuration)
+- [Core Concepts](#-core-concepts)
+- [API Reference](#-api-reference)
+- [Examples](#-examples)
+- [Provider-Specific Details](#-provider-specific-details)
+- [Best Practices](#-best-practices)
+- [Troubleshooting](#-troubleshooting)
+- [Extending](#-extending)
+
+## 🎯 Features
+
+- ✅ **Multi-Provider Support** - Azure OpenAI and Hugging Face with identical interfaces
+- ✅ **Automatic Configuration** - Zero-config setup from environment variables
+- ✅ **Structured Output** - JSON schema validation and enforcement
+- ✅ **Template System** - Reusable prompt templates with variable substitution
+- ✅ **Batch Processing** - Efficient processing of multiple items in single API calls
+- ✅ **Type Safety** - Full type hints and return type annotations
+- ✅ **Error Handling** - Graceful error recovery and informative messages
+- ✅ **Backward Compatibility** - Support for legacy parameter names
+- ✅ **Lazy Loading** - Clients initialized only when needed
+
+## 📦 Installation
+
+### For Azure OpenAI
+```bash
 pip install openai python-dotenv pyyaml
+```
 
-# Para Hugging Face
+### For Hugging Face
+```bash
 pip install requests python-dotenv pyyaml
+```
 
-Note: python-dotenv es opcional pero recomendado para cargar variables de entorno automáticamente.
+### Optional Dependencies
+```bash
+pip install jsonschema  # For schema validation
+```
 
-⚙️ Configuración
-Variables de Entorno
-Crea un archivo .env en tu proyecto:
-Para Azure OpenAI
-bashAZURE_OPENAI_ENDPOINT=https://tu-recurso.openai.azure.com/
-AZURE_OPENAI_API_KEY=tu-api-key-aqui
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
-Para Hugging Face
-bashHF_TOKEN=tu-token-de-hugging-face
+## 🚀 Quick Start
 
-# Endpoints por modelo - el nombre en mayúsculas será el identificador del modelo
-JONSNOW_ENDPOINT_URL=https://tu-deployment-jonsnow.hf.space
-MISTRAL_ENDPOINT_URL=https://tu-deployment-mistral.hf.space
-LLAMA_ENDPOINT_URL=https://tu-deployment-llama.hf.space
-
-Important: Para Hugging Face, el patrón es {MODELO}_ENDPOINT_URL donde {MODELO} es el nombre que usarás al crear la instancia (en minúsculas). Por ejemplo, JONSNOW_ENDPOINT_URL se usa con HuggingLLM("jonsnow").
-
-🚀 Inicio Rápido
-Azure OpenAI
-pythonfrom utils.llm import Azure
-
-# ¡Configuración automática desde .env!
-llm = Azure("gpt-4o")
-response = llm.generate("Explica qué es la inteligencia artificial")
-print(response)
-Hugging Face
-pythonfrom utils.llm import HuggingLLM
-
-# Usa JONSNOW_ENDPOINT_URL desde .env
-llm = HuggingLLM("jonsnow")
-response = llm.generate("Diagnóstico para paciente con dolor de pecho")
-print(response)
-Una Línea de Código
-pythonfrom utils.llm import quick_generate
-
-# Para Azure (por defecto)
-response = quick_generate("Traduce 'Hello' al español")
-
-# Para Hugging Face
-from utils.llm.hugging import quick_generate as hf_generate
-response = hf_generate("Analiza estos síntomas", deployment_name="jonsnow")
-📝 Ejemplos de Uso
-Los ejemplos funcionan idénticamente para ambos proveedores. Solo cambia la importación:
-python# Para Azure
-from utils.llm import Azure as LLM
-
-# Para Hugging Face
-from utils.llm import HuggingLLM as LLM
-
-# El resto del código es idéntico
-llm = LLM("tu-modelo")
-1. Generación Básica con Parámetros
-pythonllm = LLM("gpt-4o")  # o "jonsnow" para HF
-
-# Con temperatura baja para respuestas consistentes
-response = llm.generate(
-    "Resume este texto en 3 puntos clave",
-    temperature=0.2,
-    max_tokens=150
-)
-2. Salida Estructurada con JSON
-python# Definir esquema de salida
-schema = {
-    "type": "object",
-    "properties": {
-        "resumen": {"type": "string"},
-        "puntos_clave": {
-            "type": "array",
-            "items": {"type": "string"}
-        },
-        "categoria": {"type": "string"}
-    },
-    "required": ["resumen", "puntos_clave", "categoria"]
-}
-
-# Generar respuesta estructurada
-response = llm.generate(
-    "Analiza este artículo sobre IA...",
-    schema=schema
-)
-
-# response es un dict con la estructura definida
-print(response["resumen"])
-print(response["puntos_clave"])
-3. Plantillas Reutilizables
-python# Crear plantilla con variables
-traductor = llm.template(
-    "Traduce '{texto}' del {idioma_origen} al {idioma_destino}",
-    temperature=0.3
-)
-
-# Usar la plantilla múltiples veces
-resultado1 = traductor(
-    texto="Hello world", 
-    idioma_origen="inglés", 
-    idioma_destino="español"
-)
-
-resultado2 = traductor(
-    texto="Bonjour", 
-    idioma_origen="francés", 
-    idioma_destino="español"
-)
-4. Plantillas con Esquemas
-python# Plantilla que siempre devuelve JSON estructurado
-analizador = llm.template(
-    "Analiza el sentimiento de: '{texto}'",
-    schema={
-        "type": "object",
-        "properties": {
-            "sentimiento": {"type": "string"},
-            "confianza": {"type": "number"},
-            "palabras_clave": {"type": "array", "items": {"type": "string"}}
-        },
-        "required": ["sentimiento", "confianza", "palabras_clave"]
-    }
-)
-
-resultado = analizador(texto="¡Me encanta este producto!")
-print(f"Sentimiento: {resultado['sentimiento']}")
-print(f"Confianza: {resultado['confianza']}")
-5. Procesamiento por Lotes (Batch)
-python# Procesar múltiples items en una sola llamada
-items = [
-    {"id": 1, "text": "Hello world"},
-    {"id": 2, "text": "Good morning"},
-    {"id": 3, "text": "How are you?"}
-]
-
-# Sin schema - devuelve lista de strings
-responses = llm.generate(
-    "Traduce cada texto al español",
-    batch_items=items
-)
-# responses = ["Hola mundo", "Buenos días", "¿Cómo estás?"]
-
-# Con schema - devuelve lista estructurada
-schema = {
-    "type": "object",
-    "properties": {
-        "original": {"type": "string"},
-        "traduccion": {"type": "string"},
-        "idioma": {"type": "string"}
-    }
-}
-
-responses = llm.generate(
-    "Traduce cada texto al español y detecta el idioma original",
-    batch_items=items,
-    schema=schema
-)
-# responses = [
-#     {"original": "Hello world", "traduccion": "Hola mundo", "idioma": "inglés"},
-#     {"original": "Good morning", "traduccion": "Buenos días", "idioma": "inglés"},
-#     {"original": "How are you?", "traduccion": "¿Cómo estás?", "idioma": "inglés"}
-# ]
-🔧 Configuración Avanzada
-Configuración Personalizada
-pythonfrom utils.llm import LLMConfig, AzureLLM, HuggingLLM
-
-# Configuración explícita para Azure
-config = LLMConfig(
-    endpoint="https://mi-recurso.openai.azure.com/",
-    api_key="mi-api-key",
-    deployment_name="gpt-4o",
-    temperature=0.7,
-    validate_schema=True
-)
-llm = AzureLLM(config=config)
-
-# Configuración explícita para Hugging Face
-config = LLMConfig(
-    endpoint="https://mi-modelo.hf.space",
-    api_key="mi-hf-token",
-    deployment_name="mi-modelo",
-    temperature=0.7
-)
-llm = HuggingLLM(config=config)
-Configuración desde Entorno con Overrides
-python# Azure
+### Azure OpenAI
+```python
 from utils.llm import Azure
-llm = Azure("gpt-4o", temperature=0.1, validate_schema=True)
 
-# Hugging Face
+# Automatic configuration from environment
+llm = Azure("gpt-4o")
+response = llm.generate("Explain artificial intelligence in simple terms")
+print(response)
+```
+
+### Hugging Face
+```python
 from utils.llm import HuggingLLM
-llm = HuggingLLM("jonsnow", temperature=0.1)
-🔌 Añadir Nuevos Proveedores
-Para añadir soporte para un nuevo proveedor de LLM:
 
-Crea un nuevo archivo (ej: anthropic.py) en utils/llm/
-Implementa la misma interfaz que AzureLLM:
-
-Clase principal con métodos generate() y template()
-Mismos parámetros y comportamiento
-Funciones de conveniencia (create_llm, quick_generate)
-
-
-Expón aliases compatibles al final del archivo:
-python# Tu implementación
-class AnthropicLLM:
-    # ... implementación ...
-
-# Aliases para compatibilidad
-AzureLLM = AnthropicLLM
-Azure = AnthropicLLM
-create_azure_llm = create_llm
-quick_generate_azure = quick_generate
-
-Actualiza __init__.py para incluir tu proveedor:
-pythonfrom .anthropic import (
-    Anthropic,
-    AnthropicLLM,
-    # ... otros exports
-)
-
-
-Esto garantiza que tu proveedor sea un drop-in replacement completo.
-📚 API Reference
-Clase Principal (Azure / HuggingLLM)
-pythonllm = ProviderLLM(deployment_name, *, config=None, **config_overrides)
-Parámetros:
-
-deployment_name:
-
-Azure: Nombre del deployment (ej: "gpt-4o")
-Hugging Face: Nombre del modelo en minúsculas (ej: "jonsnow" para JONSNOW_ENDPOINT_URL)
-
-
-config: Objeto LLMConfig personalizado (opcional)
-**config_overrides: Overrides de configuración
-
-Método generate()
-pythonresponse = llm.generate(
-    prompt,
-    *,
-    variables=None,
-    schema=None,
-    batch_items=None,
-    max_tokens=None,
-    temperature=None
-)
-Parámetros:
-
-prompt: Texto del prompt (puede contener {variables})
-variables: Dict con valores para sustituir en el prompt
-schema: Esquema JSON para salida estructurada
-batch_items: Lista de diccionarios para procesamiento por lotes
-max_tokens: Límite de tokens
-temperature: Nivel de creatividad (0.0-1.0)
-
-Retorna:
-
-String para salida de texto simple
-Dict para salida estructurada con schema
-List para procesamiento por lotes
-
-Método template()
-pythontemplate = llm.template(template_string, *, schema=None, **fixed_params)
-Crea una plantilla reutilizable con parámetros fijos.
-Funciones de Conveniencia
-quick_generate()
-python# Azure
-from utils.llm import quick_generate
-response = quick_generate(prompt, deployment_name="gpt-4o", **kwargs)
-
-# Hugging Face
-from utils.llm.hugging import quick_generate
-response = quick_generate(prompt, deployment_name="jonsnow", **kwargs)
-create_llm()
-python# Azure
-from utils.llm import create_llm
-llm = create_llm(deployment_name="gpt-4o", **config_overrides)
-
-# Hugging Face
-from utils.llm.hugging import create_llm
-llm = create_llm(deployment_name="jonsnow", **config_overrides)
-Schema
-Manejo de esquemas JSON optimizados para cada proveedor.
-pythonfrom utils.llm import Schema
-
-# Desde dict
-schema = Schema.load({
-    "type": "object",
-    "properties": {"name": {"type": "string"}},
-    "required": ["name"]
-})
-
-# Desde archivo YAML
-schema = Schema.load("mi_schema.yaml")
-💡 Tips y Mejores Prácticas
-🎯 Configuración de Modelos Hugging Face
-python# Nombre del modelo = clave del endpoint en minúsculas
-# JONSNOW_ENDPOINT_URL → HuggingLLM("jonsnow")
-# MISTRAL_ENDPOINT_URL → HuggingLLM("mistral")
-# MI_MODELO_ENDPOINT_URL → HuggingLLM("mi_modelo")
-
-# El token HF_TOKEN es compartido por todos los modelos
-🔒 Esquemas según Proveedor
-python# Azure optimiza automáticamente para strict mode
-# Hugging Face usa TGI grammar constraints
-
-# El mismo esquema funciona en ambos
-schema = {
-    "type": "object",
-    "properties": {
-        "campo": {"type": "string"}
-    }
-}
-🔄 Migración entre Proveedores
-python# Cambiar de proveedor es tan simple como cambiar el import
-# De Azure a Hugging Face:
-# from utils.llm import Azure as LLM
-from utils.llm import HuggingLLM as LLM
-
-# El resto del código permanece idéntico
-llm = LLM("modelo")
-response = llm.generate("prompt", schema=schema)
-🧩 Variables de Entorno Organizadas
-bash# .env organizado por proveedor
-
-# === Azure OpenAI ===
-AZURE_OPENAI_ENDPOINT=https://...
-AZURE_OPENAI_API_KEY=...
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
-
-# === Hugging Face ===
-HF_TOKEN=hf_...
-
-# Modelos médicos
-JONSNOW_ENDPOINT_URL=https://...
-MEDLLAMA_ENDPOINT_URL=https://...
-
-# Modelos generales
-MISTRAL_ENDPOINT_URL=https://...
-LLAMA_ENDPOINT_URL=https://...
-🚀 Rendimiento por Proveedor
-python# Azure: Mejor para aplicaciones en producción
-# - Límites de rate más altos
-# - SLAs empresariales
-# - Menor latencia
-
-# Hugging Face: Ideal para prototipos y modelos especializados
-# - Modelos open source
-# - Personalización completa
-# - Endpoints privados
-🔧 Troubleshooting
-Error: Missing Endpoint Variables
-bash# Azure
-ValueError: Missing AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY
-
-# Hugging Face
-ValueError: Missing JONSNOW_ENDPOINT_URL or HF_TOKEN
-Solución: Verifica tu archivo .env y que los nombres de las variables coincidan con el patrón esperado.
-Error: Modelo No Encontrado (Hugging Face)
-python# Si usas HuggingLLM("mimodelo")
-# Debe existir MIMODELO_ENDPOINT_URL en .env
-Solución: El nombre del modelo en el código debe coincidir (en mayúsculas) con el prefijo de _ENDPOINT_URL.
-Respuesta No-JSON con Schema
-UserWarning: Model returned non-JSON despite schema constraint
-Solución: Normal en ambos proveedores. La librería maneja automáticamente estos casos y devuelve el texto raw.
-📄 Compatibilidad
-Ambos proveedores mantienen compatibilidad total:
-python# Estos parámetros legacy funcionan en ambos
-response = llm.generate(
-    "Hola {nombre}",
-    prompt_vars={"nombre": "Juan"},    # Usar 'variables' en código nuevo
-    output_schema=schema               # Usar 'schema' en código nuevo
-)
-🎉 Ejemplo Completo Multi-Proveedor
-pythonfrom utils.llm import Azure, HuggingLLM
-
-# Configurar ambos proveedores
-azure_llm = Azure("gpt-4o")
-hf_llm = HuggingLLM("jonsnow")
-
-# Mismo esquema para ambos
-schema = {
-    "type": "object",
-    "properties": {
-        "diagnostico": {"type": "string"},
-        "confianza": {"type": "number"},
-        "severidad": {"type": "string"}
-    },
-    "required": ["diagnostico", "confianza", "severidad"]
-}
-
-# Mismo prompt
-sintomas = "Paciente con dolor torácico, disnea y sudoración"
-
-# Comparar resultados
-resultado_azure = azure_llm.generate(
-    f"Analiza estos síntomas: {sintomas}",
-    schema=schema
-)
-
-resultado_hf = hf_llm.generate(
-    f"Analiza estos síntomas: {sintomas}",
-    schema=schema
-)
-
-print("Azure GPT-4:", resultado_azure)
-print("JohnSnow HF:", resultado_hf)
-
-
-# AzureLLM v4 🚀
-
-**Wrapper elegante y poderoso para Azure OpenAI API**
-
-Una librería diseñada para desarrolladores que quieren máxima productividad con mínima complejidad. Configuración automática, esquemas JSON, plantillas reutilizables y código limpio.
-
-## 🎯 Características Principales
-
-- ✅ **Configuración automática** desde variables de entorno
-- ✅ **Salida estructurada** con esquemas JSON
-- ✅ **Sistema de plantillas** reutilizables
-- ✅ **Procesamiento por lotes (batch)** eficiente
-- ✅ **API limpia** con alias intuitivos
-- ✅ **Manejo de errores** elegante
-- ✅ **Compatibilidad hacia atrás** total
-- ✅ **Zero-config** para casos simples
-
-## 📦 Instalación
-
-```bash
-pip install openai python-dotenv pyyaml
-```
-
-> **Note:** La librería requiere `openai` para Azure OpenAI y opcionalmente `python-dotenv` para variables de entorno.
-
-## ⚙️ Configuración
-
-### Variables de Entorno
-
-Crea un archivo `.env` en tu proyecto:
-
-```bash
-AZURE_OPENAI_ENDPOINT=https://tu-recurso.openai.azure.com/
-AZURE_OPENAI_API_KEY=tu-api-key-aqui
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
-```
-
-> **Tip:** La librería carga automáticamente las variables de entorno. No necesitas configuración adicional.
-
-## 🚀 Inicio Rápido
-
-### Uso Básico
-
-```python
-from utils.llm import Azure
-
-# ¡Configuración automática desde .env!
-llm = Azure("gpt-4o")
-response = llm.generate("Explica qué es la inteligencia artificial")
+# Uses JONSNOW_ENDPOINT_URL from environment
+llm = HuggingLLM("jonsnow")
+response = llm.generate("Analyze these symptoms: fever and cough")
 print(response)
 ```
 
-### Una Línea de Código
-
+### One-Liner
 ```python
 from utils.llm import quick_generate
 
-# Para casos súper simples
-response = quick_generate("Traduce 'Hello' al español")
+# Quick generation with Azure (default)
+response = quick_generate("Translate 'Hello' to Spanish", deployment_name="gpt-4o")
 ```
 
-## 📝 Ejemplos de Uso
+## ⚙️ Configuration
 
-### 1. Generación Básica con Parámetros
+### Environment Variables
 
-```python
-from utils.llm import Azure
+Create a `.env` file in your project root:
 
-llm = Azure("gpt-4o")
-
-# Con temperatura baja para respuestas consistentes
-response = llm.generate(
-    "Resume este texto en 3 puntos clave",
-    temperature=0.2,
-    max_tokens=150
-)
+#### Azure OpenAI
+```bash
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-api-key-here
+AZURE_OPENAI_API_VERSION=2024-02-15-preview
 ```
 
-### 2. Salida Estructurada con JSON
+#### Hugging Face
+```bash
+HF_TOKEN=your-hugging-face-token
 
-```python
-# Definir esquema de salida
-schema = {
-    "type": "object",
-    "properties": {
-        "resumen": {"type": "string"},
-        "puntos_clave": {
-            "type": "array",
-            "items": {"type": "string"}
-        },
-        "categoria": {"type": "string"}
-    },
-    "required": ["resumen", "puntos_clave", "categoria"]
-}
-
-# Generar respuesta estructurada
-response = llm.generate(
-    "Analiza este artículo sobre IA...",
-    schema=schema
-)
-
-# response es un dict con la estructura definida
-print(response["resumen"])
-print(response["puntos_clave"])
+# Model endpoints - uppercase name becomes the model identifier
+JONSNOW_ENDPOINT_URL=https://your-jonsnow-endpoint.hf.space
+MISTRAL_ENDPOINT_URL=https://your-mistral-endpoint.hf.space
+LLAMA_ENDPOINT_URL=https://your-llama-endpoint.hf.space
 ```
 
-### 3. Plantillas Reutilizables
+> **Note**: For Hugging Face, the pattern is `{MODEL}_ENDPOINT_URL` where `{MODEL}` is the uppercase version of the deployment name you'll use (e.g., `JONSNOW_ENDPOINT_URL` → `HuggingLLM("jonsnow")`).
 
-```python
-# Crear plantilla con variables
-traductor = llm.template(
-    "Traduce '{texto}' del {idioma_origen} al {idioma_destino}",
-    temperature=0.3
-)
-
-# Usar la plantilla múltiples veces
-resultado1 = traductor(
-    texto="Hello world", 
-    idioma_origen="inglés", 
-    idioma_destino="español"
-)
-
-resultado2 = traductor(
-    texto="Bonjour", 
-    idioma_origen="francés", 
-    idioma_destino="español"
-)
-```
-
-### 4. Plantillas con Esquemas
-
-```python
-# Plantilla que siempre devuelve JSON estructurado
-analizador = llm.template(
-    "Analiza el sentimiento de: '{texto}'",
-    schema={
-        "type": "object",
-        "properties": {
-            "sentimiento": {"type": "string"},
-            "confianza": {"type": "number"},
-            "palabras_clave": {"type": "array", "items": {"type": "string"}}
-        },
-        "required": ["sentimiento", "confianza", "palabras_clave"]
-    }
-)
-
-resultado = analizador(texto="¡Me encanta este producto!")
-print(f"Sentimiento: {resultado['sentimiento']}")
-print(f"Confianza: {resultado['confianza']}")
-```
-
-### 5. Procesamiento por Lotes (Batch)
-
-```python
-# Procesar múltiples items en una sola llamada
-items = [
-    {"id": 1, "text": "Hello world"},
-    {"id": 2, "text": "Good morning"},
-    {"id": 3, "text": "How are you?"}
-]
-
-# Sin schema - devuelve lista de strings
-responses = llm.generate(
-    "Traduce cada texto al español",
-    batch_items=items
-)
-# responses = ["Hola mundo", "Buenos días", "¿Cómo estás?"]
-
-# Con schema - devuelve lista estructurada
-schema = {
-    "type": "object",
-    "properties": {
-        "original": {"type": "string"},
-        "traduccion": {"type": "string"},
-        "idioma": {"type": "string"}
-    }
-}
-
-responses = llm.generate(
-    "Traduce cada texto al español y detecta el idioma original",
-    batch_items=items,
-    schema=schema
-)
-# responses = [
-#     {"original": "Hello world", "traduccion": "Hola mundo", "idioma": "inglés"},
-#     {"original": "Good morning", "traduccion": "Buenos días", "idioma": "inglés"},
-#     {"original": "How are you?", "traduccion": "¿Cómo estás?", "idioma": "inglés"}
-# ]
-```
-
-## 🔧 Configuración Avanzada
-
-### Configuración Personalizada
+### Programmatic Configuration
 
 ```python
 from utils.llm import LLMConfig, AzureLLM
 
-# Configuración explícita
+# Explicit configuration
 config = LLMConfig(
-    endpoint="https://mi-recurso.openai.azure.com/",
-    api_key="mi-api-key",
+    endpoint="https://my-resource.openai.azure.com/",
+    api_key="my-api-key",
     deployment_name="gpt-4o",
     temperature=0.7,
-    validate_schema=True  # Validación strict de esquemas
+    validate_schema=True
 )
 
 llm = AzureLLM(config=config)
 ```
 
-### Configuración desde Entorno con Overrides
+## 🔑 Core Concepts
+
+### 1. Unified Interface
+
+Both providers share the exact same interface:
 
 ```python
-from utils.llm import Azure
+# Import either provider
+from utils.llm import Azure as LLM        # For Azure
+# OR
+from utils.llm import HuggingLLM as LLM   # For Hugging Face
 
-# Usar variables de entorno pero override algunos valores
-llm = Azure("gpt-4o", temperature=0.1, validate_schema=True)
+# Usage is identical
+llm = LLM("model-name")
+response = llm.generate("Your prompt here")
+```
+
+### 2. Structured Output
+
+Use JSON schemas to ensure consistent output format:
+
+```python
+schema = {
+    "type": "object",
+    "properties": {
+        "summary": {"type": "string"},
+        "key_points": {
+            "type": "array",
+            "items": {"type": "string"}
+        },
+        "sentiment": {
+            "type": "string",
+            "enum": ["positive", "negative", "neutral"]
+        }
+    },
+    "required": ["summary", "key_points", "sentiment"]
+}
+
+response = llm.generate(
+    "Analyze this product review...",
+    schema=schema
+)
+# response is a dict matching the schema
+```
+
+### 3. Templates
+
+Create reusable prompts with variable substitution:
+
+```python
+# Define template
+translator = llm.template(
+    "Translate '{text}' from {source_lang} to {target_lang}",
+    temperature=0.3
+)
+
+# Use multiple times
+result1 = translator(text="Hello", source_lang="English", target_lang="Spanish")
+result2 = translator(text="Bonjour", source_lang="French", target_lang="English")
+```
+
+### 4. Batch Processing
+
+Process multiple items efficiently:
+
+```python
+items = [
+    {"id": 1, "text": "Hello world"},
+    {"id": 2, "text": "Good morning"},
+    {"id": 3, "text": "How are you?"}
+]
+
+# Returns list of results
+responses = llm.generate(
+    "Translate each text to Spanish",
+    batch_items=items
+)
 ```
 
 ## 📚 API Reference
 
-### Azure / AzureLLM
+### Main Classes
 
-La clase principal para interactuar con Azure OpenAI.
-
-```python
-llm = Azure(deployment_name, *, config=None, **config_overrides)
-```
-
-**Parámetros:**
-- `deployment_name`: Nombre del deployment (ej: "gpt-4o")
-- `config`: Objeto LLMConfig personalizado (opcional)
-- `**config_overrides`: Overrides de configuración
-
-#### Método `generate()`
+#### `AzureLLM` / `HuggingLLM`
 
 ```python
-response = llm.generate(
-    prompt,
+llm = ProviderLLM(
+    deployment_name: str,
     *,
-    variables=None,
-    schema=None,
-    batch_items=None,
-    max_tokens=None,
-    temperature=None
+    config: Optional[LLMConfig] = None,
+    **config_overrides
 )
 ```
 
-**Parámetros:**
-- `prompt`: Texto del prompt (puede contener {variables})
-- `variables`: Dict con valores para sustituir en el prompt
-- `schema`: Esquema JSON para salida estructurada
-- `batch_items`: Lista de diccionarios para procesamiento por lotes
-- `max_tokens`: Límite de tokens
-- `temperature`: Nivel de creatividad (0.0-1.0)
+**Parameters:**
+- `deployment_name`: Model/deployment identifier
+  - Azure: Deployment name (e.g., "gpt-4o")
+  - Hugging Face: Model name matching environment variable pattern (e.g., "jonsnow")
+- `config`: Custom LLMConfig object (optional)
+- `**config_overrides`: Override specific configuration values
 
-**Retorna:**
-- String para salida de texto simple
-- Dict para salida estructurada con schema
-- List para procesamiento por lotes
-
-#### Método `template()`
+#### `generate()` Method
 
 ```python
-template = llm.template(template_string, *, schema=None, **fixed_params)
+response = llm.generate(
+    prompt: str,
+    *,
+    variables: Optional[Dict[str, Any]] = None,
+    schema: Optional[Union[Dict[str, Any], str]] = None,
+    batch_items: Optional[List[Dict[str, Any]]] = None,
+    max_tokens: Optional[int] = None,
+    temperature: Optional[float] = None
+) -> Union[str, Dict[str, Any], List[Any]]
 ```
 
-Crea una plantilla reutilizable con parámetros fijos.
+**Parameters:**
+- `prompt`: Text prompt (may contain `{variable}` placeholders)
+- `variables`: Dictionary of values to substitute in prompt
+- `schema`: JSON schema for structured output (dict or file path)
+- `batch_items`: List of items for batch processing
+- `max_tokens`: Maximum tokens in response
+- `temperature`: Creativity level (0.0-1.0)
 
-### Funciones de Conveniencia
+**Returns:**
+- `str`: For plain text output
+- `Dict[str, Any]`: For structured output with schema
+- `List[Any]`: For batch processing results
+
+#### `template()` Method
+
+```python
+template = llm.template(
+    template_string: str,
+    *,
+    schema: Optional[Union[Dict[str, Any], str]] = None,
+    **fixed_params
+) -> Template
+```
+
+Creates a reusable template with fixed parameters.
+
+### Helper Functions
 
 #### `quick_generate()`
 
 ```python
-from utils.llm import quick_generate
-
-response = quick_generate(prompt, deployment_name="gpt-4o", **kwargs)
+response = quick_generate(
+    prompt: str,
+    deployment_name: str = "gpt-4o",  # or "default" for HF
+    **kwargs
+)
 ```
 
-Generación rápida en una línea para casos simples.
+One-shot generation for simple use cases.
 
 #### `create_llm()`
 
 ```python
-from utils.llm import create_llm
-
-llm = create_llm(deployment_name="gpt-4o", **config_overrides)
+llm = create_llm(
+    deployment_name: Optional[str] = None,
+    **config_overrides
+)
 ```
 
-Factory function para crear instancias de LLM.
+Factory function for creating LLM instances.
 
-### Schema
+### Data Classes
 
-Manejo de esquemas JSON optimizados para Azure OpenAI.
+#### `LLMConfig`
 
 ```python
-from utils.llm import Schema
+@dataclass(frozen=True)
+class LLMConfig:
+    endpoint: str
+    api_key: str
+    api_version: str = "2024-02-15-preview"  # Azure only
+    deployment_name: Optional[str] = None
+    temperature: Optional[float] = None
+    validate_schema: bool = False
+    extra_params: Dict[str, Any] = field(default_factory=dict)
+```
 
-# Desde dict
+#### `Schema`
+
+```python
+# Load from dict
 schema = Schema.load({
     "type": "object",
-    "properties": {"name": {"type": "string"}},
-    "required": ["name"]
+    "properties": {"name": {"type": "string"}}
 })
 
-# Desde archivo YAML
-schema = Schema.load("mi_schema.yaml")
+# Load from YAML file
+schema = Schema.load("schema.yaml")
 ```
 
-## 💡 Tips y Mejores Prácticas
+## 📝 Examples
 
-### 🎯 Optimización de Costos
-
-```python
-# Usa max_tokens para controlar costos
-response = llm.generate(
-    "Resume en 50 palabras...", 
-    max_tokens=100  # Limita la respuesta
-)
-
-# Temperatura baja para respuestas más predecibles
-llm = Azure("gpt-4o", temperature=0.1)
-```
-
-### 🔒 Esquemas Robustos
-
-```python
-# Los esquemas se optimizan automáticamente para Azure
-schema = {
-    "type": "object",
-    "properties": {
-        "campo": {"type": "string"}
-    }
-    # Azure añade automáticamente:
-    # "additionalProperties": false
-    # "required": ["campo"]
-}
-```
-
-> **Note:** AzureLLM optimiza automáticamente los esquemas para el modo strict de Azure OpenAI.
-
-### 🔄 Reutilización de Instancias
-
-```python
-# ✅ Buena práctica: reutilizar instancia
-llm = Azure("gpt-4o")
-for texto in textos:
-    response = llm.generate(f"Analiza: {texto}")
-
-# ❌ Evitar: crear nueva instancia cada vez
-for texto in textos:
-    llm = Azure("gpt-4o")  # Ineficiente
-    response = llm.generate(f"Analiza: {texto}")
-```
-
-### 🧩 Variables en Plantillas
-
-```python
-# ✅ Usa variables para prompts dinámicos
-template = llm.template("Traduce '{texto}' al {idioma}")
-result = template(texto="Hello", idioma="español")
-
-# ❌ Evitar concatenación manual
-prompt = f"Traduce '{texto}' al {idioma}"  # Menos flexible
-```
-
-### 🚀 Procesamiento Eficiente por Lotes
-
-```python
-# ✅ Procesar múltiples items en una sola llamada
-items = [{"name": "Alice"}, {"name": "Bob"}, {"name": "Charlie"}]
-greetings = llm.generate(
-    "Genera un saludo personalizado para cada persona",
-    batch_items=items
-)
-
-# ❌ Evitar: múltiples llamadas individuales
-for item in items:
-    greeting = llm.generate(f"Saluda a {item['name']}")  # Ineficiente
-```
-
-> **Tip:** El procesamiento por lotes es ideal para transformaciones cortas y consistentes. Para outputs muy largos, usa lotes más pequeños para mantener la calidad.
-
-### Procesador de Datos por Lotes
+### Basic Generation
 
 ```python
 from utils.llm import Azure
 
 llm = Azure("gpt-4o")
 
-# Datos a procesar
-productos = [
-    {"nombre": "Laptop", "precio": 999},
-    {"nombre": "Mouse", "precio": 29},
-    {"nombre": "Teclado", "precio": 79}
-]
+# Simple generation
+response = llm.generate("What is machine learning?")
 
-# Schema para la respuesta
-schema = {
+# With parameters
+response = llm.generate(
+    "Summarize this text in 3 bullet points",
+    temperature=0.2,
+    max_tokens=150
+)
+
+# With variables
+response = llm.generate(
+    "Hello {name}, welcome to {place}!",
+    variables={"name": "Alice", "place": "Wonderland"}
+)
+```
+
+### Structured Output
+
+```python
+# Define output structure
+analysis_schema = {
     "type": "object",
     "properties": {
-        "nombre": {"type": "string"},
-        "categoria": {"type": "string"},
-        "rango_precio": {"type": "string"},
-        "descripcion_marketing": {"type": "string"}
+        "sentiment": {
+            "type": "string",
+            "enum": ["positive", "negative", "neutral"]
+        },
+        "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "key_phrases": {
+            "type": "array",
+            "items": {"type": "string"},
+            "maxItems": 5
+        }
+    },
+    "required": ["sentiment", "confidence", "key_phrases"]
+}
+
+# Generate structured response
+result = llm.generate(
+    "Analyze the sentiment of: 'This product exceeded my expectations!'",
+    schema=analysis_schema
+)
+
+print(f"Sentiment: {result['sentiment']}")
+print(f"Confidence: {result['confidence']:.2%}")
+print(f"Key phrases: {', '.join(result['key_phrases'])}")
+```
+
+### Templates with Schema
+
+```python
+# Create a reusable analyzer
+product_analyzer = llm.template(
+    """Analyze this product review: "{review}"
+    
+    Extract sentiment, rating, and main points.""",
+    schema={
+        "type": "object",
+        "properties": {
+            "sentiment": {"type": "string"},
+            "rating": {"type": "integer", "minimum": 1, "maximum": 5},
+            "pros": {"type": "array", "items": {"type": "string"}},
+            "cons": {"type": "array", "items": {"type": "string"}}
+        }
+    },
+    temperature=0.3
+)
+
+# Analyze multiple reviews
+reviews = [
+    "Amazing product! Fast shipping and great quality.",
+    "Disappointed. Broke after one week of use.",
+    "Good value for money, but instructions were unclear."
+]
+
+for review in reviews:
+    analysis = product_analyzer(review=review)
+    print(f"Review: {review}")
+    print(f"Rating: {'⭐' * analysis['rating']}")
+    print(f"Pros: {', '.join(analysis['pros'])}")
+    print(f"Cons: {', '.join(analysis['cons'])}\n")
+```
+
+### Batch Processing
+
+```python
+# Process multiple medical cases
+cases = [
+    {
+        "id": 1,
+        "symptoms": "Fever, cough, fatigue",
+        "duration": "3 days"
+    },
+    {
+        "id": 2,
+        "symptoms": "Headache, nausea, dizziness",
+        "duration": "1 week"
+    },
+    {
+        "id": 3,
+        "symptoms": "Chest pain, shortness of breath",
+        "duration": "2 hours"
+    }
+]
+
+# Define schema for diagnosis
+diagnosis_schema = {
+    "type": "object",
+    "properties": {
+        "case_id": {"type": "integer"},
+        "possible_conditions": {
+            "type": "array",
+            "items": {"type": "string"}
+        },
+        "urgency": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+        },
+        "recommended_action": {"type": "string"}
     }
 }
 
-# Procesar todos los productos en una sola llamada
-resultados = llm.generate(
-    """Para cada producto, determina su categoría, rango de precio 
-    (económico/medio/premium) y genera una descripción de marketing atractiva""",
-    batch_items=productos,
-    schema=schema,
-    temperature=0.7
+# Process all cases in one call
+diagnoses = llm.generate(
+    """For each case, provide:
+    1. Possible conditions
+    2. Urgency level
+    3. Recommended action""",
+    batch_items=cases,
+    schema=diagnosis_schema
 )
 
-# Mostrar resultados
-for i, resultado in enumerate(resultados):
-    print(f"\nProducto {i+1}:")
-    print(f"  Nombre: {resultado['nombre']}")
-    print(f"  Categoría: {resultado['categoria']}")
-    print(f"  Rango: {resultado['rango_precio']}")
-    print(f"  Marketing: {resultado['descripcion_marketing']}")
+# Display results
+for diagnosis in diagnoses:
+    print(f"Case {diagnosis['case_id']}:")
+    print(f"  Urgency: {diagnosis['urgency'].upper()}")
+    print(f"  Possible: {', '.join(diagnosis['possible_conditions'])}")
+    print(f"  Action: {diagnosis['recommended_action']}\n")
+```
+
+### Complex Pipeline
+
+```python
+from utils.llm import Azure
+
+llm = Azure("gpt-4o")
+
+# Step 1: Extract entities
+entity_extractor = llm.template(
+    "Extract all people, places, and organizations from: {text}",
+    schema={
+        "type": "object",
+        "properties": {
+            "people": {"type": "array", "items": {"type": "string"}},
+            "places": {"type": "array", "items": {"type": "string"}},
+            "organizations": {"type": "array", "items": {"type": "string"}}
+        }
+    }
+)
+
+# Step 2: Generate summary
+summarizer = llm.template(
+    "Summarize this text focusing on {focus_area}: {text}",
+    max_tokens=150,
+    temperature=0.3
+)
+
+# Process document
+document = """
+Apple CEO Tim Cook announced yesterday in Cupertino that the company 
+will open a new research facility in London. The facility will focus 
+on AI research and will be led by Dr. Sarah Johnson, formerly of MIT.
+"""
+
+# Extract entities
+entities = entity_extractor(text=document)
+print("Entities found:")
+print(f"  People: {', '.join(entities['people'])}")
+print(f"  Places: {', '.join(entities['places'])}")
+print(f"  Organizations: {', '.join(entities['organizations'])}")
+
+# Generate summaries with different focus
+for focus in ["technology", "business", "personnel"]:
+    summary = summarizer(text=document, focus_area=focus)
+    print(f"\n{focus.capitalize()} focus: {summary}")
+```
+
+## 🔌 Provider-Specific Details
+
+### Azure OpenAI
+
+- **Optimizations**: Schemas automatically optimized for Azure's strict mode
+- **Features**: Full support for all Azure OpenAI features
+- **Best for**: Production applications requiring high reliability and SLAs
+
+### Hugging Face
+
+- **Endpoint Pattern**: `{MODEL}_ENDPOINT_URL` environment variable
+- **Grammar Support**: Uses TGI grammar constraints for structured output
+- **Best for**: Custom models, open-source models, and experimentation
+
+### Migration Between Providers
+
+```python
+# Switching providers is as simple as changing the import
+# from utils.llm import Azure as LLM
+from utils.llm import HuggingLLM as LLM
+
+# All code remains the same
+llm = LLM("model-name")
+response = llm.generate("prompt", schema=schema)
+```
+
+## 💡 Best Practices
+
+### 1. Reuse LLM Instances
+
+```python
+# ✅ Good: Create once, use many times
+llm = Azure("gpt-4o")
+for item in items:
+    response = llm.generate(f"Process: {item}")
+
+# ❌ Bad: Creating new instance each time
+for item in items:
+    llm = Azure("gpt-4o")  # Inefficient
+    response = llm.generate(f"Process: {item}")
+```
+
+### 2. Use Templates for Repeated Tasks
+
+```python
+# ✅ Good: Template for consistency
+analyzer = llm.template(
+    "Analyze {metric} for {company}",
+    temperature=0.2
+)
+
+# ❌ Bad: Manual string formatting
+prompt = f"Analyze {metric} for {company}"  # Less maintainable
+```
+
+### 3. Batch Processing for Efficiency
+
+```python
+# ✅ Good: Single API call for multiple items
+results = llm.generate(
+    "Process each item",
+    batch_items=items
+)
+
+# ❌ Bad: Multiple individual calls
+results = []
+for item in items:
+    result = llm.generate(f"Process {item}")
+    results.append(result)
+```
+
+### 4. Control Costs with Parameters
+
+```python
+# Use appropriate max_tokens
+response = llm.generate(
+    "Summarize in 50 words",
+    max_tokens=100  # Prevent overly long responses
+)
+
+# Lower temperature for consistent output
+llm = Azure("gpt-4o", temperature=0.1)
+```
+
+### 5. Handle Errors Gracefully
+
+```python
+try:
+    response = llm.generate("Complex prompt", schema=complex_schema)
+except RuntimeError as e:
+    # Handle API errors
+    logger.error(f"LLM API error: {e}")
+    response = {"error": "Service unavailable"}
 ```
 
 ## 🔧 Troubleshooting
 
-### Error: Missing AZURE_OPENAI_ENDPOINT
+### Common Issues
 
-```bash
+#### Missing Environment Variables
+```
 ValueError: Missing AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY
 ```
+**Solution**: Ensure `.env` file exists with correct variables or pass config explicitly.
 
-**Solución:** Verifica que tienes un archivo `.env` con las variables correctas o pasa la configuración explícitamente.
-
-### Error: KeyError en Template
-
-```python
-KeyError: Missing template variable: 'nombre'
+#### Model Not Found (Hugging Face)
 ```
-
-**Solución:** Asegúrate de pasar todas las variables definidas en el template:
-
-```python
-template = llm.template("Hola {nombre}")
-response = template(nombre="Juan")  # ✅ Variable proporcionada
+ValueError: Missing MODELNAME_ENDPOINT_URL or HF_TOKEN
 ```
+**Solution**: Model name must match environment variable pattern (e.g., `jonsnow` → `JONSNOW_ENDPOINT_URL`).
 
-### Respuesta No-JSON con Schema
+#### Schema Validation Errors
+```
+ValueError: Invalid JSON schema: ...
+```
+**Solution**: Ensure schema follows JSON Schema Draft 7 specification.
 
+#### Non-JSON Response with Schema
 ```
 UserWarning: Model returned non-JSON despite schema constraint
 ```
+**Note**: This is handled automatically. The library returns raw text when JSON parsing fails.
 
-**Solución:** Esto es normal. AzureLLM maneja automáticamente casos donde el modelo no respeta el esquema y devuelve el texto raw.
-
-### Validación de Schema
+### Debugging Tips
 
 ```python
-# Habilitar validación strict (requiere jsonschema)
-pip install jsonschema
-
+# Enable schema validation
 llm = Azure("gpt-4o", validate_schema=True)
+
+# Check configuration
+print(llm.config.endpoint)
+print(llm.config.deployment_name)
+
+# Test with simple prompt first
+response = llm.generate("Hello")
+print(f"Basic test: {response}")
 ```
 
-## 📄 Compatibilidad hacia Atrás
+## 🔄 Extending
 
-AzureLLM v4 mantiene compatibilidad total con versiones anteriores:
+### Adding New Providers
+
+To add support for a new LLM provider:
+
+1. Create a new file (e.g., `anthropic.py`) in `utils/llm/`
+2. Inherit from `BaseLLM` and implement required methods:
 
 ```python
-# Parámetros antiguos aún funcionan
-response = llm.generate(
-    "Hola {nombre}",
-    prompt_vars={"nombre": "Juan"},    # Ahora se llama 'variables'
-    output_schema=schema               # Ahora se llama 'schema'
-)
+from .base import BaseLLM
+
+class AnthropicLLM(BaseLLM):
+    def generate(self, prompt, **kwargs):
+        # Implementation
+        pass
+    
+    def template(self, template_string, **kwargs):
+        # Implementation
+        pass
+
+# Maintain interface compatibility
+Anthropic = AnthropicLLM
 ```
 
-> **Note:** Se recomienda usar los nuevos nombres de parámetros para código nuevo.
-
-## 🎉 Ejemplos Completos
-
-### Analizador de Sentimientos
+3. Update `__init__.py` to export your provider:
 
 ```python
-from utils.llm import Azure
-
-llm = Azure("gpt-4o")
-
-analizador = llm.template(
-    """Analiza el sentimiento del siguiente texto: "{texto}"
-    
-    Responde con el sentimiento (positivo/negativo/neutro) y una puntuación de confianza del 0 al 1.""",
-    
-    schema={
-        "type": "object",
-        "properties": {
-            "sentimiento": {
-                "type": "string",
-                "enum": ["positivo", "negativo", "neutro"]
-            },
-            "confianza": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1
-            },
-            "razon": {"type": "string"}
-        },
-        "required": ["sentimiento", "confianza", "razon"]
-    },
-    temperature=0.2
-)
-
-# Usar el analizador
-textos = [
-    "¡Me encanta este producto!",
-    "El servicio fue terrible",
-    "El clima está nublado hoy"
-]
-
-for texto in textos:
-    resultado = analizador(texto=texto)
-    print(f"Texto: {texto}")
-    print(f"Sentimiento: {resultado['sentimiento']} ({resultado['confianza']:.2f})")
-    print(f"Razón: {resultado['razon']}\n")
+from .anthropic import Anthropic, AnthropicLLM
 ```
+
+### Custom Schema Processing
+
+```python
+from utils.llm import Schema
+
+class CustomSchema(Schema):
+    @staticmethod
+    def _optimize_for_provider(schema: Dict[str, Any]) -> Dict[str, Any]:
+        # Custom optimization logic
+        return schema
+```
+
+## 📄 License
+
+This library is part of the dxgpt-latitude-bench-test project.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please ensure:
+- Maintain backward compatibility
+- Add tests for new features
+- Update documentation
+- Follow existing code style
+
+---
+
+For more examples and advanced usage, check the `examples/` directory in the repository.

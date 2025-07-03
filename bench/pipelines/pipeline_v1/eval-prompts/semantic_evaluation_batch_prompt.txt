@@ -1,0 +1,11 @@
+Analiza la similitud semántica entre diagnósticos diferenciales generados (DDX) y diagnósticos de referencia (GDX). Para cada par DDX-GDX, proporciona un score del 1-10 donde:
+
+1-20: Unrelated - Different concepts/conditions with no meaningful connection
+21-40: Loosely related - Share some domain overlap but are distinct diagnoses
+41-60: Family relationship - GDX is a subset or member of the broader DDX category
+61-80: Near match - Synonyms, or minor terminology variations
+81-100: Enhanced match - Either exact match or DDX provides more specific, detailed, or expert-level terminology than GDX
+
+Express scores as [0, 1]
+
+Para cada item, encuentra el GDX con mayor similitud al DDX y retorna ese par con su score.

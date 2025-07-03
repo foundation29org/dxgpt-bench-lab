@@ -1,0 +1,1148 @@
+#!/usr/bin/env python3
+"""
+Script para crear un dataset de evaluación de alta calidad a partir de múltiples archivos JSON.
+Implementa un algoritmo de selección inteligente para maximizar la diversidad.
+"""
+
+import json
+import os
+from pathlib import Path
+from typing import Dict, List, Set, Tuple, Optional, Union
+from datetime import datetime
+from collections import defaultdict, Counter
+import random
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.gridspec import GridSpec
+import numpy as np
+import seaborn as sns
+from matplotlib.patches import Rectangle
+import matplotlib.patches as patches
+from matplotlib.collections import PatchCollection
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)
+
+# ==============================================================================
+# CONFIGURACIÓN DEL SCRIPT
+# ==============================================================================
+
+# Tamaño total del dataset de salida deseado
+TARGET_DATASET_SIZE = 150
+
+# Mapeo de prefijos de ID a nombres de archivos
+SOURCE_FILES = {
+    'B': 'medbulltes5op.json',
+    'Q': 'medqausmle4op.json',
+    'R': 'ramedis.json',
+    'S': 'rare_synthetic.json',
+    'U': 'ukranian.json',
+    'J': 'new_england_med_journal.json',
+    'T': 'urgtorre.json'
+}
+
+# Reglas de muestreo por fuente de datos
+# Usa números enteros para un conteo exacto o porcentajes (float entre 0.0 y 1.0)
+# Usa 'None' para dejar que el algoritmo decida libremente
+# Formato: 'prefijo': {'min': valor, 'max': valor}
+SAMPLING_RULES = {
+    'B': {'min': None, 'max': None},  # Deja que el algoritmo llene el resto
+    'Q': {'min': None, 'max': None},  # Deja que el algoritmo llene el resto
+    'R': {'min': 50, 'max': 100},
+    'U': {'min': 'all', 'max': 'all'},  # 'all' es una palabra clave para incluir todos los casos
+    'S': {'min': 0, 'max': 25},
+    'J': {'min': 'all', 'max': 'all'},
+    'T': {'min': 0, 'max': 50},
+}
+
+# Clave para identificar un diagnóstico único ('icd10' o 'normalized_text')
+UNIQUENESS_KEY = 'icd10'  # Usar el primer código ICD10 de cada diagnóstico
+
+# Carpeta de salida
+OUTPUT_FOLDER = 'served'
+
+# ==============================================================================
+# FUNCIONES AUXILIARES
+# ==============================================================================
+
+def extract_icd10_chapter(icd10_code: str) -> str:
+    """Extrae el capítulo ICD-10 del código (primera letra)."""
+    if icd10_code and isinstance(icd10_code, str) and len(icd10_code) > 0:
+        return icd10_code[0].upper()
+    return 'Unknown'
+
+
+def extract_complexity_value(complexity: str) -> int:
+    """Convierte complejidad (ej. 'C5') a valor numérico."""
+    if complexity and isinstance(complexity, str) and complexity.startswith('C'):
+        try:
+            return int(complexity[1:])
+        except:
+            pass
+    return 0
+
+
+def extract_severity_value(severity: str) -> int:
+    """Convierte severidad (ej. 'S5') a valor numérico."""
+    if severity and isinstance(severity, str) and severity.startswith('S'):
+        try:
+            return int(severity[1:])
+        except:
+            pass
+    return 0
+
+
+def get_case_diagnoses_info(case: dict) -> List[Tuple[str, str]]:
+    """
+    Extrae información de diagnósticos de un caso.
+    Retorna lista de tuplas (primer_codigo_icd10, capitulo_icd10)
+    """
+    diagnoses_info = []
+    
+    if 'diagnoses' in case and isinstance(case['diagnoses'], list):
+        for diagnosis in case['diagnoses']:
+            if 'medical_codes' in diagnosis and 'icd10' in diagnosis['medical_codes']:
+                icd10_codes = diagnosis['medical_codes']['icd10']
+                if icd10_codes and isinstance(icd10_codes, list) and len(icd10_codes) > 0:
+                    first_code = icd10_codes[0]
+                    if first_code:
+                        chapter = extract_icd10_chapter(first_code)
+                        diagnoses_info.append((first_code, chapter))
+    
+    return diagnoses_info
+
+
+def calculate_case_score(case: dict, case_info: dict, current_dataset: List[dict],
+                        diagnoses_included: Set[str], chapters_included: Set[str],
+                        source_counts: Dict[str, int]) -> float:
+    """
+    Calcula la puntuación de un caso candidato para promover diversidad.
+    """
+    score = 0.0
+    
+    # Bonus por introducir nuevo capítulo ICD-10
+    case_chapters = set(chapter for _, chapter in case_info['diagnoses_info'])
+    new_chapters = case_chapters - chapters_included
+    if new_chapters:
+        score += 5.0 * len(new_chapters)
+    
+    # Bonus por fuente subrepresentada
+    source = case_info['source']
+    total_cases = len(current_dataset)
+    if total_cases > 0:
+        source_representation = source_counts.get(source, 0) / total_cases
+        underrepresentation_bonus = 1.0 - source_representation
+        score += 3.0 * underrepresentation_bonus
+    else:
+        score += 3.0  # Máximo bonus si es el primer caso
+    
+    # Bonus por complejidad
+    complexity_value = case_info['complexity_value']
+    score += 2.0 * (complexity_value / 10.0)  # Normalizado a 0-1
+    
+    # Bonus por ser multi-diagnóstico
+    if len(case_info['diagnoses_info']) > 1:
+        score += 1.0
+    
+    # Bonus adicional por severidad alta
+    severity_value = case_info['severity_value']
+    score += 0.5 * (severity_value / 10.0)  # Normalizado a 0-1
+    
+    return score
+
+
+# ==============================================================================
+# FASE 0: CARGA Y PREPARACIÓN
+# ==============================================================================
+
+def load_and_prepare_data() -> Tuple[List[dict], Dict[str, List[dict]]]:
+    """
+    Carga todos los datasets y prepara la información necesaria.
+    Retorna: (todos_los_casos, casos_por_fuente)
+    """
+    all_cases = []
+    cases_by_source = defaultdict(list)
+    
+    current_dir = Path(__file__).parent
+    
+    for prefix, filename in SOURCE_FILES.items():
+        filepath = current_dir / filename
+        
+        if not filepath.exists():
+            print(f"⚠️  Archivo no encontrado: {filename}")
+            continue
+        
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                dataset = json.load(f)
+            
+            if not isinstance(dataset, list):
+                print(f"⚠️  El archivo {filename} no contiene una lista de casos")
+                continue
+            
+            # Procesar cada caso
+            for case in dataset:
+                if not isinstance(case, dict) or 'id' not in case:
+                    continue
+                
+                # Extraer información del caso
+                case_info = {
+                    'case': case,
+                    'id': case['id'],
+                    'source': prefix,
+                    'complexity': case.get('complexity', 'C0'),
+                    'complexity_value': extract_complexity_value(case.get('complexity', 'C0')),
+                    'severity_value': extract_severity_value(case.get('severity', 'S0')),
+                    'diagnoses_info': get_case_diagnoses_info(case)
+                }
+                
+                all_cases.append(case_info)
+                cases_by_source[prefix].append(case_info)
+            
+            print(f"✓ Cargados {len(dataset)} casos de {filename}")
+            
+        except Exception as e:
+            print(f"⚠️  Error al cargar {filename}: {e}")
+    
+    return all_cases, dict(cases_by_source)
+
+
+# ==============================================================================
+# FASE 1: SELECCIÓN PRIORITARIA
+# ==============================================================================
+
+def phase1_priority_selection(cases_by_source: Dict[str, List[dict]], 
+                             sampling_rules: Dict[str, dict]) -> Tuple[List[dict], Set[str], Set[str]]:
+    """
+    Implementa la Fase 1: Selección prioritaria según reglas 'min' y 'all'.
+    """
+    final_dataset = []
+    diagnoses_included = set()
+    chapters_included = set()
+    
+    for source, rules in sampling_rules.items():
+        if source not in cases_by_source:
+            continue
+        
+        source_cases = cases_by_source[source]
+        min_rule = rules.get('min')
+        
+        if min_rule == 'all':
+            # Incluir todos los casos de esta fuente
+            for case_info in source_cases:
+                final_dataset.append(case_info['case'])
+                
+                # Actualizar diagnósticos incluidos
+                for icd10_code, chapter in case_info['diagnoses_info']:
+                    diagnoses_included.add(icd10_code)
+                    chapters_included.add(chapter)
+            
+            print(f"  → Incluidos todos los {len(source_cases)} casos de fuente '{source}'")
+            
+        elif isinstance(min_rule, int) and min_rule > 0:
+            # Seleccionar los mejores 'min' casos
+            # Ordenar por: 1) nuevos capítulos, 2) complejidad, 3) multi-diagnóstico
+            
+            selected_cases = []
+            remaining_cases = source_cases.copy()
+            
+            for _ in range(min(min_rule, len(source_cases))):
+                if not remaining_cases:
+                    break
+                
+                # Calcular puntuación para cada caso restante
+                best_score = -1
+                best_case = None
+                best_idx = -1
+                
+                for idx, case_info in enumerate(remaining_cases):
+                    # Contar nuevos capítulos que aportaría
+                    case_chapters = set(ch for _, ch in case_info['diagnoses_info'])
+                    new_chapters = case_chapters - chapters_included
+                    
+                    # Calcular puntuación simple
+                    score = (len(new_chapters) * 1000 +  # Prioridad máxima a nuevos capítulos
+                            case_info['complexity_value'] * 10 +
+                            len(case_info['diagnoses_info']))  # Bonus por multi-diagnóstico
+                    
+                    if score > best_score:
+                        best_score = score
+                        best_case = case_info
+                        best_idx = idx
+                
+                if best_case:
+                    selected_cases.append(best_case)
+                    remaining_cases.pop(best_idx)
+                    
+                    # Actualizar sets
+                    for icd10_code, chapter in best_case['diagnoses_info']:
+                        diagnoses_included.add(icd10_code)
+                        chapters_included.add(chapter)
+            
+            # Añadir casos seleccionados al dataset final
+            for case_info in selected_cases:
+                final_dataset.append(case_info['case'])
+            
+            print(f"  → Seleccionados {len(selected_cases)} casos de fuente '{source}' (min: {min_rule})")
+    
+    return final_dataset, diagnoses_included, chapters_included
+
+
+# ==============================================================================
+# FASE 2: LLENADO ITERATIVO INTELIGENTE
+# ==============================================================================
+
+def phase2_iterative_filling(all_cases: List[dict], final_dataset: List[dict],
+                           diagnoses_included: Set[str], chapters_included: Set[str],
+                           sampling_rules: Dict[str, dict], target_size: int) -> List[dict]:
+    """
+    Implementa la Fase 2: Llenado iterativo hasta alcanzar el tamaño objetivo.
+    """
+    # Crear conjunto de IDs ya incluidos
+    included_ids = {case['id'] for case in final_dataset}
+    
+    # Crear pool de candidatos (casos no incluidos)
+    candidate_pool = [case_info for case_info in all_cases 
+                     if case_info['id'] not in included_ids]
+    
+    # Contador de casos por fuente
+    source_counts = Counter(case_info['id'][0] for case_info in all_cases 
+                           if case_info['id'] in included_ids)
+    
+    print(f"\n📊 Estado inicial: {len(final_dataset)} casos seleccionados")
+    print(f"   Candidatos disponibles: {len(candidate_pool)}")
+    
+    iteration = 0
+    while len(final_dataset) < target_size and candidate_pool:
+        iteration += 1
+        
+        # Filtrar candidatos válidos
+        valid_candidates = []
+        
+        for case_info in candidate_pool:
+            source = case_info['source']
+            
+            # Verificar límite máximo
+            max_rule = sampling_rules.get(source, {}).get('max')
+            current_count = source_counts.get(source, 0)
+            
+            if max_rule == 'all':
+                # Ya se procesó en fase 1
+                continue
+            elif isinstance(max_rule, int) and current_count >= max_rule:
+                # Límite alcanzado
+                continue
+            
+            # Verificar que tenga al menos un diagnóstico nuevo
+            has_new_diagnosis = any(icd10_code not in diagnoses_included 
+                                  for icd10_code, _ in case_info['diagnoses_info'])
+            
+            if has_new_diagnosis:
+                valid_candidates.append(case_info)
+        
+        if not valid_candidates:
+            print(f"\n⚠️  No quedan candidatos válidos. Deteniendo en {len(final_dataset)} casos.")
+            break
+        
+        # Calcular puntuaciones
+        candidate_scores = []
+        for case_info in valid_candidates:
+            score = calculate_case_score(
+                case_info['case'], case_info, final_dataset,
+                diagnoses_included, chapters_included, source_counts
+            )
+            candidate_scores.append((score, case_info))
+        
+        # Seleccionar el mejor candidato
+        candidate_scores.sort(key=lambda x: x[0], reverse=True)
+        best_score, best_candidate = candidate_scores[0]
+        
+        # Añadir al dataset final
+        final_dataset.append(best_candidate['case'])
+        source_counts[best_candidate['source']] += 1
+        
+        # Actualizar conjuntos
+        for icd10_code, chapter in best_candidate['diagnoses_info']:
+            diagnoses_included.add(icd10_code)
+            chapters_included.add(chapter)
+        
+        # Eliminar del pool
+        candidate_pool.remove(best_candidate)
+        
+        # Mostrar progreso cada 10 iteraciones
+        if iteration % 10 == 0:
+            print(f"   Iteración {iteration}: {len(final_dataset)}/{target_size} casos")
+    
+    return final_dataset
+
+
+# ==============================================================================
+# FASE 3: FINALIZACIÓN Y REPORTE
+# ==============================================================================
+
+def generate_report(final_dataset: List[dict], all_cases: List[dict], 
+                   cases_by_source: Dict[str, List[dict]]) -> dict:
+    """
+    Genera estadísticas detalladas del dataset final.
+    """
+    report = {
+        'total_cases': len(final_dataset),
+        'source_composition': {},
+        'icd10_chapters': defaultdict(int),
+        'complexity_distribution': defaultdict(int),
+        'severity_distribution': defaultdict(int),
+        'unique_diagnoses': set(),
+        'multi_diagnosis_cases': 0,
+        'average_diagnoses_per_case': 0
+    }
+    
+    # Analizar cada caso
+    total_diagnoses = 0
+    
+    for case in final_dataset:
+        # Fuente
+        source = case['id'][0] if case.get('id') else 'Unknown'
+        report['source_composition'][source] = report['source_composition'].get(source, 0) + 1
+        
+        # Complejidad
+        complexity = case.get('complexity', 'Unknown')
+        report['complexity_distribution'][complexity] += 1
+        
+        # Severidad (del primer diagnóstico)
+        if 'diagnoses' in case and case['diagnoses']:
+            first_diagnosis = case['diagnoses'][0]
+            severity = first_diagnosis.get('severity', 'Unknown')
+            report['severity_distribution'][severity] += 1
+        
+        # Diagnósticos
+        if 'diagnoses' in case:
+            num_diagnoses = len(case['diagnoses'])
+            total_diagnoses += num_diagnoses
+            
+            if num_diagnoses > 1:
+                report['multi_diagnosis_cases'] += 1
+            
+            for diagnosis in case['diagnoses']:
+                if 'medical_codes' in diagnosis and 'icd10' in diagnosis['medical_codes']:
+                    icd10_codes = diagnosis['medical_codes']['icd10']
+                    if icd10_codes and icd10_codes[0]:
+                        code = icd10_codes[0]
+                        report['unique_diagnoses'].add(code)
+                        chapter = extract_icd10_chapter(code)
+                        report['icd10_chapters'][chapter] += 1
+    
+    # Calcular promedio
+    if report['total_cases'] > 0:
+        report['average_diagnoses_per_case'] = total_diagnoses / report['total_cases']
+    
+    # Calcular porcentajes por fuente
+    report['source_percentages'] = {}
+    for source, count in report['source_composition'].items():
+        total_in_source = len(cases_by_source.get(source, []))
+        if total_in_source > 0:
+            percentage = (count / total_in_source) * 100
+            report['source_percentages'][source] = {
+                'selected': count,
+                'total': total_in_source,
+                'percentage': percentage
+            }
+    
+    # Convertir defaultdicts a dicts ordenados alfabéticamente
+    report['icd10_chapters'] = dict(sorted(report['icd10_chapters'].items()))
+    report['complexity_distribution'] = dict(sorted(report['complexity_distribution'].items()))
+    report['severity_distribution'] = dict(sorted(report['severity_distribution'].items()))
+    
+    return report
+
+
+# ==============================================================================
+# FUNCIONES DE VISUALIZACIÓN
+# ==============================================================================
+
+def create_sophisticated_visualizations(report: dict, output_dir: Path, final_dataset: List[dict]) -> None:
+    """
+    Crea visualizaciones sofisticadas de todos los datos del reporte.
+    """
+    # Configurar estilo
+    plt.style.use('seaborn-v0_8-darkgrid')
+    sns.set_palette("husl")
+    
+    # Colores personalizados para fuentes
+    source_colors = {
+        'B': '#FF6B6B',  # Rojo coral
+        'Q': '#4ECDC4',  # Turquesa
+        'R': '#45B7D1',  # Azul cielo
+        'S': '#96CEB4',  # Verde menta
+        'U': '#FECA57',  # Amarillo dorado
+        'T': '#DDA0DD',  # Púrpura
+        'J': '#98D8C8'   # Verde agua
+    }
+    
+    # 1. Dashboard principal (figura grande con múltiples subplots)
+    fig = plt.figure(figsize=(24, 20))
+    gs = GridSpec(4, 3, figure=fig, hspace=0.3, wspace=0.3)
+    
+    # 1.1 Composición por fuente (pie chart + barras)
+    ax1 = fig.add_subplot(gs[0, 0])
+    source_data = report['source_composition']
+    colors = [source_colors.get(s, '#888888') for s in source_data.keys()]
+    wedges, texts, autotexts = ax1.pie(source_data.values(), 
+                                       labels=source_data.keys(),
+                                       autopct='%1.1f%%',
+                                       startangle=90,
+                                       colors=colors,
+                                       explode=[0.05] * len(source_data))
+    ax1.set_title('Composición por Fuente de Datos', fontsize=14, fontweight='bold')
+    
+    # 1.2 Barras de representación por fuente
+    ax2 = fig.add_subplot(gs[0, 1])
+    sources = list(report['source_percentages'].keys())
+    percentages = [info['percentage'] for info in report['source_percentages'].values()]
+    selected = [info['selected'] for info in report['source_percentages'].values()]
+    totals = [info['total'] for info in report['source_percentages'].values()]
+    
+    x = np.arange(len(sources))
+    width = 0.35
+    
+    bars1 = ax2.bar(x - width/2, selected, width, label='Seleccionados', 
+                     color=[source_colors.get(s, '#888888') for s in sources])
+    bars2 = ax2.bar(x + width/2, totals, width, label='Total disponible', alpha=0.5,
+                     color=[source_colors.get(s, '#888888') for s in sources])
+    
+    ax2.set_xlabel('Fuente')
+    ax2.set_ylabel('Número de casos')
+    ax2.set_title('Casos Seleccionados vs Disponibles por Fuente', fontsize=14, fontweight='bold')
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(sources)
+    ax2.legend()
+    
+    # Añadir etiquetas de porcentaje
+    for i, (bar, pct) in enumerate(zip(bars1, percentages)):
+        height = bar.get_height()
+        ax2.text(bar.get_x() + bar.get_width()/2., height,
+                f'{pct:.1f}%', ha='center', va='bottom', fontsize=9)
+    
+    # 1.3 Mapa de calor de capítulos ICD-10
+    ax3 = fig.add_subplot(gs[0, 2])
+    chapters = sorted(report['icd10_chapters'].keys())
+    chapter_counts = [report['icd10_chapters'][ch] for ch in chapters]
+    
+    # Crear matriz para heatmap (5x5 para acomodar 22 letras)
+    matrix_size = 5
+    heatmap_data = np.zeros((matrix_size, matrix_size))
+    chapter_labels = [['' for _ in range(matrix_size)] for _ in range(matrix_size)]
+    
+    for i, (ch, count) in enumerate(zip(chapters, chapter_counts)):
+        row = i // matrix_size
+        col = i % matrix_size
+        if row < matrix_size and col < matrix_size:
+            heatmap_data[row, col] = count
+            chapter_labels[row][col] = f'{ch}\n{count}'
+    
+    sns.heatmap(heatmap_data, annot=chapter_labels, fmt='', cmap='YlOrRd', 
+                cbar_kws={'label': 'Número de casos'}, ax=ax3, 
+                linewidths=0.5, linecolor='gray')
+    ax3.set_title('Distribución de Capítulos ICD-10', fontsize=14, fontweight='bold')
+    ax3.set_xticklabels([])
+    ax3.set_yticklabels([])
+    
+    # 1.4 Distribución de complejidad
+    ax4 = fig.add_subplot(gs[1, 0])
+    complexities = sorted(report['complexity_distribution'].keys())
+    complexity_counts = [report['complexity_distribution'][c] for c in complexities]
+    
+    bars = ax4.bar(complexities, complexity_counts, 
+                    color=plt.cm.viridis(np.linspace(0, 1, len(complexities))))
+    ax4.set_xlabel('Nivel de Complejidad')
+    ax4.set_ylabel('Número de casos')
+    ax4.set_title('Distribución de Complejidad de Casos', fontsize=14, fontweight='bold')
+    
+    # Añadir valores en las barras
+    for bar in bars:
+        height = bar.get_height()
+        ax4.text(bar.get_x() + bar.get_width()/2., height,
+                f'{int(height)}', ha='center', va='bottom')
+    
+    # 1.5 Distribución de severidad
+    ax5 = fig.add_subplot(gs[1, 1])
+    severities = sorted(report['severity_distribution'].keys())
+    severity_counts = [report['severity_distribution'][s] for s in severities]
+    
+    # Gráfico de área
+    x_pos = np.arange(len(severities))
+    ax5.fill_between(x_pos, severity_counts, alpha=0.3, color='coral')
+    ax5.plot(x_pos, severity_counts, marker='o', markersize=8, 
+             linewidth=2, color='darkred')
+    
+    ax5.set_xticks(x_pos)
+    ax5.set_xticklabels(severities, rotation=45)
+    ax5.set_xlabel('Nivel de Severidad')
+    ax5.set_ylabel('Número de casos')
+    ax5.set_title('Distribución de Severidad', fontsize=14, fontweight='bold')
+    ax5.grid(True, alpha=0.3)
+    
+    # 1.6 Métricas clave (texto con diseño)
+    ax6 = fig.add_subplot(gs[1, 2])
+    ax6.axis('off')
+    
+    metrics_text = f"""
+    📊 MÉTRICAS CLAVE DEL DATASET
+    
+    Total de casos: {report['total_cases']}
+    
+    Diagnósticos únicos: {len(report['unique_diagnoses'])}
+    
+    Capítulos ICD-10: {len(report['icd10_chapters'])}/22
+    
+    Casos multi-diagnóstico: {report['multi_diagnosis_cases']} 
+    ({report['multi_diagnosis_cases']/report['total_cases']*100:.1f}%)
+    
+    Promedio diagnósticos/caso: {report['average_diagnoses_per_case']:.2f}
+    """
+    
+    ax6.text(0.1, 0.9, metrics_text, transform=ax6.transAxes, 
+             fontsize=12, verticalalignment='top',
+             bbox=dict(boxstyle='round,pad=0.5', facecolor='lightblue', alpha=0.3))
+    
+    # 1.7 Análisis de diversidad diagnóstica
+    ax7 = fig.add_subplot(gs[2, :])
+    
+    # Crear treemap de capítulos ICD-10
+    chapters_sorted = sorted(report['icd10_chapters'].items(), key=lambda x: x[1], reverse=True)
+    
+    # Normalizar tamaños para el treemap
+    total = sum([v for _, v in chapters_sorted])
+    sizes = [v/total for _, v in chapters_sorted]
+    
+    # Calcular posiciones del treemap
+    x = 0
+    y = 0
+    width = 1
+    height = 1
+    
+    # Colores degradados
+    colors_treemap = plt.cm.Spectral(np.linspace(0, 1, len(chapters_sorted)))
+    
+    rectangles = []
+    for i, ((chapter, count), size) in enumerate(zip(chapters_sorted, sizes)):
+        if i < len(chapters_sorted) // 2:
+            rect_width = width * size * 2
+            rect_height = height / 2
+            rect = Rectangle((x, y + height/2), rect_width, rect_height, 
+                           facecolor=colors_treemap[i], edgecolor='black', linewidth=1)
+            x += rect_width
+        else:
+            if i == len(chapters_sorted) // 2:
+                x = 0
+            rect_width = width * size * 2
+            rect_height = height / 2
+            rect = Rectangle((x, y), rect_width, rect_height, 
+                           facecolor=colors_treemap[i], edgecolor='black', linewidth=1)
+            x += rect_width
+        
+        rectangles.append(rect)
+        ax7.add_patch(rect)
+        
+        # Añadir texto
+        cx = rect.get_x() + rect.get_width() / 2
+        cy = rect.get_y() + rect.get_height() / 2
+        if rect.get_width() > 0.05:  # Solo mostrar texto si el rectángulo es suficientemente grande
+            ax7.text(cx, cy, f'{chapter}\n{count}', ha='center', va='center', 
+                    fontsize=10, fontweight='bold')
+    
+    ax7.set_xlim(0, 1)
+    ax7.set_ylim(0, 1)
+    ax7.set_aspect('equal')
+    ax7.axis('off')
+    ax7.set_title('Treemap de Capítulos ICD-10 por Frecuencia', fontsize=14, fontweight='bold', pad=20)
+    
+    # 1.8 Matriz de correlación entre métricas
+    ax8 = fig.add_subplot(gs[3, 0])
+    
+    # Crear matriz de datos para correlación
+    source_counts = list(report['source_composition'].values())
+    complexity_nums = [int(c[1:]) if c.startswith('C') else 0 for c in report['complexity_distribution'].keys()]
+    severity_nums = [int(s[1:]) if s.startswith('S') else 0 for s in report['severity_distribution'].keys()]
+    
+    # Preparar datos para correlación
+    metrics_matrix = np.array([
+        [report['total_cases'], len(report['unique_diagnoses']), len(report['icd10_chapters'])],
+        [report['multi_diagnosis_cases'], report['average_diagnoses_per_case'] * 100, np.mean(source_counts)],
+        [np.mean(complexity_nums) * 10, np.mean(severity_nums) * 10, len(source_counts) * 10]
+    ])
+    
+    sns.heatmap(metrics_matrix, annot=True, fmt='.0f', cmap='coolwarm', 
+                xticklabels=['Diagnósticos\nÚnicos', 'Capítulos\nICD-10', 'Fuentes'],
+                yticklabels=['Total\nCasos', 'Multi-Dx\n& Promedio', 'Complejidad\n& Severidad'],
+                ax=ax8)
+    ax8.set_title('Matriz de Métricas del Dataset', fontsize=14, fontweight='bold')
+    
+    # 1.9 Gráfico de radar para balance del dataset
+    ax9 = fig.add_subplot(gs[3, 1], projection='polar')
+    
+    categories = ['Diversidad\nFuentes', 'Cobertura\nICD-10', 'Casos\nComplejos', 
+                  'Multi-Dx', 'Severidad\nAlta', 'Balance']
+    
+    # Calcular valores normalizados (0-1)
+    values = [
+        len(report['source_composition']) / 7,  # 7 fuentes máximo
+        len(report['icd10_chapters']) / 22,  # 22 capítulos máximo
+        sum(1 for c, v in report['complexity_distribution'].items() if int(c[1:]) >= 7) / report['total_cases'],
+        report['multi_diagnosis_cases'] / report['total_cases'],
+        sum(1 for s, v in report['severity_distribution'].items() if int(s[1:]) >= 7) / report['total_cases'],
+        1 - np.std(list(report['source_composition'].values())) / np.mean(list(report['source_composition'].values()))
+    ]
+    
+    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+    values += values[:1]
+    angles += angles[:1]
+    
+    ax9.plot(angles, values, 'o-', linewidth=2, color='darkblue')
+    ax9.fill(angles, values, alpha=0.25, color='blue')
+    ax9.set_xticks(angles[:-1])
+    ax9.set_xticklabels(categories)
+    ax9.set_ylim(0, 1)
+    ax9.set_title('Perfil de Calidad del Dataset', fontsize=14, fontweight='bold', pad=20)
+    ax9.grid(True)
+    
+    # 1.10 Timeline de selección por fase
+    ax10 = fig.add_subplot(gs[3, 2])
+    
+    phases = ['Inicio', 'Fase 1\nPrioritaria', 'Fase 2\nIterativa', 'Final']
+    cases_timeline = [0, 
+                      61,  # Aproximado basado en output típico
+                      report['total_cases'] - 61,
+                      report['total_cases']]
+    cumulative = np.cumsum(cases_timeline[:-1])
+    cumulative = np.append([0], cumulative)
+    
+    ax10.plot(phases, cumulative, 'o-', linewidth=3, markersize=10, color='green')
+    ax10.fill_between(range(len(phases)), cumulative, alpha=0.3, color='lightgreen')
+    
+    # Añadir anotaciones
+    for i, (phase, count) in enumerate(zip(phases[1:], cases_timeline[1:])):
+        if i < len(phases) - 2:
+            ax10.annotate(f'+{count}', 
+                         xy=(i+1, cumulative[i+1]), 
+                         xytext=(i+1, cumulative[i+1] + report['total_cases']*0.05),
+                         ha='center', fontsize=10, fontweight='bold')
+    
+    ax10.set_ylabel('Casos acumulados')
+    ax10.set_title('Progreso de Selección por Fases', fontsize=14, fontweight='bold')
+    ax10.grid(True, alpha=0.3)
+    
+    plt.suptitle(f'Análisis Completo del Dataset - {report["total_cases"]} Casos', 
+                 fontsize=20, fontweight='bold')
+    
+    # Guardar dashboard principal
+    plt.tight_layout()
+    plt.savefig(output_dir / 'dashboard_principal.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    # 2. Visualización detallada de diagnósticos únicos
+    fig2, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
+    
+    # 2.1 Top 20 diagnósticos más frecuentes
+    diagnosis_freq = Counter()
+    for case in final_dataset:
+        if 'diagnoses' in case:
+            for diag in case['diagnoses']:
+                if 'medical_codes' in diag and 'icd10' in diag['medical_codes']:
+                    codes = diag['medical_codes']['icd10']
+                    if codes and codes[0]:
+                        diagnosis_freq[codes[0]] += 1
+    
+    top_diagnoses = diagnosis_freq.most_common(20)
+    if top_diagnoses:
+        codes, counts = zip(*top_diagnoses)
+        y_pos = np.arange(len(codes))
+        
+        ax1.barh(y_pos, counts, color=plt.cm.plasma(np.linspace(0, 1, len(codes))))
+        ax1.set_yticks(y_pos)
+        ax1.set_yticklabels(codes, fontsize=9)
+        ax1.set_xlabel('Frecuencia')
+        ax1.set_title('Top 20 Códigos ICD-10 Más Frecuentes', fontsize=14, fontweight='bold')
+        ax1.invert_yaxis()
+    
+    # 2.2 Distribución de número de diagnósticos por caso
+    diagnoses_per_case = []
+    for case in final_dataset:
+        if 'diagnoses' in case:
+            diagnoses_per_case.append(len(case['diagnoses']))
+        else:
+            diagnoses_per_case.append(0)
+    
+    unique_counts = sorted(set(diagnoses_per_case))
+    count_freq = [diagnoses_per_case.count(x) for x in unique_counts]
+    
+    ax2.bar(unique_counts, count_freq, color='skyblue', edgecolor='navy', linewidth=1)
+    ax2.set_xlabel('Número de diagnósticos por caso')
+    ax2.set_ylabel('Frecuencia')
+    ax2.set_title('Distribución de Diagnósticos por Caso', fontsize=14, fontweight='bold')
+    ax2.set_xticks(unique_counts)
+    
+    # 2.3 Nube de puntos: Complejidad vs Severidad
+    complexity_values = []
+    severity_values = []
+    source_list = []
+    
+    for case in final_dataset:
+        comp = case.get('complexity', 'C0')
+        comp_val = int(comp[1:]) if comp.startswith('C') else 0
+        complexity_values.append(comp_val)
+        
+        if 'diagnoses' in case and case['diagnoses']:
+            sev = case['diagnoses'][0].get('severity', 'S0')
+            sev_val = int(sev[1:]) if sev.startswith('S') else 0
+            severity_values.append(sev_val)
+        else:
+            severity_values.append(0)
+        
+        source_list.append(case['id'][0] if case.get('id') else 'Unknown')
+    
+    # Crear scatter plot con colores por fuente
+    for source in set(source_list):
+        mask = [s == source for s in source_list]
+        x_vals = [c for c, m in zip(complexity_values, mask) if m]
+        y_vals = [s for s, m in zip(severity_values, mask) if m]
+        ax3.scatter(x_vals, y_vals, label=source, alpha=0.6, s=50,
+                   color=source_colors.get(source, '#888888'))
+    
+    ax3.set_xlabel('Complejidad')
+    ax3.set_ylabel('Severidad')
+    ax3.set_title('Relación Complejidad-Severidad por Fuente', fontsize=14, fontweight='bold')
+    ax3.legend()
+    ax3.grid(True, alpha=0.3)
+    
+    # 2.4 Gráfico de Sankey simplificado (flujo de fuentes a capítulos)
+    ax4.axis('off')
+    
+    # Título
+    ax4.text(0.5, 0.95, 'Flujo: Fuentes → Capítulos ICD-10', 
+             ha='center', va='top', fontsize=14, fontweight='bold', transform=ax4.transAxes)
+    
+    # Calcular flujos
+    source_to_chapter = defaultdict(lambda: defaultdict(int))
+    for case in final_dataset:
+        source = case['id'][0] if case.get('id') else 'Unknown'
+        if 'diagnoses' in case:
+            for diag in case['diagnoses']:
+                if 'medical_codes' in diag and 'icd10' in diag['medical_codes']:
+                    codes = diag['medical_codes']['icd10']
+                    if codes and codes[0]:
+                        chapter = codes[0][0]
+                        source_to_chapter[source][chapter] += 1
+    
+    # Dibujar conexiones simplificadas
+    sources_unique = sorted(source_to_chapter.keys())
+    chapters_unique = sorted(set(ch for s in source_to_chapter.values() for ch in s.keys()))
+    
+    y_sources = np.linspace(0.8, 0.2, len(sources_unique))
+    y_chapters = np.linspace(0.8, 0.2, len(chapters_unique))
+    
+    # Dibujar nodos
+    for i, source in enumerate(sources_unique):
+        ax4.text(0.1, y_sources[i], source, ha='center', va='center', 
+                bbox=dict(boxstyle='round,pad=0.3', facecolor=source_colors.get(source, '#888888'), alpha=0.7),
+                fontsize=12, fontweight='bold')
+    
+    for i, chapter in enumerate(chapters_unique):
+        ax4.text(0.9, y_chapters[i], chapter, ha='center', va='center',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='lightgray', alpha=0.7),
+                fontsize=10)
+    
+    # Dibujar conexiones (simplificadas para claridad)
+    for i, source in enumerate(sources_unique):
+        for j, chapter in enumerate(chapters_unique):
+            if chapter in source_to_chapter[source]:
+                weight = source_to_chapter[source][chapter]
+                if weight > 0:
+                    ax4.plot([0.15, 0.85], [y_sources[i], y_chapters[j]], 
+                            color=source_colors.get(source, '#888888'), 
+                            alpha=min(0.7, weight/10), 
+                            linewidth=min(5, weight/2))
+    
+    ax4.set_xlim(0, 1)
+    ax4.set_ylim(0, 1)
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / 'analisis_diagnosticos.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    # 3. Infografía resumen
+    fig3 = plt.figure(figsize=(16, 20))
+    fig3.patch.set_facecolor('white')
+    
+    # Crear una infografía estilo poster
+    ax = fig3.add_subplot(111)
+    ax.axis('off')
+    
+    # Título principal
+    ax.text(0.5, 0.98, f'DATASET DE EVALUACIÓN MÉDICA', 
+           ha='center', va='top', fontsize=32, fontweight='bold', 
+           transform=ax.transAxes,
+           bbox=dict(boxstyle='round,pad=0.8', facecolor='darkblue', alpha=0.8, edgecolor='none'),
+           color='white')
+    
+    ax.text(0.5, 0.93, f'{report["total_cases"]} Casos Seleccionados', 
+           ha='center', va='top', fontsize=24, 
+           transform=ax.transAxes, color='darkblue')
+    
+    # Estadísticas clave en cajas
+    stats_y = 0.85
+    stats_data = [
+        ('🏥', f'{len(report["source_composition"])} Fuentes', 'Variedad de orígenes'),
+        ('📊', f'{len(report["unique_diagnoses"])} Diagnósticos', 'Códigos ICD-10 únicos'),
+        ('📚', f'{len(report["icd10_chapters"])} Capítulos', 'Cobertura ICD-10'),
+        ('🔄', f'{report["average_diagnoses_per_case"]:.1f} Dx/Caso', 'Promedio diagnósticos')
+    ]
+    
+    for i, (icon, value, desc) in enumerate(stats_data):
+        x = 0.125 + (i * 0.25)
+        # Caja principal
+        ax.add_patch(Rectangle((x-0.1, stats_y-0.08), 0.2, 0.08, 
+                              facecolor='lightblue', edgecolor='darkblue', linewidth=2,
+                              transform=ax.transAxes))
+        # Icono
+        ax.text(x, stats_y-0.02, icon, ha='center', va='center', fontsize=30,
+               transform=ax.transAxes)
+        # Valor
+        ax.text(x, stats_y-0.045, value, ha='center', va='center', fontsize=16, fontweight='bold',
+               transform=ax.transAxes)
+        # Descripción
+        ax.text(x, stats_y-0.065, desc, ha='center', va='center', fontsize=10,
+               transform=ax.transAxes, style='italic')
+    
+    # Composición detallada
+    comp_y = 0.7
+    ax.text(0.5, comp_y, 'COMPOSICIÓN DEL DATASET', 
+           ha='center', va='center', fontsize=20, fontweight='bold',
+           transform=ax.transAxes,
+           bbox=dict(boxstyle='round,pad=0.5', facecolor='gray', alpha=0.2))
+    
+    # Mini gráficos
+    # Fuentes
+    ax_mini1 = fig3.add_axes([0.05, 0.45, 0.25, 0.2])
+    source_names = list(report['source_composition'].keys())
+    source_values = list(report['source_composition'].values())
+    bars = ax_mini1.bar(source_names, source_values, 
+                        color=[source_colors.get(s, '#888888') for s in source_names])
+    ax_mini1.set_title('Casos por Fuente', fontsize=12, fontweight='bold')
+    ax_mini1.set_ylabel('Número de casos')
+    
+    # Complejidad
+    ax_mini2 = fig3.add_axes([0.375, 0.45, 0.25, 0.2])
+    comp_labels = list(report['complexity_distribution'].keys())
+    comp_values = list(report['complexity_distribution'].values())
+    ax_mini2.plot(comp_labels, comp_values, 'o-', linewidth=2, markersize=8, color='darkgreen')
+    ax_mini2.fill_between(range(len(comp_labels)), comp_values, alpha=0.3, color='lightgreen')
+    ax_mini2.set_title('Distribución de Complejidad', fontsize=12, fontweight='bold')
+    ax_mini2.set_ylabel('Frecuencia')
+    ax_mini2.grid(True, alpha=0.3)
+    
+    # Severidad
+    ax_mini3 = fig3.add_axes([0.7, 0.45, 0.25, 0.2])
+    sev_labels = list(report['severity_distribution'].keys())
+    sev_values = list(report['severity_distribution'].values())
+    wedges, texts = ax_mini3.pie(sev_values, labels=sev_labels, startangle=90,
+                                  colors=plt.cm.Reds(np.linspace(0.3, 0.9, len(sev_labels))))
+    ax_mini3.set_title('Distribución de Severidad', fontsize=12, fontweight='bold')
+    
+    # Capítulos ICD-10 más representados
+    chap_y = 0.35
+    ax.text(0.5, chap_y, 'CAPÍTULOS ICD-10 MÁS REPRESENTADOS', 
+           ha='center', va='center', fontsize=16, fontweight='bold',
+           transform=ax.transAxes)
+    
+    top_chapters = sorted(report['icd10_chapters'].items(), key=lambda x: x[1], reverse=True)[:10]
+    chap_x_start = 0.1
+    chap_width = 0.08
+    
+    for i, (chapter, count) in enumerate(top_chapters):
+        x = chap_x_start + (i * chap_width)
+        height = count / report['total_cases'] * 0.2  # Normalizar altura
+        
+        # Barra
+        ax.add_patch(Rectangle((x-0.03, chap_y-0.25), 0.06, height, 
+                              facecolor=plt.cm.viridis(i/10), edgecolor='black',
+                              transform=ax.transAxes))
+        # Etiqueta
+        ax.text(x, chap_y-0.26, chapter, ha='center', va='top', fontsize=12, fontweight='bold',
+               transform=ax.transAxes)
+        # Valor
+        ax.text(x, chap_y-0.25+height+0.01, str(count), ha='center', va='bottom', fontsize=10,
+               transform=ax.transAxes)
+    
+    # Métricas de calidad
+    quality_y = 0.05
+    ax.text(0.5, quality_y+0.03, 'INDICADORES DE CALIDAD', 
+           ha='center', va='center', fontsize=16, fontweight='bold',
+           transform=ax.transAxes,
+           bbox=dict(boxstyle='round,pad=0.5', facecolor='gold', alpha=0.3))
+    
+    # Barras de progreso para métricas
+    metrics = [
+        ('Diversidad diagnóstica', len(report['unique_diagnoses']) / report['total_cases']),
+        ('Cobertura ICD-10', len(report['icd10_chapters']) / 22),
+        ('Balance de fuentes', 1 - np.std(list(report['source_composition'].values())) / np.mean(list(report['source_composition'].values()))),
+        ('Casos complejos', sum(1 for c, v in report['complexity_distribution'].items() if int(c[1:]) >= 7) / report['total_cases'])
+    ]
+    
+    for i, (metric, value) in enumerate(metrics):
+        y = quality_y - 0.015 * (i + 1)
+        
+        # Barra de fondo
+        ax.add_patch(Rectangle((0.3, y-0.005), 0.4, 0.01, 
+                              facecolor='lightgray', edgecolor='black',
+                              transform=ax.transAxes))
+        # Barra de progreso
+        ax.add_patch(Rectangle((0.3, y-0.005), 0.4 * value, 0.01, 
+                              facecolor='green' if value > 0.7 else 'orange' if value > 0.4 else 'red',
+                              transform=ax.transAxes))
+        # Etiqueta
+        ax.text(0.28, y, metric, ha='right', va='center', fontsize=11,
+               transform=ax.transAxes)
+        # Porcentaje
+        ax.text(0.72, y, f'{value*100:.1f}%', ha='left', va='center', fontsize=11,
+               transform=ax.transAxes, fontweight='bold')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / 'infografia_resumen.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    print("   ✓ Visualizaciones generadas exitosamente")
+
+
+def save_results(final_dataset: List[dict], report: dict) -> str:
+    """
+    Guarda el dataset y el reporte en la carpeta especificada.
+    """
+    # Crear timestamp
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    
+    # Obtener número de casos
+    num_cases = len(final_dataset)
+    
+    # Crear carpeta de salida con número de casos
+    folder_name = f"{timestamp}_c{num_cases}"
+    current_dir = Path(__file__).parent
+    output_dir = current_dir / OUTPUT_FOLDER / folder_name
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Guardar dataset
+    dataset_path = output_dir / f'aggregated_{timestamp}.json'
+    with open(dataset_path, 'w', encoding='utf-8') as f:
+        json.dump(final_dataset, f, ensure_ascii=False, indent=2)
+    
+    # Guardar reporte detallado
+    report_path = output_dir / f'report_{timestamp}.json'
+    with open(report_path, 'w', encoding='utf-8') as f:
+        json.dump(report, f, ensure_ascii=False, indent=2, default=str)
+    
+    # Crear reporte en texto
+    text_report_path = output_dir / f'report_{timestamp}.txt'
+    with open(text_report_path, 'w', encoding='utf-8') as f:
+        f.write("=" * 80 + "\n")
+        f.write(f"REPORTE DE DATASET GENERADO - {timestamp}\n")
+        f.write("=" * 80 + "\n\n")
+        
+        f.write(f"Tamaño total del dataset: {report['total_cases']} casos\n\n")
+        
+        f.write("COMPOSICIÓN POR FUENTE:\n")
+        f.write("-" * 50 + "\n")
+        for source, info in sorted(report['source_percentages'].items()):
+            f.write(f"Fuente '{source}': {info['selected']} casos "
+                   f"({info['percentage']:.1f}% del total de la fuente)\n")
+            f.write(f"  → Total en fuente original: {info['total']} casos\n")
+        
+        f.write("\n")
+        f.write("DISTRIBUCIÓN DE DIAGNÓSTICOS POR CAPÍTULO ICD-10:\n")
+        f.write("-" * 50 + "\n")
+        for chapter, count in sorted(report['icd10_chapters'].items()):
+            f.write(f"Capítulo {chapter}: {count} casos\n")
+        
+        f.write("\n")
+        f.write("DISTRIBUCIÓN DE COMPLEJIDAD:\n")
+        f.write("-" * 50 + "\n")
+        for complexity, count in sorted(report['complexity_distribution'].items()):
+            f.write(f"{complexity}: {count} casos\n")
+        
+        f.write("\n")
+        f.write("MÉTRICAS DE DIVERSIDAD:\n")
+        f.write("-" * 50 + "\n")
+        f.write(f"Diagnósticos únicos incluidos: {len(report['unique_diagnoses'])}\n")
+        f.write(f"Casos multi-diagnóstico: {report['multi_diagnosis_cases']} "
+               f"({report['multi_diagnosis_cases']/report['total_cases']*100:.1f}%)\n")
+        f.write(f"Promedio de diagnósticos por caso: {report['average_diagnoses_per_case']:.2f}\n")
+        f.write(f"Capítulos ICD-10 representados: {len(report['icd10_chapters'])}\n")
+    
+    # Generar visualizaciones sofisticadas
+    print("\n📈 Generando visualizaciones...")
+    create_sophisticated_visualizations(report, output_dir, final_dataset)
+    
+    return str(output_dir)
+
+
+# ==============================================================================
+# FUNCIÓN PRINCIPAL
+# ==============================================================================
+
+def main():
+    """
+    Función principal que ejecuta todo el proceso.
+    """
+    print("🚀 Iniciando generación de dataset de evaluación...")
+    print(f"   Objetivo: {TARGET_DATASET_SIZE} casos\n")
+    
+    # FASE 0: Carga y preparación
+    print("📂 FASE 0: Cargando datasets...")
+    all_cases, cases_by_source = load_and_prepare_data()
+    
+    total_available = len(all_cases)
+    print(f"\n✓ Total de casos disponibles: {total_available}")
+    
+    if total_available == 0:
+        print("❌ No se encontraron casos para procesar.")
+        return
+    
+    # FASE 1: Selección prioritaria
+    print("\n🎯 FASE 1: Selección prioritaria...")
+    final_dataset, diagnoses_included, chapters_included = phase1_priority_selection(
+        cases_by_source, SAMPLING_RULES
+    )
+    
+    print(f"\n✓ Casos seleccionados en Fase 1: {len(final_dataset)}")
+    print(f"   Diagnósticos únicos: {len(diagnoses_included)}")
+    print(f"   Capítulos ICD-10: {len(chapters_included)}")
+    
+    # FASE 2: Llenado iterativo
+    if len(final_dataset) < TARGET_DATASET_SIZE:
+        print(f"\n🔄 FASE 2: Llenado iterativo ({TARGET_DATASET_SIZE - len(final_dataset)} casos restantes)...")
+        final_dataset = phase2_iterative_filling(
+            all_cases, final_dataset, diagnoses_included, chapters_included,
+            SAMPLING_RULES, TARGET_DATASET_SIZE
+        )
+    
+    # FASE 3: Finalización y reporte
+    print("\n📊 FASE 3: Generando reporte y guardando resultados...")
+    report = generate_report(final_dataset, all_cases, cases_by_source)
+    output_path = save_results(final_dataset, report)
+    
+    # Mostrar resumen en consola
+    print("\n" + "=" * 80)
+    print("RESUMEN DEL DATASET GENERADO")
+    print("=" * 80)
+    print(f"\n✓ Tamaño total: {report['total_cases']} casos")
+    
+    print("\n📊 Composición por fuente:")
+    for source, info in sorted(report['source_percentages'].items()):
+        print(f"   Fuente '{source}': {info['selected']} casos ({info['percentage']:.1f}% del total)")
+    
+    print(f"\n🏥 Capítulos ICD-10 representados: {len(report['icd10_chapters'])}")
+    print(f"📈 Diagnósticos únicos: {len(report['unique_diagnoses'])}")
+    print(f"🔢 Promedio de diagnósticos por caso: {report['average_diagnoses_per_case']:.2f}")
+    
+    print(f"\n✅ Resultados guardados en: {output_path}")
+
+
+if __name__ == "__main__":
+    main()

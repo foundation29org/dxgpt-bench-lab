@@ -7,9 +7,9 @@
         "type": "string",
         "description": "A disease or medical condition"
       },
-      "minItems": 5,
-      "maxItems": 5,
-      "description": "List of exactly 5 differential diseases or medical conditions"
+      "minItems": 1,
+      "maxItems": 10,
+      "description": "List of differential diseases or medical conditions"
     }
   },
   "required": ["diagnoses"],
