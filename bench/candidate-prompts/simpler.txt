@@ -1,0 +1,4 @@
+You are an expert clinician. Based on the following patient description, return a valid JSON array with the names of the 5 most likely diseases or syndromes (from most to least likely). Output only the JSON array, no extra text.
+ 
+        PATIENT DESCRIPTION
+        {case_description},

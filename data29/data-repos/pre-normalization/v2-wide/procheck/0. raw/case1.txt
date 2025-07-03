@@ -1,0 +1,46 @@
+case1:
+
+Patient: Female, 27 years old, resident of Khmelnytskyi region, Ukraine
+
+Complaints:
+
+Episodes of urticaria
+Lip swelling
+Stomach pain after consuming strawberries, peaches, apples, and kiwi
+ 
+
+Medical History:
+
+Symptoms began two years ago
+No previous history of allergic diseases
+Initially examined by an allergist and tested for respiratory allergens – results were negative for specific IgE
+ 
+
+Course of Illness:
+
+Frequency of episodes: 1–2 times per month
+Manifestations: urticaria, lip swelling, abdominal pain
+Good response to antihistamines
+Referred for extended allergological testing (ALEX test)
+ 
+
+Test Results:
+
+Positive specific IgE to nsLTP (non-specific lipid transfer proteins) found in peanuts, kiwi, peaches, and apples
+ 
+
+Interpretation:
+
+nsLTP syndrome is commonly found in the Mediterranean region
+The patient has never visited this region
+Conclusion: nsLTP syndrome may occur outside the Mediterranean, likely due to sensitization from kiwi consumption
+ 
+
+Diagnosis:
+
+nsLTP syndrome
+Recurrent allergic urticaria and angioedema (Quincke’s edema)
+Oral allergy syndrome without pollen allergy
+Food allergy
+ 
+

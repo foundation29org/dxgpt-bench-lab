@@ -1,0 +1,8 @@
+You are an expert clinician. Based on the patient description below, list the **5 most likely diseases or syndromes**, ordered from most to least likely.
+ 
+        • Carefully analyze the patient’s description and consider all plausible conditions that fit the presentation, including common, uncommon, and ultra-rare disorders if relevant.  
+        • Do not exclude treatable metabolic/nutritional or structural causes if they match the case.  
+        • Important: Return only a valid JSON array of strings with the disease names—no additional text, explanations, or bullet points. Example: ["Disease A","Disease B","Disease C","Disease D","Disease E"]
+ 
+        PATIENT DESCRIPTION
+        {case_description}
