@@ -39,6 +39,7 @@ from dotenv import load_dotenv
 # Project utilities
 from utils.llm import get_llm
 from utils.icd10.taxonomy import ICD10Taxonomy
+from utils.bert import calculate_semantic_similarity, warm_up_endpoint
 
 # Load environment variables
 load_dotenv()
@@ -556,6 +557,69 @@ class SemanticEvaluator:
     
     def __init__(self):
         self.icd10_comparator = ICD10Comparator()
+        self.bert_warmed_up = False
+    
+    def _warm_up_bert_if_needed(self) -> bool:
+        """Warm up BERT endpoint if not already done."""
+        if not self.bert_warmed_up:
+            try:
+                self.bert_warmed_up = warm_up_endpoint()
+                if self.bert_warmed_up:
+                    logging.info("BERT endpoint warmed up successfully")
+                else:
+                    logging.warning("Failed to warm up BERT endpoint")
+            except Exception as e:
+                logging.error(f"Error warming up BERT endpoint: {e}")
+                self.bert_warmed_up = False
+        return self.bert_warmed_up
+    
+    def _calculate_bert_similarity(self, ddx_name: str, ddx_normalized: str, 
+                                 gdx_name: str, gdx_normalized: str) -> Tuple[float, str]:
+        """
+        Calculate BERT similarity between DDX and GDX using all combinations.
+        
+        Returns:
+            Tuple of (max_score, best_combination_type)
+        """
+        if not self._warm_up_bert_if_needed():
+            return 0.0, "BERT_ERROR"
+        
+        try:
+            # Prepare all combinations
+            ddx_texts = [ddx_name, ddx_normalized] if ddx_name != ddx_normalized else [ddx_name]
+            gdx_texts = [gdx_name, gdx_normalized] if gdx_name != gdx_normalized else [gdx_name]
+            
+            # Calculate similarities for all combinations
+            results = calculate_semantic_similarity(ddx_texts, gdx_texts)
+            
+            # Find maximum score
+            max_score = 0.0
+            best_combo = ""
+            
+            for ddx_text in ddx_texts:
+                for gdx_text in gdx_texts:
+                    score = results.get(ddx_text, {}).get(gdx_text, 0.0)
+                    if score and score > max_score:
+                        max_score = score
+                        # Determine combination type
+                        if ddx_text == ddx_name and gdx_text == gdx_name:
+                            best_combo = "name_vs_name"
+                        elif ddx_text == ddx_normalized and gdx_text == gdx_normalized:
+                            best_combo = "normalized_vs_normalized"
+                        elif ddx_text == ddx_name and gdx_text == gdx_normalized:
+                            best_combo = "name_vs_normalized"
+                        else:
+                            best_combo = "normalized_vs_name"
+            
+            # Apply threshold - only accept if >= 0.80
+            if max_score >= 0.80:
+                return round(max_score, 4), f"BERT_{best_combo}"
+            else:
+                return 0.0, "BERT_below_threshold"
+                
+        except Exception as e:
+            logging.error(f"Error calculating BERT similarity: {e}")
+            return 0.0, "BERT_ERROR"
     
     def evaluate_case_semantics(self, ddx_list: List[Dict], gdx_list: List[Dict]) -> Dict[str, Any]:
         """
@@ -600,6 +664,22 @@ class SemanticEvaluator:
                             max_code_score = 1.0
                             best_code_type = code_type
                             best_relationship = "EXACT_MATCH"
+                
+                # BERT fallback if score is 0.0
+                if max_code_score == 0.0:
+                    ddx_name = ddx.get("name", "")
+                    ddx_normalized = ddx.get("normalized_text", ddx_name)
+                    gdx_name = gdx.get("name", "")
+                    gdx_normalized = gdx.get("normalized_text", gdx_name)
+                    
+                    bert_score, bert_type = self._calculate_bert_similarity(
+                        ddx_name, ddx_normalized, gdx_name, gdx_normalized
+                    )
+                    
+                    if bert_score > 0.0:
+                        max_code_score = bert_score
+                        best_code_type = "BERT"
+                        best_relationship = bert_type
                 
                 ddx_scores.append({
                     "gdx_name": gdx.get("name", ""),
@@ -1181,19 +1261,69 @@ def generate_run_summary(config: Dict[str, Any], results: List[Dict], topk_metri
     hit_rate_08 = sum(1 for score in semantic_scores if score >= 0.8) / len(semantic_scores) if semantic_scores else 0.0
     excellence_rate = sum(1 for score in semantic_scores if score > 1.0) / len(semantic_scores) if semantic_scores else 0.0
     
-    # Best match relationship distribution
+    # Best match relationship distribution and BERT usage
     relationship_counts = {"MORE_SPECIFIC": 0, "EXACT_MATCH": 0, "MORE_GENERAL": 0, 
                           "CLOSE_SIBLING": 0, "RELATED": 0, "UNRELATED_OR_NO_CODE": 0}
+    
+    # BERT usage statistics
+    bert_usage_stats = {
+        "total_bert_matches": 0,
+        "bert_above_threshold": 0,
+        "bert_below_threshold": 0,
+        "bert_errors": 0,
+        "bert_combination_types": {
+            "name_vs_name": 0,
+            "normalized_vs_normalized": 0,
+            "name_vs_normalized": 0,
+            "normalized_vs_name": 0
+        }
+    }
+    
+    # Code type usage statistics
+    code_type_usage = {
+        "icd10": 0,
+        "snomed": 0,
+        "omim": 0,
+        "orpha": 0,
+        "BERT": 0,
+        "none": 0
+    }
     
     for result in results:
         best_match = result.get("semantic_evaluation", {}).get("best_match", {})
         relationship = best_match.get("relationship", "UNRELATED_OR_NO_CODE")
-        if relationship in relationship_counts:
+        code_type = best_match.get("code_type", "none")
+        
+        # Count code type usage
+        if code_type in code_type_usage:
+            code_type_usage[code_type] += 1
+        else:
+            code_type_usage["none"] += 1
+        
+        # Process relationship
+        if relationship.startswith("BERT_"):
+            bert_usage_stats["total_bert_matches"] += 1
+            if relationship == "BERT_ERROR":
+                bert_usage_stats["bert_errors"] += 1
+                relationship_counts["UNRELATED_OR_NO_CODE"] += 1
+            elif relationship == "BERT_below_threshold":
+                bert_usage_stats["bert_below_threshold"] += 1
+                relationship_counts["UNRELATED_OR_NO_CODE"] += 1
+            else:
+                bert_usage_stats["bert_above_threshold"] += 1
+                # Extract combination type
+                combo_type = relationship.replace("BERT_", "")
+                if combo_type in bert_usage_stats["bert_combination_types"]:
+                    bert_usage_stats["bert_combination_types"][combo_type] += 1
+                # For ICD-10 relationships, BERT matches are considered EXACT_MATCH
+                relationship_counts["EXACT_MATCH"] += 1
+        elif relationship in relationship_counts:
             relationship_counts[relationship] += 1
         else:
             relationship_counts["UNRELATED_OR_NO_CODE"] += 1
     
     relationship_distribution = {k: round(v / len(results), 4) for k, v in relationship_counts.items()} if results else relationship_counts
+    code_type_distribution = {k: round(v / len(results), 4) for k, v in code_type_usage.items()} if results else code_type_usage
     
     # Clinical safety profile
     optimist_scores = []
@@ -1273,7 +1403,16 @@ def generate_run_summary(config: Dict[str, Any], results: List[Dict], topk_metri
                 "value": round(hit_rate_08, 4)
             },
             "excellence_rate": round(excellence_rate, 4),
-            "best_match_relationship_distribution": relationship_distribution
+            "best_match_relationship_distribution": relationship_distribution,
+            "code_type_distribution": code_type_distribution,
+            "bert_usage_statistics": {
+                "total_bert_attempts": bert_usage_stats["total_bert_matches"],
+                "bert_matches_above_threshold": bert_usage_stats["bert_above_threshold"],
+                "bert_matches_below_threshold": bert_usage_stats["bert_below_threshold"],
+                "bert_errors": bert_usage_stats["bert_errors"],
+                "bert_success_rate": round(bert_usage_stats["bert_above_threshold"] / bert_usage_stats["total_bert_matches"], 4) if bert_usage_stats["total_bert_matches"] > 0 else 0.0,
+                "bert_combination_breakdown": bert_usage_stats["bert_combination_types"]
+            }
         },
         "ranking_performance": {
             "threshold": topk_metrics.get("threshold", 0.8),
@@ -1647,8 +1786,13 @@ class EvaluationPipeline:
                     self.logger.info(f"        → Normalizado: {normalized}")
                 if icd_codes:
                     self.logger.info(f"        → Códigos ICD-10: {icd_codes}")
-                if not normalized != ddx_name and not icd_codes:
-                    self.logger.info(f"        → Sin cambios/códigos")
+                
+                # Check if any codes were found
+                all_codes = [c for code_list in codes.values() for c in code_list]
+                if not all_codes:
+                    self.logger.info(f"        → Sin códigos médicos (candidato para BERT)")
+                elif not icd_codes and normalized == ddx_name:
+                    self.logger.info(f"        → Sin ICD-10 (posible candidato para BERT)")
             
             self.logger.info(f"    ✅ Códigos extraídos para todos los DDX")
             self.logger.info("")
@@ -1686,6 +1830,11 @@ class EvaluationPipeline:
             self.logger.info(f"        DDX: {best_match['ddx_name']}")
             self.logger.info(f"        GDX: {best_match['gdx_name']}")
             self.logger.info(f"        Score: {best_match['score']:.3f}")
+            if best_match.get('code_type') == 'BERT':
+                self.logger.info(f"        Tipo: BERT (fallback semántico)")
+                self.logger.info(f"        Relación: {best_match.get('relationship', 'N/A')}")
+            else:
+                self.logger.info(f"        Tipo: {best_match.get('code_type', 'none')}")
             self.logger.info("")
             
             # Step 5: Severity evaluation
@@ -1950,6 +2099,16 @@ class EvaluationPipeline:
         self.logger.info("   ⚖️  severity_evaluation.json - Evaluación severidad organizada por dataset")
         self.logger.info("   📄 evaluation.log - Traza de ejecución completa")
         self.logger.info("")
+        # Count BERT usage from results
+        bert_count = 0
+        bert_successful = 0
+        for result in results:
+            code_type = result.get("semantic_evaluation", {}).get("best_match", {}).get("code_type", "")
+            if code_type == "BERT":
+                bert_count += 1
+                if result.get("semantic_evaluation", {}).get("best_match", {}).get("score", 0.0) >= 0.8:
+                    bert_successful += 1
+        
         self.logger.info("📈 MÉTRICAS FINALES:")
         self.logger.info(f"   🧠 Score semántico promedio: {mean_semantic:.4f}")
         self.logger.info(f"   ⚖️  Score severidad promedio: {mean_severity:.4f}")
@@ -1959,6 +2118,11 @@ class EvaluationPipeline:
         self.logger.info(f"   🎯 Top-4 accuracy: {topk_metrics['top4_accuracy']:.4f}")
         self.logger.info(f"   🎯 Top-5 accuracy: {topk_metrics['top5_accuracy']:.4f}")
         self.logger.info(f"   📊 Mean Reciprocal Rank: {topk_metrics['mean_reciprocal_rank']:.4f}")
+        if bert_count > 0:
+            self.logger.info("")
+            self.logger.info("🤖 USO DE BERT (FALLBACK SEMÁNTICO):")
+            self.logger.info(f"   📊 Casos con BERT: {bert_count}/{len(results)} ({bert_count/len(results)*100:.1f}%)")
+            self.logger.info(f"   ✅ BERT exitosos (≥0.80): {bert_successful}/{bert_count} ({bert_successful/bert_count*100:.1f}% de intentos)")
         self.logger.info("🎉 " + "="*60)
         
         # Return a lightweight summary instead of full results
