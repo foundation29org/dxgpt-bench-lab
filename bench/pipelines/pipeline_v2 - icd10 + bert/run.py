@@ -415,12 +415,29 @@ class DiagnosisGenerator:
         model_name = config["dxgpt_emulator"]["model"]
         params = config["dxgpt_emulator"].get("params", {})
         
+        print(f"🔧 DEBUG: DiagnosisGenerator init")
+        print(f"   - model_name: {model_name}")
+        print(f"   - params: {params}")
+        
         # Extract LLM parameters
         llm_params = {}
         if "temperature" in params:
             llm_params["temperature"] = params["temperature"]
         
-        self.llm = get_llm(model_name, **llm_params)
+        # Handle reasoning effort for O3 models
+        if "reasoning_effort" in params:
+            llm_params["reasoning_effort"] = params["reasoning_effort"]
+        
+        print(f"   - llm_params before get_llm: {llm_params}")
+        
+        try:
+            self.llm = get_llm(model_name, **llm_params)
+            print(f"   ✅ LLM instance created successfully: {type(self.llm)}")
+        except Exception as e:
+            print(f"   ❌ Error creating LLM instance: {e}")
+            print(f"   ❌ Exception type: {type(e)}")
+            raise
+        
         self.output_schema = None
         self.generation_params = {}
         
@@ -429,9 +446,11 @@ class DiagnosisGenerator:
             if key in params:
                 self.generation_params[key] = params[key]
         
-        # Handle reasoning parameters for compatible models
-        if "reasoning" in params:
-            self.generation_params.update(params["reasoning"])
+        # Pass reasoning_effort to generation params for O3 models
+        if "reasoning_effort" in params:
+            self.generation_params["reasoning_effort"] = params["reasoning_effort"]
+        
+        print(f"   - final generation_params: {self.generation_params}")
     
     def generate_diagnoses(self, case_description: str, prompt_template: str, output_schema: Optional[Dict] = None) -> List[str]:
         """
@@ -446,7 +465,7 @@ class DiagnosisGenerator:
         """
         try:
             prompt = prompt_template.replace("{case_description}", case_description)
-            
+
             # Generate with schema if provided
             if output_schema:
                 response = self.llm.generate(prompt, schema=output_schema, **self.generation_params)
@@ -729,6 +748,9 @@ class SeverityEvaluator:
         # Initialize LLM for severity assignment
         severity_config = config["severity_assigner"]
         
+        print(f"🔧 DEBUG: SeverityEvaluator init")
+        print(f"   - severity_config: {severity_config}")
+        
         # Load prompt and schema
         prompt_path = base_dir / severity_config["prompt_path"]
         with open(prompt_path, 'r', encoding='utf-8') as f:
@@ -743,6 +765,8 @@ class SeverityEvaluator:
         llm_params = {}
         generation_params = {}
         
+        print(f"   - severity_config params: {params}")
+        
         # LLM configuration parameters
         if "temperature" in params:
             llm_params["temperature"] = params["temperature"]
@@ -752,8 +776,19 @@ class SeverityEvaluator:
             if key in params:
                 generation_params[key] = params[key]
         
-        self.llm = get_llm(severity_config["model"], **llm_params)
+        print(f"   - severity llm_params before get_llm: {llm_params}")
+        print(f"   - severity model: {severity_config['model']}")
+        
+        try:
+            self.llm = get_llm(severity_config["model"], **llm_params)
+            print(f"   ✅ Severity LLM instance created successfully: {type(self.llm)}")
+        except Exception as e:
+            print(f"   ❌ Error creating Severity LLM instance: {e}")
+            print(f"   ❌ Exception type: {type(e)}")
+            raise
+        
         self.generation_params = generation_params
+        print(f"   - severity final generation_params: {self.generation_params}")
     
     def assign_severities_batch(self, unique_diagnoses: List[str], logger: logging.Logger) -> Dict[str, str]:
         """
@@ -1710,12 +1745,44 @@ class EvaluationPipeline:
         self.logger = logger
         self.base_dir = base_dir
         
-        # Initialize components
-        self.diagnosis_generator = DiagnosisGenerator(config)
-        self.azure_client = AzureTextAnalytics()
-        self.semantic_evaluator = SemanticEvaluator()
-        self.severity_evaluator = SeverityEvaluator(config, base_dir)
+        print(f"🔧 DEBUG: EvaluationPipeline init starting")
+        print(f"   - config keys: {list(config.keys())}")
         
+        # Initialize components
+        print(f"🔧 DEBUG: Initializing DiagnosisGenerator...")
+        try:
+            self.diagnosis_generator = DiagnosisGenerator(config)
+            print(f"   ✅ DiagnosisGenerator initialized successfully")
+        except Exception as e:
+            print(f"   ❌ Error initializing DiagnosisGenerator: {e}")
+            raise
+        
+        print(f"🔧 DEBUG: Initializing AzureTextAnalytics...")
+        try:
+            self.azure_client = AzureTextAnalytics()
+            print(f"   ✅ AzureTextAnalytics initialized successfully")
+        except Exception as e:
+            print(f"   ❌ Error initializing AzureTextAnalytics: {e}")
+            raise
+        
+        print(f"🔧 DEBUG: Initializing SemanticEvaluator...")
+        try:
+            self.semantic_evaluator = SemanticEvaluator()
+            print(f"   ✅ SemanticEvaluator initialized successfully")
+        except Exception as e:
+            print(f"   ❌ Error initializing SemanticEvaluator: {e}")
+            raise
+        
+        print(f"🔧 DEBUG: Initializing SeverityEvaluator...")
+        try:
+            self.severity_evaluator = SeverityEvaluator(config, base_dir)
+            print(f"   ✅ SeverityEvaluator initialized successfully")
+        except Exception as e:
+            print(f"   ❌ Error initializing SeverityEvaluator: {e}")
+            raise
+        
+        print(f"🔧 DEBUG: EvaluationPipeline init completed successfully")
+    
     # REMOVED: save_incremental_progress method - files will be written only at the end
     
     # REMOVED: update_case_files_partial method - files will be written only at the end
@@ -2152,10 +2219,20 @@ def main():
         # Load configuration
         base_dir = Path(__file__).parent
         config_path = base_dir / "config.yaml"
+        
+        print(f"🔧 DEBUG: main() starting")
+        print(f"   - base_dir: {base_dir}")
+        print(f"   - config_path: {config_path}")
+        
         config = load_config(config_path)
+        print(f"   - config loaded successfully")
+        print(f"   - dxgpt_emulator model: {config.get('dxgpt_emulator', {}).get('model', 'NOT_FOUND')}")
+        print(f"   - severity_assigner model: {config.get('severity_assigner', {}).get('model', 'NOT_FOUND')}")
         
         # Setup experiment directory and logging
+        print(f"🔧 DEBUG: Setting up experiment directory...")
         output_dir, logger = setup_experiment_directory(config, base_dir)
+        print(f"   - output_dir: {output_dir}")
         
         # Setup signal handler for graceful shutdown
         def signal_handler(signum, frame):
@@ -2167,7 +2244,19 @@ def main():
         signal.signal(signal.SIGINT, signal_handler)
         
         # Run pipeline
-        pipeline = EvaluationPipeline(config, output_dir, logger, base_dir)
+        print(f"🔧 DEBUG: Creating EvaluationPipeline...")
+        try:
+            pipeline = EvaluationPipeline(config, output_dir, logger, base_dir)
+            print(f"   ✅ Pipeline created successfully")
+        except Exception as e:
+            print(f"   ❌ Error creating pipeline: {e}")
+            print(f"   ❌ Exception type: {type(e)}")
+            import traceback
+            print(f"   ❌ Traceback:")
+            traceback.print_exc()
+            raise
+        
+        print(f"🔧 DEBUG: Running pipeline evaluation...")
         results = pipeline.run_evaluation(base_dir)
         
         return results
@@ -2178,6 +2267,10 @@ def main():
         return {"status": "interrupted_main", "message": "Program interrupted by user"}
     except Exception as e:
         print(f"\n❌ ERROR CRÍTICO: {e}")
+        print(f"❌ Exception type: {type(e)}")
+        import traceback
+        print(f"❌ Traceback:")
+        traceback.print_exc()
         return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":

@@ -102,7 +102,9 @@ def main():
     models = {
         "o3_images": "o3_images",
         "o1": "o1",
-        "gpt_4o": "gpt_4o_summary"
+        "gpt_4o": "gpt_4o_summary",
+        "gpt_4_1": "gpt_4_1",
+        "o3_pro": "o3_pro"
     }
     
     print("🔍 Buscando últimos runs de cada modelo...")
@@ -159,7 +161,7 @@ def main():
             f.write(f"{'='*80}\n\n")
             
             # Para cada modelo
-            for model_key in ["o1", "gpt_4o", "o3_images"]:  # Orden específico
+            for model_key in ["o1", "gpt_4o", "gpt_4_1", "o3_images", "o3_pro"]:  # Orden específico
                 model_name = models[model_key]
                 f.write(f"### Modelo: {model_name}\n")
                 f.write("-"*40 + "\n")
@@ -203,7 +205,7 @@ def main():
                 f.write(f"  - Casos con score >= 0.8: {sum(1 for s in scores if s >= 0.8)}/{len(scores)}\n")
     
     print(f"\n✅ Archivo generado: {output_file}")
-    print(f"📄 Total: 180 evaluaciones (60 casos × 3 modelos)")
+    print(f"📄 Total: 300 evaluaciones (60 casos × 5 modelos)")
 
 if __name__ == "__main__":
     main()

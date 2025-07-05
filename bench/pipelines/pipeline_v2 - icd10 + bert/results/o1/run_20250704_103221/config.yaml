@@ -1,20 +1,20 @@
 experiment_name: "Ramedis Baseline con GPT-4o"
 experiment_description: "Running this as an example to showcase the new pipeline"
-dataset_path: "bench/datasets/ukranian_processed.json" # en bench/datasets tiene que estar
+dataset_path: "bench/datasets/all_450.json" # en bench/datasets tiene que estar
 
 # Alias para el LLM que genera diagnósticos candidatos
 dxgpt_emulator:
-  model: "gpt-4o-summary" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio
+  model: "o1" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio, o3-pro, o3
   prompt_path: "../../candidate-prompts/dxgpt_dev.txt"
   params:
-    temperature: 0.1
-    max_tokens: 4000
+    none: "none"
+    # reasoning_effort: "high"  # For o3/o3-pro models. Options: low, medium, high
   output_schema: true
   output_schema_path: "../../candidate-prompts/candidate_output_schema.json"
 
 # Alias para el LLM que asigna severidades a los DDX
 severity_assigner:
-  model: "gpt-4o"
+  model: "gpt-4o-summary"
   prompt_path: "eval-prompts/severity_assignment_batch_prompt.txt"
   output_schema_path: "eval-prompts/severity_assignment_batch_schema.json"
   params:
