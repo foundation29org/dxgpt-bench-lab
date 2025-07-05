@@ -4,10 +4,11 @@ dataset_path: "bench/datasets/all_450.json" # en bench/datasets tiene que estar
 
 # Alias para el LLM que genera diagnósticos candidatos
 dxgpt_emulator:
-  model: "o3-pro" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio
+  model: "gpt-4-1" # o1 , gpt-4o, medgemma, jonsnow, sakura, openbio, o3-pro, o3
   prompt_path: "../../candidate-prompts/dxgpt_dev.txt"
   params:
-    none: false
+    none: "none"
+    # reasoning_effort: "high"  # For o3/o3-pro models. Options: low, medium, high
   output_schema: true
   output_schema_path: "../../candidate-prompts/candidate_output_schema.json"
 

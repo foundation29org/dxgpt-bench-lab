@@ -7,6 +7,7 @@ import os
 import warnings
 import json
 import yaml
+import requests
 from typing import Dict, Any, Optional, Union, Callable, List
 from dataclasses import dataclass, field
 from functools import cached_property
@@ -24,6 +25,7 @@ class LLMConfig:
     api_version: str = "2024-02-15-preview"
     deployment_name: Optional[str] = None
     temperature: Optional[float] = None
+    reasoning_effort: Optional[str] = None  # For O3 models: "low", "medium", "high"
     validate_schema: bool = False
     extra_params: Dict[str, Any] = field(default_factory=dict)
     
@@ -36,22 +38,31 @@ class LLMConfig:
             load_dotenv()
         except ImportError:
             pass
+      
         
         endpoint = overrides.get('endpoint') or os.getenv("AZURE_OPENAI_ENDPOINT")
         api_key = overrides.get('api_key') or os.getenv("AZURE_OPENAI_API_KEY")
-        
+
         if not endpoint or not api_key:
+
             raise ValueError(
                 "Missing AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_API_KEY. "
                 "Set them in environment or pass explicitly."
             )
         
-        return cls(
+        api_version = overrides.get('api_version', os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-15-preview"))
+        
+        # Filter out standard keys from overrides - now including reasoning_effort
+        filtered_overrides = {k: v for k, v in overrides.items() if k not in ('endpoint', 'api_key', 'api_version')}
+        
+        config = cls(
             endpoint=endpoint,
             api_key=api_key,
-            api_version=overrides.get('api_version', os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-15-preview")),
-            **{k: v for k, v in overrides.items() if k not in ('endpoint', 'api_key', 'api_version')}
+            api_version=api_version,
+            **filtered_overrides
         )
+        
+        return config
 
 
 @dataclass(frozen=True)
@@ -174,9 +185,10 @@ class BatchProcessor:
 class RequestBuilder:
     """Builds Azure OpenAI API requests with clean composition."""
     
-    def __init__(self, config: LLMConfig):
+    def __init__(self, config: LLMConfig, is_o3_model: bool = False):
         self.config = config
         self.batch_processor = BatchProcessor()
+        self.is_o3_model = is_o3_model
     
     def build(
         self,
@@ -184,7 +196,8 @@ class RequestBuilder:
         schema: Optional[Schema] = None,
         max_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
-        batch_items: Optional[List[Dict[str, Any]]] = None
+        batch_items: Optional[List[Dict[str, Any]]] = None,
+        reasoning_effort: Optional[str] = None
     ) -> Dict[str, Any]:
         """Build complete request parameters."""
         # Handle batch processing
@@ -199,21 +212,70 @@ class RequestBuilder:
                 # Even without schema, we need structured output for batch
                 schema = self.batch_processor.wrap_schema_for_batch(None)
         
-        request = {
-            "model": self.config.deployment_name,
-            "messages": [{"role": "user", "content": prompt}]
-        }
-        
-        # Add optional parameters
-        final_temp = temperature if temperature is not None else self.config.temperature
-        if final_temp is not None:
-            request["temperature"] = final_temp
+        # Check if it's an o3 model and use special format
+        if self.is_o3_model:
+            # Use reasoning_effort from parameter, fallback to config, then default to "low"
+            final_reasoning_effort = reasoning_effort or self.config.reasoning_effort or "low"
             
-        if max_tokens is not None:
-            request["max_tokens"] = max_tokens
+            # Build o3-specific request format
+            request = {
+                "model": self.config.deployment_name,
+                "input": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "input_text", "text": prompt}
+                        ]
+                    }
+                ],
+                "tools": [],
+                "text": {
+                    "format": {
+                        "name": "text_output",
+                        "schema": schema.data,
+                        "type": "text"
+                    }
+                },
+                "reasoning": {
+                    "effort": final_reasoning_effort
+                }
+            }
             
-        if schema is not None:
-            request["response_format"] = schema.azure_format
+            # Handle JSON schema for o3
+            if schema is not None:
+                request["text"]["format"]["type"] = "json_schema"
+                request["text"]["format"]["json_schema"] = {
+                    "name": "structured_output",
+                    "schema": schema.data,
+                    "strict": True
+                }
+            
+            # Add optional parameters for o3
+            if max_tokens is not None:
+                request["max_output_tokens"] = max_tokens
+            else:
+                request["max_output_tokens"] = 100000  # Default for o3
+                
+            final_temp = temperature if temperature is not None else self.config.temperature
+            if final_temp is not None:
+                request["temperature"] = final_temp
+        else:
+            # Standard request format for non-o3 models
+            request = {
+                "model": self.config.deployment_name,
+                "messages": [{"role": "user", "content": prompt}]
+            }
+            
+            # Add optional parameters
+            final_temp = temperature if temperature is not None else self.config.temperature
+            if final_temp is not None:
+                request["temperature"] = final_temp
+                
+            if max_tokens is not None:
+                request["max_tokens"] = max_tokens
+                
+            if schema is not None:
+                request["response_format"] = schema.azure_format
         
         return request
 
@@ -319,18 +381,27 @@ class AzureLLM(BaseLLM):
             config: Custom LLMConfig object (optional)
             **config_overrides: Override specific config values
         """
+        
         if config is not None:
             # Use provided config
             self.config = config
         else:
             # Auto-configure from environment with overrides
             overrides = config_overrides.copy()
+            
             if deployment_name is not None:
                 overrides['deployment_name'] = deployment_name
                 
-            self.config = LLMConfig.from_env(**overrides)
+            try:
+                self.config = LLMConfig.from_env(**overrides)
+            except Exception as e:
+                raise
         
-        self._request_builder = RequestBuilder(self.config)
+        # Store the original deployment name to detect o3 models
+        self._original_deployment_name = deployment_name
+        self._is_o3_model = deployment_name and 'o3' in deployment_name.lower()
+        
+        self._request_builder = RequestBuilder(self.config, self._is_o3_model)
         self._processor = ResponseProcessor()
     
     @cached_property
@@ -352,6 +423,7 @@ class AzureLLM(BaseLLM):
         batch_items: Optional[List[Dict[str, Any]]] = None,
         max_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
+        reasoning_effort: Optional[str] = None,
         # Backward compatibility parameters
         prompt_vars: Optional[Dict[str, Any]] = None,
         output_schema: Optional[Union[Dict[str, Any], str, Schema]] = None
@@ -366,10 +438,14 @@ class AzureLLM(BaseLLM):
             batch_items: List of dicts to process in batch
             max_tokens: Token limit
             temperature: Response randomness
+            reasoning_effort: Effort level for O3 models ("low", "medium", "high")
             
         Returns:
             String for text output, dict for structured output, list for batch output
         """
+        if self._is_o3_model:
+            final_reasoning_effort = reasoning_effort or self.config.reasoning_effort or "low"
+        
         # Handle backward compatibility
         if prompt_vars is not None and variables is None:
             variables = prompt_vars
@@ -400,14 +476,85 @@ class AzureLLM(BaseLLM):
             schema_obj, 
             max_tokens, 
             temperature,
-            batch_items
+            batch_items,
+            reasoning_effort
         )
-        response = self.client.chat.completions.create(**request)
         
-        # Process response - expect JSON if schema or batch_items provided
-        expect_json = schema_obj is not None or batch_items is not None
-        is_batch = batch_items is not None
-        return self._processor.process(response, expect_json=expect_json, is_batch=is_batch)
+        # Different handling for O3 models vs standard models
+        if self._is_o3_model:
+            
+            # Build the full endpoint URL for O3
+            endpoint_url = f"{self.config.endpoint.rstrip('/')}/openai/responses?api-version={self.config.api_version}"
+            
+            headers = {
+                "Content-Type": "application/json",
+                "api-key": self.config.api_key
+            }
+            
+            try:
+                http_response = requests.post(
+                    endpoint_url, 
+                    headers=headers, 
+                    json=request,
+                    timeout=300  # 5 minutes timeout for O3
+                )
+                http_response.raise_for_status()
+                
+                response_data = http_response.json()
+                
+                # Extract content from O3 response
+                # O3 format: response.output is an array, we need to find the message type
+                content = ''
+                
+                if 'output' in response_data and isinstance(response_data['output'], list):
+                    # Find the message output
+                    for output_item in response_data['output']:
+                        if output_item.get('type') == 'message':
+                            # Extract text from content[0].text
+                            content_array = output_item.get('content', [])
+                            if content_array and len(content_array) > 0:
+                                content = content_array[0].get('text', '').strip()
+                                break
+                    
+                    if not content:
+                        # If no message type found, try direct text access
+                        content = response_data['output'][0].get('text', '') if response_data['output'] else ''
+                else:
+                    # Fallback to standard format if available
+                    content = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
+            
+                
+            except requests.exceptions.RequestException as e:
+
+                if hasattr(e, 'response') and e.response is not None:
+                    raise Exception(f"O3 API request failed: {str(e)}")
+            
+            # Process the content for O3
+            expect_json = schema_obj is not None or batch_items is not None
+            is_batch = batch_items is not None
+            
+            if not expect_json:
+                result = content
+            else:
+                try:
+                    parsed = json.loads(content)
+                    if is_batch and isinstance(parsed, dict) and "results" in parsed:
+                        result = parsed["results"]
+                    else:
+                        result = parsed
+                except json.JSONDecodeError:
+                    warnings.warn("O3 model returned non-JSON despite schema constraint. Returning raw text.", UserWarning)
+                    result = content
+        else:
+            # Standard model handling using SDK
+            response = self.client.chat.completions.create(**request)
+
+            # Process response - expect JSON if schema or batch_items provided
+            expect_json = schema_obj is not None or batch_items is not None
+            is_batch = batch_items is not None
+            result = self._processor.process(response, expect_json=expect_json, is_batch=is_batch)
+        
+        return result
     
     def template(
         self,
