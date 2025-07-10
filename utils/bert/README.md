@@ -1,261 +1,261 @@
-# BERT Similarity Service - Juez Semántico 🧠
+# BERT Semantic Similarity Service
 
-Este módulo implementa el **juez semántico** del sistema de evaluación DxGPT. Su función principal es determinar qué tan cerca están los diagnósticos generados por un modelo (DDX) de los diagnósticos correctos de referencia (GDX), utilizando embeddings especializados en terminología médica (SapBERT).
+A sophisticated semantic similarity engine for medical terminology using SapBERT embeddings. This module provides high-performance similarity calculations between medical terms, understanding synonyms and related concepts across different representations.
 
-## 🎯 Rol en el Pipeline de Evaluación
+## Overview
 
-En el contexto del proyecto DxGPT Latitude Bench, este módulo actúa como uno de los dos jueces principales:
+This module leverages SapBERT (Self-Alignment Pretraining for Biomedical Entity Representations), a specialized BERT model trained on biomedical entity linking across multiple languages. It excels at understanding that "myocardial infarction" and "heart attack" refer to the same condition, despite different terminology.
 
-1. **Juez Semántico (este módulo)**: Evalúa si el modelo "acertó" el diagnóstico basándose en similitud de significado
-2. **Juez de Severidad (LLM)**: Evalúa si el modelo predijo correctamente la gravedad de las condiciones
+## Key Features
 
-### ¿Por qué es importante?
+- **Medical-Specific Embeddings**: Powered by SapBERT, specifically trained on UMLS medical terminology
+- **Cross-Language Support**: Understands medical terms across multiple languages
+- **Batch Processing**: Efficient similarity calculations for multiple term pairs
+- **Smart Caching**: Reuses embeddings for repeated terms
+- **Automatic Warm-up**: Prepares endpoints for optimal performance
+- **Robust Error Handling**: Graceful degradation with informative feedback
 
-Los modelos médicos pueden expresar el mismo diagnóstico de formas diferentes:
-- "Heart attack" vs "Myocardial infarction" (mismo diagnóstico, diferente terminología)
-- "Type 2 diabetes" vs "Diabetes mellitus type 2" (mismo concepto, diferente orden)
-- "COVID-19" vs "SARS-CoV-2 infection" (mismo padecimiento, diferente enfoque)
+## Installation
 
-SapBERT entiende estas equivalencias porque fue entrenado específicamente con terminología médica multilingüe.
-
-## 🚀 Instalación
-
-### 1. Crear entorno virtual
 ```bash
-python -m venv .venv
-.venv\Scripts\activate  # Windows
-# source .venv/bin/activate  # Linux/Mac
-```
-
-### 2. Instalar proyecto en modo desarrollo
-```bash
-py -m pip install -e .
-```
-
-### 3. Instalar dependencias específicas
-```bash
+# Install dependencies
 pip install python-dotenv requests numpy
 ```
 
-## 🔧 Configuración
+## Configuration
 
-### Crear archivo `.env`
-Crear un archivo `.env` en la raíz del proyecto con:
+Create a `.env` file in your project root:
 
 ```env
-SAPBERT_API_URL=https://your-endpoint-id.huggingface.cloud
+SAPBERT_ENDPOINT_URL=https://your-endpoint-id.huggingface.cloud
 HF_TOKEN=hf_your_token_with_permissions
 ```
 
-> **Nota**: Necesitas una API key de HuggingFace y acceso a un endpoint SapBERT.
+**Note**: Requires a Hugging Face API token and access to a SapBERT endpoint.
 
-## 📦 Importación
+## Quick Start
 
 ```python
 from utils.bert import calculate_semantic_similarity, warm_up_endpoint
-```
 
-## 🔥 Warm-up del Endpoint (IMPORTANTE)
-
-Para procesamiento en lote o múltiples llamadas, es **altamente recomendado** calentar el endpoint primero:
-
-```python
-from utils.bert import warm_up_endpoint, calculate_semantic_similarity
-
-# Calentar el endpoint UNA VEZ antes de procesar
+# Warm up endpoint for optimal performance
 if warm_up_endpoint():
-    print("✅ Endpoint listo para procesar")
-    # Ahora puedes hacer múltiples llamadas sin esperas
-    results = calculate_semantic_similarity(terms_a, terms_b)
-else:
-    print("❌ Error al inicializar el endpoint")
+    # Calculate similarity between two terms
+    result = calculate_semantic_similarity("heart attack", "myocardial infarction")
+    print(f"Similarity: {result['heart attack']['myocardial infarction']:.3f}")
 ```
 
-### ¿Por qué es importante?
-- El endpoint de HuggingFace puede estar "dormido" si no se ha usado recientemente
-- Sin warm-up, la primera llamada puede tardar 30-60 segundos
-- Con warm-up, todas las llamadas son rápidas (~2-3 segundos)
+## API Reference
 
-## 🔧 Uso Principal
+### Core Functions
 
-### Función Principal: `calculate_semantic_similarity()`
-La función principal para calcular similaridad semántica.
+#### `warm_up_endpoint() -> bool`
+
+Prepares the Hugging Face endpoint for processing. Essential for batch operations.
 
 ```python
-# Comparar dos términos
-result = calculate_semantic_similarity("heart attack", "myocardial infarction")
+if warm_up_endpoint():
+    print("Endpoint ready for processing")
+```
 
-# Comparar un término con múltiples
-result = calculate_semantic_similarity("covid-19", ["sars-cov-2", "influenza"])
+**Returns**: `True` if successful, `False` otherwise
 
-# Comparar múltiples con múltiples
+#### `calculate_semantic_similarity(input_a, input_b) -> Dict`
+
+Calculates semantic similarity between medical terms.
+
+```python
+# Single term comparison
+result = calculate_semantic_similarity("diabetes", "hyperglycemia")
+
+# One-to-many comparison
+result = calculate_semantic_similarity("fever", ["influenza", "covid-19", "cold"])
+
+# Many-to-many comparison
 result = calculate_semantic_similarity(
-    ["heart attack", "stroke"], 
-    ["myocardial infarction", "cerebrovascular accident"]
+    ["headache", "fatigue"], 
+    ["migraine", "exhaustion", "anemia"]
 )
 ```
 
-## 📝 Ejemplos Rápidos
+**Parameters**:
+- `input_a`: Single term or list of terms
+- `input_b`: Single term or list of terms
 
-### Ejemplo 1: Comparación simple
-```python
-from utils.bert import calculate_semantic_similarity
+**Returns**: Nested dictionary with similarity scores (0.0-1.0) or `None` for errors
 
-# Comparar dos términos médicos
-result = calculate_semantic_similarity("diabetes", "high blood sugar")
-
-print(result)
-# {'diabetes': {'high blood sugar': 0.872}}
-
-score = result['diabetes']['high blood sugar']
-print(f"Similaridad: {score:.3f}")
-```
-
-### Ejemplo 2: Procesamiento en lote con warm-up
-```python
-from utils.bert import warm_up_endpoint, calculate_semantic_similarity
-
-# IMPORTANTE: Calentar endpoint antes de procesamiento masivo
-if not warm_up_endpoint():
-    print("⚠️  Advertencia: El endpoint podría estar lento")
-
-# Procesar múltiples casos
-cases = [
-    ("fever", ["flu", "covid-19", "cold"]),
-    ("chest pain", ["heart attack", "anxiety", "pneumonia"]),
-    ("headache", ["migraine", "tension", "tumor"])
-]
-
-for symptom, conditions in cases:
-    result = calculate_semantic_similarity(symptom, conditions)
-    print(f"\n{symptom}:")
-    for condition, score in result[symptom].items():
-        if score is not None:
-            print(f"  → {condition}: {score:.3f}")
-```
-
-### Ejemplo 3: Matriz completa
-```python
-# Comparación cruzada completa
-symptoms = ["fever", "headache"]
-diseases = ["flu", "migraine", "covid-19"]
-
-result = calculate_semantic_similarity(symptoms, diseases)
-
-# Mostrar matriz de similaridad
-print("Matriz de Similaridad:")
-print("Síntoma → Enfermedad")
-for symptom in symptoms:
-    print(f"\n{symptom}:")
-    for disease in diseases:
-        score = result[symptom][disease]
-        if score is not None:
-            print(f"  → {disease}: {score:.3f}")
-        else:
-            print(f"  → {disease}: Error")
-```
-
-### Ejemplo 4: Análisis con visualización
-```python
-from utils.bert import calculate_semantic_similarity
-
-# Calcular similaridades
-result = calculate_semantic_similarity(
-    "acute respiratory distress",
-    ["ARDS", "pneumonia", "broken leg"]
-)
-
-# Visualizar resultados
-for term_a, comparisons in result.items():
-    print(f"\nComparaciones para '{term_a}':")
-    for term_b, score in comparisons.items():
-        if score is not None:
-            # Crear barra visual
-            bar_length = int(score * 20)
-            bar = "█" * bar_length + "░" * (20 - bar_length)
-            print(f"  vs '{term_b}': {score:.3f} [{bar}]")
-        else:
-            print(f"  vs '{term_b}': Error")
-```
-
-## 📊 Estructura de Respuesta
-
-La función devuelve un diccionario anidado:
+## Response Structure
 
 ```python
 {
-    "término_A1": {
-        "término_B1": 0.95,  # Score de 0.0 a 1.0
-        "término_B2": 0.32,
-        "término_B3": None   # Error en cálculo
+    "term_a1": {
+        "term_b1": 0.95,  # Similarity score (0.0-1.0)
+        "term_b2": 0.32,
+        "term_b3": None   # Error in calculation
     },
-    "término_A2": {
-        "término_B1": 0.28,
-        "término_B2": 0.87,
-        "término_B3": 0.45
+    "term_a2": {
+        "term_b1": 0.28,
+        "term_b2": 0.87,
+        "term_b3": 0.45
     }
 }
 ```
 
-## 🎯 Interpretación de Scores
+## Score Interpretation
 
-| Rango | Nivel | Interpretación |
-|-------|-------|----------------|
-| 0.90+ | 🟡 MUY ALTA | Términos prácticamente sinónimos |
-| 0.75+ | 🟢 ALTA | Fuerte relación semántica |
-| 0.50+ | 🟠 MEDIA | Relación moderada |
-| 0.30+ | 🔴 BAJA | Relación débil |
-| 0.15+ | ⚫ MUY BAJA | Relación mínima |
-| 0.00+ | ⚫⚫ BAJÍSIMA | Sin relación aparente |
+| Score Range | Interpretation |
+|-------------|----------------|
+| 0.90+ | Near synonyms |
+| 0.75-0.90 | Strong semantic relationship |
+| 0.50-0.75 | Moderate relationship |
+| 0.30-0.50 | Weak relationship |
+| 0.15-0.30 | Minimal relationship |
+| <0.15 | No apparent relationship |
 
-## ⚡ Características
+## Examples
 
-- **Warm-up automático**: Prepara el endpoint para procesamiento rápido
-- **Comparación cruzada**: Muchos-a-muchos automáticamente
-- **Manejo de errores**: Devuelve `None` si falla el cálculo
-- **Optimización**: Reutiliza embeddings para términos repetidos
-- **Logs limpios**: Mensajes concisos con emojis para claridad
-
-## 🎯 Casos de Uso
-
-- ✅ Análisis de similaridad entre síntomas y enfermedades
-- ✅ Búsqueda semántica en bases de datos médicas  
-- ✅ Validación de mapeos de códigos médicos
-- ✅ Agrupación de términos médicos similares
-- ✅ Análisis de equivalencias en diferentes idiomas
-
-## 🔴 Manejo de Errores
+### Basic Usage
 
 ```python
-# Siempre verificar warm-up para procesamiento masivo
+from utils.bert import calculate_semantic_similarity
+
+# Compare medical conditions
+result = calculate_semantic_similarity("hypertension", "high blood pressure")
+score = result['hypertension']['high blood pressure']
+print(f"Similarity: {score:.3f}")  # ~0.95
+```
+
+### Batch Processing
+
+```python
+from utils.bert import warm_up_endpoint, calculate_semantic_similarity
+
+# Essential: warm up before batch processing
 if not warm_up_endpoint():
-    print("⚠️  El endpoint podría no estar disponible")
-    # Considerar implementar lógica de fallback
+    print("Warning: Endpoint may be slow")
+
+# Process multiple symptom-disease relationships
+symptom_disease_pairs = [
+    ("chest pain", ["myocardial infarction", "angina", "pneumonia"]),
+    ("shortness of breath", ["asthma", "COPD", "heart failure"]),
+    ("abdominal pain", ["appendicitis", "gastritis", "kidney stones"])
+]
+
+for symptom, diseases in symptom_disease_pairs:
+    result = calculate_semantic_similarity(symptom, diseases)
+    print(f"\n{symptom}:")
+    for disease, score in result[symptom].items():
+        if score is not None:
+            print(f"  → {disease}: {score:.3f}")
+```
+
+### Creating Similarity Matrices
+
+```python
+# Build similarity matrix for differential diagnosis
+symptoms = ["fever", "cough", "fatigue", "headache"]
+conditions = ["influenza", "COVID-19", "common cold", "pneumonia"]
+
+similarity_matrix = calculate_semantic_similarity(symptoms, conditions)
+
+# Display results
+for symptom in symptoms:
+    print(f"\n{symptom}:")
+    for condition in conditions:
+        score = similarity_matrix[symptom][condition]
+        if score is not None:
+            print(f"  {condition}: {score:.3f}")
+```
+
+## Error Handling
+
+```python
+# Always check warm-up status for batch operations
+if not warm_up_endpoint():
+    print("Warning: Endpoint unavailable")
+    # Implement fallback strategy
 
 result = calculate_semantic_similarity("term1", "term2")
 
-score = result["term1"]["term2"]
+# Check for errors before using scores
+score = result.get("term1", {}).get("term2")
 if score is None:
-    print("Error: No se pudo calcular la similaridad")
-    # Posibles causas:
-    # - Endpoint no calentado (usar warm_up_endpoint())
-    # - Problema de conectividad
-    # - API key inválida
-    # - Límite de rate excedido
+    print("Error: Could not calculate similarity")
+    # Possible causes:
+    # - Endpoint not warmed up
+    # - Network connectivity issues
+    # - Invalid API credentials
+    # - Rate limit exceeded
 else:
-    print(f"Similaridad: {score:.3f}")
+    print(f"Similarity: {score:.3f}")
 ```
 
-## 🚀 Mejores Prácticas
+## Performance Optimization
 
-1. **Siempre usar warm-up** para procesamiento en lote
-2. **Agrupar llamadas** cuando sea posible (la función acepta listas)
-3. **Verificar None** en los resultados antes de usar scores
-4. **Monitorear logs** - los emojis indican el estado:
-   - 🔄 = Procesando
-   - ✅ = Éxito
-   - ⚠️ = Advertencia
-   - ❌ = Error
-   - ⏳ = Esperando
-   - ⏱️ = Timeout
-   - 🌐 = Error de red 
+### Best Practices
+
+1. **Always warm up for batch processing**: Prevents cold start delays
+2. **Batch similar operations**: Process multiple comparisons in single calls
+3. **Check for None values**: Always validate results before use
+4. **Monitor rate limits**: Implement appropriate delays for large batches
+
+### Performance Characteristics
+
+- **Cold start**: 30-60 seconds (without warm-up)
+- **Warm endpoint**: 2-3 seconds per request
+- **Batch efficiency**: Linear scaling with number of unique terms
+
+## Technical Details
+
+### Architecture
+
+The module consists of several key components:
+
+- **EmbeddingClient**: Manages communication with the SapBERT endpoint
+- **EmbeddingProcessor**: Handles CLS token extraction and normalization
+- **SimilarityCalculator**: Computes cosine similarity with optimization
+- **RequestBuilder**: Formats requests for the Hugging Face API
+
+### Embedding Process
+
+1. Text is tokenized and processed by SapBERT
+2. CLS token embeddings are extracted (768-dimensional vectors)
+3. Vectors are L2-normalized for cosine similarity
+4. Similarity scores are computed via dot product
+
+### Configuration Requirements
+
+- **Environment Variables**:
+  - `SAPBERT_ENDPOINT_URL`: Updated from `SAPBERT_API_URL`
+  - `HF_TOKEN`: Hugging Face API token
+- **Network**: Requires internet access to Hugging Face endpoints
+- **Memory**: Minimal (~100MB for typical usage)
+
+## Use Cases
+
+- **Clinical Decision Support**: Find similar conditions for differential diagnosis
+- **Medical Coding**: Map between different coding systems (ICD-10, SNOMED)
+- **Literature Search**: Find papers about related medical concepts
+- **Patient Record Analysis**: Identify similar cases or conditions
+- **Drug Discovery**: Find related compounds or conditions
+
+## Troubleshooting
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| "Endpoint unavailable (503)" | Run `warm_up_endpoint()` first |
+| "Network error" | Check internet connection and firewall |
+| "Invalid API credentials" | Verify `HF_TOKEN` in `.env` file |
+| "Timeout after 120s" | Reduce batch size or increase timeout |
+
+### Debug Output
+
+The module uses concise emoji indicators:
+- 🔄 Processing
+- ✅ Success
+- ⚠️ Warning
+- ❌ Error
+- ⏱️ Timeout
+- 🌐 Network error 
