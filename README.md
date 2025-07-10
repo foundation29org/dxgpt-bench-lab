@@ -1,142 +1,62 @@
-# DxGPT Latitude Bench 🏥
+# DxGPT Latitude Bench
 
-Un sistema de evaluación para modelos de diagnóstico médico que integra análisis semántico con BERT y evaluación de severidad mediante LLMs. Este proyecto permite comparar el rendimiento de diferentes modelos de IA en tareas de diagnóstico diferencial, proporcionando métricas detalladas y visualizaciones interactivas.
+A systematic evaluation framework for measuring how well AI models perform medical diagnosis tasks. This project compares different AI systems by testing their ability to identify medical conditions and understand their severity.
 
-## 🌟 Características Principales
+## What This Project Does
 
-- **Evaluación Dual**: Análisis semántico (SapBERT) + evaluación de severidad (LLM-as-judge)
-- **Pipeline Automatizado**: Desde generación de diagnósticos hasta visualización de resultados
-- **Módulos Reutilizables**: Herramientas extraíbles para BERT, ICD-10 y abstracción de LLMs
-- **Dashboard Interactivo**: Visualización y comparación de experimentos en tiempo real
-- **Multi-proveedor**: Soporte para Azure OpenAI y Hugging Face
+This system presents medical cases to AI models and evaluates their diagnostic responses. It solves a key problem in medical AI evaluation: traditional methods penalized correct but differently-worded diagnoses. Our approach recognizes when diagnoses are medically equivalent even if the exact words differ.
 
-## 🚀 Instalación Rápida
+## Core Components
 
-### 1. Crear y activar entorno virtual
+**Evaluation System** (`bench/`)  
+Three progressive approaches to testing AI diagnostic capabilities. Started with strict code matching, evolved to include semantic understanding, ensuring fair evaluation of medical expertise.
 
+**Data Processing** (`data29/`)  
+Manages nearly 10,000 medical cases from hospitals, medical exams, and rare disease databases. Creates balanced test sets that represent real medical diversity.
+
+**Reusable Tools** (`utils/`)  
+Portable modules for semantic analysis, medical classification systems, and AI model integration. These can be extracted for use in other projects.
+
+## Key Innovation
+
+The project discovered that expert medical responses were being unfairly penalized. For example, a specialist's diagnosis of "aneurysmal subarachnoid hemorrhage" would score zero against "subarachnoid hemorrhage" despite being more precise. Our semantic safety net fixes this by recognizing medical equivalence.
+
+## Getting Started
+
+1. Create a Python environment and install dependencies:
 ```bash
-# Crear entorno virtual
 python -m venv .venv
-
-# Activar (Windows)
-.\.venv\Scripts\activate      
-
-# Activar (Linux/Mac)
-source .venv/bin/activate
-```
-
-### 2. Instalar dependencias
-
-```bash
-# Para CPU (recomendado para desarrollo)
-pip install torch --index-url https://download.pytorch.org/whl/cpu
-
-# Instalar proyecto en modo editable
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -e .
 ```
 
-> 💡 **¿Qué es el modo editable?** Con `pip install -e .`, pip crea enlaces simbólicos a tu código en lugar de copiarlo. Esto significa que cualquier cambio que hagas se refleja inmediatamente sin necesidad de reinstalar.
+2. Configure API access in `.env` file (see `.env.example`)
 
-## 🔑 Configuración de Variables de Entorno
-
-El proyecto utiliza variables de entorno para configurar servicios externos. Crea un archivo `.env` en la raíz del proyecto:
-
-```env
-# === Azure OpenAI ===
-AZURE_OPENAI_ENDPOINT=https://tu-recurso.openai.azure.com/
-AZURE_OPENAI_API_KEY=tu-api-key-aqui
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
-
-# === Hugging Face ===
-HF_TOKEN=hf_tu_token_aqui
-
-# SapBERT para análisis semántico
-SAPBERT_API_URL=https://tu-endpoint.huggingface.cloud
-
-# Modelos médicos especializados
-JONSNOW_ENDPOINT_URL=https://jonsnow-deployment.hf.space
-MEDGEMMA_ENDPOINT_URL=https://medgemma-deployment.hf.space
-SAKURA_ENDPOINT_URL=https://sakura-deployment.hf.space
-OPENBIO_ENDPOINT_URL=https://openbio-deployment.hf.space
-```
-
-> 📝 **Nota**: El archivo `.env` es automáticamente cargado por `python-dotenv`. Nunca subas este archivo a control de versiones.
-
-## 🏗️ Estructura del Proyecto
-
-```
-dxgpt-latitude-bench-test/
-├── .env                    # Variables de entorno (no subir a git)
-├── pyproject.toml          # Configuración del proyecto
-├── README.md               # Este archivo
-│
-├── utils/                  # Módulos reutilizables
-│   ├── __init__.py        # Hace que utils sea un paquete Python
-│   ├── bert/              # Análisis de similitud semántica
-│   ├── icd10/             # Herramientas para taxonomía médica
-│   └── llm/               # Abstracción para múltiples LLMs
-│
-├── bench/                  # Sistema de evaluación
-│   ├── candidate-prompts/  # Prompts para generar diagnósticos
-│   ├── datasets/          # Datasets médicos procesados
-│   └── pipeline/          # Pipeline de evaluación
-│       ├── run.py         # Script principal
-│       ├── config.yaml    # Configuración de experimentos
-│       └── results/       # Resultados y visualizaciones
-│
-├── data29/                # Datos y ETL
-│   ├── data-repos/        # Datos crudos y procesados
-│   └── health-checker/    # Validador de calidad (futuro)
-│
-└── tests/                 # Tests unitarios y de integración
-```
-
-## 🔧 Uso Básico
-
-### 1. Ejecutar un experimento de evaluación
-
+3. Run an evaluation:
 ```bash
-cd bench/pipeline
+cd bench/pipelines/pipeline_v2*
 python run.py
 ```
 
-### 2. Visualizar resultados
+## Results and Insights
 
-```bash
-cd bench/pipeline/results/dashboard
-python serve_dashboard.py
-# Abrir http://localhost:8000 en el navegador
-```
+Testing revealed clear performance differences between AI models:
+- Advanced visual models showed highest capability but variable consistency
+- Standard language models provided reliable, stable performance
+- Specialized medical models offered domain expertise with limitations
 
-### 3. Usar módulos individuales
+## Further Reading
 
-```python
-# Análisis semántico con BERT
-from utils.bert import calculate_semantic_similarity
-similarity = calculate_semantic_similarity("diabetes", "high blood sugar")
+For deeper understanding:
+- [Conceptual model and research findings](bench/__conceptual-model-and-research-notes/)
+- [Pipeline methodology details](bench/pipelines/)
+- [Data processing documentation](data29/)
+- [Reusable utilities](utils/)
 
-# Trabajar con códigos ICD-10
-from utils.icd10 import ICD10Taxonomy
-taxonomy = ICD10Taxonomy()
-covid_info = taxonomy.find("U07.1")
+## Purpose
 
-# Generar con LLMs
-from utils.llm import quick_generate
-response = quick_generate("Explica qué es la hipertensión")
-```
+This framework helps teams make informed decisions when selecting AI models for medical applications. It provides objective, reproducible metrics while respecting the nuanced nature of medical diagnosis.
 
-## 📚 Documentación Detallada
+---
 
-- [Utils - Módulos reutilizables](utils/README.md)
-  - [BERT - Análisis semántico](utils/bert/README.md)
-  - [ICD-10 - Taxonomía médica](utils/icd10/README.md)
-  - [LLM - Abstracción multi-proveedor](utils/llm/README.md)
-- [Bench - Sistema de evaluación](bench/README.md)
-  - [Pipeline - Metodología](bench/pipeline/README.md)
-  - [Dashboard - Visualizaciones](bench/pipeline/results/dashboard/README.md)
-- [Data29 - Gestión de datos](data29/README.md)
-- [Tests - Pruebas del sistema](tests/README.md)
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+*A project focused on advancing responsible medical AI evaluation through transparent, clinically-relevant assessment methods.*

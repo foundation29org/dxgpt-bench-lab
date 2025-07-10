@@ -1,3 +1,23 @@
+# Final Datasets Overview
+
+This repository contains 7 medical case datasets that have been processed and normalized for diagnostic analysis. Each dataset contains structured medical cases with associated diagnoses, complexity ratings (C0-C10), and unique identifiers. The datasets total 9,677 medical cases covering a wide range of clinical scenarios.
+
+## Dataset Descriptions
+
+• **MedBulltes5op & MedQAUSMLE4op**: These educational datasets contain 141 and 7,075 medical cases respectively, derived from medical board examinations and educational resources. Each case has exactly one diagnosis and covers a broad spectrum of complexity levels, making them valuable for training and evaluation purposes.
+
+• **RAMEDIS**: A specialized dataset of 852 cases focused on rare diseases and complex medical conditions. Cases can have up to 7 diagnoses (average 1.6 per case), with complexity heavily weighted towards higher levels (C7-C10), reflecting the challenging nature of rare disease diagnosis.
+
+• **URGTorre**: An emergency medicine dataset containing 1,398 cases from urgent care settings. Cases include up to 5 diagnoses (average 1.4 per case) and additional metadata, with complexity distribution centered around moderate levels (C3-C6), typical of emergency department presentations.
+
+• **Rare Synthetic**: A curated collection of 200 synthetic cases designed to represent uncommon medical scenarios. Each case has a single diagnosis with complexity concentrated in the C5-C7 range, providing balanced coverage of moderately complex rare conditions.
+
+• **Ukrainian**: A small specialized dataset of 9 multi-diagnosis cases (average 2.9 diagnoses per case) with varied complexity levels, likely representing region-specific medical cases or conditions.
+
+• **New England Medical Journal**: A minimal dataset of 2 cases extracted from medical literature, both at complexity level C5, serving as reference examples of well-documented clinical presentations.
+
+![Flujo de datos](../../../bench/__conceptual-model-and-research-notes/imgs/etl_visualized_as_sankey_at_20250708.png)
+
 # SERVE.py - Guía del Algoritmo de Selección de Casos
 
 ## 📋 ¿Qué hace este script?

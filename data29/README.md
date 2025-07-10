@@ -1,194 +1,68 @@
-# Data29 - Gestión y Procesamiento de Datos Médicos 📊
+# Data29 - Procesamiento y Gestión de Datos Médicos 📊
 
-Este directorio es el corazón del procesamiento de datos del proyecto. Aquí es donde los datasets médicos crudos se transforman en datasets limpios y estructurados que el pipeline de evaluación puede consumir. El nombre "data29" hace referencia a Foundation 29, organización dedicada a enfermedades raras.
+Este módulo es el núcleo de procesamiento de datos del proyecto, donde casos médicos de múltiples fuentes se transforman mediante pipelines ETL en datasets estructurados y validados para evaluación de modelos de IA médica.
 
 ## 🎯 Propósito
 
-La carpeta `data29` cumple tres funciones fundamentales:
-
-1. **Almacenamiento de datos crudos**: Datasets originales de diferentes fuentes médicas
-2. **ETL (Extract, Transform, Load)**: Scripts para limpiar y estructurar los datos
-3. **Control de calidad**: Validación de integridad y consistencia (futuro health-checker)
+Gestionar el ciclo completo de datos médicos: desde fuentes heterogéneas hasta datasets normalizados listos para benchmarking, garantizando trazabilidad, calidad y diversidad.
 
 ## 🏗️ Estructura
 
 ```
 data29/
-├── README.md              # Este archivo
-├── health-checker/        # Validador de calidad de datos (en desarrollo)
-└── data-repos/           # Repositorio principal de datos
-    └── urg_torre & ramedis_bench/
-        ├── current-data/  # Datos procesados y listos para usar
-        │   ├── RAMEDIS.json      # Dataset principal para bench
-        │   ├── urg_torre.json    # Dataset de urgencias
-        │   └── visualisations/   # Análisis visual de los datos
-        └── etl/          # Scripts y procesos de transformación
-            ├── 25.05/    # Versión mayo
-            └── 25.06/    # Versión junio (más reciente)
+├── data-repos/
+│   ├── pre-normalization/      # Datos crudos y proceso ETL
+│   │   ├── v1-narrow/         # ETL para RAMEDIS y URGTorre
+│   │   ├── v2-wide/           # ETL para MedBulltes, MedQA-USMLE
+│   │   └── v3-merge/          # Fusión y deduplicación
+│   └── post-normalization/    # Datasets finales procesados
+│       ├── *.json             # 7 datasets normalizados
+│       └── serve.py           # Servidor de datasets con diversidad
 ```
 
-## 📊 Datasets Principales
+## 🔄 Pipeline ETL
 
-### RAMEDIS.json
-**Ubicación**: `data-repos/urg_torre & ramedis_bench/current-data/RAMEDIS.json`
+### Etapa 1: Pre-normalización
+Transformación progresiva de datos crudos mediante pipelines versionados:
 
-Dataset de casos médicos con diagnósticos diferenciales. Cada caso incluye:
-- **id**: Identificador único
-- **case**: Descripción clínica del paciente
-- **diagnoses**: Lista de diagnósticos correctos (GDX) con:
-  - `name`: Nombre del diagnóstico
-  - `severity`: Nivel de severidad (S0-S10)
-  - `code`: Código ICD-10 (cuando aplica)
+- **v1-narrow**: Procesamiento de casos clínicos tradicionales (RAMEDIS, URGTorre)
+- **v2-wide**: Procesamiento de datasets educativos y sintéticos (MedBulltes, MedQA-USMLE)
+- **v3-merge**: Fusión inteligente y eliminación de duplicados
 
-Ejemplo de estructura:
-```json
-{
-  "id": "RAMEDIS_0001",
-  "case": "A 45-year-old male presents with chest pain...",
-  "diagnoses": [
-    {
-      "name": "Myocardial infarction",
-      "severity": "S9",
-      "code": "I21.9"
-    }
-  ]
-}
+Cada pipeline incluye:
+- Normalización de formatos
+- Asignación de complejidad (C0-C10)
+- Mapeo a códigos ICD-10
+- Evaluación de severidad
+
+### Etapa 2: Post-normalización
+Datasets finales estructurados con esquema unificado:
+- ID único por fuente
+- Descripción del caso clínico
+- Diagnósticos con severidad
+- Nivel de complejidad
+
+## 🚀 Servidor de Datasets
+
+`serve.py` permite crear subconjuntos balanceados con:
+- Control de tamaño total
+- Reglas de muestreo por fuente
+- Maximización de diversidad (capítulos ICD-10, complejidad, severidad)
+- Generación de reportes y visualizaciones
+
+Ejemplo de uso:
+```bash
+python serve.py  # Genera dataset de 450 casos con diversidad óptima
 ```
 
-### urg_torre.json
-**Ubicación**: `data-repos/urg_torre & ramedis_bench/current-data/urg_torre.json`
+## 📊 Datasets Disponibles
 
-Dataset de casos de urgencias hospitalarias con estructura similar pero enfocado en escenarios de emergencia.
+7 fuentes normalizadas totalizando ~9,600 casos médicos:
+- Casos clínicos reales anonimizados
+- Casos educativos de exámenes médicos
+- Casos sintéticos para enfermedades raras
+- Casos de urgencias hospitalarias
 
-## 🔄 Proceso ETL
+## 🔗 Integración
 
-El proceso de transformación de datos (ETL) se documenta en las carpetas `etl/25.05/` y `etl/25.06/`. Cada versión incluye:
-
-### 1. Datos Originales
-En `original-csvs/` se encuentran los datasets crudos de diferentes fuentes:
-- `test_RAMEDIS.csv`: Casos de diagnóstico diferencial
-- `test_HMS.csv`: Casos del Hospital Management System
-- `test_LIRICAL.csv`: Casos de enfermedades genéticas
-- `test_critical.csv`, `test_severe.csv`: Casos por severidad
-
-### 2. Scripts de Transformación
-Cada subcarpeta en `etl/25.06/` representa una etapa de transformación:
-
-- **ramedis-v2-added-origin-column**: Añade columna de origen para trazabilidad
-- **ramedis-v3-formatting-diagnosis-names**: Normaliza nombres de diagnósticos
-- **ramedis-v4-setting-complexity**: Añade niveles de complejidad
-- **both-rv5-uv7-diagnosis-severity-assessment**: Asigna severidades usando mapping
-
-### 3. Mapeos y Taxonomías
-En `legacy-mappings/`:
-- `disease2name.json`: Mapeo de códigos a nombres de enfermedades
-- `hpo2name.json`: Human Phenotype Ontology
-- `rare_ramedis_class.jsonl`: Clasificación de enfermedades raras
-
-## 🏥 Health Checker (Futuro)
-
-El directorio `health-checker/` está destinado a contener herramientas de validación de calidad:
-
-### Funcionalidades planeadas:
-
-1. **Validación de códigos ICD-10**:
-   ```python
-   from utils.icd10 import ICD10Taxonomy
-   
-   def validate_dataset(dataset_path):
-       taxonomy = ICD10Taxonomy()
-       errors = []
-       
-       for case in dataset:
-           for diagnosis in case['diagnoses']:
-               if 'code' in diagnosis:
-                   if not taxonomy.get(diagnosis['code']):
-                       errors.append(f"Invalid ICD-10: {diagnosis['code']}")
-       
-       return errors
-   ```
-
-2. **Verificación de severidades**:
-   - Validar que todas las severidades estén en rango S0-S10
-   - Detectar inconsistencias (ej: "Common cold" con S10)
-
-3. **Integridad de datos**:
-   - Casos sin diagnósticos
-   - Diagnósticos duplicados
-   - Campos faltantes o malformados
-
-4. **Estadísticas de calidad**:
-   - Distribución de severidades
-   - Cobertura de códigos ICD-10
-   - Balance de tipos de casos
-
-## 📈 Visualizaciones
-
-La carpeta `visualisations/` contiene análisis gráficos generados por `stats_new.py`:
-
-- **severity_distribution.png**: Histograma de distribución de severidades
-- **diagnostic_codes_distribution.png**: Frecuencia de códigos ICD-10
-- **case_complexity.jpg**: Análisis de complejidad de casos
-- **diagnosis_network.png**: Red de relaciones entre diagnósticos
-
-## 🔧 Uso en el Pipeline
-
-Los datos procesados en `data29` son consumidos por el pipeline de evaluación:
-
-```yaml
-# bench/pipeline/config.yaml
-dataset_path: "bench/datasets/RAMEDIS.json"
-```
-
-El archivo referenciado es una copia del procesado en `data29/data-repos/urg_torre & ramedis_bench/current-data/`.
-
-## 🚀 Cómo Añadir Nuevos Datasets
-
-1. **Colocar datos crudos** en `data-repos/raw/`
-
-2. **Crear script ETL**:
-   ```python
-   # etl/nueva_version/transform.py
-   import json
-   import pandas as pd
-   
-   # Leer datos crudos
-   df = pd.read_csv('../raw/nuevo_dataset.csv')
-   
-   # Transformar al formato esperado
-   cases = []
-   for _, row in df.iterrows():
-       case = {
-           "id": f"NEW_{row['id']}",
-           "case": row['description'],
-           "diagnoses": [
-               {
-                   "name": row['diagnosis'],
-                   "severity": assign_severity(row['diagnosis']),
-                   "code": get_icd10_code(row['diagnosis'])
-               }
-           ]
-       }
-       cases.append(case)
-   
-   # Guardar
-   with open('nuevo_dataset.json', 'w') as f:
-       json.dump(cases, f, indent=2)
-   ```
-
-3. **Validar con health-checker** (cuando esté implementado)
-
-4. **Copiar a bench/datasets/** para uso en experimentos
-
-## 📝 Notas Importantes
-
-- Los datos médicos son sensibles: NO subir datos reales de pacientes
-- Mantener trazabilidad: documentar origen y transformaciones
-- Versionar cambios: usar carpetas con fechas para ETL
-- Validar siempre: ejecutar checks de calidad antes de usar
-
-## 🔗 Referencias
-
-- [ICD-10 Browser](https://icd.who.int/browse10/2019/en)
-- [Human Phenotype Ontology](https://hpo.jax.org/)
-- [Foundation 29](https://www.foundation29.org/)
+Los datasets procesados aquí alimentan directamente los experimentos de benchmarking en `bench/`.
