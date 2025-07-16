@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Minimalista - Modelos Clínicos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fafafa;
+            color: #333333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            position: relative;
+            width: 900px;
+            height: 600px;
+            background: linear-gradient(135deg, 
+                rgba(22, 163, 74, 0.08) 0%, 
+                rgba(22, 163, 74, 0.04) 45%,
+                rgba(255, 255, 255, 0.02) 55%,
+                rgba(220, 38, 38, 0.04) 60%, 
+                rgba(220, 38, 38, 0.08) 100%);
+            border-radius: 4px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        .chart-panel {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 3px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .panel-verdes {
+            bottom: 0;
+            left: 0;
+            width: 520px;
+            height: 420px;
+            background: linear-gradient(135deg, 
+                rgba(22, 163, 74, 0.12) 0%, 
+                rgba(22, 163, 74, 0.05) 100%);
+        }
+        .panel-rojos {
+            top: 0;
+            right: 0;
+            width: 520px;
+            height: 420px;
+            background: linear-gradient(135deg, 
+                rgba(220, 38, 38, 0.05) 0%, 
+                rgba(220, 38, 38, 0.12) 100%);
+        }
+        .grid-canvas, .chart-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .chart-canvas {
+            z-index: 10;
+        }
+        .grid-canvas {
+            z-index: 1;
+        }
+        .axis-ticks {
+            position: absolute;
+            font-size: 10px;
+            color: #666;
+            font-weight: 500;
+        }
+        .x-ticks-verdes {
+            bottom: -25px;
+            left: 60px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .y-ticks-verdes {
+            left: -50px;
+            top: 20px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .x-ticks-rojos {
+            bottom: -25px;
+            left: 60px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .y-ticks-rojos {
+            right: -50px;
+            top: 20px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .legend-minimal {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chart-panel panel-verdes">
+            <canvas id="gridVerdes" class="grid-canvas"></canvas>
+            <canvas id="chartVerdes" class="chart-canvas"></canvas>
+            <div class="axis-ticks y-ticks-verdes">
+                <span>67%</span>
+                <span>64%</span>
+                <span>61%</span>
+                <span>58%</span>
+                <span>55%</span>
+            </div>
+            <div class="axis-ticks x-ticks-verdes">
+                <span>0.52</span>
+                <span>0.45</span>
+                <span>0.38</span>
+                <span>0.31</span>
+                <span>0.25</span>
+            </div>
+        </div>
+        
+        <div class="chart-panel panel-rojos">
+            <canvas id="gridRojos" class="grid-canvas"></canvas>
+            <canvas id="chartRojos" class="chart-canvas"></canvas>
+            <div class="axis-ticks y-ticks-rojos">
+                <span>85%</span>
+                <span>82%</span>
+                <span>79%</span>
+                <span>76%</span>
+                <span>74%</span>
+            </div>
+            <div class="axis-ticks x-ticks-rojos">
+                <span>0.20</span>
+                <span>0.19</span>
+                <span>0.18</span>
+                <span>0.17</span>
+                <span>0.15</span>
+            </div>
+        </div>
+        
+        <div class="legend-minimal">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(100, 200, 130, 0.9);"></div>
+                <span>Sakura</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(80, 180, 110, 0.9);"></div>
+                <span>OpenBio</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(120, 220, 150, 0.9);"></div>
+                <span>JonSnow</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(60, 160, 90, 0.9);"></div>
+                <span>MedGemma</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255, 107, 107, 0.9);"></div>
+                <span>4o</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255, 154, 139, 0.9);"></div>
+                <span>4-1</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255, 130, 120, 0.9);"></div>
+                <span>o1</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255, 180, 165, 0.9);"></div>
+                <span>o3</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(255, 100, 100, 0.9);"></div>
+                <span>o3-pro</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos base
+        const performanceData = {
+            '4o': { base: 78.78, llm: 81.70 },
+            '4-1': { base: 74.22, llm: 77.50 },
+            'o1': { base: 76.33, llm: 84.10 },
+            'o3': { base: 80.46, llm: 84.30 },
+            'o3-pro': { base: 79.89, llm: 83.90 }
+        };
+
+        const semanticData = {
+            'Sakura': { semantic: 0.6521, severity: 0.2813 },
+            'OpenBio': { semantic: 0.6439, severity: 0.3979 },
+            'JonSnow': { semantic: 0.5971, severity: 0.5052 },
+            'MedGemma': { semantic: 0.5782, severity: 0.4318 }
+        };
+
+        const colors = {
+            '4o': 'rgba(255, 107, 107, 0.9)',
+            '4-1': 'rgba(255, 154, 139, 0.9)',
+            'o1': 'rgba(255, 130, 120, 0.9)',
+            'o3': 'rgba(255, 180, 165, 0.9)',
+            'o3-pro': 'rgba(255, 100, 100, 0.9)',
+            'Sakura': 'rgba(100, 200, 130, 0.9)',
+            'OpenBio': 'rgba(80, 180, 110, 0.9)',
+            'JonSnow': 'rgba(120, 220, 150, 0.9)',
+            'MedGemma': 'rgba(60, 160, 90, 0.9)'
+        };
+
+        function createGrid(canvasId, gridConfig) {
+            const canvas = document.getElementById(canvasId);
+            const container = canvas.parentElement;
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.OrthographicCamera(
+                gridConfig.x.min, gridConfig.x.max,
+                gridConfig.y.max, gridConfig.y.min,
+                1, 1000
+            );
+            const renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Major lines
+            const majorMaterial = new THREE.LineBasicMaterial({
+                color: gridConfig.color,
+                transparent: true,
+                opacity: gridConfig.majorOpacity
+            });
+            const majorPoints = [];
+            gridConfig.x.majorLines.forEach(x => {
+                majorPoints.push(new THREE.Vector3(x, gridConfig.y.min, -1));
+                majorPoints.push(new THREE.Vector3(x, gridConfig.y.max, -1));
+            });
+            gridConfig.y.majorLines.forEach(y => {
+                majorPoints.push(new THREE.Vector3(gridConfig.x.min, y, -1));
+                majorPoints.push(new THREE.Vector3(gridConfig.x.max, y, -1));
+            });
+            if(majorPoints.length > 0) {
+                const majorGeometry = new THREE.BufferGeometry().setFromPoints(majorPoints);
+                const majorLine = new THREE.LineSegments(majorGeometry, majorMaterial);
+                scene.add(majorLine);
+            }
+
+            // Minor lines
+            const minorMaterial = new THREE.LineBasicMaterial({
+                color: gridConfig.color,
+                transparent: true,
+                opacity: gridConfig.minorOpacity
+            });
+            const minorPoints = [];
+            gridConfig.x.minorLines.forEach(x => {
+                minorPoints.push(new THREE.Vector3(x, gridConfig.y.min, -1));
+                minorPoints.push(new THREE.Vector3(x, gridConfig.y.max, -1));
+            });
+            gridConfig.y.minorLines.forEach(y => {
+                minorPoints.push(new THREE.Vector3(gridConfig.x.min, y, -1));
+                minorPoints.push(new THREE.Vector3(gridConfig.x.max, y, -1));
+            });
+            if(minorPoints.length > 0) {
+                const minorGeometry = new THREE.BufferGeometry().setFromPoints(minorPoints);
+                const minorLine = new THREE.LineSegments(minorGeometry, minorMaterial);
+                scene.add(minorLine);
+            }
+            
+            camera.position.z = 5;
+            renderer.render(scene, camera);
+        }
+
+        function getMinorLines(lines) {
+            const newLines = [];
+            if (lines.length < 2) return [];
+            for (let i = 0; i < lines.length - 1; i++) {
+                newLines.push((lines[i] + lines[i + 1]) / 2);
+            }
+            return newLines;
+        }
+
+        const pointStylesVerdes = {
+            'Sakura': 'rectRot',
+            'OpenBio': 'circle',
+            'JonSnow': 'rect',
+            'MedGemma': 'crossRot'
+        };
+
+        const datasetsVerdes = Object.entries(semanticData).map(([model, data]) => ({
+            label: model,
+            data: [{ x: data.severity, y: data.semantic, }],
+            backgroundColor: colors[model],
+            borderWidth: 0,
+            pointStyle: pointStylesVerdes[model],
+            pointRadius: 16,
+            pointHoverRadius: 20
+        }));
+
+        new Chart(document.getElementById('chartVerdes'), {
+            type: 'scatter',
+            data: { datasets: datasetsVerdes },
+            options: {
+                responsive: true, maintainAspectRatio: false, layout: { padding: 0 },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const data = semanticData[context.dataset.label];
+                                return [`${context.dataset.label}`, `Semántica: ${context.parsed.y.toFixed(3)}`, `Severidad: ${context.parsed.x.toFixed(3)}`];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { type: 'linear', min: 0.25, max: 0.52, reverse: true, display: false },
+                    y: { min: 0.55, max: 0.67, display: false }
+                }
+            }
+        });
+
+        const pointStylesRojos = {
+            '4o': 'circle',
+            '4-1': 'rect',
+            'o1': 'triangle',
+            'o3': 'star',
+            'o3-pro': 'cross'
+        };
+
+        const datasetsRojos = Object.entries(performanceData).map(([model, data]) => ({
+            label: model,
+            data: [{ x: 1 - (data.llm / 100), y: data.llm / 100, }],
+            backgroundColor: colors[model],
+            borderWidth: 0,
+            pointStyle: pointStylesRojos[model],
+            pointRadius: 16,
+            pointHoverRadius: 20
+        }));
+
+        new Chart(document.getElementById('chartRojos'), {
+            type: 'scatter',
+            data: { datasets: datasetsRojos },
+            options: {
+                responsive: true, maintainAspectRatio: false, layout: { padding: 0 },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const data = performanceData[context.dataset.label];
+                                return [`${context.dataset.label}`, `Rendimiento LLM: ${data.llm}%`, `Rendimiento Base: ${data.base}%`, `Mejora: +${(data.llm - data.base).toFixed(2)}%`];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { type: 'linear', min: 0.15, max: 0.20, reverse: true, display: false },
+                    y: { min: 0.74, max: 0.85, display: false }
+                }
+            }
+        });
+
+        const majorLinesVerdesX = [0.25, 0.31, 0.38, 0.45, 0.52];
+        const majorLinesVerdesY = [0.55, 0.58, 0.61, 0.64, 0.67];
+        const gridVerdesConfig = {
+            x: { min: 0.25, max: 0.52, majorLines: majorLinesVerdesX, minorLines: getMinorLines(majorLinesVerdesX) },
+            y: { min: 0.55, max: 0.67, majorLines: majorLinesVerdesY, minorLines: getMinorLines(majorLinesVerdesY) },
+            color: 0x000000,
+            majorOpacity: 0.15,
+            minorOpacity: 0.07
+        };
+
+        const majorLinesRojosX = [0.15, 0.17, 0.18, 0.19, 0.20];
+        const majorLinesRojosY = [0.74, 0.76, 0.79, 0.82, 0.85];
+        const gridRojosConfig = {
+            x: { min: 0.15, max: 0.20, majorLines: majorLinesRojosX, minorLines: getMinorLines(majorLinesRojosX) },
+            y: { min: 0.74, max: 0.85, majorLines: majorLinesRojosY, minorLines: getMinorLines(majorLinesRojosY) },
+            color: 0x000000,
+            majorOpacity: 0.15,
+            minorOpacity: 0.07
+        };
+        
+        createGrid('gridVerdes', gridVerdesConfig);
+        createGrid('gridRojos', gridRojosConfig);
+
+        console.log('Gráfico minimalista cargado con rejilla Three.js');
+    </script>
+</body>
+</html>

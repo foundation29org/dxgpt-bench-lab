@@ -1,0 +1,825 @@
+Recovery Log - Fri Jul 11 14:10:38 CEST 2025
+Patterns: medgemma jonsnow sakura openbio
+=================
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 28b39ec
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 11e3d07
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 27e7872
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 69fe511
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 3db1368
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 24e22a2
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 52a80f8
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 05f5cd6
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 6d525ea
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ dd99a00
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 3554041
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 015d252
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 5652e5b
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 1eff05c
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ ff3f6bb
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 1d9ad93
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ 7b39c23
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_jonsnow_20250610123831/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_medgemma_20250610153330/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_openbio_20250610154901/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/candidate_responses.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/semantic_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_assignments.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/severity_evaluation.json @ a497c72
+
+[0;32m[Carpeta][0m bench/pipeline/results/experiment_sakura_20250610150849/summary.json @ a497c72
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/candidate_responses.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/semantic_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/severity_assignments.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/severity_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_jonsnow/summary.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/candidate_responses.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/semantic_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/severity_assignments.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/severity_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_medgemma/summary.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/candidate_responses.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/semantic_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/severity_assignments.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/severity_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_openbio/summary.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/candidate_responses.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/semantic_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/severity_assignments.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/severity_evaluation.json @ 8b9d895
+
+[0;32m[Carpeta][0m bench/experiments/DxGPT_baseline/results/experiment_sakura/summary.json @ 8b9d895
+
+[0;34m[Contenido][0m bench/experiments/DxGPT_baseline/results/run_20250610113503/candidate_responses.json @ 02d7664 (contiene: jonsnow)
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_jonsnow_20250610123831/candidate_responses.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_jonsnow_20250610123831_candidate_responses.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_jonsnow_20250610123831/semantic_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_jonsnow_20250610123831_semantic_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_jonsnow_20250610123831/severity_assignments.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_jonsnow_20250610123831_severity_assignments.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_jonsnow_20250610123831/severity_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_jonsnow_20250610123831_severity_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_jonsnow_20250610123831/summary.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_jonsnow_20250610123831_summary.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_medgemma_20250610153330/candidate_responses.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_medgemma_20250610153330_candidate_responses.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_medgemma_20250610153330/semantic_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_medgemma_20250610153330_semantic_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_medgemma_20250610153330/severity_assignments.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_medgemma_20250610153330_severity_assignments.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_medgemma_20250610153330/severity_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_medgemma_20250610153330_severity_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_medgemma_20250610153330/summary.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_medgemma_20250610153330_summary.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_openbio_20250610154901/candidate_responses.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_openbio_20250610154901_candidate_responses.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_openbio_20250610154901/semantic_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_openbio_20250610154901_semantic_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_openbio_20250610154901/severity_assignments.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_openbio_20250610154901_severity_assignments.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_openbio_20250610154901/severity_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_openbio_20250610154901_severity_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_openbio_20250610154901/summary.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_openbio_20250610154901_summary.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_sakura_20250610150849/candidate_responses.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_sakura_20250610150849_candidate_responses.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_sakura_20250610150849/semantic_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_sakura_20250610150849_semantic_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_sakura_20250610150849/severity_assignments.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_sakura_20250610150849_severity_assignments.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_sakura_20250610150849/severity_evaluation.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_sakura_20250610150849_severity_evaluation.json
+  ✓ Actual: ./bench/pipelines/pipeline_v1 - icd10/results/experiment_sakura_20250610150849/summary.json -> current_._bench_pipelines_pipeline_v1 - icd10_results_experiment_sakura_20250610150849_summary.json

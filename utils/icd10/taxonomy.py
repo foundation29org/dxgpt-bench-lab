@@ -519,3 +519,211 @@ class ICD10Taxonomy:
         self._load_data()
         subgroups = [code for code, info in self._code_map.items() if info['type'] == 'subgroup']
         return self._format_list(subgroups, format)
+    
+    # ========== ICD-10 Distance Scoring ==========
+    
+    def icd_distance_score(self, gdx: str, ddx: str, config: Optional[Dict] = None) -> float:
+        """
+        Calculate distance score between two ICD-10 codes.
+        
+        Args:
+            gdx: First ICD-10 code (Gold Diagnosis)
+            ddx: Second ICD-10 code (Differential Diagnosis)
+            config: Optional configuration dict to override defaults
+            
+        Returns:
+            Float score between 0.0 and 1.0 (higher = closer relationship)
+        """
+        # Default configuration
+        default_config = {
+            'level_weights': {
+                'identical': 1.00,
+                'subgroup': 0.95,
+                'group': 0.90,
+                'subblock': 0.85,
+                'block': 0.80,
+                'category': 0.75,
+                'range': 0.65,
+                'chapter': 0.50,
+                'none': 0.00
+            },
+            'penalties': {
+                'vertical_per_level': 0.02,
+                'horizontal_sibling': 0.03,
+                'horizontal_cousin': 0.05
+            },
+            'min_score': 0.60
+        }
+        
+        # Merge with user config if provided
+        if config:
+            scoring_config = default_config.copy()
+            if 'level_weights' in config:
+                scoring_config['level_weights'].update(config['level_weights'])
+            if 'penalties' in config:
+                scoring_config['penalties'].update(config['penalties'])
+            if 'min_score' in config:
+                scoring_config['min_score'] = config['min_score']
+        else:
+            scoring_config = default_config
+        
+        # Resolve codes
+        gdx_code = self._resolve_input(gdx)
+        ddx_code = self._resolve_input(ddx)
+        
+        if not gdx_code or not ddx_code:
+            return 0.0
+        
+        # If identical
+        if gdx_code == ddx_code:
+            return scoring_config['level_weights']['identical']
+        
+        # Get paths
+        gdx_path = self.path(gdx_code, format="code")
+        ddx_path = self.path(ddx_code, format="code")
+        
+        if not gdx_path or not ddx_path:
+            return 0.0
+        
+        # Find Lowest Common Ancestor (LCA) depth
+        lca_depth = 0
+        for g, d in zip(gdx_path, ddx_path):
+            if g == d:
+                lca_depth += 1
+            else:
+                break
+        
+        # Determine base score by common ancestor level
+        base_score = self._get_base_score_by_lca(lca_depth, gdx_path, ddx_path, scoring_config)
+        
+        # Apply penalties
+        base_score = self._apply_penalties(base_score, gdx_path, ddx_path, lca_depth, scoring_config)
+        
+        # Ensure minimum score
+        return max(base_score, scoring_config['min_score'])
+    
+    def _get_base_score_by_lca(self, lca_depth: int, gdx_path: List[str], ddx_path: List[str], config: Dict) -> float:
+        """Get base score based on LCA depth and path lengths."""
+        weights = config['level_weights']
+        
+        # Map depth to hierarchy level
+        max_depth = max(len(gdx_path), len(ddx_path))
+        min_depth = min(len(gdx_path), len(ddx_path))
+        
+        # If LCA is at the deepest level of either code
+        if lca_depth == min_depth:
+            # One is ancestor of the other
+            if max_depth >= 5:  # subgroup level
+                return weights['subgroup']
+            elif max_depth == 4:  # group level
+                return weights['group']
+            elif max_depth == 3:  # category level
+                return weights['category']
+            elif max_depth == 2:  # range level
+                return weights['range']
+            elif max_depth == 1:  # chapter level
+                return weights['chapter']
+        
+        # If LCA is one level above both codes (siblings)
+        elif lca_depth == min_depth - 1:
+            if min_depth >= 5:  # subgroup siblings
+                return weights['subgroup']
+            elif min_depth == 4:  # group siblings
+                return weights['group']
+            elif min_depth == 3:  # category siblings
+                return weights['category']
+            elif min_depth == 2:  # range siblings
+                return weights['range']
+            elif min_depth == 1:  # chapter siblings
+                return weights['chapter']
+        
+        # Common ancestor at different levels
+        if lca_depth >= 4:
+            return weights['subgroup']
+        elif lca_depth == 3:
+            return weights['group']
+        elif lca_depth == 2:
+            return weights['category']
+        elif lca_depth == 1:
+            return weights['range']
+        elif lca_depth == 0:
+            return weights['chapter']
+        
+        return weights['none']
+    
+    def _apply_penalties(self, base_score: float, gdx_path: List[str], ddx_path: List[str], 
+                        lca_depth: int, config: Dict) -> float:
+        """Apply penalties for distance."""
+        penalties = config['penalties']
+        
+        # Vertical distance penalty
+        vert_dist = abs(len(gdx_path) - len(ddx_path))
+        base_score -= penalties['vertical_per_level'] * vert_dist
+        
+        # Horizontal distance penalty
+        min_depth = min(len(gdx_path), len(ddx_path))
+        
+        # If they're siblings (same parent)
+        if lca_depth == min_depth - 1:
+            base_score -= penalties['horizontal_sibling']
+        
+        # If they're cousins (same grandparent but different parents)
+        elif lca_depth == min_depth - 2:
+            base_score -= penalties['horizontal_cousin']
+        
+        return base_score
+    
+    def get_relationship_type(self, gdx: str, ddx: str) -> str:
+        """
+        Get the relationship type between two ICD-10 codes.
+        
+        Returns: 'identical', 'parent-child', 'grandparent-grandchild', 
+                'sibling', 'cousin', 'same-chapter', 'unrelated'
+        """
+        gdx_code = self._resolve_input(gdx)
+        ddx_code = self._resolve_input(ddx)
+        
+        if not gdx_code or not ddx_code:
+            return 'unrelated'
+        
+        if gdx_code == ddx_code:
+            return 'identical'
+        
+        gdx_path = self.path(gdx_code, format="code")
+        ddx_path = self.path(ddx_code, format="code")
+        
+        if not gdx_path or not ddx_path:
+            return 'unrelated'
+        
+        # Find LCA
+        lca_depth = 0
+        for g, d in zip(gdx_path, ddx_path):
+            if g == d:
+                lca_depth += 1
+            else:
+                break
+        
+        min_depth = min(len(gdx_path), len(ddx_path))
+        max_depth = max(len(gdx_path), len(ddx_path))
+        
+        # Parent-child relationship
+        if lca_depth == min_depth and max_depth == min_depth + 1:
+            return 'parent-child'
+        
+        # Grandparent-grandchild relationship
+        if lca_depth == min_depth and max_depth == min_depth + 2:
+            return 'grandparent-grandchild'
+        
+        # Sibling relationship
+        if lca_depth == min_depth - 1 and len(gdx_path) == len(ddx_path):
+            return 'sibling'
+        
+        # Cousin relationship
+        if lca_depth == min_depth - 2 and len(gdx_path) == len(ddx_path):
+            return 'cousin'
+        
+        # Same chapter
+        if lca_depth >= 1:
+            return 'same-chapter'
+        
+        return 'unrelated'
