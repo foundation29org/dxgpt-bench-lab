@@ -35,7 +35,7 @@ from utils.bert.bert_similarity import calculate_semantic_similarity, warm_up_en
 from utils.icd10.taxonomy import ICD10Taxonomy
 
 # Data
-DATASET_NAME = "diagnoses_o3pro"
+DATASET_NAME = "diagnoses_4o_juanjoclassic"
 
 # Output data
 LOG_FILE_NAME = 'evaluation'
@@ -527,8 +527,8 @@ def calculate_global_statistics(results: List[EvaluationResult]) -> Dict:
     matched_cases = sum(1 for r in results if r.eval_details["best_match_found"])
     unmatched_cases = total_cases - matched_cases
     
-    # Count positions
-    position_counts = {"P1": 0, "P2": 0, "P3": 0, "P4": 0, "P5": 0}
+    # Count positions (dynamic to handle any position that appears)
+    position_counts = {}
     method_counts = {
         "snomed_match": 0,
         "icd10_exact": 0,
@@ -545,8 +545,9 @@ def calculate_global_statistics(results: List[EvaluationResult]) -> Dict:
     for result in results:
         if result.eval_details["best_match_found"]:
             resolution = result.eval_details["final_resolution"]
-            position_counts[resolution["position"]] += 1
-            positions.append(int(resolution["position"][1:]))  # Extract number from "P1", "P2", etc.
+            position = resolution["position"]
+            position_counts[position] = position_counts.get(position, 0) + 1
+            positions.append(int(position[1:]))  # Extract number from "P1", "P2", etc.
             
             # Count by method
             method = resolution["method"].lower()

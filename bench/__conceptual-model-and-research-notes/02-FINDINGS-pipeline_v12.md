@@ -1,7 +1,33 @@
+pipelines v1 v2
 # HALLAZGOS METODOLÓGICOS: La Evaluación ICD10 + BERT
 ## Un Viaje desde la Paradoja hasta la Claridad en la Evaluación de Modelos Diagnósticos
 
 > **📋 Para detalles técnicos de implementación:** Ver [Pipeline v2 - ICD10 + BERT README](../pipelines/pipeline_v2%20-%20icd10%20+%20bert/README.md)
+
+# LITTLE STUDY OF PREVIOUS RESULTS
+
+## Resumen Esquemático de Resultados LLM (Simulados)
+
+### ICD-10
+
+- **gpt4o**
+  - Aciertos exactos: **52.8%**
+  - Aciertos jerárquicos: **26.8%**
+
+- **o3**
+  - Aciertos exactos: **53.7%**
+  - Aciertos jerárquicos: **23.8%**
+
+---
+
+### SNOMED
+
+- **gpt4o**: 0 aciertos
+- **o3**: 0 aciertos
+
+> *Nota: El hecho de que los resultados en ICD-10 sean prácticamente idénticos entre ambos modelos sugiere que o3 no ha sido entrenado con una mayor cantidad o calidad de datos ICD-10, y tampoco ha logrado avances notables en nomenclatura. Esto no lo demuestra de forma concluyente, pero sí refuerza la hipótesis de que la tarea está cerca de un punto de saturación para este tipo de modelos.*
+
+Hence, its not wise to use LLM to generate codes, ever.
 
 ### Resumen Ejecutivo
 

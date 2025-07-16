@@ -31,3 +31,18 @@
 
 08_etl_visualized_as_sankey_at_20250708.png
 > Visualización sankey de los datos, proveniencia, como se compuso eldataset final del que finalmente se han extraído los datos subset para hacer las evaluaciones (imagen 00)
+
+031_second-methodology_V2.jpg
+> An image of the performance histogram of the v3 pipeline (LLM) for each model_comparison_report
+
+v40studyoficd10jerarquy.jpg
+> An image that shows the hierarchy between GDX icd10 types and the associated DDX icd10 types, giving insight on childs, parents, matches etc (does not include snomed) and its done on 45o random cases from previous 4o, o1, o3, o3-pro evals that were made for other pipelines (made before the v4 pipeline to understand how to score the ICD10 relations, binaryl ,etc)
+
+v4horizontalstackedtoppositions
+> Shows horizontal stacked bars for TOP 5 4 3 2 1 positions for all the different modelso (v4 pipeline)
+
+v4horizontalstackedbarsbymodelacrossmethods
+> Shows horizontal stacked bars for the different methods (SNOMED MATCH, ICD10 ..., ..., BERT, ..., LLM) for each model along the v4 pipeline
+
+v4casecountandaveragepositionbymethod
+> Shows the quantity of cases that each method of each model of the v4 pipeline dispatches, and the avg score each of the methods at each of the models returns

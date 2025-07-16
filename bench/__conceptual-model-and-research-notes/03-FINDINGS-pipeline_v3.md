@@ -1,3 +1,5 @@
+pipelinev3
+
 # HALLAZGOS METODOLÓGICOS: El Fenómeno de Convergencia con Juez LLM
 ## Cuando el Método de Evaluación Cambia la Realidad Percibida
 
