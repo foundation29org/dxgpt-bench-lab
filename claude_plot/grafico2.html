@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Modelos Clínicos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .chart-container {
+            position: relative;
+            height: 600px;
+            margin-bottom: 30px;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .info-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis de Modelos Clínicos</h1>
+        <p class="subtitle">Evaluación Semántica vs. Severidad Clínica con Rendimiento del Modelo</p>
+        
+        <div class="chart-container">
+            <canvas id="scatterChart"></canvas>
+        </div>
+        
+        <div class="legend" id="customLegend"></div>
+        
+        <div class="info-box">
+            <h3>Interpretación del Gráfico</h3>
+            <p><strong>Eje X (Severidad):</strong> De 0.6 (peor, izquierda) a 0 (mejor, derecha)</p>
+            <p><strong>Eje Y (Rendimiento/Semántica):</strong> Mayor valor = Mejor rendimiento o similitud semántica</p>
+            <p><strong>Zona óptima:</strong> Esquina superior derecha (baja severidad, alto rendimiento/semántica)</p>
+            <p><strong>Modelos o1, o3, o3-pro, 4o, 4-1:</strong> Posicionados según su rendimiento con LLM como juez</p>
+            <p><strong>Modelos Sakura, OpenBio, JonSnow, MedGemma:</strong> Posicionados según evaluación semántica y de severidad</p>
+        </div>
+    </div>
+
+    <script>
+        // Datos de la Tabla 1
+        const performanceData = {
+            '4o': { base: 78.78, llm: 81.70 },
+            '4-1': { base: 74.22, llm: 77.50 },
+            'o1': { base: 76.33, llm: 84.10 },
+            'o3': { base: 80.46, llm: 84.30 },
+            'o3-pro': { base: 79.89, llm: 83.90 }
+        };
+
+        // Datos de la Tabla 2
+        const semanticData = {
+            'Sakura': { semantic: 0.6521, severity: 0.2813 },
+            'OpenBio': { semantic: 0.6439, severity: 0.3979 },
+            'JonSnow': { semantic: 0.5971, severity: 0.5052 },
+            'MedGemma': { semantic: 0.5782, severity: 0.4318 }
+        };
+
+        // Configuración de estilos para cada modelo
+        const styles = {
+            // Modelos OpenAI - tonalidades rojas/rosas
+            '4o': { style: 'circle', color: 'rgba(220, 38, 38, 0.7)', border: '#dc2626' },
+            '4-1': { style: 'triangle', color: 'rgba(220, 38, 38, 0.7)', border: '#dc2626' },
+            'o1': { style: 'rect', color: 'rgba(220, 38, 38, 0.7)', border: '#dc2626' },
+            'o3': { style: 'star', color: 'rgba(220, 38, 38, 0.7)', border: '#dc2626' },
+            'o3-pro': { style: 'cross', color: 'rgba(220, 38, 38, 0.7)', border: '#dc2626' },
+            // Otros modelos - tonalidades verdes
+            'Sakura': { style: 'circle', color: 'rgba(22, 163, 74, 0.7)', border: '#16a34a' },
+            'OpenBio': { style: 'triangle', color: 'rgba(22, 163, 74, 0.7)', border: '#16a34a' },
+            'JonSnow': { style: 'rect', color: 'rgba(22, 163, 74, 0.7)', border: '#16a34a' },
+            'MedGemma': { style: 'star', color: 'rgba(22, 163, 74, 0.7)', border: '#16a34a' }
+        };
+
+        // Definición de formas SVG
+        const svgShapes = {
+            circle: (color, borderColor) => `<svg width="20" height="20"><circle cx="10" cy="10" r="8" fill="${color}" stroke-width="2" stroke="${borderColor}"/></svg>`,
+            triangle: (color, borderColor) => `<svg width="20" height="20"><polygon points="10,2 18,16 2,16" fill="${color}" stroke-width="2" stroke="${borderColor}"/></svg>`,
+            rect: (color, borderColor) => `<svg width="20" height="20"><rect x="2" y="2" width="16" height="16" fill="${color}" stroke-width="2" stroke="${borderColor}"/></svg>`,
+            star: (color, borderColor) => `<svg width="20" height="20"><path d="M10,1 L12,8 L19,8 L14,12 L16,19 L10,15 L4,19 L6,12 L1,8 L8,8 Z" fill="${color}" stroke-width="1" stroke="${borderColor}"/></svg>`,
+            cross: (color, borderColor) => `<svg width="20" height="20"><line x1="2" y1="10" x2="18" y2="10" stroke="${borderColor}" stroke-width="3"/><line x1="10" y1="2" x2="10" y2="18" stroke="${borderColor}" stroke-width="3"/></svg>`
+        };
+
+        // Preparar datos para el scatter plot
+        const datasets = [];
+
+        // Dataset 1: Modelos de la Tabla 1 (OpenAI)
+        // Usando el rendimiento LLM como posición en ambos ejes
+        Object.entries(performanceData).forEach(([model, data]) => {
+            const styleInfo = styles[model];
+            datasets.push({
+                label: model,
+                data: [{
+                    x: 1 - (data.llm / 100), // Invertir X: menor es mejor
+                    y: data.llm / 100, // Y: mayor es mejor
+                }],
+                backgroundColor: styleInfo.color,
+                borderColor: styleInfo.border,
+                borderWidth: 2,
+                pointStyle: styleInfo.style,
+                pointRadius: 8,
+                pointHoverRadius: 10
+            });
+        });
+
+        // Dataset 2: Modelos de la Tabla 2 (Otros)
+        Object.entries(semanticData).forEach(([model, data]) => {
+            const styleInfo = styles[model];
+            datasets.push({
+                label: model,
+                data: [{
+                    x: data.severity, // X = severidad
+                    y: data.semantic, // Y = semántica
+                }],
+                backgroundColor: styleInfo.color,
+                borderColor: styleInfo.border,
+                borderWidth: 2,
+                pointStyle: styleInfo.style,
+                pointRadius: 8,
+                pointHoverRadius: 10
+            });
+        });
+
+        // Configuración del gráfico
+        const ctx = document.getElementById('scatterChart').getContext('2d');
+        const scatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                const data = performanceData[label] || semanticData[label];
+                                
+                                if (performanceData[label]) {
+                                    return [
+                                        `${label}`,
+                                        `Rendimiento LLM: ${data.llm}%`,
+                                        `Rendimiento Base: ${data.base}%`,
+                                        `Mejora: +${(data.llm - data.base).toFixed(2)}%`
+                                    ];
+                                } else {
+                                    return [
+                                        `${label}`,
+                                        `Semántica: ${context.parsed.y.toFixed(3)}`,
+                                        `Severidad: ${context.parsed.x.toFixed(3)}`
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        min: 0.1,
+                        max: 0.55,
+                        reverse: true, // Invertir el eje X
+                        title: {
+                            display: true,
+                            text: 'Evaluación de severidad',
+                            color: '#333333',
+                            font: {
+                                size: 14,
+                                weight: 'normal'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)',
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    },
+                    y: {
+                        min: 0.55,
+                        max: 0.90,
+                        title: {
+                            display: true,
+                            text: 'Evaluación semántica',
+                            color: '#333333',
+                            font: {
+                                size: 14,
+                                weight: 'normal'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)',
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            color: '#666666',
+                            callback: function(value) {
+                                return (value * 100).toFixed(0) + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Crear leyenda personalizada con símbolos SVG
+        const legendContainer = document.getElementById('customLegend');
+        const allModels = [...Object.keys(performanceData), ...Object.keys(semanticData)];
+        
+        allModels.forEach(model => {
+            const legendItem = document.createElement('div');
+            legendItem.className = 'legend-item';
+            legendItem.style.color = '#666666';
+            
+            const styleInfo = styles[model];
+            const symbolContainer = document.createElement('div');
+            symbolContainer.className = 'legend-color';
+            symbolContainer.style.width = '20px';
+            symbolContainer.style.height = '20px';
+            symbolContainer.style.display = 'flex';
+            symbolContainer.style.alignItems = 'center';
+            symbolContainer.style.justifyContent = 'center';
+            
+            // Usar el SVG apropiado basado en el estilo
+            const fillColor = styleInfo.style === 'cross' ? 'transparent' : styleInfo.color;
+            symbolContainer.innerHTML = svgShapes[styleInfo.style](fillColor, styleInfo.border);
+            
+            const label = document.createElement('span');
+            label.textContent = model;
+            
+            legendItem.appendChild(symbolContainer);
+            legendItem.appendChild(label);
+            legendContainer.appendChild(legendItem);
+        });
+
+        // Eliminar la zona óptima para un estilo más limpio
+        // No agregar anotaciones
+    </script>
+</body>
+</html>

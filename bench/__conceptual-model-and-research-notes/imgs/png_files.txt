@@ -1,0 +1,33 @@
+00_all_450_diversity_visualized.jpeg
+> Distribución de capítulos ICD10 (número de casos) apilados por caso
+> Dataset usado para realizar todas las evaluaciones y sus metodologías
+
+01_allofthem.jpg
+> Ranking unificado de puntuaciones across all evaluation criterias (incluyendo pares de modelo y metodología)
+> Resumen final global de rankings entre todas las evaluaciones
+
+02_both-methodologies-compared.jpg
+> Resultados semánticos de las dos últimas evaluaciones (ICD10+BERT & LLM). ICD10+BERT tiene IC.
+> No usar. Faltan datos.
+
+03_first-methodology.png
+> Historgrama con ICs de los resultados semánticos de la evaluación con criterio ICD10+BERT
+> Versión v12 del pipeline de evaluación (1 fue con ICD10 solo, 2 fue con ICD10+BERT, normalmente nos referiremos a ICD10+BERT)
+
+04_both-together-v0-v4.jpg
+> Resultado semántico tanto para los modelos de evaluación OpenAI (LLM method) como para los modelos de Hugging Face (usados durante la evaluación v0 (solo BERT))
+> Version v3 del pipeline a la derecha, v0 a la izquierda (con la sola motivación de incluir los modelso hugging face, aunque fuera mediante BERT, el método v0)
+
+05_both-together-v0-v4-01.jpg
+> Misma representación que el v4 pero en este caso unificados en un mismo diagrama (aunque siguen separados para destacar que el criterio de evaluación fue distinto)
+> 
+
+06_icd10bertvsllmasjudgev3.jpg
+> Comparación de resultados semánticos entre usar ICD10+BERT y LLM para los casos v12(2) y v3
+
+07_v0_results.png
+> Antigua representación scatterplot de v0
+> No usar
+
+08_etl_visualized_as_sankey_at_20250708.png
+> Visualización sankey de los datos, proveniencia, como se compuso eldataset final del que finalmente se han extraído los datos subset para hacer las evaluaciones (imagen 00)
