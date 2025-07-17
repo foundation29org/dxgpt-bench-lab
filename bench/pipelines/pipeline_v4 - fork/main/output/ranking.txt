@@ -1,0 +1,36 @@
+🏆 PIPELINE RESULTS RANKING
+================================================================================
+
+Legend:
+🏆 Rank | 📊 Dataset | 📝 Prompt | 🤖 Model | 🎯 Score | 📈 Success%
+Average Position = Lower is Better | Success Rate = Higher is Better
+
+--------------------------------------------------------------------------------
+🥇 │ 🧪 🔬 🔴 all_5-dxgpt_dev-o3_images               │  1.250 │   80.0% (4/5)
+🥈 │ 📋 🔬 🔴 all_275-dxgpt_dev-o3_images             │  1.541 │   97.5% (268/275)
+🥉 │ 📋 👌 🟡 all_275-juanjo_classic-gpt_4o_summary   │  1.576 │   93.5% (257/275)
+ 4 │ 📋 🧠 🔴 all_275-dxgpt_dev_v2-o3_images          │  1.581 │   96.4% (265/275)
+ 5 │ 🧪 🧠 🔴 all_5-dxgpt_dev_v2-o3_images            │  1.600 │  100.0% (5/5)
+ 6 │ 📋 🔬 🟡 all_275-dxgpt_dev-gpt_4o_summary        │  1.730 │   95.6% (263/275)
+ 7 │ 📋 🧠 🟡 all_275-dxgpt_dev_v2-gpt_4o_summary     │  1.745 │   89.8% (247/275)
+ 8 │ 🧪 🔬 🟡 all_5-dxgpt_dev-gpt_4o_summary          │  2.750 │   80.0% (4/5)
+--------------------------------------------------------------------------------
+📊 Total experiments: 8
+⚠️  Incomplete runs found: 3 (not ranked)
+🕐 Generated: 2025-07-17 18:24:30
+
+🔍 DETAILED BREAKDOWN
+================================================================================
+
+📊 BY DATASET:
+  📋 all_275              │  5 runs │ Avg: 1.635 │ Success: 94.5%
+  🧪 all_5                │  3 runs │ Avg: 1.867 │ Success: 86.7%
+
+📝 BY PROMPT:
+  🔬 dxgpt_dev            │  4 runs │ Avg: 1.818 │ Success: 88.3%
+  🧠 dxgpt_dev_v2         │  3 runs │ Avg: 1.642 │ Success: 95.4%
+  👌 juanjo_classic       │  1 runs │ Avg: 1.576 │ Success: 93.5%
+
+🤖 BY MODEL:
+  🟡 gpt_4o_summary       │  4 runs │ Avg: 1.950 │ Success: 89.7%
+  🔴 o3_images            │  4 runs │ Avg: 1.493 │ Success: 93.5%

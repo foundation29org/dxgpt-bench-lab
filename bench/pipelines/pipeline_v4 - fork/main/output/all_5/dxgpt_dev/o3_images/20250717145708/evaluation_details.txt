@@ -1,0 +1,1880 @@
+{
+  "case_id": "R443",
+  "gdx_details": [
+    {
+      "name": "Renal cell carcinoma, nonpapillary",
+      "details": {
+        "name": "Renal cell carcinoma, nonpapillary",
+        "normalized_text": "Renal Cell Carcinoma",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "C64.9"
+          ],
+          "snomed": [],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Systemic lupus erythematosus",
+      "details": {
+        "name": "Systemic lupus erythematosus",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "M32.10"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pediatric systemic lupus erythematosus",
+      "details": {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Systemic lupus erythematosus of childhood",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "M32.10"
+          ],
+          "snomed": [
+            "403488004"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Renal cell carcinoma, xp11-associated",
+      "details": {
+        "name": "Renal cell carcinoma, xp11-associated",
+        "normalized_text": "Renal Cell Carcinoma",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "C64.9"
+          ],
+          "snomed": [
+            "702391001"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Systemic lupus erythematosus 16",
+      "details": {
+        "name": "Systemic lupus erythematosus 16",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Systemic lupus erythematosus, 6",
+      "details": {
+        "name": "Systemic lupus erythematosus, 6",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Systemic lupus erythematosus",
+      "details": {
+        "normalized_text": "Systemic lupus erythematosus",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9",
+            "MTHU027028"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Antiphospholipid syndrome",
+      "details": {
+        "normalized_text": "Antiphospholipid syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Granulomatosis with polyangiitis",
+      "details": {
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3",
+            "MTHU032717"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sarcoidosis",
+      "details": {
+        "normalized_text": "Sarcoidosis",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Behçet disease",
+      "details": {
+        "normalized_text": "Behçet disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "55464009",
+      "matched_gdx": {
+        "Systemic lupus erythematosus": {
+          "name": "Systemic lupus erythematosus",
+          "normalized_text": "Lupus Erythematosus, Systemic",
+          "severity": "S6",
+          "medical_codes": {
+            "icd10": [
+              "M32.10"
+            ],
+            "snomed": [
+              "55464009"
+            ],
+            "omim": [
+              "144700",
+              "152700",
+              "300854",
+              "605074",
+              "606579",
+              "609939",
+              "614420"
+            ],
+            "orpha": [
+              "93552"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Systemic lupus erythematosus": {
+          "normalized_text": "Systemic lupus erythematosus",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "M32.9",
+              "MTHU027028"
+            ],
+            "snomed": [
+              "55464009"
+            ],
+            "omim": [
+              "152700"
+            ],
+            "orpha": [
+              "536"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Renal cell carcinoma, nonpapillary": {
+            "name": "Renal cell carcinoma, nonpapillary",
+            "normalized_text": "Renal Cell Carcinoma",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "C64.9"
+              ],
+              "snomed": [],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C64.9']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.239) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.2389393150806427
+            },
+            {
+              "position": 2,
+              "score": 0.11069080978631973
+            },
+            {
+              "position": 3,
+              "score": 0.23491212725639343
+            },
+            {
+              "position": 4,
+              "score": 0.22751504182815552
+            },
+            {
+              "position": 5,
+              "score": 0.21081247925758362
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.2389393150806427
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Systemic lupus erythematosus": {
+            "name": "Systemic lupus erythematosus",
+            "normalized_text": "Lupus Erythematosus, Systemic",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "M32.10"
+              ],
+              "snomed": [
+                "55464009"
+              ],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 55464009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Pediatric systemic lupus erythematosus": {
+            "name": "Pediatric systemic lupus erythematosus",
+            "normalized_text": "Systemic lupus erythematosus of childhood",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "M32.10"
+              ],
+              "snomed": [
+                "403488004"
+              ],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['403488004'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['M32.10']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.804) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8041949272155762
+            },
+            {
+              "position": 2,
+              "score": 0.4215564727783203
+            },
+            {
+              "position": 3,
+              "score": 0.375011682510376
+            },
+            {
+              "position": 4,
+              "score": 0.4510558843612671
+            },
+            {
+              "position": 5,
+              "score": 0.35557353496551514
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8041949272155762
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Renal cell carcinoma, xp11-associated": {
+            "name": "Renal cell carcinoma, xp11-associated",
+            "normalized_text": "Renal Cell Carcinoma",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "C64.9"
+              ],
+              "snomed": [
+                "702391001"
+              ],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['702391001'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C64.9']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.239) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.2389393150806427
+            },
+            {
+              "position": 2,
+              "score": 0.11069080978631973
+            },
+            {
+              "position": 3,
+              "score": 0.23491212725639343
+            },
+            {
+              "position": 4,
+              "score": 0.22751504182815552
+            },
+            {
+              "position": 5,
+              "score": 0.21081247925758362
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.2389393150806427
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Systemic lupus erythematosus 16": {
+            "name": "Systemic lupus erythematosus 16",
+            "normalized_text": "Lupus Erythematosus, Systemic",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "M32.9"
+              ],
+              "snomed": [
+                "55464009"
+              ],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 55464009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Systemic lupus erythematosus, 6": {
+            "name": "Systemic lupus erythematosus, 6",
+            "normalized_text": "Lupus Erythematosus, Systemic",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "M32.9"
+              ],
+              "snomed": [
+                "55464009"
+              ],
+              "omim": [
+                "144700",
+                "152700",
+                "300854",
+                "605074",
+                "606579",
+                "609939",
+                "614420"
+              ],
+              "orpha": [
+                "93552"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 55464009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R664",
+  "gdx_details": [
+    {
+      "name": "Trichohepatoenteric syndrome 1",
+      "details": {
+        "name": "Trichohepatoenteric syndrome 1",
+        "normalized_text": "Trichohepatoenteric Syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "Q87.89"
+          ],
+          "snomed": [
+            "703406006"
+          ],
+          "omim": [
+            "222470"
+          ],
+          "orpha": [
+            "84064"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Syndromic diarrhea",
+      "details": {
+        "name": "Syndromic diarrhea",
+        "normalized_text": "Trichohepatoenteric Syndrome",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "K59.1"
+          ],
+          "snomed": [
+            "703406006"
+          ],
+          "omim": [
+            "222470"
+          ],
+          "orpha": [
+            "84064"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Trichohepatoenteric syndrome",
+      "details": {
+        "normalized_text": "Trichohepatoenteric syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "ICF syndrome (Immunodeficiency, centromeric instability and facial anomalies)",
+      "details": {
+        "normalized_text": "ICF syndrome (Immunodeficiency, centromeric instability and facial anomalies)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Veno-occlusive disease with immunodeficiency",
+      "details": {
+        "normalized_text": "Veno-occlusive disease with immunodeficiency",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Omenn syndrome",
+      "details": {
+        "normalized_text": "Omenn syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "722067005"
+          ],
+          "omim": [
+            "603554"
+          ],
+          "orpha": [
+            "39041"
+          ]
+        }
+      }
+    },
+    {
+      "name": "X-linked hyper-IgM syndrome",
+      "details": {
+        "normalized_text": "X-linked hyper-IgM syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "1.0000001192092896",
+      "matched_gdx": {
+        "Trichohepatoenteric syndrome 1": {
+          "name": "Trichohepatoenteric syndrome 1",
+          "normalized_text": "Trichohepatoenteric Syndrome",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "Q87.89"
+            ],
+            "snomed": [
+              "703406006"
+            ],
+            "omim": [
+              "222470"
+            ],
+            "orpha": [
+              "84064"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Trichohepatoenteric syndrome": {
+          "normalized_text": "Trichohepatoenteric syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Trichohepatoenteric syndrome 1": {
+            "name": "Trichohepatoenteric syndrome 1",
+            "normalized_text": "Trichohepatoenteric Syndrome",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "Q87.89"
+              ],
+              "snomed": [
+                "703406006"
+              ],
+              "omim": [
+                "222470"
+              ],
+              "orpha": [
+                "84064"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['703406006'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['Q87.89']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0000001192092896
+            },
+            {
+              "position": 2,
+              "score": 0.448733925819397
+            },
+            {
+              "position": 3,
+              "score": 0.3491937518119812
+            },
+            {
+              "position": 4,
+              "score": 0.5070756673812866
+            },
+            {
+              "position": 5,
+              "score": 0.3854077458381653
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0000001192092896
+          },
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Syndromic diarrhea": {
+            "name": "Syndromic diarrhea",
+            "normalized_text": "Trichohepatoenteric Syndrome",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "K59.1"
+              ],
+              "snomed": [
+                "703406006"
+              ],
+              "omim": [
+                "222470"
+              ],
+              "orpha": [
+                "84064"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['703406006'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['K59.1']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0000001192092896
+            },
+            {
+              "position": 2,
+              "score": 0.448733925819397
+            },
+            {
+              "position": 3,
+              "score": 0.3491937518119812
+            },
+            {
+              "position": 4,
+              "score": 0.5070756673812866
+            },
+            {
+              "position": 5,
+              "score": 0.3854077458381653
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0000001192092896
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R955",
+  "gdx_details": [
+    {
+      "name": "POEMS syndrome",
+      "details": {
+        "name": "POEMS syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E85.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Takatsuki syndrome",
+      "details": {
+        "name": "Takatsuki syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "I77.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crow-Fukase syndrome",
+      "details": {
+        "name": "Crow-Fukase syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "E85.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "POEMS syndrome",
+      "details": {
+        "normalized_text": "POEMS syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Systemic AL amyloidosis",
+      "details": {
+        "normalized_text": "Systemic AL amyloidosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "314701"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multicentric Castleman disease",
+      "details": {
+        "normalized_text": "Multicentric Castleman disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1156805003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Systemic sclerosis (scleroderma)",
+      "details": {
+        "normalized_text": "Systemic sclerosis (scleroderma)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "M34.0",
+            "MTHU066699",
+            "MTHU066545"
+          ],
+          "snomed": [
+            "89155008",
+            "267874003"
+          ],
+          "omim": [
+            "MTHU010137"
+          ],
+          "orpha": [
+            "90291",
+            "801"
+          ]
+        }
+      }
+    },
+    {
+      "name": "IgA nephropathy",
+      "details": {
+        "normalized_text": "IgA nephropathy",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "MTHU032263"
+          ],
+          "snomed": [
+            "236407003"
+          ],
+          "omim": [
+            "MTHU041389"
+          ],
+          "orpha": [
+            "34145"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "1.0",
+      "matched_gdx": {
+        "POEMS syndrome": {
+          "name": "POEMS syndrome",
+          "normalized_text": "POEMS Syndrome",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "E85.8"
+            ],
+            "snomed": [
+              "79268002"
+            ],
+            "omim": [],
+            "orpha": [
+              "2905"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "POEMS syndrome": {
+          "normalized_text": "POEMS syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "POEMS syndrome": {
+            "name": "POEMS syndrome",
+            "normalized_text": "POEMS Syndrome",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E85.8"
+              ],
+              "snomed": [
+                "79268002"
+              ],
+              "omim": [],
+              "orpha": [
+                "2905"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['79268002'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['E85.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0
+            },
+            {
+              "position": 2,
+              "score": 0.4297757148742676
+            },
+            {
+              "position": 3,
+              "score": 0.5672718286514282
+            },
+            {
+              "position": 4,
+              "score": 0.456511914730072
+            },
+            {
+              "position": 5,
+              "score": 0.33461111783981323
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0
+          },
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Takatsuki syndrome": {
+            "name": "Takatsuki syndrome",
+            "normalized_text": "POEMS Syndrome",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "I77.8"
+              ],
+              "snomed": [
+                "79268002"
+              ],
+              "omim": [],
+              "orpha": [
+                "2905"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['79268002'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['I77.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0
+            },
+            {
+              "position": 2,
+              "score": 0.4297757148742676
+            },
+            {
+              "position": 3,
+              "score": 0.5672718286514282
+            },
+            {
+              "position": 4,
+              "score": 0.456511914730072
+            },
+            {
+              "position": 5,
+              "score": 0.33461111783981323
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0
+          },
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Crow-Fukase syndrome": {
+            "name": "Crow-Fukase syndrome",
+            "normalized_text": "POEMS Syndrome",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "E85.8"
+              ],
+              "snomed": [
+                "79268002"
+              ],
+              "omim": [],
+              "orpha": [
+                "2905"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['79268002'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['E85.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0
+            },
+            {
+              "position": 2,
+              "score": 0.4297757148742676
+            },
+            {
+              "position": 3,
+              "score": 0.5672718286514282
+            },
+            {
+              "position": 4,
+              "score": 0.456511914730072
+            },
+            {
+              "position": 5,
+              "score": 0.33461111783981323
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R601",
+  "gdx_details": [
+    {
+      "name": "Bethlem myopathy 1",
+      "details": {
+        "name": "Bethlem myopathy 1",
+        "normalized_text": "BETHLEM MYOPATHY 1",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "G71.0"
+          ],
+          "snomed": [
+            "718572004"
+          ],
+          "omim": [
+            "158810"
+          ],
+          "orpha": [
+            "610"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bethlem myopathy",
+      "details": {
+        "name": "Bethlem myopathy",
+        "normalized_text": "BETHLEM MYOPATHY 1",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "G71.0"
+          ],
+          "snomed": [
+            "718572004"
+          ],
+          "omim": [
+            "158810"
+          ],
+          "orpha": [
+            "610"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "X-linked myotubular myopathy (centronuclear myopathy)",
+      "details": {
+        "normalized_text": "X-linked myotubular myopathy (centronuclear myopathy)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Dynamin 2–related centronuclear myopathy",
+      "details": {
+        "normalized_text": "Dynamin 2–related centronuclear myopathy",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Congenital myotonic dystrophy type 1",
+      "details": {
+        "normalized_text": "Congenital myotonic dystrophy type 1",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Merosin-deficient congenital muscular dystrophy (LAMA2-related)",
+      "details": {
+        "normalized_text": "Merosin-deficient congenital muscular dystrophy (LAMA2-related)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Fabry disease",
+      "details": {
+        "normalized_text": "Fabry disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "E75.21",
+            "MTHU019536"
+          ],
+          "snomed": [
+            "16652001"
+          ],
+          "omim": [
+            "301500"
+          ],
+          "orpha": [
+            "324"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": false,
+    "final_resolution": null,
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Bethlem myopathy 1": {
+            "name": "Bethlem myopathy 1",
+            "normalized_text": "BETHLEM MYOPATHY 1",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "G71.0"
+              ],
+              "snomed": [
+                "718572004"
+              ],
+              "omim": [
+                "158810"
+              ],
+              "orpha": [
+                "610"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['718572004'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['G71.0']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.684) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6844586133956909
+            },
+            {
+              "position": 2,
+              "score": 0.6483519673347473
+            },
+            {
+              "position": 3,
+              "score": 0.5550942420959473
+            },
+            {
+              "position": 4,
+              "score": 0.6069077849388123
+            },
+            {
+              "position": 5,
+              "score": 0.4224494993686676
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6844586133956909
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Bethlem myopathy": {
+            "name": "Bethlem myopathy",
+            "normalized_text": "BETHLEM MYOPATHY 1",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "G71.0"
+              ],
+              "snomed": [
+                "718572004"
+              ],
+              "omim": [
+                "158810"
+              ],
+              "orpha": [
+                "610"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['718572004'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['G71.0']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.684) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6844586133956909
+            },
+            {
+              "position": 2,
+              "score": 0.6483519673347473
+            },
+            {
+              "position": 3,
+              "score": 0.5550942420959473
+            },
+            {
+              "position": 4,
+              "score": 0.6069077849388123
+            },
+            {
+              "position": 5,
+              "score": 0.4224494993686676
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6844586133956909
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R816",
+  "gdx_details": [
+    {
+      "name": "Brachydactyly-short stature-retinitis pigmentosa syndrome",
+      "details": {
+        "name": "Brachydactyly-short stature-retinitis pigmentosa syndrome",
+        "normalized_text": "RHYNS syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "Q87.1"
+          ],
+          "snomed": [
+            "43476002",
+            "723999009"
+          ],
+          "omim": [
+            "250410"
+          ],
+          "orpha": [
+            "166035"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Retinitis pigmentosa",
+      "details": {
+        "name": "Retinitis pigmentosa",
+        "normalized_text": "Retinitis Pigmentosa",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "H35.52"
+          ],
+          "snomed": [
+            "28835009"
+          ],
+          "omim": [
+            "250410"
+          ],
+          "orpha": [
+            "166035"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cranioectodermal dysplasia (Sensenbrenner syndrome)",
+      "details": {
+        "normalized_text": "Cranioectodermal dysplasia (Sensenbrenner syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254093009"
+          ],
+          "omim": [],
+          "orpha": [
+            "1515"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Senior-Løken syndrome",
+      "details": {
+        "normalized_text": "Senior-Løken syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Bardet-Biedl syndrome",
+      "details": {
+        "normalized_text": "Bardet-Biedl syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Alström syndrome",
+      "details": {
+        "normalized_text": "Alström syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Trichothiodystrophy",
+      "details": {
+        "normalized_text": "Trichothiodystrophy",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "723551003"
+          ],
+          "omim": [],
+          "orpha": [
+            "33364"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Retinitis pigmentosa": {
+          "name": "Retinitis pigmentosa",
+          "normalized_text": "Retinitis Pigmentosa",
+          "severity": "S6",
+          "medical_codes": {
+            "icd10": [
+              "H35.52"
+            ],
+            "snomed": [
+              "28835009"
+            ],
+            "omim": [
+              "250410"
+            ],
+            "orpha": [
+              "166035"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Senior-Løken syndrome": {
+          "normalized_text": "Senior-Løken syndrome",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Brachydactyly-short stature-retinitis pigmentosa syndrome": {
+            "name": "Brachydactyly-short stature-retinitis pigmentosa syndrome",
+            "normalized_text": "RHYNS syndrome",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "Q87.1"
+              ],
+              "snomed": [
+                "43476002",
+                "723999009"
+              ],
+              "omim": [
+                "250410"
+              ],
+              "orpha": [
+                "166035"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['43476002', '723999009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['Q87.1']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.526) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3859690725803375
+            },
+            {
+              "position": 2,
+              "score": 0.5262537598609924
+            },
+            {
+              "position": 3,
+              "score": 0.43278276920318604
+            },
+            {
+              "position": 4,
+              "score": 0.5198724269866943
+            },
+            {
+              "position": 5,
+              "score": 0.44203081727027893
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5262537598609924
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Retinitis pigmentosa": {
+            "name": "Retinitis pigmentosa",
+            "normalized_text": "Retinitis Pigmentosa",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "H35.52"
+              ],
+              "snomed": [
+                "28835009"
+              ],
+              "omim": [
+                "250410"
+              ],
+              "orpha": [
+                "166035"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['28835009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['H35.52']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.454 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3800758719444275
+            },
+            {
+              "position": 2,
+              "score": 0.3946133852005005
+            },
+            {
+              "position": 3,
+              "score": 0.3942353427410126
+            },
+            {
+              "position": 4,
+              "score": 0.3377585709095001
+            },
+            {
+              "position": 5,
+              "score": 0.45426252484321594
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.45426252484321594
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}

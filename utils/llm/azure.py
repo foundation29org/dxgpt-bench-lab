@@ -217,48 +217,37 @@ class RequestBuilder:
             # Use reasoning_effort from parameter, fallback to config, then default to "low"
             final_reasoning_effort = reasoning_effort or self.config.reasoning_effort or "low"
             
-            # Build o3-specific request format
+            # Build o3-specific request format for chat completions endpoint
             request = {
-                "model": self.config.deployment_name,
-                "input": [
+                "messages": [
                     {
                         "role": "user",
-                        "content": [
-                            {"type": "input_text", "text": prompt}
-                        ]
+                        "content": prompt
                     }
                 ],
-                "tools": [],
-                "text": {
-                    "format": {
-                        "name": "text_output",
-                        "schema": schema.data,
-                        "type": "text"
-                    }
-                },
-                "reasoning": {
-                    "effort": final_reasoning_effort
-                }
+                "reasoning_effort": final_reasoning_effort
             }
             
-            # Handle JSON schema for o3
+            # Handle schema-based output
             if schema is not None:
-                request["text"]["format"]["type"] = "json_schema"
-                request["text"]["format"]["json_schema"] = {
-                    "name": "structured_output",
-                    "schema": schema.data,
-                    "strict": True
+                request["response_format"] = {
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "structured_output",
+                        "schema": schema.data,
+                        "strict": True
+                    }
                 }
+            else:
+                # o3-images specifically requires response_format to be present
+                # even when no structured output is desired. Add a minimal text format.
+                deployment_name = self.config.deployment_name or ""
+                if "images" in deployment_name.lower():
+                    request["response_format"] = {"type": "text"}
             
             # Add optional parameters for o3
             if max_tokens is not None:
-                request["max_output_tokens"] = max_tokens
-            else:
-                request["max_output_tokens"] = 100000  # Default for o3
-                
-            final_temp = temperature if temperature is not None else self.config.temperature
-            if final_temp is not None:
-                request["temperature"] = final_temp
+                request["max_tokens"] = max_tokens
         else:
             # Standard request format for non-o3 models
             request = {
@@ -483,8 +472,9 @@ class AzureLLM(BaseLLM):
         # Different handling for O3 models vs standard models
         if self._is_o3_model:
             
-            # Build the full endpoint URL for O3
-            endpoint_url = f"{self.config.endpoint.rstrip('/')}/openai/responses?api-version={self.config.api_version}"
+            # Build the full endpoint URL for O3 (use specific API version for O3 models)
+            o3_api_version = "2024-12-01-preview"  # O3 models require newer API version
+            endpoint_url = f"{self.config.endpoint.rstrip('/')}/openai/deployments/{self.config.deployment_name}/chat/completions?api-version={o3_api_version}"
             
             headers = {
                 "Content-Type": "application/json",
@@ -498,35 +488,38 @@ class AzureLLM(BaseLLM):
                     json=request,
                     timeout=300  # 5 minutes timeout for O3
                 )
-                http_response.raise_for_status()
+                
+                # Better error handling for O3 debugging
+                if http_response.status_code != 200:
+                    error_detail = ""
+                    try:
+                        error_data = http_response.json()
+                        error_detail = f" - Error details: {error_data}"
+                    except:
+                        error_detail = f" - Response text: {http_response.text}"
+                    
+                    raise Exception(f"O3 API request failed: {http_response.status_code} {http_response.reason}{error_detail}")
                 
                 response_data = http_response.json()
                 
-                # Extract content from O3 response
-                # O3 format: response.output is an array, we need to find the message type
+                # Extract content from O3 response using standard chat completions format
                 content = ''
                 
-                if 'output' in response_data and isinstance(response_data['output'], list):
-                    # Find the message output
-                    for output_item in response_data['output']:
-                        if output_item.get('type') == 'message':
-                            # Extract text from content[0].text
-                            content_array = output_item.get('content', [])
-                            if content_array and len(content_array) > 0:
-                                content = content_array[0].get('text', '').strip()
-                                break
-                    
-                    if not content:
-                        # If no message type found, try direct text access
-                        content = response_data['output'][0].get('text', '') if response_data['output'] else ''
+                if 'choices' in response_data and len(response_data['choices']) > 0:
+                    # Standard chat completions response format
+                    choice = response_data['choices'][0]
+                    if 'message' in choice and 'content' in choice['message']:
+                        content = choice['message']['content']
                 else:
-                    # Fallback to standard format if available
-                    content = response_data.get('choices', [{}])[0].get('message', {}).get('content', '')
+                    # Fallback - try to extract from any available content field
+                    content = str(response_data)
             
                 
             except requests.exceptions.RequestException as e:
-
                 if hasattr(e, 'response') and e.response is not None:
+                    error_detail = f"Status: {e.response.status_code}, Response: {e.response.text}"
+                    raise Exception(f"O3 API request failed: {error_detail}")
+                else:
                     raise Exception(f"O3 API request failed: {str(e)}")
             
             # Process the content for O3

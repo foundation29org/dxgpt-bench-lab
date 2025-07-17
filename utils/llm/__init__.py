@@ -38,25 +38,15 @@ from .hugging import (
 
 def get_llm(model_name: str, **kwargs) -> BaseLLM:
     """Try each LLM provider until one works."""
-    print(f"🔧 DEBUG: get_llm called")
-    print(f"   - model_name: {model_name}")
-    print(f"   - kwargs: {kwargs}")
-    
     providers = [HuggingLLM, AzureLLM]
-    print(f"   - providers to try: {[p.__name__ for p in providers]}")
     
     for i, provider in enumerate(providers, 1):
-        print(f"   - Trying provider {i}/{len(providers)}: {provider.__name__}")
         try:
             result = provider(model_name, **kwargs)
-            print(f"   ✅ Success with {provider.__name__}: {type(result)}")
             return result
         except Exception as e:
-            print(f"   ❌ {provider.__name__} failed: {e}")
-            print(f"   ❌ Exception type: {type(e)}")
             continue
             
-    print(f"   ❌ All providers failed for model {model_name}")
     raise RuntimeError(f"No working LLM provider found for model {model_name}")
 
 # Default implementations

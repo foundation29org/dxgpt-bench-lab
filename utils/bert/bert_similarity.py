@@ -432,7 +432,6 @@ def calculate_semantic_similarity(
     input_a: Union[str, List[str]],
     input_b: Union[str, List[str]]
 ) -> Dict[str, Dict[str, Optional[float]]]:
-    print(input_a, input_b)
     """
     Calculate semantic similarity between medical terms with cross-comparison.
     
