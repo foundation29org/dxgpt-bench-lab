@@ -15,19 +15,19 @@ Behave like a hypothetical doctor tasked with providing N hypothesis diagnosis f
        
         <diagnosis_output>
         [
-        {
+        {{
             "diagnosis": "some disease 1",
             "description": "some description",
             "symptoms_in_common": ["symptom1", "symptom2", "symptomN"],
             "symptoms_not_in_common": ["symptom1", "symptom2", "symptomN"]
-        },
+        }},
         ...
-        {
+        {{
             "diagnosis": "some disease n",
             "description": "some description",
             "symptoms_in_common": ["symptom1", "symptom2", "symptomN"],
             "symptoms_not_in_common": ["symptom1", "symptom2", "symptomN"]
-        }
+        }}
         ]
         </diagnosis_output>
        

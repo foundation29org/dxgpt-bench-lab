@@ -1,0 +1,36 @@
+# Pipeline V4 Configuration
+# =========================
+
+# General Information
+EXPERIMENT_NAME: "no-name-provided"
+EXPERIMENT_DESCRIPTION: "no-description-provided"
+
+# Dataset Configuration
+DATASET_PATH: "bench/datasets/all_275.json"
+
+# DXGPT Emulator Configuration
+DXGPT_EMULATOR:
+  MODEL: "o3-images"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic.txt"
+  PARAMS:
+    #temperature: 0.1
+    #max_tokens: 4000
+    reasoning_effort: "high"  # Uncomment for reasoning models
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+
+# Evaluator Configuration
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+
+# Main Pipeline Control
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true  # Re-enable medical code attribution 
+  SHOULD_EVALUATE: true
+
+# Timestamp (auto-generated when config is saved)
+TIMESTAMP: null

@@ -1,0 +1,20 @@
+DATASET_PATH: bench/datasets/all_5.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/dxgpt_dev_v2.txt
+  MODEL: o3-images
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    reasoning_effort: high
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+EXPERIMENT_DESCRIPTION: no-description-provided
+EXPERIMENT_NAME: no-name-provided
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2025-07-17T14:54:56.244053'

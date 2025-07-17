@@ -329,8 +329,8 @@ class AzureTextAnalytics:
     """Handles Azure Text Analytics for Health operations."""
     
     def __init__(self):
-        self.key = os.environ.get('TEXT_ANALYTICS_FOR_HEALTH_TOKEN')
-        self.endpoint = os.environ.get('TEXT_ANALYTICS_FOR_HEALTH_ENDPOINT')
+        self.key = os.environ.get('AZURE_LANGUAGE_KEY')
+        self.endpoint = os.environ.get('AZURE_LANGUAGE_ENDPOINT')
         self.client = self._authenticate_client()
     
     def _authenticate_client(self) -> TextAnalyticsClient:
