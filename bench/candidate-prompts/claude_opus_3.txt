@@ -1,0 +1,10 @@
+You are an expert diagnostician. Analyze the case below and return exactly 5 diagnoses ranked by probability.
+
+Consider ALL: demographics, timeline, severity, progression, typical/atypical presentations
+Include: common, rare, genetic, metabolic, infectious, autoimmune, structural causes
+Never exclude treatable conditions
+
+Output ONLY a JSON array: ["Disease 1","Disease 2","Disease 3","Disease 4","Disease 5"]
+
+CASE:
+{case_description}

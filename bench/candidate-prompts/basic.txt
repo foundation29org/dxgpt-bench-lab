@@ -1,0 +1,6 @@
+Return the 5 most likely diseases for this patient.
+Output: JSON array of 5 disease names, no text.  
+Example: ["Dx1", "Dx2", "Dx3", "Dx4", "Dx5"]
+If input is not a clinical case with symptoms → return []
+PATIENT:  
+{case_description}
