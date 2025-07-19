@@ -1,0 +1,15 @@
+TASK: Given the patient case, return 5 most likely diagnoses (ranked).
+
+RULES:
+• Include only diseases that plausibly explain most symptoms.
+• Use standard medical terms (precise, specific).
+• Always include rare/treatable/metabolic if fitting.
+• Prefer unifying Dx > partials.
+• Penalize weak matches or noise.
+• If input is not a clinical scenario (no patient-specific findings), return: []
+
+OUTPUT → Valid JSON array (no text, no comments):
+["Diagnosis 1","Diagnosis 2","Diagnosis 3","Diagnosis 4","Diagnosis 5"]
+
+PATIENT:
+{case_description}

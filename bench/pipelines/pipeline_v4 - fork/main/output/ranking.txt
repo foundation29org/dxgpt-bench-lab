@@ -6,31 +6,54 @@ Legend:
 Average Position = Lower is Better | Success Rate = Higher is Better
 
 --------------------------------------------------------------------------------
-🥇 │ 🧪 🔬 🔴 all_5-dxgpt_dev-o3_images               │  1.250 │   80.0% (4/5)
-🥈 │ 📋 🔬 🔴 all_275-dxgpt_dev-o3_images             │  1.541 │   97.5% (268/275)
-🥉 │ 📋 👌 🟡 all_275-juanjo_classic-gpt_4o_summary   │  1.576 │   93.5% (257/275)
- 4 │ 📋 🧠 🔴 all_275-dxgpt_dev_v2-o3_images          │  1.581 │   96.4% (265/275)
- 5 │ 🧪 🧠 🔴 all_5-dxgpt_dev_v2-o3_images            │  1.600 │  100.0% (5/5)
- 6 │ 📋 🔬 🟡 all_275-dxgpt_dev-gpt_4o_summary        │  1.730 │   95.6% (263/275)
- 7 │ 📋 🧠 🟡 all_275-dxgpt_dev_v2-gpt_4o_summary     │  1.745 │   89.8% (247/275)
- 8 │ 🧪 🔬 🟡 all_5-dxgpt_dev-gpt_4o_summary          │  2.750 │   80.0% (4/5)
+🥇 │ 📋 👌 🔴 all_275-juanjo_classic-o3_images        │  1.305 │   56.0% (154/275)
+🥈 │ 📋 📝 🟡 all_275-claude_sonnet_4-gpt_4o_summary  │  1.407 │   72.4% (199/275)
+🥉 │ 📋 📝 🟡 all_275-claude_opus_1-gpt_4o_summary    │  1.534 │   95.3% (262/275)
+ 4 │ 📋 🔬 🔴 all_275-dxgpt_dev-o3_images             │  1.541 │   97.5% (268/275)
+ 5 │ 📋 👌 🟡 all_275-juanjo_classic_v2-gpt_4o_summary │  1.543 │   93.8% (258/275)
+ 6 │ 📋 👌 🟡 all_275-juanjo_classic_no_description-gpt_4o_summary │  1.553 │   92.0% (253/275)
+ 7 │ 📋 📝 🟡 all_275-4o_4-gpt_4o_summary             │  1.569 │   76.7% (211/275)
+ 8 │ 📋 📝 🟡 all_275-gemini_3-gpt_4o_summary         │  1.574 │   78.5% (216/275)
+ 9 │ 📋 👌 🟡 all_275-juanjo_classic-gpt_4o_summary   │  1.576 │   93.5% (257/275)
+10 │ 📋 🧠 🔴 all_275-dxgpt_dev_v2-o3_images          │  1.581 │   96.4% (265/275)
+11 │ 📋 👌 🟡 all_275-juanjo_classic_v4-gpt_4o_summary │  1.588 │   86.5% (238/275)
+12 │ 📋 📝 🟡 all_275-o3_1-gpt_4o_summary             │  1.610 │   81.1% (223/275)
+13 │ 📋 📝 🟡 all_275-claude_opus_1-gpt_4o_summary    │  1.621 │   94.9% (261/275)
+14 │ 📋 👌 🟡 all_275-juanjo_classic_v3-gpt_4o_summary │  1.653 │   91.3% (251/275)
+15 │ 📋 📝 🟡 all_275-claude_opus_3-gpt_4o_summary    │  1.665 │   94.5% (260/275)
+16 │ 📋 📝 🟡 all_275-claude_sonnet_4-gpt_4o_summary  │  1.702 │   78.2% (215/275)
+17 │ 📋 👌 🟡 all_275-juanjo_classic-gpt_4o_summary   │  1.712 │   90.9% (250/275)
+18 │ 📋 🔬 🟡 all_275-dxgpt_dev-gpt_4o_summary        │  1.730 │   95.6% (263/275)
+19 │ 📋 📝 🟡 all_275-basic-gpt_4o_summary            │  1.741 │   84.4% (232/275)
+20 │ 📋 🧠 🟡 all_275-dxgpt_dev_v2-gpt_4o_summary     │  1.745 │   89.8% (247/275)
+21 │ 📋 📝 🟡 all_275-o3_4-gpt_4o_summary             │  1.779 │   95.3% (262/275)
 --------------------------------------------------------------------------------
-📊 Total experiments: 8
-⚠️  Incomplete runs found: 3 (not ranked)
-🕐 Generated: 2025-07-17 18:24:30
+📊 Total experiments: 21
+🕐 Generated: 2025-07-18 16:31:38
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
 
 📊 BY DATASET:
-  📋 all_275              │  5 runs │ Avg: 1.635 │ Success: 94.5%
-  🧪 all_5                │  3 runs │ Avg: 1.867 │ Success: 86.7%
+  📋 all_275              │ 21 runs │ Avg: 1.606 │ Success: 87.4%
 
 📝 BY PROMPT:
-  🔬 dxgpt_dev            │  4 runs │ Avg: 1.818 │ Success: 88.3%
-  🧠 dxgpt_dev_v2         │  3 runs │ Avg: 1.642 │ Success: 95.4%
-  👌 juanjo_classic       │  1 runs │ Avg: 1.576 │ Success: 93.5%
+  📝 4o_4                 │  1 runs │ Avg: 1.569 │ Success: 76.7%
+  📝 basic                │  1 runs │ Avg: 1.741 │ Success: 84.4%
+  📝 claude_opus_1        │  2 runs │ Avg: 1.578 │ Success: 95.1%
+  📝 claude_opus_3        │  1 runs │ Avg: 1.665 │ Success: 94.5%
+  📝 claude_sonnet_4      │  2 runs │ Avg: 1.554 │ Success: 75.3%
+  🔬 dxgpt_dev            │  2 runs │ Avg: 1.635 │ Success: 96.5%
+  🧠 dxgpt_dev_v2         │  2 runs │ Avg: 1.663 │ Success: 93.1%
+  📝 gemini_3             │  1 runs │ Avg: 1.574 │ Success: 78.5%
+  👌 juanjo_classic       │  3 runs │ Avg: 1.531 │ Success: 80.1%
+  👌 juanjo_classic_no_description │  1 runs │ Avg: 1.553 │ Success: 92.0%
+  👌 juanjo_classic_v2    │  1 runs │ Avg: 1.543 │ Success: 93.8%
+  👌 juanjo_classic_v3    │  1 runs │ Avg: 1.653 │ Success: 91.3%
+  👌 juanjo_classic_v4    │  1 runs │ Avg: 1.588 │ Success: 86.5%
+  📝 o3_1                 │  1 runs │ Avg: 1.610 │ Success: 81.1%
+  📝 o3_4                 │  1 runs │ Avg: 1.779 │ Success: 95.3%
 
 🤖 BY MODEL:
-  🟡 gpt_4o_summary       │  4 runs │ Avg: 1.950 │ Success: 89.7%
-  🔴 o3_images            │  4 runs │ Avg: 1.493 │ Success: 93.5%
+  🟡 gpt_4o_summary       │ 18 runs │ Avg: 1.628 │ Success: 88.0%
+  🔴 o3_images            │  3 runs │ Avg: 1.476 │ Success: 83.3%

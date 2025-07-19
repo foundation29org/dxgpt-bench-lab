@@ -1,6 +1,6 @@
 DATASET_PATH: bench/datasets/all_275.json
 DXGPT_EMULATOR:
-  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic.txt
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
   MODEL: gpt-4o-summary
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
@@ -18,4 +18,4 @@ MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2025-07-18T13:40:22.966821'
+TIMESTAMP: '2025-07-18T15:38:21.719868'

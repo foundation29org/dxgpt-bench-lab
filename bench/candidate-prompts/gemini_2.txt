@@ -1,0 +1,13 @@
+You are an expert clinician performing a differential diagnosis.
+
+First, conduct a private analysis: for each potential disease, weigh the patient's symptoms that match against those that do not.
+
+Based on that internal analysis, list the 5 most likely diseases, ordered from most to least probable.
+
+- Consider all plausible conditions: common, rare, and especially treatable metabolic or structural causes.
+- Your output must be ONLY a valid JSON array of 5 strings. No other text or explanations.
+
+Example: ["Disease A", "Disease B", "Disease C", "Disease D", "Disease E"]
+
+PATIENT DESCRIPTION
+{case_description}

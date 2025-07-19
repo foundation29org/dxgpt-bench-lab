@@ -203,10 +203,51 @@ class DXGPTEmulator:
                     print(f"TIP: If LLM returns unexpected format, check if OUTPUT_SCHEMA conflicts with prompt instructions")
                     return []
             
-            # FORMAT_A: Raw list containing DDXs
-            # Example: ["Disease A", "Disease B", "Disease C", ...]
-            if isinstance(parsed, list):
-                return [str(item) for item in parsed if item]  # Convert to strings, filter empty
+            # Check if it's a list first
+            if isinstance(parsed, list) and len(parsed) > 0:
+                # Check if it's a list of objects with diagnosis fields
+                if isinstance(parsed[0], dict):
+                    # FORMAT_C: List of diagnosis objects with "diagnosis" field (juanjo_classic.txt format)
+                    # Example: [{"diagnosis": "Disease A", "description": "...", "symptoms_in_common": [...], "symptoms_not_in_common": [...]}, ...]
+                    if 'diagnosis' in parsed[0]:
+                        diagnoses = []
+                        for item in parsed:
+                            if isinstance(item, dict) and 'diagnosis' in item:
+                                diagnosis_name = item['diagnosis']
+                                if diagnosis_name:  # Only add non-empty diagnoses
+                                    diagnoses.append(str(diagnosis_name))
+                        
+                        if diagnoses:
+                            return diagnoses
+                        else:
+                            print(f"WARNING: FORMAT_C malformed: No valid diagnosis objects found for case {case_id}")
+                            return []
+                    
+                    # FORMAT_D: List of diagnosis objects with "dx" field (claude_sonnet_4.txt format)
+                    # Example: [{"dx": "Disease A", "rationale": "Brief reason", "confidence": "High/Medium/Low"}, ...]
+                    elif 'dx' in parsed[0]:
+                        diagnoses = []
+                        for item in parsed:
+                            if isinstance(item, dict) and 'dx' in item:
+                                diagnosis_name = item['dx']
+                                if diagnosis_name:  # Only add non-empty diagnoses
+                                    diagnoses.append(str(diagnosis_name))
+                        
+                        if diagnoses:
+                            return diagnoses
+                        else:
+                            print(f"WARNING: FORMAT_D malformed: No valid dx objects found for case {case_id}")
+                            return []
+                    
+                    else:
+                        # Unknown object format in list
+                        print(f"WARNING: Unknown object format in list for case {case_id}")
+                        print(f"WARNING: First object keys: {list(parsed[0].keys())}")
+                        return []
+                else:
+                    # FORMAT_A: Simple list of strings
+                    # Example: ["Disease A", "Disease B", "Disease C", ...]
+                    return [str(item) for item in parsed if item]  # Convert to strings, filter empty
             
             # FORMAT_B: Dictionary with "diagnoses" key
             # Example: {"diagnoses": ["Disease A", "Disease B", ...]}
@@ -216,22 +257,6 @@ class DXGPTEmulator:
                     return [str(item) for item in diagnoses if item]  # Convert to strings, filter empty
                 else:
                     print(f"WARNING: FORMAT_B malformed: 'diagnoses' key exists but value is not a list for case {case_id}")
-                    return []
-            
-            # FORMAT_C: List of diagnosis objects with "diagnosis" field
-            # Example: [{"diagnosis": "Disease A", "description": "...", "symptoms_in_common": [...], "symptoms_not_in_common": [...]}, ...]
-            elif isinstance(parsed, list) and len(parsed) > 0 and isinstance(parsed[0], dict) and 'diagnosis' in parsed[0]:
-                diagnoses = []
-                for item in parsed:
-                    if isinstance(item, dict) and 'diagnosis' in item:
-                        diagnosis_name = item['diagnosis']
-                        if diagnosis_name:  # Only add non-empty diagnoses
-                            diagnoses.append(str(diagnosis_name))
-                
-                if diagnoses:
-                    return diagnoses
-                else:
-                    print(f"WARNING: FORMAT_C malformed: No valid diagnosis objects found for case {case_id}")
                     return []
             
             else:

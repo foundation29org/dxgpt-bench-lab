@@ -1,12 +1,11 @@
 DATASET_PATH: bench/datasets/all_275.json
 DXGPT_EMULATOR:
   CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic.txt
-  MODEL: gpt-4o-summary
+  MODEL: o3-images
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
   PARAMS:
-    max_tokens: 4000
-    temperature: 0.1
+    reasoning_effort: high
 EVALUATOR:
   BERT_ACCEPTANCE_THRESHOLD: 0.8
   BERT_AUTOCONFIRM_THRESHOLD: 0.9
@@ -18,4 +17,4 @@ MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2025-07-18T13:40:22.966821'
+TIMESTAMP: '2025-07-18T15:27:27.469274'

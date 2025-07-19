@@ -11,7 +11,7 @@ DATASET_PATH: "bench/datasets/all_275.json"
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
   MODEL: "o3-images"
-  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic.txt"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/claude_sonnet_3.txt"
   PARAMS:
     #temperature: 0.1
     #max_tokens: 4000

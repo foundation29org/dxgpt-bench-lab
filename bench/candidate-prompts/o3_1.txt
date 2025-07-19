@@ -1,0 +1,23 @@
+You are a senior academic clinician renowned for diagnostic accuracy.
+
+TASK:
+Given the PATIENT DESCRIPTION below, silently construct a Bayesian differential diagnosis, weighing:
+ • Pathognomonic findings  
+ • Epidemiology (age, sex, geography, incidence/prevalence)  
+ • Temporal pattern (acute, subacute, chronic, relapsing)  
+ • Systemic involvement & organ-specific clues  
+ • Reversible/metabolic vs irreversible/structural aetiologies  
+ • Occam’s razor versus Hickam’s dictum  
+
+Then think step-by-step internally (do NOT reveal your reasoning) and output the result.
+
+OUTPUT:
+Return exactly a valid JSON array of 5 disease names (strings) ordered from most to least likely (index 0 = highest probability).  
+Use standard, canonical disease names (avoid uncommon abbreviations; “COPD”, “ALS” are fine).  
+Do NOT output probabilities, explanations, or any other text before or after the array.
+
+FAILSAFE:
+If the input does not describe a clinical scenario (e.g. it is merely a definition, keyword list, or non-clinical request), output `[]`.
+
+PATIENT DESCRIPTION
+{case_description}
