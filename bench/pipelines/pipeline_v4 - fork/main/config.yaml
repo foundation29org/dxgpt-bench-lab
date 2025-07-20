@@ -6,12 +6,12 @@ EXPERIMENT_NAME: "no-name-provided"
 EXPERIMENT_DESCRIPTION: "no-description-provided"
 
 # Dataset Configuration
-DATASET_PATH: "bench/datasets/all_275.json"
+DATASET_PATH: "bench/datasets/all_150.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
   MODEL: "o3-images"
-  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/claude_sonnet_3.txt"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v4.txt"
   PARAMS:
     #temperature: 0.1
     #max_tokens: 4000

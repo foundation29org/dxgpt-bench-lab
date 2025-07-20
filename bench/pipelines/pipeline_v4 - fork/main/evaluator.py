@@ -639,13 +639,13 @@ def calculate_method_statistics(results: List[EvaluationResult], method_name: st
     matched_cases = total_cases  # All cases in method_results are matched by definition
     unmatched_cases = 0
     
-    position_counts = {"P1": 0, "P2": 0, "P3": 0, "P4": 0, "P5": 0}
+    position_counts = {}  # Dynamic position counting to handle any position number
     positions = []
     
     for result in method_results:
         resolution = result.eval_details["final_resolution"]
         position = resolution["position"]
-        position_counts[position] += 1
+        position_counts[position] = position_counts.get(position, 0) + 1  # Handle dynamic positions
         positions.append(int(position[1:]))  # Extract number from "P1", "P2", etc.
     
     # Calculate average position
