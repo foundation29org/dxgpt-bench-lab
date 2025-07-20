@@ -17,6 +17,7 @@ Features:
 import json
 import os
 import sys
+import logging
 from typing import Dict, List, Any, Set, Optional
 from datetime import datetime
 import yaml
@@ -32,8 +33,14 @@ load_dotenv()
 class MedicalLabeler:
     """Medical code attribution using Azure Text Analytics"""
     
-    def __init__(self):
-        """Initialize the Medical Labeler with Azure Text Analytics client"""
+    def __init__(self, logger=None):
+        """Initialize the Medical Labeler with Azure Text Analytics client
+        
+        Args:
+            logger: Optional logger instance
+        """
+        self.logger = logger
+        
         # Get Azure credentials from environment
         self.endpoint = os.getenv('AZURE_LANGUAGE_ENDPOINT')
         self.key = os.getenv('AZURE_LANGUAGE_KEY')
@@ -72,6 +79,10 @@ class MedicalLabeler:
                         source_name = data_source.name.lower()
                         entity_id = data_source.entity_id
                         
+                        # Skip MTHU codes - these are not valid medical codes
+                        if entity_id.startswith('MTHU'):
+                            continue
+                        
                         if 'icd10' in source_name or 'icd-10' in source_name:
                             if entity_id not in medical_codes["icd10"]:
                                 medical_codes["icd10"].append(entity_id)
@@ -98,6 +109,12 @@ class MedicalLabeler:
             Dictionary mapping text to medical codes
         """
         try:
+            # Log request details
+            if self.logger:
+                self.logger.info(f"Making Azure Text Analytics request for {len(texts)} texts")
+                self.logger.info(f"Texts to process: {[text[:50] + ('...' if len(text) > 50 else '') for text in texts]}")
+                self.logger.info(f"Azure endpoint: {self.endpoint}")
+            
             # Call Azure Text Analytics for health entities (Long Running Operation)
             poller = self.client.begin_analyze_healthcare_entities(
                 documents=texts,
@@ -105,33 +122,75 @@ class MedicalLabeler:
                 model_version="latest"
             )
             
+            if self.logger:
+                self.logger.info(f"Azure Text Analytics LRO started, waiting for completion...")
+            
             # Wait for the operation to complete and get results
             response = poller.result()
+            
+            if self.logger:
+                self.logger.info(f"Azure Text Analytics LRO completed successfully")
             
             results = {}
             
             for idx, result in enumerate(response):
+                text = texts[idx]
+                
                 if not result.is_error:
+                    # Log successful processing
+                    if self.logger:
+                        self.logger.info(f"Azure processing successful for text '{text[:30]}...' - Found {len(result.entities)} entities")
+                    
                     # 🔧 DEBUG: Show what entities we got
-                    print(f"🔍 DEBUG: Processing '{texts[idx]}' - Found {len(result.entities)} entities")
-                    for entity in result.entities:
+                    print(f"🔍 DEBUG: Processing '{text}' - Found {len(result.entities)} entities")
+                    
+                    for entity_idx, entity in enumerate(result.entities):
                         print(f"   📋 Entity: '{entity.text}' | Category: {entity.category} | Confidence: {entity.confidence_score:.2f}")
+                        
+                        # Log detailed entity information
+                        if self.logger:
+                            self.logger.info(f"  Entity[{entity_idx+1}]: '{entity.text}' | Category: {entity.category} | Confidence: {entity.confidence_score:.2f}")
+                            if hasattr(entity, 'offset'):
+                                self.logger.info(f"    Offset: {entity.offset}, Length: {entity.length}")
+                        
                         if hasattr(entity, 'data_sources') and entity.data_sources:
-                            for ds in entity.data_sources:
+                            for ds_idx, ds in enumerate(entity.data_sources):
                                 print(f"      🔗 Data Source: {ds.name} | ID: {ds.entity_id}")
+                                if self.logger:
+                                    self.logger.info(f"    DataSource[{ds_idx+1}]: {ds.name} | ID: {ds.entity_id}")
                         else:
                             print(f"      ⚠️  No data sources found for this entity")
+                            if self.logger:
+                                self.logger.warning(f"    No data sources found for entity '{entity.text}'")
                     
                     medical_codes = self._extract_medical_codes(result.entities)
-                    results[texts[idx]] = medical_codes
+                    results[text] = medical_codes
                     
-                    # 🔧 DEBUG: Show extracted codes
+                    # Log extracted codes in detail
                     total_codes = sum(len(codes) for codes in medical_codes.values())
                     print(f"   ✅ Extracted {total_codes} total medical codes: {medical_codes}")
                     print()
+                    
+                    if self.logger:
+                        self.logger.info(f"Medical codes extracted for '{text[:30]}...': Total={total_codes}")
+                        for code_type, codes in medical_codes.items():
+                            if codes:
+                                self.logger.info(f"  {code_type.upper()}: {codes}")
+                            else:
+                                self.logger.info(f"  {code_type.upper()}: []")
+                
                 else:
-                    print(f"⚠️  Azure Text Analytics error for text: {texts[idx][:50]}...")
-                    results[texts[idx]] = {
+                    # Handle Azure Text Analytics errors
+                    error_msg = f"Azure Text Analytics error for text: {text[:50]}..."
+                    print(f"⚠️  {error_msg}")
+                    
+                    if self.logger:
+                        self.logger.error(f"AZURE_ERROR: {error_msg}")
+                        if hasattr(result, 'error'):
+                            self.logger.error(f"Error details: {result.error}")
+                        self.logger.error(f"Full text that failed: {text}")
+                    
+                    results[text] = {
                         "icd10": [],
                         "snomed": [],
                         "omim": [],
@@ -141,7 +200,31 @@ class MedicalLabeler:
             return results
         
         except Exception as e:
-            print(f"❌ Error calling Azure Text Analytics: {str(e)}")
+            error_msg = f"❌ Error calling Azure Text Analytics: {str(e)}"
+            print(error_msg)
+            
+            if self.logger:
+                self.logger.error(f"AZURE_API_FAILURE: {error_msg}")
+                self.logger.error(f"Exception type: {type(e).__name__}")
+                self.logger.error(f"Full exception details: {repr(e)}")
+                
+                # Categorize different types of Azure errors
+                error_str = str(e).lower()
+                if "timeout" in error_str or "connection" in error_str:
+                    self.logger.error(f"NETWORK_ERROR: Connection timeout or network issue with Azure API")
+                elif "authentication" in error_str or "credential" in error_str:
+                    self.logger.error(f"AUTH_ERROR: Authentication failure with Azure Text Analytics")
+                elif "quota" in error_str or "limit" in error_str:
+                    self.logger.error(f"QUOTA_ERROR: Azure Text Analytics quota or rate limit exceeded")
+                elif "unauthorized" in error_str or "403" in error_str:
+                    self.logger.error(f"PERMISSION_ERROR: Insufficient permissions for Azure Text Analytics")
+                elif "not found" in error_str or "404" in error_str:
+                    self.logger.error(f"ENDPOINT_ERROR: Azure Text Analytics endpoint not found")
+                else:
+                    self.logger.error(f"UNKNOWN_AZURE_ERROR: Unclassified Azure API error")
+                
+                self.logger.error(f"Failed texts: {[text[:30] + '...' for text in texts]}")
+            
             # Return empty results for all texts
             return {text: {"icd10": [], "snomed": [], "omim": [], "orpha": []} for text in texts}
     
@@ -155,18 +238,47 @@ class MedicalLabeler:
         Returns:
             List of cases with medical codes added to DDX
         """
-        print(f"🔬 Starting medical code attribution for {len(dataset)} cases...")
-        print(f"🔗 Using Azure Text Analytics for entity recognition")
+        start_msg = f"🔬 Starting medical code attribution for {len(dataset)} cases..."
+        azure_msg = f"🔗 Using Azure Text Analytics for entity recognition"
+        
+        print(start_msg)
+        print(azure_msg)
         print("-" * 60)
+        
+        if self.logger:
+            self.logger.info(start_msg)
+            self.logger.info(azure_msg)
         
         # Collect all unique DDX texts for batch processing
         unique_ddx_texts = set()
-        for case in dataset:
-            ddx_details = case.get('ddx_details', {})
-            for ddx_name in ddx_details.keys():
-                unique_ddx_texts.add(ddx_name)
+        cases_with_empty_ddx = 0
         
-        print(f"📝 Found {len(unique_ddx_texts)} unique DDX terms to process")
+        for i, case in enumerate(dataset):
+            case_id = case.get('id', f'case_{i+1}')
+            ddx_details = case.get('ddx_details', {})
+            
+            if not ddx_details:
+                cases_with_empty_ddx += 1
+                if self.logger:
+                    self.logger.warning(f"Case {case_id} has empty DDX details - no medical codes will be attributed")
+            else:
+                for ddx_name in ddx_details.keys():
+                    unique_ddx_texts.add(ddx_name)
+                    if self.logger and len(ddx_details) == 1:  # Log only for the first DDX per case
+                        self.logger.info(f"Case {case_id} has {len(ddx_details)} DDX entries")
+        
+        unique_msg = f"📝 Found {len(unique_ddx_texts)} unique DDX terms to process"
+        print(unique_msg)
+        if self.logger:
+            self.logger.info(unique_msg)
+            if cases_with_empty_ddx > 0:
+                self.logger.warning(f"Found {cases_with_empty_ddx} cases with empty DDX details")
+            
+            # Log sample of unique DDX texts
+            sample_ddx = list(unique_ddx_texts)[:10]
+            self.logger.info(f"Sample DDX terms: {sample_ddx}")
+            if len(unique_ddx_texts) > 10:
+                self.logger.info(f"... and {len(unique_ddx_texts) - 10} more unique terms")
         
         # Process unique DDX texts in batches
         ddx_codes_cache = {}
@@ -179,7 +291,10 @@ class MedicalLabeler:
             batch_num = i // batch_size + 1
             total_batches = (len(unique_ddx_list) + batch_size - 1) // batch_size
             
-            print(f"[{batch_num}/{total_batches}] Processing batch of {len(batch)} DDX terms... ", end="", flush=True)
+            batch_msg = f"[{batch_num}/{total_batches}] Processing batch of {len(batch)} DDX terms..."
+            print(f"{batch_msg} ", end="", flush=True)
+            if self.logger:
+                self.logger.info(batch_msg)
             
             batch_results = self._get_medical_codes_for_texts(batch)
             ddx_codes_cache.update(batch_results)
@@ -193,7 +308,10 @@ class MedicalLabeler:
         
         for i, case in enumerate(dataset, 1):
             case_id = case.get('id', f'case_{i}')
-            print(f"[{i}/{len(dataset)}] Processing case {case_id}... ", end="", flush=True)
+            case_msg = f"[{i}/{len(dataset)}] Processing case {case_id}..."
+            print(f"{case_msg} ", end="", flush=True)
+            if self.logger:
+                self.logger.info(case_msg)
             
             # Create a copy of the case
             case_with_codes = case.copy()
@@ -207,6 +325,12 @@ class MedicalLabeler:
                 # Get medical codes from cache
                 if ddx_name in ddx_codes_cache:
                     updated_ddx_info['medical_codes'] = ddx_codes_cache[ddx_name]
+                    
+                    # Log when no codes are found for a DDX
+                    codes = ddx_codes_cache[ddx_name]
+                    total_codes = sum(len(code_list) for code_list in codes.values())
+                    if total_codes == 0 and self.logger:
+                        self.logger.warning(f"No medical codes found for DDX '{ddx_name}' in case {case_id}")
                 else:
                     # Fallback to empty codes if not in cache
                     updated_ddx_info['medical_codes'] = {
@@ -215,6 +339,8 @@ class MedicalLabeler:
                         "omim": [],
                         "orpha": []
                     }
+                    if self.logger:
+                        self.logger.error(f"DDX '{ddx_name}' not found in cache for case {case_id} - this should not happen")
                 
                 updated_ddx_details[ddx_name] = updated_ddx_info
             
@@ -222,11 +348,21 @@ class MedicalLabeler:
             results.append(case_with_codes)
             
             ddx_count = len(ddx_details)
-            print(f"✅ Added codes to {ddx_count} DDX")
+            success_msg = f"✅ Added codes to {ddx_count} DDX"
+            print(success_msg)
+            if self.logger:
+                self.logger.info(f"[{i}/{len(dataset)}] Added codes to {ddx_count} DDX for case {case_id}")
         
         print("-" * 60)
-        print(f"✅ Medical code attribution completed!")
-        print(f"📊 Processed {len(results)} cases with medical codes")
+        completion_msg = f"✅ Medical code attribution completed!"
+        stats_msg = f"📊 Processed {len(results)} cases with medical codes"
+        
+        print(completion_msg)
+        print(stats_msg)
+        
+        if self.logger:
+            self.logger.info(completion_msg)
+            self.logger.info(stats_msg)
         
         return results
     
@@ -246,10 +382,16 @@ class MedicalLabeler:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
             
-            print(f"💾 Labeled results saved to: {output_path}")
+            save_msg = f"💾 Labeled results saved to: {output_path}"
+            print(save_msg)
+            if self.logger:
+                self.logger.info(save_msg)
             
         except Exception as e:
-            print(f"❌ Error saving results: {str(e)}")
+            error_msg = f"❌ Error saving results: {str(e)}"
+            print(error_msg)
+            if self.logger:
+                self.logger.error(error_msg)
             raise
     
     def replace_emulator_output(self, emulator_output_path: str, labeled_output_path: str) -> None:
@@ -264,12 +406,21 @@ class MedicalLabeler:
             # Delete emulator output if it exists
             if os.path.exists(emulator_output_path):
                 os.remove(emulator_output_path)
-                print(f"🗑️  Removed emulator output: {emulator_output_path}")
+                remove_msg = f"🗑️  Removed emulator output: {emulator_output_path}"
+                print(remove_msg)
+                if self.logger:
+                    self.logger.info(remove_msg)
             
-            print(f"✅ Labeled output is now the primary dataset file")
+            primary_msg = f"✅ Labeled output is now the primary dataset file"
+            print(primary_msg)
+            if self.logger:
+                self.logger.info(primary_msg)
             
         except Exception as e:
-            print(f"⚠️  Warning: Could not remove emulator output: {str(e)}")
+            warning_msg = f"⚠️  Warning: Could not remove emulator output: {str(e)}"
+            print(warning_msg)
+            if self.logger:
+                self.logger.warning(warning_msg)
 
 def main():
     """Main function for standalone execution"""

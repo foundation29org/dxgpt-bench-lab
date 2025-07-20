@@ -21,6 +21,7 @@ import os
 import sys
 import yaml
 import shutil
+import logging
 from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple
 
@@ -326,6 +327,33 @@ def validate_pipeline_state(config: Dict[str, Any], output_dir: str, file_names:
         print("✅ All requested pipeline steps are disabled")
         return 'done', None
 
+def setup_component_logging(output_dir: str, component_name: str) -> logging.Logger:
+    """Setup logging for a specific component (emulator or medlabeler)"""
+    logger = logging.getLogger(f'pipeline_v4_{component_name}')
+    logger.setLevel(logging.INFO)
+    
+    # Clear existing handlers
+    logger.handlers.clear()
+    
+    # Create formatter with same format as evaluator
+    formatter = logging.Formatter('[%(asctime)s] - %(levelname)s - %(message)s', 
+                                  datefmt='%Y-%m-%d %H:%M:%S')
+    
+    # Console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+    
+    # File handler - save to output_dir with component name
+    log_file = os.path.join(output_dir, f"{component_name}.log")
+    file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+    
+    return logger
+
 def run_emulator(config: Dict[str, Any], output_dir: str, file_names: Dict[str, str]) -> Optional[str]:
     """
     Run the emulator step
@@ -342,6 +370,9 @@ def run_emulator(config: Dict[str, Any], output_dir: str, file_names: Dict[str, 
     print("STEP 1: DDX GENERATION (EMULATOR)")
     print("="*60)
     
+    # Setup logging for emulator
+    emulator_logger = setup_component_logging(output_dir, 'emulator')
+    
     try:
         # Load dataset
         dataset_path = os.path.join(
@@ -352,8 +383,8 @@ def run_emulator(config: Dict[str, Any], output_dir: str, file_names: Dict[str, 
         with open(dataset_path, 'r', encoding='utf-8') as f:
             dataset = json.load(f)
         
-        # Initialize emulator
-        emulator = DXGPTEmulator(config)
+        # Initialize emulator with logger
+        emulator = DXGPTEmulator(config, emulator_logger)
         
         # Generate DDX
         results = emulator.generate_ddx_for_dataset(dataset)
@@ -365,7 +396,9 @@ def run_emulator(config: Dict[str, Any], output_dir: str, file_names: Dict[str, 
         return output_file
         
     except Exception as e:
-        print(f"❌ Error in emulator step: {str(e)}")
+        error_msg = f"❌ Error in emulator step: {str(e)}"
+        print(error_msg)
+        emulator_logger.error(error_msg)
         return None
 
 def run_labeler(config: Dict[str, Any], input_file: str, output_dir: str, file_names: Dict[str, str]) -> Optional[str]:
@@ -385,13 +418,16 @@ def run_labeler(config: Dict[str, Any], input_file: str, output_dir: str, file_n
     print("STEP 2: MEDICAL CODE ATTRIBUTION (LABELER)")
     print("="*60)
     
+    # Setup logging for medlabeler
+    labeler_logger = setup_component_logging(output_dir, 'medlabeler')
+    
     try:
         # Load emulator results
         with open(input_file, 'r', encoding='utf-8') as f:
             dataset = json.load(f)
         
-        # Initialize labeler
-        labeler = MedicalLabeler()
+        # Initialize labeler with logger
+        labeler = MedicalLabeler(labeler_logger)
         
         # Process dataset
         results = labeler.process_dataset(dataset)
@@ -406,7 +442,9 @@ def run_labeler(config: Dict[str, Any], input_file: str, output_dir: str, file_n
         return output_file
         
     except Exception as e:
-        print(f"❌ Error in labeler step: {str(e)}")
+        error_msg = f"❌ Error in labeler step: {str(e)}"
+        print(error_msg)
+        labeler_logger.error(error_msg)
         return None
 
 def run_evaluator(config: Dict[str, Any], input_file: str, output_dir: str, file_names: Dict[str, str]) -> Optional[str]:

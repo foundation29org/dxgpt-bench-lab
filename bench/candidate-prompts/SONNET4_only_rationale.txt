@@ -1,0 +1,10 @@
+Generate 5 differential diagnoses from the clinical case below.
+
+ANALYSIS: Consider common through rare conditions, metabolic/structural causes, demographics, timeline, and clinical epidemiology. Prioritize treatable conditions.
+
+FAILSAFE: If the input is not a patient‑specific clinical scenario with symptoms → output []
+
+OUTPUT: JSON array of objects:
+[{{"dx":"Disease","rationale":"Brief reason"}}]
+
+CASE: {case_description}
