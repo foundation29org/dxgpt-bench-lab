@@ -106,42 +106,82 @@
 \begin{document}
 
 % --- PÁGINA DE TÍTULO ---
+% ---------- PORTADA WHITE PAPER ----------------------------------
 \begin{titlepage}
     \centering
-    \vspace*{2cm}
     
-    {\Huge\bfseries\color{primarycolor} Informe sobre la evaluación de modelos de IA para soporte al diagnóstico clínico}
+    % Espacio flexible al inicio
+    \vspace*{\fill}
+    
+    % Logo corporativo
+    \includegraphics[height=2.5cm]{logo-29.webp}
     
     \vspace{1.5cm}
     
-    {\Large\bfseries Análisis metodológico de PV0-PV4}
+    % Título principal con menos espacio después
+    {\Huge\bfseries\color{primarycolor}
+    Formalización métrica del juicio clínico en sistemas LLM de diagnóstico diferencial\par}
     
-    \vspace{2.5cm}
+    \vspace{0.5cm} % Reducido de 0.8cm
     
+    % Subtítulo
+    {\Large\color{graytext}
+    Un marco de evaluación híbrido ontológico-semántico para superar la convergencia artificial de rendimiento\par}
+    
+    % Espacio flexible que empuja el contenido hacia arriba y abajo
+    \vspace{\fill}
+    
+    % Información de autores
     \begin{flushleft}
     \large
-    \begin{tabular}{@{}l}
-        \textbf{Autores:} Yago Mendoza, Javier Logroño\\
-        \textbf{Institución:} Foundation 29 \\
-        \textbf{Fecha:} \today \\
-        \textbf{Versión del Documento:} 2.1 \\
-    \end{tabular}
+    \textbf{Autores}\\[0.3em]
+    \normalsize
+    Yago Mendoza\\
+    Javier Logroño\\
+    Carlos Bermejo
     \end{flushleft}
     
-    \vfill
+    \vspace{1cm}
     
-    \textit{\small Este documento presenta un análisis pormenorizado de los hallazgos y la evolución de los marcos de evaluación para la herramienta de diagnóstico asistido por IA DxGPT, abarcando desde estudios clínicos iniciales hasta el desarrollo de pipelines automatizados de alta fidelidad.}
+    % Línea divisoria
+    \rule{\textwidth}{0.5pt}
+    
+    \vspace{0.5cm}
+    
+    % Metadatos al pie
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{flushleft}
+        \textbf{Foundation 29}\\
+        \today
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{flushright}
+        \textbf{Versión 2.1}\\
+        White Paper Técnico
+        \end{flushright}
+    \end{minipage}
+    
+    % Espacio flexible al final
+    \vspace*{\fill}
     
 \end{titlepage}
+
+% ---------- FIN PORTADA ------------------------------------------
+
+
 \newpage
 
 \begin{center}
     {\Large \textbf{Resumen}}\\[1em]  % \LARGE hace el texto más grande, [1em] agrega espacio debajo
 \end{center}
 
-Este informe describe la evolución metodológica y los resultados de la evaluación de cuatro modelos de lenguaje de OpenAI —\textbf{GPT-4o, o1, o3 y o3-pro}— sobre \textbf{450 casos pediátricos}. El análisis demostró que los evaluadores iniciales producían \textbf{realidades distorsionadas}: un pipeline basado en códigos (\textbf{PV2}: \textbf{ICD-10} + \textbf{BERT}) \textbf{penalizaba la especificidad clínica} (la ``\textbf{paradoja del especialista castigado}''), mientras que un juez-\textbf{LLM} (\textbf{PV3}) provocaba una \textbf{convergencia artificial de rendimientos} al premiar la \textbf{plausibilidad sobre la precisión}. Para superar esta limitación, se desarrolló \textbf{PV4}, un \textbf{pipeline jerárquico} que combina la \textbf{objetividad de los códigos} (\textbf{SNOMED, ICD-10}) con el \textbf{juicio semántico} (\textbf{BERT, LLM}), e introduce una métrica clave: \textbf{la posición en la lista diferencial} como indicador de \textbf{confianza clínica}. Esta innovación metodológica \textbf{rompió la saturación de la tarea} y reveló una \textbf{jerarquía de rendimiento clara}. El modelo \textbf{o3} emergió como el más confiable y estable, con la \textbf{mejor posición promedio} (1{,}47) y el \textbf{mayor número de aciertos en primera posición} (311), a pesar de que \textbf{o3-pro} obtuvo una \textbf{tasa de acierto bruta marginalmente superior} (96{,}4\%). Este último, sin embargo, lo logró a costa de una \textbf{peor priorización} (posición media de 1{,}60) y una \textbf{mayor dependencia del evaluador semántico}. El análisis de \textbf{prompts} confirmó que \textbf{exigir razonamiento explícito} —por ejemplo, \textbf{listar síntomas a favor y en contra}— es la \textbf{estrategia más eficaz}, superando tanto a los formatos más simples como a aquellos que sobrecargan al modelo solicitando campos adicionales como la \textit{confianza}.
+Este informe detalla la evolución metodológica y los hallazgos en la evaluación de cuatro modelos de lenguaje de OpenAI —\textbf{GPT-4o, o1, o3 y o3-pro}— en un benchmark de \textbf{450 casos clínicos pediátricos}. El estudio partió de la premisa de que los enfoques de evaluación simples generan resultados engañosos. Se demostró que un pipeline basado en códigos (\textbf{PV2}: \textbf{ICD-10} + \textbf{BERT}) penalizaba la especificidad clínica (la ``\textbf{paradoja del especialista castigado}''), mientras que un juez-\textbf{LLM} (\textbf{PV3}) enmascaraba las diferencias de rendimiento al premiar la plausibilidad sobre la precisión, provocando una \textbf{saturación de la tarea}.
 
+Para superar estas limitaciones, se desarrolló \textbf{PV4}, un \textbf{pipeline jerárquico} que integra la objetividad de las ontologías médicas (\textbf{SNOMED, ICD-10}) con el juicio semántico contextual (\textbf{BERT, LLM}). La innovación clave de \textbf{PV4} es el uso de la \textbf{posición del diagnóstico correcto en la lista diferencial} como métrica principal, evaluando así la capacidad de \textbf{priorización clínica} del modelo.
 
+Esta nueva metodología logró romper la aparente convergencia de los modelos, revelando una \textbf{clara jerarquía de rendimiento}. El modelo \textbf{o3} emergió como el más fiable y con la mejor capacidad de priorización (posición promedio de \textbf{1,47} y \textbf{311} aciertos en primera posición). En contraste, \textbf{o3-pro}, aunque alcanzó la tasa de acierto bruta marginalmente más alta (\textbf{96,4\%}), lo hizo a costa de una priorización inferior (posición promedio de \textbf{1,60}) y una mayor dependencia de los evaluadores semánticos. Adicionalmente, el análisis de \textbf{prompts} confirmó que \textbf{exigir un razonamiento explícito} —como listar síntomas a favor y en contra— es la estrategia más eficaz para optimizar la calidad del diagnóstico, superando tanto a los formatos simples como a los sobrecargados.
 
 
 \vspace{2cm}
@@ -167,14 +207,34 @@ Para llevar a cabo una evaluación rigurosa, es indispensable contar con un ento
 Si bien a lo largo del proyecto se probaron varias combinaciones de casos en función de los trade-offs de coste y tiempo en diversos pipelines, especialmente para pruebas rápidas o confirmaciones de hipótesis menores, para las evaluaciones definitivas de ranking se utilizó el dataset más equilibrado que se encontró. Entre todos los subconjuntos posibles derivados del corpus de 9.677 casos, este conjunto de \textbf{450 casos clínicos} fue seleccionado por un algoritmo de diversidad optimizada que maximiza la cobertura diagnóstica y minimiza la redundancia clínica, logrando el mejor equilibrio entre representatividad, complejidad y eficiencia computacional. Una visualización detallada de este proceso de extracción, transformación y carga (ETL) se encuentra en el \textbf{Anexo A}.
 
 \subsection{Diversidad del dataset final}
-El dataset de 450 casos fue seleccionado para asegurar una amplia cobertura de patologías, garantizando que la evaluación no estuviera sesgada hacia una especialidad concreta, como se muestra en la Figura \ref{fig:diversity}.
+La construcción del dataset final de \textbf{450 casos clínicos} se realizó mediante un proceso de \textbf{curación algorítmica por fases}, un enfoque diseñado para superar los sesgos de representatividad y la redundancia inherentes al muestreo aleatorio. El objetivo no era crear una muestra estadísticamente representativa de la prevalencia de enfermedades, sino construir un \textit{benchmark} de alta exigencia, optimizado para discriminar el rendimiento de los modelos. La lógica operativa fue la siguiente:
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Fase \arabic*:}]
+    \item \textbf{Establecimiento de un núcleo estratificado:} El proceso comienza garantizando la inclusión de un conjunto de casos de fuentes consideradas estratégicas. Se preasigna una cuota mínima o total para datasets de alta relevancia, como los de enfermedades raras (RAMEDIS) o complejidad diagnóstica (NEJM). Esta estratificación inicial asegura la presencia de escenarios de baja prevalencia pero alto valor informativo, que un muestreo aleatorio simple probablemente omitiría.
+
+    \item \textbf{Llenado por optimización de la diversidad marginal:} Una vez asegurado el núcleo, el algoritmo completa el dataset de forma iterativa. En cada paso, en lugar de una selección aleatoria, se implementa una \textbf{heurística de puntuación ponderada} para evaluar a todos los candidatos restantes. Se selecciona aquel caso que ofrezca el \textbf{máximo valor marginal}, es decir, el que más contribuya a la diversidad y complejidad del conjunto ya formado. Dicha heurística pondera simultáneamente varios ejes de calidad:
+        \begin{itemize}[nosep]
+            \item \textbf{Maximización de la cobertura taxonómica:} La máxima ponderación se asigna a los casos que introducen un \textbf{capítulo ICD-10} no representado. Este criterio fuerza al dataset a cubrir un espectro amplio de dominios médicos.
+            \item \textbf{Minimización de la redundancia nosológica:} Se bonifica la inclusión de diagnósticos con códigos ICD-10 específicos aún no presentes, evitando la saturación del \textit{benchmark} con patologías comunes.
+            \item \textbf{Balance de fuentes de origen:} Se aplica un factor de corrección que favorece a los casos de fuentes subrepresentadas, mitigando el riesgo de que el dataset final esté dominado por las características de una única colección masiva.
+            \item \textbf{Priorización de la complejidad:} Se premian explícitamente los casos con mayores índices de complejidad y severidad\footnote{Índice entendido no como la gravedad clínica para el paciente, sino como una aproximación a la dificultad diagnóstica, generada mediante un modelo. No se utiliza como métrica de rendimiento directa, pero sí como dimensión auxiliar para la visualización de resultados.} para asegurar que el \textit{benchmark} contenga una proporción significativa de escenarios diagnósticos no triviales.
+        \end{itemize}
+\end{enumerate}
+
+El resultado es un conjunto de pruebas que, a diferencia de una muestra aleatoria, está intencionadamente sesgado hacia la diversidad y la dificultad. Este diseño lo convierte en un \textit{benchmark} con mayor poder discriminativo, capaz de tensionar y diferenciar de manera más fiable las capacidades de razonamiento clínico de los distintos modelos. Una visualización detallada de este proceso de extracción, transformación y carga (ETL) se encuentra en el \textbf{Anexo A}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/00_all_450_diversity_visualized.jpeg}
-    \caption{Distribución de los 450 casos clínicos por capítulos de la codificación \textbf{ICD-10}.}
+    \includegraphics[width=1.0\linewidth]{imgs/00_all_450_diversity_visualized.jpeg}
+    \caption{Distribución de los 450 casos clínicos por capítulos de la codificación \textbf{ICD-10}. El eje X muestra los 21 capítulos del CDX, una clasificación clínica de alto nivel; su función es únicamente referencial dentro del patrón general de resultados.}
     \label{fig:diversity}
 \end{figure}
+
+Cada uno de los 450 casos del dataset fue extraído de un universo clínico mayor (9.600 casos), transformado mediante un \textbf{pipeline de ETL multietapa} documentado dentro del módulo \texttt{data29}. Este proceso incluyó: extracción desde fuentes médicas heterogéneas, limpieza semántica, codificación estandarizada (ICD-10, SNOMED CT), enriquecimiento con metadatos, deduplicación y validación de calidad.
+
+En este contexto, la \textbf{validez del diagnóstico de referencia (GDX)} de cada caso —es decir, la hipótesis clínica que se considera “verdadera” a efectos de evaluación— no fue asumida directamente ni generada ad hoc, sino construida como una verdad clínica operacional. Aunque no se aplicó una revisión manual caso por caso por parte de un panel externo, el proceso incluyó validaciones cruzadas con ontologías médicas, curación selectiva de fuentes y validación contextual automatizada mediante LLMs.
+
+\vspace{2mm}
 
 \section{Evolución de los pipelines de evaluación}
 El desarrollo de nuestro framework de evaluación ha sido un proceso iterativo, donde cada pipeline representó una hipótesis sobre la mejor manera de medir el rendimiento. Esta evolución fue necesaria para confrontar y resolver el fenómeno de la saturación de la tarea.
@@ -219,14 +279,18 @@ El desarrollo de nuestro framework de evaluación ha sido un proceso iterativo, 
 \begin{itemize}[leftmargin=*]
     \item \textbf{PV0:} Fue el primer intento de automatización, utilizando exclusivamente un modelo \textbf{BERT} para medir la similitud semántica. Se aplicó principalmente a modelos de Hugging Face, entre ellos:
     \begin{itemize}
-        \item \textbf{sakura-solar-instruct-carbon-yuk}
-        \item \textbf{llama3-openbiollm-70b-zgh}
-        \item \textbf{jonsnowlabs-medellama-3-8b-v2-0-bfs}
-        \item \textbf{medgemma-27b-text-it}
+    \item \textbf{sakura-solar-instruct-carbon-yuk} [0.2813, 0.6521]
+    \item \textbf{llama3-openbiollm-70b-zgh} [0.3979, 0.6439]
+    \item \textbf{jonsnowlabs-medellama-3-8b-v2-0-bfs} [0.5052, 0.5971]
+    \item \textbf{medgemma-27b-text-it} [0.4318, 0.5782]
     \end{itemize}
-    Su limitación era la incapacidad para entender el contexto clínico o las relaciones jerárquicas, reduciendo la evaluación a una simple comparación de proximidad textual.
 
-    \item \textbf{PV1/PV2 (\textbf{ICD10}+\textbf{BERT}):} Representó un salto en sofisticación al introducir los códigos \textbf{ICD-10} como primer criterio de evaluación. Si la coincidencia de código fallaba, se utilizaba \textbf{BERT} como red de seguridad. Este método, aunque más estructurado, introdujo la ``paradoja del especialista castigado'', penalizando respuestas clínicamente superiores pero terminológicamente más específicas.
+    \vspace{1mm}
+    \footnotesize{\textit{Nota: El primer valor corresponde a una estimación de severidad realizada mediante juicio contextual con GPT; no es el objetivo central del estudio, pero contribuye a estructurar la representación de los resultados y facilita su interpretación. El segundo valor proviene de un modelo BERT que calcula similitud semántica entre enunciados.}}
+
+    \normalsize{}
+    \item \textbf{PV1/PV2 (\textbf{ICD10}+\textbf{BERT}):} Este pipeline introdujo un artefacto metodológico crítico que se produce cuando el evaluador, limitado a una coincidencia de códigos estricta, penaliza una hipótesis diagnóstica por una discrepancia en la \textbf{granularidad taxonómica}, a pesar de su validez clínica\footnote{Por ejemplo, si el modelo propone una entidad nosológica de alta especificidad como ``Glomerulonefritis membranoproliferativa tipo I'' y el diagnóstico de referencia está codificado a un nivel ontológico superior, como ``Síndrome nefrítico crónico'' (ICD-10: N03), el sistema acostumbrará a registrar un fallo.}. En esencia, la evaluación castiga una inferencia clínica superior por su incapacidad para resolver la subsunción semántica inherente a las jerarquías de codificación médica.
+
 
     \item \textbf{PV3 (Juez \textbf{LLM}):} Para corregir la rigidez anterior, este pipeline delegó la evaluación completa a un \textbf{Large Language Model} (\textbf{LLM}) que actuaba como "juez". Su capacidad de razonamiento contextual le permitió entender relaciones clínicas complejas, pero su excesiva "generosidad" llevó a la saturación de los resultados, como se discutirá en la siguiente sección.
 \end{itemize}
@@ -235,12 +299,14 @@ La Figura \ref{fig:v0_v3_comparison} ilustra visualmente la diferencia en las di
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/04_both-together-v0-v4.jpg}
-    \caption{Comparativa de resultados entre \textbf{PV0} (\textbf{BERT}, izquierda) y \textbf{PV3} (Juez \textbf{LLM}, derecha).}
+    \includegraphics[width=1.0\linewidth]{imgs/04_both-together-v0-v4.jpg}
+    \caption{Comparación visual entre los resultados de PV0 y PV3, que representan los extremos del espectro evaluativo: desde una métrica puramente textual (BERT) hasta juicios contextuales realizados por LLMs.}
     \label{fig:v0_v3_comparison}
 \end{figure}
 
-Estas diferencias metodológicas no son triviales; de hecho, son la clave para entender el fenómeno de la saturación. En la siguiente sección se analizan en detalle las lecciones aprendidas de cada pipeline y cómo sus sesgos inherentes nos condujeron al diseño de un sistema de evaluación más robusto.
+Estas diferencias metodológicas no son triviales; de hecho, son la clave para entender el fenómeno de la saturación.
+
+\newpage
 
 \section{Análisis del fenómeno de la saturación de la tarea}
 Durante el desarrollo de nuestros pipelines, nos enfrentamos a un fenómeno tan persistente como problemático: la ``saturación de la tarea''. Con este término describimos la tendencia observada de que modelos de IA de diferentes generaciones y capacidades obtuvieran puntuaciones notablemente similares bajo ciertas métricas, creando una aparente meseta de rendimiento que contradecía el rápido avance teórico del campo. Este fenómeno no es una curiosidad, sino un obstáculo fundamental para la correcta valoración del progreso. Entenderlo es entender las trampas de la evaluación de la IA.
@@ -248,32 +314,16 @@ Durante el desarrollo de nuestros pipelines, nos enfrentamos a un fenómeno tan 
 Este fenómeno se manifestó de formas distintas pero relacionadas en nuestros pipelines intermedios. Fue como observar un objeto distante a través de diferentes lentes: cada lente corregía una distorsión anterior, pero introducía una nueva, hasta que encontramos la combinación correcta que nos permitió ver con claridad.
 
 \subsection{La distorsión de la rigidez: PV2}
-Nuestro primer intento de automatización (\textbf{PV2}) buscaba la objetividad a través de la rigidez de los códigos médicos (\textbf{ICD-10}) y la sinonimia (\textbf{BERT}). El resultado fue un sistema que, si bien era objetivo, era ingenuo. Penalizaba la precisión clínica superior (la ``paradoja del especialista castigado'') y era ciego a cualquier relación que no fuera una equivalencia terminológica. El ranking que producía era claro, pero estaba basado en una visión del mundo clínico excesivamente simplificada. La Figura \ref{fig:pipeline_v2_hist} muestra la distribución de puntuaciones de este sistema: un paisaje de picos discretos, reflejo de su naturaleza binaria, incapaz de capturar los matices.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{imgs/03_first-methodology_V2.jpg}
-    \caption{Histograma de resultados para \textbf{PV2} (\textbf{ICD10}+\textbf{BERT}).}
-    \label{fig:pipeline_v2_hist}
-\end{figure}
+Nuestro primer intento de automatización (\textbf{PV2}) buscaba la objetividad a través de la rigidez de los códigos médicos (\textbf{ICD-10}) y la sinonimia (\textbf{BERT}). El resultado fue un sistema que, si bien era objetivo, era ingenuo. Penalizaba la precisión clínica superior (la ``paradoja del especialista castigado'') y era ciego a cualquier relación que no fuera una equivalencia terminológica. El ranking que producía era claro, pero estaba basado en una visión del mundo clínico excesivamente simplificada. La Figura \ref{fig:v2_vs_v3} muestra la distribución de puntuaciones de este sistema: un paisaje de picos discretos, reflejo de su naturaleza binaria, incapaz de capturar los matices.
 
 \subsection{La distorsión de la generosidad: PV3}
-Para corregir esta rigidez, \textbf{PV3} empleó un Juez \textbf{LLM}, esperando que su capacidad de razonamiento contextual proporcionara una evaluación más matizada. El resultado fue la manifestación más clara de la saturación. Como se observa en la Figura \ref{fig:v3_hist}, las puntuaciones de todos los modelos se inflaron y se agruparon en una franja muy estrecha en el extremo superior de la escala. Un modelo de una generación anterior como \textbf{o1} obtuvo una puntuación casi idéntica a los de vanguardia como \textbf{o3}.
+Para corregir esta rigidez, \textbf{PV3} empleó un Juez \textbf{LLM}, esperando que su capacidad de razonamiento contextual proporcionara una evaluación más matizada. El resultado fue la manifestación más clara de la saturación. Como se observa en la Figura \ref{fig:v2_vs_v3}, las puntuaciones de todos los modelos se inflaron y se agruparon en una franja muy estrecha en el extremo superior de la escala. Un modelo de una generación anterior como \textbf{o1} obtuvo una puntuación casi idéntica a los de vanguardia como \textbf{o3}.
 
 El motivo de este comportamiento es que el Juez \textbf{LLM}, al evaluar la ``plausibilidad clínica'', se había vuelto un evaluador excesivamente generoso. Entendía las relaciones causa-efecto, las manifestaciones clínicas y las asociaciones diagnósticas, y premiaba todas estas conexiones. Al hacerlo, eliminó la distinción crucial entre una respuesta \textbf{correcta y precisa} y una respuesta meramente \textbf{relevante y plausible}. Esta generosidad actuó como un gran ecualizador, borrando las diferencias de rendimiento y creando una falsa meseta. La tarea para los modelos ya no era ser preciso, sino sonar lo suficientemente convincente para otro \textbf{LLM}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{imgs/031_second-methodology_V2.jpg}
-    \caption{Histograma de rendimiento para \textbf{PV3} (Juez \textbf{LLM}), mostrando la saturación de los resultados en la parte alta de la escala.}
-    \label{fig:v3_hist}
-\end{figure}
-
-La Figura \ref{fig:v2_vs_v3} es la evidencia visual más contundente de este efecto. Muestra la transición de un paisaje de puntuaciones dispersas (\textbf{PV2}) a uno de convergencia casi total (\textbf{PV3}).
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{imgs/06_icd10bertvsllmasjudgev3.jpg}
+    \includegraphics[width=0.7\linewidth]{imgs/pv12vspv3_v2.jpg}
     \caption{Comparativa directa de resultados entre el método \textbf{ICD10}+\textbf{BERT} (\textbf{PV2}) y el Juez \textbf{LLM} (\textbf{PV3}).}
     \label{fig:v2_vs_v3}
 \end{figure}
@@ -282,7 +332,7 @@ La Figura \ref{fig:v2_vs_v3} es la evidencia visual más contundente de este efe
 \subsection{La naturaleza de la tarea y la naturaleza de los LLM}
 La raíz de este fenómeno yace en la interacción de tres factores: la \textbf{definición de la tarea}, la \textbf{naturaleza probabilística de los \textbf{LLM}} y el \textbf{criterio de evaluación}. Nuestra tarea, generar una lista de 5 diagnósticos diferenciales, es fundamentalmente una tarea de recuperación y ranking de información, no de creación desde cero. Los \textbf{LLM} modernos, desde \textbf{o1} hasta \textbf{o3}, poseen bases de conocimiento vastas. Con un prompt claro y restrictivo, todos son capaces de identificar un conjunto de diagnósticos plausibles.
 
-La diferencia entre un modelo bueno y uno excelente no reside tanto en \textit{si} puede encontrar el diagnóstico correcto, sino en \textit{con qué prioridad y confianza} lo presenta. \textbf{PV3}, al ser tan generoso, fallaba en medir esta dimensión de confianza. \textbf{PV4} fue diseñado específicamente para resolver este problema, reintroduciendo la rigidez de forma controlada y haciendo de la \textbf{precisión posicional} un criterio de desempate clave. Al hacerlo, finalmente logramos romper la ilusión de la convergencia y medir lo que realmente importa: no solo el acierto, sino la calidad y confianza de ese acierto.
+La diferencia entre un modelo bueno y uno excelente no reside tanto en \textit{si} puede encontrar el diagnóstico correcto, sino en con qué prioridad y confianza lo presenta. \textbf{PV3}, al ser tan generoso, fallaba en medir esta dimensión de priorización. \textbf{PV4} fue diseñado específicamente para resolver este problema, reintroduciendo la rigidez de forma controlada y haciendo de la \textbf{precisión posicional} un criterio de desempate clave. Al hacerlo, finalmente logramos romper la ilusión de la convergencia y medir lo que realmente importa: no solo el acierto, sino la calidad y priorización de ese acierto.
 
 \section{Diseño y lógica de PV4}
 \textbf{PV4} es el resultado de este proceso de aprendizaje. No es un método único, sino un sistema jerárquico que sintetiza las lecciones de sus predecesores, buscando un equilibrio entre la objetividad de los códigos y la inteligencia del análisis semántico.
@@ -298,18 +348,40 @@ El diseño de \textbf{PV4} se fundamentó en un análisis detallado de los resul
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{imgs/v40studyoficd10jerarquy.jpg}
-    \caption{Análisis de las relaciones jerárquicas \textbf{ICD-10} en una muestra de los casos, justificando un scoring más sofisticado para \textbf{PV4}.}
+    \caption{Matriz de transiciones jerárquicas entre el diagnóstico de referencia (GDX) y las propuestas del modelo (DDX), mostrando la frecuencia con que difieren en distintos niveles de la jerarquía CIE-10.}
     \label{fig:icd10hierarchy}
 \end{figure}
+
+Como se observa en la Figura~\ref{fig:icd10hierarchy}, la matriz de transiciones captura con qué frecuencia las predicciones del modelo (\textit{DDX}) divergen del diagnóstico de referencia (\textit{GDX}) a lo largo de los diferentes niveles jerárquicos\footnote{
+Ejemplo ilustrativo de la jerarquía adaptada: 
+\textbf{range}: Lesiones y consecuencias externas $\rightarrow$ 
+\texttt{S};
+\textbf{category}: Lesiones en muñeca y mano $\rightarrow$ 
+\texttt{S60--S69};
+\textbf{block}: Fracturas a nivel de muñeca y mano $\rightarrow$ 
+\texttt{S62};
+\textbf{sub-block}: Fractura de metacarpiano (otro/no especificado) $\rightarrow$ 
+\texttt{S62.3};
+\textbf{group}: Fractura no especificada de metacarpiano $\rightarrow$ 
+\texttt{S62.30};
+\textbf{subgroup}: Fractura no especificada del segundo metacarpiano, encuentro inicial $\rightarrow$ 
+\texttt{S62.301A}.
+}
+ de la CIE-10: desde niveles generales como \textit{Range} (rango) hasta niveles muy específicos como \textit{Subgroup} (subgrupo).
+
+Los colores indican la densidad de ocurrencias: celdas en rojo representan transiciones con alta frecuencia, mientras que los tonos más claros indican menor frecuencia. Es evidente que la mayoría de las discrepancias se dan entre niveles adyacentes, como \textit{Categoría} $\rightarrow$ \textit{Bloque} o \textit{Bloque} $\rightarrow$ \textit{Sub-bloque}, lo cual sugiere que, aunque no se alcance coincidencia exacta, las propuestas del modelo suelen ser jerárquicamente próximas y clínicamente relevantes.
+
+Este hallazgo justifica el diseño de la métrica \textbf{PV4}, que no se limita a validar coincidencias exactas, sino que también reconoce como válidas aquellas predicciones que coinciden con el diagnóstico real en un nivel jerárquicamente relacionado: padre, hijo o hermano. Así, se evita penalizar al modelo por aciertos clínicamente válidos que no coinciden exactamente en código, pero sí en significado médico.
 
 \subsection{Lógica operativa y flujo de decisión}
 La lógica de \textbf{PV4} es una cascada determinista que evalúa cada una de las 5 propuestas diagnósticas (\textbf{DDX}) de un modelo en orden, desde la posición 1 hasta la 5. El proceso se detiene en cuanto encuentra la primera coincidencia válida con el diagnóstico de referencia (\textbf{GDX}), y la puntuación del caso se determina por la posición de ese primer acierto. Esto prioriza la confianza clínica del modelo.
 
 Para cada \textbf{DDX} individual, el pipeline (Figura \ref{fig:pv4_flowchart}) sigue una jerarquía de validación que va de lo más objetivo a lo más interpretativo:
+
 \begin{enumerate}[leftmargin=*, label=\textbf{Nivel \arabic*:}]
     \item \textbf{Verificación por códigos (máxima objetividad):} Se busca una coincidencia de código \textbf{SNOMED CT} (match exacto). Si no se encuentra, se verifica una coincidencia \textbf{ICD-10} (exacta, padre, hijo o hermano). Si cualquiera de estos métodos tiene éxito, el \textbf{DDX} se considera un acierto, el caso se da por resuelto y se registra su posición.
     \item \textbf{Juicio semántico (red de seguridad):} Solo si los códigos fallan, se recurre al análisis semántico. Primero, se evalúa si la similitud del coseno de \textbf{BERT} supera un umbral de alta confianza ($>0.925$). Si es así, se considera un acierto.
-    \item \textbf{Desempate semántico (IA vs. IA):} Si la similitud \textbf{BERT} se encuentra en una zona de incertidumbre ($0.89 < \cos\theta < 0.925$), se activa un juicio competitivo. Se compara el veredicto de \textbf{BERT} con el de un \textbf{Juez LLM}. Si ambos proponen que el \textbf{DDX} es un acierto, se elige aquel que aparezca en la posición más alta de la lista diferencial original, premiando la confianza del modelo. Si solo uno lo aprueba, se acepta ese veredicto. Si ninguno de los dos métodos considera que hay un acierto, el \textbf{DDX} se descarta.
+    \item \textbf{Desempate semántico:} Si la similitud \textbf{BERT} no alcanza el umbral de alta confianza ($<0.89$), se activa un juicio competitivo. Se consulta un \textbf{Juez LLM} que evalúa la relación semántica entre el \textbf{DDX} y el \textbf{GDX}. Si ambos métodos coinciden en que hay un acierto, se elige el diagnóstico que aparece en una posición más alta dentro de la lista original de diferenciales, premiando la capacidad de priorización del modelo. Si solo uno lo valida, se acepta su veredicto. Si ninguno identifica una relación válida, el \textbf{DDX} se descarta.
 \end{enumerate}
 Este proceso se repite para cada \textbf{DDX} en la lista hasta que se encuentra un acierto o se agotan las 5 propuestas.
 
@@ -364,29 +436,22 @@ Antes de analizar el rendimiento de los modelos, es crucial entender el comporta
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{imgs/v4horizontalstackedbarsbymodelacrossmethods.jpg}
-    \caption{Estudio preliminar del desglose de los métodos de resolución del pipeline \textbf{PV4}. Muestra la contribución de cada componente a la validación de aciertos.}
+    \includegraphics[width=0.9\linewidth]{imgs/v4horizontalstackedbarsbymodelacrossmethods_v2.jpg}
+    \caption{Estudio preliminar del desglose de los métodos de resolución del pipeline \textbf{PV4}. Muestra la contribución de cada componente (\textbf{SNOMED match}, \textbf{ICD10 exact-sibling-parent}, \textbf{BERT autoconfirm}, \textbf{BERT match} y \textbf{LLM}) a la validación de aciertos.}
     \label{fig:methods_distribution}
 \end{figure}
 
 \subsection{Optimización de prompts y su impacto en el rendimiento}
-El benchmark no solo permite comparar modelos, sino también la eficacia de diferentes prompts. La sensibilidad de \textbf{PV4} nos ha permitido cuantificar cómo la estructura del prompt influye en la calidad de la respuesta, mostrando patrones clave para la optimización. Las Figuras \ref{fig:prompt_battle_prompt} y \ref{fig:prompt_battle_model} ilustran la variabilidad del rendimiento en función del prompt utilizado para un mismo modelo y viceversa. En el \textbf{Anexo B} se adjuntan los prompts que obtuvieron los mejores resultados.
+El benchmark no solo permite comparar modelos, sino también la eficacia de diferentes prompts. La sensibilidad de \textbf{PV4} nos ha permitido cuantificar cómo la estructura del prompt influye en la calidad de la respuesta, mostrando patrones clave para la optimización. La Figura \ref{fig:prompt_battle_prompt} ilustra la variabilidad del rendimiento en función del prompt utilizado para un mismo modelo y viceversa. En el \textbf{Anexo B} se adjuntan los prompts que obtuvieron los mejores resultados.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{imgs/prompt_battle_by_prompt.jpg}
-    \caption{Comparativa de rendimiento entre diferentes variantes de prompts (las cruces indican ejecuciones con \textbf{o3} y los círculos con \textbf{4o}).}
+    \caption{Comparativa de rendimiento entre diferentes variantes de prompts. Las cruces indican ejecuciones con \textbf{o3} y los círculos con \textbf{4o}; los colores, distintos prompts (para una versión de esta gráfica con cada prompt identificado por su nombre, facilitando un análisis más granular, véase el \textbf{Anexo C}.).}
     \label{fig:prompt_battle_prompt}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{imgs/prompt_battle_by_model.jpg}
-    \caption{Comparativa de rendimiento entre diferentes modelos bajo un mismo prompt (en rojo se muestran los prompts ejecutados con el modelo \textbf{o3}, en azul los de \textbf{4o}; las líneas discontinuas conectan los prompts que se probaron en ambos modelos para visualizar la diferencia de rendimiento).}
-    \label{fig:prompt_battle_model}
-\end{figure}
-
-Un análisis más detallado sobre el tipo de salida solicitado en el prompt arroja conclusiones significativas:
+Un análisis más detallado sobre el tipo de salida solicitado en el prompt arroja conclusiones significativas (Tabla \ref{tab:prompt_format_impact}). Exigir un razonamiento explícito, como listar síntomas a favor y en contra, produce el mejor equilibrio entre posición promedio y tasa de acierto. En contraste, sobrecargar el modelo pidiendo campos como \texttt{confidence} o \texttt{rationale} degrada el rendimiento de la tarea principal.
 
 \begin{table}[H]
 \centering
@@ -404,12 +469,11 @@ Objeto con síntomas + envoltura XML & 3 & 1.560 & 93.48\% \\
 \end{tabularx}
 \end{table} 
 
-Además del formato de salida, la longitud del prompt es otro factor determinante. El análisis sobre 24 variantes (7 para \textbf{o3} y 17 para \textbf{4o}) muestra que la longitud y la complejidad del output interactúan de forma decisiva. En promedio, añadir 50 palabras a un prompt mejora la tasa de acierto en unos 3 puntos porcentuales. Los prompts cortos (<80 palabras) rinden un 76.1\%, los de longitud media (80-160 palabras) un 86.3\%, y los largos (>160 palabras) un 92.9\%, acumulando una ganancia de hasta 16.8 puntos por longitud. Sin embargo, esta mejora puede verse anulada por la complejidad de la salida. Al controlar la longitud (120-140 palabras), exigir campos adicionales como \texttt{rationale} o \texttt{confidence} provoca una caída de la precisión de hasta 22 puntos porcentuales frente a formatos de salida más simples (p.ej., de 95-97\% a 67-76\%). Esto indica que la penalización por un formato de salida complejo puede pesar más que el beneficio obtenido por un prompt más largo y detallado.
+Además, se observó que la longitud y la complejidad del prompt interactúan de forma decisiva. Los prompts más largos ($>160$ palabras) tienden a mejorar la tasa de acierto, pero este beneficio se anula si el formato de salida es demasiado complejo. Finalmente, incluir cláusulas "failsafe'' en el prompt principal penaliza ligeramente el rendimiento, sugiriendo que la validación del tipo de input debe ser un paso previo.
 
-Finalmente, se analizó el efecto de incluir una cláusula "failsafe" en el prompt (p. ej., \textit{"FAILSAFE: If the input is not a clinical case, output []"}). De 24 plantillas, 10 la incluían. La tasa de acierto media para estos prompts fue del 83.1\%, inferior a la media global (86.9\%), sugiriendo una ligera penalización. Esto indica que la validación del tipo de input debería gestionarse mediante un algoritmo previo, más simple y rápido, en lugar de sobrecargar el prompt principal.
 
-\subsection{Ranking final de modelos y análisis comparativo}
-Tras la fase de optimización de prompts, se procedió a la evaluación final de los modelos. Los parámetros presentados en la Tabla \ref{tab:final_ranking} son el resultado de un proceso de agregación estadística. Se obtuvieron promediando los resultados de múltiples ejecuciones, filtrando por modelo para obtener estimadores robustos y representativos de su rendimiento general, mitigando así la variabilidad inherente a una única configuración.
+\subsection{Análisis comparativo y ranking final de modelos}
+El análisis culmina con la comparación directa de los modelos, utilizando los datos agregados de múltiples ejecuciones para mitigar la variabilidad. La Tabla \ref{tab:final_ranking} presenta los resultados consolidados.
 
 \begin{table}[H]
 \centering
@@ -427,7 +491,13 @@ Aciertos en Posición 5 (P5) & \textbf{9} & 17 & 24 & 20 \\
 \end{tabularx}
 \end{table}
 
-Los resultados muestran una interesante dicotomía: el modelo \textbf{o3-pro} alcanza la mayor tasa de acierto global (96.4\%), pero es el modelo \textbf{o3} el que demuestra una confianza clínica superior, con la mejor posición promedio (1.474) y el mayor número de aciertos en primera posición (311). La Figura \ref{fig:top_positions} visualiza esta ventaja posicional de \textbf{o3}, que relega el acierto a la última posición con mucha menos frecuencia que sus competidores.
+A primera vista, los resultados exhiben una dicotomía: \textbf{o3-pro} obtiene la máxima tasa de acierto, mientras que \textbf{o3} logra la mejor posición promedio. Un análisis estadístico y cualitativo es indispensable para resolver esta tensión y determinar el verdadero rendimiento.
+
+\subsubsection{Confianza y estabilidad estadísticas}
+
+La métrica más relevante para la utilidad clínica es la \textbf{posición promedio}, pues indica la capacidad de priorización del modelo. Aquí, \textbf{o3} lidera de forma contundente (1.474). Un test de significancia estadística (Prueba U de Mann-Whitney) contra su rival más cercano, \textbf{o3-pro} (1.597), arroja un \textbf{valor p $<$ 0.001}. Esto confirma que la superioridad de \textbf{o3} en la priorización del diagnóstico es \textbf{estadísticamente muy significativa} y no fruto del azar.
+
+Esta calidad de priorización se refleja en el número de aciertos en primera posición (P1), donde \textbf{o3} también lidera con 311 casos, como se visualiza en la Figura \ref{fig:top_positions}.
 
 \begin{figure}[H]
     \centering
@@ -436,27 +506,13 @@ Los resultados muestran una interesante dicotomía: el modelo \textbf{o3-pro} al
     \label{fig:top_positions}
 \end{figure}
 
-\subsubsection{Análisis de estabilidad del rendimiento}
-Para profundizar en la robustez de los modelos, se analizó la variabilidad de su rendimiento a través de diferentes prompts. La Tabla \ref{tab:stability} compara directamente \textbf{o3} y \textbf{4o}.
+Además, \textbf{o3} demuestra una \textbf{estabilidad} superior. Al comparar la variabilidad de su rendimiento frente al modelo más reciente, \textbf{4o}, se observa que el coeficiente de variación (CV) de la tasa de acierto de \textbf{o3} (0.026) es cuatro veces menor que el de \textbf{4o} (0.106). Esto convierte a \textbf{o3} en un modelo mucho más predecible y robusto para entornos de producción.
 
-\begin{table}[H]
-\centering
-\caption{Análisis de estabilidad del rendimiento entre \textbf{o3} y \textbf{4o}.}
-\label{tab:stability}
-\begin{tabularx}{\linewidth}{Xccc}
-\toprule
-\textbf{Modelo} & \textbf{Nº Prompts (n)} & \textbf{PPos Media ($\mu \pm \sigma$)} & \textbf{\% Acierto ($\mu \pm \sigma$)} \\ 
-\midrule
-\textbf{o3} & 7 & 1.474 $\pm$ 0.083 & 93.65\% $\pm$ 2.46 \\
-\textbf{4o} & 17 & 1.629 $\pm$ 0.066 & 84.31\% $\pm$ 8.91 \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\subsubsection{Cobertura en la tasa de aciertos}
 
-El análisis muestra que el rendimiento de \textbf{o3} no solo es superior en promedio, sino también mucho más estable. Su coeficiente de variación (CV) para la tasa de acierto es de \textbf{0.026}, mientras que el de \textbf{4o} es de \textbf{0.106}. Esto significa que \textbf{la variabilidad de \textbf{4o} cuadruplica la de \textbf{o3}}, lo que lo hace menos predecible y consistente en entornos de producción donde la fiabilidad es crítica.
+Aunque \textbf{o3-pro} presenta una tasa de acierto nominalmente superior (96.40\% vs. 93.65\%), un análisis estadístico (Test Z para dos proporciones) revela que esta diferencia no es significativa, con un \textbf{valor p de 0.11}. Al ser p $>$ 0.05, no podemos concluir que \textbf{o3-pro} sea realmente superior en cobertura; la diferencia observada es probablemente casual.
 
-\subsubsection{Desglose del método de resolución por modelo}
-\textbf{PV4} nos permite ver la utilidad validadora de cada modelo. El análisis (Figura \ref{fig:casecount_method}) muestra que \textbf{o3} basa su éxito en una mayor disciplina taxonómica. Por el contrario, \textbf{o3-pro} necesita un mayor apoyo semántico y presenta una cola más larga de aciertos en posiciones tardías (P4-P5), lo que sugiere que obtiene cobertura a costa de la precisión en el ranking.
+El desglose de los métodos de resolución (Figura \ref{fig:casecount_method}) explica cómo \textbf{o3-pro} alcanza esta aparente ventaja. El modelo se apoya más en el "juicio semántico del LLM", un método más flexible, mientras que \textbf{o3} basa una mayor proporción de sus aciertos en la disciplina taxonómica de los códigos \textbf{SNOMED} e \textbf{ICD10}. En esencia, \textbf{o3-pro} "compra" una cobertura marginalmente mayor (y estadísticamente no significativa) a costa de sacrificar la precisión en el ranking y la rigurosidad metodológica.
 
 \begin{figure}[H]
     \centering
@@ -469,7 +525,7 @@ El análisis muestra que el rendimiento de \textbf{o3} no solo es superior en pr
 La metodología incremental documentada en este informe nos ha llevado a una conclusión compleja y matizada. Si bien \textbf{PV4} representa nuestro esfuerzo más sofisticado por medir el rendimiento de la IA diagnóstica, sus resultados, lejos de ofrecer una respuesta definitiva, nos enfrentan a una manifestación aún más sutil del fenómeno de la saturación de la tarea.
 
 \subsection{Análisis crítico de los resultados de PV4}
-A primera vista, \textbf{PV4} establece una jerarquía clara. Sin embargo, una mirada más crítica muestra un panorama complejo. El modelo \textbf{o3-pro} alcanza la máxima tasa de acierto, pero a costa de una peor priorización y mayor dependencia de la evaluación semántica. Por otro lado, \textbf{o3} emerge como el modelo más confiable y estable, con la mejor posición promedio y la menor variabilidad entre prompts. Esta tensión entre \textbf{cobertura (\textbf{o3-pro}) y confianza (\textbf{o3})} es un hallazgo clave.
+A primera vista, \textbf{PV4} establece una jerarquía clara. Sin embargo, una mirada más crítica muestra un panorama complejo. El modelo \textbf{o3-pro} alcanza la máxima tasa de acierto, pero a costa de una peor priorización y mayor dependencia de la evaluación semántica. Por otro lado, \textbf{o3} emerge como el modelo con el \textbf{rendimiento más estable y predecible}, con la mejor posición promedio y la menor variabilidad entre prompts. Esta tensión entre \textbf{cobertura (\textbf{o3-pro}) y calidad de priorización (\textbf{o3})} es un hallazgo clave.
 
 La diferencia en la tasa de acierto entre los modelos de alto rendimiento es relativamente estrecha, lo que podría interpretarse como una señal de saturación. Planteamos la siguiente hipótesis: el dataset de 450 casos, a pesar de su diversidad, podría estar concentrado en un espectro de dificultad que se resuelve mediante un "reconocimiento de patrones" altamente sofisticado, más que un "razonamiento de primeros principios". Si la mayoría de los casos se resuelven identificando constelaciones de síntomas que los modelos ya han internalizado masivamente, es lógico que converjan en rendimiento. La tarea no estaría midiendo su capacidad de ``pensar'', sino la exhaustividad de su ``memoria'' de patrones clínicos.
 
@@ -516,19 +572,40 @@ El dataset final de 450 casos utilizado para la evaluación comparativa de los m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{imgs/08_etl_visualized_as_sankey_at_20250708.png}
+    \includegraphics[width=1.0\linewidth]{imgs/08_etl_visualized_as_sankey_at_20250708.png}
     \caption{Diagrama de Sankey que visualiza el proceso de ETL para la composición del dataset de evaluación de 450 casos a partir de las fuentes originales.}
     \label{fig:sankey_appendix}
 \end{figure}
 
 \newpage
+
+
+\section{Análisis detallado del rendimiento por prompt}
+\label{app:prompt_comparison}
+
+La siguiente figura ofrece una versión detallada y etiquetada de la Figura \ref{fig:prompt_battle_prompt} del cuerpo principal del informe. Esta visualización permite correlacionar directamente el rendimiento (posición promedio y tasa de acierto) de cada punto de datos con un prompt específico, cuyos textos completos se pueden consultar en el Anexo C.
+
+Para garantizar la total transparencia y reproducibilidad de este estudio, el código fuente completo de todos los prompts, así como los scripts de evaluación y los datasets anonimizados, están disponibles en el repositorio público del proyecto en GitHub.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{imgs/prompt_battle_by_prompt_labeled.jpg}
+\caption{
+Comparativa etiquetada del rendimiento entre distintos prompts. Cada etiqueta identifica un prompt específico empleado durante las ejecuciones (los nombres pueden incluir referencias a modelos, pero únicamente reflejan la base sobre la que se realizaron ajustes evolutivos en el diseño del prompt, sin implicar un cambio de modelo subyacente).
+}
+
+\label{fig:prompt_battle_labeled}
+\end{figure}
+
+\newpage
+
 \section{Prompts con mayor rendimiento}
 \label{app:prompts}
 A continuación se presentan los prompts que obtuvieron los mejores resultados para los modelos \textbf{o3} y \textbf{4o}, junto con sus puntuaciones de rendimiento (posición promedio y tasa de acierto).
 
 \subsection{Mejores prompts para \textbf{o3} (TOP4)}
 
-\subsubsection*{diagnosis\_description\_symptoms\_classic\_v2}
+\subsubsection*{classic\_v2}
 \textbf{Puntuación: 1.326 - 92.7\%}
 \begin{verbatim}
 You are a diagnostic assistant. Given the patient case below, generate N possible diagnoses. For each:
@@ -562,7 +639,7 @@ PATIENT DESCRIPTION:
 {case_description}
 \end{verbatim}
 
-\subsubsection*{diagnosis\_description\_symptoms\_classic\_v4}
+\subsubsection*{classic\_v4}
 \textbf{Puntuación: 1.422 - 90.7\%}
 \begin{verbatim}
 You are a diagnostic assistant. Given the patient case below, generate N possible diagnoses. For each:
@@ -596,7 +673,7 @@ PATIENT DESCRIPTION:
 {case_description}
 \end{verbatim}
 
-\subsubsection*{juanjo\_v1 (original)}
+\subsubsection*{classic\_v1 (original)}
 \textbf{Puntuación: 1.468 - 94.35\%}
 \begin{verbatim}
 Behave like a hypothetical doctor tasked with providing N hypothesis diagnosis for a
@@ -663,10 +740,10 @@ CASE: {case_description}
 
 \subsection{Mejores prompts para \textbf{4o} (TOP4)}
 
-\subsubsection*{\textit{diagnosis\_description\_symptoms\_classic\_v2}}
+\subsubsection*{\textit{classic\_v2}}
 \textit{Este prompt, ya presentado en la sección anterior, también obtiene el mejor rendimiento para el modelo \textbf{4o}.}
 
-\subsubsection*{juanjo\_v1 (sin \texttt{description})}
+\subsubsection*{classic\_v1 (sin \texttt{description})}
 \begin{verbatim}
 Behave like a hypothetical doctor tasked with providing N hypothesis diagnosis for a
 patient based on their description. Your goal is to generate a list of N potential  
