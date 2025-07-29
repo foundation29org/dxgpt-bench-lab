@@ -48,6 +48,8 @@ Testing revealed clear performance differences between AI models:
 ## Further Reading
 
 For deeper understanding:
+- 📄 **[Complete Research Study](bench/__conceptual-model-and-research-notes/evaluacion_modelos_llm_diagnostico_pediatrico_pipeline_pv4.md)** - Comprehensive research paper with methodology, statistical analysis, and findings
+- 🔬 **[Pipeline V4 - Advanced Evaluation System](bench/pipelines/pipeline_v4%20-%20fork/main/)** - State-of-the-art diagnostic AI evaluation pipeline with dual methodology  
 - [Conceptual model and research findings](bench/__conceptual-model-and-research-notes/)
 - [Pipeline methodology details](bench/pipelines/)
 - [Data processing documentation](data29/)
