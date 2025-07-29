@@ -2,25 +2,69 @@
 
 ## Overview
 
-This is a modular medical diagnosis evaluation pipeline that:
-1. Generates differential diagnoses (DDX) using LLM models
-2. Attributes medical codes (ICD-10, SNOMED, OMIM, ORPHA) using Azure Text Analytics
-3. Evaluates DDX quality against reference diagnoses (GDX)
+This is the fourth iteration of our medical diagnosis evaluation pipeline, representing the culmination of extensive research and development in pediatric diagnostic AI assessment. The pipeline evolved through multiple iterations (PV0-PV4) to address critical methodological challenges in evaluating LLM-based diagnostic systems.
+
+### Pipeline Evolution and Study Context
+
+This evaluation framework was developed through a comprehensive study involving 9,677 total medical cases curated from multiple specialized datasets including pediatric emergency medicine, rare diseases (RAMEDIS), and clinical vignettes. The final validated dataset of 450 cases represents a carefully stratified sample ensuring:
+
+- **Diagnostic diversity**: 497 unique diagnoses across 22 ICD-10 chapters
+- **Complexity representation**: Cases ranging from C2 to C10 complexity levels  
+- **Multi-diagnostic scenarios**: 31.8% of cases with multiple concurrent diagnoses
+- **Source heterogeneity**: Integration of 7 distinct medical data sources (B, J, Q, R, S, T, U)
+
+The pipeline architecture addresses three critical evaluation phases:
+1. **Differential Diagnosis Generation (DDX)** using state-of-the-art LLM models
+2. **Medical Code Attribution** using Azure Text Analytics for standardized coding (ICD-10, SNOMED, OMIM, ORPHA)
+3. **Quality Evaluation** against gold standard reference diagnoses (GDX) using both BERT semantic matching and LLM-based judgment
+
+### Key Research Findings
+
+Our comprehensive evaluation across multiple model architectures revealed significant performance variations:
+
+- **O3-Images**: Leading performance with 93.65% accuracy in top-3 diagnostic predictions
+- **GPT-4O-Summary**: Strong baseline performance at 84.31% accuracy  
+- **O3-PRO**: Specialized variant showing 88.8% accuracy but with specific failure patterns
+- **O1**: Advanced reasoning model achieving competitive diagnostic accuracy
+
+![Model Performance Comparison](../../__conceptual-model-and-research-notes/imgs/modelos_openai_rojos.jpg)
+
+The study identified critical insights into diagnostic AI evaluation methodology, bias detection, and the importance of position-based ranking metrics in medical diagnostic systems.
 
 ## Components
 
 ### Core Files
 
-- **`main.py`** - Pipeline orchestrator with state management
-- **`emulator.py`** - DDX generation using LLM models
-- **`medlabeler.py`** - Medical code attribution using Azure Text Analytics
-- **`evaluator.py`** - DDX quality evaluation against GDX
-- **`config.yaml`** - Configuration file with all parameters
+- **`main.py`** - Pipeline orchestrator with state management and interactive decision points
+- **`emulator.py`** - DDX generation using various LLM models (GPT-4O, O3, O1, Claude)
+- **`medlabeler.py`** - Medical code attribution using Azure Text Analytics for standardized coding
+- **`evaluator.py`** - Comprehensive DDX quality evaluation against GDX using dual methodology
+- **`config.yaml`** - Configuration file with all parameters and model specifications
 
 ### Utility Files
 
 - **`validate.py`** - Configuration and component validation
-- **`README.md`** - This documentation
+- **`watch.py`** - Real-time monitoring and progress tracking
+- **`README.md`** - This comprehensive documentation
+
+## Methodological Innovation
+
+Pipeline V4 represents significant methodological advances over previous iterations:
+
+### PV0 → PV4 Evolution
+- **PV0**: Basic LLM-to-LLM evaluation with inherent bias
+- **PV2**: Introduction of BERT semantic matching for objective assessment
+- **PV3**: Dual evaluation methodology combining BERT + LLM judgment
+- **PV4**: Refined architecture with bias detection and statistical validation
+
+### Evaluation Methodology
+The pipeline employs a sophisticated dual-track evaluation:
+
+1. **BERT Semantic Matching**: Objective similarity assessment with configurable thresholds (0.80 acceptance, 0.90 auto-confirm)
+2. **LLM Judgment**: Contextual evaluation for cases where semantic matching is insufficient
+3. **Statistical Validation**: Comprehensive metrics including position-based ranking, confidence intervals, and effect size calculations
+
+![Pipeline Evolution](../../__conceptual-model-and-research-notes/imgs/pv12vspv3.jpg)
 
 ## Configuration
 

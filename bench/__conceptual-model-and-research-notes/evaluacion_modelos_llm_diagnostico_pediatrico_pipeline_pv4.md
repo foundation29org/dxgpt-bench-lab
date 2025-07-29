@@ -234,7 +234,11 @@ Cada uno de los 450 casos del dataset fue extraído de un universo clínico mayo
 
 En este contexto, la \textbf{validez del diagnóstico de referencia (GDX)} de cada caso —es decir, la hipótesis clínica que se considera “verdadera” a efectos de evaluación— no fue asumida directamente ni generada ad hoc, sino construida como una verdad clínica operacional. Aunque no se aplicó una revisión manual caso por caso por parte de un panel externo, el proceso incluyó validaciones cruzadas con ontologías médicas, curación selectiva de fuentes y validación contextual automatizada mediante LLMs.
 
-\vspace{2mm}
+\begin{quote}
+\small{Sobre la univalencia del diagnóstico de referencia, es crucial reconocer una limitación inherente al diseño de este y otros benchmarks similares: la asunción de un único diagnóstico de referencia (GDX) para cada caso. La práctica clínica real a menudo admite la \textbf{equifinalidad diagnóstica}, donde múltiples condiciones pueden explicar razonablemente un mismo cuadro clínico, especialmente en fases tempranas. El modelo de un único GDX no tiene en cuenta esta complejidad. Un modelo de IA podría proponer un diagnóstico alternativo perfectamente válido desde el punto de vista clínico que, al no coincidir con el GDX predefinido, sería incorrectamente penalizado por el pipeline \textbf{PV4}. Por ejemplo, ante un cuadro de dolor torácico agudo, tanto una ``pericarditis aguda'' como una ``disección aórtica'' podrían ser hipótesis plausibles dependiendo de los matices. Si el GDX es el primero y el modelo prioriza el segundo, \textbf{PV4} lo registraría como un fallo en la primera posición. Esta limitación, aunque común, es particularmente relevante en un estudio que busca medir la sutileza del juicio clínico y debe ser tenida en cuenta al interpretar la tasa de acierto bruta.}
+\end{quote}
+
+\newpage
 
 \section{Evolución de los pipelines de evaluación}
 El desarrollo de nuestro framework de evaluación ha sido un proceso iterativo, donde cada pipeline representó una hipótesis sobre la mejor manera de medir el rendimiento. Esta evolución fue necesaria para confrontar y resolver el fenómeno de la saturación de la tarea.
@@ -313,10 +317,10 @@ Durante el desarrollo de nuestros pipelines, nos enfrentamos a un fenómeno tan 
 
 Este fenómeno se manifestó de formas distintas pero relacionadas en nuestros pipelines intermedios. Fue como observar un objeto distante a través de diferentes lentes: cada lente corregía una distorsión anterior, pero introducía una nueva, hasta que encontramos la combinación correcta que nos permitió ver con claridad.
 
-\subsection{La distorsión de la rigidez: PV2}
+\subsection{La distorsión de la rigidez (PV2)}
 Nuestro primer intento de automatización (\textbf{PV2}) buscaba la objetividad a través de la rigidez de los códigos médicos (\textbf{ICD-10}) y la sinonimia (\textbf{BERT}). El resultado fue un sistema que, si bien era objetivo, era ingenuo. Penalizaba la precisión clínica superior (la ``paradoja del especialista castigado'') y era ciego a cualquier relación que no fuera una equivalencia terminológica. El ranking que producía era claro, pero estaba basado en una visión del mundo clínico excesivamente simplificada. La Figura \ref{fig:v2_vs_v3} muestra la distribución de puntuaciones de este sistema: un paisaje de picos discretos, reflejo de su naturaleza binaria, incapaz de capturar los matices.
 
-\subsection{La distorsión de la generosidad: PV3}
+\subsection{La distorsión de la generosidad: (PV3)}
 Para corregir esta rigidez, \textbf{PV3} empleó un Juez \textbf{LLM}, esperando que su capacidad de razonamiento contextual proporcionara una evaluación más matizada. El resultado fue la manifestación más clara de la saturación. Como se observa en la Figura \ref{fig:v2_vs_v3}, las puntuaciones de todos los modelos se inflaron y se agruparon en una franja muy estrecha en el extremo superior de la escala. Un modelo de una generación anterior como \textbf{o1} obtuvo una puntuación casi idéntica a los de vanguardia como \textbf{o3}.
 
 El motivo de este comportamiento es que el Juez \textbf{LLM}, al evaluar la ``plausibilidad clínica'', se había vuelto un evaluador excesivamente generoso. Entendía las relaciones causa-efecto, las manifestaciones clínicas y las asociaciones diagnósticas, y premiaba todas estas conexiones. Al hacerlo, eliminó la distinción crucial entre una respuesta \textbf{correcta y precisa} y una respuesta meramente \textbf{relevante y plausible}. Esta generosidad actuó como un gran ecualizador, borrando las diferencias de rendimiento y creando una falsa meseta. La tarea para los modelos ya no era ser preciso, sino sonar lo suficientemente convincente para otro \textbf{LLM}.
@@ -534,6 +538,15 @@ La consistencia de los resultados a través de 450 casos diversos y múltiples v
 
 En este contexto, \textbf{PV4} ha demostrado tener un poder discriminativo suficiente no solo para rankear modelos, sino para caracterizar sus perfiles de rendimiento (p. ej., estabilidad, confianza vs. cobertura) y para guiar la ingeniería de prompts.
 
+\subsection{El riesgo del sesgo autorreferencial en el juicio semántico}
+\label{sec:llm_bias}
+
+El sistema de evaluación en tres etapas de PV4 reduce en gran medida las discrepancias determinísticas y semánticas que afectaban a evaluaciones anteriores. No obstante, el Nivel 3 sigue resolviendo una pequeña fracción de empates recurriendo a un juez LLM independiente. Dado que este juez es, en sí mismo, un modelo de lenguaje, existe —al menos en principio— la posibilidad de que favorezca respuestas cuya redacción, estilo de razonamiento o representaciones latentes se asemejen a las suyas propias, en lugar de valorar exclusivamente la corrección clínica.
+
+Para asegurarnos de que este riesgo de "homofilia" se mantuviera en el plano teórico y no práctico, instrumentamos el sistema para registrar cada vez que se invocaba al juez LLM, junto con las respuestas candidatas y la justificación ofrecida por el juez. Posteriormente, analizamos una muestra de estos casos de forma manual y los contrastamos con etiquetas de referencia.
+
+Dado que estas medidas de control formaron parte del flujo de análisis desde el principio, tenemos la confianza de que cualquier posible sesgo autorreferencial residual es insignificante en comparación con el desempeño diagnóstico observable. En resumen, el juez LLM actúa como un mecanismo de respaldo útil, sin distorsionar la clasificación general de los modelos.
+
 \section{Conclusiones}
 
 El proceso iterativo de diseño y validación de pipelines nos ha proporcionado una comprensión profunda no solo del rendimiento de los modelos, sino de la naturaleza misma de la evaluación de IA en un dominio tan complejo como el diagnóstico clínico. Las conclusiones se pueden estructurar en tres áreas clave: el rendimiento de los modelos, las lecciones sobre la metodología y las directrices para la ingeniería de prompts.
@@ -608,7 +621,8 @@ A continuación se presentan los prompts que obtuvieron los mejores resultados p
 \subsubsection*{classic\_v2}
 \textbf{Puntuación: 1.326 - 92.7\%}
 \begin{verbatim}
-You are a diagnostic assistant. Given the patient case below, generate N possible diagnoses. For each:
+You are a diagnostic assistant. Given the patient case below, generate N possible
+diagnoses. For each:
 
 - Give a brief description of the disease  
 - List symptoms the patient has that match the disease  
@@ -642,7 +656,8 @@ PATIENT DESCRIPTION:
 \subsubsection*{classic\_v4}
 \textbf{Puntuación: 1.422 - 90.7\%}
 \begin{verbatim}
-You are a diagnostic assistant. Given the patient case below, generate N possible diagnoses. For each:
+You are a diagnostic assistant. Given the patient case below, generate N possible
+diagnoses. For each:
 
 - Give a brief description of the disease  
 - List symptoms the patient has that match the disease  
