@@ -86,6 +86,12 @@ def get_file_names(config: Dict[str, Any]) -> Dict[str, str]:
     prompt_path = config['DXGPT_EMULATOR']['CANDIDATE_PROMPT_PATH']
     prompt_name = os.path.splitext(os.path.basename(prompt_path))[0]
     
+    # Add reasoning_effort to model name if present
+    params = config['DXGPT_EMULATOR'].get('PARAMS', {})
+    reasoning_effort = params.get('reasoning_effort')
+    if reasoning_effort:
+        model_name = f"{model_name}_{reasoning_effort}"
+    
     # Clean names for filenames
     clean_dataset = clean_name_for_filename(dataset_name)
     clean_prompt = clean_name_for_filename(prompt_name)

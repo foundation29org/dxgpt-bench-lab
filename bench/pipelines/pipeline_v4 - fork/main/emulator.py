@@ -47,8 +47,8 @@ class DXGPTEmulator:
         self.emulator_config = config['DXGPT_EMULATOR']
         self.logger = logger
         
-        # Initialize LLM
-        self.llm = get_llm(self.emulator_config['MODEL'])
+        # Initialize LLM with logger
+        self.llm = get_llm(self.emulator_config['MODEL'], logger=self.logger)
         
         # Load prompt template
         self.prompt_template = self._load_prompt_template()
@@ -265,9 +265,7 @@ class DXGPTEmulator:
                         self.logger.info(f"Successfully parsed using ast.literal_eval for case {case_id}")
                 except (ValueError, SyntaxError) as literal_error:
                     error_msg = f"Failed to parse response for case {case_id}"
-                    print(f"WARNING: {error_msg}")
-                    print(f"WARNING: Response preview: {str(response)[:200]}...")
-                    print(f"TIP: If LLM returns unexpected format, check if OUTPUT_SCHEMA conflicts with prompt instructions")
+                    print(f"WARNING: {error_msg} - Response: {str(response)[:50]}...")
                     
                     if self.logger:
                         self.logger.error(f"PARSING_FAILURE: {error_msg}")
@@ -496,9 +494,9 @@ class DXGPTEmulator:
             # Generate DDX
             ddx_list, raw_response = self._generate_ddx_for_case(case)
             
-            # Display the raw response object
-            print(f"RAW_RESPONSE: {raw_response}")
-            print(f"PARSED_DDX: {ddx_list}")
+            # Display minimal response info
+            response_preview = str(raw_response)[:100] + "..." if len(str(raw_response)) > 100 else str(raw_response)
+            print(f"RESPONSE: {response_preview} | DDX_COUNT: {len(ddx_list)}")
             
             # Log detailed raw response
             if self.logger:

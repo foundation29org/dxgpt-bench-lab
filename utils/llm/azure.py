@@ -189,6 +189,9 @@ class RequestBuilder:
         self.config = config
         self.batch_processor = BatchProcessor()
         self.is_o3_model = is_o3_model
+        # Detect GPT-5 models which require max_completion_tokens
+        deployment_name = config.deployment_name or ""
+        self.is_gpt5_model = 'gpt-5' in deployment_name.lower() or 'gpt5' in deployment_name.lower()
     
     def build(
         self,
@@ -247,7 +250,11 @@ class RequestBuilder:
             
             # Add optional parameters for o3
             if max_tokens is not None:
-                request["max_tokens"] = max_tokens
+                # GPT-5 models require max_completion_tokens instead of max_tokens
+                if self.is_gpt5_model:
+                    request["max_completion_tokens"] = max_tokens
+                else:
+                    request["max_tokens"] = max_tokens
         else:
             # Standard request format for non-o3 models
             request = {
@@ -257,11 +264,16 @@ class RequestBuilder:
             
             # Add optional parameters
             final_temp = temperature if temperature is not None else self.config.temperature
-            if final_temp is not None:
+            if final_temp is not None and not self.is_gpt5_model:
+                # GPT-5 models only support temperature=1 (default), so we skip it
                 request["temperature"] = final_temp
                 
             if max_tokens is not None:
-                request["max_tokens"] = max_tokens
+                # GPT-5 models require max_completion_tokens instead of max_tokens
+                if self.is_gpt5_model:
+                    request["max_completion_tokens"] = max_tokens
+                else:
+                    request["max_tokens"] = max_tokens
                 
             if schema is not None:
                 request["response_format"] = schema.azure_format
@@ -275,9 +287,63 @@ class ResponseProcessor:
     """Handles response parsing and error recovery."""
     
     @staticmethod
-    def process(response, expect_json: bool = False, is_batch: bool = False) -> Union[str, Dict[str, Any], List[Any]]:
+    def process(response, expect_json: bool = False, is_batch: bool = False, logger=None) -> Union[str, Dict[str, Any], List[Any]]:
         """Process API response with graceful JSON parsing."""
+        
         content = response.choices[0].message.content
+        
+        # Extract and log token usage and reasoning details
+        usage = getattr(response, 'usage', None)
+        finish_reason = response.choices[0].finish_reason
+        
+        if usage:
+            prompt_tokens = usage.prompt_tokens
+            completion_tokens = usage.completion_tokens
+            total_tokens = usage.total_tokens
+            
+            # Extract reasoning tokens if available (GPT-5 specific)
+            reasoning_tokens = 0
+            if hasattr(usage, 'completion_tokens_details') and usage.completion_tokens_details:
+                reasoning_tokens = getattr(usage.completion_tokens_details, 'reasoning_tokens', 0)
+            
+            # Log token usage info
+            token_info = f"TOKENS: prompt={prompt_tokens}, completion={completion_tokens}"
+            if reasoning_tokens > 0:
+                final_response_tokens = completion_tokens - reasoning_tokens
+                token_info += f" (reasoning={reasoning_tokens}, response={final_response_tokens})"
+            token_info += f", total={total_tokens}, finish_reason={finish_reason}"
+            
+            # Log to both console and logger
+            print(token_info)
+            if logger:
+                logger.info(token_info)
+            
+            # Log reasoning content if available (for debugging)
+            if reasoning_tokens > 0 and hasattr(response, 'choices') and response.choices:
+                choice = response.choices[0]
+                if hasattr(choice, 'message') and hasattr(choice.message, 'reasoning'):
+                    reasoning_content = getattr(choice.message, 'reasoning', None)
+                    if reasoning_content:
+                        reasoning_msg = f"REASONING: {reasoning_content[:200]}..." if len(reasoning_content) > 200 else f"REASONING: {reasoning_content}"
+                        print(reasoning_msg)
+                        if logger:
+                            logger.info(reasoning_msg)
+        
+        # Handle GPT-5 cases where content might be None or empty string
+        if content is None or content == '':
+            message = response.choices[0].message
+            if hasattr(message, 'refusal') and message.refusal:
+                refusal_msg = f"WARNING: GPT-5 refused to respond: {message.refusal}"
+                print(refusal_msg)
+                if logger:
+                    logger.warning(refusal_msg)
+                return f"[REFUSAL] {message.refusal}"
+            else:
+                empty_msg = "WARNING: GPT-5 returned empty content - could be safety filters, prompt incompatibility, or token limits"
+                print(empty_msg)
+                if logger:
+                    logger.warning(empty_msg)
+                return "[EMPTY_RESPONSE] GPT-5 returned empty content - check prompt format"
         
         if not expect_json:
             return content
@@ -359,7 +425,8 @@ class AzureLLM(BaseLLM):
         self, 
         deployment_name: Optional[str] = None,
         *,
-        config: Optional[LLMConfig] = None, 
+        config: Optional[LLMConfig] = None,
+        logger = None,
         **config_overrides
     ):
         """
@@ -389,6 +456,9 @@ class AzureLLM(BaseLLM):
         # Store the original deployment name to detect o3 models
         self._original_deployment_name = deployment_name
         self._is_o3_model = deployment_name and 'o3' in deployment_name.lower()
+        
+        # Store logger for processor
+        self._logger = logger
         
         self._request_builder = RequestBuilder(self.config, self._is_o3_model)
         self._processor = ResponseProcessor()
@@ -545,7 +615,9 @@ class AzureLLM(BaseLLM):
             # Process response - expect JSON if schema or batch_items provided
             expect_json = schema_obj is not None or batch_items is not None
             is_batch = batch_items is not None
-            result = self._processor.process(response, expect_json=expect_json, is_batch=is_batch)
+            # Pass logger to processor if available
+            logger = getattr(self, '_logger', None)
+            result = self._processor.process(response, expect_json=expect_json, is_batch=is_batch, logger=logger)
         
         return result
     
