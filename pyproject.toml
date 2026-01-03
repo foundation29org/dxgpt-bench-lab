@@ -32,6 +32,10 @@ dependencies = [
     "PyYAML>=6.0.1",
     "requests",
     "jsonschema>=4.0.0",  # Schema validation for structured outputs
+    "google-genai>=1.0.0",  # Google Gemini API
+    "azure-ai-textanalytics>=5.3.0",  # Azure Text Analytics for medical code attribution
+    "azure-ai-translation-text>=1.0.0",  # Azure Translator for case description translation
+    "azure-core>=1.29.0",  # Azure core dependencies
     
     # Visualization
     "matplotlib>=3.5.0",

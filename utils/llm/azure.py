@@ -191,7 +191,12 @@ class RequestBuilder:
         self.is_o3_model = is_o3_model
         # Detect GPT-5 models which require max_completion_tokens
         deployment_name = config.deployment_name or ""
-        self.is_gpt5_model = 'gpt-5' in deployment_name.lower() or 'gpt5' in deployment_name.lower()
+        deployment_lower = deployment_name.lower()
+        self.is_gpt5_model = (
+            'gpt-5' in deployment_lower or 
+            'gpt5' in deployment_lower or
+            'gpt-5.1' in deployment_lower
+        )
     
     def build(
         self,
@@ -274,6 +279,12 @@ class RequestBuilder:
                     request["max_completion_tokens"] = max_tokens
                 else:
                     request["max_tokens"] = max_tokens
+            
+            # Add reasoning_effort for GPT-5 models (they support it like O3)
+            if self.is_gpt5_model and reasoning_effort is not None:
+                request["reasoning_effort"] = reasoning_effort
+            elif self.is_gpt5_model and self.config.reasoning_effort is not None:
+                request["reasoning_effort"] = self.config.reasoning_effort
                 
             if schema is not None:
                 request["response_format"] = schema.azure_format

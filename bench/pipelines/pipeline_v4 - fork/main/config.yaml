@@ -10,14 +10,18 @@ DATASET_PATH: "bench/datasets/all_150.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
-  MODEL: "gpt-5-mini"
+  MODEL: "gpt-5.2"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
   CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
   PARAMS:
     temperature: 0.1
     max_tokens: 12000
-    reasoning_effort: "low"  # For O3: "low", "medium", "high"
+    reasoning_effort: "high"  # For O3/GPT-5: "low", "medium", "high"
+    thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high", or omit for dynamic
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true  # Enable to translate case descriptions before sending to LLM
+    TARGET_LANGUAGE: "en"  # Target language code (e.g., "en" for English, "es" for Spanish)
 
 # Evaluator Configuration
 EVALUATOR:
@@ -25,12 +29,35 @@ EVALUATOR:
   BERT_AUTOCONFIRM_THRESHOLD: 0.90
   ENABLE_ICD10_PARENT_SEARCH: true
   ENABLE_ICD10_SIBLING_SEARCH: true
+  # JUDGE_MODEL: Modelo LLM para juzgar matches semánticos (opcional)
+  # Si no se especifica, usa lógica automática:
+  # - Para modelos Gemini: usa el mismo modelo que se está evaluando
+  # - Para modelos OpenAI (gpt-*, o3-*): usa "normalcalls"
+  # Ejemplo: JUDGE_MODEL: "gemini-2.5-pro" o JUDGE_MODEL: "normalcalls", JUDGE_MODEL: "gpt-5-mini"
+  JUDGE_MODEL: "gemini-2.5-pro"  # Juez para validar si es demasiado permisivo
+  # JUDGE_PARAMS: Parámetros para el modelo juez (opcional)
+  # Si no se especifica, usa valores por defecto
+  JUDGE_PARAMS:
+    reasoning_effort: "low"  # For O3/GPT-5: "low", "medium", "high"
+    thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high"
+    max_tokens: 10000
+    temperature: 0.1
 
 # Main Pipeline Control
+# Controla qué pasos del pipeline se ejecutan
+# - SHOULD_EMULATE: Paso 1 - Generar DDX usando el modelo LLM (true = ejecutar, false = saltar)
+# - SHOULD_LABEL: Paso 2 - Asignar códigos médicos usando Azure Text Analytics (true = ejecutar, false = saltar)
+# - SHOULD_EVALUATE: Paso 3 - Evaluar DDX contra GDX (true = ejecutar, false = saltar)
+# 
+# Configuraciones comunes:
+# - Ejecución completa desde cero: todos a true (o omitir estos valores)
+# - Solo re-evaluar: EMULATE=false, LABEL=false, EVALUATE=true
+# - Solo generar DDX: EMULATE=true, LABEL=false, EVALUATE=false
+# - Generar DDX + códigos: EMULATE=true, LABEL=true, EVALUATE=false
 MAIN:
-  SHOULD_EMULATE: true
-  SHOULD_LABEL: true  # Re-enable medical code attribution 
-  SHOULD_EVALUATE: true
+  SHOULD_EMULATE: true   # Generar DDX con MODEL
+  SHOULD_LABEL: true     # Asignar códigos médicos
+  SHOULD_EVALUATE: true  # Evaluar DDX contra GDX
 
 # Timestamp (auto-generated when config is saved)
 TIMESTAMP: null

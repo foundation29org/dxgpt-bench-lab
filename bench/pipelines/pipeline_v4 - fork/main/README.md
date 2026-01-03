@@ -118,11 +118,31 @@ The pipeline requires the following Python packages:
 
 ### Environment Variables
 
-Create a `.env` file in the project root with:
+Create a `.env` file in the **project root** (`C:\repo\DxGPT\eval\.env`) with all required variables.
+
+You can copy the template:
+```bash
+cp .env.example .env
 ```
-AZURE_LANGUAGE_ENDPOINT=your_azure_endpoint
-AZURE_LANGUAGE_KEY=your_azure_key
+
+Then edit `.env` and fill in your actual credentials:
+
+```env
+# Azure Text Analytics (para medical code attribution - medlabeler.py)
+AZURE_LANGUAGE_ENDPOINT=your_azure_language_endpoint_here
+AZURE_LANGUAGE_KEY=your_azure_language_key_here
+
+# Azure OpenAI (para LLM models - emulator.py, evaluator.py)
+AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint_here
+AZURE_OPENAI_API_KEY=your_azure_openai_api_key_here
+AZURE_OPENAI_API_VERSION=2024-02-15-preview
+
+# Hugging Face (para BERT similarity y modelos Hugging Face)
+HF_TOKEN=your_huggingface_token_here
+SAPBERT_ENDPOINT_URL=your_sapbert_endpoint_url_here
 ```
+
+**IMPORTANTE**: El archivo `.env` debe estar en la **raíz del proyecto** (`C:\repo\DxGPT\eval\.env`), no en el directorio del pipeline.
 
 ### Utils Dependencies
 
