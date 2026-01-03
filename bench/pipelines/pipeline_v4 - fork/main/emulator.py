@@ -19,15 +19,27 @@ import os
 import sys
 import ast
 import logging
+import time
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 import yaml
 
-# Add utils to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'utils'))
+# Add project root to path (so we can import utils)
+project_root = os.path.join(os.path.dirname(__file__), '..', '..', '..', '..')
+project_root = os.path.abspath(project_root)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 from utils.llm import get_llm
 from dotenv import load_dotenv
+
+# Azure Translator imports
+try:
+    from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
+    from azure.core.exceptions import HttpResponseError
+    AZURE_TRANSLATOR_AVAILABLE = True
+except ImportError:
+    AZURE_TRANSLATOR_AVAILABLE = False
 
 # Load environment variables
 load_dotenv()
@@ -57,6 +69,21 @@ class DXGPTEmulator:
         self.output_schema = None
         if self.emulator_config.get('OUTPUT_SCHEMA', False):
             self.output_schema = self._load_output_schema()
+        
+        # Initialize translation client if enabled
+        self.translator_client = None
+        self.translate_enabled = self.emulator_config.get('TRANSLATE_CASE', {}).get('ENABLED', False)
+        self.target_language = self.emulator_config.get('TRANSLATE_CASE', {}).get('TARGET_LANGUAGE', 'en')
+        
+        if self.translate_enabled:
+            if not AZURE_TRANSLATOR_AVAILABLE:
+                if self.logger:
+                    self.logger.warning("⚠️  Translation enabled but azure-ai-translation-text not installed.")
+                    self.logger.warning("   Install it with: pip install azure-ai-translation-text")
+                    self.logger.warning("   Translation disabled. Cases will be sent to LLM in original language.")
+                self.translate_enabled = False
+            else:
+                self.translator_client = self._init_translator_client()
     
     def _load_prompt_template(self) -> str:
         """Load the prompt template from file"""
@@ -84,12 +111,141 @@ class DXGPTEmulator:
         except FileNotFoundError:
             raise FileNotFoundError(f"Output schema not found at: {schema_path}")
     
-    def _generate_ddx_for_case(self, case: Dict[str, Any]) -> Tuple[List[str], str]:
+    def _init_translator_client(self):
+        """Initialize Azure Translator client"""
+        translator_key = os.getenv('AZURE_TRANSLATOR_KEY')
+        translator_endpoint = os.getenv('AZURE_TRANSLATOR_ENDPOINT')
+        translator_region = os.getenv('AZURE_TRANSLATOR_REGION', 'global')
+        
+        if not translator_key or not translator_endpoint:
+            if self.logger:
+                self.logger.warning("Translation enabled but AZURE_TRANSLATOR_KEY or AZURE_TRANSLATOR_ENDPOINT not set. Translation disabled.")
+            self.translate_enabled = False
+            return None
+        
+        try:
+            credential = TranslatorCredential(translator_key, translator_region)
+            client = TextTranslationClient(endpoint=translator_endpoint, credential=credential)
+            if self.logger:
+                self.logger.info(f"Azure Translator client initialized. Target language: {self.target_language}")
+            return client
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Failed to initialize Azure Translator client: {e}")
+            self.translate_enabled = False
+            return None
+    
+    def _translate_case_description(self, case_description: str) -> str:
         """
-        Generate DDX for a single case
+        Translate case description to target language using Azure Translator
+        Only translates if the detected language is different from target language
+        
+        Args:
+            case_description: Original case description
+            
+        Returns:
+            Translated case description, or original if translation fails or not needed
+        """
+        if not self.translate_enabled or not self.translator_client:
+            return case_description
+        
+        if not case_description or not case_description.strip():
+            return case_description
+        
+        try:
+            # First, detect the source language
+            detect_response = self.translator_client.detect_language(
+                body=[{"text": case_description}]
+            )
+            
+            if not detect_response or len(detect_response) == 0:
+                if self.logger:
+                    self.logger.warning("Could not detect language, skipping translation")
+                return case_description
+            
+            detected_language = detect_response[0].language
+            confidence = getattr(detect_response[0], 'confidence_score', None)
+            
+            # Only translate if detected language is different from target
+            if detected_language.lower() == self.target_language.lower():
+                if self.logger:
+                    self.logger.info(f"Case already in target language ({detected_language}), skipping translation")
+                return case_description
+            
+            # Translate to target language
+            response = self.translator_client.translate(
+                content=[case_description],
+                to=[self.target_language]
+            )
+            
+            if response and len(response) > 0 and len(response[0].translations) > 0:
+                translated_text = response[0].translations[0].text
+                if self.logger:
+                    conf_str = f" (confidence: {confidence:.2f})" if confidence else ""
+                    self.logger.info(f"Case translated from {detected_language}{conf_str} to {self.target_language}")
+                return translated_text
+            else:
+                if self.logger:
+                    self.logger.warning("Translation returned empty result, using original text")
+                return case_description
+                
+        except HttpResponseError as e:
+            if self.logger:
+                self.logger.error(f"Azure Translator error: {e}. Using original text.")
+            return case_description
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Unexpected error during translation: {e}. Using original text.")
+            return case_description
+    
+    def _is_retryable_error(self, error: Exception) -> bool:
+        """
+        Determine if an error is retryable (transient error that might succeed on retry)
+        
+        Args:
+            error: The exception that occurred
+            
+        Returns:
+            True if the error is retryable, False otherwise
+        """
+        error_str = str(error).lower()
+        error_type = type(error).__name__
+        
+        # Check for rate limit errors (429)
+        if "429" in error_str or "rate" in error_str or "limit" in error_str or "nocapacity" in error_str:
+            return True
+        
+        # Check for server errors (500, 502, 503, 504)
+        if any(code in error_str for code in ["500", "502", "503", "504", "server error", "internal error"]):
+            return True
+        
+        # Check for timeout/connection errors
+        if "timeout" in error_str or "connection" in error_str or "timed out" in error_str:
+            return True
+        
+        # Check for specific error types that are typically retryable
+        retryable_types = ["RateLimitError", "TimeoutError", "ConnectionError", "HTTPError"]
+        if any(rt in error_type for rt in retryable_types):
+            return True
+        
+        # Non-retryable errors (authentication, invalid request, etc.)
+        if "authentication" in error_str or "unauthorized" in error_str or "401" in error_str or "403" in error_str:
+            return False
+        
+        if "invalid" in error_str and "request" in error_str:
+            return False
+        
+        # Default: don't retry unknown errors
+        return False
+    
+    def _generate_ddx_for_case(self, case: Dict[str, Any], max_retries: int = 5, base_delay: float = 5.0) -> Tuple[List[str], str]:
+        """
+        Generate DDX for a single case with automatic retry for transient errors
         
         Args:
             case: Case dictionary containing case description
+            max_retries: Maximum number of retry attempts (default: 5, increased for high-demand models)
+            base_delay: Base delay in seconds for exponential backoff (default: 5.0, increased for high-demand models)
             
         Returns:
             Tuple of (List of differential diagnoses, raw response)
@@ -103,96 +259,172 @@ class DXGPTEmulator:
             if alt_description:
                 case_description = alt_description
         
+        # Translate case description if enabled
+        if self.translate_enabled and case_description:
+            original_description = case_description
+            case_description = self._translate_case_description(case_description)
+            if self.logger and original_description != case_description:
+                self.logger.info(f"Case {case.get('id', 'unknown')}: Translated case description ({len(original_description)} -> {len(case_description)} chars)")
+        
         prompt = self.prompt_template.format(case_description=case_description)
         
         # Get LLM parameters
         params = self.emulator_config.get('PARAMS', {})
         
-        # Check if this is an O3 model
+        # Check if this is a reasoning model (O3, GPT-5, or Gemini 3 Pro)
         model_name = self.emulator_config['MODEL'].lower()
         is_o3_model = 'o3' in model_name
+        is_gpt5_model = 'gpt-5' in model_name or 'gpt5' in model_name
+        is_gemini_model = 'gemini' in model_name
+        is_reasoning_model = is_o3_model or is_gpt5_model
         
-        try:
-            # Log request details
-            if self.logger:
-                self.logger.info(f"Generating DDX for case {case.get('id', 'unknown')} using model {model_name}")
-                self.logger.info(f"Prompt length: {len(prompt)} characters")
-                if is_o3_model:
-                    self.logger.info(f"O3 Model parameters: reasoning_effort={params.get('reasoning_effort', 'low')}")
-                else:
-                    self.logger.info(f"Standard model parameters: max_tokens={params.get('max_tokens', 4000)}, temperature={params.get('temperature', 0.1)}")
-                self.logger.info(f"Output schema enabled: {self.output_schema is not None}")
-            
-            # Generate response with model-appropriate parameters
-            if is_o3_model:
-                # O3 models use reasoning_effort instead of temperature/max_tokens
-                if self.output_schema:
-                    response = self.llm.generate(
-                        prompt,
-                        reasoning_effort=params.get('reasoning_effort', 'low'),
-                        schema=self.output_schema
-                    )
-                else:
-                    response = self.llm.generate(
-                        prompt,
-                        reasoning_effort=params.get('reasoning_effort', 'low')
-                    )
-            else:
-                # Standard models use temperature and max_tokens
-                if self.output_schema:
-                    response = self.llm.generate(
-                        prompt,
-                        max_tokens=params.get('max_tokens', 4000),
-                        temperature=params.get('temperature', 0.1),
-                        schema=self.output_schema
-                    )
-                else:
-                    response = self.llm.generate(
-                        prompt,
-                        max_tokens=params.get('max_tokens', 4000),
-                        temperature=params.get('temperature', 0.1)
-                    )
-            
-            # Log successful API response
-            if self.logger:
-                self.logger.info(f"LLM API call successful for case {case.get('id', 'unknown')}")
-                self.logger.info(f"Response length: {len(str(response))} characters")
-            
-            # Extract DDX using unified parsing logic
-            ddx_list = self._extract_ddx_from_response(response, case.get('id', 'unknown'))
-            return ddx_list, str(response)
+        case_id = case.get('id', 'unknown')
+        last_error = None
         
-        except Exception as e:
-            case_id = case.get('id', 'unknown')
-            error_msg = f"ERROR: Error generating DDX for case {case_id}: {str(e)}"
-            print(error_msg)
-            if self.logger:
-                self.logger.error(error_msg)
-                # Log detailed error information
-                self.logger.error(f"Exception type: {type(e).__name__}")
-                self.logger.error(f"Full exception details: {repr(e)}")
-                
-                # Categorize different types of errors
-                error_str = str(e).lower()
-                if "timeout" in error_str or "connection" in error_str:
-                    self.logger.error(f"NETWORK_ERROR: Likely network/connection issue with LLM API")
-                elif "rate" in error_str or "limit" in error_str:
-                    self.logger.error(f"RATE_LIMIT_ERROR: API rate limit exceeded")
-                elif "authentication" in error_str or "api" in error_str:
-                    self.logger.error(f"API_ERROR: Authentication or API configuration issue")
-                elif "token" in error_str:
-                    self.logger.error(f"TOKEN_ERROR: Token limit or token-related issue")
-                else:
-                    self.logger.error(f"UNKNOWN_ERROR: Unclassified error during LLM generation")
-            
-            # Helpful tip for common configuration issues
-            if "diagnosis" in str(e) or "format" in str(e).lower():
-                tip_msg = f"TIP: Check if OUTPUT_SCHEMA setting conflicts with your prompt's expected format"
-                print(tip_msg)
+        # Retry loop
+        for attempt in range(max_retries + 1):
+            try:
+                # Log request details
                 if self.logger:
-                    self.logger.warning(tip_msg)
+                    self.logger.info(f"Generating DDX for case {case.get('id', 'unknown')} using model {model_name}")
+                    self.logger.info(f"Prompt length: {len(prompt)} characters")
+                    if is_gemini_model:
+                        self.logger.info(f"Gemini Model parameters: thinking_level={params.get('thinking_level', 'low')}, max_tokens={params.get('max_tokens', 12000)}, temperature={params.get('temperature', 0.1)}")
+                    elif is_reasoning_model:
+                        model_type = "O3" if is_o3_model else "GPT-5"
+                        self.logger.info(f"{model_type} Model parameters: reasoning_effort={params.get('reasoning_effort', 'low')}, max_tokens={params.get('max_tokens', 12000)}")
+                    else:
+                        self.logger.info(f"Standard model parameters: max_tokens={params.get('max_tokens', 4000)}, temperature={params.get('temperature', 0.1)}")
+                    self.logger.info(f"Output schema enabled: {self.output_schema is not None}")
+                
+                # Generate response with model-appropriate parameters
+                if is_gemini_model:
+                    # Gemini 3 Pro uses thinking_level instead of reasoning_effort
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            thinking_level=params.get('thinking_level', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            temperature=params.get('temperature', 0.1),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            thinking_level=params.get('thinking_level', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            temperature=params.get('temperature', 0.1)
+                        )
+                elif is_reasoning_model:
+                    # Reasoning models (O3 and GPT-5) use reasoning_effort
+                    # GPT-5 models can also use max_tokens (as max_completion_tokens)
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            reasoning_effort=params.get('reasoning_effort', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            reasoning_effort=params.get('reasoning_effort', 'low'),
+                            max_tokens=params.get('max_tokens', 12000)
+                        )
+                else:
+                    # Standard models use temperature and max_tokens
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            max_tokens=params.get('max_tokens', 4000),
+                            temperature=params.get('temperature', 0.1),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            max_tokens=params.get('max_tokens', 4000),
+                            temperature=params.get('temperature', 0.1)
+                        )
+                
+                # Log successful API response
+                if self.logger:
+                    if attempt > 0:
+                        self.logger.info(f"✅ Retry {attempt} succeeded for case {case_id}")
+                    self.logger.info(f"LLM API call successful for case {case_id}")
+                    self.logger.info(f"Response length: {len(str(response))} characters")
+                
+                # Extract DDX using unified parsing logic
+                ddx_list = self._extract_ddx_from_response(response, case_id)
+                return ddx_list, str(response)
             
-            return [], ""
+            except Exception as e:
+                last_error = e
+                error_msg = f"ERROR: Error generating DDX for case {case_id} (attempt {attempt + 1}/{max_retries + 1}): {str(e)}"
+                
+                if self.logger:
+                    self.logger.error(error_msg)
+                    # Log detailed error information
+                    self.logger.error(f"Exception type: {type(e).__name__}")
+                    self.logger.error(f"Full exception details: {repr(e)}")
+                    
+                    # Categorize different types of errors
+                    error_str = str(e).lower()
+                    if "timeout" in error_str or "connection" in error_str:
+                        self.logger.error(f"NETWORK_ERROR: Likely network/connection issue with LLM API")
+                    elif "rate" in error_str or "limit" in error_str:
+                        self.logger.error(f"RATE_LIMIT_ERROR: API rate limit exceeded")
+                    elif "authentication" in error_str or "api" in error_str:
+                        self.logger.error(f"API_ERROR: Authentication or API configuration issue")
+                    elif "token" in error_str:
+                        self.logger.error(f"TOKEN_ERROR: Token limit or token-related issue")
+                    else:
+                        self.logger.error(f"UNKNOWN_ERROR: Unclassified error during LLM generation")
+                
+                # Check if error is retryable
+                is_retryable = self._is_retryable_error(e)
+                
+                if not is_retryable:
+                    # Non-retryable error (authentication, invalid request, etc.)
+                    if self.logger:
+                        self.logger.error(f"❌ Non-retryable error for case {case_id}, giving up")
+                    break
+                
+                # If this was the last attempt, don't retry
+                if attempt >= max_retries:
+                    if self.logger:
+                        self.logger.error(f"❌ Max retries ({max_retries}) reached for case {case_id}, giving up")
+                    break
+                
+                # Calculate exponential backoff delay
+                # For NoCapacity errors, use longer delays and more informative logging
+                error_str = str(e).lower()
+                if "nocapacity" in error_str or "429" in error_str:
+                    # Use longer delays for capacity issues (5s, 10s, 20s, 40s, 80s)
+                    delay = base_delay * (2 ** attempt)
+                    if self.logger:
+                        self.logger.warning(f"⏳ NoCapacity error detected for case {case_id}, waiting {delay:.1f} seconds before retry... (attempt {attempt + 1}/{max_retries})")
+                        self.logger.warning(f"   💡 Tip: Model may be experiencing high demand. Consider waiting or using Provisioned Throughput.")
+                else:
+                    # Standard exponential backoff for other retryable errors
+                    delay = base_delay * (2 ** attempt)
+                    if self.logger:
+                        self.logger.warning(f"⏳ Retryable error detected for case {case_id}, retrying in {delay:.1f} seconds... (attempt {attempt + 1}/{max_retries})")
+                
+                time.sleep(delay)
+        
+        # All retries exhausted or non-retryable error
+        if self.logger:
+            self.logger.error(f"❌ Failed to generate DDX for case {case_id} after {max_retries + 1} attempts")
+        
+        # Helpful tip for common configuration issues
+        if last_error and ("diagnosis" in str(last_error) or "format" in str(last_error).lower()):
+            tip_msg = f"TIP: Check if OUTPUT_SCHEMA setting conflicts with your prompt's expected format"
+            print(tip_msg)
+            if self.logger:
+                self.logger.warning(tip_msg)
+        
+        return [], ""
     
     def _extract_ddx_from_response(self, response, case_id: str) -> List[str]:
         """
@@ -493,6 +725,49 @@ class DXGPTEmulator:
             
             # Generate DDX
             ddx_list, raw_response = self._generate_ddx_for_case(case)
+            
+            # Add delay between requests for Gemini models to respect rate limits
+            # Rate limits vary by tier (source: https://ai.google.dev/gemini-api/docs/rate-limits)
+            # 
+            # FREE TIER (sin facturación):
+            #   - gemini-2.5-pro: 2 RPM, 125K TPM, 50 RPD
+            #   - gemini-2.5-flash: 10 RPM, 250K TPM, 250 RPD
+            #   - gemini-2.0-flash: 15 RPM, 1M TPM, 200 RPD
+            # 
+            # TIER 1 (con facturación asociada):
+            #   - gemini-3-pro-preview: 50 RPM, 1M TPM, 1,000 RPD
+            #   - gemini-2.5-pro: 150 RPM, 2M TPM, 10,000 RPD
+            #   - gemini-2.5-flash: 1,000 RPM, 1M TPM, 10,000 RPD
+            #   - gemini-2.0-flash: 2,000 RPM, 4M TPM, unlimited RPD
+            # 
+            # Delays calculated to stay safely under tier 1 limits (using ~80% of max RPM)
+            model_name = self.emulator_config['MODEL'].lower()
+            is_gemini = 'gemini' in model_name
+            if is_gemini:
+                # Determine delay based on model type and tier 1 limits
+                if '2.0-flash' in model_name or ('2.0' in model_name and 'flash' in model_name):
+                    # Tier 1: 2,000 RPM = 0.03s per request, using 0.05s for safety
+                    delay_seconds = 0.05
+                elif '2.5-flash' in model_name or ('2.5' in model_name and 'flash' in model_name):
+                    # Tier 1: 1,000 RPM = 0.06s per request, using 0.1s for safety
+                    delay_seconds = 0.1
+                elif 'flash-lite' in model_name:
+                    # Tier 1: 4,000 RPM = 0.015s per request, using 0.05s for safety
+                    delay_seconds = 0.05
+                elif '2.5-pro' in model_name or ('2.5' in model_name and 'pro' in model_name):
+                    # Tier 1: 150 RPM = 0.4s per request, using 0.5s for safety
+                    delay_seconds = 0.5
+                elif '3' in model_name and 'pro' in model_name:
+                    # Tier 1: 50 RPM = 1.2s per request, using 1.5s for safety
+                    delay_seconds = 1.5
+                else:
+                    # Default: conservative delay for unknown models
+                    delay_seconds = 0.3
+                
+                if self.logger:
+                    self.logger.info(f"Waiting {delay_seconds}s before next Gemini API call (rate limit protection for {model_name})...")
+                import time
+                time.sleep(delay_seconds)
             
             # Display minimal response info
             response_preview = str(raw_response)[:100] + "..." if len(str(raw_response)) > 100 else str(raw_response)

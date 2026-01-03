@@ -92,6 +92,12 @@ def get_file_names(config: Dict[str, Any]) -> Dict[str, str]:
     if reasoning_effort:
         model_name = f"{model_name}_{reasoning_effort}"
     
+    # Add translation suffix if translation is enabled
+    translate_config = config['DXGPT_EMULATOR'].get('TRANSLATE_CASE', {})
+    if translate_config.get('ENABLED', False):
+        target_lang = translate_config.get('TARGET_LANGUAGE', 'en')
+        model_name = f"{model_name}_translated_{target_lang}"
+    
     # Clean names for filenames
     clean_dataset = clean_name_for_filename(dataset_name)
     clean_prompt = clean_name_for_filename(prompt_name)

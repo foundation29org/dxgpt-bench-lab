@@ -65,11 +65,60 @@ class DiagnosticEvaluator:
         self.enable_icd10_parent_search = self.evaluator_config.get('ENABLE_ICD10_PARENT_SEARCH', True)
         self.enable_icd10_sibling_search = self.evaluator_config.get('ENABLE_ICD10_SIBLING_SEARCH', True)
         
+        # Determine judge model (for LLM judgment in semantic matching)
+        # If explicitly configured, use that. Otherwise, use intelligent defaults:
+        # - For OpenAI models (gpt-*, o3-*): use normalcalls (deployment name for gpt-4o)
+        # - For Gemini models: use the same model being evaluated
+        judge_model = self.evaluator_config.get('JUDGE_MODEL', None)
+        if judge_model:
+            # Explicitly configured judge model
+            judge_model_name = judge_model
+        else:
+            # Auto-detect based on model being evaluated
+            emulator_model = config.get('DXGPT_EMULATOR', {}).get('MODEL', 'normalcalls')
+            emulator_model_lower = emulator_model.lower()
+            
+            if 'gemini' in emulator_model_lower:
+                # For Gemini models, use the same model for judgment
+                judge_model_name = emulator_model
+            elif 'gpt' in emulator_model_lower or 'o3' in emulator_model_lower:
+                # For OpenAI models, use normalcalls as judge (deployment name for gpt-4o)
+                judge_model_name = 'normalcalls'
+            else:
+                # Default fallback
+                judge_model_name = 'normalcalls'
+        
+        # Get judge model parameters (if configured)
+        judge_params = self.evaluator_config.get('JUDGE_PARAMS', {})
+        
+        # Detect judge model type for parameter handling
+        judge_model_lower = judge_model_name.lower()
+        self.is_judge_gemini = 'gemini' in judge_model_lower
+        self.is_judge_reasoning = ('o3' in judge_model_lower or 
+                                   'gpt-5' in judge_model_lower or 
+                                   'gpt5' in judge_model_lower)
+        
+        # Store judge parameters
+        self.judge_reasoning_effort = judge_params.get('reasoning_effort', 'low')
+        self.judge_thinking_level = judge_params.get('thinking_level', 'low')
+        self.judge_max_tokens = judge_params.get('max_tokens', 10000)
+        self.judge_temperature = judge_params.get('temperature', 0.1)
+        
         # Initialize components
         self.icd10_taxonomy = ICD10Taxonomy()
-        self.llm = get_llm("gpt-4o-summary")
+        # Pass logger to LLM for detailed debugging
+        self.llm = get_llm(judge_model_name, logger=logger)
         self.bert_warmed_up = False
         self.logger = logger
+        
+        if self.logger:
+            self.logger.info(f"Judge model for LLM judgment: {judge_model_name} (evaluating model: {config.get('DXGPT_EMULATOR', {}).get('MODEL', 'unknown')})")
+            if self.is_judge_gemini:
+                self.logger.info(f"Judge parameters: thinking_level={self.judge_thinking_level}, max_tokens={self.judge_max_tokens}, temperature={self.judge_temperature}")
+            elif self.is_judge_reasoning:
+                self.logger.info(f"Judge parameters: reasoning_effort={self.judge_reasoning_effort}, max_tokens={self.judge_max_tokens}")
+            else:
+                self.logger.info(f"Judge parameters: max_tokens={self.judge_max_tokens}, temperature={self.judge_temperature}")
         
     def evaluate_case(self, case_data: Dict, case_num: int = 0, total_cases: int = 0) -> EvaluationResult:
         """
@@ -342,6 +391,8 @@ class DiagnosticEvaluator:
             
             # Check for auto-confirmation
             if best_bert_score >= self.bert_autoconfirm_threshold:
+                if self.logger:
+                    self.logger.info(f"   ✅ BERT score {best_bert_score:.3f} >= autoconfirm threshold {self.bert_autoconfirm_threshold}, skipping LLM call")
                 return {
                     "status": "SUCCESS",
                     "details": f"BERT score {best_bert_score:.3f} >= autoconfirm threshold {self.bert_autoconfirm_threshold}. LLM call skipped.",
@@ -349,6 +400,14 @@ class DiagnosticEvaluator:
                     "bert_best": bert_best,
                     "llm_judgment": None
                 }
+            
+            # Log before calling LLM for judgment
+            if self.logger:
+                self.logger.info(f"   📊 BERT best score: {best_bert_score:.3f} at position {best_bert_position}")
+                if best_bert_score >= self.bert_acceptance_threshold:
+                    self.logger.info(f"   ℹ️  BERT score >= acceptance threshold ({self.bert_acceptance_threshold}), LLM will confirm")
+                else:
+                    self.logger.info(f"   ℹ️  BERT score < acceptance threshold ({self.bert_acceptance_threshold}), LLM will decide")
             
             # Call LLM for judgment
             llm_result = self._get_llm_judgment(gdx_text, ddx_texts)
@@ -402,6 +461,7 @@ class DiagnosticEvaluator:
         try:
             ddx_options = "\n".join([f"{i+1}. {text}" for i, text in enumerate(ddx_texts)])
             
+            num_options = len(ddx_texts)
             prompt = f"""You are a medical expert evaluating diagnostic similarity. 
 
 Reference diagnosis: {gdx_text}
@@ -409,29 +469,78 @@ Reference diagnosis: {gdx_text}
 Differential diagnosis options:
 {ddx_options}
 
-Which of the 5 differential diagnosis options is most clinically similar or interchangeable with the reference diagnosis? Consider:
+Which of the {num_options} differential diagnosis options is most clinically similar or interchangeable with the reference diagnosis? Consider:
 - Clinical presentation overlap
 - Pathophysiology similarity
 - Treatment approach similarity
 - Differential diagnosis overlap
 
-Respond with ONLY the number (1-5) of the most similar option. If none are clinically similar, respond with "0".
+Respond with ONLY the number (1-{num_options}) of the most similar option. If none are clinically similar, respond with "0".
 
 Answer:"""
             
-            response = self.llm.generate(prompt, max_tokens=10, temperature=0.1)
+            # Log before LLM call
+            if self.logger:
+                self.logger.info(f"🔍 LLM Judgment: Calling judge model to evaluate semantic match")
+                self.logger.info(f"   GDX (Reference): {gdx_text}")
+                self.logger.info(f"   DDX options ({len(ddx_texts)}):")
+                for i, ddx in enumerate(ddx_texts, 1):
+                    self.logger.info(f"     {i}. {ddx}")
+            
+            # Use model-appropriate parameters
+            # Gemini models use "thoughts" tokens internally (up to 2999 tokens seen in logs for gemini-2.5-pro)
+            # These thoughts tokens count against max_output_tokens limit
+            # Set to high max_tokens to ensure we have enough space for thoughts + response generation
+            if self.is_judge_gemini:
+                # Gemini models use thinking_level
+                response = self.llm.generate(
+                    prompt,
+                    thinking_level=self.judge_thinking_level,
+                    max_tokens=self.judge_max_tokens,
+                    temperature=self.judge_temperature
+                )
+            elif self.is_judge_reasoning:
+                # Reasoning models (O3 and GPT-5) use reasoning_effort
+                response = self.llm.generate(
+                    prompt,
+                    reasoning_effort=self.judge_reasoning_effort,
+                    max_tokens=self.judge_max_tokens
+                )
+            else:
+                # Standard models use temperature and max_tokens
+                response = self.llm.generate(
+                    prompt,
+                    max_tokens=self.judge_max_tokens,
+                    temperature=self.judge_temperature
+                )
             response_text = str(response).strip()
+            
+            # Log LLM response
+            if self.logger:
+                self.logger.info(f"   LLM raw response: '{response_text}'")
             
             try:
                 position = int(response_text)
-                if 1 <= position <= 5:
+                # Validate position is within the actual range of ddx_texts
+                max_position = len(ddx_texts)
+                if 1 <= position <= max_position:
+                    if self.logger:
+                        self.logger.info(f"   ✅ LLM selected position {position}: {ddx_texts[position-1]}")
                     return {"position": position}
                 else:
+                    if self.logger:
+                        self.logger.info(f"   ❌ LLM responded with '{position}' (out of range 1-{max_position}), no match found")
                     return {"position": None}
             except ValueError:
+                if self.logger:
+                    self.logger.warning(f"   ⚠️  LLM response '{response_text}' could not be parsed as integer, no match found")
                 return {"position": None}
         
         except Exception as e:
+            if self.logger:
+                self.logger.error(f"   ❌ Error calling LLM for judgment: {str(e)}")
+                import traceback
+                self.logger.error(f"   Traceback: {traceback.format_exc()}")
             return {"position": None}
     
     def _is_child_code(self, parent_code: str, child_code: str) -> bool:
@@ -683,6 +792,22 @@ def generate_summary_json(results: List[EvaluationResult], output_path: str, con
     # Get evaluator config
     evaluator_config = config.get('EVALUATOR', {})
     
+    # Determine judge model (same logic as in DiagnosticEvaluator.__init__)
+    judge_model = evaluator_config.get('JUDGE_MODEL', None)
+    if judge_model:
+        judge_model_name = judge_model
+    else:
+        # Auto-detect based on model being evaluated
+        emulator_model = config.get('DXGPT_EMULATOR', {}).get('MODEL', 'normalcalls')
+        emulator_model_lower = emulator_model.lower()
+        
+        if 'gemini' in emulator_model_lower:
+            judge_model_name = emulator_model
+        elif 'gpt' in emulator_model_lower or 'o3' in emulator_model_lower:
+            judge_model_name = 'normalcalls'
+        else:
+            judge_model_name = 'normalcalls'
+    
     # Create comprehensive summary
     summary = {
         "configuration": {
@@ -692,6 +817,7 @@ def generate_summary_json(results: List[EvaluationResult], output_path: str, con
             "bert_autoconfirm_threshold": evaluator_config.get('BERT_AUTOCONFIRM_THRESHOLD', 0.90),
             "enable_icd10_parent_search": evaluator_config.get('ENABLE_ICD10_PARENT_SEARCH', True),
             "enable_icd10_sibling_search": evaluator_config.get('ENABLE_ICD10_SIBLING_SEARCH', True),
+            "judge_model": judge_model_name,
             "dataset_path": config.get('DATASET_PATH', 'unknown'),
             "timestamp": config.get('TIMESTAMP', 'unknown')
         },
