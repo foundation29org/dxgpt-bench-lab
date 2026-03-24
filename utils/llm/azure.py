@@ -255,11 +255,9 @@ class RequestBuilder:
             
             # Add optional parameters for o3
             if max_tokens is not None:
-                # GPT-5 models require max_completion_tokens instead of max_tokens
-                if self.is_gpt5_model:
-                    request["max_completion_tokens"] = max_tokens
-                else:
-                    request["max_tokens"] = max_tokens
+                # For o3 requests, Azure expects max_completion_tokens (not max_tokens).
+                # Keep the external API as `max_tokens` and map it internally.
+                request["max_completion_tokens"] = max_tokens
         else:
             # Standard request format for non-o3 models
             request = {
@@ -464,9 +462,11 @@ class AzureLLM(BaseLLM):
             except Exception as e:
                 raise
         
-        # Store the original deployment name to detect o3 models
-        self._original_deployment_name = deployment_name
-        self._is_o3_model = deployment_name and 'o3' in deployment_name.lower()
+        # Detect model family from the resolved deployment name (works with either
+        # direct `deployment_name` or `config.deployment_name` initialization).
+        resolved_deployment_name = deployment_name or (self.config.deployment_name or "")
+        self._original_deployment_name = resolved_deployment_name
+        self._is_o3_model = 'o3' in resolved_deployment_name.lower()
         
         # Store logger for processor
         self._logger = logger

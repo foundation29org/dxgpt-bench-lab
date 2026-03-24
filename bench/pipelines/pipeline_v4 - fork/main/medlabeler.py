@@ -18,8 +18,7 @@ import json
 import os
 import sys
 import logging
-import time
-from typing import Dict, List, Any, Set, Optional, Tuple
+from typing import Dict, List, Any, Set, Optional
 from datetime import datetime
 import yaml
 
@@ -27,14 +26,6 @@ import yaml
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from dotenv import load_dotenv
-
-# Azure Translator imports
-try:
-    from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
-    from azure.core.exceptions import HttpResponseError
-    AZURE_TRANSLATOR_AVAILABLE = True
-except ImportError:
-    AZURE_TRANSLATOR_AVAILABLE = False
 
 # Load environment variables
 load_dotenv()
@@ -62,39 +53,6 @@ class MedicalLabeler:
             endpoint=self.endpoint,
             credential=AzureKeyCredential(self.key)
         )
-        
-        # Initialize Azure Translator client for DDX translation
-        self.translator_client = None
-        if AZURE_TRANSLATOR_AVAILABLE:
-            translator_key = os.getenv('AZURE_TRANSLATOR_KEY')
-            translator_endpoint = os.getenv('AZURE_TRANSLATOR_ENDPOINT')
-            translator_region = os.getenv('AZURE_TRANSLATOR_REGION', 'global')
-            
-            if translator_key and translator_endpoint:
-                try:
-                    self.translator_client = TextTranslationClient(
-                        endpoint=translator_endpoint,
-                        credential=TranslatorCredential(translator_key, translator_region)
-                    )
-                    if self.logger:
-                        self.logger.info("✅ Azure Translator client initialized for DDX translation")
-                        self.logger.info(f"   Translator endpoint: {translator_endpoint}")
-                        self.logger.info(f"   Translator region: {translator_region}")
-                except Exception as e:
-                    if self.logger:
-                        self.logger.warning(f"Could not initialize Azure Translator: {e}. DDX translation disabled.")
-                    self.translator_client = None
-            else:
-                if self.logger:
-                    self.logger.warning("⚠️  Azure Translator credentials not found in environment variables:")
-                    self.logger.warning(f"   AZURE_TRANSLATOR_KEY: {'Set' if translator_key else 'NOT SET'}")
-                    self.logger.warning(f"   AZURE_TRANSLATOR_ENDPOINT: {'Set' if translator_endpoint else 'NOT SET'}")
-                    self.logger.warning("   DDX translation will be disabled. DDX texts will be sent to Azure Text Analytics as-is.")
-        else:
-            if self.logger:
-                self.logger.warning("⚠️  Azure Translator library (azure-ai-translation-text) not available.")
-                self.logger.warning("   Install it with: pip install azure-ai-translation-text")
-                self.logger.warning("   DDX translation will be disabled. DDX texts will be sent to Azure Text Analytics as-is.")
     
     def _extract_medical_codes(self, entities: List[Any]) -> Dict[str, List[str]]:
         """
@@ -140,211 +98,25 @@ class MedicalLabeler:
         
         return medical_codes
     
-    def _is_retryable_translation_error(self, error: Exception) -> bool:
+    def _get_medical_codes_for_texts(self, texts: List[str]) -> Dict[str, Dict[str, List[str]]]:
         """
-        Determine if a translation error is retryable (transient error that might succeed on retry)
-        
+        Get medical codes for a list of texts using Azure Text Analytics.
+        DDX strings are sent as-is (English expected when the emulator uses TRANSLATE_CASE → en).
+
         Args:
-            error: The exception that occurred
-            
+            texts: List of medical text strings (DDX labels)
+
         Returns:
-            True if the error is retryable, False otherwise
-        """
-        error_str = str(error).lower()
-        error_type = type(error).__name__
-        
-        # Check for rate limit errors (429)
-        if "429" in error_str or "rate" in error_str or "limit" in error_str or "nocapacity" in error_str:
-            return True
-        
-        # Check for server errors (500, 502, 503, 504)
-        if any(code in error_str for code in ["500", "502", "503", "504", "server error", "internal error"]):
-            return True
-        
-        # Check for timeout/connection errors
-        if "timeout" in error_str or "connection" in error_str or "timed out" in error_str:
-            return True
-        
-        # Check for specific error types that are typically retryable
-        retryable_types = ["RateLimitError", "TimeoutError", "ConnectionError", "HTTPError"]
-        if any(rt in error_type for rt in retryable_types):
-            return True
-        
-        # Non-retryable errors (authentication, invalid request, etc.)
-        if "authentication" in error_str or "unauthorized" in error_str or "401" in error_str or "403" in error_str:
-            return False
-        
-        if "invalid" in error_str and "request" in error_str:
-            return False
-        
-        # Default: don't retry unknown errors
-        return False
-    
-    def _translate_ddx_text(self, text: str, max_retries: int = 3, base_delay: float = 1.0) -> str:
-        """
-        Translate DDX text to English using Azure Translator with automatic retry for transient errors
-        Only translates if the detected language is different from English
-        
-        Args:
-            text: Original DDX text
-            max_retries: Maximum number of retry attempts (default: 3)
-            base_delay: Base delay in seconds for exponential backoff (default: 1.0)
-            
-        Returns:
-            Translated DDX text, or original if translation fails or not needed
-        """
-        if not self.translator_client:
-            return text
-        
-        if not text or not text.strip():
-            return text
-        
-        last_error = None
-        
-        # Retry loop
-        for attempt in range(max_retries + 1):
-            try:
-                # First, detect the source language
-                detect_response = self.translator_client.detect_language(
-                    body=[{"text": text}]
-                )
-                
-                if not detect_response or len(detect_response) == 0:
-                    if self.logger:
-                        self.logger.warning(f"Could not detect language for DDX '{text[:30]}...', skipping translation")
-                    return text
-                
-                detected_language = detect_response[0].language
-                confidence = getattr(detect_response[0], 'confidence_score', None)
-                
-                # Only translate if detected language is different from English
-                if detected_language.lower() == 'en':
-                    if self.logger:
-                        self.logger.debug(f"DDX already in English ({detected_language}), skipping translation")
-                    return text
-                
-                # Translate to English
-                response = self.translator_client.translate(
-                    content=[text],
-                    to=['en']
-                )
-                
-                if response and len(response) > 0 and len(response[0].translations) > 0:
-                    translated_text = response[0].translations[0].text
-                    if self.logger:
-                        if attempt > 0:
-                            self.logger.info(f"   ✅ Translation retry {attempt} succeeded for DDX '{text[:30]}...'")
-                        conf_str = f" (confidence: {confidence:.2f})" if confidence else ""
-                        self.logger.info(f"   🔄 DDX translation: {detected_language}{conf_str} → English")
-                        self.logger.info(f"      Original: '{text}'")
-                        self.logger.info(f"      Translated: '{translated_text}'")
-                    return translated_text
-                else:
-                    if self.logger:
-                        self.logger.warning(f"Translation returned empty result for DDX '{text[:30]}...', using original text")
-                    return text
-                    
-            except HttpResponseError as e:
-                last_error = e
-                is_retryable = self._is_retryable_translation_error(e)
-                
-                if not is_retryable:
-                    # Non-retryable error (authentication, invalid request, etc.)
-                    if self.logger:
-                        self.logger.error(f"❌ Non-retryable Azure Translator error for DDX '{text[:30]}...': {e}. Using original text.")
-                    return text
-                
-                # If this was the last attempt, don't retry
-                if attempt >= max_retries:
-                    if self.logger:
-                        self.logger.error(f"❌ Max retries ({max_retries}) reached for DDX translation '{text[:30]}...': {e}. Using original text.")
-                    return text
-                
-                # Calculate exponential backoff delay
-                delay = base_delay * (2 ** attempt)
-                if self.logger:
-                    self.logger.warning(f"⏳ Retryable Azure Translator error for DDX '{text[:30]}...', retrying in {delay:.1f} seconds... (attempt {attempt + 1}/{max_retries})")
-                
-                time.sleep(delay)
-                
-            except Exception as e:
-                last_error = e
-                is_retryable = self._is_retryable_translation_error(e)
-                
-                if not is_retryable:
-                    if self.logger:
-                        self.logger.error(f"❌ Non-retryable error during DDX translation '{text[:30]}...': {e}. Using original text.")
-                    return text
-                
-                # If this was the last attempt, don't retry
-                if attempt >= max_retries:
-                    if self.logger:
-                        self.logger.error(f"❌ Max retries ({max_retries}) reached for DDX translation '{text[:30]}...': {e}. Using original text.")
-                    return text
-                
-                # Calculate exponential backoff delay
-                delay = base_delay * (2 ** attempt)
-                if self.logger:
-                    self.logger.warning(f"⏳ Retryable error during DDX translation '{text[:30]}...', retrying in {delay:.1f} seconds... (attempt {attempt + 1}/{max_retries})")
-                
-                time.sleep(delay)
-        
-        # All retries exhausted
-        if self.logger:
-            self.logger.error(f"❌ Failed to translate DDX '{text[:30]}...' after {max_retries + 1} attempts. Using original text.")
-        
-        return text
-    
-    def _get_medical_codes_for_texts(self, texts: List[str]) -> Tuple[Dict[str, Dict[str, List[str]]], Dict[str, str]]:
-        """
-        Get medical codes for a list of texts using Azure Text Analytics
-        Translates texts to English if needed before sending to Azure
-        
-        Args:
-            texts: List of medical text strings (original DDX texts)
-            
-        Returns:
-            Tuple of:
-            - Dictionary mapping original text to medical codes
-            - Dictionary mapping original text to translated text
+            Dictionary mapping each input text to medical codes.
         """
         try:
-            # Translate texts to English if translator is available
-            translated_texts = []
-            original_to_translated = {}
-            
-            if self.translator_client:
-                if self.logger:
-                    self.logger.info(f"🌐 DDX Translation: Translating {len(texts)} DDX texts to English before sending to Azure Text Analytics")
-                    self.logger.info(f"   Original DDX texts: {[text[:50] + ('...' if len(text) > 50 else '') for text in texts]}")
-                
-                for original_text in texts:
-                    translated_text = self._translate_ddx_text(original_text)
-                    translated_texts.append(translated_text)
-                    original_to_translated[original_text] = translated_text
-                    if original_text != translated_text and self.logger:
-                        self.logger.info(f"   ✅ Translated: '{original_text[:40]}...' → '{translated_text[:40]}...'")
-                
-                if self.logger:
-                    translated_count = sum(1 for orig, trans in original_to_translated.items() if orig != trans)
-                    self.logger.info(f"   📊 Translation summary: {translated_count}/{len(texts)} DDX texts translated to English")
-            else:
-                # No translator available, use original texts
-                if self.logger:
-                    self.logger.warning("⚠️  DDX Translation: Azure Translator not available. Using original DDX texts (may be in Spanish).")
-                translated_texts = texts
-                original_to_translated = {text: text for text in texts}
-            
-            # Log request details
             if self.logger:
-                self.logger.info(f"Making Azure Text Analytics request for {len(translated_texts)} texts")
-                self.logger.info(f"Texts to process: {[text[:50] + ('...' if len(text) > 50 else '') for text in translated_texts]}")
+                self.logger.info(f"Making Azure Text Analytics request for {len(texts)} texts")
+                self.logger.info(f"Texts to process: {[text[:50] + ('...' if len(text) > 50 else '') for text in texts]}")
                 self.logger.info(f"Azure endpoint: {self.endpoint}")
-            
-            # Call Azure Text Analytics for health entities (Long Running Operation)
-            # Always use English since we translate if needed
+
             poller = self.client.begin_analyze_healthcare_entities(
-                documents=translated_texts,
+                documents=texts,
                 language="en",
                 model_version="latest"
             )
@@ -367,20 +139,14 @@ class MedicalLabeler:
             results = {}
             
             for idx, result in enumerate(response):
-                # Get the translated text that was sent to Azure
-                translated_text = translated_texts[idx]
-                # Get the original text to use as key in results
                 original_text = texts[idx]
-                
+
                 if not result.is_error:
                     # Check if entities exist and is not None
                     entities = result.entities if hasattr(result, 'entities') and result.entities is not None else []
-                    
-                    # Log successful processing (use original text for logging)
+
                     if self.logger:
                         self.logger.info(f"Azure processing successful for text '{original_text[:30]}...' - Found {len(entities)} entities")
-                        if original_text != translated_text:
-                            self.logger.info(f"  (Processed translated version: '{translated_text[:30]}...')")
                     
                     # 🔧 DEBUG: Show what entities we got
                     print(f"🔍 DEBUG: Processing '{original_text}' - Found {len(entities)} entities")
@@ -439,8 +205,8 @@ class MedicalLabeler:
                         "orpha": []
                     }
             
-            return results, original_to_translated
-        
+            return results
+
         except Exception as e:
             error_msg = f"❌ Error calling Azure Text Analytics: {str(e)}"
             print(error_msg)
@@ -467,10 +233,7 @@ class MedicalLabeler:
                 
                 self.logger.error(f"Failed texts: {[text[:30] + '...' for text in texts]}")
             
-            # Return empty results for all texts
-            empty_results = {text: {"icd10": [], "snomed": [], "omim": [], "orpha": []} for text in texts}
-            empty_translations = {text: text for text in texts}  # No translation if error
-            return empty_results, empty_translations
+            return {text: {"icd10": [], "snomed": [], "omim": [], "orpha": []} for text in texts}
     
     def process_dataset(self, dataset: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
@@ -526,7 +289,6 @@ class MedicalLabeler:
         
         # Process unique DDX texts in batches
         ddx_codes_cache = {}
-        ddx_translation_cache = {}  # Cache translations: original -> translated
         unique_ddx_list = list(unique_ddx_texts)
         
         batch_size = 5  # Azure Text Analytics batch size limit (max 5 records)
@@ -541,9 +303,8 @@ class MedicalLabeler:
             if self.logger:
                 self.logger.info(batch_msg)
             
-            batch_results, batch_translations = self._get_medical_codes_for_texts(batch)
+            batch_results = self._get_medical_codes_for_texts(batch)
             ddx_codes_cache.update(batch_results)
-            ddx_translation_cache.update(batch_translations)
             
             print("✅ Done")
         
@@ -571,15 +332,7 @@ class MedicalLabeler:
                 # Get medical codes from cache (using original DDX name as key)
                 if ddx_name in ddx_codes_cache:
                     updated_ddx_info['medical_codes'] = ddx_codes_cache[ddx_name]
-                    
-                    # Update normalized_text with English translation if available
-                    if ddx_name in ddx_translation_cache:
-                        translated_text = ddx_translation_cache[ddx_name]
-                        if translated_text != ddx_name:
-                            updated_ddx_info['normalized_text'] = translated_text
-                            if self.logger:
-                                self.logger.debug(f"Updated normalized_text for DDX '{ddx_name}' to English: '{translated_text}'")
-                    
+
                     # Log when no codes are found for a DDX
                     codes = ddx_codes_cache[ddx_name]
                     total_codes = sum(len(code_list) for code_list in codes.values())

@@ -62,7 +62,8 @@ uv pip install -r requirements.txt
 ### 3. Dataset
 
 Asegúrate de tener el dataset en la ruta especificada en `config.yaml`. Por defecto:
-- `bench/datasets/all_150.json`
+- `bench/datasets/all_275.json`  
+  (también disponible `all_150.json` para pruebas más rápidas)
 
 ---
 
@@ -226,29 +227,33 @@ EVALUATOR:
 
 ### Modelo Juez (JUDGE_MODEL)
 
-El modelo juez es el LLM que decide si hay match semántico cuando el score BERT está por debajo del threshold. Por defecto, usa **lógica automática**:
+El modelo juez es el LLM que decide si hay match semántico cuando el score BERT está por debajo del threshold.
 
-**Comportamiento automático (JUDGE_MODEL: null):**
-- Si evalúas un modelo **Gemini** (ej: `gemini-2.5-pro`) → el juez será el **mismo modelo Gemini**
-- Si evalúas un modelo **OpenAI** (ej: `gpt-5.1`, `gpt-5-mini`, `o3-mini`) → el juez será **`gpt-4o-summary`**
+**Configuración recomendada** (según resultados de benchmark interno):
 
-**Configuración manual:**
 ```yaml
 EVALUATOR:
-  JUDGE_MODEL: "gemini-2.5-pro"  # Fuerza usar este modelo siempre
-  # O
-  JUDGE_MODEL: "gpt-4o-summary"  # Fuerza usar GPT-4o-summary siempre
+  JUDGE_MODEL: "gemini-2.5-pro"  # Mejor juez observado en los runs actuales
 ```
 
-**¿Por qué usar el mismo modelo?**
-- **Consistencia**: Si evalúas Gemini, el juez también es Gemini (más preciso)
-- **Precisión**: El mismo modelo juzga sus propias respuestas
-- **Neutralidad**: Para OpenAI, usar `gpt-4o-summary` evita sesgo del modelo evaluado
+Puedes sustituirlo por cualquier modelo disponible:
 
-**Ejemplo:**
-- Evalúas `gemini-2.5-pro` → Juez automático: `gemini-2.5-pro`
-- Evalúas `gpt-5-mini` → Juez automático: `gpt-4o-summary`
-- Evalúas `gemini-2.0-flash` → Juez automático: `gemini-2.0-flash`
+```yaml
+JUDGE_MODEL: "gemini-2.5-pro"  # Recomendado — más preciso en los benchmarks del equipo
+JUDGE_MODEL: "normalcalls"     # GPT-4o (deployment Azure) — alternativa para entornos sin Gemini
+JUDGE_MODEL: "gpt-5-mini"      # Más barato/rápido, algo menos preciso
+# JUDGE_MODEL: null             # Lógica automática (ver nota abajo)
+```
+
+**Si no se especifica (JUDGE_MODEL: null), lógica automática del código:**
+- Modelo **Gemini** evaluado → juez: **el mismo modelo Gemini**
+- Modelo **OpenAI / o3 / gpt-5** evaluado → juez: **`normalcalls`** (GPT-4o en Azure)
+
+> ⚠️ **Recomendación basada en experiencia:** fija siempre `JUDGE_MODEL` explícitamente en lugar de depender de la lógica automática. Así los resultados son comparables entre runs independientemente del modelo emulador.  
+> **`gemini-2.5-pro` como juez** ha mostrado los mejores resultados en los benchmarks del equipo (posición media más baja, mayor % de match).
+
+**¿Importa el juez para la comparabilidad?**  
+Sí, mucho. Dos runs con distinto juez no son directamente comparables aunque el resto de config sea igual. El juez afecta cuántos casos resuelve el paso semántico (en los runs actuales, ~34% de los casos pasan por el juez). Un juez más permisivo sube el % de match pero puede introducir falsos positivos.
 
 ### Control del Pipeline
 
@@ -336,23 +341,41 @@ Contiene las métricas principales:
 
 ```json
 {
-  "total_cases": 150,
-  "successful_matches": 52,
-  "success_rate": 0.347,
-  "ddx_positions": {
-    "P1": 42,  // Diagnóstico correcto en posición 1
-    "P2": 8,   // Diagnóstico correcto en posición 2
-    "P3": 1,   // Diagnóstico correcto en posición 3
-    "P4": 1    // Diagnóstico correcto en posición 4
+  "configuration": {
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/all_275.json",
+    "timestamp": "2026-03-24T13:15:52.994256"
   },
-  "average_position": 1.250
+  "global": {
+    "total_cases": 275,
+    "matched_cases": 271,
+    "unmatched_cases": 4,
+    "top_counts": {
+      "P1": 212,
+      "P2": 33,
+      "P3": 22,
+      "P4": 4
+    },
+    "resolution_method_counts": {
+      "snomed_match": 121,
+      "icd10_exact": 20,
+      "icd10_sibling": 20,
+      "bert_autoconfirm": 11,
+      "bert_match": 4,
+      "llm_judgment": 94
+    },
+    "average_position": 1.328,
+    "final_score_percentage": 98.55
+  }
 }
 ```
 
 **Métricas clave:**
-- **success_rate**: Porcentaje de casos donde se encontró el diagnóstico correcto
-- **P1, P2, P3, P4**: Distribución de posiciones donde se encontró el diagnóstico
-- **average_position**: Posición promedio del diagnóstico correcto (menor es mejor)
+- **final_score_percentage**: Porcentaje de casos donde se encontró el diagnóstico correcto (matched_cases/total)
+- **matched_cases / unmatched_cases**: Conteo absoluto de casos con/sin match
+- **P1, P2, P3, P4…**: Distribución de posiciones donde se encontró el diagnóstico correcto (P1 = mejor)
+- **average_position**: Posición promedio del diagnóstico correcto entre los matched (menor es mejor)
+- **resolution_method_counts**: Cómo se resolvió cada match (SNOMED, ICD10, BERT, LLM)
 
 ### Archivo `evaluation.log`
 
@@ -443,7 +466,7 @@ pip install -r requirements.txt
 
 ```
 output/
-└── all_150/                          # Nombre del dataset
+└── all_275/                          # Nombre del dataset
     └── juanjo_classic_v2/            # Nombre del prompt
         └── gemini_2_5_pro_low_translated_en/  # Nombre del modelo (con sufijos)
             ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___ddxs_from_labeler.json
@@ -451,17 +474,23 @@ output/
             ├── emulator.log
             ├── medlabeler.log
             └── 20251204151832/        # Timestamp de la evaluación
-                ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___evaluation.log
-                ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___evaluation_details.txt
-                ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___summary.json
+                ├── evaluation.log
+                ├── evaluation_details.txt
+                ├── summary.json
                 └── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___config.yaml
 ```
 
 **Nota sobre nombres de modelos:**
 - Si `TRANSLATE_CASE.ENABLED: true`, se añade el sufijo `_translated_<idioma>`
+- Para Gemini se añade `_<thinking_level>` (ej: `_low`); para O3/GPT-5 se añade `_<reasoning_effort>` (ej: `_high`)
 - Los espacios y caracteres especiales se reemplazan por `_`
 
+**Nota sobre DDX translation (medlabeler):**  
+El labeler envía los textos DDX directamente a Azure Text Analytics con `language="en"`. No hay traducción intermedia de DDX: se asume inglés dado que el emulador traduce el caso y el prompt es en inglés. La opción `TRANSLATE_CASE` del emulador no afecta al labeler.
+
 ---
+
+**Última actualización:** Marzo 2026
 
 ## Consejos y Mejores Prácticas
 
