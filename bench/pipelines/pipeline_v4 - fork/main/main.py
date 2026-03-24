@@ -86,11 +86,17 @@ def get_file_names(config: Dict[str, Any]) -> Dict[str, str]:
     prompt_path = config['DXGPT_EMULATOR']['CANDIDATE_PROMPT_PATH']
     prompt_name = os.path.splitext(os.path.basename(prompt_path))[0]
     
-    # Add reasoning_effort to model name if present
+    # Disambiguate runs: OpenAI/o-series use reasoning_effort in API; Gemini uses thinking_level (emulator.py).
     params = config['DXGPT_EMULATOR'].get('PARAMS', {})
-    reasoning_effort = params.get('reasoning_effort')
-    if reasoning_effort:
-        model_name = f"{model_name}_{reasoning_effort}"
+    model_lower = model_name.lower()
+    if "gemini" in model_lower:
+        thinking_level = params.get("thinking_level")
+        if thinking_level:
+            model_name = f"{model_name}_{thinking_level}"
+    else:
+        reasoning_effort = params.get("reasoning_effort")
+        if reasoning_effort:
+            model_name = f"{model_name}_{reasoning_effort}"
     
     # Add translation suffix if translation is enabled
     translate_config = config['DXGPT_EMULATOR'].get('TRANSLATE_CASE', {})

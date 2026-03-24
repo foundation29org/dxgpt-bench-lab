@@ -9,40 +9,41 @@ Average Position = Lower is Better | Success Rate = Higher is Better
 🥇 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ N/A             │  1.250 │   34.7% (52/150)
 🥈 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ N/A             │  1.250 │   34.7% (52/150)
 🥉 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ N/A             │  1.357 │   95.3% (143/150)
- 4 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ N/A             │  1.427 │  100.0% (150/150)
- 5 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ N/A             │  1.442 │   93.8% (258/275)
- 6 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ N/A             │  1.447 │  100.0% (150/150)
- 7 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ N/A             │  1.566 │   96.7% (145/150)
- 8 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ N/A             │  1.582 │   97.3% (146/150)
- 9 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ N/A             │  1.592 │   94.7% (142/150)
-10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ N/A             │  1.599 │   94.7% (142/150)
-11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  1.671 │   99.3% (149/150)
-12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ N/A             │  1.673 │  100.0% (150/150)
-13 │ 📋 👌 🤖 all_10-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ N/A             │  2.000 │  100.0% (10/10)
-14 │ 📋 👌 🤖 all_10-juanjo_classic_v2-gpt_5_mini_low_translated_en │ N/A             │  2.100 │  100.0% (10/10)
-15 │ 📋 👌 🤖 all_10-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  2.300 │  100.0% (10/10)
-16 │ 📋 👌 🤖 all_10-juanjo_classic_v2-gpt_5_mini_low_translated_en │ N/A             │  2.444 │   90.0% (9/10)
+ 4 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
+ 5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ N/A             │  1.427 │  100.0% (150/150)
+ 6 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ N/A             │  1.442 │   93.8% (258/275)
+ 7 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ N/A             │  1.447 │  100.0% (150/150)
+ 8 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en │ gemini-2.5-pro  │  1.547 │  100.0% (150/150)
+ 9 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ N/A             │  1.566 │   96.7% (145/150)
+10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ N/A             │  1.582 │   97.3% (146/150)
+11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ N/A             │  1.592 │   94.7% (142/150)
+12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ N/A             │  1.599 │   94.7% (142/150)
+13 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
+14 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  1.671 │   99.3% (149/150)
+15 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ N/A             │  1.673 │  100.0% (150/150)
+16 │ 📋 👌 🤖 all_275-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.680 │   97.8% (269/275)
 --------------------------------------------------------------------------------
 📊 Total experiments: 16
 ⚠️  Incomplete runs found: 3 (not ranked)
-🕐 Generated: 2025-12-12 11:38:27
+🕐 Generated: 2026-03-24 (last run 20260324154608 — summary.json)
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
 
 📊 BY DATASET:
-  📋 all_10               │  4 runs │ Avg: 2.211 │ Success: 97.5%
-  📋 all_150              │ 11 runs │ Avg: 1.492 │ Success: 86.1%
-  📋 all_275              │  1 runs │ Avg: 1.442 │ Success: 93.8%
+  📋 all_150              │ 13 runs │ Avg: 1.507 │ Success: 88.3%
+  📋 all_275              │  3 runs │ Avg: 1.483 │ Success: 96.7%
 
 📝 BY PROMPT:
-  👌 juanjo_classic_v2    │ 16 runs │ Avg: 1.669 │ Success: 89.4%
+  👌 juanjo_classic_v2    │ 16 runs │ Avg: 1.494 │ Success: 96.2%
 
 🤖 BY MODEL:
-  🤖 gemini_2_5_pro_low_translated_en │  3 runs │ Avg: 1.286 │ Success: 54.9%
+  🤖 gemini_2_5_pro_low_translated_en │  4 runs │ Avg: 1.296 │ Success: 86.3%
   🤖 gemini_3_pro_preview_low_translated_en │  1 runs │ Avg: 1.447 │ Success: 100.0%
   🤖 gpt_5_1_low          │  2 runs │ Avg: 1.504 │ Success: 95.2%
   🤖 gpt_5_1_low_translated_en │  2 runs │ Avg: 1.591 │ Success: 96.0%
   🤖 gpt_5_1_medium       │  1 runs │ Avg: 1.592 │ Success: 94.7%
-  🤖 gpt_5_mini_low_translated_en │  5 runs │ Avg: 2.038 │ Success: 97.9%
-  🤖 grok_4_1_fast_reasoning_low_translated_en │  2 runs │ Avg: 1.714 │ Success: 100.0%
+  🤖 gpt_5_4_mini_medium_translated_en │  1 runs │ Avg: 1.547 │ Success: 100.0%
+  🤖 gpt_5_mini_low_translated_en │  2 runs │ Avg: 1.672 │ Success: 99.7%
+  🤖 o3_dxgpt_high_translated_en │  2 runs │ Avg: 1.663 │ Success: 98.6%
+  🤖 grok_4_1_fast_reasoning_low_translated_en │  1 runs │ Avg: 1.427 │ Success: 100.0%

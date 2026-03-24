@@ -32,11 +32,11 @@ if project_root not in sys.path:
 
 from utils.llm import get_llm
 from dotenv import load_dotenv
+from azure.core.credentials import AzureKeyCredential
+from azure.core.exceptions import HttpResponseError
 
-# Azure Translator imports
 try:
-    from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
-    from azure.core.exceptions import HttpResponseError
+    from azure.ai.translation.text import TextTranslationClient
     AZURE_TRANSLATOR_AVAILABLE = True
 except ImportError:
     AZURE_TRANSLATOR_AVAILABLE = False
@@ -124,8 +124,11 @@ class DXGPTEmulator:
             return None
         
         try:
-            credential = TranslatorCredential(translator_key, translator_region)
-            client = TextTranslationClient(endpoint=translator_endpoint, credential=credential)
+            client = TextTranslationClient(
+                endpoint=translator_endpoint,
+                credential=AzureKeyCredential(translator_key),
+                region=translator_region,
+            )
             if self.logger:
                 self.logger.info(f"Azure Translator client initialized. Target language: {self.target_language}")
             return client
@@ -153,41 +156,40 @@ class DXGPTEmulator:
             return case_description
         
         try:
-            # First, detect the source language
-            detect_response = self.translator_client.detect_language(
-                body=[{"text": case_description}]
-            )
-            
-            if not detect_response or len(detect_response) == 0:
-                if self.logger:
-                    self.logger.warning("Could not detect language, skipping translation")
-                return case_description
-            
-            detected_language = detect_response[0].language
-            confidence = getattr(detect_response[0], 'confidence_score', None)
-            
-            # Only translate if detected language is different from target
-            if detected_language.lower() == self.target_language.lower():
-                if self.logger:
-                    self.logger.info(f"Case already in target language ({detected_language}), skipping translation")
-                return case_description
-            
-            # Translate to target language
+            tgt = self.target_language
             response = self.translator_client.translate(
-                content=[case_description],
-                to=[self.target_language]
+                body=[case_description],
+                to_language=[tgt],
             )
-            
-            if response and len(response) > 0 and len(response[0].translations) > 0:
-                translated_text = response[0].translations[0].text
+
+            if not response or len(response) == 0:
                 if self.logger:
-                    conf_str = f" (confidence: {confidence:.2f})" if confidence else ""
-                    self.logger.info(f"Case translated from {detected_language}{conf_str} to {self.target_language}")
-                return translated_text
-            else:
+                    self.logger.warning("Empty translation response, skipping translation")
+                return case_description
+
+            item = response[0]
+            detected = item.detected_language
+            detected_language = (detected.language or "").lower() if detected else ""
+
+            if detected_language == tgt.lower():
+                if self.logger:
+                    self.logger.info(
+                        f"Case already in target language ({detected_language}), skipping translation"
+                    )
+                return case_description
+
+            if not item.translations or len(item.translations) == 0:
                 if self.logger:
                     self.logger.warning("Translation returned empty result, using original text")
                 return case_description
+
+            translated_text = item.translations[0].text
+            confidence = getattr(detected, "score", None) if detected else None
+            if self.logger:
+                conf_str = f" (confidence: {confidence:.2f})" if confidence is not None else ""
+                src = detected_language or "unknown"
+                self.logger.info(f"Case translated from {src}{conf_str} to {tgt}")
+            return translated_text
                 
         except HttpResponseError as e:
             if self.logger:

@@ -6,11 +6,11 @@ EXPERIMENT_NAME: "no-name-provided"
 EXPERIMENT_DESCRIPTION: "no-description-provided"
 
 # Dataset Configuration
-DATASET_PATH: "bench/datasets/all_150.json"
+DATASET_PATH: "bench/datasets/all_275.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
-  MODEL: "gpt-5.2"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
+  MODEL: "gemini-2.5-pro"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
   CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
   PARAMS:
     temperature: 0.1
