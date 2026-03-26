@@ -17,6 +17,7 @@ _PRMT_REF/
 
 # Exclude ALL JSON, CSV and LOG files from entire codebase
 *.json
+!bench/**/*.json
 *.csv
 *.log
 

@@ -1,0 +1,4992 @@
+{
+  "metadata": {
+    "experiment_name": "Ramedis Baseline con GPT-4o",
+    "llm_config_alias": "candidate_dx_gpt",
+    "model_used": "o3-images",
+    "prompt_path": "experiments/DxGPT_baseline/../candidate-prompts/dxgpt_dev.txt",
+    "dataset_path": "bench/datasets/all_498.json",
+    "timestamp": "2025-06-27T04:40:12.242855"
+  },
+  "responses": [
+    {
+      "case_id": 6061,
+      "ddxs": [
+        "Warfarin-induced skin necrosis",
+        "Heparin-induced thrombocytopenia–associated skin necrosis",
+        "Calciphylaxis (calcific uremic arteriolopathy)",
+        "Purpura fulminans",
+        "Necrotizing fasciitis"
+      ]
+    },
+    {
+      "case_id": 926,
+      "ddxs": [
+        "Rib contusion",
+        "Rib fracture",
+        "Knee contusion or sprain",
+        "Shoulder contusion",
+        "Pulmonary contusion"
+      ]
+    },
+    {
+      "case_id": 2255,
+      "ddxs": [
+        "CHARGE syndrome",
+        "Cornelia de Lange syndrome",
+        "Kabuki syndrome",
+        "Noonan syndrome",
+        "22q11.2 deletion syndrome"
+      ]
+    },
+    {
+      "case_id": 2105,
+      "ddxs": [
+        "Retinitis Pigmentosa",
+        "Usher Syndrome",
+        "Leber Congenital Amaurosis",
+        "Bardet-Biedl Syndrome",
+        "Choroideremia"
+      ]
+    },
+    {
+      "case_id": 1159,
+      "ddxs": [
+        "Occipital neuralgia (Arnold neuralgia)",
+        "Cervicogenic headache secondary to cervical spondylosis",
+        "Myofascial neck and shoulder pain syndrome",
+        "Giant cell arteritis",
+        "Polymyalgia rheumatica"
+      ]
+    },
+    {
+      "case_id": 9530,
+      "ddxs": [
+        "Multiple Endocrine Neoplasia type 2B (MEN2B)",
+        "Medullary thyroid carcinoma",
+        "Pheochromocytoma",
+        "Multiple Endocrine Neoplasia type 2A (MEN2A)",
+        "Cowden syndrome"
+      ]
+    },
+    {
+      "case_id": 9444,
+      "ddxs": [
+        "Transposition of the great arteries",
+        "Tetralogy of Fallot",
+        "Persistent pulmonary hypertension of the newborn",
+        "Total anomalous pulmonary venous return",
+        "Tricuspid atresia"
+      ]
+    },
+    {
+      "case_id": 7182,
+      "ddxs": [
+        "Opioid withdrawal",
+        "Serotonin syndrome",
+        "Neuroleptic malignant syndrome",
+        "Malignant hyperthermia",
+        "Clostridioides difficile colitis"
+      ]
+    },
+    {
+      "case_id": 406,
+      "ddxs": [
+        "Adult omphalitis (periumbilical cellulitis)",
+        "Umbilical pilonidal sinus infection",
+        "Infected urachal sinus/cyst (urachal remnant infection)",
+        "Incarcerated or strangulated umbilical hernia with overlying cellulitis",
+        "Infected epidermoid (sebaceous) cyst of the umbilicus"
+      ]
+    },
+    {
+      "case_id": 41,
+      "ddxs": [
+        "Acute streptococcal (Group A) pharyngotonsillitis",
+        "Epstein-Barr virus infectious mononucleosis",
+        "Suppurative bacterial cervical lymphadenitis",
+        "Adenoviral exudative pharyngitis",
+        "Peritonsillar abscess"
+      ]
+    },
+    {
+      "case_id": 754,
+      "ddxs": [
+        "Calcific tendinitis of the supraspinatus",
+        "Degenerative rotator cuff tear",
+        "Shoulder impingement syndrome",
+        "Adhesive capsulitis (frozen shoulder)",
+        "Subacromial bursitis"
+      ]
+    },
+    {
+      "case_id": 9566,
+      "ddxs": [
+        "Aneurysmal subarachnoid hemorrhage (ruptured saccular/berry aneurysm)",
+        "Arteriovenous malformation–related subarachnoid hemorrhage",
+        "Hypertensive intracerebral hemorrhage",
+        "Cervical artery dissection",
+        "Reversible cerebral vasoconstriction syndrome"
+      ]
+    },
+    {
+      "case_id": 1113,
+      "ddxs": [
+        "Acute viral upper respiratory tract infection (common cold)",
+        "Acute otitis externa",
+        "Eustachian tube dysfunction (otitis media with effusion)",
+        "Acute viral rhinosinusitis",
+        "Allergic rhinitis"
+      ]
+    },
+    {
+      "case_id": 5290,
+      "ddxs": [
+        "Acute decompensated left-sided heart failure (cardiogenic pulmonary edema)",
+        "Pulmonary embolism",
+        "Community-acquired pneumonia",
+        "Diabetic ketoacidosis",
+        "Systemic sepsis with early acute lung injury"
+      ]
+    },
+    {
+      "case_id": 9564,
+      "ddxs": [
+        "Waldenström macroglobulinemia",
+        "Chronic lymphocytic leukemia",
+        "Non-Hodgkin lymphoma",
+        "Multiple myeloma",
+        "POEMS syndrome"
+      ]
+    },
+    {
+      "case_id": 1006,
+      "ddxs": [
+        "Lumbar strain/sprain (acute mechanical low back pain)",
+        "Lumbar vertebral fracture",
+        "Pregnancy-related pelvic girdle pain (sacroiliac joint dysfunction)",
+        "Lumbar disc herniation",
+        "Placental abruption"
+      ]
+    },
+    {
+      "case_id": 9485,
+      "ddxs": [
+        "Pancoast (superior sulcus) tumor",
+        "Apical squamous cell carcinoma of the lung",
+        "Non-small cell lung carcinoma with brachial plexus invasion",
+        "Malignant pleural mesothelioma",
+        "Pulmonary tuberculosis (apical cavitary disease)"
+      ]
+    },
+    {
+      "case_id": 9573,
+      "ddxs": [
+        "Systemic sclerosis (diffuse scleroderma)",
+        "Mixed connective tissue disease",
+        "Systemic lupus erythematosus",
+        "Dermatomyositis",
+        "Rheumatoid arthritis"
+      ]
+    },
+    {
+      "case_id": 13,
+      "ddxs": [
+        "Costochondritis (Tietze syndrome)",
+        "Acute viral myocarditis",
+        "Gastroesophageal reflux disease",
+        "Precordial catch syndrome",
+        "Anxiety-related chest pain"
+      ]
+    },
+    {
+      "case_id": 9523,
+      "ddxs": [
+        "Acute arsenic poisoning",
+        "Organophosphate poisoning",
+        "Thallium poisoning",
+        "Acetaminophen toxicity",
+        "Methanol poisoning"
+      ]
+    },
+    {
+      "case_id": 2710,
+      "ddxs": [
+        "Postoperative atelectasis (mucus plugging of bronchi)",
+        "Pleural effusion (postoperative)",
+        "Pneumothorax",
+        "Aspiration pneumonitis/pneumonia",
+        "Acute pulmonary embolism"
+      ]
+    },
+    {
+      "case_id": 4012,
+      "ddxs": [
+        "Preterm premature rupture of membranes (PPROM)",
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "Gestational hypertension/preeclampsia",
+        "Oligohydramnios sequence (Potter sequence)",
+        "Neonatal sepsis (Group B Streptococcus)"
+      ]
+    },
+    {
+      "case_id": 840,
+      "ddxs": [
+        "Acute infectious gastroenteritis",
+        "Hyperemesis gravidarum",
+        "Acute appendicitis",
+        "Acute cholecystitis",
+        "Crohn's disease"
+      ]
+    },
+    {
+      "case_id": 8479,
+      "ddxs": [
+        "Coronary artery disease",
+        "Type 2 diabetes mellitus",
+        "Tobacco use disorder (nicotine dependence)",
+        "Hyperlipidemia",
+        "Hypertension"
+      ]
+    },
+    {
+      "case_id": 678,
+      "ddxs": [
+        "Acute bronchitis (viral tracheobronchitis)",
+        "Costochondritis (Tietze syndrome)",
+        "Cough-variant asthma",
+        "Viral pleuritis",
+        "Atypical pneumonia (Mycoplasma infection)"
+      ]
+    },
+    {
+      "case_id": 6642,
+      "ddxs": [
+        "Alcohol use disorder",
+        "Alcohol-associated liver disease",
+        "Major depressive disorder",
+        "Generalized anxiety disorder",
+        "Narcissistic personality disorder"
+      ]
+    },
+    {
+      "case_id": 1005,
+      "ddxs": [
+        "Lumbar degenerative disc disease",
+        "Lumbar disc herniation (L4-L5)",
+        "Lumbar facet joint osteoarthritis (facet syndrome)",
+        "Lumbar spondylosis",
+        "Lumbar spinal stenosis"
+      ]
+    },
+    {
+      "case_id": 9496,
+      "ddxs": [
+        "Meningioma",
+        "Glioblastoma multiforme",
+        "Metastatic brain tumor",
+        "Low-grade astrocytoma",
+        "Primary central nervous system lymphoma"
+      ]
+    },
+    {
+      "case_id": 1521,
+      "ddxs": [
+        "Infantile nephropathic cystinosis",
+        "X-linked hypophosphatemic rickets",
+        "Lowe syndrome",
+        "Dent disease",
+        "Schimke immuno-osseous dysplasia"
+      ]
+    },
+    {
+      "case_id": 8610,
+      "ddxs": [
+        "Bone metastases from prostate cancer",
+        "Pathologic vertebral or hip fracture secondary to metastatic disease",
+        "Malignant spinal cord compression",
+        "Degenerative lumbar spondylosis (osteoarthritis)",
+        "Vertebral osteomyelitis"
+      ]
+    },
+    {
+      "case_id": 9543,
+      "ddxs": [
+        "Postsurgical hypoparathyroidism",
+        "Autoimmune hypoparathyroidism (polyglandular autoimmune syndrome type 1)",
+        "Pseudohypoparathyroidism",
+        "Vitamin D deficiency–related hypocalcemia",
+        "Hypomagnesemia-induced functional hypoparathyroidism"
+      ]
+    },
+    {
+      "case_id": 127,
+      "ddxs": [
+        "Tenosynovitis (hand/wrist)",
+        "Rheumatoid arthritis",
+        "Ganglion cyst of the wrist/hand",
+        "Carpal tunnel syndrome",
+        "Acute gouty arthritis"
+      ]
+    },
+    {
+      "case_id": 105,
+      "ddxs": [
+        "Corneal abrasion (superficial corneal epithelial defect)",
+        "Superficial punctate keratitis",
+        "Paronychia of the second left finger",
+        "Herpes simplex keratitis",
+        "Bacterial infectious keratitis (early corneal ulcer)"
+      ]
+    },
+    {
+      "case_id": 9480,
+      "ddxs": [
+        "Congenital long QT syndrome",
+        "Hypertrophic cardiomyopathy",
+        "Catecholaminergic polymorphic ventricular tachycardia",
+        "Wolff-Parkinson-White syndrome",
+        "Anomalous origin of a coronary artery"
+      ]
+    },
+    {
+      "case_id": 74,
+      "ddxs": [
+        "Costochondritis",
+        "Pulmonary embolism",
+        "Viral pleuritis (pleurodynia)",
+        "Acute pericarditis",
+        "Early atypical pneumonia"
+      ]
+    },
+    {
+      "case_id": 3109,
+      "ddxs": [
+        "Legionnaires' disease (Legionella pneumophila infection)",
+        "Leptospirosis",
+        "COVID-19 (SARS-CoV-2 infection)",
+        "Influenza A virus infection",
+        "Mycoplasma pneumoniae infection"
+      ]
+    },
+    {
+      "case_id": 3545,
+      "ddxs": [
+        "Sickle cell trait (HbAS)",
+        "Hyposthenuria secondary to sickling",
+        "Renal papillary necrosis",
+        "Painless gross hematuria",
+        "Renal medullary carcinoma"
+      ]
+    },
+    {
+      "case_id": 6141,
+      "ddxs": [
+        "Anaphylaxis secondary to peanut allergy",
+        "IgE-mediated food allergy",
+        "Allergic angioedema",
+        "Hereditary angioedema (C1-esterase inhibitor deficiency)",
+        "Foreign body aspiration"
+      ]
+    },
+    {
+      "case_id": 8238,
+      "ddxs": [
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "Transient tachypnea of the newborn",
+        "Neonatal pneumonia (e.g., Group B Streptococcus)",
+        "Meconium aspiration syndrome",
+        "Persistent pulmonary hypertension of the newborn"
+      ]
+    },
+    {
+      "case_id": 6742,
+      "ddxs": [
+        "Deep vein thrombosis",
+        "Ruptured popliteal (Baker) cyst",
+        "Cellulitis",
+        "Superficial thrombophlebitis",
+        "Acute compartment syndrome"
+      ]
+    },
+    {
+      "case_id": 2192,
+      "ddxs": [
+        "Isolated left ventricular noncompaction cardiomyopathy",
+        "Barth syndrome",
+        "MYH7-related sarcomeric cardiomyopathy",
+        "Danon disease",
+        "Mitochondrial cardiomyopathy"
+      ]
+    },
+    {
+      "case_id": 4678,
+      "ddxs": [
+        "Luteal phase defect",
+        "Threatened miscarriage (early pregnancy loss)",
+        "Ectopic pregnancy",
+        "Hydatidiform mole",
+        "Choriocarcinoma"
+      ]
+    },
+    {
+      "case_id": 2024,
+      "ddxs": [
+        "Leukocyte adhesion deficiency type 1",
+        "Leukocyte adhesion deficiency type 3",
+        "Chronic granulomatous disease",
+        "Hyper-IgM syndrome",
+        "Common variable immunodeficiency"
+      ]
+    },
+    {
+      "case_id": 897,
+      "ddxs": [
+        "Benign paroxysmal positional vertigo (BPPV)",
+        "Cervicogenic dizziness (cervical vertigo)",
+        "Vestibular neuritis (acute peripheral vestibulopathy)",
+        "Orthostatic hypotension",
+        "Ménière’s disease"
+      ]
+    },
+    {
+      "case_id": 2143,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Mucopolysaccharidosis type III (Sanfilippo syndrome)",
+        "Mucopolysaccharidosis type II (Hunter syndrome)",
+        "Multiple sulfatase deficiency",
+        "Smith-Lemli-Opitz syndrome"
+      ]
+    },
+    {
+      "case_id": 2294,
+      "ddxs": [
+        "Fanconi anemia",
+        "Dubowitz syndrome",
+        "Diamond-Blackfan anemia",
+        "Dyskeratosis congenita",
+        "Kabuki syndrome"
+      ]
+    },
+    {
+      "case_id": 4404,
+      "ddxs": [
+        "Preeclampsia",
+        "Gestational hypertension",
+        "Chronic (pre-existing) hypertension",
+        "HELLP syndrome",
+        "Chronic glomerulonephritis/nephrotic syndrome"
+      ]
+    },
+    {
+      "case_id": 9342,
+      "ddxs": [
+        "Celiac disease",
+        "Cystic fibrosis with exocrine pancreatic insufficiency",
+        "Crohn disease",
+        "Abetalipoproteinemia",
+        "Hereditary chronic pancreatitis causing pancreatic insufficiency"
+      ]
+    },
+    {
+      "case_id": 116,
+      "ddxs": [
+        "Acute bacterial rhinosinusitis",
+        "Viral acute rhinosinusitis (common cold)",
+        "Allergic rhinitis/rhinosinusitis",
+        "Subacute or chronic rhinosinusitis",
+        "Atypical pneumonia (e.g., Mycoplasma)"
+      ]
+    },
+    {
+      "case_id": 3819,
+      "ddxs": [
+        "Ureterolithiasis (calcium oxalate nephrolithiasis)",
+        "Acute unilateral obstructive uropathy",
+        "Hydronephrosis",
+        "Post-renal acute kidney injury",
+        "Renal colic"
+      ]
+    },
+    {
+      "case_id": 9546,
+      "ddxs": [
+        "Primary ciliary dyskinesia (Kartagener syndrome)",
+        "Cystic fibrosis",
+        "Common variable immunodeficiency",
+        "Selective IgA deficiency",
+        "Alpha-1 antitrypsin deficiency"
+      ]
+    },
+    {
+      "case_id": 7933,
+      "ddxs": [
+        "Ovarian Leydig cell tumor (hilar cell tumor)",
+        "Sertoli-Leydig cell tumor of the ovary (androblastoma)",
+        "Androgen-secreting adrenocortical carcinoma",
+        "Polycystic ovary syndrome (PCOS)",
+        "Nonclassic congenital adrenal hyperplasia (21-hydroxylase deficiency)"
+      ]
+    },
+    {
+      "case_id": 458,
+      "ddxs": [
+        "Traumatic subconjunctival hemorrhage",
+        "Conjunctival abrasion",
+        "Traumatic conjunctivitis",
+        "Corneal abrasion",
+        "Ocular surface foreign body"
+      ]
+    },
+    {
+      "case_id": 4683,
+      "ddxs": [
+        "Hepatic cavernous hemangioma",
+        "Hepatic adenoma",
+        "Focal nodular hyperplasia",
+        "Hepatocellular carcinoma",
+        "Metastatic liver tumor"
+      ]
+    },
+    {
+      "case_id": 1454,
+      "ddxs": [
+        "Prader-Willi syndrome",
+        "Leigh syndrome",
+        "Spinal muscular atrophy type 1 (Werdnig-Hoffmann disease)",
+        "Maple syrup urine disease",
+        "LAMA2-related congenital muscular dystrophy"
+      ]
+    },
+    {
+      "case_id": 2056,
+      "ddxs": [
+        "Retinitis pigmentosa",
+        "Usher syndrome",
+        "Bardet-Biedl syndrome",
+        "Refsum disease",
+        "Leber congenital amaurosis"
+      ]
+    },
+    {
+      "case_id": 3638,
+      "ddxs": [
+        "Benign paroxysmal positional vertigo (BPPV)",
+        "Vestibular neuritis",
+        "Vertebrobasilar insufficiency (posterior circulation TIA/stroke)",
+        "Meniere disease",
+        "Vestibular migraine"
+      ]
+    },
+    {
+      "case_id": 296,
+      "ddxs": [
+        "Conjuntivitis viral (adenoviral)",
+        "Conjuntivitis bacteriana aguda",
+        "Síndrome conjuntivitis-otitis (Haemophilus influenzae no tipificable)",
+        "Conjuntivitis alérgica",
+        "Obstrucción congénita del conducto nasolagrimal"
+      ]
+    },
+    {
+      "case_id": 6346,
+      "ddxs": [
+        "Septic cavernous sinus thrombosis",
+        "Orbital cellulitis",
+        "Superior orbital fissure syndrome",
+        "Orbital apex syndrome",
+        "Preseptal (periorbital) cellulitis"
+      ]
+    },
+    {
+      "case_id": 1309,
+      "ddxs": [
+        "Gastrojejunal anastomotic stenosis after Roux-en-Y gastric bypass",
+        "Symptomatic cholelithiasis (biliary colic)",
+        "Internal hernia causing intermittent small-bowel obstruction post-bariatric surgery",
+        "Severe post-bariatric surgery malnutrition with electrolyte imbalance",
+        "Bile reflux gastritis/esophagitis due to incompetent cardia"
+      ]
+    },
+    {
+      "case_id": 8031,
+      "ddxs": [
+        "Rh(D) hemolytic disease of the newborn (erythroblastosis fetalis)",
+        "ABO hemolytic disease of the newborn",
+        "Kell alloimmunization hemolytic disease of the newborn",
+        "Neonatal autoimmune hemolytic anemia",
+        "Hereditary spherocytosis"
+      ]
+    },
+    {
+      "case_id": 6618,
+      "ddxs": [
+        "Colorectal adenocarcinoma with hepatic metastases",
+        "Carotenemia (beta-carotene excess)",
+        "Acute cholecystitis",
+        "Pancreatic head carcinoma with hepatic spread",
+        "Hepatocellular carcinoma"
+      ]
+    },
+    {
+      "case_id": 1888,
+      "ddxs": [
+        "Neuromyelitis optica spectrum disorder",
+        "Neuroborreliosis (Lyme disease)",
+        "Antiphospholipid syndrome",
+        "Multiple sclerosis",
+        "Neurosarcoidosis"
+      ]
+    },
+    {
+      "case_id": 7076,
+      "ddxs": [
+        "Panic attack",
+        "Anaphylaxis",
+        "Acute asthma exacerbation",
+        "Pulmonary embolism",
+        "Hyperventilation syndrome"
+      ]
+    },
+    {
+      "case_id": 9374,
+      "ddxs": [
+        "Granulomatosis with polyangiitis (Wegener's)",
+        "Microscopic polyangiitis",
+        "Eosinophilic granulomatosis with polyangiitis (Churg-Strauss)",
+        "Infective endocarditis–associated ANCA vasculitis",
+        "Cystic fibrosis"
+      ]
+    },
+    {
+      "case_id": 3816,
+      "ddxs": [
+        "Duchenne muscular dystrophy",
+        "Beta thalassemia major",
+        "Cystic fibrosis",
+        "Hurler syndrome",
+        "Phenylketonuria"
+      ]
+    },
+    {
+      "case_id": 9558,
+      "ddxs": [
+        "Acute myeloid leukemia (AML)",
+        "Chronic myeloid leukemia (CML) in blast crisis",
+        "Acute lymphoblastic leukemia (ALL)",
+        "Leukostasis (hyperleukocytosis syndrome)",
+        "Waldenström macroglobulinemia"
+      ]
+    },
+    {
+      "case_id": 4721,
+      "ddxs": [
+        "Pancoast (superior sulcus) lung tumor",
+        "Carotid artery dissection",
+        "Cervical rib–related thoracic outlet syndrome",
+        "Cluster headache",
+        "Cervical spinal cord syringomyelia"
+      ]
+    },
+    {
+      "case_id": 2182,
+      "ddxs": [
+        "Branchio-oculo-facial syndrome",
+        "CHARGE syndrome",
+        "Lenz microphthalmia syndrome",
+        "Oculo-dento-digital dysplasia",
+        "Renal coloboma syndrome (PAX2-related disorder)"
+      ]
+    },
+    {
+      "case_id": 8652,
+      "ddxs": [
+        "Pernicious anemia",
+        "Vitamin B12 deficiency (megaloblastic anemia)",
+        "Chronic autoimmune atrophic gastritis",
+        "Subacute combined degeneration of the spinal cord",
+        "Gastric adenocarcinoma"
+      ]
+    },
+    {
+      "case_id": 5483,
+      "ddxs": [
+        "Uterine rupture",
+        "Placental abruption",
+        "Umbilical cord prolapse",
+        "Vasa previa rupture",
+        "Uterine dehiscence"
+      ]
+    },
+    {
+      "case_id": 3787,
+      "ddxs": [
+        "Todd paralysis (postictal hemiparesis)",
+        "Acute ischemic stroke (right middle cerebral artery occlusion)",
+        "Hypoglycemia-induced neurologic deficit",
+        "Subarachnoid hemorrhage",
+        "Acute subdural hematoma"
+      ]
+    },
+    {
+      "case_id": 893,
+      "ddxs": [
+        "Posterior tibial tendon dysfunction (tibialis posterior tendinopathy)",
+        "Ankle osteoarthritis",
+        "Tarsal tunnel syndrome",
+        "Medial malleolus stress fracture",
+        "Gout (acute monoarticular gouty arthritis of the ankle)"
+      ]
+    },
+    {
+      "case_id": 3226,
+      "ddxs": [
+        "Tuberculous constrictive pericarditis",
+        "Tuberculous pericardial effusion",
+        "Idiopathic viral pericarditis",
+        "Metastatic malignant pericarditis",
+        "Autoimmune (SLE-associated) pericarditis"
+      ]
+    },
+    {
+      "case_id": 9545,
+      "ddxs": [
+        "Tricyclic antidepressant overdose",
+        "Lithium toxicity",
+        "Serotonin syndrome",
+        "Acetaminophen poisoning",
+        "Salicylate poisoning"
+      ]
+    },
+    {
+      "case_id": 2115,
+      "ddxs": [
+        "Congenital nephrotic syndrome of the Finnish type (NPHS1 mutation)",
+        "Diffuse mesangial sclerosis / Denys-Drash syndrome (WT1-related)",
+        "Pierson syndrome (LAMB2-related congenital nephrotic syndrome)",
+        "Congenital cytomegalovirus (CMV) infection with nephrotic syndrome",
+        "Early-onset nephrotic syndrome due to PLCE1 mutation"
+      ]
+    },
+    {
+      "case_id": 4369,
+      "ddxs": [
+        "Friedreich ataxia",
+        "Charcot-Marie-Tooth disease",
+        "Ataxia-telangiectasia",
+        "Spinocerebellar ataxia",
+        "Vitamin E deficiency"
+      ]
+    },
+    {
+      "case_id": 1148,
+      "ddxs": [
+        "Symptomatic cholelithiasis (biliary colic)",
+        "Fecal impaction / constipation-related subocclusion",
+        "Chronic mesenteric ischemia",
+        "Acute cholecystitis",
+        "Partial large-bowel obstruction due to right-sided colon cancer"
+      ]
+    },
+    {
+      "case_id": 7889,
+      "ddxs": [
+        "Chronic granulomatous disease (NADPH oxidase deficiency)",
+        "Hyper-IgE syndrome (Job syndrome)",
+        "Chediak-Higashi syndrome",
+        "Myeloperoxidase deficiency",
+        "Leukocyte adhesion deficiency type 1"
+      ]
+    },
+    {
+      "case_id": 4905,
+      "ddxs": [
+        "Paget disease of bone",
+        "Osteoblastic bone metastases",
+        "Primary hyperparathyroidism",
+        "Vitamin D deficiency (osteomalacia)",
+        "Cholestatic biliary obstruction"
+      ]
+    },
+    {
+      "case_id": 2089,
+      "ddxs": [
+        "Ataxia-telangiectasia",
+        "DNA ligase IV deficiency (LIG4 syndrome)",
+        "Nijmegen breakage syndrome",
+        "Fanconi anemia",
+        "Shwachman-Diamond syndrome"
+      ]
+    },
+    {
+      "case_id": 8585,
+      "ddxs": [
+        "Chronic obstructive pulmonary disease (COPD)",
+        "Sepsis with fever",
+        "Diabetic ketoacidosis",
+        "Hyperthyroidism",
+        "Sickle cell disease"
+      ]
+    },
+    {
+      "case_id": 3546,
+      "ddxs": [
+        "Trisomy 13 (Patau syndrome)",
+        "Trisomy 18 (Edwards syndrome)",
+        "Smith-Lemli-Opitz syndrome",
+        "Meckel-Gruber syndrome",
+        "Maternal diabetes embryopathy"
+      ]
+    },
+    {
+      "case_id": 2116,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Cranioectodermal dysplasia (Sensenbrenner syndrome)",
+        "Cohen syndrome",
+        "Trichorhinophalangeal syndrome type I",
+        "Bardet-Biedl syndrome"
+      ]
+    },
+    {
+      "case_id": 2070,
+      "ddxs": [
+        "Tricho-hepato-enteric syndrome (TTC37/SKIV2L deficiency)",
+        "Omenn syndrome (RAG1/RAG2-related severe combined immunodeficiency)",
+        "DOCK8 deficiency (autosomal recessive hyper-IgE/combined immunodeficiency)",
+        "PGM3 deficiency (congenital disorder of glycosylation with immunodeficiency)",
+        "STAT3 autosomal dominant hyper-IgE syndrome (Job syndrome)"
+      ]
+    },
+    {
+      "case_id": 712,
+      "ddxs": [
+        "Proximal long head biceps tendon rupture",
+        "Distal biceps tendon rupture",
+        "Rotator cuff tear (supraspinatus tear)",
+        "Acromioclavicular joint dislocation",
+        "Clavicle fracture"
+      ]
+    },
+    {
+      "case_id": 7631,
+      "ddxs": [
+        "Projection (ego defense mechanism)",
+        "Paranoid personality disorder",
+        "Delusional disorder, jealous type (Othello syndrome)",
+        "Narcissistic personality disorder",
+        "Borderline personality disorder"
+      ]
+    },
+    {
+      "case_id": 2103,
+      "ddxs": [
+        "Neurofibromatosis type 1",
+        "Constitutional mismatch repair deficiency syndrome",
+        "Legius syndrome",
+        "Noonan syndrome with multiple lentigines (LEOPARD syndrome)",
+        "Neurofibromatosis–Noonan syndrome"
+      ]
+    },
+    {
+      "case_id": 216,
+      "ddxs": [
+        "Adenovirus upper respiratory infection (pharyngoconjunctival fever)",
+        "Acute viral upper respiratory infection (rhinovirus/RSV)",
+        "Acute bacterial conjunctivitis",
+        "Urinary tract infection",
+        "Post-viral wheezing/bronchiolitis"
+      ]
+    },
+    {
+      "case_id": 797,
+      "ddxs": [
+        "Anaphylaxis (IgE-mediated allergic reaction)",
+        "Viral laryngotracheitis (croup)",
+        "Histaminergic angioedema",
+        "Acute severe asthma exacerbation",
+        "Acute epiglottitis"
+      ]
+    },
+    {
+      "case_id": 9554,
+      "ddxs": [
+        "Infantile spasms (West syndrome)",
+        "Tuberous sclerosis complex",
+        "Down syndrome–associated infantile spasms",
+        "Pyridoxine-dependent epilepsy",
+        "Ohtahara syndrome"
+      ]
+    },
+    {
+      "case_id": 3,
+      "ddxs": [
+        "Pterygium",
+        "Age-related cataract (phacosclerosis)",
+        "Dry eye syndrome (keratoconjunctivitis sicca)",
+        "Pinguecula",
+        "Blepharitis"
+      ]
+    },
+    {
+      "case_id": 6099,
+      "ddxs": [
+        "Phencyclidine (PCP) intoxication",
+        "Lysergic acid diethylamide (LSD) intoxication",
+        "Ketamine intoxication",
+        "Hallucinogen-induced psychotic disorder",
+        "Schizophrenia"
+      ]
+    },
+    {
+      "case_id": 6077,
+      "ddxs": [
+        "Persecutory delusional disorder",
+        "Schizophreniform disorder",
+        "Paranoid personality disorder",
+        "Post-traumatic stress disorder",
+        "Acute stress disorder"
+      ]
+    },
+    {
+      "case_id": 9494,
+      "ddxs": [
+        "Cauda equina syndrome",
+        "Massive central lumbar intervertebral disc herniation",
+        "Spinal epidural abscess",
+        "Lumbar spinal stenosis",
+        "Spinal epidural hematoma"
+      ]
+    },
+    {
+      "case_id": 3511,
+      "ddxs": [
+        "Nonalcoholic fatty liver disease (nonalcoholic steatohepatitis)",
+        "Methotrexate-induced liver injury",
+        "Chronic hepatitis C",
+        "Hereditary hemochromatosis",
+        "Autoimmune hepatitis"
+      ]
+    },
+    {
+      "case_id": 1135,
+      "ddxs": [
+        "Benign lymphoepithelial cyst of the tonsillar pillar",
+        "Mucous retention cyst (oral mucocele)",
+        "Epidermoid/dermoid cyst of the oropharynx",
+        "Peritonsillar abscess",
+        "Second branchial cleft cyst"
+      ]
+    },
+    {
+      "case_id": 2234,
+      "ddxs": [
+        "Adenosine deaminase deficiency severe combined immunodeficiency (ADA-SCID)",
+        "X-linked severe combined immunodeficiency (IL2RG deficiency)",
+        "Janus kinase 3 (JAK3) deficiency severe combined immunodeficiency",
+        "Recombination-activating gene (RAG1/RAG2) deficiency severe combined immunodeficiency",
+        "DiGeorge syndrome (22q11.2 deletion)"
+      ]
+    },
+    {
+      "case_id": 9544,
+      "ddxs": [
+        "Delusional disorder (persecutory type)",
+        "Schizophrenia, paranoid type",
+        "Brief psychotic disorder",
+        "Paranoid personality disorder",
+        "Amphetamine-induced psychotic disorder"
+      ]
+    },
+    {
+      "case_id": 2191,
+      "ddxs": [
+        "Angelman syndrome",
+        "Lennox-Gastaut syndrome",
+        "West syndrome (Infantile spasms)",
+        "Rett syndrome",
+        "Dravet syndrome"
+      ]
+    },
+    {
+      "case_id": 4089,
+      "ddxs": [
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "Transient tachypnea of the newborn",
+        "Neonatal pneumonia (early-onset sepsis)",
+        "Persistent pulmonary hypertension of the newborn",
+        "Meconium aspiration syndrome"
+      ]
+    },
+    {
+      "case_id": 48,
+      "ddxs": [
+        "Acute otitis media",
+        "Viral gastroenteritis (e.g., norovirus)",
+        "Viral upper respiratory tract infection (rhinopharyngitis)",
+        "Acute viral bronchiolitis/wheezy bronchitis",
+        "Acute bacterial gastroenteritis (e.g., Salmonella)"
+      ]
+    },
+    {
+      "case_id": 9451,
+      "ddxs": [
+        "Factitious disorder imposed on another (Munchausen syndrome by proxy)",
+        "Sepsis secondary to bacterial meningitis",
+        "Acute pyelonephritis with urosepsis",
+        "Vesicoureteral reflux",
+        "Terminal complement (C5-C9) deficiency"
+      ]
+    },
+    {
+      "case_id": 387,
+      "ddxs": [
+        "Viral upper respiratory tract infection (common cold)",
+        "Acute otitis media",
+        "Otitis media with effusion (serous otitis)",
+        "Acute viral pharyngitis",
+        "Allergic rhinitis"
+      ]
+    },
+    {
+      "case_id": 484,
+      "ddxs": [
+        "Benign prostatic hyperplasia",
+        "Type 2 diabetes mellitus",
+        "Urinary tract infection (acute cystitis)",
+        "Prostate cancer",
+        "Urolithiasis"
+      ]
+    },
+    {
+      "case_id": 2108,
+      "ddxs": [
+        "Spinal muscular atrophy with progressive myoclonic epilepsy",
+        "MERRF syndrome (myoclonic epilepsy with ragged-red fibers)",
+        "LAMA2-related congenital muscular dystrophy",
+        "Duchenne/Becker muscular dystrophy (dystrophinopathy)",
+        "Juvenile amyotrophic lateral sclerosis"
+      ]
+    },
+    {
+      "case_id": 9167,
+      "ddxs": [
+        "Bulimia nervosa",
+        "Anorexia nervosa, binge-eating/purging subtype",
+        "Purging disorder",
+        "Other specified feeding or eating disorder",
+        "Major depressive disorder"
+      ]
+    },
+    {
+      "case_id": 8480,
+      "ddxs": [
+        "Bronchopulmonary dysplasia (chronic lung disease of prematurity)",
+        "Respiratory syncytial virus bronchiolitis",
+        "Nosocomial neonatal bacterial pneumonia",
+        "Pulmonary interstitial emphysema",
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)"
+      ]
+    },
+    {
+      "case_id": 4910,
+      "ddxs": [
+        "Wilms tumor (nephroblastoma)",
+        "Hydronephrosis due to ureteropelvic junction obstruction",
+        "Neuroblastoma",
+        "Multicystic dysplastic kidney",
+        "Autosomal dominant polycystic kidney disease"
+      ]
+    },
+    {
+      "case_id": 4646,
+      "ddxs": [
+        "Wilson disease",
+        "Hereditary hemochromatosis",
+        "Aceruloplasminemia",
+        "Pantothenate kinase-associated neurodegeneration",
+        "Neuroferritinopathy"
+      ]
+    },
+    {
+      "case_id": 345,
+      "ddxs": [
+        "Rotator cuff (supraspinatus) partial tear",
+        "Subacromial impingement syndrome",
+        "Greater tuberosity fracture of the proximal humerus",
+        "Subacromial bursitis",
+        "Posterior shoulder dislocation"
+      ]
+    },
+    {
+      "case_id": 1085,
+      "ddxs": [
+        "Transient global amnesia",
+        "Posterior circulation transient ischemic attack",
+        "Temporal lobe focal seizure (transient epileptic amnesia)",
+        "Acute hippocampal ischemic stroke",
+        "Hypoglycemia-induced transient amnesia"
+      ]
+    },
+    {
+      "case_id": 302,
+      "ddxs": [
+        "Atrial fibrillation with rapid ventricular response",
+        "Hypertensive heart disease",
+        "Degenerative bifascicular block (right bundle branch block with left anterior fascicular block)",
+        "Propafenone (class Ic antiarrhythmic) toxicity with QT prolongation",
+        "Coronary artery disease"
+      ]
+    },
+    {
+      "case_id": 664,
+      "ddxs": [
+        "COVID-19 infection",
+        "Acute decompensated heart failure",
+        "Community-acquired pneumonia with parapneumonic pleural effusion",
+        "COVID-19–associated immune thrombocytopenia",
+        "Acute kidney injury"
+      ]
+    },
+    {
+      "case_id": 1978,
+      "ddxs": [
+        "Cornelia de Lange syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "Kabuki syndrome",
+        "KBG syndrome",
+        "Coffin-Siris syndrome"
+      ]
+    },
+    {
+      "case_id": 2267,
+      "ddxs": [
+        "Creatine transporter deficiency (SLC6A8-related cerebral creatine deficiency syndrome)",
+        "Guanidinoacetate methyltransferase (GAMT) deficiency",
+        "Arginine:glycine amidinotransferase (AGAT) deficiency",
+        "Mitochondrial encephalomyopathy (e.g., POLG-related)",
+        "Fragile X syndrome"
+      ]
+    },
+    {
+      "case_id": 2855,
+      "ddxs": [
+        "Acute traumatic hemorrhage",
+        "von Willebrand disease",
+        "Hemophilia A",
+        "Glanzmann thrombasthenia",
+        "Disseminated intravascular coagulation"
+      ]
+    },
+    {
+      "case_id": 9562,
+      "ddxs": [
+        "Fluoroquinolone-induced phototoxic dermatitis",
+        "Drug-induced photosensitivity (tetracyclines/sulfonamides)",
+        "Polymorphous light eruption",
+        "Porphyria cutanea tarda",
+        "Cutaneous lupus erythematosus"
+      ]
+    },
+    {
+      "case_id": 2972,
+      "ddxs": [
+        "Asbestosis",
+        "Calcified pleural plaques",
+        "Bronchogenic carcinoma",
+        "Peritoneal mesothelioma",
+        "Hemorrhagic pleural effusion"
+      ]
+    },
+    {
+      "case_id": 1501,
+      "ddxs": [
+        "Arthrogryposis-renal dysfunction-cholestasis (ARC) syndrome",
+        "Zellweger syndrome",
+        "Menkes disease",
+        "Leigh syndrome",
+        "Molybdenum cofactor deficiency"
+      ]
+    },
+    {
+      "case_id": 466,
+      "ddxs": [
+        "Acute viral upper respiratory infection (viral pharyngitis)",
+        "Group A streptococcal pharyngitis",
+        "Acute bacterial cervical lymphadenitis",
+        "Cat scratch disease (Bartonella henselae infection)",
+        "Infectious mononucleosis (Epstein-Barr virus)"
+      ]
+    },
+    {
+      "case_id": 4466,
+      "ddxs": [
+        "Second branchial cleft cyst",
+        "Thyroglossal duct cyst",
+        "Cystic hygroma (lymphangioma)",
+        "Dermoid cyst",
+        "Bronchogenic cyst"
+      ]
+    },
+    {
+      "case_id": 1845,
+      "ddxs": [
+        "Waldenström macroglobulinemia",
+        "Mixed cryoglobulinemic vasculitis (hepatitis C–associated)",
+        "Hyper IgM syndrome",
+        "IgM monoclonal gammopathy of renal significance (Type I cryoglobulinemia)",
+        "Schnitzler syndrome"
+      ]
+    },
+    {
+      "case_id": 875,
+      "ddxs": [
+        "Peptic ulcer disease (gastric or duodenal, often Helicobacter pylori–related)",
+        "Meckel's diverticulum",
+        "NSAID-induced erosive gastritis/duodenitis",
+        "Henoch–Schönlein purpura (IgA vasculitis)",
+        "Intussusception"
+      ]
+    },
+    {
+      "case_id": 3681,
+      "ddxs": [
+        "Early-onset Group B streptococcal neonatal sepsis",
+        "Neonatal Group B streptococcal pneumonia",
+        "Neonatal Group B streptococcal meningitis",
+        "Neonatal sepsis due to Listeria monocytogenes",
+        "Neonatal sepsis due to Escherichia coli"
+      ]
+    },
+    {
+      "case_id": 7302,
+      "ddxs": [
+        "Achondroplasia (heterozygous FGFR3 mutation)",
+        "Homozygous achondroplasia (lethal dwarfism)",
+        "Average stature (unaffected)",
+        "Thanatophoric dysplasia",
+        "Hypochondroplasia"
+      ]
+    },
+    {
+      "case_id": 1970,
+      "ddxs": [
+        "Smith-Lemli-Opitz syndrome",
+        "Feingold syndrome",
+        "Mowat-Wilson syndrome",
+        "Phelan-McDermid syndrome",
+        "Joubert syndrome"
+      ]
+    },
+    {
+      "case_id": 5529,
+      "ddxs": [
+        "Stimulant (amphetamine or methylphenidate) overdose / sympathomimetic toxicity",
+        "Panic attack / acute anxiety disorder",
+        "Hyperthyroidism (thyrotoxic state)",
+        "Pheochromocytoma",
+        "Serotonin syndrome"
+      ]
+    },
+    {
+      "case_id": 5576,
+      "ddxs": [
+        "Cephalohematoma",
+        "Caput succedaneum",
+        "Subgaleal hemorrhage",
+        "Depressed skull fracture",
+        "Epidural hematoma"
+      ]
+    },
+    {
+      "case_id": 2125,
+      "ddxs": [
+        "Marden-Walker syndrome",
+        "Saul-Wilson syndrome",
+        "Feingold syndrome",
+        "Coffin-Lowry syndrome",
+        "Kabuki syndrome"
+      ]
+    },
+    {
+      "case_id": 5723,
+      "ddxs": [
+        "Streptococcus pneumoniae pneumonia",
+        "Pseudomonas aeruginosa pneumonia",
+        "Staphylococcus aureus pneumonia",
+        "Klebsiella pneumoniae pneumonia",
+        "Haemophilus influenzae pneumonia"
+      ]
+    },
+    {
+      "case_id": 7765,
+      "ddxs": [
+        "Intrauterine growth restriction (fetal growth restriction)",
+        "Uteroplacental insufficiency",
+        "Maternal undernutrition (low BMI)",
+        "Congenital cytomegalovirus infection",
+        "Trisomy 18 (Edwards syndrome)"
+      ]
+    },
+    {
+      "case_id": 9503,
+      "ddxs": [
+        "Caudal regression syndrome",
+        "Transposition of the great arteries",
+        "Anencephaly",
+        "Ventricular septal defect",
+        "Spina bifida"
+      ]
+    },
+    {
+      "case_id": 670,
+      "ddxs": [
+        "Functional dyspepsia",
+        "Peptic ulcer disease (H. pylori–related)",
+        "Irritable bowel syndrome",
+        "Chronic pancreatitis",
+        "Chronic mesenteric ischemia"
+      ]
+    },
+    {
+      "case_id": 5012,
+      "ddxs": [
+        "Cystic Fibrosis",
+        "CFTR-related Congenital Bilateral Absence of the Vas Deferens (CBAVD)",
+        "Primary Ciliary Dyskinesia (Kartagener Syndrome)",
+        "Shwachman-Diamond Syndrome",
+        "Alpha-1 Antitrypsin Deficiency"
+      ]
+    },
+    {
+      "case_id": 203,
+      "ddxs": [
+        "Allergic contact dermatitis due to epoxy resin",
+        "Acute allergic angioedema",
+        "Irritant contact dermatitis",
+        "Facial cellulitis (erysipelas)",
+        "Contact urticaria"
+      ]
+    },
+    {
+      "case_id": 8718,
+      "ddxs": [
+        "Central retinal artery occlusion",
+        "Non-arteritic anterior ischemic optic neuropathy",
+        "Central retinal vein occlusion",
+        "Retinal detachment",
+        "Optic neuritis"
+      ]
+    },
+    {
+      "case_id": 2181,
+      "ddxs": [
+        "Left ventricular noncompaction cardiomyopathy",
+        "LMNA-related cardiomyopathy (dilated/noncompaction with conduction disease)",
+        "SCN5A overlap syndrome (Long QT syndrome type 3 with conduction disease and LV noncompaction)",
+        "Andersen–Tawil syndrome (Long QT syndrome type 7)",
+        "Timothy syndrome (Long QT syndrome type 8)"
+      ]
+    },
+    {
+      "case_id": 1852,
+      "ddxs": [
+        "Ankylosing spondylitis (axial spondyloarthritis)",
+        "Tubulointerstitial nephritis and uveitis (TINU) syndrome",
+        "Sjögren syndrome",
+        "Sarcoidosis",
+        "Reactive arthritis"
+      ]
+    },
+    {
+      "case_id": 1287,
+      "ddxs": [
+        "Adenovirus infection (pharyngoconjunctival fever)",
+        "Acute viral upper respiratory tract infection (common cold)",
+        "COVID-19 (mild SARS-CoV-2 infection)",
+        "Allergic rhinoconjunctivitis",
+        "Mycoplasma pneumoniae infection"
+      ]
+    },
+    {
+      "case_id": 3629,
+      "ddxs": [
+        "Ewing sarcoma",
+        "Acute hematogenous osteomyelitis",
+        "Osteosarcoma",
+        "Acute lymphoblastic leukemia",
+        "Langerhans cell histiocytosis"
+      ]
+    },
+    {
+      "case_id": 1345,
+      "ddxs": [
+        "Complicated urinary tract infection (acute pyelonephritis/urosepsis)",
+        "Acute diverticulitis",
+        "NSAID-induced acute kidney injury",
+        "Metastatic colorectal cancer (with pulmonary metastasis)",
+        "Primary lung cancer"
+      ]
+    },
+    {
+      "case_id": 72,
+      "ddxs": [
+        "Vestibular neuritis",
+        "Benign paroxysmal positional vertigo",
+        "Vestibular migraine",
+        "Acute viral labyrinthitis",
+        "Ménière disease"
+      ]
+    },
+    {
+      "case_id": 5178,
+      "ddxs": [
+        "Cannabis intoxication",
+        "Amphetamine intoxication",
+        "Cocaine intoxication",
+        "Anticholinergic toxicity",
+        "Phencyclidine (PCP) intoxication"
+      ]
+    },
+    {
+      "case_id": 54,
+      "ddxs": [
+        "Panic attack (anxiety disorder)",
+        "Unstable angina (acute coronary syndrome)",
+        "Benign paroxysmal positional vertigo",
+        "Paroxysmal supraventricular tachycardia",
+        "Pheochromocytoma"
+      ]
+    },
+    {
+      "case_id": 298,
+      "ddxs": [
+        "Acute otitis media",
+        "Viral upper respiratory tract infection (common cold)",
+        "Acute viral pharyngitis/tonsillitis",
+        "Otitis media with effusion",
+        "Bronchiolitis"
+      ]
+    },
+    {
+      "case_id": 7422,
+      "ddxs": [
+        "Posterior urethral injury (membranous/prostatic urethral tear)",
+        "Pelvic fracture–associated urethral injury",
+        "Extraperitoneal bladder rupture",
+        "Bladder neck rupture",
+        "Acute urinary retention secondary to urethral trauma"
+      ]
+    },
+    {
+      "case_id": 9460,
+      "ddxs": [
+        "Acute severe asthma (status asthmaticus)",
+        "Pulmonary embolism",
+        "High altitude pulmonary edema",
+        "Anaphylaxis with bronchospasm",
+        "Exercise-induced bronchospasm"
+      ]
+    },
+    {
+      "case_id": 9508,
+      "ddxs": [
+        "Tarsal tunnel syndrome",
+        "Morton's neuroma",
+        "Plantar fasciitis",
+        "Lumbar radiculopathy (S1 nerve root compression)",
+        "Vitamin B12 deficiency peripheral neuropathy"
+      ]
+    },
+    {
+      "case_id": 3940,
+      "ddxs": [
+        "Meniere disease (endolymphatic hydrops)",
+        "Vestibular migraine",
+        "Vestibular schwannoma (acoustic neuroma)",
+        "Labyrinthitis",
+        "Benign paroxysmal positional vertigo"
+      ]
+    },
+    {
+      "case_id": 3287,
+      "ddxs": [
+        "Ethambutol-induced optic neuropathy (red-green color blindness)",
+        "Optic neuritis",
+        "Color vision deficiency",
+        "Central scotoma",
+        "Visual acuity loss"
+      ]
+    },
+    {
+      "case_id": 8604,
+      "ddxs": [
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "Transient tachypnea of the newborn",
+        "Persistent pulmonary hypertension of the newborn",
+        "Meconium aspiration syndrome",
+        "Neonatal pneumonia"
+      ]
+    },
+    {
+      "case_id": 4634,
+      "ddxs": [
+        "Sleep terror disorder (night terrors)",
+        "Nocturnal frontal lobe epilepsy",
+        "Nightmare disorder",
+        "Confusional arousal",
+        "Nocturnal panic attacks"
+      ]
+    },
+    {
+      "case_id": 8986,
+      "ddxs": [
+        "Vasa previa",
+        "Placenta previa",
+        "Placental abruption",
+        "Uterine rupture",
+        "Cervical laceration"
+      ]
+    },
+    {
+      "case_id": 7362,
+      "ddxs": [
+        "Duchenne muscular dystrophy",
+        "Mitochondrial myopathy",
+        "McArdle disease (Glycogen storage disease type V)",
+        "Myasthenia gravis",
+        "Brody disease"
+      ]
+    },
+    {
+      "case_id": 817,
+      "ddxs": [
+        "Conjuntivitis alérgica",
+        "Conjuntivitis viral (adenoviral)",
+        "Conjuntivitis bacteriana aguda",
+        "Conjuntivitis irritativa por cuerpo extraño o química",
+        "Episcleritis"
+      ]
+    },
+    {
+      "case_id": 4202,
+      "ddxs": [
+        "Tracheoesophageal fistula with distal esophageal atresia",
+        "Congenital laryngeal or tracheal agenesis (congenital high airway obstruction syndrome)",
+        "Isolated esophageal atresia without fistula",
+        "Congenital diaphragmatic hernia",
+        "Neonatal respiratory distress syndrome (hyaline membrane disease)"
+      ]
+    },
+    {
+      "case_id": 2660,
+      "ddxs": [
+        "Zenker diverticulum",
+        "Esophageal carcinoma",
+        "Peptic esophageal stricture",
+        "Schatzki ring",
+        "Achalasia"
+      ]
+    },
+    {
+      "case_id": 803,
+      "ddxs": [
+        "Error Diagnosis 1",
+        "Error Diagnosis 2",
+        "Error Diagnosis 3",
+        "Error Diagnosis 4",
+        "Error Diagnosis 5"
+      ]
+    },
+    {
+      "case_id": 9447,
+      "ddxs": [
+        "Error Diagnosis 1",
+        "Error Diagnosis 2",
+        "Error Diagnosis 3",
+        "Error Diagnosis 4",
+        "Error Diagnosis 5"
+      ]
+    },
+    {
+      "case_id": 808,
+      "ddxs": [
+        "Error Diagnosis 1",
+        "Error Diagnosis 2",
+        "Error Diagnosis 3",
+        "Error Diagnosis 4",
+        "Error Diagnosis 5"
+      ]
+    },
+    {
+      "case_id": 1374,
+      "ddxs": [
+        "Acute decompensated heart failure",
+        "Cardiogenic pleural effusion",
+        "Non-ST elevation myocardial infarction",
+        "Pulmonary embolism",
+        "Atypical bacterial pneumonia with parapneumonic effusion"
+      ]
+    },
+    {
+      "case_id": 1197,
+      "ddxs": [
+        "Tension-type headache",
+        "Viral upper respiratory tract infection (common cold)",
+        "Migraine without aura",
+        "Acute viral rhinosinusitis",
+        "COVID-19"
+      ]
+    },
+    {
+      "case_id": 9577,
+      "ddxs": [
+        "Cutaneous squamous cell carcinoma",
+        "Basal cell carcinoma",
+        "Actinic keratosis",
+        "Amelanotic melanoma",
+        "Keratoacanthoma"
+      ]
+    },
+    {
+      "case_id": 4512,
+      "ddxs": [
+        "Perforated duodenal ulcer",
+        "Acute pancreatitis",
+        "Perforated gastric ulcer",
+        "Perforated diverticulitis",
+        "Acute mesenteric ischemia"
+      ]
+    },
+    {
+      "case_id": 5393,
+      "ddxs": [
+        "Uteroplacental insufficiency",
+        "Intrauterine growth restriction (IUGR)",
+        "Oligohydramnios",
+        "Preeclampsia",
+        "Placental abruption"
+      ]
+    },
+    {
+      "case_id": 1926,
+      "ddxs": [
+        "Nager acrofacial dysostosis (Nager syndrome)",
+        "Mandibulofacial dysostosis with microcephaly (EFTUD2-related)",
+        "Treacher Collins syndrome",
+        "CHARGE syndrome",
+        "Oculo-auriculo-vertebral spectrum (Goldenhar syndrome)"
+      ]
+    },
+    {
+      "case_id": 7737,
+      "ddxs": [
+        "Complete hydatidiform mole",
+        "Partial hydatidiform mole",
+        "Normal intrauterine pregnancy",
+        "Twin pregnancy",
+        "Anembryonic pregnancy"
+      ]
+    },
+    {
+      "case_id": 49,
+      "ddxs": [
+        "Hereditary angioedema (C1 inhibitor deficiency)",
+        "Acute allergic angioedema",
+        "Dermatomyositis (heliotrope rash)",
+        "Allergic contact dermatitis",
+        "Systemic lupus erythematosus"
+      ]
+    },
+    {
+      "case_id": 9515,
+      "ddxs": [
+        "Psoriasis (plaque psoriasis)",
+        "Seborrheic dermatitis",
+        "Tinea corporis",
+        "Pityriasis rosea",
+        "Secondary syphilis"
+      ]
+    },
+    {
+      "case_id": 9457,
+      "ddxs": [
+        "Tuberous sclerosis complex",
+        "Infantile spasms (West syndrome)",
+        "Sturge-Weber syndrome",
+        "Aicardi syndrome",
+        "Neurofibromatosis type 1"
+      ]
+    },
+    {
+      "case_id": 1305,
+      "ddxs": [
+        "Acute ischemic stroke (left middle cerebral artery territory)",
+        "Transient ischemic attack",
+        "Focal seizure with post-ictal aphasia (Todd's phenomenon)",
+        "Intracerebral hemorrhage",
+        "Metabolic encephalopathy"
+      ]
+    },
+    {
+      "case_id": 2309,
+      "ddxs": [
+        "McCune-Albright syndrome",
+        "Neurofibromatosis type 1",
+        "Polyostotic fibrous dysplasia (Jaffe-Lichtenstein syndrome)",
+        "Paget disease of bone",
+        "Osteogenesis imperfecta"
+      ]
+    },
+    {
+      "case_id": 7519,
+      "ddxs": [
+        "Hypovolemic shock",
+        "Hemorrhagic shock (trauma-related)",
+        "Severe dehydration",
+        "Gastrointestinal hemorrhage",
+        "Third-spacing from severe burns"
+      ]
+    },
+    {
+      "case_id": 8282,
+      "ddxs": [
+        "Benign prostatic hyperplasia",
+        "Prostate cancer",
+        "Urethral stricture",
+        "Neurogenic bladder",
+        "Drug-induced urinary retention"
+      ]
+    },
+    {
+      "case_id": 1449,
+      "ddxs": [
+        "Smith-Lemli-Opitz syndrome",
+        "X-linked dominant chondrodysplasia punctata (Conradi–Hünermann syndrome)",
+        "Desmosterolosis",
+        "Lathosterolosis",
+        "Greenberg skeletal dysplasia"
+      ]
+    },
+    {
+      "case_id": 2292,
+      "ddxs": [
+        "Duchenne muscular dystrophy",
+        "Ullrich congenital muscular dystrophy",
+        "Limb-girdle muscular dystrophy, sarcoglycan-related",
+        "Facioscapulohumeral muscular dystrophy",
+        "Becker muscular dystrophy"
+      ]
+    },
+    {
+      "case_id": 9053,
+      "ddxs": [
+        "Atherosclerotic renal artery stenosis (renovascular hypertension)",
+        "Fibromuscular dysplasia of the renal artery",
+        "Chronic reflux nephropathy (chronic pyelonephritis)",
+        "Congenital unilateral renal hypoplasia",
+        "Remote renal arterial thromboembolic infarction causing ischemic atrophy"
+      ]
+    },
+    {
+      "case_id": 1367,
+      "ddxs": [
+        "Postoperative intra-abdominal abscess",
+        "Postoperative bowel perforation or enteric leak with pneumoperitoneum",
+        "Postoperative seroma or mesenteric hematoma",
+        "Postoperative peritonitis",
+        "Incisional surgical site infection"
+      ]
+    },
+    {
+      "case_id": 1302,
+      "ddxs": [
+        "Acute decompensated heart failure (cardiogenic pulmonary edema)",
+        "Community-acquired pneumonia",
+        "Pulmonary embolism",
+        "Hypertensive emergency with flash pulmonary edema",
+        "Hospital-acquired postoperative pneumonia"
+      ]
+    },
+    {
+      "case_id": 4241,
+      "ddxs": [
+        "Menopause",
+        "Perimenopause",
+        "Hyperthyroidism",
+        "Carcinoid syndrome",
+        "Pheochromocytoma"
+      ]
+    },
+    {
+      "case_id": 9509,
+      "ddxs": [
+        "Polycystic ovary syndrome",
+        "Cushing syndrome",
+        "Nonclassic congenital adrenal hyperplasia (21-hydroxylase deficiency)",
+        "Androgen-secreting ovarian tumor (e.g., Sertoli-Leydig cell tumor)",
+        "Androgen-secreting adrenal tumor"
+      ]
+    },
+    {
+      "case_id": 898,
+      "ddxs": [
+        "Acute ischemic stroke",
+        "Intracerebral hemorrhage",
+        "Postictal Todd's paralysis after focal seizure",
+        "Subdural hematoma",
+        "Brain tumor (primary or metastatic)"
+      ]
+    },
+    {
+      "case_id": 9450,
+      "ddxs": [
+        "Purkinje system",
+        "Atrial myocardium",
+        "Ventricular myocardium",
+        "Sinoatrial node",
+        "Atrioventricular node"
+      ]
+    },
+    {
+      "case_id": 5453,
+      "ddxs": [
+        "Heritable bilateral retinoblastoma",
+        "Norrie disease",
+        "Congenital cataract",
+        "Retinopathy of prematurity",
+        "Persistent hyperplastic primary vitreous (PFV)"
+      ]
+    },
+    {
+      "case_id": 728,
+      "ddxs": [
+        "Acute viral upper respiratory tract infection (common cold)",
+        "Influenza",
+        "COVID-19",
+        "Asthma exacerbation",
+        "Atypical pneumonia (Mycoplasma pneumoniae)"
+      ]
+    },
+    {
+      "case_id": 9481,
+      "ddxs": [
+        "Overactive bladder syndrome (urge urinary incontinence)",
+        "Mixed urinary incontinence",
+        "Stress urinary incontinence",
+        "Overflow urinary incontinence",
+        "Functional urinary incontinence"
+      ]
+    },
+    {
+      "case_id": 4720,
+      "ddxs": [
+        "Congenital rubella syndrome",
+        "Congenital cytomegalovirus infection",
+        "Congenital syphilis",
+        "Congenital toxoplasmosis",
+        "Hemolytic disease of the newborn"
+      ]
+    },
+    {
+      "case_id": 8966,
+      "ddxs": [
+        "Colorectal cancer",
+        "Lynch syndrome (hereditary nonpolyposis colorectal cancer)",
+        "Familial adenomatous polyposis",
+        "MUTYH-associated polyposis",
+        "Serrated polyposis syndrome"
+      ]
+    },
+    {
+      "case_id": 1069,
+      "ddxs": [
+        "Polymyalgia rheumatica",
+        "Elderly-onset rheumatoid arthritis (seronegative)",
+        "Polymyositis/idiopathic inflammatory myopathy",
+        "Giant cell arteritis",
+        "Subacute bacterial endocarditis"
+      ]
+    },
+    {
+      "case_id": 8371,
+      "ddxs": [
+        "SLE-associated mesenteric vasculitis (chronic mesenteric ischemia)",
+        "Ischemic colitis",
+        "Crohn disease",
+        "Ulcerative colitis",
+        "Colorectal carcinoma"
+      ]
+    },
+    {
+      "case_id": 1202,
+      "ddxs": [
+        "Chronic osteomyelitis of the distal phalanx",
+        "Septic arthritis of the distal interphalangeal joint",
+        "Chronic felon/paronychia",
+        "Distal interphalangeal osteoarthritis",
+        "Gouty arthritis of the distal interphalangeal joint"
+      ]
+    },
+    {
+      "case_id": 8271,
+      "ddxs": [
+        "Cystic fibrosis",
+        "Primary ciliary dyskinesia (Kartagener syndrome)",
+        "Shwachman-Diamond syndrome",
+        "Johanson-Blizzard syndrome",
+        "Common variable immunodeficiency"
+      ]
+    },
+    {
+      "case_id": 9486,
+      "ddxs": [
+        "Iron deficiency anemia",
+        "Recurrent pregnancy loss",
+        "Infertility",
+        "Hydronephrosis",
+        "Preterm labor"
+      ]
+    },
+    {
+      "case_id": 752,
+      "ddxs": [
+        "Catheter-associated urinary tract infection (CAUTI)",
+        "Benign prostatic hyperplasia with acute urinary retention",
+        "Congestive heart failure due to mitral regurgitation",
+        "Chronic obstructive pulmonary disease",
+        "Prostate adenocarcinoma"
+      ]
+    },
+    {
+      "case_id": 9468,
+      "ddxs": [
+        "Juvenile myoclonic epilepsy",
+        "Idiopathic generalized epilepsy with morning myoclonus",
+        "Benign rolandic epilepsy",
+        "Alcohol withdrawal seizures",
+        "Hypocalcemia-related tetany"
+      ]
+    },
+    {
+      "case_id": 2901,
+      "ddxs": [
+        "Postpartum (puerperal) endometritis",
+        "Retained placental tissue (products of conception)",
+        "Puerperal sepsis",
+        "Septic pelvic thrombophlebitis",
+        "Pelvic inflammatory disease"
+      ]
+    },
+    {
+      "case_id": 9462,
+      "ddxs": [
+        "Cri-du-chat syndrome",
+        "Wolf-Hirschhorn syndrome",
+        "Prader-Willi syndrome",
+        "Cornelia de Lange syndrome",
+        "Angelman syndrome"
+      ]
+    },
+    {
+      "case_id": 221,
+      "ddxs": [
+        "Mycoplasma pneumoniae atypical pneumonia",
+        "COVID-19 viral pneumonia",
+        "Influenza viral pneumonia",
+        "Streptococcus pneumoniae community-acquired bacterial pneumonia (relapse)",
+        "Chlamydia pneumoniae respiratory infection"
+      ]
+    },
+    {
+      "case_id": 2324,
+      "ddxs": [
+        "Ebstein anomaly",
+        "Carcinoid heart disease",
+        "Dilated cardiomyopathy",
+        "Cardiac amyloidosis",
+        "Danon disease"
+      ]
+    },
+    {
+      "case_id": 5707,
+      "ddxs": [
+        "Presbycusis (age-related sensorineural hearing loss)",
+        "Noise-induced sensorineural hearing loss",
+        "Ototoxic drug-induced sensorineural hearing loss",
+        "Vestibular schwannoma (acoustic neuroma)",
+        "Meniere disease"
+      ]
+    },
+    {
+      "case_id": 983,
+      "ddxs": [
+        "Rinofaringitis viral aguda (resfriado común)",
+        "Bronquitis aguda",
+        "Influenza",
+        "COVID-19 (infección por SARS-CoV-2)",
+        "Insuficiencia cardiaca congestiva descompensada"
+      ]
+    },
+    {
+      "case_id": 2217,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Cornelia de Lange syndrome",
+        "Coffin-Lowry syndrome",
+        "Mowat-Wilson syndrome",
+        "Rett syndrome"
+      ]
+    },
+    {
+      "case_id": 543,
+      "ddxs": [
+        "Community-acquired bacterial pneumonia (lobar, Streptococcus pneumoniae)",
+        "Acute asthma exacerbation",
+        "Atypical pneumonia (Mycoplasma pneumoniae)",
+        "Viral pneumonia/bronchiolitis",
+        "Obstructive atelectasis"
+      ]
+    },
+    {
+      "case_id": 411,
+      "ddxs": [
+        "Primary stabbing headache",
+        "Occipital neuralgia",
+        "Giant cell arteritis (temporal arteritis)",
+        "Cervicogenic headache",
+        "Trigeminal neuralgia"
+      ]
+    },
+    {
+      "case_id": 263,
+      "ddxs": [
+        "Acute exacerbation of chronic obstructive pulmonary disease (COPD)",
+        "Acute asthma exacerbation",
+        "Non-ST elevation myocardial infarction (NSTEMI)",
+        "Hypertensive acute pulmonary edema",
+        "Community-acquired pneumonia"
+      ]
+    },
+    {
+      "case_id": 389,
+      "ddxs": [
+        "Acute maxillary sinusitis (acute rhinosinusitis)",
+        "Cluster headache",
+        "Trigeminal neuralgia",
+        "Migraine without aura",
+        "Odontogenic maxillary sinusitis"
+      ]
+    },
+    {
+      "case_id": 4799,
+      "ddxs": [
+        "Toxic multinodular goiter (Plummer disease)",
+        "Graves disease",
+        "Autonomous (toxic) thyroid adenoma",
+        "Subacute (de Quervain) thyroiditis",
+        "TSH-secreting pituitary adenoma"
+      ]
+    },
+    {
+      "case_id": 6764,
+      "ddxs": [
+        "Fanconi syndrome (proximal renal tubular dysfunction)",
+        "Type II (proximal) renal tubular acidosis",
+        "Hypophosphatemic osteomalacia secondary to renal phosphate wasting",
+        "Multiple myeloma–associated light-chain proximal tubulopathy",
+        "Primary hyperparathyroidism"
+      ]
+    },
+    {
+      "case_id": 3478,
+      "ddxs": [
+        "Chorioretinitis",
+        "Hydrocephalus",
+        "Intracranial calcifications",
+        "Sensorineural hearing loss",
+        "Intellectual disability"
+      ]
+    },
+    {
+      "case_id": 593,
+      "ddxs": [
+        "Fractura por compresión vertebral torácica (D10)",
+        "Fractura de costillas derechas (9-11)",
+        "Osteoporosis senil",
+        "Espondilosis torácica degenerativa",
+        "Fractura vertebral patológica por metástasis ósea"
+      ]
+    },
+    {
+      "case_id": 222,
+      "ddxs": [
+        "Conjunctival squamous cell carcinoma",
+        "Conjunctival pyogenic granuloma",
+        "Subconjunctival hemorrhage",
+        "Conjunctival melanoma",
+        "Conjunctival Kaposi sarcoma"
+      ]
+    },
+    {
+      "case_id": 7202,
+      "ddxs": [
+        "Non-Hodgkin lymphoma",
+        "Rheumatoid arthritis",
+        "Methotrexate-associated lymphoproliferative disorder",
+        "Hodgkin lymphoma",
+        "Felty syndrome"
+      ]
+    },
+    {
+      "case_id": 2210,
+      "ddxs": [
+        "Alpha-thalassemia X-linked intellectual disability syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "Cornelia de Lange syndrome",
+        "Fanconi anemia",
+        "Bloom syndrome"
+      ]
+    },
+    {
+      "case_id": 9454,
+      "ddxs": [
+        "Torsades de pointes (polymorphic ventricular tachycardia)",
+        "Drug-induced long QT syndrome",
+        "Orthostatic (postural) hypotension with vasovagal syncope",
+        "Heat-related vasovagal syncope/dehydration",
+        "Monomorphic ventricular tachycardia"
+      ]
+    },
+    {
+      "case_id": 4336,
+      "ddxs": [
+        "Normal pubertal development (physiologic puberty)",
+        "Central precocious puberty",
+        "Premature adrenarche",
+        "Ovarian granulosa cell tumor",
+        "Nonclassic congenital adrenal hyperplasia"
+      ]
+    },
+    {
+      "case_id": 2516,
+      "ddxs": [
+        "Vitiligo",
+        "Piebaldism",
+        "Waardenburg syndrome",
+        "Nevus depigmentosus",
+        "Halo nevus"
+      ]
+    },
+    {
+      "case_id": 9347,
+      "ddxs": [
+        "Marfan syndrome",
+        "Loeys-Dietz syndrome",
+        "Vascular Ehlers-Danlos syndrome (Type IV)",
+        "Familial thoracic aortic aneurysm and dissection",
+        "Bicuspid aortic valve–associated aortopathy"
+      ]
+    },
+    {
+      "case_id": 2018,
+      "ddxs": [
+        "Mucopolysaccharidosis type IV (Morquio syndrome)",
+        "Spondylometaphyseal dysplasia, Kozlowski type",
+        "Pseudoachondroplasia",
+        "Spondyloepiphyseal dysplasia congenita",
+        "Metatropic dysplasia"
+      ]
+    },
+    {
+      "case_id": 9532,
+      "ddxs": [
+        "Ruptured abdominal aortic aneurysm",
+        "Type B aortic dissection (descending thoracic/abdominal)",
+        "Acute mesenteric ischemia",
+        "Acute pancreatitis",
+        "Perforated peptic ulcer"
+      ]
+    },
+    {
+      "case_id": 3702,
+      "ddxs": [
+        "Idiopathic generalized epilepsy (e.g., Juvenile myoclonic epilepsy)",
+        "Intracranial neoplasm",
+        "Acute meningoencephalitis",
+        "Metabolic hypoglycemia",
+        "Theophylline toxicity"
+      ]
+    },
+    {
+      "case_id": 5425,
+      "ddxs": [
+        "ACE inhibitor–induced cough",
+        "Post-viral upper respiratory tract infection",
+        "Cough-variant asthma",
+        "Gastroesophageal reflux disease",
+        "Upper airway cough syndrome (postnasal drip)"
+      ]
+    },
+    {
+      "case_id": 5904,
+      "ddxs": [
+        "HIV-1 infection",
+        "Acute HIV infection (acute retroviral syndrome)",
+        "AIDS (advanced HIV infection)",
+        "HIV-2 infection",
+        "HIV-associated immune complex disease"
+      ]
+    },
+    {
+      "case_id": 1960,
+      "ddxs": [
+        "SHORT syndrome",
+        "Axenfeld-Rieger syndrome",
+        "Mandibuloacral dysplasia",
+        "Hutchinson-Gilford progeria syndrome",
+        "Hallermann-Streiff syndrome"
+      ]
+    },
+    {
+      "case_id": 2232,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Congenital myotonic dystrophy type 1",
+        "Prader-Willi syndrome",
+        "Spinal muscular atrophy type 2",
+        "X-linked myotubular myopathy"
+      ]
+    },
+    {
+      "case_id": 624,
+      "ddxs": [
+        "Acute mechanical low back pain",
+        "Lumbar disc herniation",
+        "Vertebral osteomyelitis (spondylodiscitis) / spinal epidural abscess",
+        "Acute pyelonephritis",
+        "Axial spondyloarthritis (ankylosing spondylitis)"
+      ]
+    },
+    {
+      "case_id": 2677,
+      "ddxs": [
+        "Optic neuritis",
+        "Multiple sclerosis",
+        "Neuromyelitis optica spectrum disorder",
+        "Sarcoidosis-associated optic neuropathy",
+        "Anterior ischemic optic neuropathy"
+      ]
+    },
+    {
+      "case_id": 1325,
+      "ddxs": [
+        "Internal carotid artery dissection",
+        "Internal carotid artery aneurysm",
+        "Pancoast tumor (superior sulcus lung cancer)",
+        "Cluster headache",
+        "Lateral medullary (Wallenberg) syndrome"
+      ]
+    },
+    {
+      "case_id": 4362,
+      "ddxs": [
+        "Toxic epidermal necrolysis",
+        "Stevens-Johnson syndrome",
+        "Staphylococcal scalded skin syndrome",
+        "Pemphigus vulgaris",
+        "Drug Reaction with Eosinophilia and Systemic Symptoms (DRESS)"
+      ]
+    },
+    {
+      "case_id": 1441,
+      "ddxs": [
+        "Barth syndrome (3-methylglutaconic aciduria type II)",
+        "MEGDEL syndrome (SERAC1-related 3-methylglutaconic aciduria type IV)",
+        "TMEM70-related mitochondrial complex V deficiency",
+        "Zellweger spectrum disorder",
+        "Dilated cardiomyopathy with ataxia syndrome (DNAJC19-related 3-methylglutaconic aciduria type V)"
+      ]
+    },
+    {
+      "case_id": 7985,
+      "ddxs": [
+        "Acute otitis externa (swimmer's ear)",
+        "Acute otitis media with tympanic membrane perforation",
+        "Foreign body–induced otitis externa",
+        "Chronic suppurative otitis media",
+        "Necrotizing (malignant) otitis externa"
+      ]
+    },
+    {
+      "case_id": 1398,
+      "ddxs": [
+        "Guillain-Barré syndrome",
+        "Acute transverse myelitis",
+        "Multiple sclerosis",
+        "Vitamin B12 deficiency (subacute combined degeneration)",
+        "Chronic inflammatory demyelinating polyneuropathy"
+      ]
+    },
+    {
+      "case_id": 4123,
+      "ddxs": [
+        "Parkinson's disease",
+        "Drug-induced parkinsonism",
+        "Progressive supranuclear palsy",
+        "Multiple system atrophy",
+        "Corticobasal degeneration"
+      ]
+    },
+    {
+      "case_id": 2146,
+      "ddxs": [
+        "Progressive supranuclear palsy",
+        "Idiopathic Parkinson disease",
+        "Multiple system atrophy (parkinsonian type)",
+        "Vascular parkinsonism",
+        "Sporadic Creutzfeldt-Jakob disease"
+      ]
+    },
+    {
+      "case_id": 758,
+      "ddxs": [
+        "Traumatismo craneoencefálico leve",
+        "Enfermedad cerebrovascular de pequeños vasos (leucoaraiosis)",
+        "Demencia vascular",
+        "Enfermedad de Alzheimer",
+        "Contusión del cuero cabelludo parietotemporal derecha"
+      ]
+    },
+    {
+      "case_id": 6870,
+      "ddxs": [
+        "Toxic epidermal necrolysis",
+        "Stevens-Johnson syndrome",
+        "Staphylococcal scalded skin syndrome",
+        "Pemphigus vulgaris",
+        "Erythema multiforme major"
+      ]
+    },
+    {
+      "case_id": 239,
+      "ddxs": [
+        "Acute sigmoid diverticulitis",
+        "Primary epiploic appendagitis",
+        "Left ovarian cyst complication (torsion or rupture)",
+        "Distal left ureterolithiasis",
+        "Ischemic colitis"
+      ]
+    },
+    {
+      "case_id": 9307,
+      "ddxs": [
+        "Seborrheic dermatitis (cradle cap)",
+        "Atopic dermatitis",
+        "Langerhans cell histiocytosis",
+        "Infantile psoriasis",
+        "Acrodermatitis enteropathica (zinc deficiency)"
+      ]
+    },
+    {
+      "case_id": 1981,
+      "ddxs": [
+        "Hyperornithinemia-hyperammonemia-homocitrullinuria (HHH) syndrome",
+        "Ornithine transcarbamylase deficiency",
+        "Arginase deficiency",
+        "Myotonic dystrophy type 1",
+        "Carnitine palmitoyltransferase II deficiency"
+      ]
+    },
+    {
+      "case_id": 165,
+      "ddxs": [
+        "Acute otitis media",
+        "Impetigo contagiosa (non-bullous impetigo)",
+        "Viral upper respiratory tract infection",
+        "Otitis media with effusion",
+        "Bullous impetigo"
+      ]
+    },
+    {
+      "case_id": 9557,
+      "ddxs": [
+        "Acute lumbar paraspinal muscle strain",
+        "Degenerative lumbar disc disease",
+        "Lumbar intervertebral disc herniation",
+        "Vertebral compression fracture",
+        "Ankylosing spondylitis"
+      ]
+    },
+    {
+      "case_id": 1844,
+      "ddxs": [
+        "Rheumatoid arthritis",
+        "Ehlers-Danlos syndrome, hypermobility type",
+        "Polyarticular juvenile idiopathic arthritis",
+        "Axial spondyloarthritis",
+        "Psoriatic arthritis"
+      ]
+    },
+    {
+      "case_id": 8583,
+      "ddxs": [
+        "Ephelis (freckle)",
+        "Benign acquired melanocytic nevus",
+        "Solar lentigo",
+        "Lentigo simplex",
+        "Superficial spreading melanoma"
+      ]
+    },
+    {
+      "case_id": 604,
+      "ddxs": [
+        "Gastroenteritis viral aguda",
+        "Gastritis aguda",
+        "Síndrome de vómitos cíclicos / migraña abdominal",
+        "Apendicitis aguda incipiente",
+        "Trastorno de ansiedad con vómitos funcionales"
+      ]
+    },
+    {
+      "case_id": 9499,
+      "ddxs": [
+        "Intestinal malrotation with midgut volvulus",
+        "Duodenal atresia",
+        "Jejunal or ileal atresia",
+        "Annular pancreas",
+        "Necrotizing enterocolitis"
+      ]
+    },
+    {
+      "case_id": 1360,
+      "ddxs": [
+        "Acute decompensated congestive heart failure",
+        "Community-acquired atypical pneumonia",
+        "Acute viral bronchitis/lower respiratory tract infection",
+        "COVID-19 pneumonia",
+        "Acute exacerbation of chronic obstructive pulmonary disease"
+      ]
+    },
+    {
+      "case_id": 2165,
+      "ddxs": [
+        "Cornelia de Lange syndrome",
+        "Cohen syndrome",
+        "Prader-Willi syndrome",
+        "Kabuki syndrome",
+        "Down syndrome"
+      ]
+    },
+    {
+      "case_id": 4054,
+      "ddxs": [
+        "Cutaneous larva migrans (Ancylostoma braziliense infection)",
+        "Streptococcal cellulitis with lymphangitic spread",
+        "Erysipelothrix rhusiopathiae erysipeloid",
+        "Allergic contact dermatitis",
+        "Loa loa (loiasis)"
+      ]
+    },
+    {
+      "case_id": 1986,
+      "ddxs": [
+        "Classical Ehlers-Danlos syndrome",
+        "Periodontal Ehlers-Danlos syndrome",
+        "Kyphoscoliotic Ehlers-Danlos syndrome",
+        "Dermatosparaxis Ehlers-Danlos syndrome",
+        "Vascular Ehlers-Danlos syndrome"
+      ]
+    },
+    {
+      "case_id": 3195,
+      "ddxs": [
+        "Prospective cohort study",
+        "Unknown Diagnosis 2",
+        "Unknown Diagnosis 3",
+        "Unknown Diagnosis 4",
+        "Unknown Diagnosis 5"
+      ]
+    },
+    {
+      "case_id": 3832,
+      "ddxs": [
+        "Osteoporosis",
+        "Osteopenia",
+        "Paget disease of bone",
+        "Metastatic prostate cancer to bone",
+        "Multiple myeloma"
+      ]
+    },
+    {
+      "case_id": 2003,
+      "ddxs": [
+        "Aceruloplasminemia",
+        "Wilson disease",
+        "Hereditary hemochromatosis",
+        "Neuroferritinopathy",
+        "Mitochondrial DNA depletion syndrome (hepatocerebral form)"
+      ]
+    },
+    {
+      "case_id": 4182,
+      "ddxs": [
+        "Clostridioides difficile infection (pseudomembranous colitis)",
+        "Antibiotic-associated non–Clostridioides difficile diarrhea",
+        "Norovirus gastroenteritis",
+        "Enterotoxigenic Escherichia coli (traveler’s diarrhea)",
+        "Giardiasis"
+      ]
+    },
+    {
+      "case_id": 1969,
+      "ddxs": [
+        "FOXG1 syndrome",
+        "Rett syndrome",
+        "Angelman syndrome",
+        "Mowat-Wilson syndrome",
+        "Pitt-Hopkins syndrome"
+      ]
+    },
+    {
+      "case_id": 1201,
+      "ddxs": [
+        "Osteoporotic vertebral compression fracture",
+        "Pathologic vertebral fracture due to spinal metastasis",
+        "Traumatic vertebral compression fracture",
+        "Multiple myeloma with vertebral involvement",
+        "Vertebral osteomyelitis (spondylodiscitis)"
+      ]
+    },
+    {
+      "case_id": 3878,
+      "ddxs": [
+        "Physiologic neonatal jaundice",
+        "Breastfeeding failure jaundice",
+        "Hemolytic disease of the newborn (Rh incompatibility)",
+        "Congenital hypothyroidism",
+        "Glucose-6-phosphate dehydrogenase deficiency"
+      ]
+    },
+    {
+      "case_id": 1979,
+      "ddxs": [
+        "Mucolipidosis II (I-cell disease)",
+        "Alpha-mannosidosis",
+        "Multiple sulfatase deficiency",
+        "PMM2-related congenital disorder of glycosylation (CDG type Ia)",
+        "Mucopolysaccharidosis type III (Sanfilippo syndrome)"
+      ]
+    },
+    {
+      "case_id": 1509,
+      "ddxs": [
+        "Very-long-chain acyl-CoA dehydrogenase deficiency (VLCAD)",
+        "Carnitine palmitoyltransferase II deficiency, neonatal lethal form",
+        "Carnitine-acylcarnitine translocase deficiency",
+        "Medium-chain acyl-CoA dehydrogenase deficiency (MCAD)",
+        "Mitochondrial trifunctional protein deficiency"
+      ]
+    },
+    {
+      "case_id": 953,
+      "ddxs": [
+        "Epidermal inclusion (sebaceous) cyst",
+        "First branchial cleft cyst",
+        "Pleomorphic adenoma of the parotid gland",
+        "Suppurative reactive lymphadenitis",
+        "Acute bacterial parotitis (parotid abscess)"
+      ]
+    },
+    {
+      "case_id": 7171,
+      "ddxs": [
+        "Topiramate-induced acute bilateral secondary angle-closure glaucoma",
+        "Primary acute angle-closure glaucoma",
+        "Uveitic secondary angle-closure glaucoma",
+        "Idiopathic intracranial hypertension",
+        "Optic neuritis"
+      ]
+    },
+    {
+      "case_id": 367,
+      "ddxs": [
+        "Temporomandibular joint disorder (acute TMD pain)",
+        "Acute viral upper respiratory tract infection / viral pharyngitis",
+        "Streptococcal pharyngitis",
+        "Acute maxillary sinusitis",
+        "Pericoronitis (third molar eruption/infection)"
+      ]
+    },
+    {
+      "case_id": 4044,
+      "ddxs": [
+        "Normal adolescent behavior",
+        "Adjustment disorder with mixed disturbance of emotions and conduct",
+        "Oppositional defiant disorder",
+        "Attention-deficit/hyperactivity disorder, predominantly inattentive presentation",
+        "Major depressive disorder"
+      ]
+    },
+    {
+      "case_id": 2102,
+      "ddxs": [
+        "Odonto-onycho-dermal dysplasia",
+        "Clouston syndrome (hidrotic ectodermal dysplasia type 2)",
+        "Pachyonychia congenita",
+        "Schöpf-Schulz-Passarge syndrome",
+        "Olmsted syndrome"
+      ]
+    },
+    {
+      "case_id": 3820,
+      "ddxs": [
+        "Acute cocaine intoxication",
+        "Methamphetamine (amphetamine) intoxication",
+        "Phencyclidine (PCP) intoxication",
+        "Acute manic episode (bipolar I disorder)",
+        "Synthetic cathinone (bath salts) intoxication"
+      ]
+    },
+    {
+      "case_id": 1222,
+      "ddxs": [
+        "Warfarin toxicity (supratherapeutic INR)",
+        "Urinary tract infection / urosepsis",
+        "Acute kidney injury (prerenal or intrinsic)",
+        "Delirium (acute confusional state)",
+        "Anemia of chronic disease / iron deficiency anemia"
+      ]
+    },
+    {
+      "case_id": 6167,
+      "ddxs": [
+        "Maternal diabetes mellitus–induced neonatal polycythemia",
+        "Neonatal hyperviscosity syndrome",
+        "Perinatal arterial ischemic stroke",
+        "Inherited thrombophilia (e.g., Factor V Leiden mutation)",
+        "Polycythemia from delayed umbilical cord clamping"
+      ]
+    },
+    {
+      "case_id": 130,
+      "ddxs": [
+        "Distal radius buckle (torus) fracture",
+        "Wrist sprain (ligamentous injury)",
+        "Occult scaphoid fracture",
+        "Triangular fibrocartilage complex (TFCC) tear",
+        "Wrist contusion"
+      ]
+    },
+    {
+      "case_id": 1855,
+      "ddxs": [
+        "Sjögren's syndrome",
+        "Rheumatoid arthritis",
+        "Systemic lupus erythematosus",
+        "Mixed connective tissue disease",
+        "IgG4-related disease"
+      ]
+    },
+    {
+      "case_id": 9526,
+      "ddxs": [
+        "Functional hypothalamic amenorrhea (exercise-induced)",
+        "Polycystic ovary syndrome",
+        "Primary hypothyroidism",
+        "Hyperprolactinemia (prolactinoma)",
+        "Primary ovarian insufficiency"
+      ]
+    },
+    {
+      "case_id": 1987,
+      "ddxs": [
+        "Ichthyosis Follicularis Alopecia Photophobia (IFAP) syndrome",
+        "Photosensitive trichothiodystrophy",
+        "Keratitis-Ichthyosis-Deafness (KID) syndrome",
+        "Netherton syndrome",
+        "Autosomal recessive congenital ichthyosis"
+      ]
+    },
+    {
+      "case_id": 3282,
+      "ddxs": [
+        "Dry (nonexudative) age-related macular degeneration",
+        "Wet (exudative) age-related macular degeneration",
+        "Diabetic macular edema / diabetic retinopathy",
+        "Nuclear sclerotic cataract",
+        "Epiretinal membrane (macular pucker)"
+      ]
+    },
+    {
+      "case_id": 856,
+      "ddxs": [
+        "Premature ventricular contractions",
+        "Premature atrial contractions",
+        "Paroxysmal atrial fibrillation",
+        "Paroxysmal supraventricular tachycardia",
+        "Generalized anxiety disorder"
+      ]
+    },
+    {
+      "case_id": 538,
+      "ddxs": [
+        "Staphylococcus aureus food poisoning (preformed enterotoxin)",
+        "Bacillus cereus food poisoning (emetic type)",
+        "Norovirus acute gastroenteritis",
+        "Gastrointestinal mushroom poisoning (early-onset)",
+        "Non-typhoidal Salmonella foodborne gastroenteritis"
+      ]
+    },
+    {
+      "case_id": 9571,
+      "ddxs": [
+        "Helicobacter pylori–associated duodenal peptic ulcer disease",
+        "NSAID-induced peptic ulcer disease",
+        "Zollinger–Ellison syndrome (gastrinoma)",
+        "Gastric adenocarcinoma",
+        "Erosive alcohol-related gastritis"
+      ]
+    },
+    {
+      "case_id": 9475,
+      "ddxs": [
+        "Concussion",
+        "Epidural hematoma",
+        "Cerebral contusion",
+        "Subdural hematoma",
+        "Diffuse axonal injury"
+      ]
+    },
+    {
+      "case_id": 8353,
+      "ddxs": [
+        "Prader-Willi syndrome",
+        "Klüver–Bucy syndrome",
+        "Bardet–Biedl syndrome",
+        "Congenital leptin deficiency",
+        "Hypothalamic obesity syndrome"
+      ]
+    },
+    {
+      "case_id": 3863,
+      "ddxs": [
+        "Labyrinthitis",
+        "Ménière disease",
+        "Vestibular neuritis",
+        "Acoustic neuroma",
+        "Posterior circulation cerebellar stroke"
+      ]
+    },
+    {
+      "case_id": 7908,
+      "ddxs": [
+        "Tuberculosis",
+        "HIV infection",
+        "Chronic hepatitis B",
+        "Syphilis",
+        "Leprosy"
+      ]
+    },
+    {
+      "case_id": 7811,
+      "ddxs": [
+        "Glioblastoma multiforme",
+        "Anaplastic astrocytoma",
+        "Metastatic brain tumor",
+        "Primary CNS lymphoma",
+        "Oligodendroglioma"
+      ]
+    },
+    {
+      "case_id": 3894,
+      "ddxs": [
+        "Intraventricular hemorrhage (germinal matrix hemorrhage)",
+        "Neonatal bacterial meningitis",
+        "Hypoxic-ischemic encephalopathy",
+        "Subdural hemorrhage due to birth trauma",
+        "Cerebral venous sinus thrombosis"
+      ]
+    },
+    {
+      "case_id": 6,
+      "ddxs": [
+        "Non-specific lipid transfer protein (nsLTP) allergy syndrome",
+        "Pollen–food allergy syndrome (oral allergy syndrome)",
+        "IgE-mediated food allergy to kiwi/peach/apple",
+        "Chronic spontaneous urticaria with angioedema",
+        "Hereditary angioedema"
+      ]
+    },
+    {
+      "case_id": 895,
+      "ddxs": [
+        "Ureterolithiasis",
+        "Acute cystitis",
+        "Acute pyelonephritis",
+        "Urothelial carcinoma",
+        "Acute bacterial prostatitis"
+      ]
+    },
+    {
+      "case_id": 1853,
+      "ddxs": [
+        "Eosinophilic granulomatosis with polyangiitis (Churg-Strauss syndrome)",
+        "Idiopathic hypereosinophilic syndrome",
+        "AL amyloidosis (light-chain amyloidosis)",
+        "Fabry disease",
+        "Sarcoidosis"
+      ]
+    },
+    {
+      "case_id": 963,
+      "ddxs": [
+        "Urticaria multiforme (acute annular urticaria)",
+        "Erythema multiforme minor",
+        "Serum sickness–like reaction to amoxicillin",
+        "Drug-induced acute urticaria",
+        "Morbilliform drug eruption"
+      ]
+    },
+    {
+      "case_id": 9559,
+      "ddxs": [
+        "Adhesive capsulitis (frozen shoulder)",
+        "Glenohumeral osteoarthritis",
+        "Rotator cuff tear",
+        "Subacromial impingement syndrome",
+        "Calcific tendinitis of the rotator cuff"
+      ]
+    },
+    {
+      "case_id": 233,
+      "ddxs": [
+        "Uncomplicated acute bacterial cystitis",
+        "Antibiotic-resistant complicated urinary tract infection",
+        "Acute pyelonephritis",
+        "Urolithiasis with secondary infection",
+        "Pelvic inflammatory disease"
+      ]
+    },
+    {
+      "case_id": 1330,
+      "ddxs": [
+        "Community-acquired bacterial pneumonia",
+        "Urinary tract infection (acute cystitis/pyelonephritis)",
+        "Delirium (acute confusional state)",
+        "Acute kidney injury with hyperkalemia",
+        "Major depressive disorder"
+      ]
+    },
+    {
+      "case_id": 5875,
+      "ddxs": [
+        "Transposition of the Great Arteries",
+        "Tetralogy of Fallot",
+        "Persistent Truncus Arteriosus",
+        "Tricuspid Atresia",
+        "Total Anomalous Pulmonary Venous Return"
+      ]
+    },
+    {
+      "case_id": 4308,
+      "ddxs": [
+        "Foreign body aspiration",
+        "Aspiration pneumonitis (aspiration pneumonia)",
+        "Anaphylaxis (peanut allergy)",
+        "Acute asthma exacerbation",
+        "Acute upper airway obstruction (choking)"
+      ]
+    },
+    {
+      "case_id": 2202,
+      "ddxs": [
+        "Cerebral palsy (spastic quadriplegic)",
+        "Rett syndrome",
+        "Angelman syndrome",
+        "Lissencephaly (Miller-Dieker syndrome)",
+        "Primary hereditary microcephaly (autosomal recessive MCPH)"
+      ]
+    },
+    {
+      "case_id": 9570,
+      "ddxs": [
+        "Acute lumbar strain (mechanical low back pain)",
+        "Osteoporotic vertebral compression fracture",
+        "Lumbar disc herniation",
+        "Multiple myeloma",
+        "Lumbar spondylosis (degenerative facet joint osteoarthritis)"
+      ]
+    },
+    {
+      "case_id": 1858,
+      "ddxs": [
+        "Autosomal dominant polycystic kidney disease",
+        "Tuberous sclerosis complex",
+        "Von Hippel-Lindau disease",
+        "Sarcoidosis",
+        "Autosomal recessive polycystic kidney disease"
+      ]
+    },
+    {
+      "case_id": 4930,
+      "ddxs": [
+        "Lobar pneumonia (pneumococcal)",
+        "Streptococcus pneumoniae infection",
+        "Community-acquired pneumonia",
+        "Bronchopneumonia",
+        "Staphylococcus aureus pneumonia"
+      ]
+    },
+    {
+      "case_id": 8233,
+      "ddxs": [
+        "Child sexual abuse",
+        "Oppositional defiant disorder",
+        "Conduct disorder",
+        "Reactive attachment disorder",
+        "Attention-deficit/hyperactivity disorder"
+      ]
+    },
+    {
+      "case_id": 5976,
+      "ddxs": [
+        "Cellulitis (Streptococcus pyogenes)",
+        "Deep vein thrombosis",
+        "Necrotizing fasciitis",
+        "Osteomyelitis of the right lower extremity",
+        "Erysipelas"
+      ]
+    },
+    {
+      "case_id": 956,
+      "ddxs": [
+        "Acute uncomplicated cystitis",
+        "Endometrial polyp",
+        "Pelvic inflammatory disease",
+        "Uterine leiomyoma (fibroids)",
+        "Endometriosis"
+      ]
+    },
+    {
+      "case_id": 8410,
+      "ddxs": [
+        "Humoral hypercalcemia of malignancy (PTHrP-mediated)",
+        "Pancoast tumor/Horner syndrome",
+        "Hypertrophic osteoarthropathy",
+        "Cavitary central lung lesion",
+        "Trousseau syndrome (migratory thrombophlebitis)"
+      ]
+    },
+    {
+      "case_id": 5326,
+      "ddxs": [
+        "Left-sided congestive heart failure",
+        "Obesity hypoventilation syndrome",
+        "Chronic obstructive pulmonary disease",
+        "Obstructive sleep apnea",
+        "Bilateral diaphragmatic paralysis"
+      ]
+    },
+    {
+      "case_id": 9456,
+      "ddxs": [
+        "Graves disease",
+        "Toxic multinodular goiter",
+        "Toxic adenoma (autonomous thyroid nodule)",
+        "Subacute painless (silent) thyroiditis",
+        "TSH-secreting pituitary adenoma"
+      ]
+    },
+    {
+      "case_id": 3988,
+      "ddxs": [
+        "Primary adrenal insufficiency (Addison disease) due to autoimmune adrenalitis",
+        "Autoimmune polyglandular syndrome type 2 (Schmidt syndrome)",
+        "Primary adrenal insufficiency due to adrenal tuberculosis",
+        "Secondary adrenal insufficiency from pituitary ACTH deficiency",
+        "Adrenal insufficiency from bilateral adrenal metastases or infiltration"
+      ]
+    },
+    {
+      "case_id": 9234,
+      "ddxs": [
+        "Antiphospholipid antibody syndrome",
+        "Systemic lupus erythematosus",
+        "Spontaneous abortion due to chromosomal abnormality",
+        "Cervical insufficiency",
+        "Luteal phase defect"
+      ]
+    },
+    {
+      "case_id": 362,
+      "ddxs": [
+        "Vasovagal syncope",
+        "Orthostatic hypotension",
+        "Acute viral upper respiratory tract infection (e.g., influenza)",
+        "COVID-19",
+        "Epileptic seizure"
+      ]
+    },
+    {
+      "case_id": 1078,
+      "ddxs": [
+        "Acute infectious bronchitis",
+        "Early community-acquired pneumonia (including atypical pneumonia)",
+        "Parapneumonic pleural effusion/pleurisy",
+        "Chronic obstructive pulmonary disease exacerbation",
+        "Pulmonary embolism"
+      ]
+    },
+    {
+      "case_id": 5978,
+      "ddxs": [
+        "Breastfeeding failure jaundice",
+        "Physiologic jaundice of the newborn",
+        "Breast milk jaundice",
+        "Neonatal polycythemia secondary to maternal hypertension",
+        "ABO incompatibility hemolytic disease of the newborn"
+      ]
+    },
+    {
+      "case_id": 7138,
+      "ddxs": [
+        "Down syndrome (Trisomy 21)",
+        "Edwards syndrome (Trisomy 18)",
+        "Patau syndrome (Trisomy 13)",
+        "Noonan syndrome",
+        "DiGeorge syndrome (22q11.2 deletion)"
+      ]
+    },
+    {
+      "case_id": 390,
+      "ddxs": [
+        "Meniscal tear of the knee",
+        "Anterior cruciate ligament (ACL) tear",
+        "Occult tibial plateau fracture or bone contusion",
+        "Medial collateral ligament (MCL) sprain",
+        "Osteochondral fracture of the femoral condyle"
+      ]
+    },
+    {
+      "case_id": 2332,
+      "ddxs": [
+        "Autoimmune myasthenia gravis",
+        "Congenital myasthenic syndrome",
+        "Lambert–Eaton myasthenic syndrome",
+        "Chronic progressive external ophthalmoplegia",
+        "Oculopharyngeal muscular dystrophy"
+      ]
+    },
+    {
+      "case_id": 8632,
+      "ddxs": [
+        "Popliteal (Baker) cyst with tibial nerve compression",
+        "Tibial nerve neuropathy",
+        "Popliteal artery aneurysm",
+        "Synovial sarcoma of the popliteal fossa",
+        "Tarsal tunnel syndrome"
+      ]
+    },
+    {
+      "case_id": 8166,
+      "ddxs": [
+        "Neonatal gonococcal conjunctivitis (ophthalmia neonatorum)",
+        "Neonatal chlamydial conjunctivitis",
+        "Neonatal herpes simplex virus ocular infection",
+        "Neonatal Staphylococcus aureus conjunctivitis",
+        "Neonatal Pseudomonas aeruginosa conjunctivitis"
+      ]
+    },
+    {
+      "case_id": 9561,
+      "ddxs": [
+        "Cholinergic urticaria",
+        "Disseminated gonococcal infection",
+        "Secondary syphilis",
+        "Antibiotic-induced exanthematous drug eruption",
+        "Seminal plasma hypersensitivity"
+      ]
+    },
+    {
+      "case_id": 9489,
+      "ddxs": [
+        "Brugada syndrome",
+        "Heat syncope",
+        "Vasovagal syncope",
+        "Long QT syndrome",
+        "Torsades de pointes"
+      ]
+    },
+    {
+      "case_id": 5841,
+      "ddxs": [
+        "Amanita phalloides (amatoxin) poisoning",
+        "Gyromitra mushroom (gyromitrin) poisoning",
+        "Acetaminophen-induced acute liver failure",
+        "Acute viral hepatitis A",
+        "Budd-Chiari syndrome"
+      ]
+    },
+    {
+      "case_id": 230,
+      "ddxs": [
+        "Mucocele (minor salivary gland cyst)",
+        "Recurrent aphthous stomatitis (minor aphthous ulcer)",
+        "Traumatic ulcer of the palate",
+        "Intraoral herpes simplex infection",
+        "Median palatal cyst"
+      ]
+    },
+    {
+      "case_id": 2004,
+      "ddxs": [
+        "Rubinstein-Taybi syndrome",
+        "Kabuki syndrome",
+        "Cornelia de Lange syndrome",
+        "CHARGE syndrome",
+        "Smith-Lemli-Opitz syndrome"
+      ]
+    },
+    {
+      "case_id": 869,
+      "ddxs": [
+        "Urothelial (transitional cell) carcinoma of the bladder",
+        "Papillary non-invasive urothelial tumor of the bladder (PUNLMP/low-grade papillary carcinoma)",
+        "Hemorrhagic cystitis",
+        "Renal cell carcinoma",
+        "Nephrolithiasis (urolithiasis)"
+      ]
+    },
+    {
+      "case_id": 1248,
+      "ddxs": [
+        "Viral community-acquired pneumonia",
+        "Atypical pneumonia due to Mycoplasma pneumoniae",
+        "Bacterial community-acquired pneumonia (Streptococcus pneumoniae predominant)",
+        "Acute viral upper respiratory infection (common cold)",
+        "Influenza infection"
+      ]
+    },
+    {
+      "case_id": 818,
+      "ddxs": [
+        "Posterior vitreous detachment",
+        "Retinal tear or rhegmatogenous retinal detachment",
+        "Vitreous hemorrhage",
+        "Posterior uveitis (intermediate uveitis)",
+        "Ocular migraine (retinal/visual aura)"
+      ]
+    },
+    {
+      "case_id": 5523,
+      "ddxs": [
+        "Pleomorphic adenoma",
+        "Warthin tumor",
+        "Mucoepidermoid carcinoma",
+        "Basal cell adenoma",
+        "Parotid gland hematoma"
+      ]
+    },
+    {
+      "case_id": 5655,
+      "ddxs": [
+        "Group B Streptococcal (Streptococcus agalactiae) neonatal meningitis",
+        "Escherichia coli (K1) neonatal meningitis",
+        "Listeria monocytogenes neonatal meningitis",
+        "Klebsiella pneumoniae neonatal meningitis",
+        "Herpes simplex virus neonatal meningitis"
+      ]
+    },
+    {
+      "case_id": 2074,
+      "ddxs": [
+        "Autoimmune lymphoproliferative syndrome (ALPS)",
+        "CTLA4 haploinsufficiency",
+        "LRBA deficiency",
+        "Activated PI3K delta syndrome (APDS/PASLI)",
+        "Multicentric Castleman disease"
+      ]
+    },
+    {
+      "case_id": 9446,
+      "ddxs": [
+        "Urethral diverticulum",
+        "Cystocele (anterior vaginal wall prolapse)",
+        "Paraurethral (Skene) gland cyst/abscess",
+        "Primary urethral carcinoma",
+        "Gartner duct cyst"
+      ]
+    },
+    {
+      "case_id": 9522,
+      "ddxs": [
+        "Intracerebral hemorrhage",
+        "Acute ischemic stroke (cardioembolic left MCA occlusion)",
+        "Subarachnoid hemorrhage",
+        "Acute subdural hematoma",
+        "Hemorrhagic transformation of ischemic stroke"
+      ]
+    },
+    {
+      "case_id": 2020,
+      "ddxs": [
+        "Niemann-Pick disease type C",
+        "Progressive supranuclear palsy",
+        "Pantothenate kinase-associated neurodegeneration (PKAN)",
+        "Leigh syndrome",
+        "PLA2G6-associated neurodegeneration"
+      ]
+    },
+    {
+      "case_id": 9505,
+      "ddxs": [
+        "Keratoacanthoma",
+        "Cutaneous squamous cell carcinoma",
+        "Pyogenic granuloma",
+        "Merkel cell carcinoma",
+        "Basal cell carcinoma"
+      ]
+    },
+    {
+      "case_id": 973,
+      "ddxs": [
+        "Reacción local a picadura de insecto (papular urticaria)",
+        "Celulitis cutánea aguda",
+        "Dermatitis de contacto alérgica",
+        "Picadura de araña (loxoscelismo cutáneo)",
+        "Eritema migrans (enfermedad de Lyme)"
+      ]
+    },
+    {
+      "case_id": 7760,
+      "ddxs": [
+        "Tourette syndrome",
+        "Attention-Deficit/Hyperactivity Disorder",
+        "Obsessive-Compulsive Disorder",
+        "Persistent (Chronic) Tic Disorder",
+        "PANDAS (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptococcal Infections)"
+      ]
+    },
+    {
+      "case_id": 1420,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Simpson-Golabi-Behmel syndrome",
+        "Beckwith-Wiedemann syndrome",
+        "Congenital hyperinsulinism (ABCC8/KCNJ11-related)",
+        "Sotos syndrome"
+      ]
+    },
+    {
+      "case_id": 2837,
+      "ddxs": [
+        "Transposition of the great arteries",
+        "Ventricular septal defect",
+        "Hypertrophic cardiomyopathy",
+        "Truncus arteriosus",
+        "Coarctation of the aorta"
+      ]
+    },
+    {
+      "case_id": 1972,
+      "ddxs": [
+        "Oliver-McFarlane syndrome",
+        "Boucher-Neuhauser syndrome",
+        "Spinocerebellar ataxia type 7",
+        "Friedreich ataxia",
+        "Refsum disease"
+      ]
+    },
+    {
+      "case_id": 12,
+      "ddxs": [
+        "Infección viral aguda de vías respiratorias superiores",
+        "Bronquiolitis aguda",
+        "Otitis media aguda",
+        "Neumonía viral",
+        "Sibilancias inducidas por infección viral (asma del lactante)"
+      ]
+    },
+    {
+      "case_id": 651,
+      "ddxs": [
+        "Acute appendicitis",
+        "Right-sided (cecal) diverticulitis",
+        "Infectious ileocolitis (e.g., Yersinia or Campylobacter enteritis)",
+        "Crohn’s disease (terminal ileitis)",
+        "Pelvic inflammatory disease"
+      ]
+    },
+    {
+      "case_id": 4318,
+      "ddxs": [
+        "Maternal chronic hypertension causing uteroplacental insufficiency",
+        "Preeclampsia",
+        "Maternal smoking–related placental vasoconstriction",
+        "Maternal malnutrition–induced placental insufficiency",
+        "Antiphospholipid antibody syndrome with placental infarction"
+      ]
+    },
+    {
+      "case_id": 1136,
+      "ddxs": [
+        "Non-ST-elevation myocardial infarction",
+        "Arrhythmia-related syncope (sick sinus syndrome or transient AV block)",
+        "Vasovagal syncope",
+        "Epileptic seizure",
+        "Pulmonary embolism"
+      ]
+    },
+    {
+      "case_id": 490,
+      "ddxs": [
+        "Enterovirus infection (viral exanthem with gastroenteritis)",
+        "Amoxicillin-induced maculopapular drug eruption with antibiotic-associated diarrhea",
+        "Epstein–Barr virus infectious mononucleosis with amoxicillin rash",
+        "Roseola infantum (HHV-6)",
+        "Scarlet fever (group A Streptococcus)"
+      ]
+    },
+    {
+      "case_id": 8765,
+      "ddxs": [
+        "Femoral nerve injury (femoral neuropathy)",
+        "Obturator nerve injury",
+        "Lateral femoral cutaneous nerve neuropathy (meralgia paresthetica)",
+        "Sciatic nerve injury",
+        "Common peroneal nerve injury"
+      ]
+    },
+    {
+      "case_id": 6945,
+      "ddxs": [
+        "Morning sickness of early pregnancy",
+        "Hyperemesis gravidarum",
+        "Hydatidiform mole",
+        "Multiple gestation pregnancy",
+        "Acute viral gastroenteritis"
+      ]
+    },
+    {
+      "case_id": 698,
+      "ddxs": [
+        "Occult non-displaced left rib fracture",
+        "Nasal bone fracture",
+        "Chest wall contusion",
+        "Mild traumatic brain injury (concussion)",
+        "Acute subdural hematoma"
+      ]
+    },
+    {
+      "case_id": 9483,
+      "ddxs": [
+        "Bulimia nervosa",
+        "Hypomagnesemia",
+        "Gitelman syndrome",
+        "Diuretic abuse",
+        "Primary hypothyroidism"
+      ]
+    },
+    {
+      "case_id": 9469,
+      "ddxs": [
+        "Massive pulmonary embolism",
+        "Fat embolism syndrome",
+        "Tension pneumothorax",
+        "Massive right ventricular myocardial infarction",
+        "Cardiac tamponade"
+      ]
+    },
+    {
+      "case_id": 1192,
+      "ddxs": [
+        "Infección viral de vías respiratorias altas (faringitis viral)",
+        "Disfunción de la trompa de Eustaquio con otitis media serosa",
+        "Faringitis estreptocócica aguda",
+        "Mononucleosis infecciosa (virus de Epstein-Barr)",
+        "Linfadenitis submandibular aguda"
+      ]
+    },
+    {
+      "case_id": 2950,
+      "ddxs": [
+        "Lung cancer",
+        "Chronic obstructive pulmonary disease (COPD)",
+        "Coronary artery disease",
+        "Bladder (urothelial) carcinoma",
+        "Pancreatic adenocarcinoma"
+      ]
+    },
+    {
+      "case_id": 9495,
+      "ddxs": [
+        "Advanced sleep phase syndrome",
+        "Normal aging-related sleep pattern changes",
+        "Obstructive sleep apnea",
+        "Major depressive disorder",
+        "Idiopathic hypersomnia"
+      ]
+    },
+    {
+      "case_id": 399,
+      "ddxs": [
+        "Costochondritis (Tietze syndrome)",
+        "Intercostal muscle strain",
+        "Cough-induced rib stress fracture",
+        "Acute viral bronchitis/upper respiratory tract infection",
+        "Early herpes zoster (pre-eruptive phase)"
+      ]
+    },
+    {
+      "case_id": 655,
+      "ddxs": [
+        "Blepharitis",
+        "Hordeolum (stye)",
+        "Viral conjunctivitis",
+        "Chalazion",
+        "Preseptal cellulitis"
+      ]
+    },
+    {
+      "case_id": 7847,
+      "ddxs": [
+        "Cardiac tamponade",
+        "Severe acute asthma exacerbation",
+        "COPD exacerbation",
+        "Constrictive pericarditis",
+        "Tension pneumothorax"
+      ]
+    },
+    {
+      "case_id": 3252,
+      "ddxs": [
+        "Genital herpes (HSV-2 infection)",
+        "Genital herpes (HSV-1 infection)",
+        "Primary syphilis (chancre)",
+        "Chancroid",
+        "Lymphogranuloma venereum"
+      ]
+    },
+    {
+      "case_id": 3047,
+      "ddxs": [
+        "Group B Streptococcus (Streptococcus agalactiae) neonatal meningitis",
+        "Listeria monocytogenes neonatal meningitis",
+        "Streptococcus pneumoniae meningitis",
+        "Staphylococcus aureus neonatal meningitis",
+        "Enterococcus faecalis neonatal meningitis"
+      ]
+    },
+    {
+      "case_id": 2742,
+      "ddxs": [
+        "Ruptured tubal ectopic pregnancy",
+        "Incomplete or threatened spontaneous abortion",
+        "Corpus luteum cyst rupture with hemoperitoneum",
+        "Ovarian torsion",
+        "Tubo-ovarian abscess due to pelvic inflammatory disease"
+      ]
+    },
+    {
+      "case_id": 1051,
+      "ddxs": [
+        "Alveolar osteitis (dry socket)",
+        "Cerumen impaction (conductive hearing loss)",
+        "Post-extraction odontogenic infection/abscess",
+        "Acute otitis externa",
+        "Acute otitis media"
+      ]
+    },
+    {
+      "case_id": 1313,
+      "ddxs": [
+        "Acute uncomplicated colonic diverticulitis",
+        "Epiploic appendagitis",
+        "Left-sided ureterolithiasis (renal colic)",
+        "Costochondritis/intercostal muscle strain",
+        "Acute pyelonephritis"
+      ]
+    },
+    {
+      "case_id": 1341,
+      "ddxs": [
+        "Acute bacterial epididymo-orchitis",
+        "Testicular abscess",
+        "Early Fournier’s gangrene (necrotizing fasciitis of the perineum)",
+        "Testicular torsion",
+        "Mumps orchitis"
+      ]
+    },
+    {
+      "case_id": 88,
+      "ddxs": [
+        "Acute viral pharyngitis (e.g., adenovirus/rhinovirus)",
+        "Group A streptococcal pharyngitis",
+        "Influenza",
+        "COVID-19 (SARS-CoV-2 infection)",
+        "Infectious mononucleosis (Epstein–Barr virus)"
+      ]
+    },
+    {
+      "case_id": 9484,
+      "ddxs": [
+        "Chronic aortic regurgitation",
+        "Aortic root dilation secondary to longstanding hypertension",
+        "Bicuspid aortic valve with aortic insufficiency",
+        "Rheumatic heart disease involving the aortic valve",
+        "Infective endocarditis of the aortic valve"
+      ]
+    },
+    {
+      "case_id": 982,
+      "ddxs": [
+        "Viral upper respiratory tract infection",
+        "Influenza A or B",
+        "Streptococcal pharyngitis",
+        "COVID-19 (SARS-CoV-2 infection)",
+        "Mycoplasma pneumoniae respiratory infection"
+      ]
+    },
+    {
+      "case_id": 7763,
+      "ddxs": [
+        "DiGeorge syndrome",
+        "Congenital thymic aplasia",
+        "FOXN1 deficiency",
+        "Severe combined immunodeficiency (ADA deficiency)",
+        "CHARGE syndrome"
+      ]
+    },
+    {
+      "case_id": 2282,
+      "ddxs": [
+        "Arrhythmogenic right ventricular cardiomyopathy",
+        "Acute viral myocarditis",
+        "Brugada syndrome",
+        "Cardiac sarcoidosis",
+        "Dilated cardiomyopathy"
+      ]
+    },
+    {
+      "case_id": 9338,
+      "ddxs": [
+        "Hyperacute renal transplant rejection",
+        "Renal artery thrombosis of transplant graft",
+        "Acute antibody-mediated renal transplant rejection",
+        "Ischemic acute tubular necrosis of the renal allograft",
+        "Page kidney (subcapsular hematoma compressing the graft)"
+      ]
+    },
+    {
+      "case_id": 9445,
+      "ddxs": [
+        "Diabetic gastroparesis",
+        "Acute gallstone pancreatitis",
+        "Acute cholecystitis due to cholelithiasis",
+        "Viral gastroenteritis (norovirus)",
+        "Small bowel obstruction from postoperative adhesions"
+      ]
+    },
+    {
+      "case_id": 9567,
+      "ddxs": [
+        "Gout (monosodium urate crystal arthritis)",
+        "Calcium pyrophosphate deposition disease (pseudogout)",
+        "Septic arthritis (Staphylococcus aureus)",
+        "Osteoarthritis with acute inflammatory flare",
+        "Reactive arthritis"
+      ]
+    },
+    {
+      "case_id": 1849,
+      "ddxs": [
+        "Systemic lupus erythematosus",
+        "Antiphospholipid syndrome",
+        "Lupus nephritis",
+        "Granulomatosis with polyangiitis",
+        "Behçet disease"
+      ]
+    },
+    {
+      "case_id": 1276,
+      "ddxs": [
+        "Viral upper respiratory tract infection (common cold)",
+        "Acute viral pharyngitis",
+        "Group A streptococcal pharyngitis",
+        "Influenza",
+        "COVID-19 (SARS-CoV-2 infection)"
+      ]
+    },
+    {
+      "case_id": 1538,
+      "ddxs": [
+        "Pearson marrow-pancreas syndrome",
+        "Mitochondrial DNA depletion syndrome type 9 (SUCLG1-related encephalomyopathic with 3-methylglutaconic aciduria)",
+        "Barth syndrome",
+        "Shwachman-Diamond syndrome",
+        "MPV17-related mitochondrial DNA depletion syndrome"
+      ]
+    },
+    {
+      "case_id": 731,
+      "ddxs": [
+        "Knee osteoarthritis (gonarthrosis)",
+        "Calcium pyrophosphate deposition disease (pseudogout)",
+        "Gouty arthritis",
+        "Septic arthritis of the knee",
+        "Meniscal tear"
+      ]
+    },
+    {
+      "case_id": 722,
+      "ddxs": [
+        "Acute pyelonephritis",
+        "Acute sigmoid diverticulitis",
+        "Ureterolithiasis with secondary infection",
+        "Acute appendicitis",
+        "Colorectal carcinoma"
+      ]
+    },
+    {
+      "case_id": 8358,
+      "ddxs": [
+        "Aminoglycoside-induced ototoxicity",
+        "Loop diuretic (furosemide)–induced ototoxicity",
+        "Vancomycin-induced ototoxicity",
+        "Ménière disease",
+        "Cerebellar/vertebrobasilar stroke"
+      ]
+    },
+    {
+      "case_id": 3995,
+      "ddxs": [
+        "Inflammatory breast carcinoma",
+        "Acute mastitis",
+        "Locally advanced invasive ductal carcinoma of the breast",
+        "Breast abscess",
+        "Paget disease of the breast"
+      ]
+    },
+    {
+      "case_id": 3732,
+      "ddxs": [
+        "Beta-thalassemia major (Cooley anemia)",
+        "Hemoglobin Constant Spring",
+        "Beta-globin stop-loss variant (e.g., Hb Tak)",
+        "Hemoglobin Lepore syndrome",
+        "Hemoglobin H disease (alpha-thalassemia intermedia)"
+      ]
+    },
+    {
+      "case_id": 337,
+      "ddxs": [
+        "Infección respiratoria viral de vías altas (resfriado común)",
+        "Faringitis estreptocócica/escarlatina",
+        "Bronquitis aguda",
+        "COVID-19",
+        "Asma variante (asma tusígena)"
+      ]
+    },
+    {
+      "case_id": 7056,
+      "ddxs": [
+        "Alpha-1 antitrypsin deficiency",
+        "Chronic obstructive pulmonary disease",
+        "Bronchiectasis",
+        "Allergic bronchopulmonary aspergillosis",
+        "Cystic fibrosis"
+      ]
+    },
+    {
+      "case_id": 1391,
+      "ddxs": [
+        "Cellulitis/septic thrombophlebitis of the right hand",
+        "Hyperosmolar hyperglycemic state (non-ketotic hyperglycemia)",
+        "Recurrent intracerebral hemorrhage (basal ganglia rebleed)",
+        "Hypoactive delirium secondary to infection or metabolic causes",
+        "Recurrent urinary tract infection with possible sepsis"
+      ]
+    },
+    {
+      "case_id": 9491,
+      "ddxs": [
+        "Duodenal atresia",
+        "Hirschsprung disease (congenital aganglionic megacolon)",
+        "Annular pancreas",
+        "Midgut malrotation with volvulus",
+        "Jejunal/ileal atresia"
+      ]
+    },
+    {
+      "case_id": 991,
+      "ddxs": [
+        "Acute infectious gastroenteritis",
+        "Vasovagal syncope",
+        "Orthostatic hypotension",
+        "Paroxysmal cardiac arrhythmia",
+        "Acute bilateral mastoiditis"
+      ]
+    },
+    {
+      "case_id": 3990,
+      "ddxs": [
+        "Breast milk jaundice",
+        "Physiologic neonatal jaundice",
+        "Crigler-Najjar syndrome type II",
+        "Gilbert syndrome",
+        "Biliary atresia"
+      ]
+    },
+    {
+      "case_id": 1357,
+      "ddxs": [
+        "Legionella pneumophila pneumonia (Legionnaires' disease)",
+        "Severe community-acquired bacterial pneumonia (e.g., Streptococcus pneumoniae)",
+        "COVID-19 pneumonia",
+        "Influenza-associated pneumonia (primary viral or secondary bacterial)",
+        "Aspiration pneumonia"
+      ]
+    },
+    {
+      "case_id": 291,
+      "ddxs": [
+        "Glioblastoma multiforme (IDH-wildtype high-grade glioma)",
+        "Solitary brain metastasis (e.g., from lung or breast carcinoma)",
+        "Anaplastic astrocytoma (WHO grade III)",
+        "Primary central nervous system lymphoma",
+        "Anaplastic oligodendroglioma"
+      ]
+    },
+    {
+      "case_id": 7065,
+      "ddxs": [
+        "Ketamine-induced emergence phenomenon",
+        "Postoperative delirium (acute confusional state)",
+        "Alcohol withdrawal delirium (delirium tremens)",
+        "Anticholinergic toxicity",
+        "Hypoxia-induced encephalopathy"
+      ]
+    },
+    {
+      "case_id": 8161,
+      "ddxs": [
+        "X-linked red-green color blindness (protanopia/deuteranopia)",
+        "Achromatopsia",
+        "Blue cone monochromacy",
+        "Cone dystrophy",
+        "Leber hereditary optic neuropathy"
+      ]
+    },
+    {
+      "case_id": 9519,
+      "ddxs": [
+        "Expressive language delay",
+        "Sensorineural hearing loss",
+        "Autism spectrum disorder",
+        "Developmental language disorder",
+        "Global developmental delay"
+      ]
+    },
+    {
+      "case_id": 2138,
+      "ddxs": [
+        "Hereditary spherocytosis",
+        "Warm autoimmune hemolytic anemia",
+        "Hemolytic disease of the newborn",
+        "Acute hemolytic transfusion reaction",
+        "Pyruvate kinase deficiency"
+      ]
+    },
+    {
+      "case_id": 942,
+      "ddxs": [
+        "Dacriocistitis aguda",
+        "Celulitis preseptal (periorbitaria)",
+        "Hordéolo (orzuelo)",
+        "Conjuntivitis bacteriana aguda",
+        "Celulitis orbitaria"
+      ]
+    },
+    {
+      "case_id": 887,
+      "ddxs": [
+        "Acute otitis media",
+        "Viral upper respiratory tract infection (nasopharyngitis)",
+        "Virus-induced wheezing/early childhood asthma",
+        "Recurrent bronchiolitis",
+        "Acute viral pharyngitis"
+      ]
+    },
+    {
+      "case_id": 2377,
+      "ddxs": [
+        "Benzodiazepine intoxication",
+        "Wernicke encephalopathy (thiamine deficiency)",
+        "Acute ethanol intoxication",
+        "Barbiturate intoxication",
+        "Hypoglycemia"
+      ]
+    },
+    {
+      "case_id": 76,
+      "ddxs": [
+        "Episcleritis",
+        "Viral conjunctivitis",
+        "Cluster headache",
+        "Anterior scleritis",
+        "Subacute angle-closure glaucoma"
+      ]
+    },
+    {
+      "case_id": 9488,
+      "ddxs": [
+        "Transient tachypnea of the newborn",
+        "Neonatal respiratory distress syndrome",
+        "Meconium aspiration syndrome",
+        "Persistent pulmonary hypertension of the newborn",
+        "Neonatal pneumonia"
+      ]
+    },
+    {
+      "case_id": 8667,
+      "ddxs": [
+        "Perinatal birth asphyxia",
+        "Hypoxic-ischemic encephalopathy",
+        "Neonatal brachial plexus injury (Erb–Duchenne palsy)",
+        "Neonatal clavicle fracture",
+        "Fetal macrosomia due to maternal diabetes"
+      ]
+    },
+    {
+      "case_id": 1887,
+      "ddxs": [
+        "Ankylosing spondylitis",
+        "Relapsing polychondritis",
+        "Systemic lupus erythematosus",
+        "Behçet disease",
+        "Granulomatosis with polyangiitis"
+      ]
+    },
+    {
+      "case_id": 1914,
+      "ddxs": [
+        "Felty syndrome",
+        "Sarcoidosis",
+        "Gaucher disease type 1",
+        "Systemic lupus erythematosus",
+        "VEXAS syndrome"
+      ]
+    },
+    {
+      "case_id": 8328,
+      "ddxs": [
+        "Leber hereditary optic neuropathy",
+        "Autosomal dominant optic atrophy",
+        "MELAS syndrome",
+        "Kearns-Sayre syndrome",
+        "Wolfram syndrome"
+      ]
+    },
+    {
+      "case_id": 6106,
+      "ddxs": [
+        "Prerenal acute kidney injury (azotemia) from hypovolemia",
+        "ACE inhibitor–induced functional renal failure",
+        "Acute tubular necrosis due to aminoglycoside toxicity",
+        "Obstructive uropathy secondary to benign prostatic hyperplasia",
+        "Acute interstitial nephritis from antibiotic exposure"
+      ]
+    },
+    {
+      "case_id": 9551,
+      "ddxs": [
+        "Lichen planus",
+        "Lichenoid drug eruption",
+        "Secondary syphilis",
+        "Porphyria cutanea tarda",
+        "Psoriasis"
+      ]
+    },
+    {
+      "case_id": 1,
+      "ddxs": [
+        "Systemic juvenile idiopathic arthritis (Still disease)",
+        "Polyarticular juvenile idiopathic arthritis",
+        "Post-streptococcal reactive arthritis",
+        "Acute rheumatic fever",
+        "Juvenile spondyloarthropathy"
+      ]
+    },
+    {
+      "case_id": 8221,
+      "ddxs": [
+        "Placenta previa",
+        "Low-lying placenta",
+        "Placental abruption",
+        "Placenta accreta spectrum",
+        "Vasa previa"
+      ]
+    },
+    {
+      "case_id": 536,
+      "ddxs": [
+        "Finger contusion",
+        "Finger sprain (collateral ligament injury)",
+        "Occult phalangeal fracture",
+        "Subungual hematoma",
+        "Ulnar collateral ligament injury of the thumb"
+      ]
+    },
+    {
+      "case_id": 2589,
+      "ddxs": [
+        "Factitious disorder imposed on self (Munchausen syndrome)",
+        "Autoimmune hemolytic anemia",
+        "Occult gastrointestinal bleeding from peptic ulcer disease",
+        "Infective endocarditis",
+        "Acute intermittent porphyria"
+      ]
+    },
+    {
+      "case_id": 338,
+      "ddxs": [
+        "Viral upper respiratory tract infection (nasopharyngitis)",
+        "Acute otitis media",
+        "Acute otitis externa",
+        "COVID-19 (SARS-CoV-2 infection)",
+        "Streptococcal pharyngitis"
+      ]
+    },
+    {
+      "case_id": 3361,
+      "ddxs": [
+        "Postpartum hemorrhage with hypovolemic shock",
+        "Uterine inversion",
+        "Placenta accreta spectrum",
+        "Uterine atony",
+        "Retained placental tissue"
+      ]
+    },
+    {
+      "case_id": 5866,
+      "ddxs": [
+        "Normal intrauterine pregnancy",
+        "Hydatidiform mole (molar pregnancy)",
+        "Ectopic pregnancy",
+        "Pseudocyesis",
+        "Hyperprolactinemia (pituitary adenoma)"
+      ]
+    },
+    {
+      "case_id": 2342,
+      "ddxs": [
+        "Focal segmental glomerulosclerosis",
+        "Membranous nephropathy",
+        "IgA nephropathy (Berger disease)",
+        "Renal amyloidosis",
+        "Autosomal dominant polycystic kidney disease"
+      ]
+    },
+    {
+      "case_id": 2185,
+      "ddxs": [
+        "Waardenburg syndrome",
+        "Tietz albinism-deafness syndrome",
+        "Piebaldism",
+        "Hypomelanosis of Ito",
+        "Oculocutaneous albinism"
+      ]
+    },
+    {
+      "case_id": 9538,
+      "ddxs": [
+        "Congenital Long QT Syndrome (Romano-Ward)",
+        "Wolff-Parkinson-White Syndrome",
+        "Brugada Syndrome",
+        "Hypertrophic Obstructive Cardiomyopathy",
+        "Catecholaminergic Polymorphic Ventricular Tachycardia"
+      ]
+    },
+    {
+      "case_id": 6952,
+      "ddxs": [
+        "Conduct disorder",
+        "Oppositional defiant disorder",
+        "Intermittent explosive disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Antisocial personality disorder"
+      ]
+    },
+    {
+      "case_id": 1704,
+      "ddxs": [
+        "Infantile Refsum disease (peroxisomal biogenesis disorder, Zellweger spectrum)",
+        "Zellweger syndrome",
+        "Refsum disease (phytanoyl-CoA hydroxylase deficiency)",
+        "Rhizomelic chondrodysplasia punctata type 1",
+        "Peroxisomal acyl-CoA oxidase deficiency"
+      ]
+    },
+    {
+      "case_id": 5992,
+      "ddxs": [
+        "Gestational choriocarcinoma",
+        "Pulmonary embolism",
+        "Septic pelvic thrombophlebitis with septic pulmonary emboli",
+        "Retained placental tissue with uterine subinvolution",
+        "Invasive hydatidiform mole"
+      ]
+    },
+    {
+      "case_id": 1311,
+      "ddxs": [
+        "Benign prostatic hyperplasia with acute urinary retention",
+        "Post-renal obstructive uropathy (acute kidney injury)",
+        "Prostate cancer causing bladder outlet obstruction",
+        "Nephrolithiasis with bilateral hydronephrosis",
+        "Complicated urinary tract infection"
+      ]
+    },
+    {
+      "case_id": 4,
+      "ddxs": [
+        "Gangrenous acute cholecystitis",
+        "Acute calculous cholecystitis",
+        "Ascending cholangitis",
+        "Acute biliary pancreatitis",
+        "Pyogenic liver abscess"
+      ]
+    },
+    {
+      "case_id": 7463,
+      "ddxs": [
+        "Vertebral artery dissection",
+        "Lateral medullary (Wallenberg) syndrome (PICA territory infarction)",
+        "Acute cerebellar infarction",
+        "Anterior inferior cerebellar artery (AICA) infarction",
+        "Vestibular neuritis"
+      ]
+    },
+    {
+      "case_id": 8,
+      "ddxs": [
+        "Gianotti-Crosti syndrome",
+        "Papular urticaria",
+        "Erythema infectiosum (Parvovirus B19)",
+        "Atopic dermatitis",
+        "Hand-foot-mouth disease"
+      ]
+    },
+    {
+      "case_id": 9520,
+      "ddxs": [
+        "Alzheimer disease",
+        "Vascular dementia",
+        "Dementia with Lewy bodies",
+        "Frontotemporal dementia (Pick disease)",
+        "Vitamin B12 deficiency–related dementia"
+      ]
+    },
+    {
+      "case_id": 383,
+      "ddxs": [
+        "Acute allergic urticaria with angioedema",
+        "Serum sickness-like reaction (drug-induced)",
+        "Parvovirus B19 infection (viral exanthem with arthralgia)",
+        "Urticarial vasculitis",
+        "Papular prurigo (insect-bite hypersensitivity)"
+      ]
+    },
+    {
+      "case_id": 6330,
+      "ddxs": [
+        "Acetaminophen-induced acute hepatic failure",
+        "Acute viral hepatitis",
+        "Ischemic hepatitis (shock liver)",
+        "Budd-Chiari syndrome",
+        "Autoimmune hepatitis"
+      ]
+    },
+    {
+      "case_id": 8296,
+      "ddxs": [
+        "Viral croup (acute laryngotracheitis)",
+        "Bacterial tracheitis",
+        "Epiglottitis",
+        "Retropharyngeal abscess",
+        "Upper airway foreign body aspiration"
+      ]
+    },
+    {
+      "case_id": 1181,
+      "ddxs": [
+        "Acute viral upper respiratory tract infection (e.g., influenza)",
+        "Atypical pneumonia due to Mycoplasma or Chlamydophila",
+        "Pulmonary tuberculosis",
+        "COVID-19 infection (antigen false negative)",
+        "Subacute bacterial endocarditis"
+      ]
+    },
+    {
+      "case_id": 1430,
+      "ddxs": [
+        "Citrullinemia type II (citrin deficiency)",
+        "Classic galactosemia (GALT deficiency)",
+        "Hereditary tyrosinemia type I",
+        "UDP-galactose 4-epimerase deficiency (GALE deficiency)",
+        "Galactose mutarotase deficiency"
+      ]
+    },
+    {
+      "case_id": 6510,
+      "ddxs": [
+        "Cavernous sinus thrombosis",
+        "Orbital cellulitis",
+        "Bacterial meningitis secondary to sinusitis",
+        "Intracranial brain abscess",
+        "Skull base osteomyelitis"
+      ]
+    },
+    {
+      "case_id": 1364,
+      "ddxs": [
+        "Peptic ulcer disease",
+        "Erosive gastritis/duodenitis",
+        "Gastric carcinoma",
+        "Esophageal or gastric variceal bleeding",
+        "Gastrointestinal angiodysplasia"
+      ]
+    },
+    {
+      "case_id": 1973,
+      "ddxs": [
+        "Spondyloepimetaphyseal dysplasia with immune deficiency",
+        "Schimke immuno-osseous dysplasia",
+        "Cartilage-hair hypoplasia",
+        "Spondyloenchondrodysplasia with immune dysregulation",
+        "Omenn syndrome"
+      ]
+    },
+    {
+      "case_id": 9490,
+      "ddxs": [
+        "Epidural hematoma",
+        "Acute subdural hematoma",
+        "Intracerebral hemorrhage (cerebral contusion)",
+        "Traumatic subarachnoid hemorrhage",
+        "Diffuse axonal injury"
+      ]
+    },
+    {
+      "case_id": 3959,
+      "ddxs": [
+        "Benign paroxysmal positional vertigo",
+        "Vestibular neuritis",
+        "Posterior circulation transient ischemic attack (vertebrobasilar TIA)",
+        "Meniere disease",
+        "Labyrinthitis"
+      ]
+    },
+    {
+      "case_id": 2083,
+      "ddxs": [
+        "CHARGE syndrome",
+        "Kabuki syndrome",
+        "Peters plus syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "Wolf-Hirschhorn syndrome"
+      ]
+    },
+    {
+      "case_id": 1355,
+      "ddxs": [
+        "Right ureterolithiasis with renal colic",
+        "Acute obstructive hydronephrosis",
+        "Acute pyelonephritis secondary to ureteral obstruction",
+        "Acute cholecystitis",
+        "Right colonic diverticulitis"
+      ]
+    },
+    {
+      "case_id": 2064,
+      "ddxs": [
+        "Freeman-Sheldon syndrome",
+        "Sheldon-Hall syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "Opitz G/BBB syndrome",
+        "Escobar syndrome (multiple pterygium syndrome)"
+      ]
+    },
+    {
+      "case_id": 2000,
+      "ddxs": [
+        "Miller-Dieker lissencephaly syndrome",
+        "FOXG1 syndrome",
+        "Autosomal recessive primary microcephaly (ASPM-related)",
+        "1p36 deletion syndrome",
+        "Congenital Zika syndrome"
+      ]
+    },
+    {
+      "case_id": 1388,
+      "ddxs": [
+        "Post-influenza bacterial pneumonia",
+        "Pulmonary embolism",
+        "Primary influenza A viral pneumonia",
+        "Congestive heart failure (acute decompensation)",
+        "Paroxysmal atrial fibrillation"
+      ]
+    },
+    {
+      "case_id": 2080,
+      "ddxs": [
+        "Lamin A/C cardiomyopathy (familial dilated cardiomyopathy with conduction system disease)",
+        "Chagas cardiomyopathy",
+        "Cardiac sarcoidosis",
+        "Viral myocarditis–induced dilated cardiomyopathy",
+        "Emery–Dreifuss muscular dystrophy"
+      ]
+    },
+    {
+      "case_id": 2277,
+      "ddxs": [
+        "Fetal alcohol syndrome",
+        "22q11.2 deletion syndrome",
+        "Kabuki syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "CHARGE syndrome"
+      ]
+    },
+    {
+      "case_id": 8154,
+      "ddxs": [
+        "Cervical insufficiency",
+        "Short cervix-associated risk of preterm birth",
+        "Preterm labor",
+        "Multiple gestation pregnancy",
+        "Uterine structural anomaly (e.g., bicornuate uterus)"
+      ]
+    },
+    {
+      "case_id": 665,
+      "ddxs": [
+        "Acute epididymitis",
+        "Epididymal cyst (spermatocele)",
+        "Epididymo-orchitis",
+        "Testicular torsion",
+        "Testicular germ cell tumor"
+      ]
+    },
+    {
+      "case_id": 5,
+      "ddxs": [
+        "Diabetic distal symmetric polyneuropathy",
+        "Hypothyroidism (Hashimoto thyroiditis)",
+        "Metformin-induced vitamin B12 deficiency",
+        "Chronic inflammatory demyelinating polyneuropathy",
+        "Hypocalcemia secondary to vitamin D deficiency"
+      ]
+    },
+    {
+      "case_id": 5810,
+      "ddxs": [
+        "Autosomal dominant polycystic kidney disease",
+        "Ehlers-Danlos syndrome type IV",
+        "Essential hypertension",
+        "Marfan syndrome",
+        "Coarctation of the aorta"
+      ]
+    },
+    {
+      "case_id": 309,
+      "ddxs": [
+        "Infección viral de las vías respiratorias superiores",
+        "Influenza",
+        "COVID-19",
+        "Mononucleosis infecciosa por virus de Epstein-Barr",
+        "Síncope vasovagal"
+      ]
+    },
+    {
+      "case_id": 9465,
+      "ddxs": [
+        "Klinefelter syndrome (47,XXY)",
+        "Y-chromosome microdeletion–related primary testicular failure",
+        "Congenital bilateral anorchia (vanishing testes)",
+        "Post-mumps orchitis–induced testicular failure",
+        "Mixed gonadal dysgenesis (45,X/46,XY mosaicism)"
+      ]
+    },
+    {
+      "case_id": 7048,
+      "ddxs": [
+        "Secondary lactation failure from decreased nipple stimulation (reduced prolactin secretion)",
+        "Postpartum thyroiditis (hypothyroid phase)",
+        "Sheehan syndrome (postpartum hypopituitarism)",
+        "Drug-induced hypogalactia from antihistamine use",
+        "Breast implant–associated lactation insufficiency"
+      ]
+    },
+    {
+      "case_id": 2197,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Carpenter syndrome",
+        "Smith-Lemli-Opitz syndrome",
+        "Bardet-Biedl syndrome",
+        "Rubinstein-Taybi syndrome"
+      ]
+    },
+    {
+      "case_id": 9477,
+      "ddxs": [
+        "Intraductal papilloma",
+        "Ductal carcinoma in situ (DCIS)",
+        "Invasive ductal carcinoma of the breast",
+        "Mammary duct ectasia",
+        "Papillary carcinoma of the breast"
+      ]
+    },
+    {
+      "case_id": 6610,
+      "ddxs": [
+        "Hodgkin lymphoma (mixed cellularity subtype)",
+        "Diffuse large B-cell lymphoma",
+        "Metastatic squamous cell carcinoma of the head and neck",
+        "Castleman disease",
+        "Infectious mononucleosis"
+      ]
+    },
+    {
+      "case_id": 8310,
+      "ddxs": [
+        "Septic shock",
+        "Hypovolemic shock",
+        "Cardiogenic shock (acute myocardial infarction)",
+        "Drug-induced distributive shock",
+        "Acute adrenal insufficiency (Addisonian crisis)"
+      ]
+    },
+    {
+      "case_id": 1393,
+      "ddxs": [
+        "Non-ST elevation myocardial infarction (NSTEMI)",
+        "Paroxysmal atrial fibrillation with rapid ventricular response",
+        "Chronic coronary artery disease (stable angina)",
+        "Heart failure with preserved ejection fraction (diastolic heart failure)",
+        "Pulmonary embolism"
+      ]
+    },
+    {
+      "case_id": 381,
+      "ddxs": [
+        "Community-acquired bacterial pneumonia",
+        "Viral bronchiolitis with post-viral wheeze",
+        "Asthma/reactive airway disease exacerbation",
+        "Atypical pneumonia (Mycoplasma or Chlamydia pneumoniae)",
+        "Foreign body aspiration with secondary obstructive pneumonia"
+      ]
+    },
+    {
+      "case_id": 1870,
+      "ddxs": [
+        "SAPHO syndrome",
+        "Chronic recurrent multifocal osteomyelitis",
+        "Bacterial mandibular osteomyelitis",
+        "Garré sclerosing osteomyelitis",
+        "PAPA syndrome"
+      ]
+    },
+    {
+      "case_id": 880,
+      "ddxs": [
+        "Ruptura de la cabeza medial del gastrocnemio (Tennis leg)",
+        "Ruptura del tendón del plantar",
+        "Trombosis venosa profunda de la pierna",
+        "Ruptura de quiste de Baker",
+        "Desgarro parcial del tendón de Aquiles"
+      ]
+    },
+    {
+      "case_id": 835,
+      "ddxs": [
+        "Pelvic inflammatory disease",
+        "Acute sigmoid diverticulitis",
+        "Acute infectious colitis",
+        "Ruptured ovarian cyst",
+        "Ovarian torsion"
+      ]
+    },
+    {
+      "case_id": 419,
+      "ddxs": [
+        "Bacterial bilateral pneumonia",
+        "Acute exacerbation of chronic obstructive pulmonary disease",
+        "Acute decompensated heart failure",
+        "Aspiration pneumonia",
+        "Complicated urinary tract infection (urosepsis)"
+      ]
+    },
+    {
+      "case_id": 610,
+      "ddxs": [
+        "Adhesive small bowel obstruction",
+        "Acute pancreatitis",
+        "Recurrent obstructing colorectal cancer",
+        "Gallstone disease (biliary colic/choledocholithiasis)",
+        "Acute mesenteric ischemia"
+      ]
+    },
+    {
+      "case_id": 5889,
+      "ddxs": [
+        "Bipolar I disorder (manic episode)",
+        "Substance/medication-induced manic episode",
+        "Schizoaffective disorder, bipolar type",
+        "Borderline personality disorder",
+        "Cyclothymic disorder"
+      ]
+    },
+    {
+      "case_id": 9552,
+      "ddxs": [
+        "Sertoli-Leydig cell tumor of the ovary",
+        "Ovarian steroid (Leydig) cell tumor",
+        "Polycystic ovary syndrome",
+        "Nonclassic congenital adrenal hyperplasia (21-hydroxylase deficiency)",
+        "Cushing syndrome"
+      ]
+    },
+    {
+      "case_id": 6944,
+      "ddxs": [
+        "Androgenetic alopecia (male pattern baldness)",
+        "Benign prostatic hyperplasia (BPH)",
+        "Hyperlipidemia",
+        "Obesity",
+        "Metabolic syndrome"
+      ]
+    },
+    {
+      "case_id": 268,
+      "ddxs": [
+        "Acute pancreatitis",
+        "Peptic ulcer disease",
+        "Acute cholecystitis or biliary colic",
+        "Acute gastritis",
+        "Acute coronary syndrome (inferior myocardial infarction)"
+      ]
+    },
+    {
+      "case_id": 9458,
+      "ddxs": [
+        "Cerebral salt wasting syndrome",
+        "Syndrome of inappropriate antidiuretic hormone secretion (SIADH)",
+        "Loop diuretic–induced hypovolemic hyponatremia",
+        "Secondary adrenal insufficiency (acute adrenal crisis)",
+        "Hypothyroidism-related hyponatremia"
+      ]
+    },
+    {
+      "case_id": 7735,
+      "ddxs": [
+        "Type 2 diabetes mellitus",
+        "Schizophrenia",
+        "Hypertension",
+        "Cleft lip and palate",
+        "Androgenetic alopecia"
+      ]
+    },
+    {
+      "case_id": 9482,
+      "ddxs": [
+        "Tropical sprue",
+        "Celiac disease",
+        "Giardiasis",
+        "Whipple disease",
+        "Small intestinal bacterial overgrowth"
+      ]
+    },
+    {
+      "case_id": 9498,
+      "ddxs": [
+        "Acute compartment syndrome of the lower leg",
+        "Tibial shaft fracture",
+        "Tibial plateau fracture",
+        "Anterior cruciate ligament tear",
+        "Patellar dislocation"
+      ]
+    },
+    {
+      "case_id": 164,
+      "ddxs": [
+        "Acute suppurative otitis media with spontaneous tympanic membrane perforation",
+        "RSV bronchiolitis (acute viral lower respiratory tract infection)",
+        "Viral upper respiratory tract infection",
+        "Community-acquired pneumonia",
+        "Viral-induced wheeze/reactive airway episode"
+      ]
+    },
+    {
+      "case_id": 3455,
+      "ddxs": [
+        "Retinopathy of prematurity (retrolental fibroplasia)",
+        "Bronchopulmonary dysplasia",
+        "Intraventricular hemorrhage",
+        "Pulmonary oxygen toxicity with interstitial fibrosis",
+        "Cataract formation"
+      ]
+    },
+    {
+      "case_id": 312,
+      "ddxs": [
+        "Posterior vitreous detachment",
+        "Rhegmatogenous retinal detachment",
+        "Retinal tear",
+        "Ocular migraine (visual aura)",
+        "Amaurosis fugax"
+      ]
+    },
+    {
+      "case_id": 789,
+      "ddxs": [
+        "Atypical pneumonia (Mycoplasma pneumoniae)",
+        "Viral pneumonia (influenza/RSV/adenovirus)",
+        "Pertussis",
+        "Acute bronchitis",
+        "Community-acquired bacterial pneumonia (Streptococcus pneumoniae)"
+      ]
+    },
+    {
+      "case_id": 4938,
+      "ddxs": [
+        "Apoptosis (programmed cell death)",
+        "Intrinsic (mitochondrial) apoptotic pathway activation",
+        "Caspase-activated DNase–mediated DNA laddering",
+        "Chemotherapy-induced apoptosis",
+        "Endonuclease-driven internucleosomal DNA fragmentation"
+      ]
+    },
+    {
+      "case_id": 2128,
+      "ddxs": [
+        "Townes-Brocks syndrome",
+        "VACTERL association",
+        "Kabuki syndrome",
+        "Baller-Gerold syndrome",
+        "Cornelia de Lange syndrome"
+      ]
+    },
+    {
+      "case_id": 3674,
+      "ddxs": [
+        "Gestational diabetes mellitus",
+        "Type 2 diabetes mellitus (previously undiagnosed)",
+        "Type 1 diabetes mellitus",
+        "Maturity-onset diabetes of the young (MODY)",
+        "Cushing syndrome"
+      ]
+    },
+    {
+      "case_id": 2044,
+      "ddxs": [
+        "Myotonic dystrophy type 1",
+        "Myotonic dystrophy type 2",
+        "Chronic progressive external ophthalmoplegia",
+        "Oculopharyngodistal myopathy",
+        "Facioscapulohumeral muscular dystrophy"
+      ]
+    },
+    {
+      "case_id": 7409,
+      "ddxs": [
+        "Normal physiologic state of neonatal hemoglobin (HbF predominance)",
+        "Hereditary persistence of fetal hemoglobin",
+        "Beta-thalassemia major",
+        "Sickle cell disease",
+        "Diamond-Blackfan anemia"
+      ]
+    },
+    {
+      "case_id": 4929,
+      "ddxs": [
+        "Acquired sideroblastic anemia due to isoniazid-induced pyridoxine deficiency",
+        "Anemia of chronic disease (tuberculosis-related)",
+        "Hereditary sideroblastic anemia",
+        "Lead poisoning",
+        "Beta-thalassemia minor"
+      ]
+    },
+    {
+      "case_id": 1997,
+      "ddxs": [
+        "Syringomyelia",
+        "Chiari I malformation with syringomyelia",
+        "Hereditary sensory and autonomic neuropathy type IV (congenital insensitivity to pain with anhidrosis)",
+        "Complex hereditary spastic paraplegia",
+        "Intramedullary spinal cord ependymoma"
+      ]
+    },
+    {
+      "case_id": 7886,
+      "ddxs": [
+        "Diabetic microvascular cranial nerve III palsy",
+        "Posterior communicating artery aneurysm",
+        "Tolosa-Hunt syndrome",
+        "Cavernous sinus thrombosis",
+        "Ocular myasthenia gravis"
+      ]
+    },
+    {
+      "case_id": 8092,
+      "ddxs": [
+        "Postoperative atelectasis",
+        "Early postoperative pneumonia",
+        "Benign postoperative fever (normal inflammatory response)",
+        "Drug-induced fever",
+        "Malignant hyperthermia"
+      ]
+    },
+    {
+      "case_id": 446,
+      "ddxs": [
+        "Complicated recurrent colonic diverticulitis with pelvic abscess",
+        "Acute uncomplicated cystitis",
+        "Colovesical fistula secondary to diverticular disease",
+        "Obstructive acute pyelonephritis due to nephrolithiasis",
+        "Tubo-ovarian abscess (pelvic inflammatory disease)"
+      ]
+    },
+    {
+      "case_id": 9513,
+      "ddxs": [
+        "Acute lymphoblastic leukemia",
+        "Acute myeloid leukemia",
+        "Juvenile myelomonocytic leukemia",
+        "Chronic myelogenous leukemia",
+        "Hemophagocytic lymphohistiocytosis"
+      ]
+    },
+    {
+      "case_id": 9188,
+      "ddxs": [
+        "MELAS syndrome (mitochondrial tRNA mutation)",
+        "Leigh syndrome",
+        "Diamond-Blackfan anemia",
+        "Shwachman-Diamond syndrome",
+        "Pearson marrow-pancreas syndrome"
+      ]
+    },
+    {
+      "case_id": 5765,
+      "ddxs": [
+        "Erb-Duchenne palsy (upper trunk brachial plexus injury, C5-C6)",
+        "Clavicle fracture",
+        "Shoulder dislocation (glenohumeral)",
+        "Proximal humerus epiphyseal fracture",
+        "Klumpke palsy (lower trunk brachial plexus injury, C8-T1)"
+      ]
+    },
+    {
+      "case_id": 6076,
+      "ddxs": [
+        "Vasa previa",
+        "Placenta previa",
+        "Placental abruption",
+        "Umbilical cord prolapse",
+        "Preterm premature rupture of membranes (PROM/PPROM)"
+      ]
+    },
+    {
+      "case_id": 9497,
+      "ddxs": [
+        "Wolff-Parkinson-White syndrome",
+        "Aortic stenosis",
+        "Hypertrophic obstructive cardiomyopathy",
+        "Sick sinus syndrome",
+        "Orthostatic hypotension"
+      ]
+    },
+    {
+      "case_id": 9506,
+      "ddxs": [
+        "Vascular dementia",
+        "Alzheimer disease",
+        "Frontotemporal dementia",
+        "Lewy body dementia",
+        "Normal pressure hydrocephalus"
+      ]
+    },
+    {
+      "case_id": 1884,
+      "ddxs": [
+        "Muckle-Wells syndrome",
+        "Adult-onset Still disease",
+        "Systemic lupus erythematosus",
+        "Cogan syndrome",
+        "Schnitzler syndrome"
+      ]
+    },
+    {
+      "case_id": 798,
+      "ddxs": [
+        "Acute bronchitis (acute tracheobronchitis)",
+        "Community-acquired pneumonia (atypical or partially treated)",
+        "Pulmonary embolism",
+        "Bronchiectasis with infective exacerbation",
+        "Bronchogenic carcinoma (early lung cancer)"
+      ]
+    },
+    {
+      "case_id": 899,
+      "ddxs": [
+        "Cellulitis",
+        "Erysipelas",
+        "Upper extremity deep vein thrombosis",
+        "Necrotizing fasciitis",
+        "Superficial thrombophlebitis"
+      ]
+    },
+    {
+      "case_id": 121,
+      "ddxs": [
+        "Acute viral upper respiratory tract infection (post-viral pharyngitis/cough)",
+        "Postinfectious tracheobronchitis",
+        "Atypical respiratory infection (Mycoplasma/Chlamydia)",
+        "Cough-variant asthma",
+        "Gastroesophageal reflux disease with laryngopharyngeal reflux"
+      ]
+    },
+    {
+      "case_id": 5134,
+      "ddxs": [
+        "Preterm premature rupture of membranes (PPROM)",
+        "Spontaneous preterm labor",
+        "Chorioamnionitis (intraamniotic infection)",
+        "Placental abruption",
+        "Cervical insufficiency"
+      ]
+    },
+    {
+      "case_id": 1720,
+      "ddxs": [
+        "Pontocerebellar hypoplasia type 2",
+        "Zellweger spectrum disorder (Zellweger syndrome)",
+        "Neuronal ceroid lipofuscinosis type 2 (CLN2 disease)",
+        "Leigh syndrome",
+        "Angelman syndrome"
+      ]
+    },
+    {
+      "case_id": 1963,
+      "ddxs": [
+        "Beckwith-Wiedemann syndrome",
+        "Trisomy 13 (Patau syndrome)",
+        "Trisomy 18 (Edwards syndrome)",
+        "OEIS complex (cloacal exstrophy)",
+        "Pentalogy of Cantrell"
+      ]
+    },
+    {
+      "case_id": 1058,
+      "ddxs": [
+        "Gastroenteritis bacteriana aguda (Salmonella/Campylobacter)",
+        "Gastroenteritis viral aguda (Norovirus)",
+        "Intoxicación alimentaria por toxina de Staphylococcus aureus o Bacillus cereus",
+        "Apendicitis aguda atípica",
+        "Gastritis aguda alcohólica"
+      ]
+    },
+    {
+      "case_id": 2378,
+      "ddxs": [
+        "Ventricular septal defect",
+        "Atrioventricular septal defect (complete AV canal)",
+        "Tetralogy of Fallot",
+        "Patent ductus arteriosus",
+        "Hypertrophic cardiomyopathy"
+      ]
+    },
+    {
+      "case_id": 868,
+      "ddxs": [
+        "Viral gastroenteritis",
+        "Bacterial foodborne gastroenteritis",
+        "Orthostatic hypotension",
+        "Vasovagal syncope",
+        "Mild traumatic brain injury (concussion)"
+      ]
+    },
+    {
+      "case_id": 4989,
+      "ddxs": [
+        "Partial hydatidiform mole",
+        "Complete hydatidiform mole",
+        "Spontaneous abortion",
+        "Ectopic pregnancy",
+        "Gestational choriocarcinoma"
+      ]
+    },
+    {
+      "case_id": 7704,
+      "ddxs": [
+        "Autosomal recessive polycystic kidney disease",
+        "Bilateral renal agenesis",
+        "Posterior urethral valves causing obstructive uropathy",
+        "Meckel-Gruber syndrome",
+        "Trisomy 18 (Edwards syndrome)"
+      ]
+    },
+    {
+      "case_id": 101,
+      "ddxs": [
+        "Costochondritis (Tietze syndrome)",
+        "Acute viral tracheobronchitis",
+        "Acute pericarditis",
+        "Pulmonary embolism",
+        "Early atypical pneumonia"
+      ]
+    },
+    {
+      "case_id": 4921,
+      "ddxs": [
+        "Acute bacterial prostatitis",
+        "Acute uncomplicated cystitis",
+        "Benign prostatic hyperplasia",
+        "Prostatic abscess",
+        "Acute pyelonephritis"
+      ]
+    },
+    {
+      "case_id": 557,
+      "ddxs": [
+        "Hand-foot-and-mouth disease (Coxsackie/Enterovirus infection)",
+        "Varicella (chickenpox)",
+        "Impetigo contagiosa",
+        "Molluscum contagiosum",
+        "Gianotti-Crosti syndrome"
+      ]
+    },
+    {
+      "case_id": 9125,
+      "ddxs": [
+        "Autism Spectrum Disorder (Asperger syndrome)",
+        "Obsessive-Compulsive Disorder",
+        "Attention-Deficit/Hyperactivity Disorder, Inattentive Type",
+        "Social (Pragmatic) Communication Disorder",
+        "Oppositional Defiant Disorder"
+      ]
+    },
+    {
+      "case_id": 8540,
+      "ddxs": [
+        "MELAS syndrome",
+        "MERRF syndrome",
+        "Kearns-Sayre syndrome",
+        "Leigh syndrome",
+        "Pearson marrow-pancreas syndrome"
+      ]
+    },
+    {
+      "case_id": 3325,
+      "ddxs": [
+        "Epidermal inclusion cyst",
+        "Lipoma",
+        "Trichilemmal cyst",
+        "Reactive cervical lymphadenopathy",
+        "Cutaneous metastasis of colon adenocarcinoma"
+      ]
+    },
+    {
+      "case_id": 9466,
+      "ddxs": [
+        "Nephrotic syndrome (likely focal segmental glomerulosclerosis)",
+        "Deep venous thrombosis of the lower extremity",
+        "Renal vein thrombosis",
+        "Congestive heart failure with systemic volume overload",
+        "Cirrhosis with resultant hypoalbuminemia"
+      ]
+    },
+    {
+      "case_id": 7137,
+      "ddxs": [
+        "Congenital rubella syndrome",
+        "Congenital cytomegalovirus infection",
+        "Congenital syphilis",
+        "Congenital varicella syndrome",
+        "Congenital toxoplasmosis"
+      ]
+    },
+    {
+      "case_id": 307,
+      "ddxs": [
+        "Axillary abscess due to Staphylococcus aureus skin infection",
+        "Acute suppurative axillary lymphadenitis",
+        "Hidradenitis suppurativa",
+        "Cat scratch disease (Bartonella henselae)",
+        "Ulceroglandular tularemia"
+      ]
+    },
+    {
+      "case_id": 4176,
+      "ddxs": [
+        "Presbycusis (age-related sensorineural hearing loss)",
+        "Noise-induced hearing loss",
+        "Ototoxic drug–induced hearing loss",
+        "Meniere disease",
+        "Vestibular schwannoma (acoustic neuroma)"
+      ]
+    },
+    {
+      "case_id": 1007,
+      "ddxs": [
+        "Acute gouty arthritis",
+        "Septic arthritis of the ankle",
+        "Deep vein thrombosis of the right lower limb",
+        "Cellulitis of the ankle",
+        "Achilles tendinitis/enthesitis"
+      ]
+    },
+    {
+      "case_id": 578,
+      "ddxs": [
+        "Atopic dermatitis",
+        "Keratosis pilaris",
+        "Plaque psoriasis",
+        "Dermatitis herpetiformis",
+        "Ichthyosis vulgaris"
+      ]
+    },
+    {
+      "case_id": 2244,
+      "ddxs": [
+        "Kabuki syndrome",
+        "Wiedemann-Steiner syndrome",
+        "Rubinstein-Taybi syndrome",
+        "Cornelia de Lange syndrome",
+        "Wolf-Hirschhorn syndrome"
+      ]
+    },
+    {
+      "case_id": 163,
+      "ddxs": [
+        "Herpes labial (infección por virus herpes simple tipo 1)",
+        "Angioedema alérgico/hipersensibilidad alimentaria",
+        "Impetigo o celulitis bacteriana del labio",
+        "Queilitis de contacto alérgica",
+        "Síndrome de Melkersson-Rosenthal (granulomatosis orofacial)"
+      ]
+    },
+    {
+      "case_id": 9578,
+      "ddxs": [
+        "Chronic subdural hematoma",
+        "Delirium due to urinary tract infection",
+        "Hyponatremic encephalopathy",
+        "Ischemic stroke",
+        "Alzheimer disease"
+      ]
+    }
+  ]
+}
