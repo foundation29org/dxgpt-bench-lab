@@ -1,0 +1,100 @@
+{
+  "configuration": {
+    "experiment_name": "no-name-provided",
+    "experiment_description": "no-description-provided",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "dataset_path": "bench/datasets/all_150.json",
+    "timestamp": "2025-08-29T17:55:13.240154"
+  },
+  "global": {
+    "total_cases": 150,
+    "matched_cases": 141,
+    "unmatched_cases": 9,
+    "top_counts": {
+      "P1": 97,
+      "P3": 11,
+      "P2": 20,
+      "P4": 9,
+      "P5": 3,
+      "P6": 1
+    },
+    "resolution_method_counts": {
+      "snomed_match": 4,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 1,
+      "bert_autoconfirm": 35,
+      "bert_match": 23,
+      "llm_judgment": 78
+    },
+    "average_position": 1.61,
+    "final_score_percentage": 94.0
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 35,
+      "matched_cases": 35,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 28,
+        "P2": 3,
+        "P4": 1,
+        "P3": 3
+      },
+      "average_position": 1.343,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 23,
+      "matched_cases": 23,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 16,
+        "P2": 5,
+        "P4": 1,
+        "P3": 1
+      },
+      "average_position": 1.435,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_SIBLING": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P6": 1
+      },
+      "average_position": 6,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 78,
+      "matched_cases": 78,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 50,
+        "P3": 7,
+        "P2": 12,
+        "P4": 6,
+        "P5": 3
+      },
+      "average_position": 1.718,
+      "final_score_percentage": 100.0
+    },
+    "SNOMED_MATCH": {
+      "total_cases": 4,
+      "matched_cases": 4,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 3,
+        "P4": 1
+      },
+      "average_position": 1.75,
+      "final_score_percentage": 100.0
+    }
+  }
+}

@@ -1,0 +1,5670 @@
+{
+  "metadata": {
+    "experiment_name": "Ramedis Baseline con GPT-4o",
+    "timestamp": "2025-06-27T16:09:33.126732"
+  },
+  "evaluations": [
+    {
+      "case_id": 1,
+      "gdx_set": [
+        "Juvenile Rheumatoid Arthritis",
+        "Systemic osteoporosis (due to therapy)",
+        "Tonsillitis (precipitating illness)"
+      ],
+      "best_match": {
+        "ddx": "Polyarticular Juvenile Idiopathic Arthritis",
+        "gdx": "Juvenile Rheumatoid Arthritis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 3,
+      "gdx_set": [
+        "Pterygium",
+        "Phacosclerosis (noted in eye exam)"
+      ],
+      "best_match": {
+        "ddx": "Pterygium",
+        "gdx": "Pterygium",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4,
+      "gdx_set": [
+        "Phlegmonous-Gangrenous Cholecystitis"
+      ],
+      "best_match": {
+        "ddx": "Phlegmonous (gangrenous) cholecystitis",
+        "gdx": "Phlegmonous-Gangrenous Cholecystitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5,
+      "gdx_set": [
+        "Type 2 Diabetes Mellitus",
+        "Diabetic Polyneuropathy",
+        "Hypothyroidism (treated for ~3 years)",
+        "History of ischemic stroke (2016)",
+        "Arterial hypertension"
+      ],
+      "best_match": {
+        "ddx": "Diabetic peripheral polyneuropathy",
+        "gdx": "Diabetic Polyneuropathy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6,
+      "gdx_set": [
+        "nsLTP syndrome",
+        "Recurrent allergic urticaria and angioedema (Quincke's edema)",
+        "Oral allergy syndrome without pollen allergy",
+        "Food allergy"
+      ],
+      "best_match": {
+        "ddx": "Non-specific lipid transfer protein (nsLTP)–mediated food allergy (LTP syndrome)",
+        "gdx": "nsLTP syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8,
+      "gdx_set": [
+        "Gianotti-Crosti syndrome (papular acrodermatitis, viral exanthem)"
+      ],
+      "best_match": {
+        "ddx": "Gianotti-Crosti syndrome (papular acrodermatitis of childhood)",
+        "gdx": "Gianotti-Crosti syndrome (papular acrodermatitis, viral exanthem)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 12,
+      "gdx_set": [
+        "Lower respiratory tract infection",
+        "Right otitis media"
+      ],
+      "best_match": {
+        "ddx": "Acute otitis media",
+        "gdx": "Right otitis media",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 13,
+      "gdx_set": [
+        "Acute tonsillitis",
+        "Mild osteochondritis"
+      ],
+      "best_match": {
+        "ddx": "Mild osteochondritis",
+        "gdx": "Mild osteochondritis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 41,
+      "gdx_set": [
+        "Suspected infectious mononucleosis"
+      ],
+      "best_match": {
+        "ddx": "Infectious mononucleosis (Epstein–Barr virus)",
+        "gdx": "Suspected infectious mononucleosis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 48,
+      "gdx_set": [
+        "Acute gastroenteritis",
+        "Mild acute bronchiolitis"
+      ],
+      "best_match": {
+        "ddx": "Viral bronchiolitis/acute bronchitis with wheezing",
+        "gdx": "Mild acute bronchiolitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 49,
+      "gdx_set": [
+        "Suspected facial allergic reaction"
+      ],
+      "best_match": {
+        "ddx": "Acute allergic angioedema (histaminergic or idiopathic)",
+        "gdx": "Suspected facial allergic reaction",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 54,
+      "gdx_set": [
+        "Anxiety disorder"
+      ],
+      "best_match": {
+        "ddx": "Panic disorder (anxiety-related chest pain)",
+        "gdx": "Anxiety disorder",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 72,
+      "gdx_set": [
+        "Peripheral vertigo"
+      ],
+      "best_match": {
+        "ddx": "Benign paroxysmal positional vertigo",
+        "gdx": "Peripheral vertigo",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 74,
+      "gdx_set": [
+        "Musculoskeletal chest pain"
+      ],
+      "best_match": {
+        "ddx": "Costocondritis (dolor torácico musculoesquelético)",
+        "gdx": "Musculoskeletal chest pain",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 76,
+      "gdx_set": [
+        "Scleritis"
+      ],
+      "best_match": {
+        "ddx": "Anterior scleritis",
+        "gdx": "Scleritis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 88,
+      "gdx_set": [
+        "Acute viral pharyngitis"
+      ],
+      "best_match": {
+        "ddx": "Viral pharyngitis (non-specific upper respiratory viral infection)",
+        "gdx": "Acute viral pharyngitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 101,
+      "gdx_set": [
+        "Acute tracheitis"
+      ],
+      "best_match": {
+        "ddx": "Acute pericarditis",
+        "gdx": "Acute tracheitis",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 105,
+      "gdx_set": [
+        "Corneal ulcer",
+        "Finger cellulitis"
+      ],
+      "best_match": {
+        "ddx": "Corneal abrasion (superficial corneal epithelial defect)",
+        "gdx": "Corneal ulcer",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 116,
+      "gdx_set": [
+        "Acute sinusitis"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial rhinosinusitis (acute bacterial sinusitis)",
+        "gdx": "Acute sinusitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 121,
+      "gdx_set": [
+        "Viral infection",
+        "Tracheitis",
+        "Pharyngitis"
+      ],
+      "best_match": {
+        "ddx": "Acute viral upper respiratory tract infection (viral pharyngitis)",
+        "gdx": "Pharyngitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 127,
+      "gdx_set": [
+        "Mild extensor tenosynovitis of right hand fingers"
+      ],
+      "best_match": {
+        "ddx": "Hand overuse tendinitis/tenosynovitis",
+        "gdx": "Mild extensor tenosynovitis of right hand fingers",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 130,
+      "gdx_set": [
+        "Left wrist contusion",
+        "Suspected epiphysiolysis"
+      ],
+      "best_match": {
+        "ddx": "Bone contusion of the wrist",
+        "gdx": "Left wrist contusion",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 163,
+      "gdx_set": [
+        "Herpes labialis"
+      ],
+      "best_match": {
+        "ddx": "Herpes labialis (Herpes simplex virus type 1 infection)",
+        "gdx": "Herpes labialis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 164,
+      "gdx_set": [
+        "Bronchiolitis",
+        "Otitis media"
+      ],
+      "best_match": {
+        "ddx": "Acute otitis media (bilateral, possible tympanic membrane perforation)",
+        "gdx": "Otitis media",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 165,
+      "gdx_set": [
+        "Otitis media",
+        "Facial impetigo"
+      ],
+      "best_match": {
+        "ddx": "Acute otitis media",
+        "gdx": "Otitis media",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 203,
+      "gdx_set": [
+        "Contact dermatitis"
+      ],
+      "best_match": {
+        "ddx": "Allergic contact dermatitis (epoxy resin allergy)",
+        "gdx": "Contact dermatitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 216,
+      "gdx_set": [
+        "Persistent bronchiolitis",
+        "Acute gastroenteritis",
+        "Acute conjunctivitis"
+      ],
+      "best_match": {
+        "ddx": "Viral upper respiratory tract infection/bronchiolitis (e.g., RSV)",
+        "gdx": "Persistent bronchiolitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 221,
+      "gdx_set": [
+        "Influenza A"
+      ],
+      "best_match": {
+        "ddx": "Influenza A viral pneumonia",
+        "gdx": "Influenza A",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 222,
+      "gdx_set": [
+        "Conjunctival tumor"
+      ],
+      "best_match": {
+        "ddx": "Conjunctival squamous cell carcinoma (ocular surface squamous neoplasia)",
+        "gdx": "Conjunctival tumor",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 230,
+      "gdx_set": [
+        "Infection of the hard palate mucosa"
+      ],
+      "best_match": {
+        "ddx": "Recurrent intraoral herpes simplex infection",
+        "gdx": "Infection of the hard palate mucosa",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 233,
+      "gdx_set": [
+        "Hemorrhagic cystitis"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial cystitis (lower urinary tract infection)",
+        "gdx": "Hemorrhagic cystitis",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 239,
+      "gdx_set": [
+        "Nonspecific abdominal pain"
+      ],
+      "best_match": {
+        "ddx": "Acute sigmoid diverticulitis",
+        "gdx": "Nonspecific abdominal pain",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 263,
+      "gdx_set": [
+        "Mild bronchial hyperreactivity"
+      ],
+      "best_match": {
+        "ddx": "Crisis asmática (exacerbación de asma)",
+        "gdx": "Mild bronchial hyperreactivity",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 268,
+      "gdx_set": [
+        "Viral infection",
+        "Self-limiting emetic syndrome"
+      ],
+      "best_match": {
+        "ddx": "Acute gastritis",
+        "gdx": "Self-limiting emetic syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 291,
+      "gdx_set": [
+        "Brain mass"
+      ],
+      "best_match": {
+        "ddx": "Glioblastoma multiforme",
+        "gdx": "Brain mass",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 296,
+      "gdx_set": [
+        "Upper respiratory tract infection",
+        "Right conjunctivitis"
+      ],
+      "best_match": {
+        "ddx": "Adenoviral conjunctivitis (pharyngoconjunctival fever)",
+        "gdx": "Right conjunctivitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 298,
+      "gdx_set": [
+        "Left otitis media"
+      ],
+      "best_match": {
+        "ddx": "Acute otitis media",
+        "gdx": "Left otitis media",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 302,
+      "gdx_set": [
+        "Paroxysmal atrial fibrillation"
+      ],
+      "best_match": {
+        "ddx": "Atrial fibrillation with rapid ventricular response",
+        "gdx": "Paroxysmal atrial fibrillation",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 307,
+      "gdx_set": [
+        "Hidradenitis suppurativa"
+      ],
+      "best_match": {
+        "ddx": "Hidradenitis suppurativa",
+        "gdx": "Hidradenitis suppurativa",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 309,
+      "gdx_set": [
+        "Viral illness",
+        "Mild hepatitis",
+        "Febrile presyncope"
+      ],
+      "best_match": {
+        "ddx": "Influenza",
+        "gdx": "Viral illness",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 312,
+      "gdx_set": [
+        "Visual disturbance"
+      ],
+      "best_match": {
+        "ddx": "Ocular (retinal) migraine",
+        "gdx": "Visual disturbance",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 337,
+      "gdx_set": [
+        "Acute upper respiratory infection",
+        "Mild laryngitis"
+      ],
+      "best_match": {
+        "ddx": "Acute viral upper respiratory tract infection",
+        "gdx": "Acute upper respiratory infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 338,
+      "gdx_set": [
+        "Acute otitis media of left ear",
+        "Acute upper respiratory infection"
+      ],
+      "best_match": {
+        "ddx": "Infección viral de vías respiratorias altas (resfriado común)",
+        "gdx": "Acute upper respiratory infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 345,
+      "gdx_set": [
+        "Left shoulder pain",
+        "Possible rotator cuff tendinopathy"
+      ],
+      "best_match": {
+        "ddx": "Rotator cuff tear (supraspinatus partial-thickness)",
+        "gdx": "Possible rotator cuff tendinopathy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 362,
+      "gdx_set": [
+        "Vasovagal syncope",
+        "Nasal fracture"
+      ],
+      "best_match": {
+        "ddx": "Vasovagal syncope (neurally mediated syncope)",
+        "gdx": "Vasovagal syncope",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 367,
+      "gdx_set": [
+        "Acute pharyngitis",
+        "Left temporomandibular joint arthralgia"
+      ],
+      "best_match": {
+        "ddx": "Temporomandibular joint disorder",
+        "gdx": "Left temporomandibular joint arthralgia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 381,
+      "gdx_set": [
+        "Right lobar pneumonia"
+      ],
+      "best_match": {
+        "ddx": "Community-acquired bacterial pneumonia",
+        "gdx": "Right lobar pneumonia",
+        "score": 0.7
+      }
+    },
+    {
+      "case_id": 383,
+      "gdx_set": [
+        "Allergic prurigo",
+        "Lip angioedema",
+        "Normocytic hypochromic anemia"
+      ],
+      "best_match": {
+        "ddx": "Acute urticaria with angioedema",
+        "gdx": "Lip angioedema",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 387,
+      "gdx_set": [
+        "Acute bronchitis",
+        "Right acute otitis media"
+      ],
+      "best_match": {
+        "ddx": "Early acute otitis media",
+        "gdx": "Right acute otitis media",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 389,
+      "gdx_set": [
+        "Facial pain",
+        "Sinusitis"
+      ],
+      "best_match": {
+        "ddx": "Acute maxillary sinusitis (acute bacterial rhinosinusitis)",
+        "gdx": "Sinusitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 390,
+      "gdx_set": [
+        "Left knee sprain",
+        "Meniscal injury",
+        "ACL injury"
+      ],
+      "best_match": {
+        "ddx": "Meniscal tear of the left knee",
+        "gdx": "Meniscal injury",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 399,
+      "gdx_set": [
+        "Respiratory infection",
+        "Intercostal contracture"
+      ],
+      "best_match": {
+        "ddx": "Intercostal muscle strain",
+        "gdx": "Intercostal contracture",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 406,
+      "gdx_set": [
+        "Omphalitis"
+      ],
+      "best_match": {
+        "ddx": "Adult omphalitis (umbilical cellulitis/abscess)",
+        "gdx": "Omphalitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 411,
+      "gdx_set": [
+        "Occipital neuralgia"
+      ],
+      "best_match": {
+        "ddx": "Occipital neuralgia",
+        "gdx": "Occipital neuralgia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 419,
+      "gdx_set": [
+        "Respiratory infection",
+        "Respiratory failure",
+        "Renal failure"
+      ],
+      "best_match": {
+        "ddx": "Bilateral community-acquired pneumonia",
+        "gdx": "Respiratory infection",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 446,
+      "gdx_set": [
+        "Urinary tract infection",
+        "Diverticulosis"
+      ],
+      "best_match": {
+        "ddx": "Acute uncomplicated cystitis (urinary tract infection)",
+        "gdx": "Urinary tract infection",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 458,
+      "gdx_set": [
+        "Left conjunctival hemorrhage",
+        "Traumatic conjunctival erosion"
+      ],
+      "best_match": {
+        "ddx": "Traumatic subconjunctival hemorrhage",
+        "gdx": "Left conjunctival hemorrhage",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 466,
+      "gdx_set": [
+        "Inflammatory cervical adenopathy"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial cervical lymphadenitis",
+        "gdx": "Inflammatory cervical adenopathy",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 484,
+      "gdx_set": [
+        "Benign prostatic hyperplasia",
+        "Hyperglycemia"
+      ],
+      "best_match": {
+        "ddx": "Benign prostatic hyperplasia",
+        "gdx": "Benign prostatic hyperplasia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 490,
+      "gdx_set": [
+        "Acute gastroenteritis",
+        "Erythema infectiosum"
+      ],
+      "best_match": {
+        "ddx": "Enterovirus infection with viral exanthem",
+        "gdx": "Erythema infectiosum",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 536,
+      "gdx_set": [
+        "Finger sprain"
+      ],
+      "best_match": {
+        "ddx": "Finger soft-tissue contusion/sprain",
+        "gdx": "Finger sprain",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 538,
+      "gdx_set": [
+        "Acute gastroenteritis",
+        "Food poisoning"
+      ],
+      "best_match": {
+        "ddx": "Norovirus acute gastroenteritis",
+        "gdx": "Acute gastroenteritis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 543,
+      "gdx_set": [
+        "Pneumonia",
+        "Moderate bronchospasm"
+      ],
+      "best_match": {
+        "ddx": "Community-acquired bacterial pneumonia",
+        "gdx": "Pneumonia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 557,
+      "gdx_set": [
+        "Hand-foot-mouth disease",
+        "Impetigo"
+      ],
+      "best_match": {
+        "ddx": "Hand-foot-and-mouth disease",
+        "gdx": "Hand-foot-mouth disease",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 578,
+      "gdx_set": [
+        "Follicular hyperkeratosis",
+        "Atopic dermatitis"
+      ],
+      "best_match": {
+        "ddx": "Atopic dermatitis",
+        "gdx": "Atopic dermatitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 593,
+      "gdx_set": [
+        "Intercostal muscle tear",
+        "D10 vertebral fracture"
+      ],
+      "best_match": {
+        "ddx": "Thoracic vertebral compression fracture (T10)",
+        "gdx": "D10 vertebral fracture",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 604,
+      "gdx_set": [
+        "Functional vomiting"
+      ],
+      "best_match": {
+        "ddx": "Functional vomiting",
+        "gdx": "Functional vomiting",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 610,
+      "gdx_set": [
+        "Intestinal subocclusion"
+      ],
+      "best_match": {
+        "ddx": "Adhesive small bowel obstruction",
+        "gdx": "Intestinal subocclusion",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 624,
+      "gdx_set": [
+        "Viral illness",
+        "Lumbalgia"
+      ],
+      "best_match": {
+        "ddx": "Lumbalgia",
+        "gdx": "Lumbalgia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 651,
+      "gdx_set": [
+        "Ileitis"
+      ],
+      "best_match": {
+        "ddx": "Crohn’s disease (terminal ileitis)",
+        "gdx": "Ileitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 655,
+      "gdx_set": [
+        "Acute nasopharyngitis",
+        "Blepharitis"
+      ],
+      "best_match": {
+        "ddx": "Blepharitis",
+        "gdx": "Blepharitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 664,
+      "gdx_set": [
+        "COVID-19",
+        "Pleural effusion"
+      ],
+      "best_match": {
+        "ddx": "COVID-19 (SARS-CoV-2) infection",
+        "gdx": "COVID-19",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 665,
+      "gdx_set": [
+        "Testicular pain",
+        "Epididymitis"
+      ],
+      "best_match": {
+        "ddx": "Acute epididymitis/epididymo-orchitis",
+        "gdx": "Epididymitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 670,
+      "gdx_set": [
+        "Chronic abdominal pain",
+        "Parasitism"
+      ],
+      "best_match": {
+        "ddx": "Functional dyspepsia (non-ulcer dyspepsia)",
+        "gdx": "Chronic abdominal pain",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 678,
+      "gdx_set": [
+        "Pleurodynia"
+      ],
+      "best_match": {
+        "ddx": "Viral pleurisy (pleurodynia)",
+        "gdx": "Pleurodynia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 698,
+      "gdx_set": [
+        "Left rib trauma",
+        "Nasal fissure",
+        "Frontal cephalohematoma"
+      ],
+      "best_match": {
+        "ddx": "Occult nondisplaced left rib fracture",
+        "gdx": "Left rib trauma",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 712,
+      "gdx_set": [
+        "Biceps tendon rupture"
+      ],
+      "best_match": {
+        "ddx": "Proximal long-head biceps tendon rupture",
+        "gdx": "Biceps tendon rupture",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 722,
+      "gdx_set": [
+        "Obstructive uropathy",
+        "Acute renal insufficiency"
+      ],
+      "best_match": {
+        "ddx": "Acute pyelonephritis",
+        "gdx": "Acute renal insufficiency",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 728,
+      "gdx_set": [
+        "Asthmatic bronchitis"
+      ],
+      "best_match": {
+        "ddx": "Virus-induced acute asthma exacerbation",
+        "gdx": "Asthmatic bronchitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 731,
+      "gdx_set": [
+        "Knee synovitis"
+      ],
+      "best_match": {
+        "ddx": "Knee osteoarthritis",
+        "gdx": "Knee synovitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 752,
+      "gdx_set": [
+        "Urinary catheter infection"
+      ],
+      "best_match": {
+        "ddx": "Catheter-associated urinary tract infection",
+        "gdx": "Urinary catheter infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 754,
+      "gdx_set": [
+        "Rotator cuff tendinitis"
+      ],
+      "best_match": {
+        "ddx": "Calcific tendinitis of the rotator cuff",
+        "gdx": "Rotator cuff tendinitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 758,
+      "gdx_set": [
+        "Mild traumatic brain injury",
+        "Hand contusion"
+      ],
+      "best_match": {
+        "ddx": "Mild traumatic brain injury (concussion)",
+        "gdx": "Mild traumatic brain injury",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 789,
+      "gdx_set": [
+        "Respiratory infection with bronchospasm"
+      ],
+      "best_match": {
+        "ddx": "Acute viral lower respiratory tract infection (viral bronchitis/pneumonia)",
+        "gdx": "Respiratory infection with bronchospasm",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 797,
+      "gdx_set": [
+        "Anaphylactic shock"
+      ],
+      "best_match": {
+        "ddx": "Anaphylaxis (IgE-mediated allergic reaction)",
+        "gdx": "Anaphylactic shock",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 798,
+      "gdx_set": [
+        "Bronchiectasis with infection"
+      ],
+      "best_match": {
+        "ddx": "Bronchiectasis (acute exacerbation)",
+        "gdx": "Bronchiectasis with infection",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 803,
+      "gdx_set": [
+        "Lower respiratory infection",
+        "Hypoactive confusional syndrome"
+      ],
+      "best_match": {
+        "ddx": "Community-acquired pneumonia",
+        "gdx": "Lower respiratory infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 808,
+      "gdx_set": [
+        "Left eye vitreous detachment"
+      ],
+      "best_match": {
+        "ddx": "Posterior vitreous detachment",
+        "gdx": "Left eye vitreous detachment",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 817,
+      "gdx_set": [
+        "Acute conjunctivitis",
+        "Retroauricular impetigo"
+      ],
+      "best_match": {
+        "ddx": "Conjuntivitis bacteriana aguda",
+        "gdx": "Acute conjunctivitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 818,
+      "gdx_set": [
+        "Vitreous detachment"
+      ],
+      "best_match": {
+        "ddx": "Posterior vitreous detachment",
+        "gdx": "Vitreous detachment",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 835,
+      "gdx_set": [
+        "Pelvic inflammatory disease"
+      ],
+      "best_match": {
+        "ddx": "Pelvic inflammatory disease",
+        "gdx": "Pelvic inflammatory disease",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 840,
+      "gdx_set": [
+        "Gastroenteritis complicating pregnancy"
+      ],
+      "best_match": {
+        "ddx": "Acute gastroenteritis",
+        "gdx": "Gastroenteritis complicating pregnancy",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 856,
+      "gdx_set": [
+        "Premature depolarization"
+      ],
+      "best_match": {
+        "ddx": "Premature ventricular contractions",
+        "gdx": "Premature depolarization",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 868,
+      "gdx_set": [
+        "Mild traumatic brain injury",
+        "Resolving viral illness"
+      ],
+      "best_match": {
+        "ddx": "Mild traumatic brain injury (concussion)",
+        "gdx": "Mild traumatic brain injury",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 869,
+      "gdx_set": [
+        "Hematuria",
+        "Bladder lesion"
+      ],
+      "best_match": {
+        "ddx": "Urothelial carcinoma of the bladder",
+        "gdx": "Bladder lesion",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 875,
+      "gdx_set": [
+        "Suspected melena"
+      ],
+      "best_match": {
+        "ddx": "Peptic ulcer disease",
+        "gdx": "Suspected melena",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 880,
+      "gdx_set": [
+        "Medial gastrocnemius muscle tear"
+      ],
+      "best_match": {
+        "ddx": "Medial gastrocnemius muscle tear (tennis leg)",
+        "gdx": "Medial gastrocnemius muscle tear",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 887,
+      "gdx_set": [
+        "Bronchospasm",
+        "Catarrhal otitis"
+      ],
+      "best_match": {
+        "ddx": "Acute otitis media",
+        "gdx": "Catarrhal otitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 893,
+      "gdx_set": [
+        "Neuropathic ankle pain"
+      ],
+      "best_match": {
+        "ddx": "Tarsal tunnel syndrome",
+        "gdx": "Neuropathic ankle pain",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 895,
+      "gdx_set": [
+        "Right renal colic"
+      ],
+      "best_match": {
+        "ddx": "Ureterolithiasis (renal/ureteric calculus)",
+        "gdx": "Right renal colic",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 897,
+      "gdx_set": [
+        "Cervicogenic dizziness"
+      ],
+      "best_match": {
+        "ddx": "Cervicogenic vertigo",
+        "gdx": "Cervicogenic dizziness",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 898,
+      "gdx_set": [
+        "Lower urinary tract infection",
+        "Transient confusional state"
+      ],
+      "best_match": {
+        "ddx": "Delirium agudo de origen metabólico o infeccioso",
+        "gdx": "Transient confusional state",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 899,
+      "gdx_set": [
+        "Cellulitis of right upper limb"
+      ],
+      "best_match": {
+        "ddx": "Cellulitis (acute bacterial soft-tissue infection)",
+        "gdx": "Cellulitis of right upper limb",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 926,
+      "gdx_set": [
+        "Polytrauma",
+        "Intercostal muscle rupture"
+      ],
+      "best_match": {
+        "ddx": "Non-displaced left 8th–9th rib fracture",
+        "gdx": "Polytrauma",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 942,
+      "gdx_set": [
+        "Episcleritis"
+      ],
+      "best_match": {
+        "ddx": "Periorbital cellulitis (preseptal cellulitis)",
+        "gdx": "Episcleritis",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 953,
+      "gdx_set": [
+        "Infraauricular abscess"
+      ],
+      "best_match": {
+        "ddx": "Quiste epidermoide infectado",
+        "gdx": "Infraauricular abscess",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 956,
+      "gdx_set": [
+        "Lower urinary tract infection",
+        "Endometrial polyp with metrorrhagia"
+      ],
+      "best_match": {
+        "ddx": "Endometrial polyp",
+        "gdx": "Endometrial polyp with metrorrhagia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 963,
+      "gdx_set": [
+        "Erythema multiforme",
+        "Urticarial vasculitis"
+      ],
+      "best_match": {
+        "ddx": "Erythema multiforme",
+        "gdx": "Erythema multiforme",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 973,
+      "gdx_set": [
+        "Right hand cellulitis"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial cellulitis",
+        "gdx": "Right hand cellulitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 982,
+      "gdx_set": [
+        "Right-sided pneumonia"
+      ],
+      "best_match": {
+        "ddx": "Atypical pneumonia (Mycoplasma pneumoniae)",
+        "gdx": "Right-sided pneumonia",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 983,
+      "gdx_set": [
+        "Acute nasopharyngitis",
+        "Hypertensive heart failure"
+      ],
+      "best_match": {
+        "ddx": "Acute viral upper respiratory tract infection (common cold)",
+        "gdx": "Acute nasopharyngitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 991,
+      "gdx_set": [
+        "Syncope",
+        "Vasovagal episode",
+        "Gastroenteritis",
+        "Sinusopathy"
+      ],
+      "best_match": {
+        "ddx": "Vasovagal (neurocardiogenic) syncope",
+        "gdx": "Vasovagal episode",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1005,
+      "gdx_set": [
+        "Acute lumbosciatica"
+      ],
+      "best_match": {
+        "ddx": "Lumbar radiculopathy",
+        "gdx": "Acute lumbosciatica",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1006,
+      "gdx_set": [
+        "Posttraumatic low back pain in pregnancy"
+      ],
+      "best_match": {
+        "ddx": "Lumbar paraspinal muscle strain (acute low back strain)",
+        "gdx": "Posttraumatic low back pain in pregnancy",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1007,
+      "gdx_set": [
+        "Hyperuricemia",
+        "Gout"
+      ],
+      "best_match": {
+        "ddx": "Acute gouty arthritis",
+        "gdx": "Gout",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1051,
+      "gdx_set": [
+        "Cerumen impaction",
+        "Post-extraction pain"
+      ],
+      "best_match": {
+        "ddx": "Cerumen impaction",
+        "gdx": "Cerumen impaction",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1058,
+      "gdx_set": [
+        "Noninfective gastroenteritis and colitis"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial gastroenteritis (foodborne infection)",
+        "gdx": "Noninfective gastroenteritis and colitis",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1069,
+      "gdx_set": [
+        "Constitutional syndrome"
+      ],
+      "best_match": {
+        "ddx": "Polymyalgia rheumatica",
+        "gdx": "Constitutional syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1078,
+      "gdx_set": [
+        "Respiratory disorder"
+      ],
+      "best_match": {
+        "ddx": "Acute bronchitis",
+        "gdx": "Respiratory disorder",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1085,
+      "gdx_set": [
+        "Transient global amnesia"
+      ],
+      "best_match": {
+        "ddx": "Transient global amnesia",
+        "gdx": "Transient global amnesia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1113,
+      "gdx_set": [
+        "Upper respiratory tract infection",
+        "Right external otitis"
+      ],
+      "best_match": {
+        "ddx": "Viral upper respiratory tract infection (acute viral nasopharyngitis)",
+        "gdx": "Upper respiratory tract infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1135,
+      "gdx_set": [
+        "Mucous cyst",
+        "Acute nasopharyngitis"
+      ],
+      "best_match": {
+        "ddx": "Mucous retention cyst of minor salivary gland",
+        "gdx": "Mucous cyst",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1136,
+      "gdx_set": [
+        "Vasovagal syncope",
+        "Paraseptal emphysema"
+      ],
+      "best_match": {
+        "ddx": "Vasovagal syncope",
+        "gdx": "Vasovagal syncope",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1148,
+      "gdx_set": [
+        "Abdominal distension",
+        "Constipation"
+      ],
+      "best_match": {
+        "ddx": "Colonic pseudo-obstruction or fecal impaction",
+        "gdx": "Constipation",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1159,
+      "gdx_set": [
+        "Cervical contracture",
+        "Tension-type headache"
+      ],
+      "best_match": {
+        "ddx": "Cervicogenic headache",
+        "gdx": "Tension-type headache",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1181,
+      "gdx_set": [
+        "Fever under investigation"
+      ],
+      "best_match": {
+        "ddx": "Atypical pneumonia (Mycoplasma/Chlamydophila)",
+        "gdx": "Fever under investigation",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1192,
+      "gdx_set": [
+        "Submandibular gland inflammation"
+      ],
+      "best_match": {
+        "ddx": "Acute submandibular sialadenitis/lymphadenitis",
+        "gdx": "Submandibular gland inflammation",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1197,
+      "gdx_set": [
+        "Acute upper respiratory infection",
+        "Tension headache"
+      ],
+      "best_match": {
+        "ddx": "Episodic tension-type headache",
+        "gdx": "Tension headache",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1201,
+      "gdx_set": [
+        "L1 vertebral compression fracture",
+        "Osteoporosis"
+      ],
+      "best_match": {
+        "ddx": "Osteoporotic vertebral compression fracture",
+        "gdx": "L1 vertebral compression fracture",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1202,
+      "gdx_set": [
+        "Felon",
+        "Acute arthritis"
+      ],
+      "best_match": {
+        "ddx": "Recurrent or unresolved felon (panaritium)",
+        "gdx": "Felon",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1222,
+      "gdx_set": [
+        "Urinary tract infection",
+        "Acute kidney injury",
+        "Confusional syndrome"
+      ],
+      "best_match": {
+        "ddx": "Complicated urinary tract infection (urosepsis)",
+        "gdx": "Urinary tract infection",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1248,
+      "gdx_set": [
+        "Right paracardiac pneumonia"
+      ],
+      "best_match": {
+        "ddx": "Neumonía bacteriana adquirida en la comunidad",
+        "gdx": "Right paracardiac pneumonia",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1276,
+      "gdx_set": [
+        "Irritative cough",
+        "Upper respiratory infection"
+      ],
+      "best_match": {
+        "ddx": "Common cold (viral upper respiratory tract infection)",
+        "gdx": "Upper respiratory infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1287,
+      "gdx_set": [
+        "Upper respiratory infection",
+        "Bilateral conjunctivitis"
+      ],
+      "best_match": {
+        "ddx": "Acute viral nasopharyngitis (common cold, rhinovirus)",
+        "gdx": "Upper respiratory infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1302,
+      "gdx_set": [
+        "Respiratory infection",
+        "Heart failure exacerbation",
+        "Partial respiratory failure"
+      ],
+      "best_match": {
+        "ddx": "Acute decompensated heart failure (pulmonary edema)",
+        "gdx": "Heart failure exacerbation",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1305,
+      "gdx_set": [
+        "Confusional state",
+        "Transient ischemic attack",
+        "COVID-19",
+        "Cognitive impairment"
+      ],
+      "best_match": {
+        "ddx": "Transient ischemic attack",
+        "gdx": "Transient ischemic attack",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1309,
+      "gdx_set": [
+        "Oral candidiasis",
+        "Abdominal pain",
+        "Hypokalemia"
+      ],
+      "best_match": {
+        "ddx": "Protein-calorie malnutrition with severe electrolyte disturbances following bariatric surgery",
+        "gdx": "Hypokalemia",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1311,
+      "gdx_set": [
+        "Acute urinary retention",
+        "Post-obstructive renal failure"
+      ],
+      "best_match": {
+        "ddx": "Acute urinary retention",
+        "gdx": "Acute urinary retention",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1313,
+      "gdx_set": [
+        "Acute diverticulitis"
+      ],
+      "best_match": {
+        "ddx": "Diverticulitis aguda no complicada del colon descendente",
+        "gdx": "Acute diverticulitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1325,
+      "gdx_set": [
+        "Horner's syndrome",
+        "Aortic dissection"
+      ],
+      "best_match": {
+        "ddx": "Right internal carotid artery dissection",
+        "gdx": "Aortic dissection",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1330,
+      "gdx_set": [
+        "Pneumonia",
+        "Respiratory failure",
+        "Urinary tract infection",
+        "Chronic kidney disease",
+        "Hypoactive confusional state"
+      ],
+      "best_match": {
+        "ddx": "Urinary tract infection (complicated cystitis/possible pyelonephritis)",
+        "gdx": "Urinary tract infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1341,
+      "gdx_set": [
+        "Acute right epididymo-orchitis"
+      ],
+      "best_match": {
+        "ddx": "Acute epididymo-orchitis (bacterial)",
+        "gdx": "Acute right epididymo-orchitis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1345,
+      "gdx_set": [
+        "Lower urinary tract infection",
+        "Pulmonary tuberculosis",
+        "General deterioration",
+        "Pancreatic adenocarcinoma under palliative treatment"
+      ],
+      "best_match": {
+        "ddx": "Complicated urinary tract infection (acute pyelonephritis/urosepsis)",
+        "gdx": "Lower urinary tract infection",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1355,
+      "gdx_set": [
+        "Right grade II hydronephrosis secondary to upper ureteral lithiasis"
+      ],
+      "best_match": {
+        "ddx": "Right ureterolithiasis (renal colic)",
+        "gdx": "Right grade II hydronephrosis secondary to upper ureteral lithiasis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1357,
+      "gdx_set": [
+        "Bilateral community-acquired pneumonia",
+        "Acute kidney injury",
+        "Simple hyperglycemia"
+      ],
+      "best_match": {
+        "ddx": "Sepsis secondary to community-acquired bacterial pneumonia",
+        "gdx": "Bilateral community-acquired pneumonia",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1360,
+      "gdx_set": [
+        "Respiratory failure",
+        "Hyponatremia",
+        "Mild heart failure"
+      ],
+      "best_match": {
+        "ddx": "Acute decompensated congestive heart failure",
+        "gdx": "Mild heart failure",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1364,
+      "gdx_set": [
+        "Gastrointestinal hemorrhage"
+      ],
+      "best_match": {
+        "ddx": "Peptic ulcer disease",
+        "gdx": "Gastrointestinal hemorrhage",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1367,
+      "gdx_set": [
+        "Abdominal abscess"
+      ],
+      "best_match": {
+        "ddx": "Postoperative intra-abdominal abscess",
+        "gdx": "Abdominal abscess",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1374,
+      "gdx_set": [
+        "Decompensated heart failure",
+        "Hyperglycemia",
+        "Mild hyponatremia"
+      ],
+      "best_match": {
+        "ddx": "Acute decompensated heart failure",
+        "gdx": "Decompensated heart failure",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1388,
+      "gdx_set": [
+        "Right lower lobe pneumonia"
+      ],
+      "best_match": {
+        "ddx": "Community-acquired bacterial pneumonia (post-influenza secondary bacterial pneumonia)",
+        "gdx": "Right lower lobe pneumonia",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1391,
+      "gdx_set": [
+        "Hand cellulitis",
+        "Hyperglycemia",
+        "Basal ganglia hypodensity",
+        "Hypoactive confusion syndrome"
+      ],
+      "best_match": {
+        "ddx": "Cellulitis with sepsis",
+        "gdx": "Hand cellulitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1393,
+      "gdx_set": [
+        "Unstable angina"
+      ],
+      "best_match": {
+        "ddx": "Non-ST-elevation myocardial infarction (acute coronary syndrome)",
+        "gdx": "Unstable angina",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1398,
+      "gdx_set": [
+        "Myelitis"
+      ],
+      "best_match": {
+        "ddx": "Acute transverse myelitis",
+        "gdx": "Myelitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1420,
+      "gdx_set": [
+        "Hyperinsulinemic hypoglycemia, familial, 2",
+        "Congenital hyperinsulinemic hypoglycemia"
+      ],
+      "best_match": {
+        "ddx": "Congenital hyperinsulinism",
+        "gdx": "Congenital hyperinsulinemic hypoglycemia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1430,
+      "gdx_set": [
+        "Classic galactosemia",
+        "Galactosemia"
+      ],
+      "best_match": {
+        "ddx": "Classic galactosemia",
+        "gdx": "Classic galactosemia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1441,
+      "gdx_set": [
+        "Carbamoyl-phosphate synthetase 1 deficiency",
+        "Carbamoyl phosphate synthetase I deficiency, hyperammonemia"
+      ],
+      "best_match": {
+        "ddx": "Barth syndrome (TAZ deficiency)",
+        "gdx": "Carbamoyl-phosphate synthetase 1 deficiency",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 1449,
+      "gdx_set": [
+        "Smith-Lemli-Opitz syndrome"
+      ],
+      "best_match": {
+        "ddx": "Smith-Lemli-Opitz syndrome",
+        "gdx": "Smith-Lemli-Opitz syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1454,
+      "gdx_set": [
+        "Canavan disease"
+      ],
+      "best_match": {
+        "ddx": "Nonketotic hyperglycinemia (classic glycine encephalopathy)",
+        "gdx": "Canavan disease",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 1501,
+      "gdx_set": [
+        "Glutathione synthetase deficiency"
+      ],
+      "best_match": {
+        "ddx": "Zellweger syndrome",
+        "gdx": "Glutathione synthetase deficiency",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 1509,
+      "gdx_set": [
+        "Very long-chain acyl-CoA dehydrogenase deficiency",
+        "Very long chain acyl-CoA dehydrogenasedeficiency",
+        "Very long chain acyl-CoA dehydrogenase deficiency"
+      ],
+      "best_match": {
+        "ddx": "Very long-chain acyl-CoA dehydrogenase deficiency",
+        "gdx": "Very long-chain acyl-CoA dehydrogenase deficiency",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1521,
+      "gdx_set": [
+        "Hypophosphatemic rickets, X-linked dominant",
+        "Hypophosphatemic rickets",
+        "X-linked hypophosphatemia"
+      ],
+      "best_match": {
+        "ddx": "X-linked hypophosphatemic rickets",
+        "gdx": "Hypophosphatemic rickets, X-linked dominant",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1538,
+      "gdx_set": [
+        "Pearson syndrome",
+        "Pearson marrow-pancreas syndrome"
+      ],
+      "best_match": {
+        "ddx": "Pearson syndrome",
+        "gdx": "Pearson syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1704,
+      "gdx_set": [
+        "Refsum disease"
+      ],
+      "best_match": {
+        "ddx": "Infantile Refsum disease (Zellweger spectrum disorder)",
+        "gdx": "Refsum disease",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1720,
+      "gdx_set": [
+        "Ceroid lipofuscinosis, neuronal, 1"
+      ],
+      "best_match": {
+        "ddx": "Infantile neuronal ceroid lipofuscinosis",
+        "gdx": "Ceroid lipofuscinosis, neuronal, 1",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1844,
+      "gdx_set": [
+        "Spondyloarthropathy"
+      ],
+      "best_match": {
+        "ddx": "Ankylosing spondylitis",
+        "gdx": "Spondyloarthropathy",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1845,
+      "gdx_set": [
+        "Cryoglobulinemia, familial mixed",
+        "Cryoglobulinemic vasculitis"
+      ],
+      "best_match": {
+        "ddx": "Hepatitis C–associated mixed cryoglobulinemia",
+        "gdx": "Cryoglobulinemic vasculitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1849,
+      "gdx_set": [
+        "Renal cell carcinoma, nonpapillary",
+        "Systemic lupus erythematosus",
+        "Pediatric systemic lupus erythematosus",
+        "Renal cell carcinoma, xp11-associated",
+        "Renal cell carcinoma, papillary, 1, familial and somatic",
+        "Vitiligo-Associated multiple autoimmune disease",
+        "Systemic lupus erythematosus 16",
+        "Systemic lupus erythematosus, 6"
+      ],
+      "best_match": {
+        "ddx": "Systemic lupus erythematosus",
+        "gdx": "Systemic lupus erythematosus",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1852,
+      "gdx_set": [
+        "Spondyloarthropathy, 1",
+        "Spondyloarthropathy, 2"
+      ],
+      "best_match": {
+        "ddx": "Ankylosing spondylitis",
+        "gdx": "Spondyloarthropathy, 1",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1853,
+      "gdx_set": [
+        "Takayasu arteritis"
+      ],
+      "best_match": {
+        "ddx": "Eosinophilic granulomatosis with polyangiitis (Churg-Strauss syndrome)",
+        "gdx": "Takayasu arteritis",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1855,
+      "gdx_set": [
+        "Primary Sjogren syndrome",
+        "Rheumatoid factor-positive polyarticular juvenile idiopathic arthritis",
+        "Systemic-onset juvenile idiopathic arthritis",
+        "Rheumatoid factor-negative polyarticular juvenile idiopathic arthritis",
+        "Sjogren syndrome",
+        "Reactive arthritis"
+      ],
+      "best_match": {
+        "ddx": "Primary Sjögren syndrome",
+        "gdx": "Primary Sjogren syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1858,
+      "gdx_set": [
+        "Sarcoidosis, 1",
+        "Sarcoidosis, 2",
+        "Sarcoidosis"
+      ],
+      "best_match": {
+        "ddx": "Sarcoidosis",
+        "gdx": "Sarcoidosis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1870,
+      "gdx_set": [
+        "SAPHO syndrome"
+      ],
+      "best_match": {
+        "ddx": "SAPHO syndrome",
+        "gdx": "SAPHO syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1884,
+      "gdx_set": [
+        "Familial cold autoinflammatory syndrome 4",
+        "Familial cold autoinflammatory syndrome 2",
+        "Periodic fever, familial, autosomal dominant",
+        "Tumor necrosis factor receptor 1 associated periodic syndrome",
+        "Familial cold autoinflammatory syndrome 3",
+        "Cinca syndrome",
+        "Muckle-Wells syndrome",
+        "Familial cold inflammatory syndrome 1",
+        "Familial cold urticaria"
+      ],
+      "best_match": {
+        "ddx": "Muckle-Wells syndrome",
+        "gdx": "Muckle-Wells syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1887,
+      "gdx_set": [
+        "Relapsing polychondritis"
+      ],
+      "best_match": {
+        "ddx": "Relapsing polychondritis",
+        "gdx": "Relapsing polychondritis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1888,
+      "gdx_set": [
+        "Antiphospholipid syndrome, familial"
+      ],
+      "best_match": {
+        "ddx": "Systemic lupus erythematosus with antiphospholipid syndrome",
+        "gdx": "Antiphospholipid syndrome, familial",
+        "score": 0.5
+      }
+    },
+    {
+      "case_id": 1914,
+      "gdx_set": [
+        "Felty syndrome"
+      ],
+      "best_match": {
+        "ddx": "Felty syndrome",
+        "gdx": "Felty syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1926,
+      "gdx_set": [
+        "Mandibulofacial dysostosis, Guion-Almeida type",
+        "Mandibulofacial dysostosis-microcephaly syndrome"
+      ],
+      "best_match": {
+        "ddx": "Mandibulofacial dysostosis with microcephaly (EFTUD2-related)",
+        "gdx": "Mandibulofacial dysostosis-microcephaly syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1960,
+      "gdx_set": [
+        "Short syndrome"
+      ],
+      "best_match": {
+        "ddx": "Hutchinson-Gilford progeria syndrome",
+        "gdx": "Short syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1963,
+      "gdx_set": [
+        "Gastrointestinal defects and immunodeficiency syndrome",
+        "Combined immunodeficiency-enteropathy spectrum"
+      ],
+      "best_match": {
+        "ddx": "OEIS complex (omphalocele–exstrophy–imperforate anus–spinal defects)",
+        "gdx": "Gastrointestinal defects and immunodeficiency syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1969,
+      "gdx_set": [
+        "Mental retardation, autosomal dominant 7",
+        "DYRK1A-related intellectual disability syndrome"
+      ],
+      "best_match": {
+        "ddx": "Rett syndrome",
+        "gdx": "DYRK1A-related intellectual disability syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1970,
+      "gdx_set": [
+        "Mental retardation, autosomal dominant 42"
+      ],
+      "best_match": {
+        "ddx": "Mowat-Wilson syndrome",
+        "gdx": "Mental retardation, autosomal dominant 42",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1972,
+      "gdx_set": [
+        "Oliver-Mcfarlane syndrome"
+      ],
+      "best_match": {
+        "ddx": "Oliver-McFarlane syndrome",
+        "gdx": "Oliver-Mcfarlane syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 1973,
+      "gdx_set": [
+        "Immunoskeletal dysplasia",
+        "Neurodevelopmental abnormalities"
+      ],
+      "best_match": {
+        "ddx": "Schimke immuno-osseous dysplasia",
+        "gdx": "Immunoskeletal dysplasia",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1978,
+      "gdx_set": [
+        "Intellectual developmental disorder, autosomal dominant 21",
+        "CTCF-related neurodevelopmental disorder"
+      ],
+      "best_match": {
+        "ddx": "Cornelia de Lange syndrome",
+        "gdx": "CTCF-related neurodevelopmental disorder",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1979,
+      "gdx_set": [
+        "Intellectual disability-coarse face-macrocephaly-cerebellar hypotrophy syndrome",
+        "Spinocerebellar ataxia, autosomal recessive 20"
+      ],
+      "best_match": {
+        "ddx": "Mucolipidosis type II (I-cell disease)",
+        "gdx": "Intellectual disability-coarse face-macrocephaly-cerebellar hypotrophy syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1981,
+      "gdx_set": [
+        "Recurrent metabolic encephalomyopathic crises-rhabdomyolysis-cardiac arrhythmia-intellectual disability syndrome",
+        "Metabolic encephalomyopathic crises, recurrent, with rhabdomyolysis, cardiac arrhythmias, and neurodegeneration"
+      ],
+      "best_match": {
+        "ddx": "Hyperornithinemia-hyperammonemia-homocitrullinuria (HHH) syndrome",
+        "gdx": "Metabolic encephalomyopathic crises, recurrent, with rhabdomyolysis, cardiac arrhythmias, and neurodegeneration",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 1986,
+      "gdx_set": [
+        "Classical-like Ehlers-Danlos syndrome type 2",
+        "Ehlers-Danlos syndrome, classic-like, 2"
+      ],
+      "best_match": {
+        "ddx": "Classical Ehlers-Danlos syndrome",
+        "gdx": "Classical-like Ehlers-Danlos syndrome type 2",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 1987,
+      "gdx_set": [
+        "Ichthyosis-hypotrichosis syndrome",
+        "Ichthyosis, congenital, autosomal recessive 11"
+      ],
+      "best_match": {
+        "ddx": "Ichthyosis Follicularis Alopecia Photophobia (IFAP) Syndrome",
+        "gdx": "Ichthyosis-hypotrichosis syndrome",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 1997,
+      "gdx_set": [
+        "Neuropathy, hereditary sensory and autonomic, type IIB"
+      ],
+      "best_match": {
+        "ddx": "Congenital insensitivity to pain (Hereditary sensory and autonomic neuropathy type IV)",
+        "gdx": "Neuropathy, hereditary sensory and autonomic, type IIB",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2000,
+      "gdx_set": [
+        "Microcephaly 5, primary, autosomal recessive"
+      ],
+      "best_match": {
+        "ddx": "Miller-Dieker syndrome",
+        "gdx": "Microcephaly 5, primary, autosomal recessive",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 2003,
+      "gdx_set": [
+        "Hemophagocytic lymphohistiocytosis, familial, 2"
+      ],
+      "best_match": {
+        "ddx": "Hemophagocytic lymphohistiocytosis",
+        "gdx": "Hemophagocytic lymphohistiocytosis, familial, 2",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2004,
+      "gdx_set": [
+        "Rubinstein-Taybi syndrome 2",
+        "Rubinstein-Taybi syndrome",
+        "EP300 haploinsufficiency"
+      ],
+      "best_match": {
+        "ddx": "Rubinstein-Taybi syndrome",
+        "gdx": "Rubinstein-Taybi syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2018,
+      "gdx_set": [
+        "Pseudoachondroplasia"
+      ],
+      "best_match": {
+        "ddx": "Pseudoachondroplasia",
+        "gdx": "Pseudoachondroplasia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2020,
+      "gdx_set": [
+        "Kufor-Rakeb syndrome"
+      ],
+      "best_match": {
+        "ddx": "Kufor-Rakeb syndrome",
+        "gdx": "Kufor-Rakeb syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2024,
+      "gdx_set": [
+        "Leukocyte adhesion deficiency, type III"
+      ],
+      "best_match": {
+        "ddx": "Leukocyte adhesion deficiency type 1 (CD18 deficiency)",
+        "gdx": "Leukocyte adhesion deficiency, type III",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2044,
+      "gdx_set": [
+        "Myopathy, centronuclear, autosomal dominant",
+        "Autosomal dominant centronuclear myopathy"
+      ],
+      "best_match": {
+        "ddx": "Myotonic dystrophy type 1 (Steinert disease)",
+        "gdx": "Myopathy, centronuclear, autosomal dominant",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2056,
+      "gdx_set": [
+        "Retinitis pigmentosa 11"
+      ],
+      "best_match": {
+        "ddx": "Retinitis pigmentosa",
+        "gdx": "Retinitis pigmentosa 11",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2064,
+      "gdx_set": [
+        "Arthrogryposis, distal, type 2A",
+        "Freeman-Sheldon syndrome"
+      ],
+      "best_match": {
+        "ddx": "Freeman-Sheldon syndrome",
+        "gdx": "Freeman-Sheldon syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2070,
+      "gdx_set": [
+        "Trichohepatoenteric syndrome 1",
+        "Syndromic diarrhea"
+      ],
+      "best_match": {
+        "ddx": "Omenn syndrome",
+        "gdx": "Syndromic diarrhea",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 2074,
+      "gdx_set": [
+        "Autoimmune lymphoproliferative syndrome"
+      ],
+      "best_match": {
+        "ddx": "Autoimmune lymphoproliferative syndrome (ALPS)",
+        "gdx": "Autoimmune lymphoproliferative syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2080,
+      "gdx_set": [
+        "Cardiomyopathy, dilated, 1G"
+      ],
+      "best_match": {
+        "ddx": "LMNA-related familial dilated cardiomyopathy",
+        "gdx": "Cardiomyopathy, dilated, 1G",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2083,
+      "gdx_set": [
+        "Neurodevelopmental disorder"
+      ],
+      "best_match": {
+        "ddx": "CHARGE syndrome",
+        "gdx": "Neurodevelopmental disorder",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2089,
+      "gdx_set": [
+        "Ataxia-Pancytopenia syndrome"
+      ],
+      "best_match": {
+        "ddx": "Ataxia-pancytopenia syndrome",
+        "gdx": "Ataxia-Pancytopenia syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2102,
+      "gdx_set": [
+        "Palmoplantar keratoderma, punctate type IA"
+      ],
+      "best_match": {
+        "ddx": "Hidrotic ectodermal dysplasia (Clouston syndrome)",
+        "gdx": "Palmoplantar keratoderma, punctate type IA",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2103,
+      "gdx_set": [
+        "Neurofibromatosis type 1",
+        "NF1 mutation",
+        "intragenic deletion",
+        "Neurofibromatosis, type I"
+      ],
+      "best_match": {
+        "ddx": "Neurofibromatosis type 1 (von Recklinghausen disease)",
+        "gdx": "Neurofibromatosis type 1",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2105,
+      "gdx_set": [
+        "Retinitis pigmentosa 78"
+      ],
+      "best_match": {
+        "ddx": "Retinitis pigmentosa",
+        "gdx": "Retinitis pigmentosa 78",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2108,
+      "gdx_set": [
+        "Spinal muscular atrophy with progressive myoclonic epilepsy",
+        "Spinal muscular atrophy-progressive myoclonic epilepsy syndrome"
+      ],
+      "best_match": {
+        "ddx": "Spinal Muscular Atrophy",
+        "gdx": "Spinal muscular atrophy-progressive myoclonic epilepsy syndrome",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2115,
+      "gdx_set": [
+        "Nephrotic syndrome, type 1",
+        "Congenital nephrotic syndrome, Finnish type"
+      ],
+      "best_match": {
+        "ddx": "Congenital nephrotic syndrome of the Finnish type",
+        "gdx": "Congenital nephrotic syndrome, Finnish type",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2116,
+      "gdx_set": [
+        "Brachydactyly-short stature-retinitis pigmentosa syndrome",
+        "Retinitis pigmentosa",
+        "Skeletal anomalies"
+      ],
+      "best_match": {
+        "ddx": "Hypotrichosis with juvenile macular dystrophy",
+        "gdx": "Retinitis pigmentosa",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2125,
+      "gdx_set": [
+        "Intellectual developmental disorder",
+        "Dysmorphic facies and ptosis"
+      ],
+      "best_match": {
+        "ddx": "Cornelia de Lange syndrome",
+        "gdx": "Dysmorphic facies and ptosis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2128,
+      "gdx_set": [
+        "Syndactyly-telecanthus-anogenital and renal malformations syndrome",
+        "STAR syndrome"
+      ],
+      "best_match": {
+        "ddx": "STAR syndrome",
+        "gdx": "STAR syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2138,
+      "gdx_set": [
+        "Spherocytosis, type 5"
+      ],
+      "best_match": {
+        "ddx": "Hereditary spherocytosis",
+        "gdx": "Spherocytosis, type 5",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2143,
+      "gdx_set": [
+        "Leukocyte adhesion deficiency type II",
+        "Congenital disorder of glycosylation, type IIc"
+      ],
+      "best_match": {
+        "ddx": "Kabuki syndrome",
+        "gdx": "Congenital disorder of glycosylation, type IIc",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 2146,
+      "gdx_set": [
+        "Parkinson disease 15, autosomal recessive early-onset",
+        "Parkinsonian-pyramidal syndrome"
+      ],
+      "best_match": {
+        "ddx": "Parkinson's disease",
+        "gdx": "Parkinson disease 15, autosomal recessive early-onset",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2165,
+      "gdx_set": [
+        "Smith-Magenis syndrome"
+      ],
+      "best_match": {
+        "ddx": "Smith-Magenis syndrome",
+        "gdx": "Smith-Magenis syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2181,
+      "gdx_set": [
+        "Long QT syndrome 15"
+      ],
+      "best_match": {
+        "ddx": "Long QT syndrome type 3",
+        "gdx": "Long QT syndrome 15",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2182,
+      "gdx_set": [
+        "Branchiooculofacial syndrome",
+        "Branchio-oculo-facial syndrome"
+      ],
+      "best_match": {
+        "ddx": "Branchio-oculo-facial syndrome (BOFS)",
+        "gdx": "Branchio-oculo-facial syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2185,
+      "gdx_set": [
+        "Tietz albinism-deafness syndrome",
+        "Tietz syndrome"
+      ],
+      "best_match": {
+        "ddx": "Tietz albinism-deafness syndrome",
+        "gdx": "Tietz albinism-deafness syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2191,
+      "gdx_set": [
+        "Developmental and epileptic encephalopathy 14"
+      ],
+      "best_match": {
+        "ddx": "Angelman syndrome",
+        "gdx": "Developmental and epileptic encephalopathy 14",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2192,
+      "gdx_set": [
+        "Sick sinus syndrome 2"
+      ],
+      "best_match": {
+        "ddx": "HCN4-related sinus bradycardia with left ventricular noncompaction",
+        "gdx": "Sick sinus syndrome 2",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2197,
+      "gdx_set": [
+        "Orofaciodigital syndrome type 5",
+        "Orofaciodigital syndrome V"
+      ],
+      "best_match": {
+        "ddx": "Kabuki syndrome",
+        "gdx": "Orofaciodigital syndrome type 5",
+        "score": 0.3
+      }
+    },
+    {
+      "case_id": 2202,
+      "gdx_set": [
+        "Mental retardation, autosomal recessive 18"
+      ],
+      "best_match": {
+        "ddx": "Primary hereditary microcephaly (autosomal recessive)",
+        "gdx": "Mental retardation, autosomal recessive 18",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2210,
+      "gdx_set": [
+        "mental retardation syndrome, X-linked",
+        "Alpha-thalassemia-X-linked intellectual disability syndrome",
+        "Alpha-Thalassemia"
+      ],
+      "best_match": {
+        "ddx": "Alpha-thalassemia X-linked intellectual disability (ATR-X) syndrome",
+        "gdx": "Alpha-thalassemia-X-linked intellectual disability syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2217,
+      "gdx_set": [
+        "Skraban-Deardorff syndrome",
+        "Intellectual disability-seizures-abnormal gait-facial dysmorphism syndrome"
+      ],
+      "best_match": {
+        "ddx": "Costello syndrome",
+        "gdx": "Intellectual disability-seizures-abnormal gait-facial dysmorphism syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2232,
+      "gdx_set": [
+        "Myasthenic syndrome, congenital, 22"
+      ],
+      "best_match": {
+        "ddx": "Congenital myotonic dystrophy type 1",
+        "gdx": "Myasthenic syndrome, congenital, 22",
+        "score": 0.3
+      }
+    },
+    {
+      "case_id": 2234,
+      "gdx_set": [
+        "Severe combined immunodeficiency",
+        "adenosine deaminase deficiency",
+        "Severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-negative"
+      ],
+      "best_match": {
+        "ddx": "Adenosine deaminase deficiency severe combined immunodeficiency",
+        "gdx": "adenosine deaminase deficiency",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2244,
+      "gdx_set": [
+        "Intellectual developmental disorder with dysmorphic facies and behavioral abnormalities"
+      ],
+      "best_match": {
+        "ddx": "Kabuki syndrome",
+        "gdx": "Intellectual developmental disorder with dysmorphic facies and behavioral abnormalities",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2255,
+      "gdx_set": [
+        "Neurodevelopmental disorder, eye",
+        "heart"
+      ],
+      "best_match": {
+        "ddx": "CHARGE syndrome",
+        "gdx": "Neurodevelopmental disorder, eye",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2267,
+      "gdx_set": [
+        "X-linked creatine transporter deficiency",
+        "Cerebral creatine deficiency syndrome 1"
+      ],
+      "best_match": {
+        "ddx": "Creatine transporter deficiency (SLC6A8-related cerebral creatine deficiency syndrome 1)",
+        "gdx": "X-linked creatine transporter deficiency",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2277,
+      "gdx_set": [
+        "Intellectual developmental disorder with dysmorphic facies, seizures, and distal limb anomalies"
+      ],
+      "best_match": {
+        "ddx": "Cornelia de Lange syndrome",
+        "gdx": "Intellectual developmental disorder with dysmorphic facies, seizures, and distal limb anomalies",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2282,
+      "gdx_set": [
+        "Ventricular tachycardia, catecholaminergic polymorphic, 1",
+        "Catecholaminergic polymorphic ventricular tachycardia",
+        "Dilated cardiomyopathy",
+        "Cateeholaminergic polymorphic ventricular tachycardia, CPVT"
+      ],
+      "best_match": {
+        "ddx": "Dilated cardiomyopathy",
+        "gdx": "Dilated cardiomyopathy",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2292,
+      "gdx_set": [
+        "Muscular dystrophy, limb-girdle, type 2Z"
+      ],
+      "best_match": {
+        "ddx": "Limb-girdle muscular dystrophy type 2I",
+        "gdx": "Muscular dystrophy, limb-girdle, type 2Z",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2294,
+      "gdx_set": [
+        "Fanconi anemia, complementation group C"
+      ],
+      "best_match": {
+        "ddx": "Fanconi anemia",
+        "gdx": "Fanconi anemia, complementation group C",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2309,
+      "gdx_set": [
+        "McCune-Albright syndrome",
+        "McCune-Albright syndrome, somatic, mosaic"
+      ],
+      "best_match": {
+        "ddx": "McCune-Albright syndrome",
+        "gdx": "McCune-Albright syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2324,
+      "gdx_set": [
+        "Cardiomyopathy, dilated, 1KK",
+        "Familial Idiopathic restrictive cardiomyopathy",
+        "Cardiomyopathy, familial hypertrophic",
+        "Cardiomyopathy, familial restrictive, type 1"
+      ],
+      "best_match": {
+        "ddx": "Dilated cardiomyopathy",
+        "gdx": "Cardiomyopathy, dilated, 1KK",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2332,
+      "gdx_set": [
+        "Generalized myasthenia gravis",
+        "Myasthenia gravis"
+      ],
+      "best_match": {
+        "ddx": "Myasthenia gravis",
+        "gdx": "Myasthenia gravis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2342,
+      "gdx_set": [
+        "Alport syndrome"
+      ],
+      "best_match": {
+        "ddx": "IgA nephropathy (Berger disease)",
+        "gdx": "Alport syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 2377,
+      "gdx_set": [
+        "Benzodiazepine intoxication"
+      ],
+      "best_match": {
+        "ddx": "Benzodiazepine intoxication",
+        "gdx": "Benzodiazepine intoxication",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2378,
+      "gdx_set": [
+        "22q11 deletion syndrome"
+      ],
+      "best_match": {
+        "ddx": "Ventricular septal defect",
+        "gdx": "22q11 deletion syndrome",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 2516,
+      "gdx_set": [
+        "Vitiligo"
+      ],
+      "best_match": {
+        "ddx": "Vitiligo",
+        "gdx": "Vitiligo",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2589,
+      "gdx_set": [
+        "Factitious disorder imposed on self"
+      ],
+      "best_match": {
+        "ddx": "Factitious disorder imposed on self (Münchausen syndrome)",
+        "gdx": "Factitious disorder imposed on self",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2660,
+      "gdx_set": [
+        "Zenker's Diverticulum"
+      ],
+      "best_match": {
+        "ddx": "Zenker diverticulum",
+        "gdx": "Zenker's Diverticulum",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 2677,
+      "gdx_set": [
+        "Optic Neuritis"
+      ],
+      "best_match": {
+        "ddx": "Idiopathic optic neuritis",
+        "gdx": "Optic Neuritis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2710,
+      "gdx_set": [
+        "Atelectasis"
+      ],
+      "best_match": {
+        "ddx": "Postoperative atelectasis",
+        "gdx": "Atelectasis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2742,
+      "gdx_set": [
+        "Ectopic pregnancy due to pelvic inflammatory disease"
+      ],
+      "best_match": {
+        "ddx": "Ruptured ectopic pregnancy",
+        "gdx": "Ectopic pregnancy due to pelvic inflammatory disease",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2837,
+      "gdx_set": [
+        "Transient hypertrophic cardiomyopathy in neonate due to maternal diabetes"
+      ],
+      "best_match": {
+        "ddx": "Hypertrophic cardiomyopathy (asymmetric septal hypertrophy)",
+        "gdx": "Transient hypertrophic cardiomyopathy in neonate due to maternal diabetes",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 2855,
+      "gdx_set": [
+        "Acute stress response"
+      ],
+      "best_match": {
+        "ddx": "von Willebrand disease",
+        "gdx": "Acute stress response",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 2901,
+      "gdx_set": [
+        "Postpartum Endometritis due to Group A Streptococcus"
+      ],
+      "best_match": {
+        "ddx": "Postpartum endometritis",
+        "gdx": "Postpartum Endometritis due to Group A Streptococcus",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2950,
+      "gdx_set": [
+        "Pancreatic Adenocarcinoma Risk"
+      ],
+      "best_match": {
+        "ddx": "Pancreatic adenocarcinoma",
+        "gdx": "Pancreatic Adenocarcinoma Risk",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 2972,
+      "gdx_set": [
+        "Malignant mesothelioma of pleura"
+      ],
+      "best_match": {
+        "ddx": "Peritoneal mesothelioma",
+        "gdx": "Malignant mesothelioma of pleura",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 3047,
+      "gdx_set": [
+        "Neonatal meningitis due to Streptococcus agalactiae"
+      ],
+      "best_match": {
+        "ddx": "Neonatal Group B Streptococcus (Streptococcus agalactiae) meningitis",
+        "gdx": "Neonatal meningitis due to Streptococcus agalactiae",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3109,
+      "gdx_set": [
+        "Legionnaires' Disease"
+      ],
+      "best_match": {
+        "ddx": "Legionnaires' disease",
+        "gdx": "Legionnaires' Disease",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3195,
+      "gdx_set": [
+        "Prospective cohort study"
+      ],
+      "best_match": {
+        "ddx": "Prospective cohort study",
+        "gdx": "Prospective cohort study",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3226,
+      "gdx_set": [
+        "Dystrophic calcification"
+      ],
+      "best_match": {
+        "ddx": "Tuberculous constrictive pericarditis",
+        "gdx": "Dystrophic calcification",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 3252,
+      "gdx_set": [
+        "Genetic recombination"
+      ],
+      "best_match": {
+        "ddx": "Genital herpes (Herpes simplex virus type 2 infection)",
+        "gdx": "Genetic recombination",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 3282,
+      "gdx_set": [
+        "Age-related macular degeneration, wet type"
+      ],
+      "best_match": {
+        "ddx": "Age-related macular degeneration",
+        "gdx": "Age-related macular degeneration, wet type",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3287,
+      "gdx_set": [
+        "Vision loss"
+      ],
+      "best_match": {
+        "ddx": "Decreased visual acuity",
+        "gdx": "Vision loss",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3325,
+      "gdx_set": [
+        "Epidermoid cyst"
+      ],
+      "best_match": {
+        "ddx": "Epidermal inclusion (epidermoid) cyst",
+        "gdx": "Epidermoid cyst",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3361,
+      "gdx_set": [
+        "Placenta accreta spectrum"
+      ],
+      "best_match": {
+        "ddx": "Placenta accreta spectrum",
+        "gdx": "Placenta accreta spectrum",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3455,
+      "gdx_set": [
+        "Retinopathy of Prematurity"
+      ],
+      "best_match": {
+        "ddx": "Retinopathy of prematurity",
+        "gdx": "Retinopathy of Prematurity",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3478,
+      "gdx_set": [
+        "Congenital Toxoplasmosis"
+      ],
+      "best_match": {
+        "ddx": "Chorioretinitis",
+        "gdx": "Congenital Toxoplasmosis",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 3511,
+      "gdx_set": [
+        "Nonalcoholic fatty liver disease"
+      ],
+      "best_match": {
+        "ddx": "Nonalcoholic fatty liver disease (nonalcoholic steatohepatitis)",
+        "gdx": "Nonalcoholic fatty liver disease",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3545,
+      "gdx_set": [
+        "Sickle Cell Trait with Renal Papillary Necrosis"
+      ],
+      "best_match": {
+        "ddx": "Sickle cell trait",
+        "gdx": "Sickle Cell Trait with Renal Papillary Necrosis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3546,
+      "gdx_set": [
+        "Trisomy 13 (Patau Syndrome)"
+      ],
+      "best_match": {
+        "ddx": "Trisomy 13 (Patau syndrome)",
+        "gdx": "Trisomy 13 (Patau Syndrome)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3629,
+      "gdx_set": [
+        "Ewing's sarcoma"
+      ],
+      "best_match": {
+        "ddx": "Ewing sarcoma",
+        "gdx": "Ewing's sarcoma",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3638,
+      "gdx_set": [
+        "Benign Paroxysmal Positional Vertigo (BPPV)"
+      ],
+      "best_match": {
+        "ddx": "Benign paroxysmal positional vertigo",
+        "gdx": "Benign Paroxysmal Positional Vertigo (BPPV)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3674,
+      "gdx_set": [
+        "Gestational Diabetes Mellitus"
+      ],
+      "best_match": {
+        "ddx": "Gestational diabetes mellitus",
+        "gdx": "Gestational Diabetes Mellitus",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3681,
+      "gdx_set": [
+        "Neonatal sepsis due to Streptococcus agalactiae"
+      ],
+      "best_match": {
+        "ddx": "Early-onset neonatal sepsis (Group B Streptococcus infection)",
+        "gdx": "Neonatal sepsis due to Streptococcus agalactiae",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3702,
+      "gdx_set": [
+        "Theophylline Toxicity"
+      ],
+      "best_match": {
+        "ddx": "Theophylline toxicity",
+        "gdx": "Theophylline Toxicity",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3732,
+      "gdx_set": [
+        "Beta Thalassemia Major with Splice Site Mutation"
+      ],
+      "best_match": {
+        "ddx": "β-Thalassemia major (Cooley anemia)",
+        "gdx": "Beta Thalassemia Major with Splice Site Mutation",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3787,
+      "gdx_set": [
+        "Postictal state following seizure"
+      ],
+      "best_match": {
+        "ddx": "Postictal Todd paralysis",
+        "gdx": "Postictal state following seizure",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 3816,
+      "gdx_set": [
+        "Antibiotic mechanism of action"
+      ],
+      "best_match": {
+        "ddx": "Peptidyl transferase center on 50S ribosome",
+        "gdx": "Antibiotic mechanism of action",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 3819,
+      "gdx_set": [
+        "Obstructive Uropathy due to Ureteral Stone"
+      ],
+      "best_match": {
+        "ddx": "Obstructive uropathy",
+        "gdx": "Obstructive Uropathy due to Ureteral Stone",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3820,
+      "gdx_set": [
+        "Cocaine Intoxication"
+      ],
+      "best_match": {
+        "ddx": "Cocaine intoxication",
+        "gdx": "Cocaine Intoxication",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3832,
+      "gdx_set": [
+        "Increased probability of rejecting the null hypothesis when it is truly false"
+      ],
+      "best_match": {
+        "ddx": "Osteoporosis",
+        "gdx": "Increased probability of rejecting the null hypothesis when it is truly false",
+        "score": 0.1
+      }
+    },
+    {
+      "case_id": 3863,
+      "gdx_set": [
+        "Labyrinthitis"
+      ],
+      "best_match": {
+        "ddx": "Labyrinthitis",
+        "gdx": "Labyrinthitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3878,
+      "gdx_set": [
+        "Physiological neonatal jaundice"
+      ],
+      "best_match": {
+        "ddx": "Physiologic neonatal jaundice",
+        "gdx": "Physiological neonatal jaundice",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3894,
+      "gdx_set": [
+        "Intraventricular hemorrhage"
+      ],
+      "best_match": {
+        "ddx": "Germinal matrix intraventricular hemorrhage",
+        "gdx": "Intraventricular hemorrhage",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3940,
+      "gdx_set": [
+        "Low frequency sensorineural hearing loss"
+      ],
+      "best_match": {
+        "ddx": "Meniere disease",
+        "gdx": "Low frequency sensorineural hearing loss",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 3959,
+      "gdx_set": [
+        "Benign paroxysmal positional vertigo"
+      ],
+      "best_match": {
+        "ddx": "Benign paroxysmal positional vertigo",
+        "gdx": "Benign paroxysmal positional vertigo",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3988,
+      "gdx_set": [
+        "Addison's Disease"
+      ],
+      "best_match": {
+        "ddx": "Autoimmune Addison disease (primary adrenal insufficiency)",
+        "gdx": "Addison's Disease",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 3990,
+      "gdx_set": [
+        "Breast Milk Jaundice"
+      ],
+      "best_match": {
+        "ddx": "Breast milk jaundice",
+        "gdx": "Breast Milk Jaundice",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 3995,
+      "gdx_set": [
+        "Inflammatory Breast Cancer"
+      ],
+      "best_match": {
+        "ddx": "Inflammatory breast carcinoma",
+        "gdx": "Inflammatory Breast Cancer",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4012,
+      "gdx_set": [
+        "Intrauterine growth restriction"
+      ],
+      "best_match": {
+        "ddx": "Intrauterine growth restriction (IUGR)",
+        "gdx": "Intrauterine growth restriction",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4044,
+      "gdx_set": [
+        "Normal behavior"
+      ],
+      "best_match": {
+        "ddx": "Normal adolescent development/behavior",
+        "gdx": "Normal behavior",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4054,
+      "gdx_set": [
+        "Cutaneous larva migrans"
+      ],
+      "best_match": {
+        "ddx": "Cutaneous larva migrans",
+        "gdx": "Cutaneous larva migrans",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4089,
+      "gdx_set": [
+        "Neonatal respiratory distress syndrome (NRDS)"
+      ],
+      "best_match": {
+        "ddx": "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "gdx": "Neonatal respiratory distress syndrome (NRDS)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4123,
+      "gdx_set": [
+        "Phase 2 Clinical Trial"
+      ],
+      "best_match": {
+        "ddx": "Phase II",
+        "gdx": "Phase 2 Clinical Trial",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4176,
+      "gdx_set": [
+        "Presbycusis with Tinnitus and Dizziness"
+      ],
+      "best_match": {
+        "ddx": "Presbycusis",
+        "gdx": "Presbycusis with Tinnitus and Dizziness",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4182,
+      "gdx_set": [
+        "Clostridium difficile infection following antibiotic use"
+      ],
+      "best_match": {
+        "ddx": "Clostridioides difficile infection (pseudomembranous colitis)",
+        "gdx": "Clostridium difficile infection following antibiotic use",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4202,
+      "gdx_set": [
+        "Laryngeal atresia (Failure of fourth and sixth branchial arches development)"
+      ],
+      "best_match": {
+        "ddx": "Congenital laryngeal atresia (CHAOS)",
+        "gdx": "Laryngeal atresia (Failure of fourth and sixth branchial arches development)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4241,
+      "gdx_set": [
+        "Menopausal syndrome"
+      ],
+      "best_match": {
+        "ddx": "Menopause",
+        "gdx": "Menopausal syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4308,
+      "gdx_set": [
+        "Aspiration of foreign material affecting the superior segment of the right inferior lobe"
+      ],
+      "best_match": {
+        "ddx": "Foreign body aspiration",
+        "gdx": "Aspiration of foreign material affecting the superior segment of the right inferior lobe",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 4318,
+      "gdx_set": [
+        "Fetal growth restriction due to maternal cigarette smoking"
+      ],
+      "best_match": {
+        "ddx": "Maternal tobacco use–related intrauterine growth restriction",
+        "gdx": "Fetal growth restriction due to maternal cigarette smoking",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4336,
+      "gdx_set": [
+        "Physiological development"
+      ],
+      "best_match": {
+        "ddx": "Normal early pubertal development",
+        "gdx": "Physiological development",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 4362,
+      "gdx_set": [
+        "Toxic Epidermal Necrolysis"
+      ],
+      "best_match": {
+        "ddx": "Toxic epidermal necrolysis",
+        "gdx": "Toxic Epidermal Necrolysis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4369,
+      "gdx_set": [
+        "Friedreich ataxia"
+      ],
+      "best_match": {
+        "ddx": "Friedreich ataxia",
+        "gdx": "Friedreich ataxia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4404,
+      "gdx_set": [
+        "Primigravida with gestational hypertension"
+      ],
+      "best_match": {
+        "ddx": "Gestational hypertension",
+        "gdx": "Primigravida with gestational hypertension",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 4466,
+      "gdx_set": [
+        "Branchial Cleft Cyst with Thermogenin Presence"
+      ],
+      "best_match": {
+        "ddx": "Branchial cleft cyst (second branchial cleft anomaly)",
+        "gdx": "Branchial Cleft Cyst with Thermogenin Presence",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4512,
+      "gdx_set": [
+        "Acute Peritonitis due to Perforated Peptic Ulcer"
+      ],
+      "best_match": {
+        "ddx": "Perforated gastric ulcer",
+        "gdx": "Acute Peritonitis due to Perforated Peptic Ulcer",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 4634,
+      "gdx_set": [
+        "Sleep terror disorder"
+      ],
+      "best_match": {
+        "ddx": "Sleep terror disorder (night terrors)",
+        "gdx": "Sleep terror disorder",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4646,
+      "gdx_set": [
+        "Wilson's disease with hepatic and neurological manifestations"
+      ],
+      "best_match": {
+        "ddx": "Wilson disease",
+        "gdx": "Wilson's disease with hepatic and neurological manifestations",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4678,
+      "gdx_set": [
+        "Human chorionic gonadotropin"
+      ],
+      "best_match": {
+        "ddx": "Hydatidiform mole",
+        "gdx": "Human chorionic gonadotropin",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 4683,
+      "gdx_set": [
+        "Hepatic hemangioma"
+      ],
+      "best_match": {
+        "ddx": "Hepatic hemangioma",
+        "gdx": "Hepatic hemangioma",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4720,
+      "gdx_set": [
+        "Congenital rubella syndrome with patent ductus arteriosus"
+      ],
+      "best_match": {
+        "ddx": "Congenital rubella syndrome",
+        "gdx": "Congenital rubella syndrome with patent ductus arteriosus",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4721,
+      "gdx_set": [
+        "Horner's syndrome secondary to Pancoast tumor"
+      ],
+      "best_match": {
+        "ddx": "Pancoast tumor (superior sulcus non-small cell lung carcinoma)",
+        "gdx": "Horner's syndrome secondary to Pancoast tumor",
+        "score": 0.5
+      }
+    },
+    {
+      "case_id": 4799,
+      "gdx_set": [
+        "Toxic Multinodular Goiter"
+      ],
+      "best_match": {
+        "ddx": "Toxic multinodular goiter (Plummer disease)",
+        "gdx": "Toxic Multinodular Goiter",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4905,
+      "gdx_set": [
+        "Blastic and lytic skeletal lesions"
+      ],
+      "best_match": {
+        "ddx": "Paget disease of bone (osteitis deformans)",
+        "gdx": "Blastic and lytic skeletal lesions",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 4910,
+      "gdx_set": [
+        "Wilms' tumor"
+      ],
+      "best_match": {
+        "ddx": "Wilms tumor",
+        "gdx": "Wilms' tumor",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 4921,
+      "gdx_set": [
+        "Acute bacterial prostatitis due to Escherichia coli"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial prostatitis",
+        "gdx": "Acute bacterial prostatitis due to Escherichia coli",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4929,
+      "gdx_set": [
+        "Anemia due to isoniazid therapy"
+      ],
+      "best_match": {
+        "ddx": "Isoniazid-induced sideroblastic anemia",
+        "gdx": "Anemia due to isoniazid therapy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4930,
+      "gdx_set": [
+        "Lobar pneumonia with gray hepatization"
+      ],
+      "best_match": {
+        "ddx": "Lobar pneumonia (Streptococcus pneumoniae)",
+        "gdx": "Lobar pneumonia with gray hepatization",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 4938,
+      "gdx_set": [
+        "Caspase activation"
+      ],
+      "best_match": {
+        "ddx": "Caspase-activated DNase–mediated DNA fragmentation",
+        "gdx": "Caspase activation",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 4989,
+      "gdx_set": [
+        "Partial Hydatidiform Mole"
+      ],
+      "best_match": {
+        "ddx": "Partial hydatidiform mole",
+        "gdx": "Partial Hydatidiform Mole",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5012,
+      "gdx_set": [
+        "Meconium ileus"
+      ],
+      "best_match": {
+        "ddx": "Meconium ileus",
+        "gdx": "Meconium ileus",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 5134,
+      "gdx_set": [
+        "History of spontaneous preterm birth"
+      ],
+      "best_match": {
+        "ddx": "Preterm premature rupture of membranes (PPROM)",
+        "gdx": "History of spontaneous preterm birth",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 5178,
+      "gdx_set": [
+        "Impaired reaction time"
+      ],
+      "best_match": {
+        "ddx": "Cannabis intoxication",
+        "gdx": "Impaired reaction time",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5290,
+      "gdx_set": [
+        "Respiratory distress due to rib fracture"
+      ],
+      "best_match": {
+        "ddx": "Diaphragmatic paralysis due to phrenic nerve injury",
+        "gdx": "Respiratory distress due to rib fracture",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5326,
+      "gdx_set": [
+        "Left-sided heart failure"
+      ],
+      "best_match": {
+        "ddx": "Congestive heart failure (left-sided)",
+        "gdx": "Left-sided heart failure",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5393,
+      "gdx_set": [
+        "Placental insufficiency"
+      ],
+      "best_match": {
+        "ddx": "Uteroplacental insufficiency",
+        "gdx": "Placental insufficiency",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5425,
+      "gdx_set": [
+        "Ramipril-induced dry cough"
+      ],
+      "best_match": {
+        "ddx": "ACE inhibitor–induced cough",
+        "gdx": "Ramipril-induced dry cough",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5453,
+      "gdx_set": [
+        "Bilateral Retinoblastoma"
+      ],
+      "best_match": {
+        "ddx": "Hereditary bilateral retinoblastoma",
+        "gdx": "Bilateral Retinoblastoma",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5483,
+      "gdx_set": [
+        "Uterine rupture during labor"
+      ],
+      "best_match": {
+        "ddx": "Uterine rupture",
+        "gdx": "Uterine rupture during labor",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5523,
+      "gdx_set": [
+        "Pleomorphic adenoma of the parotid gland"
+      ],
+      "best_match": {
+        "ddx": "Pleomorphic adenoma of the parotid gland",
+        "gdx": "Pleomorphic adenoma of the parotid gland",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 5529,
+      "gdx_set": [
+        "Dilated pupils"
+      ],
+      "best_match": {
+        "ddx": "Amphetamine (stimulant) intoxication",
+        "gdx": "Dilated pupils",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 5576,
+      "gdx_set": [
+        "Cephalohematoma"
+      ],
+      "best_match": {
+        "ddx": "Cephalohematoma",
+        "gdx": "Cephalohematoma",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 5655,
+      "gdx_set": [
+        "Antibiotic ototoxicity due to 30S ribosomal subunit binding"
+      ],
+      "best_match": {
+        "ddx": "Group B streptococcal neonatal meningitis",
+        "gdx": "Antibiotic ototoxicity due to 30S ribosomal subunit binding",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5707,
+      "gdx_set": [
+        "Presbycusis"
+      ],
+      "best_match": {
+        "ddx": "Presbycusis (age-related sensorineural hearing loss)",
+        "gdx": "Presbycusis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5723,
+      "gdx_set": [
+        "Green color of sputum"
+      ],
+      "best_match": {
+        "ddx": "Community-acquired bacterial pneumonia (Streptococcus pneumoniae)",
+        "gdx": "Green color of sputum",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5765,
+      "gdx_set": [
+        "Erb-Duchenne palsy due to brachial plexus injury"
+      ],
+      "best_match": {
+        "ddx": "Erb-Duchenne (Erb) Palsy – Upper Trunk Brachial Plexus Injury (C5-C6)",
+        "gdx": "Erb-Duchenne palsy due to brachial plexus injury",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5810,
+      "gdx_set": [
+        "Subarachnoid hemorrhage due to ruptured aneurysm"
+      ],
+      "best_match": {
+        "ddx": "Autosomal dominant polycystic kidney disease",
+        "gdx": "Subarachnoid hemorrhage due to ruptured aneurysm",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5841,
+      "gdx_set": [
+        "Amatoxin poisoning inhibiting RNA polymerase II"
+      ],
+      "best_match": {
+        "ddx": "Amanita phalloides (amatoxin) mushroom poisoning",
+        "gdx": "Amatoxin poisoning inhibiting RNA polymerase II",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5866,
+      "gdx_set": [
+        "Pregnancy"
+      ],
+      "best_match": {
+        "ddx": "Early intrauterine pregnancy",
+        "gdx": "Pregnancy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 5875,
+      "gdx_set": [
+        "Elevated hemoglobin A1c"
+      ],
+      "best_match": {
+        "ddx": "Maternal diabetes mellitus (gestational or pregestational)",
+        "gdx": "Elevated hemoglobin A1c",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 5889,
+      "gdx_set": [
+        "Bipolar Disorder Type I, Current Episode Manic"
+      ],
+      "best_match": {
+        "ddx": "Bipolar I disorder (current manic episode)",
+        "gdx": "Bipolar Disorder Type I, Current Episode Manic",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 5904,
+      "gdx_set": [
+        "HIV Envelope Protein Targeting"
+      ],
+      "best_match": {
+        "ddx": "HIV-1 infection",
+        "gdx": "HIV Envelope Protein Targeting",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 5976,
+      "gdx_set": [
+        "Cellulitis"
+      ],
+      "best_match": {
+        "ddx": "Cellulitis",
+        "gdx": "Cellulitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 5978,
+      "gdx_set": [
+        "Inadequate breastfeeding"
+      ],
+      "best_match": {
+        "ddx": "Breastfeeding failure jaundice",
+        "gdx": "Inadequate breastfeeding",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 5992,
+      "gdx_set": [
+        "Gestational trophoblastic disease with pulmonary metastasis"
+      ],
+      "best_match": {
+        "ddx": "Gestational choriocarcinoma",
+        "gdx": "Gestational trophoblastic disease with pulmonary metastasis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 6061,
+      "gdx_set": [
+        "Warfarin-induced skin necrosis due to protein C deficiency"
+      ],
+      "best_match": {
+        "ddx": "Warfarin-induced skin necrosis",
+        "gdx": "Warfarin-induced skin necrosis due to protein C deficiency",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6076,
+      "gdx_set": [
+        "Placental abruption due to velamentous cord insertion"
+      ],
+      "best_match": {
+        "ddx": "Placental abruption",
+        "gdx": "Placental abruption due to velamentous cord insertion",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6077,
+      "gdx_set": [
+        "Delusional disorder"
+      ],
+      "best_match": {
+        "ddx": "Delusional disorder, persecutory type",
+        "gdx": "Delusional disorder",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6099,
+      "gdx_set": [
+        "Nystagmus due to substance intoxication"
+      ],
+      "best_match": {
+        "ddx": "Phencyclidine (PCP) intoxication",
+        "gdx": "Nystagmus due to substance intoxication",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 6106,
+      "gdx_set": [
+        "Acute Kidney Injury due to Overdiuresis"
+      ],
+      "best_match": {
+        "ddx": "Prerenal acute kidney injury (azotemia) due to volume depletion",
+        "gdx": "Acute Kidney Injury due to Overdiuresis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 6141,
+      "gdx_set": [
+        "Type I Hypersensitivity Reaction"
+      ],
+      "best_match": {
+        "ddx": "Peanut-induced anaphylaxis (IgE-mediated Type I hypersensitivity)",
+        "gdx": "Type I Hypersensitivity Reaction",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6167,
+      "gdx_set": [
+        "Neonatal polycythemia with cerebral infarction"
+      ],
+      "best_match": {
+        "ddx": "Neonatal polycythemia (hyperviscosity syndrome)",
+        "gdx": "Neonatal polycythemia with cerebral infarction",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 6330,
+      "gdx_set": [
+        "Acute Liver Failure due to Acetaminophen Toxicity"
+      ],
+      "best_match": {
+        "ddx": "Acetaminophen-induced acute liver failure",
+        "gdx": "Acute Liver Failure due to Acetaminophen Toxicity",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6346,
+      "gdx_set": [
+        "Orbital Cellulitis"
+      ],
+      "best_match": {
+        "ddx": "Orbital cellulitis",
+        "gdx": "Orbital Cellulitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 6510,
+      "gdx_set": [
+        "Absent corneal reflex"
+      ],
+      "best_match": {
+        "ddx": "Cavernous sinus thrombosis",
+        "gdx": "Absent corneal reflex",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 6610,
+      "gdx_set": [
+        "Mixed cellularity classical Hodgkin lymphoma"
+      ],
+      "best_match": {
+        "ddx": "Mixed cellularity classical Hodgkin lymphoma",
+        "gdx": "Mixed cellularity classical Hodgkin lymphoma",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 6618,
+      "gdx_set": [
+        "Colon cancer"
+      ],
+      "best_match": {
+        "ddx": "Colorectal adenocarcinoma with hepatic metastasis",
+        "gdx": "Colon cancer",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 6642,
+      "gdx_set": [
+        "Reaction formation (Psychological defense mechanism)"
+      ],
+      "best_match": {
+        "ddx": "Obsessive-Compulsive Disorder (Scrupulosity)",
+        "gdx": "Reaction formation (Psychological defense mechanism)",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 6742,
+      "gdx_set": [
+        "Decreased protein S"
+      ],
+      "best_match": {
+        "ddx": "Deep vein thrombosis",
+        "gdx": "Decreased protein S",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 6764,
+      "gdx_set": [
+        "Renal tubular acidosis with bone demineralization"
+      ],
+      "best_match": {
+        "ddx": "Fanconi syndrome (proximal renal tubular dysfunction)",
+        "gdx": "Renal tubular acidosis with bone demineralization",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 6870,
+      "gdx_set": [
+        "Stevens-Johnson syndrome due to Lamotrigine"
+      ],
+      "best_match": {
+        "ddx": "Stevens-Johnson syndrome / Toxic epidermal necrolysis",
+        "gdx": "Stevens-Johnson syndrome due to Lamotrigine",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6944,
+      "gdx_set": [
+        "DHT-related alopecia"
+      ],
+      "best_match": {
+        "ddx": "Androgenetic alopecia (male pattern baldness)",
+        "gdx": "DHT-related alopecia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 6945,
+      "gdx_set": [
+        "Hyperemesis gravidarum"
+      ],
+      "best_match": {
+        "ddx": "Hyperemesis gravidarum",
+        "gdx": "Hyperemesis gravidarum",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 6952,
+      "gdx_set": [
+        "Conduct disorder with potential progression to antisocial personality disorder"
+      ],
+      "best_match": {
+        "ddx": "Conduct disorder",
+        "gdx": "Conduct disorder with potential progression to antisocial personality disorder",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7048,
+      "gdx_set": [
+        "Insufficient breast emptying"
+      ],
+      "best_match": {
+        "ddx": "Secondary lactation failure from infrequent breastfeeding",
+        "gdx": "Insufficient breast emptying",
+        "score": 0.5
+      }
+    },
+    {
+      "case_id": 7056,
+      "gdx_set": [
+        "Chronic Obstructive Pulmonary Disease due to Alpha-1 Antitrypsin Deficiency"
+      ],
+      "best_match": {
+        "ddx": "Alpha-1 antitrypsin deficiency",
+        "gdx": "Chronic Obstructive Pulmonary Disease due to Alpha-1 Antitrypsin Deficiency",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7065,
+      "gdx_set": [
+        "Postoperative Hallucinations due to NMDA Receptor Antagonism"
+      ],
+      "best_match": {
+        "ddx": "Ketamine-induced emergence reaction",
+        "gdx": "Postoperative Hallucinations due to NMDA Receptor Antagonism",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7076,
+      "gdx_set": [
+        "Hyperventilation syndrome"
+      ],
+      "best_match": {
+        "ddx": "Hyperventilation syndrome",
+        "gdx": "Hyperventilation syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7137,
+      "gdx_set": [
+        "Congenital rubella infection"
+      ],
+      "best_match": {
+        "ddx": "Congenital rubella syndrome",
+        "gdx": "Congenital rubella infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7138,
+      "gdx_set": [
+        "Complete atrioventricular septal defect"
+      ],
+      "best_match": {
+        "ddx": "Down syndrome (Trisomy 21)",
+        "gdx": "Complete atrioventricular septal defect",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7171,
+      "gdx_set": [
+        "Acute angle-closure glaucoma induced by Topiramate"
+      ],
+      "best_match": {
+        "ddx": "Topiramate-induced acute bilateral angle-closure glaucoma",
+        "gdx": "Acute angle-closure glaucoma induced by Topiramate",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7182,
+      "gdx_set": [
+        "Opiate withdrawal"
+      ],
+      "best_match": {
+        "ddx": "Opioid withdrawal syndrome",
+        "gdx": "Opiate withdrawal",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7202,
+      "gdx_set": [
+        "Risk of lymphoma in rheumatoid arthritis patients taking anti-TNF alpha medications"
+      ],
+      "best_match": {
+        "ddx": "Anti-TNF-associated lymphoma",
+        "gdx": "Risk of lymphoma in rheumatoid arthritis patients taking anti-TNF alpha medications",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7302,
+      "gdx_set": [
+        "Achondroplasia inheritance probability"
+      ],
+      "best_match": {
+        "ddx": "Achondroplasia",
+        "gdx": "Achondroplasia inheritance probability",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7362,
+      "gdx_set": [
+        "A band"
+      ],
+      "best_match": {
+        "ddx": "Malignant hyperthermia",
+        "gdx": "A band",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7409,
+      "gdx_set": [
+        "Physiological Neonatal Hemoglobin Transition"
+      ],
+      "best_match": {
+        "ddx": "Normal neonatal physiology (predominance of fetal hemoglobin)",
+        "gdx": "Physiological Neonatal Hemoglobin Transition",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7422,
+      "gdx_set": [
+        "Pelvic fracture with posterior urethral injury"
+      ],
+      "best_match": {
+        "ddx": "Posterior urethral injury (pelvic fracture–associated urethral transection)",
+        "gdx": "Pelvic fracture with posterior urethral injury",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7463,
+      "gdx_set": [
+        "Acute Vestibular Neuritis"
+      ],
+      "best_match": {
+        "ddx": "Vestibular neuritis",
+        "gdx": "Acute Vestibular Neuritis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7519,
+      "gdx_set": [
+        "Hypovolemic shock"
+      ],
+      "best_match": {
+        "ddx": "Hypovolemic shock",
+        "gdx": "Hypovolemic shock",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 7631,
+      "gdx_set": [
+        "Projection"
+      ],
+      "best_match": {
+        "ddx": "Projection (defense mechanism)",
+        "gdx": "Projection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7704,
+      "gdx_set": [
+        "Cystic dilation of collecting duct"
+      ],
+      "best_match": {
+        "ddx": "Autosomal recessive polycystic kidney disease",
+        "gdx": "Cystic dilation of collecting duct",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 7735,
+      "gdx_set": [
+        "Psoriasis with genetic predisposition"
+      ],
+      "best_match": {
+        "ddx": "Androgenetic alopecia",
+        "gdx": "Psoriasis with genetic predisposition",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7737,
+      "gdx_set": [
+        "Dichorionic-diamniotic twin pregnancy"
+      ],
+      "best_match": {
+        "ddx": "Multiple gestation pregnancy",
+        "gdx": "Dichorionic-diamniotic twin pregnancy",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7760,
+      "gdx_set": [
+        "Tourette syndrome with coprolalia"
+      ],
+      "best_match": {
+        "ddx": "Tourette syndrome",
+        "gdx": "Tourette syndrome with coprolalia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 7763,
+      "gdx_set": [
+        "White oral patches"
+      ],
+      "best_match": {
+        "ddx": "DiGeorge syndrome",
+        "gdx": "White oral patches",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7765,
+      "gdx_set": [
+        "Maternal malnutrition"
+      ],
+      "best_match": {
+        "ddx": "Intrauterine (fetal) growth restriction secondary to low maternal BMI/inadequate maternal weight gain",
+        "gdx": "Maternal malnutrition",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7811,
+      "gdx_set": [
+        "Non-maleficence"
+      ],
+      "best_match": {
+        "ddx": "Glioblastoma multiforme",
+        "gdx": "Non-maleficence",
+        "score": 0.1
+      }
+    },
+    {
+      "case_id": 7847,
+      "gdx_set": [
+        "Pulsus Paradoxus due to Asthma"
+      ],
+      "best_match": {
+        "ddx": "Severe asthma exacerbation",
+        "gdx": "Pulsus Paradoxus due to Asthma",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 7886,
+      "gdx_set": [
+        "Ptosis"
+      ],
+      "best_match": {
+        "ddx": "Diabetic ischemic oculomotor (cranial nerve III) palsy",
+        "gdx": "Ptosis",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7889,
+      "gdx_set": [
+        "Neutrophil dysfunction"
+      ],
+      "best_match": {
+        "ddx": "Chronic granulomatous disease",
+        "gdx": "Neutrophil dysfunction",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 7908,
+      "gdx_set": [
+        "Prevalence of a newly discovered infectious disease"
+      ],
+      "best_match": {
+        "ddx": "Visceral leishmaniasis (kala-azar)",
+        "gdx": "Prevalence of a newly discovered infectious disease",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 7933,
+      "gdx_set": [
+        "Theca interna cell tumor"
+      ],
+      "best_match": {
+        "ddx": "Sertoli-Leydig cell tumor (androblastoma) of the ovary",
+        "gdx": "Theca interna cell tumor",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 7985,
+      "gdx_set": [
+        "Acute otitis externa due to Pseudomonas aeruginosa"
+      ],
+      "best_match": {
+        "ddx": "Acute bacterial otitis externa (swimmer's ear)",
+        "gdx": "Acute otitis externa due to Pseudomonas aeruginosa",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8031,
+      "gdx_set": [
+        "Hemolytic disease of the newborn due to maternal IgG antibodies"
+      ],
+      "best_match": {
+        "ddx": "ABO hemolytic disease of the newborn",
+        "gdx": "Hemolytic disease of the newborn due to maternal IgG antibodies",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 8092,
+      "gdx_set": [
+        "Postoperative fever due to surgical inflammation"
+      ],
+      "best_match": {
+        "ddx": "Postoperative atelectasis",
+        "gdx": "Postoperative fever due to surgical inflammation",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 8154,
+      "gdx_set": [
+        "Cervical insufficiency"
+      ],
+      "best_match": {
+        "ddx": "Cervical insufficiency",
+        "gdx": "Cervical insufficiency",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 8161,
+      "gdx_set": [
+        "Hemizygous; full penetrance"
+      ],
+      "best_match": {
+        "ddx": "Red-green color blindness",
+        "gdx": "Hemizygous; full penetrance",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8166,
+      "gdx_set": [
+        "Methylation of 23S rRNA-binding site"
+      ],
+      "best_match": {
+        "ddx": "Gonococcal ophthalmia neonatorum",
+        "gdx": "Methylation of 23S rRNA-binding site",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8221,
+      "gdx_set": [
+        "Marginal placenta previa"
+      ],
+      "best_match": {
+        "ddx": "Placenta previa",
+        "gdx": "Marginal placenta previa",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8233,
+      "gdx_set": [
+        "Sexual abuse"
+      ],
+      "best_match": {
+        "ddx": "Child sexual abuse",
+        "gdx": "Sexual abuse",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8238,
+      "gdx_set": [
+        "Respiratory Distress Syndrome (RDS)"
+      ],
+      "best_match": {
+        "ddx": "Neonatal respiratory distress syndrome (surfactant deficiency)",
+        "gdx": "Respiratory Distress Syndrome (RDS)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8271,
+      "gdx_set": [
+        "Elevated prothrombin time"
+      ],
+      "best_match": {
+        "ddx": "Cystic fibrosis",
+        "gdx": "Elevated prothrombin time",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8282,
+      "gdx_set": [
+        "GqPCRs (Gq protein-coupled receptors)"
+      ],
+      "best_match": {
+        "ddx": "Benign prostatic hyperplasia",
+        "gdx": "GqPCRs (Gq protein-coupled receptors)",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8296,
+      "gdx_set": [
+        "Croup with subglottic narrowing"
+      ],
+      "best_match": {
+        "ddx": "Croup (laryngotracheitis due to parainfluenza virus)",
+        "gdx": "Croup with subglottic narrowing",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8310,
+      "gdx_set": [
+        "Septic shock"
+      ],
+      "best_match": {
+        "ddx": "Septic shock",
+        "gdx": "Septic shock",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 8328,
+      "gdx_set": [
+        "Leber Hereditary Optic Neuropathy (LHON)"
+      ],
+      "best_match": {
+        "ddx": "Leber Hereditary Optic Neuropathy",
+        "gdx": "Leber Hereditary Optic Neuropathy (LHON)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8353,
+      "gdx_set": [
+        "Neuropeptide-Y"
+      ],
+      "best_match": {
+        "ddx": "Prader-Willi syndrome",
+        "gdx": "Neuropeptide-Y",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8358,
+      "gdx_set": [
+        "Ototoxicity due to aminoglycosides"
+      ],
+      "best_match": {
+        "ddx": "Aminoglycoside-induced ototoxicity",
+        "gdx": "Ototoxicity due to aminoglycosides",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8371,
+      "gdx_set": [
+        "Ischemic bowel disease"
+      ],
+      "best_match": {
+        "ddx": "Mesenteric ischemia secondary to SLE-associated mesenteric vasculitis",
+        "gdx": "Ischemic bowel disease",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 8410,
+      "gdx_set": [
+        "Squamous Cell Carcinoma of Lung with Horner Syndrome"
+      ],
+      "best_match": {
+        "ddx": "Pancoast (superior sulcus) tumor causing Horner syndrome",
+        "gdx": "Squamous Cell Carcinoma of Lung with Horner Syndrome",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 8479,
+      "gdx_set": [
+        "Maintenance Stage of Behavior Change"
+      ],
+      "best_match": {
+        "ddx": "Atherosclerotic coronary artery disease",
+        "gdx": "Maintenance Stage of Behavior Change",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8480,
+      "gdx_set": [
+        "Bronchopulmonary Dysplasia"
+      ],
+      "best_match": {
+        "ddx": "Bronchopulmonary dysplasia",
+        "gdx": "Bronchopulmonary Dysplasia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 8540,
+      "gdx_set": [
+        "Mitochondrial myopathy with ragged red fibers"
+      ],
+      "best_match": {
+        "ddx": "MERRF (Myoclonic Epilepsy with Ragged Red Fibers)",
+        "gdx": "Mitochondrial myopathy with ragged red fibers",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 8583,
+      "gdx_set": [
+        "Macule"
+      ],
+      "best_match": {
+        "ddx": "Ephelis (freckle)",
+        "gdx": "Macule",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 8585,
+      "gdx_set": [
+        "Decreased pH"
+      ],
+      "best_match": {
+        "ddx": "Diabetic ketoacidosis",
+        "gdx": "Decreased pH",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 8604,
+      "gdx_set": [
+        "Infant Respiratory Distress Syndrome"
+      ],
+      "best_match": {
+        "ddx": "Neonatal respiratory distress syndrome (hyaline membrane disease)",
+        "gdx": "Infant Respiratory Distress Syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8610,
+      "gdx_set": [
+        "Opioid-induced constipation"
+      ],
+      "best_match": {
+        "ddx": "Bone metastases from prostate cancer",
+        "gdx": "Opioid-induced constipation",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8632,
+      "gdx_set": [
+        "Tibial Nerve Compression"
+      ],
+      "best_match": {
+        "ddx": "Tibial nerve entrapment neuropathy at the popliteal fossa",
+        "gdx": "Tibial Nerve Compression",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 8652,
+      "gdx_set": [
+        "Vitamin B12 deficiency anemia due to pernicious anemia"
+      ],
+      "best_match": {
+        "ddx": "Pernicious anemia (autoimmune intrinsic factor deficiency)",
+        "gdx": "Vitamin B12 deficiency anemia due to pernicious anemia",
+        "score": 0.7
+      }
+    },
+    {
+      "case_id": 8667,
+      "gdx_set": [
+        "Shoulder dystocia with neonatal distress"
+      ],
+      "best_match": {
+        "ddx": "Neonatal Brachial Plexus Palsy (Erb-Duchenne Palsy)",
+        "gdx": "Shoulder dystocia with neonatal distress",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 8718,
+      "gdx_set": [
+        "Non-arteritic anterior ischemic optic neuropathy (NAION)"
+      ],
+      "best_match": {
+        "ddx": "Non-arteritic anterior ischemic optic neuropathy",
+        "gdx": "Non-arteritic anterior ischemic optic neuropathy (NAION)",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 8765,
+      "gdx_set": [
+        "Anterior hip dislocation with femoral head fracture"
+      ],
+      "best_match": {
+        "ddx": "Femoral neuropathy",
+        "gdx": "Anterior hip dislocation with femoral head fracture",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8966,
+      "gdx_set": [
+        "Selection Bias in Study Enrollment"
+      ],
+      "best_match": {
+        "ddx": "Lynch syndrome (Hereditary nonpolyposis colorectal cancer)",
+        "gdx": "Selection Bias in Study Enrollment",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 8986,
+      "gdx_set": [
+        "Ruptured vasa previa"
+      ],
+      "best_match": {
+        "ddx": "Vasa previa",
+        "gdx": "Ruptured vasa previa",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9053,
+      "gdx_set": [
+        "Abdominal bruit"
+      ],
+      "best_match": {
+        "ddx": "Atherosclerotic renal artery stenosis",
+        "gdx": "Abdominal bruit",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9125,
+      "gdx_set": [
+        "Autism spectrum disorder, level 1"
+      ],
+      "best_match": {
+        "ddx": "Autism spectrum disorder (formerly Asperger syndrome)",
+        "gdx": "Autism spectrum disorder, level 1",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9167,
+      "gdx_set": [
+        "Anorexia nervosa - purging type"
+      ],
+      "best_match": {
+        "ddx": "Anorexia nervosa, binge-eating/purging subtype",
+        "gdx": "Anorexia nervosa - purging type",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9188,
+      "gdx_set": [
+        "Wobble hypothesis"
+      ],
+      "best_match": {
+        "ddx": "Wobble base-pairing",
+        "gdx": "Wobble hypothesis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9234,
+      "gdx_set": [
+        "Missed abortion with placental thrombosis"
+      ],
+      "best_match": {
+        "ddx": "Antiphospholipid antibody syndrome",
+        "gdx": "Missed abortion with placental thrombosis",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9307,
+      "gdx_set": [
+        "Infantile seborrheic dermatitis"
+      ],
+      "best_match": {
+        "ddx": "Seborrheic dermatitis",
+        "gdx": "Infantile seborrheic dermatitis",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9338,
+      "gdx_set": [
+        "Hyperacute rejection due to preformed antibodies against class I HLA molecules"
+      ],
+      "best_match": {
+        "ddx": "Hyperacute antibody-mediated renal transplant rejection",
+        "gdx": "Hyperacute rejection due to preformed antibodies against class I HLA molecules",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9342,
+      "gdx_set": [
+        "Celiac disease with associated vitamin K deficiency leading to coagulopathy"
+      ],
+      "best_match": {
+        "ddx": "Celiac disease",
+        "gdx": "Celiac disease with associated vitamin K deficiency leading to coagulopathy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9347,
+      "gdx_set": [
+        "Aortic dissection associated with connective tissue disorder"
+      ],
+      "best_match": {
+        "ddx": "Marfan syndrome",
+        "gdx": "Aortic dissection associated with connective tissue disorder",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9374,
+      "gdx_set": [
+        "Granulomatosis with Polyangiitis (Wegener's)"
+      ],
+      "best_match": {
+        "ddx": "Granulomatosis with polyangiitis (Wegener)",
+        "gdx": "Granulomatosis with Polyangiitis (Wegener's)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9444,
+      "gdx_set": [
+        "Transposition of the great vessels"
+      ],
+      "best_match": {
+        "ddx": "Transposition of the great arteries",
+        "gdx": "Transposition of the great vessels",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9445,
+      "gdx_set": [
+        "Adhesions"
+      ],
+      "best_match": {
+        "ddx": "Small bowel obstruction from postoperative adhesions",
+        "gdx": "Adhesions",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9446,
+      "gdx_set": [
+        "Urethral diverticulum"
+      ],
+      "best_match": {
+        "ddx": "Urethral diverticulum",
+        "gdx": "Urethral diverticulum",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9447,
+      "gdx_set": [
+        "Foreign body obstruction"
+      ],
+      "best_match": {
+        "ddx": "Intranasal foreign body",
+        "gdx": "Foreign body obstruction",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9450,
+      "gdx_set": [
+        "Normal cardiac conduction"
+      ],
+      "best_match": {
+        "ddx": "Hypertension",
+        "gdx": "Normal cardiac conduction",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9451,
+      "gdx_set": [
+        "Intentional contamination"
+      ],
+      "best_match": {
+        "ddx": "Factitious disorder imposed on another (Munchausen by proxy)",
+        "gdx": "Intentional contamination",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9454,
+      "gdx_set": [
+        "Previous myocardial ischemia"
+      ],
+      "best_match": {
+        "ddx": "Torsades de pointes",
+        "gdx": "Previous myocardial ischemia",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9456,
+      "gdx_set": [
+        "Exophthalmos due to Graves' disease"
+      ],
+      "best_match": {
+        "ddx": "Graves disease",
+        "gdx": "Exophthalmos due to Graves' disease",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9457,
+      "gdx_set": [
+        "Cardiac rhabdomyoma associated with tuberous sclerosis"
+      ],
+      "best_match": {
+        "ddx": "Cardiac rhabdomyoma",
+        "gdx": "Cardiac rhabdomyoma associated with tuberous sclerosis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9458,
+      "gdx_set": [
+        "Cerebral salt wasting"
+      ],
+      "best_match": {
+        "ddx": "Cerebral salt wasting syndrome",
+        "gdx": "Cerebral salt wasting",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9460,
+      "gdx_set": [
+        "Normal DLCO with obstructive pattern"
+      ],
+      "best_match": {
+        "ddx": "Acute severe asthma (status asthmaticus)",
+        "gdx": "Normal DLCO with obstructive pattern",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9462,
+      "gdx_set": [
+        "Chromosomal deletion syndrome (5p deletion)"
+      ],
+      "best_match": {
+        "ddx": "Cri-du-chat syndrome",
+        "gdx": "Chromosomal deletion syndrome (5p deletion)",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9465,
+      "gdx_set": [
+        "Meiotic nondisjunction"
+      ],
+      "best_match": {
+        "ddx": "Klinefelter syndrome (47,XXY)",
+        "gdx": "Meiotic nondisjunction",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9466,
+      "gdx_set": [
+        "Nephrotic syndrome"
+      ],
+      "best_match": {
+        "ddx": "Nephrotic syndrome (e.g., diabetic nephropathy)",
+        "gdx": "Nephrotic syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9468,
+      "gdx_set": [
+        "Juvenile myoclonic epilepsy"
+      ],
+      "best_match": {
+        "ddx": "Juvenile myoclonic epilepsy (Janz syndrome)",
+        "gdx": "Juvenile myoclonic epilepsy",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9469,
+      "gdx_set": [
+        "Obstructive shock"
+      ],
+      "best_match": {
+        "ddx": "Obstructive shock",
+        "gdx": "Obstructive shock",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9475,
+      "gdx_set": [
+        "Concussion"
+      ],
+      "best_match": {
+        "ddx": "Concussion",
+        "gdx": "Concussion",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9477,
+      "gdx_set": [
+        "Intraductal Papilloma"
+      ],
+      "best_match": {
+        "ddx": "Intraductal papilloma",
+        "gdx": "Intraductal Papilloma",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9480,
+      "gdx_set": [
+        "Arrhythmogenic right ventricular dysplasia"
+      ],
+      "best_match": {
+        "ddx": "Wolff-Parkinson-White syndrome",
+        "gdx": "Arrhythmogenic right ventricular dysplasia",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9481,
+      "gdx_set": [
+        "Urge incontinence"
+      ],
+      "best_match": {
+        "ddx": "Urge urinary incontinence (detrusor overactivity)",
+        "gdx": "Urge incontinence",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9482,
+      "gdx_set": [
+        "Tropical sprue"
+      ],
+      "best_match": {
+        "ddx": "Tropical sprue",
+        "gdx": "Tropical sprue",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9483,
+      "gdx_set": [
+        "Hypomagnesemia"
+      ],
+      "best_match": {
+        "ddx": "Magnesium deficiency (hypomagnesemia)",
+        "gdx": "Hypomagnesemia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9484,
+      "gdx_set": [
+        "Femoral artery murmur"
+      ],
+      "best_match": {
+        "ddx": "Pulmonic regurgitation (Graham Steell murmur)",
+        "gdx": "Femoral artery murmur",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9485,
+      "gdx_set": [
+        "Lung adenocarcinoma"
+      ],
+      "best_match": {
+        "ddx": "Non-small cell lung cancer, unspecified/adenocarcinoma",
+        "gdx": "Lung adenocarcinoma",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9486,
+      "gdx_set": [
+        "Iron deficiency anemia"
+      ],
+      "best_match": {
+        "ddx": "Uterine leiomyoma (uterine fibroids)",
+        "gdx": "Iron deficiency anemia",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9488,
+      "gdx_set": [
+        "Transient tachypnea of the newborn"
+      ],
+      "best_match": {
+        "ddx": "Transient tachypnea of the newborn",
+        "gdx": "Transient tachypnea of the newborn",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9489,
+      "gdx_set": [
+        "Complete heart block"
+      ],
+      "best_match": {
+        "ddx": "Torsades de pointes (polymorphic ventricular tachycardia)",
+        "gdx": "Complete heart block",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9490,
+      "gdx_set": [
+        "Damage to the sphenoid bone"
+      ],
+      "best_match": {
+        "ddx": "Epidural hematoma",
+        "gdx": "Damage to the sphenoid bone",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9491,
+      "gdx_set": [
+        "Hirschsprung disease"
+      ],
+      "best_match": {
+        "ddx": "Hirschsprung disease",
+        "gdx": "Hirschsprung disease",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9494,
+      "gdx_set": [
+        "Cauda equina syndrome"
+      ],
+      "best_match": {
+        "ddx": "Cauda equina syndrome due to lumbar disc herniation",
+        "gdx": "Cauda equina syndrome",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9495,
+      "gdx_set": [
+        "Advanced sleep phase disorder"
+      ],
+      "best_match": {
+        "ddx": "Advanced sleep phase disorder",
+        "gdx": "Advanced sleep phase disorder",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9496,
+      "gdx_set": [
+        "Glioblastoma multiforme"
+      ],
+      "best_match": {
+        "ddx": "Glioblastoma multiforme",
+        "gdx": "Glioblastoma multiforme",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9497,
+      "gdx_set": [
+        "Left ventricular hypertrophy"
+      ],
+      "best_match": {
+        "ddx": "Hypertrophic obstructive cardiomyopathy",
+        "gdx": "Left ventricular hypertrophy",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9498,
+      "gdx_set": [
+        "Tibial plateau fracture"
+      ],
+      "best_match": {
+        "ddx": "Tibial plateau fracture",
+        "gdx": "Tibial plateau fracture",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9499,
+      "gdx_set": [
+        "Intestinal malrotation"
+      ],
+      "best_match": {
+        "ddx": "Malrotation with midgut volvulus",
+        "gdx": "Intestinal malrotation",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9503,
+      "gdx_set": [
+        "Neural tube defect"
+      ],
+      "best_match": {
+        "ddx": "Neural tube defect",
+        "gdx": "Neural tube defect",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9505,
+      "gdx_set": [
+        "Keratoacanthoma"
+      ],
+      "best_match": {
+        "ddx": "Keratoacanthoma",
+        "gdx": "Keratoacanthoma",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9506,
+      "gdx_set": [
+        "Vascular dementia"
+      ],
+      "best_match": {
+        "ddx": "Vascular dementia (multi-infarct dementia)",
+        "gdx": "Vascular dementia",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9508,
+      "gdx_set": [
+        "Tarsal tunnel syndrome"
+      ],
+      "best_match": {
+        "ddx": "Tarsal tunnel syndrome",
+        "gdx": "Tarsal tunnel syndrome",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9509,
+      "gdx_set": [
+        "Endometrial carcinoma"
+      ],
+      "best_match": {
+        "ddx": "Polycystic ovary syndrome",
+        "gdx": "Endometrial carcinoma",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9513,
+      "gdx_set": [
+        "Acute lymphoblastic leukemia"
+      ],
+      "best_match": {
+        "ddx": "Acute lymphoblastic leukemia (ALL)",
+        "gdx": "Acute lymphoblastic leukemia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9515,
+      "gdx_set": [
+        "Alcohol-induced dermatological condition"
+      ],
+      "best_match": {
+        "ddx": "Psoriasis vulgaris",
+        "gdx": "Alcohol-induced dermatological condition",
+        "score": 0.2
+      }
+    },
+    {
+      "case_id": 9519,
+      "gdx_set": [
+        "Expressive language delay"
+      ],
+      "best_match": {
+        "ddx": "Expressive language disorder",
+        "gdx": "Expressive language delay",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9520,
+      "gdx_set": [
+        "Alzheimer's disease"
+      ],
+      "best_match": {
+        "ddx": "Alzheimer disease",
+        "gdx": "Alzheimer's disease",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9522,
+      "gdx_set": [
+        "Intracerebral hemorrhage"
+      ],
+      "best_match": {
+        "ddx": "Intracerebral hemorrhage",
+        "gdx": "Intracerebral hemorrhage",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9523,
+      "gdx_set": [
+        "Acute Arsenic Poisoning"
+      ],
+      "best_match": {
+        "ddx": "Acute arsenic poisoning",
+        "gdx": "Acute Arsenic Poisoning",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9526,
+      "gdx_set": [
+        "Functional Hypothalamic Amenorrhea"
+      ],
+      "best_match": {
+        "ddx": "Functional hypothalamic amenorrhea (exercise-induced)",
+        "gdx": "Functional Hypothalamic Amenorrhea",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9530,
+      "gdx_set": [
+        "Medullary Thyroid Carcinoma"
+      ],
+      "best_match": {
+        "ddx": "Medullary thyroid carcinoma",
+        "gdx": "Medullary Thyroid Carcinoma",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9532,
+      "gdx_set": [
+        "Ruptured Abdominal Aortic Aneurysm"
+      ],
+      "best_match": {
+        "ddx": "Ruptured abdominal aortic aneurysm",
+        "gdx": "Ruptured Abdominal Aortic Aneurysm",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9538,
+      "gdx_set": [
+        "Short QT syndrome"
+      ],
+      "best_match": {
+        "ddx": "Congenital long QT syndrome",
+        "gdx": "Short QT syndrome",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9543,
+      "gdx_set": [
+        "Iatrogenic hypoparathyroidism"
+      ],
+      "best_match": {
+        "ddx": "Postsurgical hypoparathyroidism (post-thyroidectomy)",
+        "gdx": "Iatrogenic hypoparathyroidism",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9544,
+      "gdx_set": [
+        "Paranoid personality disorder"
+      ],
+      "best_match": {
+        "ddx": "Paranoid personality disorder",
+        "gdx": "Paranoid personality disorder",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9545,
+      "gdx_set": [
+        "Lithium toxicity with urinary retention"
+      ],
+      "best_match": {
+        "ddx": "Lithium toxicity",
+        "gdx": "Lithium toxicity with urinary retention",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9546,
+      "gdx_set": [
+        "Cystic fibrosis with bronchiectasis"
+      ],
+      "best_match": {
+        "ddx": "Cystic fibrosis",
+        "gdx": "Cystic fibrosis with bronchiectasis",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9551,
+      "gdx_set": [
+        "Lichen planus"
+      ],
+      "best_match": {
+        "ddx": "Lichen planus",
+        "gdx": "Lichen planus",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9552,
+      "gdx_set": [
+        "Ovarian tumor"
+      ],
+      "best_match": {
+        "ddx": "Sertoli-Leydig cell tumor of the ovary",
+        "gdx": "Ovarian tumor",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9554,
+      "gdx_set": [
+        "Infantile spasms (West syndrome)"
+      ],
+      "best_match": {
+        "ddx": "Infantile spasms (West syndrome)",
+        "gdx": "Infantile spasms (West syndrome)",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9557,
+      "gdx_set": [
+        "Lumbar strain"
+      ],
+      "best_match": {
+        "ddx": "Lumbar muscle strain (mechanical low back pain)",
+        "gdx": "Lumbar strain",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9558,
+      "gdx_set": [
+        "Chronic myelogenous leukemia"
+      ],
+      "best_match": {
+        "ddx": "Chronic myelogenous leukemia (CML) in blast crisis",
+        "gdx": "Chronic myelogenous leukemia",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9559,
+      "gdx_set": [
+        "Adhesive capsulitis"
+      ],
+      "best_match": {
+        "ddx": "Adhesive capsulitis (frozen shoulder)",
+        "gdx": "Adhesive capsulitis",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9561,
+      "gdx_set": [
+        "Antigen exposure"
+      ],
+      "best_match": {
+        "ddx": "Jarisch-Herxheimer reaction secondary to treatment of syphilis",
+        "gdx": "Antigen exposure",
+        "score": 0.4
+      }
+    },
+    {
+      "case_id": 9562,
+      "gdx_set": [
+        "Adverse effect of doxycycline"
+      ],
+      "best_match": {
+        "ddx": "Drug-induced phototoxic reaction (tetracycline/doxycycline)",
+        "gdx": "Adverse effect of doxycycline",
+        "score": 0.6
+      }
+    },
+    {
+      "case_id": 9564,
+      "gdx_set": [
+        "Waldenström Macroglobulinemia"
+      ],
+      "best_match": {
+        "ddx": "Waldenström macroglobulinemia",
+        "gdx": "Waldenström Macroglobulinemia",
+        "score": 1.0
+      }
+    },
+    {
+      "case_id": 9566,
+      "gdx_set": [
+        "Subarachnoid Hemorrhage due to Berry Aneurysm Rupture"
+      ],
+      "best_match": {
+        "ddx": "Subarachnoid hemorrhage from ruptured saccular (berry) aneurysm",
+        "gdx": "Subarachnoid Hemorrhage due to Berry Aneurysm Rupture",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9567,
+      "gdx_set": [
+        "Calcium Pyrophosphate Deposition Disease (CPPD)"
+      ],
+      "best_match": {
+        "ddx": "Calcium pyrophosphate deposition disease (pseudogout)",
+        "gdx": "Calcium Pyrophosphate Deposition Disease (CPPD)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9570,
+      "gdx_set": [
+        "Lumbosacral strain"
+      ],
+      "best_match": {
+        "ddx": "Lumbar strain (mechanical low back pain)",
+        "gdx": "Lumbosacral strain",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9571,
+      "gdx_set": [
+        "Peptic ulcer disease with Helicobacter pylori infection"
+      ],
+      "best_match": {
+        "ddx": "Helicobacter pylori–associated duodenal peptic ulcer",
+        "gdx": "Peptic ulcer disease with Helicobacter pylori infection",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9573,
+      "gdx_set": [
+        "Mixed Connective Tissue Disease (MCTD)"
+      ],
+      "best_match": {
+        "ddx": "Mixed connective tissue disease",
+        "gdx": "Mixed Connective Tissue Disease (MCTD)",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9577,
+      "gdx_set": [
+        "Squamous Cell Carcinoma of the Scalp"
+      ],
+      "best_match": {
+        "ddx": "Cutaneous squamous cell carcinoma",
+        "gdx": "Squamous Cell Carcinoma of the Scalp",
+        "score": 0.8
+      }
+    },
+    {
+      "case_id": 9578,
+      "gdx_set": [
+        "Cerebral atrophy"
+      ],
+      "best_match": {
+        "ddx": "Chronic subdural hematoma",
+        "gdx": "Cerebral atrophy",
+        "score": 0.2
+      }
+    }
+  ]
+}
