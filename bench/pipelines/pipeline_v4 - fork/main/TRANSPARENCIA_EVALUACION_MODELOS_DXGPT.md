@@ -207,10 +207,12 @@ Por eso, **para experimentos donde el caso ya va en inglés y el prompt es ingl�
 Objetivo: cerrar lagunas de documentación y alinear lo publicado con artefactos reproducibles.
 
 1. **Origen exacto del “1.326”** en el informe LaTeX/PDF junto a **92,7%** para “classic_v2”: ¿de qué hoja, script o gráfico salió? En el repo, **92,7%** encaja con **`all_275` + `juanjo_classic` + `o3_images`** y pos. media **~1.443**, no 1.326.
+igual patino, y se confuncio y fue ~1.443
 2. **Confirmación de prompt en producción vs benchmark:** ¿el producto usa **`juanjo_classic`** o **`juanjo_classic_v2`** (u otro)? Las métricas del **92,7%** son del primero sobre **275** casos; el run **`all_150` + `_v2` + o3_images** es **otro experimento** (mucho menor % match en el `evaluation_details` que revisamos).
 3. **Tres filas distintas en `ranking.txt` para `all_275-juanjo_classic-o3_images`** (1.305 / 56%, 1.443 / 92,7%, 1.492 / 96%): ¿qué cambiaba entre corridas (config, juez, versión evaluador, re-etiquetado, subconjunto)? ¿Cuál se consideraba “oficial” para comunicación externa?
 4. **`summary.json` / `evaluation.log` / `emulator.log`:** ¿existían localmente y no se subieron al repo, o el pipeline de entonces no los generaba igual? ¿Hay backup en otro sitio (Drive, máquina, CI)?
 5. **Gráfico de barras (o3 ~1.326):** ¿promedia varios prompts, varios runs o otro dataset? Necesitamos la **tabla fuente** fila a fila para poder actualizar aboutus sin ambigüedad.
+los genero con claudeweb
 6. **Criterio de “éxito” en el informe público:** ¿coincide 100% con `best_match_found` / `final_resolution` del pipeline V4 actual, o había otra definición (p. ej. solo primer GDX, solo P1)?
 7. **`all_450`:** ¿hay `evaluation_details` o solo figuras agregadas? ¿Commit o carpeta de referencia?
 
