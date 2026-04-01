@@ -1,0 +1,52 @@
+{
+  "configuration": {
+    "experiment_name": "no-name-provided",
+    "experiment_description": "no-description-provided",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "dataset_path": "bench/datasets/all_275.json",
+    "timestamp": "2025-07-19T15:28:08.545484"
+  },
+  "global": {
+    "total_cases": 275,
+    "matched_cases": 261,
+    "unmatched_cases": 14,
+    "top_counts": {
+      "P3": 14,
+      "P1": 191,
+      "P2": 38,
+      "P5": 14,
+      "P4": 4
+    },
+    "resolution_method_counts": {
+      "snomed_match": 0,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 0,
+      "bert_match": 0,
+      "llm_judgment": 261
+    },
+    "average_position": 1.513,
+    "final_score_percentage": 94.91
+  },
+  "by_method": {
+    "LLM_JUDGMENT": {
+      "total_cases": 261,
+      "matched_cases": 261,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P3": 14,
+        "P1": 191,
+        "P2": 38,
+        "P5": 14,
+        "P4": 4
+      },
+      "average_position": 1.513,
+      "final_score_percentage": 100.0
+    }
+  }
+}

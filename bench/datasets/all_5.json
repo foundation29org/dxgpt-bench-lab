@@ -1,0 +1,351 @@
+[
+  {
+    "id": "R443",
+    "case": "Motivo de consulta: Paciente acude a consulta para ser diagnosticado Anamnesis: Paciente de sexo desconocido de desconocidos años. El paciente presenta los siguientes síntomas:  -Renal insufficiency  -Proteinuria  -Glomerulonephritis  -Renal cyst  -Uveitis  -Arthritis  -Lymphopenia  -Pulmonary embolism  -Deep venous thrombosis  -Microscopic hematuria  -Reduced coagulation factor V activity  -Antinuclear antibody positivity  -Renal cell carcinoma  -Knee pain  -Anti-beta 2 glycoprotein I antibody positivity Antecedentes: No hay antecedentes Exploracion: No se realiza Pruebas clinicas:",
+    "complexity": "C10",
+    "diagnoses": [
+      {
+        "name": "Renal cell carcinoma, nonpapillary",
+        "normalized_text": "Renal Cell Carcinoma",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "C64.9"
+          ],
+          "snomed": [],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      },
+      {
+        "name": "Systemic lupus erythematosus",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "M32.10"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      },
+      {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Systemic lupus erythematosus of childhood",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "M32.10"
+          ],
+          "snomed": [
+            "403488004"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      },
+      {
+        "name": "Renal cell carcinoma, xp11-associated",
+        "normalized_text": "Renal Cell Carcinoma",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "C64.9"
+          ],
+          "snomed": [
+            "702391001"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      },
+      {
+        "name": "Systemic lupus erythematosus 16",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      },
+      {
+        "name": "Systemic lupus erythematosus, 6",
+        "normalized_text": "Lupus Erythematosus, Systemic",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "R664",
+    "case": "Motivo de consulta: Paciente acude a consulta para ser diagnosticado Anamnesis: Paciente de sexo desconocido de desconocidos años. El paciente presenta los siguientes síntomas:  -Hypertelorism  -Erythroderma  -Hypermelanotic macule  -Failure to thrive  -Pneumonia  -Hepatomegaly  -Hypoalbuminemia  -Decreased circulating IgG level  -Spotty hyperpigmentation  -Interstitial pneumonitis  -Prolonged neonatal jaundice  -Prominent forehead  -Elevated gamma-glutamyltransferase level  -Persistent CMV viremia  -Reduced natural killer cell count  -Abnormal circulating IgA level  -Abnormal circulating IgM level Antecedentes: No hay antecedentes Exploracion: No se realiza Pruebas clinicas:",
+    "complexity": "C9",
+    "diagnoses": [
+      {
+        "name": "Trichohepatoenteric syndrome 1",
+        "normalized_text": "Trichohepatoenteric Syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "Q87.89"
+          ],
+          "snomed": [
+            "703406006"
+          ],
+          "omim": [
+            "222470"
+          ],
+          "orpha": [
+            "84064"
+          ]
+        }
+      },
+      {
+        "name": "Syndromic diarrhea",
+        "normalized_text": "Trichohepatoenteric Syndrome",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "K59.1"
+          ],
+          "snomed": [
+            "703406006"
+          ],
+          "omim": [
+            "222470"
+          ],
+          "orpha": [
+            "84064"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "R955",
+    "case": "Motivo de consulta: Paciente acude a consulta para ser diagnosticado Anamnesis: Paciente de sexo desconocido de desconocidos años. El paciente presenta los siguientes síntomas:  -Proteinuria  -Abnormal renal glomerulus morphology  -Hydronephrosis  -Abnormality of the neck  -Hematuria  -Hypothyroidism  -Hypertension  -Hyperpigmentation of the skin  -Thickened skin  -Ascites  -Pericardial effusion  -Abnormal left ventricle morphology  -Splenomegaly  -Weight loss  -Thrombocytosis  -Abnormal tubulointerstitial morphology  -Diarrhea  -Ischemic stroke  -Hyperuricemia  -Hyperkalemia  -Pleural effusion  -Lymphadenopathy  -Lymphadenitis  -Elevated circulating creatinine concentration  -Increased circulating IgA level  -Abdominal distention  -Somatic sensory dysfunction  -Difficulty climbing stairs  -Elevated erythrocyte sedimentation rate  -Abnormal gastric mucosa morphology  -Enterocolitis  -Tricuspid regurgitation  -Lower limb muscle weakness  -Pedal edema  -Abnormality of adrenal morphology  -Abnormality of adrenal physiology  -Dysesthesia  -Hand muscle weakness  -Abnormal circulating thyroid hormone concentration Antecedentes: No hay antecedentes Exploracion: No se realiza Pruebas clinicas:",
+    "complexity": "C7",
+    "diagnoses": [
+      {
+        "name": "POEMS syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E85.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      },
+      {
+        "name": "Takatsuki syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "I77.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      },
+      {
+        "name": "Crow-Fukase syndrome",
+        "normalized_text": "POEMS Syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "E85.8"
+          ],
+          "snomed": [
+            "79268002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2905"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "R601",
+    "case": "Motivo de consulta: Paciente acude a consulta para ser diagnosticado Anamnesis: Paciente de sexo desconocido de desconocidos años. El paciente presenta los siguientes síntomas:  -Recurrent urinary tract infections  -Neck muscle weakness  -Edema  -Skin rash  -Global developmental delay  -Motor delay  -Areflexia  -Muscle weakness  -Decreased fetal movement  -Arthralgia  -Microscopic hematuria  -Abnormal EKG  -EMG: myopathic abnormalities  -Centrally nucleated skeletal muscle fibers  -Shoulder girdle muscle atrophy  -Distal lower limb amyotrophy  -Macroscopic hematuria  -Abnormal cranial nerve physiology  -Unknown  -Abnormal nerve conduction velocity  -Unknown Antecedentes: No hay antecedentes Exploracion: No se realiza Pruebas clinicas:",
+    "complexity": "C9",
+    "diagnoses": [
+      {
+        "name": "Bethlem myopathy 1",
+        "normalized_text": "BETHLEM MYOPATHY 1",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "G71.0"
+          ],
+          "snomed": [
+            "718572004"
+          ],
+          "omim": [
+            "158810"
+          ],
+          "orpha": [
+            "610"
+          ]
+        }
+      },
+      {
+        "name": "Bethlem myopathy",
+        "normalized_text": "BETHLEM MYOPATHY 1",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "G71.0"
+          ],
+          "snomed": [
+            "718572004"
+          ],
+          "omim": [
+            "158810"
+          ],
+          "orpha": [
+            "610"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "R816",
+    "case": "Motivo de consulta: Paciente acude a consulta para ser diagnosticado Anamnesis: Paciente de sexo desconocido de desconocidos años. El paciente presenta los siguientes síntomas:  -Renal cyst  -Rod-cone dystrophy  -Abnormal electroretinogram  -Absent eyelashes  -Abnormality of visual evoked potentials  -Brachydactyly  -Intellectual disability  -Craniosynostosis  -Alopecia  -Absent eyebrow  -Short stature  -Ichthyosis  -Severe global developmental delay  -Feeding difficulties Antecedentes: No hay antecedentes Exploracion: No se realiza Pruebas clinicas:",
+    "complexity": "C9",
+    "diagnoses": [
+      {
+        "name": "Brachydactyly-short stature-retinitis pigmentosa syndrome",
+        "normalized_text": "RHYNS syndrome",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "Q87.1"
+          ],
+          "snomed": [
+            "43476002",
+            "723999009"
+          ],
+          "omim": [
+            "250410"
+          ],
+          "orpha": [
+            "166035"
+          ]
+        }
+      },
+      {
+        "name": "Retinitis pigmentosa",
+        "normalized_text": "Retinitis Pigmentosa",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "H35.52"
+          ],
+          "snomed": [
+            "28835009"
+          ],
+          "omim": [
+            "250410"
+          ],
+          "orpha": [
+            "166035"
+          ]
+        }
+      }
+    ]
+  }
+]
