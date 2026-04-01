@@ -1,0 +1,7591 @@
+{
+  "metadata": {
+    "experiment_name": "Ramedis Baseline con GPT-4o",
+    "llm_config_alias": "severity_assigner_llm",
+    "model_used": "gpt-4o",
+    "prompt_path": "experiments/DxGPT_baseline/eval-prompts/severity_assignment_batch_prompt.txt",
+    "timestamp": "2025-06-26T22:21:06.907978"
+  },
+  "assigned_severities": [
+    {
+      "ddx_unique_name": "Pfirrmann Grade 4 Lumbar Disc Degeneration",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pemphigus Vulgaris",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Conjuntivitis bacteriana",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Retrobulbar neuritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Primary Headache Syndrome (e.g., Tension-Type Headache)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Arrhythmia (e.g., bradycardia, tachycardia)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cryoglobulinemic Vasculitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Infección de Vías Urinarias",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Papillary Thyroid Carcinoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Urinary Retention",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Heart Failure",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pericarditis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Osteomyelitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pelizaeus-Merzbacher Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Posterior Vitreous Detachment",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Chorioretinitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Multiple system atrophy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hereditary Sensory and Autonomic Neuropathy Type 4",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial encephalomyopathy with lactic acidosis and stroke-like episodes (MELAS syndrome)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Functional Abdominal Pain Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Giant Cell Arteritis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lymphadenopathy (Malignant Etiology)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Zenker's Diverticulum",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Disfunción temporomandibular",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Orbital Cellulitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Rotator Cuff Tear",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pelvic Inflammatory Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Thymic Aplasia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Metastatic cancer",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Reactive Airway Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Trisomy 18",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Primary Ciliary Dyskinesia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Dominant Optic Atrophy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Overanticoagulation due to excessive warfarin effect",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Popliteal Artery Entrapment Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Rinitis bacteriana secundaria",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Vitamin D Deficiency",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "SIADH (Syndrome of Inappropriate Antidiuretic Hormone Secretion)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "West Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acute liver failure due to acetaminophen toxicity",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Von Willebrand disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Uterine Fibroids",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cardiovascular Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hemorrhagic Cystitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Obesity",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Sertoli-Leydig Cell Tumor",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bacterial Osteomyelitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pregnancy-Related Pelvic Girdle Pain",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Delirium Secondary to Dehydration or Malnutrition",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Tibial nerve entrapment",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Rinitis alérgica",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Atypical bacterial pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Sepsis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Superior Vena Cava Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Anti-TNF Therapy-associated Lymphoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Non-specific reactive lymphadenopathy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Insuficiencia Renal Aguda",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hyperimmunoglobulin E Syndrome (Job Syndrome)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Von Hippel-Lindau Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "13q deletion syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Musculoskeletal chest pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Cardiac Tamponade",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Lewy Body Dementia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Gastroesophageal Reflux Disease (GERD)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pregnancy-induced Nephropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Graft Pyelonephritis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Focal Nodular Hyperplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Heart Failure",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Acute Gastrointestinal Bleed",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Renal infarction",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Waldenstrom Macroglobulinemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Methanol poisoning",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Arsenic poisoning",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Chediak-Higashi Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Preparation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Constrictive pericarditis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Long QT Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Meckel's Diverticulum",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Posterior Communicating Artery Aneurysm",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Blood transfusion reaction (if applicable history)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Amphetamine intoxication",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Central scotoma",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "VLCAD Deficiency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Fanconi-Bickel Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Adrenarche",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Zellweger Spectrum Disorder",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Intellectual Developmental Disorder",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vasculitis urticariana",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "HIV gp41",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lead-Time Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Acute bacterial lymphadenitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Vestibular Neuronitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Recurrent Urinary Tract Infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Heat Syncope",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Wiedemann-Rautenstrauch Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Reacción alérgica a fármacos",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cone-rod dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Heart Failure with Preserved Ejection Fraction",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Small intestinal bacterial overgrowth (SIBO)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Amyotrophic Lateral Sclerosis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Ventricular septal defect",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Orthostatic Hypotension",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Actin filaments",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hirschsprung disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Ménière's disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Tendinitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Neuroleptic malignant syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Neurodegenerative Disease (e.g., Vascular Dementia)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hyponatremia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Age-Related Cognitive Decline",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Thyroiditis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Gastritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Velocardiofacial Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Juvenile Idiopathic Arthritis (JIA) - Polyarticular subtype",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bacterial lymphadenitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Autonomy",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Griscelli syndrome type 2",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Traumatic Hemorrhage",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Finger Sprain",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Bladder rupture",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Peripheral Arterial Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Non-Displaced Nasal Fracture",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Eye Contusion",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Lichen planus",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Orexin",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Down Syndrome-related Gastrointestinal Obstruction",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Persistent Fetal Vasculature Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Metastatic disease to the lung",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Discitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Bloom Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Congenital Myotonic Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Anaplastic astrocytoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Electrolyte imbalance (hypokalemia)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Liver Failure from Other Toxins",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Testicular Torsion",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hyperprolactinemia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hypertensive Encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Preauricular Sinus Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Foreign Body Sensation (without foreign body)",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Congenital Myopathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Ephelides (Freckles)",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Eosinophilic Granulomatosis with Polyangiitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Psoriatic Arthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Meningitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chronic Myeloid Leukemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Infección del tracto urinario (ITU)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Wiedemann-Steiner syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Propionic acidemia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Coxsackievirus Herpangina",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Lissencephaly",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Glomerulonephritis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Autoinflammatory Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pyelonephritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "High-Altitude Pulmonary Edema",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Benign Prostatic Hyperplasia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Coffin-Siris Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Malignant Otitis Externa",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pericarditis (early or mild)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Constrictive Pericarditis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Congenital Diaphragmatic Hernia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Oral Allergy Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Multiple myeloma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Musculoskeletal Pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Tuberculosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Polycystic Ovary Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Sindrome cardiorrenal",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Leigh Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Substance-Induced Psychotic Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Programmed cell death",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Chronic progressive external ophthalmoplegia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hunter Syndrome (Mucopolysaccharidosis Type II)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Treacher Collins syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Aminoacyl-tRNA Mimicry Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Primary Hyperparathyroidism",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Neonatal jaundice",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Gallbladder Gangrene",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Luxación del hombro",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Conjunctival Abrasion",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Síndrome de hipersensibilidad a medicamentos (DRESS)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Intestinal Adhesions",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Retained Placenta",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Reactive Attachment Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Early Polypeptide Truncation Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Lung Cancer with Regional Spread",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Delusional Disorder, Persecutory Type",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Renal Cell Carcinoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hypochlorite Overproduction-Induced Tissue Damage",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Spinal Cord Tumor",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Puerperal Sepsis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Tuberous Sclerosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Insect bite reaction",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Inflammatory Breast Cancer",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Idiopathic Intracranial Hypertension",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Transposition of the Great Arteries",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Obsessive-compulsive disorder (OCD) associated with tics",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute cholecystitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Down syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Trisomy 13",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "X-Linked Severe Combined Immunodeficiency",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Albinism",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Myasthenia Gravis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pertussis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Myasthenic Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Shoulder Dystocia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Henoch-Schönlein purpura (HSP)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Subdural Hematoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Intracranial hemorrhage",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Urolithiasis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Multi-infarct Dementia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Iron Deficiency Anemia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Alcoholic Liver Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Erythema Chronicum Migrans (Lyme Disease)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Glycogen storage disease type Ib",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Furunculosis of the External Ear Canal",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Shoulder Impingement Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hiperplasia prostática benigna",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Metabolic Disorders (e.g., Phenylketonuria or Mitochondrial Disease)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Cervical Artery Dissection Recurrence",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Amnesia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Allergic Rhinitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Chronic Lymphocytic Leukemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Glucose-6-Phosphate Dehydrogenase Deficiency",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Sideroblastic Anemia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Gestational Hypertension with Superimposed Preeclampsia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Oppositional Defiant Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "X-Linked Recessive Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Maintenance",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Mucosal Neuromas",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Glioblastoma",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Dumping syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "IgE-Mediated Food Allergy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hepatocellular Adenoma",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Thyroid dysfunction",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Human Chorionic Gonadotropin",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Postpartum Engorgement Leading to Milk Reduction",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ischemic Colitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypertensive Crisis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Epidural Hematoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Allergic Rhinoconjunctivitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Gallbladder Dyskinesia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cystic Metastatic Lesion",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Atrioventricular block",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Iron Refractory Iron Deficiency Anemia (IRIDA)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Antiphospholipid Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Atopic Dermatitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Gastroenteritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Transient ischemic attack",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Sebaceous Cyst",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Chédiak-Higashi syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Maternal Malnutrition",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Viral Gastroenteritis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Epileptic Encephalopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Serotonin Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Viral Upper Respiratory Infection",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Pheochromocytoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Allergic Reaction to Epoxy Resin",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Abdominal Epilepsy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Interstitial Cystitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Crigler-Najjar Syndrome Type I",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Pediatric Inflammatory Multisystem Syndrome (PIMS-TS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cervicogenic Headache",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Metastatic Bone Disease",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Congestive Heart Failure due to Volume Overload",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chediak-Higashi syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Ataxia-telangiectasia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Dilated cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Strep Pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "DiGeorge syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Subarachnoid Hemorrhage",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Adrenal Insufficiency",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Congenital Dyserythropoietic Anemia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Arginine:Glycine Amidinotransferase Deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Serratus Ligament Injury",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Stricture Due to Chronic Esophagitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Tourette syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pachyonychia Congenita",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Fibrous dysplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Listeria monocytogenes Meningitis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Diaphragmatic Paralysis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Spinocerebellar Ataxia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Juvenile Myoclonic Epilepsy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos Syndrome, Vascular Type",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Tibial Plateau Fracture",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Omphalocele",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Impetigo",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Idiosyncratic Food Reaction",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial Encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Preterm birth complications",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Drug Reaction with Eosinophilia and Systemic Symptoms (DRESS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Retained Products of Conception",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Congenital Neck Mass (Developmental Anomaly)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Rinofaringitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Alveolar Proteinosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Simple Mechanical Back Pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hypohidrotic Ectodermal Dysplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Achilles Tendinopathy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Opioid Tolerance",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pompe Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acute drug intoxication (e.g., amphetamines or MDMA)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Stress Disorder",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Primary ovarian insufficiency",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Foreign Body Aspiration",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Shwachman-Diamond Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Muckle-Wells Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Transposition of the great arteries",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Artritis séptica",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bladder Wall Lesion",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Angioedema hereditario",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Propionic Acidemia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Enteropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Alpha-1 Antitrypsin Deficiency",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gallbladder Dysfunction",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Systemic Inflammatory Response Syndrome (SIRS)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Gestational Trophoblastic Neoplasia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Eosinophilic granulomatosis with polyangiitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Smith-Lemli-Opitz Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Charcot-Marie-Tooth Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Unknown Diagnosis 5",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Vestibular neuritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "G6PD deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Systemic Lupus Erythematosus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Isquemia Mesentérica No Oclusiva",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Bulimia Nervosa",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Plantar Fasciitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Dehydration-Induced Syncope",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Alcoholic hepatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypertrophic Pulmonary Osteoarthropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Agouti-related protein",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Lipoma",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Brugada Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Allergic rhinitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Laryngopharyngeal Reflux",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Piebaldism",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Group B Streptococcal Meningitis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Hematoma Formation",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Paraneoplastic Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Gestational Diabetes Mellitus",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Intracerebral Hemorrhage",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Conjunctivitis alérgica",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Antibiotic-Induced Ribosomal Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Costochondritis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Central Vertigo (e.g., Vertebrobasilar Insufficiency)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cardiac tamponade",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Urinary Tract Infection (UTI)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Urinary Tract Infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Tubular Necrosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Status Epilepticus",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Eczema",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Pernicious anemia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Legius Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hallucinogen use disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Tuberculous Lymphadenitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Ewing's Sarcoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Onfalocele infectado",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chronic idiopathic cough",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Depression",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Conjunctival Kaposi Sarcoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chronic Obstructive Pulmonary Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Acute Asthma Exacerbation",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Leprosy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Tethered Cord Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chorioamnionitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Adrenal Crisis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Fabry Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lysergic acid diethylamide (LSD) intoxication",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Rett Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Viral Lower Respiratory Tract Infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Choroideremia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bladder Outlet Obstruction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Social Communication Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Diabetic Polyneuropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Schnitzler Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Severe combined immunodeficiency (SCID)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Osteoarthritis of the Ankle",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Prader-Willi Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Primary biliary cholangitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lung Cancer",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Klebsiella pneumoniae",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hernia inguinal incarcerada",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Toxic Optic Neuropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "ABCA4-Associated Retinopathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Viral Pneumonitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Paternalism",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Knee Sprain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Sepsis with Multiorgan Dysfunction Syndrome (MODS)",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Central retinal artery occlusion (CRAO)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial Cytopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Peptic Ulcer Disease with Complications",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lambert-Eaton Myasthenic Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pleural effusion",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Protein C Deficiency",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Laryngeal Atresia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Krabbe Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Rett syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Streptococcal Pharyngitis with Scarlet Fever",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Lupus Enteritis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Idiopathic intracranial hypertension",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Age-related Macular Degeneration",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Streptococcal pharyngitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pancoast Tumor",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Luteinizing Hormone Abnormality",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Transient Ischemic Attack",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Sampling Error",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Preseptal Cellulitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hypoglycemia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Caput succedaneum",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Viral Enteritis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Multiple Endocrine Neoplasia Type 2B",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Mutation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Clostridioides difficile Infection",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Parainfluenza Virus Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Dehydration Secondary to Gastrointestinal Loss",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Bone Bruise",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "ABO Incompatibility",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Melanoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Psoriatic arthritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Respiratory Distress Syndrome (ARDS)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Medullary Sponge Kidney",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Viral Conjunctivitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Dermatitis Herpetiformis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Manganism",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Donohue Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Allergic Conjunctivitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Mitochondria",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Drug withdrawal syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Neonatal Sepsis from Listeria monocytogenes",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Sanfilippo syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Biliary Dyskinesia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Fuchs' Endothelial Dystrophy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "ACE inhibitor-induced cough",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Prader-Willi syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Otitis media serosa",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Beta-1 adrenergic receptor",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Constitutional Small Fetus",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "MPO Deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Vestibular Syndrome due to Stroke",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chromatin laddering",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hypophosphatasia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Kenny-Caffey Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Abdominal compartment syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Vasovagal syncope",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Fournier gangrene",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Diffuse Esophageal Spasm",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Epidermoid Cyst",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Demencia vascular",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Nasal Bone Fracture",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Ischemic hepatitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Tuberculous lymphadenitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Premature rupture of membranes",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Contact dermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Eustachian Tube Dysfunction",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Aortic Stenosis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Psychogenic Vomiting",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Amyloidosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Congenital heart defects (e.g., VSD)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Early herpes zoster (pre-rash phase)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute bacterial sinusitis with possible complication",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Episcleritis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Noonan syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Degenerative Disc Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Palatal Abscess",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Alcohol intoxication",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Postoperative Pulmonary Complication",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "MELAS syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Renal Vein Thrombosis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Thanatophoric Dysplasia",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Atrial Fibrillation",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pitt-Hopkins Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Migraine with Aura",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Neurofibromatosis Type 1",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Retinal Vein Occlusion",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Endometritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Russell-Silver Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alcohol-induced Gastritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Palmoplantar Keratoderma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Absceso umbilical",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Horner's Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Normal cardiac conduction",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Mechanical Impact from Submuscular Breast Implants",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ichthyosis Vulgaris",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Unknown Diagnosis 4",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hermansky-Pudlak Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Edema periférico por insuficiencia cardíaca",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Angelman Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Kidney Injury",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "nsLTP Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Alcoholic cardiomyopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Gastritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Streptococcal Pharyngitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Tricuspid Valve Disease Secondary to Congenital Heart Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Mesenteric Ischemia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Sinusitis aguda",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hemophagocytic Lymphohistiocytosis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Insuficiencia cardíaca congestiva",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Leber Hereditary Optic Neuropathy (LHON)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "HIV primary infection",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Axenfeld-Rieger Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Menke's Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Epididimitis aguda",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "McCune-Albright syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Orquitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Presbycusis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Respiratory Distress Syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Serotonin syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cyclic Neutropenia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hashimoto's Thyroiditis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Thyroid Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Intermittent Explosive Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Beckwith-Wiedemann Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Acute Maxillary Sinusitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Herpes Labialis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Anemia of chronic disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Sleep Deprivation-Induced Seizures",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Adjustment Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Gitelman Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Influenza-associated pneumonia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Albright Hereditary Osteodystrophy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hutchinson-Gilford progeria syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Monoclonal Gammopathy of Undetermined Significance (MGUS)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Meckel-Gruber Syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "HIV-associated dermopathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Helicobacter pylori Infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Oculopharyngeal Muscular Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Traumatic Arthritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Atypical Pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Multiple Gestation Pregnancy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Glutaric Aciduria Type I",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Lymphoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pediatric autoimmune neuropsychiatric disorders associated with streptococcal infections (PANDAS)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Neurogenic bladder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Knee Effusion",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Infertility",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Bipolar I Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Allergic Bronchopulmonary Aspergillosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Otitis Media Serosa",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial DNA depletion syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Chronic Obstructive Pulmonary Disease (COPD) Exacerbation",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pearson syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Porphyria cutanea tarda",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Selection Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Achondroplasia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Lumbar Facet Joint Osteoarthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial Myopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "EBV-positive Lymphoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Lesión del manguito rotador",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Paget Disease of the Breast",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Galactosemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Allergic Contact Dermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Post-Concussive Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Primary Central Nervous System Lymphoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Anaphylaxis (atypical presentation)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Intracranial Calcifications",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Celulitis umbilical",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Costal Contusion",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Autonomic dysfunction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Spinal Cord Compression",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Brain Metastasis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Coffin-Siris syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Tricuspid Atresia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cushing Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Trombosis venosa profunda",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Postnasal Drip Syndrome",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Insufficient Statistical Power",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Muscle Strain",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Mammary Duct Ectasia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute bacterial sinusitis with orbital cellulitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Neonatal sepsis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Alcohol-Induced Seizures",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Duchenne Muscular Dystrophy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Absceso pericolónico",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Urethral injury",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Amniotic Fluid Embolism",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Advanced Sleep-Wake Phase Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acoustic neuroma",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Efflux pump mechanisms",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Exogenous Thyroid Hormone Use",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Branchio-Oto-Renal Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Carcinoma colorrectal",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Serum Sickness-Like Reaction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Autosomal Dominant Polycystic Kidney Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Anaphylaxis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Obsessive-Compulsive Disorder",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Lymphoproliferative Syndrome (ALPS)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vertebral Artery Dissection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chronic cigarette smoking-related microvascular damage",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Congenital adrenal hyperplasia (late-onset)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Heparin-Induced Thrombocytopenia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chlamydia pneumoniae infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hyponatremia associated with cerebral salt wasting",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Partial Small Bowel Obstruction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Vertebral Compression Fracture",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pelvic fracture-associated hemorrhage",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hallervorden-Spatz syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Dermatitis atópica",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ischemic Stroke",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Infected Epidermoid Cyst",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Rinitis viral",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Sepsis secondary to enteric perforation",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Cardiac sarcoidosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Apendicitis Atípica",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Familial Dilated Cardiomyopathy with Conduction Defects",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Diffuse Axonal Injury",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Community-acquired MRSA infection due to history of IV drug use",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chronic recurrent multifocal osteomyelitis (CRMO)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Diverticulitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Autoimmune hepatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Smith-Lemli-Opitz syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute respiratory distress syndrome (ARDS)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Lithium-Induced Psoriasis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hepatic Cysts",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hyperosmolar hyperglycemic state (HHS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Opsin Gene Mutation",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Postoperative atelectasis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Nephrotic Syndrome due to NPHS1 Mutation",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Waardenburg Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Periventricular Leukomalacia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cardiogenic Shock",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Severe Combined Immunodeficiency",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Impingement Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Epstein-Barr Virus Infectious Mononucleosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Bacterial Conjunctivitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Angelman syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gaucher Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Intraventricular Hemorrhage",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Intraperitoneal Abscess",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Calcium Pyrophosphate Deposition Disease (CPPD)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Choledocholithiasis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Protein Synthesis Inhibition Disorder",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Epididimitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Neonatal Respiratory Distress Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Superior semicircular canal dehiscence",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Genetic Reassortment",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Beta Thalassemia Major",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Uterine Rupture",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Congenital Adrenal Hyperplasia (CAH)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Paget disease of bone",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alpha Thalassemia Trait",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Kidney Injury Secondary to Volume Depletion",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ankylosing Spondylitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Facioscapulohumeral Muscular Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Retropharyngeal Abscess",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ischemic stroke",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Psoriasis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Bronchiolitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Trichothiodystrophy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pelvic Inflammatory Disease (PID)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hypothyroidism",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Ketamine-induced Psychosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Diverticulosis with Complication",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Glaucoma Secondary to Medication",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Primary Hypogonadism",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Parotid Abscess",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pleuritic chest pain secondary to viral infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Asthma Exacerbation",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hemophilia A",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Breast Abscess",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Motor end plate",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Congestive Heart Failure Exacerbation",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "This is not a medical case for diagnosis but a mathematical prevalence calculation.",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Chlamydia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Mesenteric Ischemia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Gonorrhea",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Mastitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Colorectal Cancer",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Complex Partial Seizure",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Urethral diverticulum",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Metabolic Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Mixed connective tissue disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Celulitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Chronic Myeloid Leukemia (Blast Crisis)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Leber congenital amaurosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Congenital Toxoplasmosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Sotos Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos Syndrome (vascular type)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Fanconi-Bickel syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Systemic Lupus Erythematosus (SLE)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Secondary syphilis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Femoral Fracture",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Shellfish Intolerance or Food Intolerance",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Cervical Lymphadenitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cerebral Aneurysm",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Jejunal Atresia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Solar Lentigo",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Aminoglycoside-induced ototoxicity",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Fetal Growth Restriction (FGR)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Klinefelter Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Rud Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Kabuki Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Linfedema",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Intestinal atresia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Preterm Labor",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Congenital Color Vision Deficiency",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Allergic conjunctivitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Rebound Headache (Medication Overuse Headache)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Inherited Thrombophilia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Obstructive Sleep Apnea",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cataract",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Coronary Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Fractura por avulsión",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Central Nervous System Leukemia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Branchial Cleft Cyst Infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Secondary Angle-Closure Glaucoma",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Projection",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Psychogenic cough",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Postpartum Hemorrhage",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Necrotizing enterocolitis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Commotio Cordis",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Congenital Sensorineural Hearing Loss",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos Syndrome - Hypermobility Type",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hunter syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Multiple Sclerosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Tinea Corporis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Rheumatic Fever",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Robinow syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Action",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial myopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Tendinitis de muñeca",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Constitutional Delay of Puberty",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Post-thrombotic Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Soft Tissue Injury",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Recurrent Allergic Urticaria",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Chronic Smoking-Related Vasculopathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Iron Deficiency Anemia Secondary to Chronic Blood Loss",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Primary Hypokalemic Periodic Paralysis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Renal-coloboma syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Eccema herpético",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Horner Syndrome Secondary to Neurogenic Cause",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Carotid Artery Dissection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Secondary adrenal insufficiency",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Apoptosis",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Drug-induced liver injury",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Alport Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Merkel Cell Carcinoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Global Developmental Delay",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Dacryocystitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Smith-Magenis Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Conjunctival Hemangioma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Pseudohypoparathyroidism",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Septic arthritis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lymphangioleiomyomatosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Food Allergy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Viral conjunctivitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Infective Endocarditis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cervical Insufficiency",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Neonatal Polycythemia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Diverticulitis Aguda",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Erisipela",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Psychogenic Amnesia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Prostatic Hypertrophy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Staphylococcus aureus-associated skin abscess",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hyperthyroidism",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Gout",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Diabetic Neuropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Right Bundle Branch Block",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Obsessive-Compulsive Personality Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Toxic Metabolic Encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Lesión ósea no detectada en extremidad superior",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Traumatic Subconjunctival Hemorrhage",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Erythrocytosis-secondary to Altitude",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Factitious Hyperthyroidism",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Lobar Pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Electrolyte imbalance (e.g., hypomagnesemia)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hydronephrosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Conjunctival Squamous Cell Carcinoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Lymphoblastic Leukemia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Neuroblastoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Respiratory Syncytial Virus (RSV) infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Retinopathy of Prematurity",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Nonmaleficence",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hypermobility spectrum disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Postoperative Peritonitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Síndrome del hachazo neuralgiforme",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Optic neuritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Trombocitopenia secundaria",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Carbohydrate-Deficient Glycoprotein Syndrome Type I",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Tuberculosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Anterior Communicating Artery Aneurysm Rupture",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Atypical pneumonia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Adrenal carcinoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Subgaleal hemorrhage",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bipolar Disorder",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Nephrotic Syndrome Secondary to Infection",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Amphetamine Intoxication",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Peripheral Precocious Puberty",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Reentrant arrhythmias",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Rheumatoid Arthritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Uterine Inversion",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lumbar Facet Joint Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hemolytic Disease of the Newborn (Rh Incompatibility)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Data Misclassification",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Alagille Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Travelers' Diarrhea",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "SAPHO Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Neonatal Dehydration",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Congenital Adrenal Hyperplasia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Turner Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Abdominal Aortic Aneurysm Rupture",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Epididymal Cyst",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Escherichia coli",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Total Anomalous Pulmonary Venous Return",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Anemia of Chronic Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Suppurative Otitis Media",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Delirium due to substance intoxication",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Malabsorption syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Polyendocrine Syndrome Type 1",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Spinal Muscular Atrophy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Warfarin-Induced Skin Necrosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Subacromial Impingement Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Seborrheic Dermatitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Generalized Anxiety Disorder (GAD)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Erb-Duchenne Palsy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pregnancy",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Manic episode in bipolar disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Allergic Reaction (Possible Drug Allergy)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Keratosis Pilaris",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Congenital Disorder of Glycosylation",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Neuroendocrine Tumor (Carcinoid Syndrome)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ectopic Pregnancy",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Obstrucción del tracto urinario bajo",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Faringitis Viral",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Bronchiolitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Diabetic Retinopathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Congenital High Airway Obstruction Syndrome (CHAOS)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Menorrhagia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Barth Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Epiglottitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Preseptal cellulitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bone Metastases",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Premature Ventricular Contractions (PVCs)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Viral upper respiratory tract infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Prospective Cohort Study",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "HIV p55",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Cannabis intoxication",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Residual intracerebral hematoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Immunosuppression-related Malignancy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Androgen-secreting ovarian tumor",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "mRNA Codon Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hemangioblastoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Child Sexual Abuse",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Seizure Mimic (Syncope)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Myocardial Infarction",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Topiramate-Induced Angle Closure Glaucoma",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Methylmalonic acidemia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hypoxic Ventilatory Response Adaptation",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Deep Vein Thrombosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Meniere's Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Irritant Dermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Pancreatitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Central Disc Extrusion with Caudal Migration",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Derrame pleural secundario a insuficiencia cardíaca",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Plasmid-mediated antibiotic resistance",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Ghrelin",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Lumbar Radiculopathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Oculopharyngeal muscular dystrophy (OPMD)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lumbar radiculopathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Coats Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "De Quervain's Tenosynovitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Non-infectious Conjunctivitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Esophageal Varices",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Hypertension",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Amanita Phalloides Toxicity",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Viral Upper Respiratory Tract Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Methotrexate-Induced Hepatotoxicity",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Primary Ovarian Insufficiency",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Biliary Obstruction",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Postoperative fever (Day 1: atelectasis)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hypertensive nephropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Breastfeeding Jaundice",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Lumbar Sprain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Brachial Plexus Injury",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Substance Use Disorder (Cocaine Use)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Mucocele",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "MPS I (Hurler syndrome)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Rheumatoid arthritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Fascitis necrosante",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Acute Bronchitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Myosin head",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Influenza",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pleural Effusion",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Chronic Pelvic Pain Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Transient Ischemic Attack (TIA)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Fixed Drug Eruption",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Uncomplicated Cystitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Normal Pubertal Development",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Facet Joint Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Polymorphous light eruption",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Beta-2 adrenergic receptor",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Benign Paroxysmal Positional Vertigo",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Systemic Osteoporosis secondary to corticosteroid therapy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hyperacute Rejection",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Post-viral cough syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Circadian Rhythm Sleep-Wake Disorders Related to Shift Work",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Coronary Syndrome (ACS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Behçet Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Esophageal Cancer",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Delirium Tremens (unlikely due to no alcohol history, but should be considered)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Occipital Horn Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Progesterone Deficiency",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Breast Milk Jaundice",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Paget's Disease of the Breast",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Gastroenteritis infecciosa",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Upper Respiratory Tract Infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Substance-Induced Tachycardia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Leigh syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Giant cell arteritis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bundle branch block",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Neonatal Brachial Plexus Injury",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Central nervous system infection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Factor V deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hypertensive crisis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hurler Syndrome (Mucopolysaccharidosis Type I)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Intraductal Papilloma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Impactación de cerumen",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Meconium Ileus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Posterior Tibial Tendon Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Viral Pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Urge Incontinence",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Goodpasture Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Guillain-Barré Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Obturator Nerve Injury",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Listeria Monocytogenes Meningitis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Cellulitis of the Breast",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mitral Regurgitation",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Dehydration",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Fanconi syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vitamin B12 deficiency secondary to autoimmune gastritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Autoimmune inner ear disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Angle-Closure Glaucoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Trisomy 13 (Patau syndrome)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Congenital Rubella Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Congestive Heart Failure (CHF)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Langerhans Cell Histiocytosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypertensive encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Inverse Psoriasis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cefalea sinusal",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Granulomatosis with Polyangiitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Internal Carotid Artery Aneurysm",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Pancoast Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lumbar Disc Herniation",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Idiopathic dilated cardiomyopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Miscarriage",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Graves' Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Malrotation with Midgut Volvulus",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Kabuki syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial DNA Depletion Syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Typhoid Fever",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Apendicitis aguda",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Sialadenitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Patellar Fracture",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Watson Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Toxic Epidermal Necrolysis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Acute viral pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Progressive supranuclear palsy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Epistaxis Secondary to Coagulation Disorder",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Intrauterine Growth Restriction (IUGR)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Neuromyelitis Optica Spectrum Disorder",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Frontotemporal Dementia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Peripheral neuropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Orchitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Endocannabinoids",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Beta-3 adrenergic receptor",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Reversible Cerebral Vasoconstriction Syndrome (RCVS)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Delusional Disorder",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Asbestosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Androgenetic Alopecia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Feingold syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Migraine",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cauda Equina Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Quiste amigdalino",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Viral pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Nocturnal Seizures",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Escherichia coli Sepsis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Tendinitis del tobillo",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Lactation Insufficiency Secondary to Reduced Breastfeeding Frequency",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Adenovirus Infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Otitis Media",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Carnitine palmitoyltransferase II deficiency",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "GERD-related cough",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Cistitis no infecciosa",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Tolosa-Hunt syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Labyrinthitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Traumatic Fibroma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Rubinstein-Taybi syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cholelithiasis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Nephrotic Syndrome of Finnish Type",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Psoriasis en placas aguda",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Angioedema idiopático no histaminérgico",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hepatolenticular Degeneration",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Post-surgical vasospasm",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Ovarian Cyst Rupture",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hereditary Hemochromatosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Tubo-Ovarian Abscess",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Fetal Growth Restriction",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Thyroid Dysfunction (e.g., Hypothyroidism)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "HIV p17",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Mesothelioma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sinoatrial node dysfunction",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cerebrovascular accident",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Stevens-Johnson Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Severe Hypothyroidism",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Preeclampsia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Late-onset Tay-Sachs disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lewy body dementia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Dry Eye Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ovarian Hyperthecosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Infección Respiratoria Viral Alta",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Syphilis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Xerosis Cutis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Upper Respiratory Tract Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Cushing syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Thrombocytopenia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Disseminated fungal infection (e.g., Candida or Histoplasma due to HIV)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cartilage-hair hypoplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Tromboflebitis superficial",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Viral Exanthem",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Greig cephalopolysyndactyly syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Trisomy 13 (Patau Syndrome)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Baker's cyst compressing tibial nerve",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Mastoiditis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Codon Degeneracy",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Peripheral Neuropathy due to Vitamin B12 Deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Vitiligo",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Drug-Induced Uveal Effusion Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Enfisema Pulmonar",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Respiratory Distress Syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Complementation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Otitis media",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Diverticulitis complicada",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Concussion",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Neonatal Sepsis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Hypoparathyroidism",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Oculofaciocardiodental Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Functional Neurological Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Leukemia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Pyeloureteral obstruction",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hemochromatosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Common Variable Immunodeficiency",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Mononucleosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Diabetic Cardiomyopathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Charcot-Marie-Tooth disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Peanut Allergy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Hepatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chagas Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Deuteranopia",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Acute psychotic episode (e.g., schizophrenia)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Headache",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Bone Cyst",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Atypical Pneumonia (e.g., Mycoplasma pneumoniae)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Klebsiella pneumoniae infection",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Ocular Migraine",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Transient tic disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Enzymatic inactivation of antibiotics",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Hypothyroidism",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Tetralogy of Fallot",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Sickle cell trait",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Facioscapulohumeral muscular dystrophy (FSHD)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Observational Study",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Biliary Atresia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acute viral nasopharyngitis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Acquired Viral Bronchiolitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Steinert's disease (myotonic dystrophy type 1)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Meningioma",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hyperemesis Gravidarum",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Interstitial Emphysema",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Kernicterus",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Chronic Recurrent Multifocal Osteomyelitis (CRMO)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mushroom Poisoning",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Squamous Cell Carcinoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hemoglobin H Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Calcific Tendonitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Post-Transcriptional Modification",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Infectious Myositis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Toxic Multinodular Goiter",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Low-lying placenta",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hodgkin Lymphoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pathologic Fracture",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Otosclerosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Coarctation of the aorta",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Iron deficiency anemia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bacterial Pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Primary hyperparathyroidism",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Neonatal Seizures",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Fanconi Anemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bipolar I Disorder with Psychotic Features",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chronic Otitis Media Complications",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Osteomalacia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Parotid Gland Trauma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Trigeminal Neuralgia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hirschsprung Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Rotator Cuff Tendinopathy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Litiasis renal izquierda",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Scrotal Pain",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Streptococcal Pharyngitis Complication",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos syndrome vascular type",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Postural Orthostatic Tachycardia Syndrome (POTS)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Disseminated Intravascular Coagulation",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Compartment Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Alteration of target binding sites",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Chronic Kidney Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cockayne Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Neonatal Pneumonia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Dental Abscess",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "CDKL5 Deficiency Disorder",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Enfermedad inflamatoria intestinal",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Asthma",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "NEMO deficiency syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Goldenhar syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Castleman Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cystic Fibrosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Niemann-Pick disease type C",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Anorexia Nervosa",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pregnancy with Fibroids",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Biofilm formation",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pseudoachondroplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Ganglion Cyst",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hyper IgE Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hyperthyroidism-induced Placental Dysfunction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Generalized Anxiety Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Escherichia coli Meningitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Alpha-thalassemia trait",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Tracheoesophageal Fistula",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Loop diuretic-induced ototoxicity",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bladder Cancer",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Post-Infectious Diarrhea",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Placenta accreta spectrum",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Androgen Insensitivity Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Cataracts",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Eritema multiforme",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Schimke immuno-osseous dysplasia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Viral Gastroenteritis with Post-Infectious Autonomic Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Drug-Induced Lactation Decline (Cetirizine as Contributing Factor)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Alpha-1 adrenergic receptor",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Electrolyte Imbalance",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Dermatitis de contacto alérgica",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Otitis Externa",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hospital-Acquired Pneumonia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Infectious mononucleosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Ehlers-Danlos Syndrome, Classical Type",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Viral-induced Respiratory Distress",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Contusión de muñeca",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Overactive bladder syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Rubenstein-Taybi syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gastric Adenocarcinoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Causes of Dental Caries and Calluses (e.g., Purging-Related Trauma)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Chronic Nutritional Deficiency with Hypokalemia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Urothelial Carcinoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Whipple Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Small Intestinal Bacterial Overgrowth",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cholesteatoma",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Infantile Fabry Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Parasitic Infection (e.g., Giardiasis)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Quiste epidermoide",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Perimenopause",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Hypertensive Heart Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypochondroplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Ischemia-Reperfusion Injury",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chronic myofascial pain syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "CHARGE Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Perinatal Stroke",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Non-Specific Upper Respiratory Tract Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Anemia-related syncope",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Neuralgia del trigémino",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Blepharitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Irritabilidad por malestar general",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Cephalohematoma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Physiologic Neonatal Jaundice",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Corneal Abrasion",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Marfan Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Type 2 Diabetes Mellitus-Related Liver Dysfunction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial myopathy, encephalopathy, lactic acidosis, and stroke-like episodes (MELAS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cervical Muscle Spasm",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Canavan Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Justice",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Hepatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Conduct Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Ataxia-Telangiectasia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Sarcoidosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Zellweger Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Homozygous Achondroplasia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Comèl-Netherton syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pulmonary abscess",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Red-Green Colorblindness",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Bacterial Tracheitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Complete Hydatidiform Mole",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Opioid-Induced Constipation",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Wolfram Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Small Bowel Obstruction",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Peptic Ulcer Perforation",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Croup (Laryngotracheobronchitis)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Recurrent Preeclampsia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hydrocephalus",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Infección viral de vías respiratorias superiores",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Mononucleosis Infectiosa",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Subperiosteal Hematoma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Reading Frame Shift",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Nefropatía diabética",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Acute Prostatitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Subdural Hematoma",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hemorrhagic stroke",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Femoral Nerve Injury",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Scabies",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Multifocal Atrial Tachycardia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Menopause",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Thiamine deficiency (Wernicke encephalopathy)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Transient Global Amnesia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Reactive arthritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Staphylococcal Scalded Skin Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Bartonella henselae infection (Cat Scratch Disease)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Syphilis (Congenital)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Asma infantil inducida por infección respiratoria",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Insect Bite or Sting Reaction",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Aicardi Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "CHARGE syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "VACTERL Association",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Asthma exacerbation",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Primary Insomnia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Retinoblastoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hyperbilirubinemia causing Scleral Icterus",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Sinusitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Oligohydramnios",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Actinic Keratosis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Q Fever",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Habit cough syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Síndrome Gripal",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ductal Carcinoma in Situ (DCIS)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Friedreich Ataxia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Septic Shock",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Deltoid Ligament Injury",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hyperkalemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Respiratory Syncytial Virus (RSV)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Nephrotic Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Paroxysmal Nocturnal Dyspnea",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Peripheral Neuropathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Prurigo Nodularis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Speech Delay",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Refsum Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hemophilia B",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Wobble Hypothesis",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Ureteral stricture",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hepatic Hemangioma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Intrauterine growth restriction",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Post-viral Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Pneumothorax",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Cerebral Palsy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Migraine-associated Vertigo",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Chronic Prostatitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Drug-Induced Acute Kidney Injury",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Substance-Induced Mood Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Congenital Infection (e.g., TORCH)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acoustic Neuroma",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Rheumatic Heart Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Shoulder Dystocia-associated Birth Injury",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Androgen-secreting Tumor",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "William-Beuren Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Poststreptococcal Reactive Arthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Recurrent Sinopulmonary Infections",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Metabolic Encephalopathy secondary to Pyruvate Carboxylase Deficiency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Primary CNS lymphoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Antibiotic-induced acute interstitial nephritis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Branchio-oculo-facial syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Ischemic Stroke",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Testicular abscess",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Group A Streptococcal Pharyngitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Neuro-Behçet disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Left Ventricular Hypertrophy with Secondary Heart Failure",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Ocular Surface Foreign Body",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Otitis media aguda",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Staphylococcus aureus",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Diverticulitis aguda",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Substance-induced psychosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chronic otitis media with effusion",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hyperlipidemia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Sinus fungal infection (fungal sinusitis)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cavernous sinus thrombosis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Horner Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Cerebral Hypoperfusion",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ménière's Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Phacosclerosis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Bronchopulmonary Dysplasia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hiponatremia dilucional",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Polycythemia Vera",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pseudogout",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Fibromyalgia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Drug-Induced Pemphigus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Spider bite",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Wilson's Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Gestational Hypertension",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Renal artery stenosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Fractura oculta de escafoides",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Spinal Stenosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pregnancy-Associated Hypertension",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Meckel-Gruber syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sindromes de hipersensibilidad retardada",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Meniere's disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Leukemoid Reaction",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Kearns-Sayre syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Toxoplasmosis (Congenital)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Carnitine transporter deficiency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chronic kidney disease due to ischemic nephropathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Irritable Bowel Syndrome (IBS)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Alcohol-related intoxication or withdrawal",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Post-Inflammatory Hyperpigmentation",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Kawasaki Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Comparative Study",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hereditary Angioedema",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Sjögren's syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Ischemic Optic Neuropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Photosensitivity due to tetracycline use",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Glycoprotein Storage Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Distal Renal Tubular Acidosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute kidney injury (prerenal azotemia)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Uterine Atony",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Polycystic ovary syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute Kidney Injury secondary to dehydration",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Paranoid Schizophrenia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Placental Hormone Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hidradenitis suppurativa",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Freeman-Sheldon Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cri-du-chat Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Polycystic Kidney Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Tension pneumothorax",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Chest Trauma with Residual Glandular Injury Impacting Lactation",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Osteoporosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Gastroesophageal Reflux Disease",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pancreatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Congenital Malformations",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Peptic Ulcer Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Escabiosis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hemophagocytic lymphohistiocytosis (HLH)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Orthostatic hypotension",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hereditary Spherocytosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Subclinical Hypothyroidism",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Noise-Induced Hearing Loss",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Alpha-2 adrenergic receptor",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Polycystic ovary syndrome (PCOS)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Specific Language Impairment",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Primary Sjögren's Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Leber Hereditary Optic Neuropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vasa previa",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Crohn's Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "HIV gp120",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Chronic Plaque Psoriasis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Duodenal Atresia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Atopic dermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Carnitine Transporter Deficiency",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Heart failure exacerbation",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pellagra",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Transient Loss of Consciousness due to Cardiac Arrhythmia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Knee Dislocation",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Melanocytic Nevus",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Perforated Gastric Ulcer",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Post-infectious reactive airway disease",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Berkson's Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Lentigo Maligna",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Diverticulitis de colon derecho",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Lead Poisoning",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Behçet's Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pleomorphic Adenoma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Nephrolithiasis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Divertículo de uraco infectado",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Body Dysmorphic Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Stroke (Ischemic or Hemorrhagic)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Susac syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Community-acquired pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Leptospirosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Spinal epidural abscess",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Lymphedema",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Normal Pressure Hydrocephalus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Sarcoplasmic reticulum",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "X-linked agammaglobulinemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Restrictive Lung Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pachydermatoid Keratosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acute bronchitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Sickle Cell Trait-associated Hyposthenuria",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Anxiety or Panic Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Common Cold (Rhinovirus)",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Epistasis",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Dysfunctional Uterine Bleeding",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Non-Hodgkin Lymphoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Post-surgical complications (gastric bypass)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Osteoarthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Adhesive Capsulitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Conjunctivitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hemolytic Uremic Syndrome (HUS)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Arthrogryposis Multiplex Congenita",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Complex Regional Pain Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "22q11.2 Deletion Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Stress Reaction",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Adrenal Cortical Carcinoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Bacterial Pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Leukocyte adhesion deficiency type 1 (LAD1)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Basal Cell Carcinoma",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Wolf-Hirschhorn syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pelvic organ prolapse",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Squamous Papilloma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Community-acquired pyelonephritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Microscopic Polyangiitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Corticobasal degeneration",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Amigdalitis quística",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Tuberous Sclerosis Complex",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Adherent Placenta (Placenta Accreta Spectrum)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cervicogenic Dizziness",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Confounding Variable Influence",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Contemplation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Retinitis pigmentosa",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Anticholinergic toxicity",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Obstructive Uropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Transverse Myelitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Schizoaffective Disorder",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Fraser Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Postnasal drip syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Myocarditis-Induced Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Fetal Hypoxia",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Functional Hypothalamic Amenorrhea",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Cholecystitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypersensitivity Pneumonitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Manic Episode with Psychotic Features",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Anterior Hip Dislocation",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cornelia de Lange syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hematoma subdural crónico",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Unknown Diagnosis 2",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Thyrotoxicosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Septic Arthritis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Infantile Spasms (West Syndrome)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Alcohol Use Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Diabetic Embryopathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Turner syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Methotrexate-associated Lymphoproliferative Disorder",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Dolor musculoesquelético postraumático",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Autism Spectrum Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Renal Parenchymal Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vitreous Hemorrhage",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Inborn Errors of Metabolism (e.g., Urea Cycle Disorder)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hypertensive Emergency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Pain Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Respiratory Distress Syndrome of the Newborn",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Weill-Marchesani syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Glioblastoma multiforme",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Aicardi syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "PMM2-CDG (Phosphomannomutase 2 Congenital Disorder of Glycosylation)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Congenital Ichthyosiform Erythroderma",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Temporomandibular Joint Disorder (TMJ)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Infantile Spasms",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Vitamin B12 Deficiency",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Fibrosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Deep Vein Thrombosis (DVT)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pleurodynia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hallermann-Streiff syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Intrauterine Pregnancy",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Chronic Lymphocytic Leukemia (CLL)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Varicela",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alcohol-related Wernicke's encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Denys-Drash Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Allergic Bronchopulmonary Aspergillosis (ABPA)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Arrhythmogenic Right Ventricular Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Herpes simplex virus",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Streptococcus pyogenes",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Polycystic Ovary Syndrome (PCOS)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Toxoplasmosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Developmental Coordination Disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Upper Respiratory Infection",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Neumonía basal izquierda",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Allergic Angioedema",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alcoholic ketoacidosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Liver Failure",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Cervical Myofascial Pain Syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Diffuse Mesangial Sclerosis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pelvic Pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Aspiration Pneumonitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Nucleosomal DNA fragmentation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Diabetic Cranial Nerve Palsy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gaucher disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Popliteal artery aneurysm with nerve compression",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Traumatic Brain Injury",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Organophosphate poisoning",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Fibrocystic Breast Changes",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Congenital heart defects",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Atrial Fibrillation (paroxysmal)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Neurofibromatosis type 1",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Macrosomia related to Maternal Diabetes",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "MERRF syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Renal Colic",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Traumatic Subarachnoid Hemorrhage",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Cellulitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Usher syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Multiple sclerosis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Axenfeld-Rieger syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Craniofrontonasal Dysplasia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pierre Robin sequence",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Histoplasmosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Congenital Cytomegalovirus Infection",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Irritable Bowel Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Toxic shock syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Gianotti-Crosti syndrome",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Multiple Myeloma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Spondyloepiphyseal Dysplasia Congenita",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Seizures",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Bacterial Food Poisoning",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "COVID-19",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Liver Metastasis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Functional Dyspepsia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ectodermal Dysplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hypogonadism",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pulmonary embolism",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Limb-Girdle Muscular Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Severe asthma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "MOPD II (Microcephalic Osteodysplastic Primordial Dwarfism Type II)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Postanesthesia Delirium",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Perforated Peptic Ulcer",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Infectious Colitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hypereosinophilic Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Microvascular Ischemic Cranial Neuropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cornelia de Lange Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Delirium secondary to metabolic imbalance",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Contact Dermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Aicardi-Goutieres Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Disruptive Mood Dysregulation Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Shoulder Bursitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Chronic infection (e.g., tuberculosis)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Migraine Without Aura",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Mixed Connective Tissue Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Neuropeptide Y",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Tropical infectious diarrhea (e.g., Giardia or Entamoeba histolytica)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pseudogota",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cockayne syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Genetic Recombination",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Pyogenic Granuloma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Endometriosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Bacterial Bronchitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Townes-Brocks Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Chronic thromboembolic pulmonary hypertension",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Detection Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Arrhythmic Right Ventricular Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Placenta previa",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ventricular Septal Defect",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Frozen Shoulder (Adhesive Capsulitis)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Adult-Onset Still's Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Precontemplation",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Melanoma of the Conjunctiva",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Congenital Heart Disease (e.g., Patent Ductus Arteriosus)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vestibular Neuritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Pterygium",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hyperadrenergic State Secondary to Stimulants",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Small Vessel Ischemic Disease",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Volunteer Bias",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Atypical Chest Wall Pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Loeys-Dietz Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Menkes Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Epilepsy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cocaine intoxication",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Peptidyl Transferase Disruption",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Hemophagocytic Lymphohistiocytosis (HLH)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Cohen Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Caspase-mediated cleavage",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Lithium Toxicity",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Dermatofibroma",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Gilbert Syndrome",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Partial Hydatidiform Mole",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Umbilical Cord Prolapse",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Patent Ductus Arteriosus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chronic Granulomatous Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Serohematoma",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Pituitary Adenoma (TSH-secreting)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Pleurisy",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Inflammatory Bowel Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypoxic-Ischemic Encephalopathy",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Fibromuscular dysplasia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Rib Contusion",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Gota",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Rib Fracture",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Pharyngitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Drug-induced fever (e.g., morphine or ondansetron)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cervical trauma",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Conjuntivitis viral",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Prolonged QT Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chronic Mountain Sickness",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Diarrheal Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Systemic lupus erythematosus",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Usher Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Lymphatic Malformation",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Secondary Hypercalcemia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Male Infertility",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Norovirus Gastroenteritis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Phencyclidine (PCP) intoxication",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Anxiety Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Legionnaires' disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Salivary Gland Hemorrhage",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Tyrosinemia Type I",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Ménière’s Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Myotonic Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Thyroglossal Duct Cyst",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Post-Traumatic Stress Disorder (PTSD)",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Placental Insufficiency",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Delirium Secondary to Infection",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Viral Rhinosinusitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Gastrointestinal Bleeding (Potential Upper GI Source)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Toxic encephalopathy",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Steroid-Induced Osteoporosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Non-arteritic anterior ischemic optic neuropathy (NAION)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Nonketotic Hyperglycinemia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Biliary Colic",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Epstein-Barr Virus Infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Paranoid Personality Disorder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Lesión hipóxica cerebral crónica",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Cervical Spondylosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "HIV p24",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Vasovagal Syncope",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hereditary Fructose Intolerance",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Unknown Diagnosis 3",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hyperparathyroidism",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Post-Surgical Nerve Entrapment",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Lung cancer (Pancoast tumor)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Neonatal Hyperbilirubinemia due to G6PD Deficiency",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Vascular Dementia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Mitochondrial encephalopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Mucormycosis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Reflux nephropathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Myocardial Ischemia",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Foreign Body in the Ear Canal",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Acute Exacerbation of Chronic Bronchitis (AECB)",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute Intermittent Porphyria",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hepatocellular Carcinoma",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Delirium",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hypertrophic Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sick Sinus Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cluster Headache",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Retinal Detachment",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypoplastic left heart syndrome",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Optic neuropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Chronic Pancreatitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Friedreich's Ataxia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Paronychia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Corpus Luteum Insufficiency",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "DiGeorge Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Epididymitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Acetaminophen Toxicity",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Ureterolithiasis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mycoplasma Pneumoniae Infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Central Precocious Puberty",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Retinitis Pigmentosa",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Bronchiectasis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Subchorionic hematoma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Parkinson's disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Autoimmune Hemolytic Anemia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Alveolitis seca postexodoncia",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Small Intestinal Bacterial Overgrowth (SIBO)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Potter Sequence",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Viral pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pulmonary Embolism",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Panic Disorder",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Detrusor Overactivity",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Intrauterine Infection (Chorioamnionitis)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Lateral Meniscus Tear",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Metastatic brain tumor",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Major Depressive Disorder",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Prostatitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hypovolemic Shock",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Bacterial Meningitis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Disseminated intravascular coagulation (DIC)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Pierre Robin Sequence",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Brain Contusion",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Clostridioides difficile infection",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Familial Thoracic Aortic Aneurysm and Dissection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Cervical Artery Dissection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Common variable immunodeficiency (CVID)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Becker Muscular Dystrophy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Rheumatoid Arthritis-associated Lymphoproliferative Disorders",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Truncus Arteriosus",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Meconium Aspiration Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Chronic Hypertension",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alport syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Reactive Arthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Herpetic Whitlow",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Kaufman oculocerebrofacial syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Acute Bacterial Sinusitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Epidural Abscess",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Guanidinoacetate Methyltransferase Deficiency",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Osteosarcoma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pyruvate Kinase Deficiency",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Wernicke's encephalopathy",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Fat Embolism Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Alkaptonuria",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chagas disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Phytophotodermatitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Hypoplastic Left Heart Syndrome",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Neonatal Herpes Simplex Virus Infection",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Ruptura del tendón del bíceps",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Benign Paroxysmal Positional Vertigo (BPPV)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Tarsal Tunnel Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Familial Mediterranean Fever",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Cardioembolic Stroke",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Medial Gastrocnemius Strain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Sickle Cell Trait-associated Renal Papillary Necrosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Clavicular Fracture",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Mallory-Weiss Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "X-linked hypophosphatemia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Holoprosencephaly",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Absceso periamigdalino",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Facet Joint Synovitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Post-streptococcal Reactive Arthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Mesoblastic Nephroma",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sciatic Nerve Injury",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acute bacterial sinusitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Dilated Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Viral upper respiratory infection",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Mechanical Low Back Pain",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Diabetic retinopathy-related acute vision loss",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Morton's Neuroma",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Nonalcoholic Fatty Liver Disease",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Netherton Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Neoplasia intestinal",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Supraspinatus Tendon Tear",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Rubinstein-Taybi Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Periorbital cellulitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Fetal Alcohol Spectrum Disorder (FASD)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Hypertensive Retinopathy",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Acetaminophen-induced acute liver failure",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Uveitis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hospital-acquired pneumonia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Postpartum Endometritis with Pulmonary Complications",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Sjögren's Syndrome",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Vocal Cord Dysfunction",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Group B Streptococcus Sepsis",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Salivary Gland Mucocele",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Traumatismo craneoencefálico leve",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Infectious Mononucleosis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Creatine Transporter Deficiency Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Lumbar Spondylosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Endometrial Polyp",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Spondylosis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Interstitial cystitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gynecological Pelvic Pain Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Adenosine Deaminase Deficiency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Angioedema inducido por fármacos",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Toxocariasis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Medial Meniscus Tear",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Hemoglobin F persistence",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Hyper IgM Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Baker's Cyst Rupture",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Angioedema",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pregnancy Complications",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Phase II Clinical Trial",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Hordeolum",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Achalasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Respiratory Syncytial Virus Infection",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Rosacea",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Wilson Disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Postoperative infection (e.g., surgical site infection)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Atopic Dermatitis with Secondary Infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Osteoarthritis of the Shoulder",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Orbital cellulitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Urinary bladder diverticulum",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Aminoglycoside-Induced Ototoxicity",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Costello Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Polymyalgia Rheumatica",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Alzheimer's Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Transient Tachypnea of the Newborn",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Large Vessel Vasculitis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Clouston Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Occipital Neuralgia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Gastroesophageal reflux disease (GERD)",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Acute Pyelonephritis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Pancreatic Insufficiency",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Andersen-Tawil Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Preterm Premature Rupture of Membranes (PPROM)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Subclinical Hyperthyroidism",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Faringitis viral",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Fryns Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Esguince de muñeca",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Congenital Heart Disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acute Generalized Exanthematous Pustulosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Preterm Labor Risk",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Benign prostatic hyperplasia with urinary retention",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chromosomal Anomalies (e.g., Trisomy 13 or 18)",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Longitudinal Study",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Osteoporotic Vertebral Compression Fracture",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Legionnaires' Disease",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Oculocutaneous Albinism Type 2",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Post-viral exanthem",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Metastatic Lung Cancer",
+      "inferred_severity": "S10"
+    },
+    {
+      "ddx_unique_name": "Placental abruption",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Neural Tube Defects",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Pseudomonas aeruginosa",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Systemic Sclerosis (Scleroderma)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Endophthalmitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Fanconi anemia",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Central Retinal Artery Occlusion",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Wolf-Hirschhorn Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Medication-induced pulmonary toxicity",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Diabetes mellitus tipo 2 no controlada",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Finger Contusion",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Nasal foreign body with secondary infection",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Cervical Radiculopathy",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Macrosomia",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Beneficence",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Cavernous Sinus Thrombosis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Heart Failure with Preserved Ejection Fraction (HFpEF)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cerebral Creatine Deficiency Syndrome",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Addison's disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "ABO Hemolytic Disease of the Newborn",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Maple syrup urine disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Peritonitis",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Acute Pyelonephritis with Complications",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Beta-thalassemia trait",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Minor Salivary Gland Tumor",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Seasonal Allergic Rhinitis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Chronic Viral Hepatitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Diabetic Hyperglycemia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Malrotation with midgut volvulus",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Hypertension",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Post-stroke state with residual neurological deficits",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Skull fracture",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Persistent Pulmonary Hypertension of the Newborn",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Vitamin K Deficiency",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Gallstone pancreatitis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Uterine rupture",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Atypical Bacterial Pneumonia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Tension-Type Headache",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Diabetic nephropathy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Fabry disease",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Kaposi Sarcoma",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Molluscum contagiosum",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Tuberculous Pericarditis",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pelizaeus-Merzbacher disease",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sacroiliac Joint Dysfunction",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Respiratory distress syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Renal Artery Stenosis",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Acute Myeloid Leukemia (AML)",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Renal tubular acidosis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Overactive Bladder Syndrome",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Spondyloarthritis",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Leukocyte Adhesion Deficiency",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Hyperekplexia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Mycoplasma pneumoniae infection",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Transient Hyperfiltration",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Adjustment Disorder with Anxiety",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Ruptured Corpus Luteum Cyst",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Preterm Birth",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Hereditary Persistence of Fetal Hemoglobin",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Color vision deficiency",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Bardet-Biedl Syndrome",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Streptococcus pneumoniae infection",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Gastroenteritis",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Cutaneous Larva Migrans",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Postrenal Acute Kidney Injury",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Reaction Formation",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Type 1 Diabetes Mellitus",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Diabetic Foot Ulcer (Atypical Skin Manifestation)",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Tropical Sprue",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Acute Otitis Externa",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Wilms Tumor",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Bronchiolitis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Deep venous thrombosis (DVT) with secondary inflammatory response",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Popliteal Cyst",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Noonan Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Night Terrors",
+      "inferred_severity": "S1"
+    },
+    {
+      "ddx_unique_name": "Optic Neuritis",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Koolen-de Vries Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Obsessive-Compulsive Disorder (OCD)",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Community-Acquired Pneumonia",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Quiste de retención mucosa",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Diabetes Mellitus",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Left Ventricular Noncompaction Cardiomyopathy",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Molar Pregnancy",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Intracranial Hemorrhage",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Heat-Related Syncope",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Chronic Rhinosinusitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Williams Syndrome",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Chronic Sinusitis",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Chronic tic disorder",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Celiac Disease",
+      "inferred_severity": "S3"
+    },
+    {
+      "ddx_unique_name": "Absceso pélvico",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Hyperornithinemia-Hyperammonemia-Homocitrullinuria Syndrome (HHH Syndrome)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Adult-onset Leigh Syndrome",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Congestive Heart Failure",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Quasi-Experimental Study",
+      "inferred_severity": "S0"
+    },
+    {
+      "ddx_unique_name": "Femoral Head Fracture",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Placental Abruption",
+      "inferred_severity": "S8"
+    },
+    {
+      "ddx_unique_name": "Sepsis without clear source",
+      "inferred_severity": "S9"
+    },
+    {
+      "ddx_unique_name": "Multiple Epiphyseal Dysplasia",
+      "inferred_severity": "S4"
+    },
+    {
+      "ddx_unique_name": "Metatropic Dysplasia",
+      "inferred_severity": "S5"
+    },
+    {
+      "ddx_unique_name": "Infección de vías respiratorias altas",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Subacute combined degeneration",
+      "inferred_severity": "S6"
+    },
+    {
+      "ddx_unique_name": "Cytomegalovirus Infection (Congenital CMV)",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Primary Stabbing Headache",
+      "inferred_severity": "S2"
+    },
+    {
+      "ddx_unique_name": "Uterine Overdistension",
+      "inferred_severity": "S7"
+    },
+    {
+      "ddx_unique_name": "Pneumonia",
+      "inferred_severity": "S6"
+    }
+  ]
+}

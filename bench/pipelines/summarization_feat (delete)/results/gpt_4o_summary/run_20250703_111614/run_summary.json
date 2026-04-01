@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "experiment_name": "Ramedis Baseline con GPT-4o",
+    "experiment_description": "Running this as an example to showcase the new pipeline",
+    "execution_timestamp": "2025-07-03T11:48:51.313729",
+    "pipeline_version": "v2.1.0",
+    "model_configuration": {
+      "model_name": "gpt-4o-summary",
+      "prompt_template_name": "../../candidate-prompts/dxgpt_dev.txt",
+      "output_schema_enabled": true
+    },
+    "dataset_configuration": {
+      "dataset_path": "bench/datasets/largest_summarized_demo.json",
+      "total_cases_processed": 100
+    }
+  },
+  "dataset_profile": {
+    "cases_by_source": {
+      "distribution": {
+        "T": 98,
+        "Q": 2
+      },
+      "proportions": {
+        "T": 0.98,
+        "Q": 0.02
+      }
+    },
+    "ground_truth_profile": {
+      "mean_gdx_per_case": 1.65,
+      "max_gdx_per_case": 5,
+      "cases_with_single_gdx_rate": 0.56,
+      "gdx_code_coverage_rate": {
+        "icd10": 1.0,
+        "orpha": 0.0,
+        "omim": 0.0,
+        "snomed": 0.6485
+      }
+    }
+  },
+  "icd10_chapter_analysis": {
+    "total_cases_with_icd10": 100,
+    "total_chapters_covered": 16,
+    "chapter_distribution": {
+      "A": {
+        "name": "Certain infectious and parasitic diseases",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 0.5,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "B": {
+        "name": "Certain infectious and parasitic diseases",
+        "count": 5,
+        "percentage": 5.0,
+        "mean_semantic_score": 0.3703,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.8514
+      },
+      "D": {
+        "name": "Neoplasms / Diseases of blood",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 0.0,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.0
+      },
+      "E": {
+        "name": "Endocrine, nutritional and metabolic diseases",
+        "count": 1,
+        "percentage": 1.0,
+        "mean_semantic_score": 1.0,
+        "min_semantic_score": 1.0,
+        "max_semantic_score": 1.0
+      },
+      "G": {
+        "name": "Diseases of the nervous system",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 1.0,
+        "min_semantic_score": 1.0,
+        "max_semantic_score": 1.0
+      },
+      "H": {
+        "name": "Diseases of the eye/ear",
+        "count": 1,
+        "percentage": 1.0,
+        "mean_semantic_score": 0.0,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.0
+      },
+      "I": {
+        "name": "Diseases of the circulatory system",
+        "count": 9,
+        "percentage": 9.0,
+        "mean_semantic_score": 0.7952,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "J": {
+        "name": "Diseases of the respiratory system",
+        "count": 31,
+        "percentage": 31.0,
+        "mean_semantic_score": 0.3945,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "K": {
+        "name": "Diseases of the digestive system",
+        "count": 12,
+        "percentage": 12.0,
+        "mean_semantic_score": 0.4926,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "L": {
+        "name": "Diseases of the skin",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 0.35,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.7
+      },
+      "M": {
+        "name": "Diseases of the musculoskeletal system",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 0.25,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.5
+      },
+      "N": {
+        "name": "Diseases of the genitourinary system",
+        "count": 13,
+        "percentage": 13.0,
+        "mean_semantic_score": 0.5019,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "R": {
+        "name": "Symptoms, signs and abnormal findings",
+        "count": 9,
+        "percentage": 9.0,
+        "mean_semantic_score": 0.2778,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      },
+      "T": {
+        "name": "Injury, poisoning",
+        "count": 3,
+        "percentage": 3.0,
+        "mean_semantic_score": 0.2333,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 0.7
+      },
+      "U": {
+        "name": "Codes for special purposes",
+        "count": 4,
+        "percentage": 4.0,
+        "mean_semantic_score": 0.9128,
+        "min_semantic_score": 0.8042,
+        "max_semantic_score": 1.0
+      },
+      "Z": {
+        "name": "Factors influencing health status",
+        "count": 2,
+        "percentage": 2.0,
+        "mean_semantic_score": 0.5,
+        "min_semantic_score": 0.0,
+        "max_semantic_score": 1.0
+      }
+    },
+    "summary": {
+      "most_common_chapter": "J",
+      "least_common_chapter": "E",
+      "best_performing_chapter": "E",
+      "worst_performing_chapter": "D"
+    }
+  },
+  "performance_summary": {
+    "model_output_quality": {
+      "total_ddx_generated": 500,
+      "mean_ddx_per_case": 5.0,
+      "ddx_without_codes_rate": 0.254,
+      "ddx_parse_error_rate": 0.0
+    },
+    "overall_semantic_performance": {
+      "mean_best_match_score": 0.4672,
+      "hit_rate": {
+        "threshold": 0.8,
+        "value": 0.32
+      },
+      "excellence_rate": 0.0,
+      "best_match_relationship_distribution": {
+        "MORE_SPECIFIC": 0.0,
+        "EXACT_MATCH": 0.31,
+        "MORE_GENERAL": 0.01,
+        "CLOSE_SIBLING": 0.03,
+        "RELATED": 0.28,
+        "UNRELATED_OR_NO_CODE": 0.37
+      },
+      "code_type_distribution": {
+        "icd10": 0.46,
+        "snomed": 0.07,
+        "omim": 0.0,
+        "orpha": 0.0,
+        "BERT": 0.1,
+        "none": 0.37
+      },
+      "bert_usage_statistics": {
+        "total_bert_attempts": 10,
+        "bert_matches_above_threshold": 10,
+        "bert_matches_below_threshold": 0,
+        "bert_errors": 0,
+        "bert_success_rate": 1.0,
+        "bert_combination_breakdown": {
+          "name_vs_name": 8,
+          "normalized_vs_normalized": 1,
+          "name_vs_normalized": 1,
+          "normalized_vs_name": 0
+        }
+      }
+    },
+    "ranking_performance": {
+      "threshold": 0.8,
+      "top_1_accuracy": 0.32,
+      "top_3_accuracy": 0.32,
+      "top_5_accuracy": 0.32,
+      "mean_reciprocal_rank": 0.32
+    },
+    "clinical_safety_profile": {
+      "severity_evaluation": {
+        "mean_severity_score": 0.2228,
+        "mean_optimist_score": 0.2248,
+        "mean_pessimist_score": 0.2582
+      },
+      "severity_bias_distribution": {
+        "optimist_rate": 0.21,
+        "pessimist_rate": 0.68,
+        "neutral_rate": 0.11
+      }
+    },
+    "diagnostic_insights_and_error_analysis": {
+      "failure_analysis": {
+        "failure_rate": 0.68,
+        "common_failure_modes": {
+          "CLOSE_SIBLING": 0.0441,
+          "RELATED": 0.4118,
+          "UNRELATED_OR_NO_CODE": 0.5441
+        }
+      },
+      "performance_by_source": {
+        "Q": 0.5,
+        "T": 0.4666
+      },
+      "performance_by_gdx_count": {
+        "single_gdx_cases": 0.4216,
+        "multiple_gdx_cases": 0.5253
+      }
+    }
+  }
+}
