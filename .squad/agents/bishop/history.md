@@ -87,11 +87,94 @@ See `.squad/decisions/inbox/bishop-nature-datasets.md` for complete dataset cata
 ### Insight for DxGPT
 Nature's datasets avoid boilerplate/leakage through **disease-centric registry discipline**, not cleanup. Hospital pipelines (like DxGPT's source) are built for operations, not diagnosis benchmarking. **Lesson:** If DxGPT datasets are from hospital EHRs, boilerplate/leakage are structural, not just data quality issues. Fix Tier 1 QA gates before adopting Nature datasets.
 
-### Recommendation
-Phase 1: MyGene2 + RAMEDIS (~770 cases, 2–3 weeks)  
-Phase 2: DDD phenotype (~2,283, if Phase 1 stable, 4–6 weeks)  
-Phase 3: Defer genomic  
-**Blocker:** Current DxGPT dataset fails QA; must clean first
-
 ### Full Analysis
 See `.squad/decisions/inbox/bishop-nature-datasets.md` for complete dataset catalog with access paths, metadata, and integration roadmap.
+
+---
+
+## Phase 4 Analysis: Data Ingestion and Curation Strategy (2026-04-16)
+
+**Request:** Assess data layer architecture; clarify relationship between raw source ingestion, per-source evaluation, and subdataset curation with case variability.
+
+### Key Tension Identified
+
+Three competing needs:
+1. **Store raw source datasets** (data29/data-repos/raw/)
+2. **Audit each source independently** (separate concerns)
+3. **Create mixed subdatasets** for case variability (bench/datasets current practice)
+
+**Current state:** Datasets flow raw → processed → mixed without explicit provenance tracking. After evaluation, no way to decompose metrics by source family.
+
+### Recommended Architecture: Three-Tier Model
+
+**Tier 1 — Raw Source Repository** (data29/data-repos/raw/)
+- Immutable archive with SOURCE_MANIFEST.json (provenance, source type, clinical context)
+- Each source documented: origin URL, license, clinical collection dates, schema version, hash
+- Enforce readonly after ingestion
+
+**Tier 2 — Normalized Intermediates** (data29/data-repos/normalized-by-source/)
+- Per-source processing: schema normalization, ICD-10 mapping, complexity assignment
+- QA validation per source: run Parker checklist before merging
+- Generate qa_report_*.txt for each source (boilerplate%, leakage%, language mixing%)
+- Separate concerns: identify source-specific issues; don't mix until audited
+
+**Tier 3 — Curated Evaluation Datasets** (data29/data-repos/curated-datasets/)
+- Mixed subdatasets with **lineage tracking**: _metadata.json + _lineage.txt per dataset
+- Composition documented: cases per source, diversity strategy (ICD-10 chapters, complexity bins, severity tiers)
+- Each curated set linked back to normalized sources; immutable once created
+- Enable decomposition of results by source family (stratified reporting)
+
+### Critical Insight
+
+**Both per-source evaluation AND mixed subdatasets are necessary — they serve different purposes.**
+
+Per-source audit ≠ per-source evaluation. Audit sources in isolation to catch contamination BEFORE merging. Then deliberately mix for robustness testing. This prevents cross-contamination: clean + clean → trustworthy mixed results.
+
+### Specific Learnings
+
+1. **Subdataset mixing is clinically sound:** Single-source datasets may overfit to symptom patterns (e.g., RAMEDIS weighted toward metabolic disorders). Real systems see heterogeneous mixes. Mixing tests generalization.
+
+2. **Current blind spot:** bench/datasets mixes sources without tracking composition. Can't answer "how many cases from source X?" or "is source Y degrading performance?" Metadata is invisible.
+
+3. **QA before merge:** DxGPT internal (FAIL: 57% boilerplate, 26% leakage); RAMEDIS (PASS: <5% boilerplate, <2% leakage). Merge dirty + clean = both contaminated. Audit first.
+
+4. **Provenance metadata is operational:** _lineage.txt (source_id → new_id mapping) enables:
+   - Case-level debugging (which errors correlate with which sources?)
+   - Stratified metrics (Recall@1 by source, complexity, language)
+   - Reproducibility (exact subset frozen, versionable)
+
+5. **External source discipline matters:** Nature datasets (registries) avoid boilerplate through **disease-centric design**, not cleanup. Hospital EHR pipelines are operations-first, not diagnosis-first. Different preprocessing explains quality gap.
+
+### Key Files/Paths
+
+- Current raw: `data29/data-repos/raw/` (ramedis.json, medbulltes5op.json, urgtorre.json, etc.)
+- Current processed: `bench/datasets/` (all_*.json, no provenance)
+- Recommended new: `data29/data-repos/normalized-by-source/` + `curated-datasets/`
+- QA tool: `bench/validation_checks.py` (Parker decision #5; ready to use)
+- Nature catalog: `.squad/decisions/bishop-nature-datasets.md`
+
+### Recommendation for Javier
+
+1. Confirm source provenance for each file in raw/ (hospital EHR? synthetic? manual?)
+2. Prioritize cleanup: clean DxGPT internal first, then ingest Nature datasets
+3. Adopt three-tier structure for scalability (new sources added without touching existing evaluation sets)
+4. Report results stratified by source (transparency + debugging)
+
+### Decision Document
+
+See `.squad/decisions.md` (Decision #9) for full architecture specification, implementation checklist, and phased roadmap.
+
+---
+
+## Phase 5: Data Architecture Decision Finalized (2026-04-16)
+
+**Action:** Merged `.squad/decisions/inbox/bishop-data-ingestion-strategy.md` into `.squad/decisions.md` as Decision #9.
+
+**Summary:** Three-tier data architecture approved:
+- **Tier 1 (Raw):** Immutable source repository with SOURCE_MANIFEST.json
+- **Tier 2 (Normalized):** Per-source processing with Parker QA validation
+- **Tier 3 (Curated):** Mixed subdatasets with lineage tracking
+
+**Implementation Status:** READY — Awaiting Javier confirmation to proceed with Tier 1 setup.
+
+**Cross-team update:** Coordinated with Dallas (Evaluation Engineer) on dual-mode strategy to ensure data architecture supports per-source audit + optional mixed evaluation.

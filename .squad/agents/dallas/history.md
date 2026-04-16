@@ -108,3 +108,68 @@
 7. Plan clinical expert validation cohort for Phase 2 (if board approves)
 
 **Status:** COMPLETE — Roadmap ready for team decision. Awaiting Javier approval to proceed with Phase 1.
+
+---
+
+## Phase 5: Evaluation Strategy Finalized (2026-04-16)
+
+**Action:** Merged `.squad/decisions/inbox/dallas-eval-strategy.md` into `.squad/decisions.md` as Decision #10.
+
+**Summary:** Dual-mode evaluation strategy approved:
+- **Tier 1 (Per-source, PRIMARY):** Recall@1/3/5 full-denominator per dataset
+- **Tier 2 (Mixed, SECONDARY):** Optional mixed subdatasets after Tier 1 passes QA
+- **Prerequisite:** Clean DxGPT first (boilerplate 57%, leakage 26% → FAIL)
+
+**Metric Shift Required:** DxGPT must adopt Nature's full-denominator Recall@K (not matched-only average position) to enable direct comparison.
+
+**Implementation Status:** IMPLEMENTATION-READY — Awaiting team consensus to proceed.
+
+**Cross-team coordination:** Aligned with Bishop (Data Analyst) on three-tier data architecture to ensure evaluation strategy has clean per-source inputs before mixing for generalization testing.
+
+---
+
+## Integration Strategy Analysis: Per-Source vs. Mixed Subdatasets (2026-04-16)
+
+**Request:** Javier asked whether to evaluate Nature datasets per-source, in mixed subdatasets, or both. Assessed current bench practice to recommend strategy.
+
+**Key Finding on Current Practice:**
+- DxGPT builds diversity-optimized subsets (`all_150.json`, `all_250.json`, `all_450.json`) from 9,582 raw cases
+- This is **appropriate for regression testing** (catch generalization failures)
+- But **incompatible with Nature's methodology** (which reports per-dataset)
+
+**Critical Insight:**
+When you mix sources before validating per-source:
+- Leakage gets diluted (DxGPT's 7% boilerplate + Nature's clean data masks signal)
+- Comparability to Nature vanishes (can't claim "we matched their 74% on MyGene2" if yours is mixed)
+- Source accountability is lost (don't know if low recall is your judge or domain mismatch)
+
+**Recommendation: Dual-Mode Strategy (Tier 1→Tier 2→Tier 3)**
+
+1. **Tier 1 (Per-source, PRIMARY):** Run MyGene2, RAMEDIS, DDD separately. Report Recall@1/3/5 full-denominator vs. Nature's published baseline. This is credible and comparable.
+
+2. **Tier 2 (Mixed, SECONDARY):** Only after Tier 1 validates. Mix sources to test generalization, but report per-source contributions nested in the results table.
+
+3. **Tier 3 (Extended, FUTURE):** Genomic integration deferred until Tier 1–2 stable.
+
+**Why This Preserves Comparability:**
+- Nature used per-dataset reporting; you match their structure
+- Leakage stays visible per-source; no dilution
+- If your MyGene2 differs from theirs, you can audit *why* (judge choice, label version, prompt differences)
+- Stratification (by prevalence, modality, language) is per-dataset, not hidden in aggregate
+
+**Architectural Constraint (New):**
+- Use **Recall@1/3/5 full-denominator** as primary metric (not matched-only average position)
+- Freeze judge, prompt, external service versions before each run
+- Pin dataset versions (API fetch date, repository commit hash)
+
+**Reporting Structure (From Dallas Decision):**
+- Table 1: Per-dataset baseline with Nature comparison
+- Table 2: Stratified results (prevalence, modality, language, complexity)
+- Table 3 (if Tier 2 enabled): Mixed-dataset breakdown showing per-source contribution
+- QA Gates: All datasets must pass Parker validation before reporting
+
+**Risk Triggers:**
+- If per-source Recall@1 differs from Nature by >15%: do not mix; investigate root cause first
+- If mixed result > per-source: indicates dilution of weak performers; audit stratification
+
+**File Reference:** `.squad/decisions/inbox/dallas-eval-strategy.md` — implementation-ready decision document with templates and red flags for team.
