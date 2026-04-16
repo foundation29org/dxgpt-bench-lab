@@ -240,6 +240,198 @@ Of 9 Nature datasets, 3 are directly mappable to DxGPT (MyGene2, RAMEDIS, DDD ph
 
 ---
 
+### 9. Bishop Decision — Data Ingestion and Curation Strategy
+
+**Date:** 2026-04-16  
+**Status:** RECOMMENDED  
+**Scope:** Data layer architecture; provenance preservation; contamination prevention  
+**Author:** Bishop (Data Analyst)
+
+**Recommendation:** Adopt a **three-tier data architecture** that separates raw source datasets, normalized intermediates, and evaluation-ready subdatasets. This avoids label contamination, preserves provenance, and enables safe mixing of heterogeneous sources (DxGPT internal + Nature paper external).
+
+**Current state:** Datasets flow directly from raw sources → processed → bench/datasets (mixed subsets) without explicit provenance tracking. After evaluation, no way to decompose metrics by source family.
+
+**Three-Tier Model:**
+
+1. **Tier 1 — Raw Source Repository** (`data29/data-repos/raw/`)
+   - Immutable archive with `SOURCE_MANIFEST.json` documenting provenance
+   - Each source: origin URL, license, clinical collection dates, schema version, hash
+   - Enforce readonly after ingestion
+
+2. **Tier 2 — Normalized Intermediates** (`data29/data-repos/normalized-by-source/`)
+   - Per-source processing: schema normalization, ICD-10 mapping
+   - QA validation before merging: run Parker checklist on each source
+   - Generate `qa_report_*.txt` per source (boilerplate%, leakage%, language mixing%)
+   - Example: ramedis → ramedis_v1.json + qa_report_ramedis_v1.txt + provenance.json
+
+3. **Tier 3 — Curated Evaluation Subdatasets** (`data29/data-repos/curated-datasets/`)
+   - Mixed subdatasets with lineage tracking: `_metadata.json` + `_lineage.txt`
+   - Composition documented: cases per source, diversity strategy, curation date
+   - Enable decomposition of results by source family (stratified reporting)
+   - Example: dx_baseline_450.json → dx_baseline_450/_metadata.json (composition) + dx_baseline_450/_lineage.txt (case tracking)
+
+**Critical Insight:**
+
+Both per-source evaluation AND mixed subdatasets are necessary—they serve different purposes:
+- Per-source audit catches contamination BEFORE merging
+- Mixed subdatasets test generalization AFTER sources are individually validated
+- This prevents cross-contamination: clean + clean → trustworthy mixed results
+
+**For Nature Paper Datasets (Phase 1 roadmap):**
+
+1. Ingest: Fetch MyGene2 + RAMEDIS from public sources
+2. Normalize to unified schema → `normalized-by-source/`
+3. Run Parker QA on both (expected: PASS)
+4. Create curated dataset: `dx_nature_intake_770.json` with full lineage
+5. Evaluate per-source, then optionally mix
+
+**Implementation Checklist:**
+
+- [ ] Add SOURCE_MANIFEST.json to data29/data-repos/raw/
+- [ ] Create normalized-by-source/ structure
+- [ ] Normalize each source to unified schema; document schema version
+- [ ] Run Parker QA on each source; generate qa_report_*.txt
+- [ ] Create provenance.json linking raw → normalized
+- [ ] Create curated-datasets/ with _metadata.json + _lineage.txt templates
+- [ ] Define diversity_config.yaml (sampling rules)
+- [ ] Update documentation with three-tier diagram
+
+**Related Decisions:**
+
+- **Dallas Decision #9 (new):** Recommends dual-mode evaluation (per-source primary, mixed secondary)
+- **Parker Decision #5:** QA validation checklist (8 gates) ready to audit new sources
+
+---
+
+### 10. Dallas Decision — Evaluation Strategy for Nature Paper Integration
+
+**Date:** 2026-04-16  
+**Status:** ACTIVE — Implementation-ready  
+**Author:** Dallas (Evaluation Engineer)  
+**Related:** Bishop Decision #9 (Data Ingestion Strategy)
+
+**The Question:** Should we evaluate against each dataset individually, mixed subdatasets, or both?
+
+**Recommendation: Dual-mode evaluation strategy**
+
+1. **Per-source evaluation (PRIMARY, Tier 1):** Report Recall@1/3/5 separately for each dataset family (MyGene2, RAMEDIS, DDD, etc.). This respects provenance, enables comparison to Nature's published baseline, and prevents weaker domains from masking stronger ones.
+
+2. **Mixed subdatasets (SECONDARY, Tier 2):** Create stratified subsets mixing source families only *after* per-source validation passes QA. This tests domain generalization but must not become the primary metric.
+
+**Why Per-Source Evaluation Is Necessary:**
+
+- Nature paper reports per-dataset; you must match their metric to claim comparability
+- Per-source evaluation respects data provenance and catches quality issues before mixing
+- Allows detection of domain-specific failures
+- Baseline for root-cause analysis (is the gap due to judge, prompt, or data version?)
+
+**Why Mixed Subdatasets Still Matter:**
+
+- Current DxGPT builds diversity-optimized subsets for regression testing (good)
+- Mixing prevents overfitting to single-source symptom patterns
+- But only valid if underlying per-source datasets are clean (hence Tier 1 prerequisite)
+
+**Critical Blocker: DxGPT Cleanup Required First**
+
+Before ingesting Nature data:
+1. Clean DxGPT internal: strip boilerplate (57% of cases), remove diagnosis leakage (26% of cases)
+2. Retrain judge on cleaned data
+3. Re-run Parker QA gates → all PASS
+4. **Then** ingest Nature datasets
+
+Reason: Merging dirty + clean = cross-contamination; both signals become untrustworthy. Separate concerns.
+
+**Metric Alignment with Nature:**
+
+- Nature: Full-denominator Recall@K (e.g., "57% Recall@1 across all 6,401 cases")
+- Current DxGPT: Matched-only average position (only cases with ≥1 match)
+- **Required change:** Adopt Nature's metric to enable direct comparison
+
+Why full-denominator matters: Matched-only average position can hide 30% recall failures while appearing better on matched cases.
+
+**Evaluation Architecture:**
+
+| Tier | Scope | Dataset Examples | Primary Metric | Notes |
+|------|-------|------------------|----------------|-------|
+| **1** | Per-source | MyGene2 (146), RAMEDIS (624), DDD (2,283) | Recall@1/3/5 (full-denom) | REQUIRED; baseline for Nature comparison |
+| **2** | Mixed | MyGene2 + RAMEDIS (770) | Recall@1/3/5 (full-denom) + per-source breakdown | OPTIONAL; only if Tier 1 passes QA |
+| **3** | Extended | Genomic integration (DDD+VCF, LIRICAL) | [TBD] | FUTURE; defer until Tier 1–2 stable |
+
+**Stratification Requirements:**
+
+Report results stratified by:
+- **Disease prevalence:** Rare genetic vs. mixed/broader pediatric
+- **Case complexity:** High (C5+), Medium (C3-C4), Low (C1-C2)
+- **Input modality:** Free-text narrative, HPO-structured
+- **Language:** English-only, Mixed language
+
+**Reporting Template:**
+
+```
+## Evaluation Results
+
+### Per-Dataset Baselines (Tier 1 — Primary)
+| Dataset | Cases | Recall@1 | Recall@3 | Recall@5 | Avg Position | Parker QA |
+|---------|-------|----------|----------|----------|-------------|-----------|
+| MyGene2 | 146 | X% | X% | X% | X | PASS |
+| RAMEDIS | 624 | X% | X% | X% | X | PASS |
+
+**Nature Paper Baseline (for reference):**
+| Dataset | Recall@1 | 
+|---------|----------|
+| MyGene2 | 74% |
+
+### Stratified Results
+- **Rare genetic (MyGene2, RAMEDIS):** Recall@1 = X%
+- **Mixed/broader:** Recall@1 = Y%
+
+### Mixed Subdataset Results (Tier 2, optional)
+MyGene2 + RAMEDIS (770 cases): Recall@1 = X% (breakdown: MyGene2 = X%, RAMEDIS = X%)
+```
+
+**Red Flags to Watch:**
+
+| Risk | Signal | Mitigation |
+|------|--------|-----------|
+| **Leakage during ingestion** | Recall on mixed > Nature's baseline for same dataset | Stop; audit labels; re-run Parker QA |
+| **Prompt overfitting** | MyGene2 Recall@1 differs by >15% from Nature's published | Check for dataset-specific keywords in prompt |
+| **Judge drift** | Semantic matching score varies >5% between runs | Freeze service versions; validate on sample |
+| **Contamination** | Mixed results rank higher than per-source | Keep separate in reporting; clean DxGPT first |
+
+**Phased Integration Roadmap:**
+
+**Phase 1 (2–3 weeks, IMMEDIATE):**
+1. Fetch MyGene2 + RAMEDIS from public sources
+2. Convert to DxGPT JSON schema (HPO→narrative, labels→diagnosis field)
+3. Run pipeline_v4; report Recall@1/3/5 per-dataset (full-denominator)
+4. Run Parker QA validation; document status
+
+**Phase 2 (4–6 weeks, IF Phase 1 STABLE):**
+1. Assess DDD phenotype availability (~2,283 cases)
+2. Implement clinical expert validation (8-physician agreement pilot)
+3. Expand to ~3,500 cases
+4. Stratify results by specialty/rarity
+
+**Phase 3 (DEFER):**
+1. Genomic integration (LIRICAL, DDD+VCF) — requires Exomiser module
+2. Do NOT attempt Xinhua/Hunan (privacy boundaries)
+
+**Decision Boundary:**
+
+- **If Recall@1 matches Nature's within ±10%:** Evaluation pipeline is correctly wired; safe to mix and stratify
+- **If Recall@1 < Nature's by >15%:** Do not mix yet. Investigate: dataset version? judge quality? metric differences? Fix gap before Tier 2
+
+**Next Steps:**
+
+1. ✅ Team alignment: Confirm Tier 1→Tier 2→Tier 3 approach with Javier
+2. Clean DxGPT first (prerequisite for all phases)
+3. Fetch Nature datasets (MyGene2, RAMEDIS)
+4. Pilot on 50-case subset
+5. Full Phase 1 evaluation
+6. Decide on Tier 2 (optional mixed subdatasets)
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
