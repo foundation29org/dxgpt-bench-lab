@@ -2,20 +2,20 @@
 # =========================
 
 # General Information
-EXPERIMENT_NAME: "no-name-provided"
-EXPERIMENT_DESCRIPTION: "no-description-provided"
+EXPERIMENT_NAME: "fase1-paso1.4-B-gpt5mini-clean-dataset"
+EXPERIMENT_DESCRIPTION: "Segunda línea base sobre all_256_clean. Comparar calidad y velocidad con gpt-4o (Run 1.4-A). Primer run con SapBERT activo desde el inicio."
 
 # Dataset Configuration
-DATASET_PATH: "bench/datasets/all_275.json"
+DATASET_PATH: "bench/datasets/all_256_clean.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
-  MODEL: "gemini-2.5-pro"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
+  MODEL: "gpt-5-mini"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
   CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
   PARAMS:
     temperature: 0.1
     max_tokens: 12000
-    reasoning_effort: "high"  # For O3/GPT-5: "low", "medium", "high"
+    reasoning_effort: "low"  # For O3/GPT-5: "low", "medium", "high"
     thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high", or omit for dynamic
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"

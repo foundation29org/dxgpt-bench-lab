@@ -1,0 +1,45 @@
+Session Log: DxGPT evaluation audit (2026-04-14)
+
+Merged decisions from five team agents:
+- Ripley: Evaluation audit rubric (5 dimensions, RED/AMBER findings)
+- Bishop: Dataset integrity analysis (label leakage, boilerplate, templates)
+- Dallas: Evaluation strategy review (methodology gaps, minimum controls)
+- Lambert: Clinical validity assessment (safety guardrails)
+- Parker: QA checklist and validation script (8 pass/fail gates)
+
+Key findings:
+- RED: Dataset integrity, reproducibility, public-claims alignment
+- AMBER: Language/translation validity, metric validity
+- Tier 1 cleanup required: Remove label leakage, strip boilerplate
+- Validation script confirms all_275 fails on leakage and boilerplate gates
+
+Decision files merged to .squad/decisions.md
+Orchestration logs created in .squad/orchestration-log/
+Session log created in .squad/log/
+
+---
+
+Session Log: Data ingestion and evaluation strategy for Nature paper (2026-04-16)
+
+Merged decisions from Bishop & Dallas on integrating Nature paper datasets:
+- Decision #9 (Bishop): Three-tier data architecture (raw → normalized → curated)
+  - Tier 1: Immutable raw sources with SOURCE_MANIFEST.json provenance
+  - Tier 2: Per-source normalization and Parker QA validation
+  - Tier 3: Mixed subdatasets with lineage tracking
+  
+- Decision #10 (Dallas): Dual-mode evaluation strategy for Nature datasets
+  - Tier 1 (PRIMARY): Per-source Recall@1/3/5 full-denominator (matches Nature metric)
+  - Tier 2 (SECONDARY): Mixed subdatasets optional after Tier 1 passes QA
+  - Prerequisite: Clean DxGPT first (boilerplate 57%, leakage 26% fail gates)
+
+Key insight: Per-source audit AND mixed subdatasets both necessary
+- Audit sources individually to catch contamination before merging
+- Mix deliberately after validation for robustness testing
+- Prevents cross-contamination: clean + clean → trustworthy results
+
+Updated agent history files with cross-team coordination
+Deleted inbox decision files (merged into decisions.md)
+Orchestration logs created for Bishop & Dallas agents
+Session log created summarizing both decisions
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

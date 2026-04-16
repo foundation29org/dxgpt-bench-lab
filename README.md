@@ -1,64 +1,129 @@
-# DxGPT Latitude Bench
+# DxGPT Evaluation Framework
 
-A systematic evaluation framework for measuring how well AI models perform medical diagnosis tasks. This project compares different AI systems by testing their ability to identify medical conditions and understand their severity.
-
-## What This Project Does
-
-This system presents medical cases to AI models and evaluates their diagnostic responses. It solves a key problem in medical AI evaluation: traditional methods penalized correct but differently-worded diagnoses. Our approach recognizes when diagnoses are medically equivalent even if the exact words differ.
-
-## Core Components
-
-**Evaluation System** (`bench/`)  
-Three progressive approaches to testing AI diagnostic capabilities. Started with strict code matching, evolved to include semantic understanding, ensuring fair evaluation of medical expertise.
-
-**Data Processing** (`data29/`)  
-Manages nearly 10,000 medical cases from hospitals, medical exams, and rare disease databases. Creates balanced test sets that represent real medical diversity.
-
-**Reusable Tools** (`utils/`)  
-Portable modules for semantic analysis, medical classification systems, and AI model integration. These can be extracted for use in other projects.
-
-## Key Innovation
-
-The project discovered that expert medical responses were being unfairly penalized. For example, a specialist's diagnosis of "aneurysmal subarachnoid hemorrhage" would score zero against "subarachnoid hemorrhage" despite being more precise. Our semantic safety net fixes this by recognizing medical equivalence.
-
-## Getting Started
-
-1. Create a Python environment and install dependencies:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -e .
-```
-
-2. Configure API access in `.env` file (see `.env.example`)
-
-3. Run an evaluation:
-```bash
-cd bench/pipelines/pipeline_v2*
-python run.py
-```
-
-## Results and Insights
-
-Testing revealed clear performance differences between AI models:
-- Advanced visual models showed highest capability but variable consistency
-- Standard language models provided reliable, stable performance
-- Specialized medical models offered domain expertise with limitations
-
-## Further Reading
-
-For deeper understanding:
-- 📄 **[Complete Research Study](bench/__conceptual-model-and-research-notes/evaluacion_modelos_llm_diagnostico_pediatrico_pipeline_pv4.md)** - Comprehensive research paper with methodology, statistical analysis, and findings
-- 🔬 **[Pipeline V4 - Advanced Evaluation System](bench/pipelines/pipeline_v4%20-%20fork/main/)** - State-of-the-art diagnostic AI evaluation pipeline with dual methodology  
-- [Conceptual model and research findings](bench/__conceptual-model-and-research-notes/)
-- [Pipeline methodology details](bench/pipelines/)
-- [Data processing documentation](data29/)
-- [Reusable utilities](utils/)
-
-## Purpose
-
-This framework helps teams make informed decisions when selecting AI models for medical applications. It provides objective, reproducible metrics while respecting the nuanced nature of medical diagnosis.
+A systematic pipeline for benchmarking AI models on medical diagnosis tasks. The framework presents clinical cases to LLMs, generates differential diagnoses (DDX), and evaluates them against gold-standard diagnoses using medical ontologies (SNOMED, ICD-10, OMIM, ORPHA), BERT semantic similarity, and an LLM judge.
 
 ---
 
-*A project focused on advancing responsible medical AI evaluation through transparent, clinically-relevant assessment methods.*
+## How it works
+
+```
+Clinical case (text)
+        │
+        ▼
+[1. Emulator]    LLM generates a ranked list of up to 10 differential diagnoses
+        │
+        ▼
+[2. Medlabeler]  Azure Text Analytics assigns SNOMED / ICD-10 / OMIM / ORPHA codes
+        │
+        ▼
+[3. Evaluator]   Compares DDX against gold diagnosis via SNOMED → ICD-10 → BERT → LLM judge
+        │
+        ▼
+  summary.json + evaluation_details.txt
+```
+
+**Metrics:**
+- `average_position` — mean rank at which the correct diagnosis appears (lower = better)
+- `success_rate` — % of cases where the correct diagnosis appears anywhere in the DDX list
+
+---
+
+## Quick Start
+
+### 1. Install dependencies
+
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Configure credentials
+
+```powershell
+cp .env.example .env
+# Edit .env with your Azure credentials
+```
+
+Required variables:
+```env
+AZURE_LANGUAGE_ENDPOINT=...
+AZURE_LANGUAGE_KEY=...
+AZURE_OPENAI_ENDPOINT=...
+AZURE_OPENAI_API_KEY=...
+SAPBERT_ENDPOINT_URL=...        # optional — falls back to LLM judge if offline
+```
+
+### 3. Configure the run
+
+Edit `bench/pipelines/pipeline_v4 - fork/main/config.yaml`:
+
+```yaml
+DATASET_PATH: "bench/datasets/all_275.json"
+DXGPT_EMULATOR:
+  MODEL: "gpt-4o"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+TRANSLATE_CASE:
+  ENABLED: true
+JUDGE_MODEL: "gemini-2.5-pro"
+```
+
+### 4. Run
+
+```powershell
+cd "bench/pipelines/pipeline_v4 - fork/main"
+python main.py
+```
+
+Results are written to `output/<dataset>/<prompt>/<model>/<timestamp>/`.
+
+---
+
+## Benchmark Results
+
+The full ranking with all runs, per-model breakdown, fixed parameters, and run metadata is maintained in [`rankingV2.txt`](bench/pipelines/pipeline_v4%20-%20fork/main/output/rankingV2.txt).
+
+Models evaluated include gemini-2.5-pro, grok-4.1-fast-reasoning, gpt-5.1, gpt-5.2, gpt-5.4-mini, gpt-5-mini, gpt-4o, o3, and gemini-3-pro-preview, across datasets of 150 and 275 clinical cases.
+
+---
+
+## Repository Structure
+
+```
+eval/
+├── bench/
+│   ├── datasets/                        # Evaluation datasets (gitignored)
+│   ├── candidate-prompts/               # Prompt templates
+│   ├── validation_checks.py             # Dataset QA script
+│   └── pipelines/
+│       ├── pipeline_v4 - fork/main/     # ← Active pipeline
+│       ├── pipeline_v1 - icd10/         # [Legacy]
+│       ├── pipeline_v2 - icd10 + bert/  # [Legacy]
+│       └── pipeline_v3 - full LLM/      # [Legacy]
+│
+├── data29/
+│   └── data-repos/raw/                  # Raw source datasets (gitignored)
+│
+└── utils/
+    ├── llm/                             # Azure OpenAI client
+    ├── bert/                            # SapBERT similarity
+    └── icd10/                           # ICD-10 taxonomy
+```
+
+---
+
+## Key Documents
+
+| Document | Purpose |
+|----------|---------|
+| `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md` | Step-by-step guide to run an evaluation |
+| `docs/pipeline/experiment-log.md` | Experiment log and ablation analysis |
+| `docs/ROADMAP.md` | Full roadmap toward Nature paper dataset integration |
+| `docs/analysis/run-analysis-notes.md` | Qualitative analysis of failed cases per run |
+| `.squad/decisions.md` | Architectural decisions from the multidisciplinary team |
+
+---
+
+*Foundation 29 — advancing responsible medical AI evaluation.*

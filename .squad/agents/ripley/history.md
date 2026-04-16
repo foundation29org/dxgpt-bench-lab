@@ -18,3 +18,25 @@
 - **"1.326 – 92.7%" untraceable**: Transparency doc confirmed 92.7% maps to pos ~1.443, not 1.326. Prompt cited as "classic_v2" but artifact is from "juanjo_classic". Public claims need correction.
 - **Evaluation cascade**: SNOMED → ICD-10 (exact/child/parent/sibling) → BERT (auto-confirm ≥ 0.90) → LLM judge. ICD-10 sibling matching may be over-generous. BERT auto-confirm threshold not clinician-validated.
 - **Audit rubric written**: 5-dimension rubric (dataset integrity RED, language AMBER, metrics AMBER, reproducibility RED, public claims RED). Filed as decision in `.squad/decisions/inbox/ripley-eval-rubric.md`.
+
+### Roadmap Review (2026-04-14)
+
+- **Roadmap assessment**: Javier's ROADMAP.md correctly prioritizes Phase 1 (dataset cleanup) before Phase 2 (Nature integration). This is the right call — cannot compare against Nature on dirty data.
+- **Phase 1 structure is sound**: Label leakage removal (7%), boilerplate stripping (21%), three-level architecture (raw/normalized/curated), re-baseline on clean data.
+- **Four critical issues identified**:
+  1. **Template markers WARN ambiguity**: Roadmap says "PASS/WARN" acceptable. Should explicitly reject WARN >40% for external publication.
+  2. **Expected baseline drop not documented**: Phase 1.4 rebaseline will drop 5–8% (healthy; indicates data quality improvement). Javier needs to expect this before seeing scores.
+  3. **Recall@K implementation timing**: Phase 3 plan implements Recall@K *after* Phase 2.5 runs. This means re-running 770 cases. Recommend implementing in evaluator.py *before* Phase 2.5.
+  4. **Phase 2.4 pilot too small**: 50 cases insufficient to validate format artifacts. Add success gate: Recall@1 ≥ 30% in pilot → proceed. <30% → stop and investigate.
+- **Sequence verdict**: Phase 1 before Phase 2 is unambiguously correct. Do not parallelize. Do not skip.
+- **Clinical validation**: Phase 4.3 marked "optional." Should be mandatory for publication. Budget 16 hours (5 cases, 2 physicians, 88% target concordance from Nature paper).
+- **Decision memo filed**: `.squad/decisions/inbox/ripley-roadmap-review.md` with 4 explicit gates required before execution.
+
+### Roadmap Review Completion (2026-04-16)
+
+- **Status: DECISION ENDORSED** — Roadmap review merged to `.squad/decisions.md` as Decision #11.
+- **Four gates formalized**: (1) template marker threshold (reject WARN >40%), (2) baseline drop documentation (5–8% expected), (3) Recall@K implementation timing (before Phase 2.5), (4) Phase 2.4 pilot gate (Recall@1 ≥ 30%).
+- **Clinical validation escalation**: Phase 4.3 promoted from optional to mandatory (16 hours budget, 88% target concordance).
+- **Sequence endorsed**: Phase 1 before Phase 2 is unambiguously correct. Execute as written.
+- **Next checkpoint**: Paso 1.1 completion + QA report on all_275_clean.json
+- **Confidence**: High

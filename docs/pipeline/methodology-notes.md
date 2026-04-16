@@ -202,6 +202,21 @@ Por eso, **para experimentos donde el caso ya va en inglés y el prompt es ingl�
 
 ---
 
+## 12. Hipótesis: la traducción generaliza diagnósticos y empeora la posición media
+
+**Observación empírica** (Run A, 2026-04-15): al activar `TRANSLATE_CASE: true` con gpt-4o sobre `all_275`, el pipeline nuevo resuelve **más casos por SNOMED** (126 vs 79 del run de julio 2025) pero obtiene **peor posición media** (1.639 vs 1.543).
+
+**Hipótesis:** la traducción al inglés hace que el modelo genere diagnósticos más genéricos. Por ejemplo, en vez de "neumonía adquirida en la comunidad" genera "pneumonia". El evaluador sí encuentra el match (por eso SNOMED sube), pero la coincidencia es con un código más amplio y el diagnóstico específico queda en P2 o P3 en vez de P1.
+
+**Implicación para comparaciones:**
+- Un score de éxito (% matched) alto con traducción puede ocultar que la especificidad del diagnóstico empeoró.
+- La posición media es más sensible a este efecto que la tasa de éxito bruta.
+- **Para evaluar modelos de forma justa**, conviene fijar `TRANSLATE_CASE` en todos los runs del mismo experimento comparativo, o reportar ambas métricas por separado.
+
+**Próximo experimento para confirmar:** Run B (mismo config, juez `gemini-2.5-pro`) permitirá separar el efecto del juez del efecto de la traducción.
+
+---
+
 ## 11. Preguntas importantes para Yago
 
 Objetivo: cerrar lagunas de documentación y alinear lo publicado con artefactos reproducibles.

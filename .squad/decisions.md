@@ -432,6 +432,162 @@ MyGene2 + RAMEDIS (770 cases): Recall@1 = X% (breakdown: MyGene2 = X%, RAMEDIS =
 
 ---
 
+### 11. Ripley Decision — Roadmap Review and Phase Sequencing (2026-04-16)
+
+**Date:** 2026-04-16  
+**Status:** ENDORSED WITH CAVEATS  
+**Author:** Ripley (Lead)  
+**Confidence:** High
+
+**Executive Summary:**
+
+The roadmap **correctly prioritizes dataset integrity before Nature integration**. Phase 1 is the right foundation. However, **four critical gates must be added** to prevent downstream issues in Phase 2 and beyond.
+
+**Assessment:**
+
+✅ **Phase 0 Completion:** Ablation study thorough; baseline established (92.7%–98.6% success).
+
+✅ **Phase 1 Structure is Correct:** Four-step cleanup (leakage removal, boilerplate stripping, verification, re-baseline) is exactly right. Prevents publishing on dirty data. **This is the leadership decision.**
+
+✅ **Three-Level Data Architecture:** Nested `raw → normalized → curated` with SOURCE_MANIFEST is sound.
+
+**Critical Issues — Must Address Before Phase 2:**
+
+| Issue | Current Roadmap | Ripley Recommendation | Action |
+|-------|-----------------|----------------------|--------|
+| **Template markers WARN ambiguity** | "PASS/WARN" acceptable | Reject WARN >40% for external publishing | Add gate to Paso 1.3 |
+| **Expected baseline drop not documented** | Not specified | DOCUMENT: 5–8% drop is healthy | Add memo to Phase 1 docs |
+| **Recall@K implementation timing** | Phase 3 (after 2.5) | Implement *before* Phase 2.5 | Code change to evaluator.py |
+| **Phase 2.4 pilot too small** | 50 cases (exploratory) | Recall@1 ≥ 30% → proceed; <30% → investigate | Add gate to Paso 2.4 |
+
+**Additional Recommendation:**
+
+- **Phase 4.3 (Clinical validation):** Currently marked optional. Should be mandatory for publication. Budget 16 hours (5 cases, 2 physicians, 88% target concordance from Nature paper).
+
+**Sequence Verdict:**
+
+**Yes, Phase 1 before Phase 2 is unambiguously correct.** You cannot compare against Nature until data is clean. Their paper evaluated on curated datasets with human review gates. Your data has 7% label leakage. If you integrate Nature datasets dirty, you inherit the credibility problem.
+
+**Risk Assessment:**
+
+- **Timeline optimism:** Phase 1 estimate is "20% done." Cleaning always slower than forecast. Expect 2× the time.
+- **Recall@K implementation debt:** If not implemented before Phase 2.5, you'll re-run 770 cases. Plan ahead.
+
+**Strengths Observed:**
+
+1. Honest about dependencies (Phase 1 → 2 → 3; no skipping)
+2. Traceable documentation (cleanInfo.md, rankingV2.txt)
+3. Stratification plan (Phase 4.2) tests generalization
+4. Clinical validation pilot outlined (Phase 4.3)
+
+**Next Checkpoint:** Paso 1.1 completion + QA report on all_275_clean.json
+
+---
+
+### 12. Bishop Decision — Phase 1 Step 1.1 Execution (Label Leakage Cleanup) — 2026-04-16
+
+**Date:** 2026-04-16  
+**Status:** READY FOR ACTION  
+**Author:** Bishop (Data Analyst)  
+**Confidence:** High
+
+**The Question:** Should Phase 1 Step 1.1 (label leakage cleanup) proceed by **removing** the 19 leaky cases or by **rewriting** them?
+
+**Recommendation: REMOVE the 19 cases** 
+
+**Action:** Filter `all_275.json` → exclude 19 cases → output `all_256.json` (275 − 19)  
+**Timeline:** Execute immediately (<5 minutes)  
+**Risk:** LOW—deterministic, auditable, unambiguous
+
+**The 19 Cases (6.9% of all_275):**
+
+| Group | Count | Format | Risk |
+|-------|-------|--------|------|
+| English (clean format) | 9 | Well-formed English narrative | Moderate—text edit only |
+| Spanish + boilerplate | 10 | Templated "Motivo de consulta" | High—needs full rewrite |
+
+**Leakage Case List:** B133, J2, Q355, U2, U3, U5, U7, U8, U9, R10, R117, R123, R295, R360, R424, R443, R830, T1323, T741
+
+**Decision Matrix:**
+
+**Option A: REMOVE (Recommended)**
+
+Pros:
+- ✅ Deterministic (no subjective judgment about rewrite quality)
+- ✅ Auditable (clear rule: diagnosis in case text → excluded)
+- ✅ Fast (~5 min to filter and validate)
+- ✅ Clean coupling (separates leakage from boilerplate cleanly)
+- ✅ Precedent (aligns with team decision to prioritize integrity over size)
+
+Cons:
+- ❌ Lose ~7% of evaluation data (19/275)
+- ❌ No attempt at recovery
+
+Risk: **LOW**
+
+**Option B: REWRITE**
+
+Pros:
+- ✅ Preserve all 275 cases (no data loss)
+- ✅ Fix boilerplate AND leakage together for 10 Spanish cases
+
+Cons:
+- ❌ High effort (1–2 days of clinical judgment + QA review)
+- ❌ Subjectivity (post-rewrite QA is manual and error-prone)
+- ❌ Spanish cases already tainted by boilerplate; rewrite adds complexity
+- ❌ Tight coupling (leakage cleanup becomes dependent on boilerplate cleanup)
+- ❌ Precedent risk (if rewritten cases fail QA later, weakens audit trail)
+
+Risk: **MODERATE to HIGH**
+
+**Coupling Analysis: Step 1.1 ↔ Step 1.2**
+
+**Current overlap:** 10/19 leakage cases also have boilerplate prefix (58%)
+
+**If REMOVE:**
+```
+all_275.json 
+  → Remove 19 leakage cases
+  → all_256.json (256 cases remain)
+  → Of remaining: 57 - 10 = 47 cases still have boilerplate
+  → Step 1.2 processes 47 cases independently
+  → Final: all_256_clean.json after boilerplate removal
+```
+**Advantage:** Sequential, no double-processing, no case revisits.
+
+**If REWRITE:**
+```
+all_275.json
+  → Rewrite 19 cases (including 10 Spanish + boilerplate)
+  → all_275_rewritten.json
+  → Overlap group (10 cases) now have leakage removed but boilerplate remains
+  → Step 1.2 still processes boilerplate on same 10 cases
+  → Double-touch; complex dependency
+```
+**Disadvantage:** Cases revisited twice; workflow interdependency.
+
+**Threshold Check Against QA Spec:**
+
+**Current state:** 6.9% (19/275) — **FAIL by 1.9 percentage points**  
+**After REMOVE:** 0% (0/256) — ✅ **PASS**  
+**Benchmark size:** 256 cases is still robust (DeepRare uses 146–2,283 cases per dataset)
+
+**Execution Checklist:**
+
+- [ ] Filter `all_275.json` by excluding IDs: B133, J2, Q355, U2, U3, U5, U7, U8, U9, R10, R117, R123, R295, R360, R424, R443, R830, T1323, T741
+- [ ] Output to `all_256.json`
+- [ ] Run `validation_checks.py` on `all_256.json`
+- [ ] Verify Label Leakage rate = 0%
+- [ ] Verify overall QA status = PASS or WARN (not FAIL)
+- [ ] Commit filtered dataset + QA report
+- [ ] Proceed to Step 1.2 (boilerplate removal on remaining 47/256 cases)
+
+**Contingency:** If Javier prefers rewrite, requires 1–2 days of clinical judgment + QA review. Recommend partnering with Lambert (clinical reviewer) for validation. If rewrite attempt fails QA, fallback to removal (no time lost; original dataset preserved).
+
+**Next Steps:** Awaiting Javier approval to execute removal script.
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
