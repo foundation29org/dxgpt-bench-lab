@@ -513,5 +513,4 @@ Una vez completada la evaluación, puedes:
 
 ---
 
-**Última actualización:** Diciembre 2024
-
+**Última actualización:** Marzo 2026

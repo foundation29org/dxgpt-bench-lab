@@ -717,6 +717,7 @@ class DXGPTEmulator:
             self.logger.info(schema_msg)
         
         results = []
+        case_times = []  # per-case wall-clock seconds (translation + LLM call)
         
         for i, case in enumerate(dataset, 1):
             case_id = case.get('id', f'case_{i}')
@@ -725,8 +726,11 @@ class DXGPTEmulator:
             if self.logger:
                 self.logger.info(processing_msg)
             
-            # Generate DDX
+            # Generate DDX (timed)
+            case_start = time.time()
             ddx_list, raw_response = self._generate_ddx_for_case(case)
+            case_elapsed = time.time() - case_start
+            case_times.append(case_elapsed)
             
             # Add delay between requests for Gemini models to respect rate limits
             # Rate limits vary by tier (source: https://ai.google.dev/gemini-api/docs/rate-limits)
@@ -768,7 +772,6 @@ class DXGPTEmulator:
                 
                 if self.logger:
                     self.logger.info(f"Waiting {delay_seconds}s before next Gemini API call (rate limit protection for {model_name})...")
-                import time
                 time.sleep(delay_seconds)
             
             # Display minimal response info
@@ -792,6 +795,7 @@ class DXGPTEmulator:
                 print(success_msg)
                 if self.logger:
                     self.logger.info(f"[{i}/{len(dataset)}] SUCCESS: Generated {len(ddx_list)} DDX for case {case_id}")
+                    self.logger.info(f"[{i}/{len(dataset)}] Case time: {case_elapsed:.1f}s")
                     # Log each individual DDX with position
                     for j, ddx in enumerate(ddx_list, 1):
                         self.logger.info(f"[{i}/{len(dataset)}] DDX[{j}]: {ddx}")
@@ -807,6 +811,7 @@ class DXGPTEmulator:
                 # Add DDX to case
                 case_with_ddx = case.copy()
                 case_with_ddx['ddx_details'] = ddx_details
+                case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
                 results.append(case_with_ddx)
             else:
                 fail_msg = "FAILED: No DDX generated"
@@ -817,6 +822,7 @@ class DXGPTEmulator:
                 # Add empty DDX to maintain structure
                 case_with_ddx = case.copy()
                 case_with_ddx['ddx_details'] = {}
+                case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
                 results.append(case_with_ddx)
             
             print("-" * 40)
@@ -825,6 +831,21 @@ class DXGPTEmulator:
         successful_cases = sum(1 for r in results if r.get('ddx_details'))
         completion_msg = f"COMPLETED: DDX generation finished!"
         stats_msg = f"STATS: Success rate: {successful_cases}/{len(dataset)} ({successful_cases/len(dataset)*100:.1f}%)"
+        
+        # Timing summary
+        if case_times:
+            import statistics
+            total_time = sum(case_times)
+            avg_time = total_time / len(case_times)
+            median_time = statistics.median(case_times)
+            p95_time = sorted(case_times)[int(len(case_times) * 0.95)]
+            timing_msg = (
+                f"TIMING: total={total_time:.0f}s | avg={avg_time:.1f}s/case | "
+                f"median={median_time:.1f}s | p95={p95_time:.1f}s | cases={len(case_times)}"
+            )
+            print(timing_msg)
+            if self.logger:
+                self.logger.info(timing_msg)
         
         print(completion_msg)
         print(stats_msg)

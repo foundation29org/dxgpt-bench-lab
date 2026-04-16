@@ -178,3 +178,74 @@ See `.squad/decisions.md` (Decision #9) for full architecture specification, imp
 **Implementation Status:** READY — Awaiting Javier confirmation to proceed with Tier 1 setup.
 
 **Cross-team update:** Coordinated with Dallas (Evaluation Engineer) on dual-mode strategy to ensure data architecture supports per-source audit + optional mixed evaluation.
+
+---
+
+## Phase 6: Label Leakage Decision (Step 1.1 Assessment) — 2026-04-16
+
+**Request:** Javier asked—does it make sense to start Phase 1 Step 1.1 by executing cleanup on the 19 label leakage cases?
+
+### Findings
+
+1. **All 19 cases confirmed present in `all_275.json`** (validation_checks.py: 6.9% rate, 19/275)
+   - 9 cases: English, clean format; diagnosis leaked in narrative (moderate risk to fix)
+   - 10 cases: Spanish + boilerplate; diagnosis in templated symptom list (high risk to fix)
+
+2. **Overlap with Step 1.2 (boilerplate):** 10/19 leakage cases also have boilerplate prefix
+   - Creates coupling: if rewrite chosen, same cases processed twice
+   - If remove chosen, boilerplate cleanup proceeds sequentially on remaining 47/57 cases
+
+3. **Leakage vs. boilerplate distinction is operationally critical:**
+   - Leakage = diagnosis term in case text (pattern-matching shortcut for model)
+   - Boilerplate = synthetic prefix wrapper (structural artifact of generation)
+   - Same case can have both, but cleanup strategies differ
+
+### Recommendation: REMOVE (not rewrite)
+
+**Decision:** Proceed with **Option A — remove the 19 cases**.
+- Output: `all_256.json` (275 − 19 leakage cases)
+- Timeline: < 5 minutes to filter + validate
+- Risk: **LOW** — deterministic, auditable, unambiguous
+
+**Why removal over rewriting:**
+- ✅ Deterministic (no subjective editing judgment)
+- ✅ Fast (unblocks Steps 1.2 and 1.3)
+- ✅ Clean separation of concerns (leakage handled independently from boilerplate)
+- ✅ Passes QA threshold (6.9% → 0%)
+- ❌ Rewrite: 1–2 days + subjective QA + double-touch of 10 cases
+
+**Coupling strategy:**
+1. Remove 19 leakage cases → `all_256.json`
+2. Step 1.2: Treat 57 boilerplate cases (now 47 remain after removal)
+3. Step 1.3: QA validation on final cleaned dataset
+
+### Key Decision Artifacts
+
+- **Detailed assessment:** `.squad/decisions/inbox/bishop-step-1-1-review.md` (full decision matrix, clinical impact, contingency)
+- **Leakage case list:** B133, J2, Q355, U2, U3, U5, U7, U8, U9, R10, R117, R123, R295, R360, R424, R443, R830, T1323, T741
+- **Next step:** Awaiting Javier confirmation to execute removal script
+
+### Learnings from Phase 6
+
+1. **Leakage prevalence is real but manageable:** 6.9% in all_275 is above threshold (5%) but not systemic across all source families. Removal is credible.
+
+2. **Spanish template cases are contaminated vectors:** Cases with boilerplate + leakage are harder to fix. Removal is cleaner than attempted rewrite.
+
+3. **Coupling with boilerplate is sequential, not circular:** Step 1.1 and 1.2 can be executed in order without backtracking if removal is chosen.
+
+4. **Threshold-driven cleaning works:** All_275 FAILS label leakage gate at 6.9%; removal brings to PASS (0%). Clear success criterion.
+
+5. **Data recovery is a future option, not a blocker:** If dataset size becomes limiting in Phase 2, we can revisit 19 cases for selective rewrite (e.g., the 9 English cases only).
+
+### Phase 6 Completion (2026-04-16)
+
+- **Status: DECISION FINALIZED** — Step 1.1 assessment merged to `.squad/decisions.md` as Decision #12.
+- **Recommendation endorsed**: REMOVE the 19 leaking cases (not rewrite).
+- **Output**: `all_256.json` (275 − 19 = 256 cases remain)
+- **Timeline**: Execute immediately (<5 minutes)
+- **Risk**: LOW—deterministic, auditable, unambiguous
+- **Coupling strategy**: Step 1.1 removes leakage → Step 1.2 processes remaining 47/57 boilerplate cases sequentially (no double-touch)
+- **Threshold pass**: 6.9% label leakage → 0% after removal (QA PASS)
+- **Benchmark viability**: 256 cases is robust; DeepRare uses 146–2,283 cases per dataset
+- **Next step**: Awaiting Javier confirmation to execute removal script
+- **Confidence**: High
