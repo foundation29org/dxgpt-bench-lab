@@ -6,63 +6,67 @@ Este módulo es el núcleo de procesamiento de datos del proyecto, donde casos m
 
 Gestionar el ciclo completo de datos médicos: desde fuentes heterogéneas hasta datasets normalizados listos para benchmarking, garantizando trazabilidad, calidad y diversidad.
 
-## 🏗️ Estructura
+## 🏗️ Arquitectura de datos en tres niveles
 
 ```
-data29/
-├── data-repos/
-│   ├── pre-normalization/      # Datos crudos y proceso ETL
-│   │   ├── v1-narrow/         # ETL para RAMEDIS y URGTorre
-│   │   ├── v2-wide/           # ETL para MedBulltes, MedQA-USMLE
-│   │   └── v3-merge/          # Fusión y deduplicación
-│   └── post-normalization/    # Datasets finales procesados
-│       ├── *.json             # 7 datasets normalizados
-│       └── serve.py           # Servidor de datasets con diversidad
+data29/data-repos/
+│
+├── raw/                              ← NIVEL 1: fuentes originales (en .gitignore)
+│   ├── SOURCE_MANIFEST.yaml          ← documenta cada fuente (origen, licencia, idioma)
+│   ├── ramedis.json
+│   ├── urgtorre.json
+│   └── ...  (7 fuentes en total)
+│
+├── pre-normalization/                ← ETL pipeline (scripts de transformación)
+│   ├── v1-narrow/                   ← RAMEDIS + URGTorre
+│   ├── v2-wide/                     ← MedBulltes, MedQA-USMLE
+│   └── v3-merge/                    ← Fusión y deduplicación
+│
+├── post-normalization (server)/      ← Datasets internos normalizados + serve.py
+│   └── served/                      ← Subsets generados con criterio de diversidad
+│
+├── normalized-by-source/             ← NIVEL 2: datasets externos (Nature paper, etc.)
+│   └── README.md                    ← schema estándar y reglas de este nivel
+│                                    ← (mygene2/, ramedis_hpo/ — pendientes en Fase 2)
+│
+└── curated-datasets/                 ← NIVEL 3: datasets de evaluación definitivos
+    ├── README.md
+    └── all_256_clean/               ← primera línea base publicable de DxGPT
+        ├── _metadata.yaml           ← composición, QA gates, historial de runs
+        └── _lineage.txt             ← trazabilidad caso a caso hasta raw/
 ```
 
-## 🔄 Pipeline ETL
+## 🔄 Flujo de datos
 
-### Etapa 1: Pre-normalización
-Transformación progresiva de datos crudos mediante pipelines versionados:
+```
+raw/ → pre-normalization/ → post-normalization/ → curated-datasets/  ← bench/datasets/
+                                                                              ↓
+                            normalized-by-source/ ──────────────────→  pipeline eval
+```
 
-- **v1-narrow**: Procesamiento de casos clínicos tradicionales (RAMEDIS, URGTorre)
-- **v2-wide**: Procesamiento de datasets educativos y sintéticos (MedBulltes, MedQA-USMLE)
-- **v3-merge**: Fusión inteligente y eliminación de duplicados
+Los datasets en `curated-datasets/` y `normalized-by-source/` alimentan directamente
+los experimentos de benchmarking en `bench/`.
 
-Cada pipeline incluye:
-- Normalización de formatos
-- Asignación de complejidad (C0-C10)
-- Mapeo a códigos ICD-10
-- Evaluación de severidad
+## 📊 Datasets de evaluación disponibles
 
-### Etapa 2: Post-normalización
-Datasets finales estructurados con esquema unificado:
-- ID único por fuente
-- Descripción del caso clínico
-- Diagnósticos con severidad
-- Nivel de complejidad
+| Dataset | Casos | Estado | Nivel |
+|---------|-------|--------|-------|
+| `all_256_clean` | 256 | ✅ Publicable — 2 runs documentados | Nivel 3 |
 
-## 🚀 Servidor de Datasets
+## 🚀 Servidor de Datasets internos
 
-`serve.py` permite crear subconjuntos balanceados con:
+`post-normalization (server)/serve.py` crea subconjuntos balanceados con:
 - Control de tamaño total
 - Reglas de muestreo por fuente
 - Maximización de diversidad (capítulos ICD-10, complejidad, severidad)
-- Generación de reportes y visualizaciones
 
-Ejemplo de uso:
-```bash
-python serve.py  # Genera dataset de 450 casos con diversidad óptima
-```
+## 📦 Fuentes raw disponibles
 
-## 📊 Datasets Disponibles
-
-7 fuentes normalizadas totalizando ~9,600 casos médicos:
-- Casos clínicos reales anonimizados
-- Casos educativos de exámenes médicos
-- Casos sintéticos para enfermedades raras
-- Casos de urgencias hospitalarias
-
-## 🔗 Integración
-
-Los datasets procesados aquí alimentan directamente los experimentos de benchmarking en `bench/`.
+7 fuentes normalizadas totalizando ~9.600 casos médicos:
+- `ramedis.json` — casos raros anonimizados (español)
+- `urgtorre.json` — urgencias hospitalarias (español)
+- `medbulltes5op.json` — casos educativos médicos (inglés)
+- `medqausmle4op.json` — exámenes USMLE (inglés)
+- `new_england_med_journal.json` — NEJM cases (inglés)
+- `rare_synthetic.json` — casos sintéticos de enfermedades raras
+- `ukranian.json` — casos clínicos ucranianos (testing)

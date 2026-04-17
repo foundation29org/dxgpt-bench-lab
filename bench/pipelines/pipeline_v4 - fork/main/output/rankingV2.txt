@@ -7,52 +7,90 @@ Average Position = Lower is Better | Success Rate = Higher is Better
 (*) Judge normalcalls (gpt-4o) implícito — runs anteriores a JUDGE_MODEL explícito
 (†) Métricas extraídas de evaluation_details.txt — run sin summary.json generado
 (‡) Dataset limpio: sin label leakage ni boilerplate — primera línea base publicable
+(§) Dataset HPO externo — síntomas como lista HPO codes (sin narrativa), gold = OMIM/ORPHA. NO comparable directamente con datasets narrativos (all_150/all_256/all_275).
 Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9, max_tokens=12000
 
 --------------------------------------------------------------------------------
-🥇 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
-🥈 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
-🥉 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
- 4 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.442 │   93.8% (258/275)
- 5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ normalcalls (*)  │  1.447 │  100.0% (150/150)
- 6 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_4o_low_translated_en (‡) │ gemini-2.5-pro  │  1.545 │   96.1% (246/256)
- 7 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en │ gemini-2.5-pro  │  1.547 │  100.0% (150/150)
- 8 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.566 │   96.7% (145/150)
- 9 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.582 │   97.3% (146/150)
-10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ normalcalls (*)  │  1.592 │   94.7% (142/150)
-11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.599 │   94.7% (142/150)
-12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
-13 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ normalcalls     │  1.639 │   92.7% (255/275)
-14 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ gemini-2.5-pro  │  1.646 │   95.6% (263/275)
-15 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gemini-2.5-pro  │  1.653 │   96.4% (265/275)
-16 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_medium_translated_en (†) │ normalcalls (*)  │  1.664 │   99.3% (149/150)
-17 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  1.671 │   99.3% (149/150)
-18 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ normalcalls (*)  │  1.673 │  100.0% (150/150)
-19 │ 📋 👌 🤖 all_275-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.680 │   97.8% (269/275)
-20 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_low_translated_en (†) │ normalcalls (*)  │  1.727 │  100.0% (150/150)
-21 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low             │ gemini-2.5-pro  │  1.753 │   98.6% (271/275)
-22 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_high_translated_en (†) │ normalcalls (*)  │  1.781 │   91.3% (137/150)
+🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_2_5_pro_low_translated_en (‡) │ gemini-2.5-pro  │  1.299 │   98.1% (251/256)
+🥈 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
+🥉 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
+ 4 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
+ 5 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.442 │   93.8% (258/275)
+ 6 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ normalcalls (*)  │  1.447 │  100.0% (150/150)
+ 7 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_low_translated_en (‡) │ gemini-2.5-pro  │  1.502 │   98.8% (253/256)
+ 8 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.1% (251/256)
+ 9 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-o3_dxgpt_high_translated_en (‡) │ gemini-2.5-pro  │  1.530 │   98.8% (253/256)
+10 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_4o_low_translated_en (‡) │ gemini-2.5-pro  │  1.545 │   96.1% (246/256)
+11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en │ gemini-2.5-pro  │  1.547 │  100.0% (150/150)
+12 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en (‡) │ gemini-2.5-pro  │  1.570 │   98.1% (251/256)
+13 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.566 │   96.7% (145/150)
+10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.582 │   97.3% (146/150)
+11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.588 │   97.7% (250/256)
+11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ normalcalls (*)  │  1.592 │   94.7% (142/150)
+12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.599 │   94.7% (142/150)
+13 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
+14 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ normalcalls     │  1.639 │   92.7% (255/275)
+15 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ gemini-2.5-pro  │  1.646 │   95.6% (263/275)
+16 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gemini-2.5-pro  │  1.653 │   96.4% (265/275)
+17 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_medium_translated_en (†) │ normalcalls (*)  │  1.664 │   99.3% (149/150)
+18 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  1.671 │   99.3% (149/150)
+19 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ normalcalls (*)  │  1.673 │  100.0% (150/150)
+20 │ 📋 👌 🤖 all_275-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.680 │   97.8% (269/275)
+21 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_low_translated_en (†) │ normalcalls (*)  │  1.727 │  100.0% (150/150)
+22 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low             │ gemini-2.5-pro  │  1.753 │   98.6% (271/275)
+23 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_high_translated_en (†) │ normalcalls (*)  │  1.781 │   91.3% (137/150)
 --------------------------------------------------------------------------------
-📊 Total experiments: 22
+📊 Total experiments: 29
 ⚠️  Excluidos 2 runs de all_150/gemini_2_5_pro (SHOULD_LABEL=false, sin summary.json — re-evaluación parcial inválida, 34.7% éxito)
-⚠️  Runs 13-22: SapBERT parcialmente offline → la mayoría de casos semánticos fueron a LLM_JUDGMENT
-⚠️  Run 6 (all_256_clean): SapBERT activo a partir del caso 197/256 — 5 BERT matches (2 autoconfirm + 3 match)
+⚠️  Runs 13-23: SapBERT parcialmente offline → la mayoría de casos semánticos fueron a LLM_JUDGMENT
+⚠️  Run 6 (all_256_clean gpt_4o): SapBERT activo a partir del caso 197/256 — 5 BERT matches (2 autoconfirm + 3)
+⚠️  Run 10 (all_256_clean gpt_5_mini): SapBERT activo desde el inicio — primer run 100% limpio con SapBERT operativo — 16 BERT matches (4 autoconfirm + 12)
 ⚠️  gpt_5_2 (†): runs de Diciembre 2025 sin summary.json — métricas extraídas de evaluation_details.txt (ver docs/analysis/comparison-gpt52-reasoning-effort.md)
-🕐 Generated: 2026-04-16 (last run 20260416131009 — all_256_clean)
+🕐 Generated: 2026-04-17 (last run 20260417174222 — all_256_clean gemini_2_5_pro_low)
+
+🧪 FASE 2 — DATASETS HPO EXTERNOS (§) — NO COMPARABLE CON RANKING PRINCIPAL
+================================================================================
+Nota: Estos runs usan datasets HPO del paper DeepRare (Nature). El formato es distinto
+(lista de términos HPO, sin narrativa clínica) y el gold proviene de OMIM/ORPHA.
+Average_position esperada: 2.0-3.5 (más difícil que texto narrativo — esperado).
+SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
+
+ §1 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  1.976 │  99.7% (622/624)
+    └─ R@1=49.2% R@3=83.7% R@5=99.4% | BERT 52.6% + LLM_J 47.1% | run 20260417004913
+ §2 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.067 │  97.9% (611/624)
+    └─ R@1=46.3% R@3=80.6% R@5=97.9% | BERT 69.1% + LLM_J 28.5% | run 20260417105437
+ §3 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.529 │  99.2% (367/370)
+    └─ R@1=37.0% R@3=73.0% R@5=97.8% | BERT 31.6% + LLM_J 67.6% | run 20260417125334
+ §4 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.975 │  98.4% (364/370)
+    └─ R@1=55.1% R@3=79.7% R@5=98.1% | BERT 37% + LLM_J 61% | ⭐ gpt-5.4-mini +18pp R@1 | run 20260417182706
+ §5 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.632 │  95.0% (38/40)
+    └─ R@1=42.5% R@3=60.0% R@5=95.0% | PUMCH hospital chino | run 20260417113846
+ §6 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.757 │  92.5% (37/40)
+    └─ R@1=22.5% R@3=62.5% R@5=90.0% | PUMCH hospital chino | ⚠️ gpt-4o MEJOR en R@1 (+20pp) | run 20260417174500
+ §7 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.761 │ 100.0% (88/88)
+    └─ R@1=34.1% R@3=70.5% R@5=94.3% | Harvard Medical School | BERT 46.6% | run 20260417115441
+ §8 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.909 │ 100.0% (88/88)
+    └─ R@1=53.4% R@3=86.4% R@5=100.0% | Harvard Medical School | BERT 57% | ⭐ gpt-5.4-mini +19pp R@1 | run 20260417175146
+ §9 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.282 │  97.3% (142/146)
+    └─ R@1=38.4% R@3=77.4% R@5=97.3% | BERT 26.7% + LLM_J 70.5% | run 20260417154253
+§10 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.909 │  97.9% (143/146)
+    └─ R@1=23.3% R@3=64.4% R@5=95.9% | BERT 8.2% + LLM_J 89.7% | run 20260417101125
+§11 │ 🧬 pilot_50_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.551 │  98.0% (49/50)
+    └─ R@1=40% R@3=68% R@5=96% | RAMEDIS×25 + MME×15 + HMS×10 | run 20260416220835
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
 
 📊 BY DATASET:
   📋 all_150              │ 14 runs │ Avg: 1.579 │ Success: 97.4%
-  📋 all_256_clean (‡)    │  1 runs │ Avg: 1.545 │ Success: 96.1%
+  📋 all_256_clean (‡)    │  7 runs │ Avg: 1.467 │ Success: 98.0%
   📋 all_275              │  7 runs │ Avg: 1.601 │ Success: 97.3%
 
 📝 BY PROMPT:
-  👌 juanjo_classic_v2    │ 22 runs │ Avg: 1.585 │ Success: 97.3%
+  👌 juanjo_classic_v2    │ 23 runs │ Avg: 1.585 │ Success: 97.3%
 
 🤖 BY MODEL:
-  🤖 gemini_2_5_pro_low_translated_en │  2 runs │ Avg: 1.343 │ Success: 96.9%
+  🤖 gemini_2_5_pro_low_translated_en │  3 runs │ Avg: 1.328 │ Success: 98.0%
   🤖 gemini_3_pro_preview_low_translated_en │  1 runs │ Avg: 1.447 │ Success: 100.0%
   🤖 gpt_4o_low           │  1 runs │ Avg: 1.753 │ Success: 98.6%
   🤖 gpt_4o_low_translated_en │  3 runs │ Avg: 1.578 │ Success: 94.8%
@@ -62,62 +100,9 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
   🤖 gpt_5_2_high_translated_en (†) │  1 runs │ Avg: 1.781 │ Success: 91.3%
   🤖 gpt_5_2_low_translated_en (†) │  1 runs │ Avg: 1.727 │ Success: 100.0%
   🤖 gpt_5_2_medium_translated_en (†) │  1 runs │ Avg: 1.664 │ Success: 99.3%
-  🤖 gpt_5_4_mini_medium_translated_en │  1 runs │ Avg: 1.547 │ Success: 100.0%
-  🤖 gpt_5_mini_low_translated_en │  3 runs │ Avg: 1.666 │ Success: 98.7%
+  🤖 gpt_5_4_low_translated_en      │  1 runs │ Avg: 1.502 │ Success: 98.8%
+  🤖 gpt_5_4_mini_low_translated_en │  1 runs │ Avg: 1.526 │ Success: 98.1%
+  🤖 gpt_5_4_mini_medium_translated_en │  2 runs │ Avg: 1.559 │ Success: 99.1%
+  🤖 gpt_5_mini_low_translated_en │  4 runs │ Avg: 1.646 │ Success: 97.9%
   🤖 grok_4_1_fast_reasoning_low_translated_en │  1 runs │ Avg: 1.427 │ Success: 100.0%
-  🤖 o3_dxgpt_high_translated_en │  2 runs │ Avg: 1.663 │ Success: 98.6%
-
---------------------------------------------------------------------------------
-🥇 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
-🥈 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
-🥉 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
- 4 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.442 │   93.8% (258/275)
- 5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ normalcalls (*)  │  1.447 │  100.0% (150/150)
- 6 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en │ gemini-2.5-pro  │  1.547 │  100.0% (150/150)
- 7 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.566 │   96.7% (145/150)
- 8 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.582 │   97.3% (146/150)
- 9 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ normalcalls (*)  │  1.592 │   94.7% (142/150)
-10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.599 │   94.7% (142/150)
-11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
-12 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ normalcalls     │  1.639 │   92.7% (255/275)
-13 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ gemini-2.5-pro  │  1.646 │   95.6% (263/275)
-14 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gemini-2.5-pro  │  1.653 │   96.4% (265/275)
-15 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_medium_translated_en (†) │ normalcalls (*)  │  1.664 │   99.3% (149/150)
-16 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ gpt-5-mini      │  1.671 │   99.3% (149/150)
-17 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_mini_low_translated_en │ normalcalls (*)  │  1.673 │  100.0% (150/150)
-18 │ 📋 👌 🤖 all_275-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.680 │   97.8% (269/275)
-19 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_low_translated_en (†) │ normalcalls (*)  │  1.727 │  100.0% (150/150)
-20 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low             │ gemini-2.5-pro  │  1.753 │   98.6% (271/275)
-21 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_high_translated_en (†) │ normalcalls (*)  │  1.781 │   91.3% (137/150)
---------------------------------------------------------------------------------
-📊 Total experiments: 21
-⚠️  Excluidos 2 runs de all_150/gemini_2_5_pro (SHOULD_LABEL=false, sin summary.json — re-evaluación parcial inválida, 34.7% éxito)
-⚠️  Runs 13-21: SapBERT offline → 0 BERT matches, todos los casos semánticos fueron a LLM_JUDGMENT
-⚠️  gpt_5_2 (†): runs de Diciembre 2025 sin summary.json — métricas extraídas de evaluation_details.txt (ver docs/analysis/comparison-gpt52-reasoning-effort.md)
-🕐 Generated: 2026-04-15 (last run 20260415213554 — summary.json)
-
-🔍 DETAILED BREAKDOWN
-================================================================================
-
-📊 BY DATASET:
-  📋 all_150              │ 14 runs │ Avg: 1.579 │ Success: 97.4%
-  📋 all_275              │  7 runs │ Avg: 1.601 │ Success: 97.3%
-
-📝 BY PROMPT:
-  👌 juanjo_classic_v2    │ 21 runs │ Avg: 1.587 │ Success: 97.4%
-
-🤖 BY MODEL:
-  🤖 gemini_2_5_pro_low_translated_en │  2 runs │ Avg: 1.343 │ Success: 96.9%
-  🤖 gemini_3_pro_preview_low_translated_en │  1 runs │ Avg: 1.447 │ Success: 100.0%
-  🤖 gpt_4o_low           │  1 runs │ Avg: 1.753 │ Success: 98.6%
-  🤖 gpt_4o_low_translated_en │  2 runs │ Avg: 1.643 │ Success: 94.2%
-  🤖 gpt_5_1_low          │  2 runs │ Avg: 1.504 │ Success: 95.2%
-  🤖 gpt_5_1_low_translated_en │  2 runs │ Avg: 1.591 │ Success: 96.0%
-  🤖 gpt_5_1_medium       │  1 runs │ Avg: 1.592 │ Success: 94.7%
-  🤖 gpt_5_2_high_translated_en (†) │  1 runs │ Avg: 1.781 │ Success: 91.3%
-  🤖 gpt_5_2_low_translated_en (†) │  1 runs │ Avg: 1.727 │ Success: 100.0%
-  🤖 gpt_5_2_medium_translated_en (†) │  1 runs │ Avg: 1.664 │ Success: 99.3%
-  🤖 gpt_5_4_mini_medium_translated_en │  1 runs │ Avg: 1.547 │ Success: 100.0%
-  🤖 gpt_5_mini_low_translated_en │  3 runs │ Avg: 1.666 │ Success: 98.7%
-  🤖 grok_4_1_fast_reasoning_low_translated_en │  1 runs │ Avg: 1.427 │ Success: 100.0%
-  🤖 o3_dxgpt_high_translated_en │  2 runs │ Avg: 1.663 │ Success: 98.6%
+  🤖 o3_dxgpt_high_translated_en │  3 runs │ Avg: 1.581 │ Success: 98.9%

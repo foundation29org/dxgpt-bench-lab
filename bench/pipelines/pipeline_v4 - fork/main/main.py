@@ -503,11 +503,19 @@ def run_evaluator(config: Dict[str, Any], input_file: str, output_dir: str, file
 
 def main():
     """Main pipeline orchestrator"""
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', default=None, help='Path to config YAML file (default: config.yaml next to main.py)')
+    args, _ = parser.parse_known_args()
+
     print("🚀 Starting Pipeline V4 - Medical Diagnosis Evaluation System")
     print("="*70)
     
     # Load configuration
-    config_path = os.path.join(os.path.dirname(__file__), 'config.yaml')
+    if args.config:
+        config_path = os.path.abspath(args.config)
+    else:
+        config_path = os.path.join(os.path.dirname(__file__), 'config.yaml')
     
     try:
         with open(config_path, 'r', encoding='utf-8') as f:

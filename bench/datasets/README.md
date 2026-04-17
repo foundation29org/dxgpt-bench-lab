@@ -1,35 +1,41 @@
-# Datasets - Datos Procesados para Evaluación 🗂️
+# Datasets — Directorio de trabajo del pipeline
 
-Este directorio contiene los datasets médicos procesados que se utilizan para evaluar modelos de diagnóstico diferencial. Los datos provienen del pipeline de procesamiento `data29` y están organizados según diferentes propósitos de testing y validación.
+Este directorio contiene los datasets médicos usados en los experimentos de evaluación.
+Los archivos `.json` están excluidos de git (`.gitignore`) por privacidad de datos.
 
-## 📊 Datasets Disponibles
+Los datasets canónicos (con metadata y trazabilidad completa) viven en
+`data29/data-repos/curated-datasets/`. Este directorio es una copia de trabajo.
 
-### Validación de Funcionalidad
-- **`ukranian.json`** (21KB, 437 casos) - Dataset pequeño de prueba para validación on/off de funcionalidad de pipelines
+## Datasets de evaluación (benchmarking)
 
-### Testing de Funciones de Producción
-- **`largest_summarized_demo.json`** (201KB, 4147 líneas) - Para probar reacción del prompt dxgpt ante extensión de prompt
-- **`largest_extended.json`** (621KB, 4047 líneas) - Para validar función resumidora en producción
+| Dataset | Casos | Estado | Nota |
+|---------|-------|--------|------|
+| `all_256_clean.json` | 256 | ✅ **Línea base publicable** | Sin leakage, sin boilerplate — usar para nuevos runs |
+| `all_275.json` | 275 | ⚠️ Solo referencia histórica | Contiene 19 casos con label leakage |
+| `all_256.json` | 256 | ⚠️ Intermedio — no usar | Post-leakage pero pre-boilerplate |
+| `all_250.json` | 250 | ⚠️ Histórico | Dataset anterior al módulo de limpieza |
+| `all_150.json` | 150 | ⚠️ Histórico | Subset para runs rápidos |
+| `all_450.json` | 450 | ⚠️ Sin validar para publicación | Pool sin QA |
 
-### Datasets Principales (Módulo Reciente)
-- **`all_150.json`** (304KB, 6818 líneas) - Dataset diverso de 150 casos seleccionados
-- **`all_250.json`** (449KB, 10297 líneas) - Dataset diverso de 250 casos seleccionados  
-- **`all_450.json`** (728KB, 14651 líneas) - Dataset diverso completo de 450 casos seleccionados
+## Datasets de testing
 
-## 🔄 Pipeline de Generación
+| Dataset | Casos | Uso |
+|---------|-------|-----|
+| `all_10.json` | 10 | Smoke test ultra-rápido |
+| `all_5.json` | 5 | Debug de pipeline |
+| `ukranian.json` | 437 | Validación on/off de funcionalidad (idioma ucraniano) |
+| `largest_summarized_demo.json` | ~4K líneas | Probar reacción del prompt ante prompts largos |
+| `largest_extended.json` | ~4K líneas | Validar función resumidora en producción |
 
-### Datasets Principales (all_150, all_250, all_450)
-Estos datasets fueron generados con un módulo más reciente que:
-1. Parte de un conjunto final de **9,582 casos** obtenidos del procesamiento completo
-2. Aplica criterios de diversidad para crear subsets representativos
-3. Optimiza la distribución de casos para benchmarking efectivo
+## Dataset recomendado para nuevos runs
 
-### Datasets de Testing Específico
-- Los datasets `largest_*` sirven para probar funcionalidades específicas del prompt dxgpt
-- El dataset `ukranian` es ideal para testing rápido de funcionalidad pipeline
+```yaml
+# config.yaml
+DATASET_PATH: bench/datasets/all_256_clean.json
+```
 
-## 🎯 Uso Recomendado
-
-- **Desarrollo/Debug**: `ukranian.json`
-- **Testing de Prompts**: `largest_summarized_demo.json`, `largest_extended.json`
-- **Evaluación Completa**: `all_150.json`, `all_250.json`, `all_450.json`
+`all_256_clean.json` es el dataset de referencia desde Abril 2026:
+- Pasa todos los QA gates de `bench/validation_checks.py`
+- Sin label leakage (19 casos eliminados respecto a `all_275`)
+- Sin boilerplate español (49 casos limpiados a solo lista HPO)
+- Metadata completa en `data29/data-repos/curated-datasets/all_256_clean/`
