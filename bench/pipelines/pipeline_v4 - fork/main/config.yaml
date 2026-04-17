@@ -2,11 +2,11 @@
 # =========================
 
 # General Information
-EXPERIMENT_NAME: "fase1-paso1.4-B-gpt5mini-clean-dataset"
-EXPERIMENT_DESCRIPTION: "Segunda línea base sobre all_256_clean. Comparar calidad y velocidad con gpt-4o (Run 1.4-A). Primer run con SapBERT activo desde el inicio."
+EXPERIMENT_NAME: "fase2-paso2.5-ramedis-624-gpt5mini"
+EXPERIMENT_DESCRIPTION: "RAMEDIS HPO 624 casos con gpt-5-mini. Comparativa vs gpt-4o (R1-A: R@1=49.2%, R@5=99.4%). Objetivo: ver si el modelo más pequeño/rápido mantiene el rendimiento en enfermedades raras HPO."
 
 # Dataset Configuration
-DATASET_PATH: "bench/datasets/all_256_clean.json"
+DATASET_PATH: "bench/datasets/ramedis_hpo.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
@@ -20,8 +20,7 @@ DXGPT_EMULATOR:
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
   TRANSLATE_CASE:
-    ENABLED: true  # Enable to translate case descriptions before sending to LLM
-    TARGET_LANGUAGE: "en"  # Target language code (e.g., "en" for English, "es" for Spanish)
+    ENABLED: false  # Desactivado — casos HPO ya están en inglés (RAMEDIS, MME, HMS)
 
 # Evaluator Configuration
 EVALUATOR:

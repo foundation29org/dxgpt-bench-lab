@@ -1,0 +1,86 @@
+# Metadata — all_256_clean
+# Dataset: all_256_clean v1.0
+# Nivel 3 — curated-datasets/ (primera línea base publicable de DxGPT)
+# Última actualización: Abril 2026
+
+dataset: all_256_clean
+version: "1.0"
+created: "2026-04-15"
+status: PUBLICABLE
+
+summary:
+  total_cases: 256
+  sources:
+    - ramedis   # casos R* (IDs: R...)
+    - urgtorre  # casos T* (IDs: T...)
+  languages_in_source: [es]
+  pipeline_translation: true  # TRANSLATE_CASE enabled — traducido en runtime al inglés
+
+derivation:
+  base_dataset: bench/datasets/all_275.json
+  operations:
+    - step: 1
+      name: Remove label leakage cases
+      date: "2026-04-15"
+      cases_removed: 19
+      result_dataset: bench/datasets/all_256.json
+      details: >
+        19 casos eliminados por contener el diagnóstico correcto literal en el texto del caso
+        (label leakage confirmado por el equipo). Ver docs/pipeline/experiment-log.md §Paso 1.1
+    - step: 2
+      name: Strip boilerplate prefix/suffix
+      date: "2026-04-15"
+      cases_cleaned: 49
+      result_dataset: bench/datasets/all_256_clean.json  # este dataset
+      details: >
+        49 casos RAMEDIS tenían boilerplate español artificial añadido durante el ETL.
+        Patrón eliminado: "Motivo de consulta: Paciente acude.*?Anamnesis:".
+        28 casos T* con prefijo similar NO fueron modificados (narrativas clínicas válidas).
+        Ver docs/pipeline/experiment-log.md §Paso 1.2
+
+qa_results:
+  script: bench/validation_checks.py
+  date: "2026-04-15"
+  overall: PASS
+  gates:
+    label_leakage: PASS      # 0/256 casos con leakage
+    boilerplate_prefix: PASS # 0/256 casos con boilerplate
+    template_markers: PASS   # 0/256 marcadores de template
+    list_format_symptoms: PASS
+    minimum_length: PASS
+
+evaluation_runs:
+  - run_id: "20260416131009"
+    date: "2026-04-16"
+    model: gpt-4o
+    reasoning_effort: low
+    judge: gemini-2.5-pro
+    translate_case: true
+    avg_position: 1.545
+    success_pct: 96.1
+    matched: 246
+    total: 256
+    sapbert_note: "Activo desde caso 197/256 — reactivado durante el run (5 BERT matches)"
+    ranking_position: 6
+
+  - run_id: "20260416183805"
+    date: "2026-04-16"
+    model: gpt-5-mini
+    reasoning_effort: low
+    judge: gemini-2.5-pro
+    translate_case: true
+    avg_position: 1.588
+    success_pct: 97.7
+    matched: 250
+    total: 256
+    sapbert_note: "Activo desde el inicio — primer run 100% limpio con SapBERT (16 BERT matches)"
+    ranking_position: 10
+
+key_finding: >
+  Limpiar el boilerplate MEJORÓ los scores en ambos modelos (contra la hipótesis inicial
+  que predecía una bajada del 5-8%). Conclusión: el boilerplate en español confundía
+  activamente al modelo durante la generación de DDX. El dataset limpio es más difícil
+  "en el buen sentido" — sin pistas artificiales.
+
+pipeline_path_bench: bench/datasets/all_256_clean.json
+canonical_path: data29/data-repos/curated-datasets/all_256_clean/all_256_clean.json

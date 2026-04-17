@@ -1,0 +1,65 @@
+all_256_clean.json — Lineage Trace
+====================================
+Versión: 1.0
+Creado: 2026-04-15
+Actualizado: 2026-04-16
+
+TRAZABILIDAD
+------------
+
+  bench/datasets/all_256_clean.json  (ESTE DATASET)
+    │  Step 2: Strip boilerplate (49 casos RAMEDIS, 2026-04-15)
+    │  Script: ad-hoc Python (ver docs/pipeline/experiment-log.md §Paso 1.2)
+    │
+  bench/datasets/all_256.json
+    │  Step 1: Remove 19 label leakage cases (2026-04-15)
+    │  Script: ad-hoc Python (ver docs/pipeline/experiment-log.md §Paso 1.1)
+    │
+  bench/datasets/all_275.json
+    │  Generado por: data29/data-repos/post-normalization (server)/serve.py
+    │  Dataset pool: ~9.582 casos normalizados de 7 fuentes
+    │  Criterio: diversidad ICD-10 + complejidad + severidad
+    │
+  data29/data-repos/post-normalization (server)/served/20250702_173458_c450/
+    (subset de 450, trimado a 275 para benchmarking con diagnóstico ICD-10 confirmado)
+
+
+MAPEO DE IDs → FUENTE
+---------------------
+
+  Prefijo R*  → RAMEDIS (data29/data-repos/raw/ramedis.json)
+    - 49 casos con boilerplate ELIMINADO en v1.0 cleanup
+    - Boilerplate pattern: "Motivo de consulta: Paciente acude.*?Anamnesis:"
+    - Los casos solo con lista HPO: sus R* IDs en experiment-log.md §Paso 1.2
+
+  Prefijo T*  → URGTorre (data29/data-repos/raw/urgtorre.json)
+    - 28 casos T* tenían prefijo similar al boilerplate pero son narrativas clínicas VÁLIDAS
+    - NO fueron modificados en v1.0 cleanup
+
+  Otros prefijos (J*, B*, K*, etc.):
+    - Verificar en serve.py o en el report de la ejecución del servidor
+    - Ver: data29/data-repos/post-normalization (server)/served/20250702_173458_c450/
+
+CASOS ELIMINADOS (label leakage — no presentes en este dataset)
+--------------------------------------------------------------
+
+  19 casos eliminados de all_275.json:
+  Ver lista completa en: docs/pipeline/experiment-log.md §"Paso 1.1 — Label Leakage"
+
+  Motivo: el diagnóstico correcto aparecía literal en el texto del caso, haciendo
+  la evaluación trivial para el modelo (no mide diagnóstico real, sino recall textual).
+
+
+QA CHECKER RESULTS (bench/validation_checks.py)
+------------------------------------------------
+
+  Ejecutado: 2026-04-15
+  Dataset: bench/datasets/all_256_clean.json
+
+  Gate 1 — Label Leakage:        PASS (0/256)
+  Gate 2 — Boilerplate Prefix:   PASS (0/256)
+  Gate 3 — Template Markers:     PASS
+  Gate 4 — List Format Symptoms: PASS
+  Gate 5 — Minimum Length:       PASS
+
+  OVERALL: PASS ✅
