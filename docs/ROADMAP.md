@@ -509,31 +509,32 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 
 ### Paso 3.2 — Tabla comparativa contra DeepRare 🔄 EN CURSO
 
-**Tabla completa (Fase 2 finalizada, 2026-04-17):**
+**Tabla completa (Fase 2 finalizada, 2026-04-18 — 3 modelos × 5 datasets):**
 
-| Dataset | Casos | Métrica | DeepRare (Nature) | DxGPT gpt-4o | DxGPT gpt-5.4-mini | Ganador |
-|---------|-------|---------|-------------------|--------------|---------------------|---------|
-| RAMEDIS | 624 | R@1 | ~60% (espec.) / ~25-35% (GPT-4 base) | **49.2%** | 46.3% | gpt-4o (+2.9pp) |
-| RAMEDIS | 624 | R@5 | ~80% / ~60-75% | **99.4%** | 97.9% | gpt-4o (+1.5pp) |
-| LIRICAL | 370 | R@1 | — | 37.0% | **55.1%** | gpt-5.4-mini (+18pp) ⭐ |
-| LIRICAL | 370 | R@5 | — | 97.8% | 98.1% | ≈ igual |
-| HMS | 88 | R@1 | — | 34.1% | **53.4%** | gpt-5.4-mini (+19pp) ⭐ |
-| HMS | 88 | R@5 | — | 94.3% | **100.0%** | gpt-5.4-mini (+5.7pp) |
-| MyGene2 | 146 | R@1 | **74%** | 23.3% | **38.4%** | gpt-5.4-mini (+15pp) ⭐ |
-| MyGene2 | 146 | R@5 | ~90% | 95.9% | 97.3% | ambos > DeepRare en R@5 |
-| MME | 40 | R@1 | — | **42.5%** | 22.5% | gpt-4o (+20pp) ⚠️ n=40 |
-| MME | 40 | R@5 | — | **95.0%** | 90.0% | gpt-4o ⚠️ n=40 |
+| Dataset | Casos | Métrica | DeepRare (Nature) | DxGPT gpt-4o | DxGPT gpt-5.4-mini | DxGPT gemini-2.5-pro | Ganador |
+|---------|-------|---------|-------------------|--------------|---------------------|----------------------|---------|
+| RAMEDIS | 624 | R@1 | ~60% (espec.) / ~25-35% (GPT-4 base) | 49.2% | 46.3% | **54.2%** 🏆 | gemini (+5pp vs gpt-4o) |
+| RAMEDIS | 624 | R@5 | ~80% / ~60-75% | **99.4%** | 97.9% | 98.4% | gpt-4o (+1pp) |
+| LIRICAL | 370 | R@1 | — | 37.0% | 55.1% | **61.9%** 🏆 | gemini (+7pp vs mini) |
+| LIRICAL | 370 | R@5 | — | 97.8% | 98.1% | 97.3% | ≈ igual |
+| HMS | 88 | R@1 | — | 34.1% | 53.4% | **56.8%** 🏆 | gemini (+3pp vs mini) |
+| HMS | 88 | R@5 | — | 94.3% | **100.0%** | 100.0% | mini = gemini |
+| MyGene2 | 146 | R@1 | **74%** | 23.3% | 38.4% | **55.5%** 🏆 | gemini (+17pp vs mini) |
+| MyGene2 | 146 | R@5 | ~90% | 95.9% | 97.3% | 97.3% | mini = gemini (ambos > DeepRare) |
+| MME | 40 | R@1 | — | 42.5% | 22.5% | **65.0%** 🏆 | gemini (+22pp vs gpt-4o) |
+| MME | 40 | R@5 | — | 95.0% | 90.0% | 95.0% | gemini = gpt-4o |
 
-**Conclusiones:**
-1. **gpt-5.4-mini gana en 4/5 datasets** con márgenes grandes (+15-19pp en R@1)
-2. **MME es la única excepción** — 40 casos del hospital chino PUMCH. Varianza alta, resultado no generalizable
-3. **RAMEDIS**: gpt-4o levemente mejor (+2.9pp R@1). Ambos superan el baseline GPT-4 del paper (+14-24pp)
-4. **MyGene2**: ambos modelos superan el DeepRare paper en R@5 (síntomas auto-reportados, más ruidosos)
-5. **DxGPT vs. DeepRare especializado**: La brecha en R@1 es esperada — DeepRare usa fine-tuning HPO. DxGPT es generalista.
+**Conclusiones finales (tabla cerrada):**
+1. **gemini-2.5-pro gana en los 5 datasets** en R@1 — sin excepciones
+2. La "anomalía MME" (donde gpt-4o superaba a gpt-5.4-mini) se explica por capacidad del modelo: gemini hace 65% R@1 (+22pp vs gpt-4o), no era un problema del dataset
+3. **MyGene2** es el dataset más discriminante: gpt-4o 23.3% → gpt-5.4-mini 38.4% → gemini **55.5%** (gaps enormes)
+4. En R@5 los modelos convergen (todos ~97-100%), el diferenciador es R@1 (precisión del diagnóstico en primera posición)
+5. **DxGPT gemini-2.5-pro supera el baseline GPT-4 del paper en todos los datasets** (+5-32pp en R@1)
+6. La brecha con DeepRare especializado (74% en MyGene2) sigue siendo grande pero DxGPT es generalista sin fine-tuning
 
 > **Nota:** El modelo DeepRare (74% R@1 en MyGene2) es **especializado y fine-tuned** para enfermedades raras con HPO.
 > DxGPT es un sistema generalista de producción. La comparación relevante es contra el baseline GPT-4 del paper (~20-35%),
-> donde DxGPT gpt-5.4-mini mejora sustancialmente (+15-19pp en la mayoría de datasets).
+> donde DxGPT gemini-2.5-pro mejora sustancialmente en todos los datasets.
 
 ---
 
