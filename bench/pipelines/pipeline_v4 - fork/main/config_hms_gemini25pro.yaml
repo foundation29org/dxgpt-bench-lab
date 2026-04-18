@@ -1,0 +1,39 @@
+# Pipeline V4 Configuration — HMS gemini-2.5-pro
+# =================================================
+
+EXPERIMENT_NAME: "fase2-hms-88-gemini25pro"
+EXPERIMENT_DESCRIPTION: "HMS HPO 88 casos con gemini-2.5-pro. Completar tabla comparativa modo avanzado. gpt-4o: R@1=34.1%, gpt-5.4-mini: R@1=53.4%."
+
+DATASET_PATH: "bench/datasets/hms_hpo.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gemini-2.5-pro"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+    thinking_level: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: false
+
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    reasoning_effort: "low"
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null
