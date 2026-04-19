@@ -1,0 +1,39 @@
+# Pipeline V4 Configuration — all_256_clean gemini-2.5-flash
+# ===========================================================
+
+EXPERIMENT_NAME: "all_256_clean-juanjo_classic_v2-gemini_2_5_flash_low_translated_en"
+EXPERIMENT_DESCRIPTION: "all_256_clean con gemini-2.5-flash low. Alternativa rápida y barata a gemini-2.5-pro (1.299). ¿Cuánto se pierde en calidad a cambio de velocidad?"
+
+DATASET_PATH: "bench/datasets/all_256_clean.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gemini-2.5-flash"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+    thinking_level: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    reasoning_effort: "low"
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

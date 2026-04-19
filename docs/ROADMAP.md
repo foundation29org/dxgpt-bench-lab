@@ -2,7 +2,7 @@
 
 **Objetivo final:** Poder publicar una comparativa de DxGPT contra los mejores sistemas del paper de Nature (DeepRare, 2025) sobre los mismos datasets, con métricas equivalentes y resultados auditables.
 
-**Última actualización:** Abril 2026  
+**Última actualización:** 2026-04-24  
 **Estado actual:** Fase 0 ✅, Fase 1 ✅, Fase 2 ✅, Fase 3 🔄
 
 ---
@@ -538,31 +538,47 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 
 ---
 
-### Paso 3.3 — Documentar el modo de entrada diferencial
+### Paso 3.3 — Documentar el modo de entrada diferencial ✅ COMPLETADO
 
 **Track A — Modo síntomas HPO:** Input = lista de síntomas HPO. Comparable con DeepRare.
 
 **Track B — Modo texto clínico libre:** Input = descripción narrativa (como en producción). Comparable con uso real. Ningún sistema del paper evalúa en este modo — es el valor diferencial de DxGPT.
 
-Reportar ambos tracks por separado en cualquier comunicación externa.
+Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Documentado en rankingV2.txt con secciones separadas y nota de no-comparabilidad.
 
 ---
 
-### Paso 3.4 — Benchmark de modelos sobre all_256_clean ✅ COMPLETADO (2026-04-17)
+### Paso 3.4 — Benchmark de modelos sobre all_256_clean ✅ COMPLETADO (2026-04-18)
 
 **Objetivo:** Establecer qué modelo usar en producción para cada modo, con el dataset limpio y publicable.
 
-**Resultados all_256_clean (256 casos, juez gemini-2.5-pro):**
+**Resultados all_256_clean (256 casos, juez gemini-2.5-pro) — tabla completa:**
 
-| Modelo | Avg Position | Success% | Total (256c) | Avg/caso | Recomendación |
-|--------|-------------|----------|--------------|----------|---------------|
-| gemini-2.5-pro low | **1.299** | 98.1% | ~119 min | 27.9s | ⭐ Mejor calidad absoluta |
-| gpt-5.4 full low | 1.502 | 98.8% | ~74 min | 17.3s | Modo avanzado alternativo |
-| gpt-5.4-mini low | 1.526 | 98.1% | **~20 min** | **4.7s** | ⭐ Mejor relación calidad/velocidad |
+| Modelo | Avg Pos | Success% | Emulación (256c) | Avg/caso | Recomendación |
+|--------|---------|----------|------------------|----------|---------------|
+| **gemini-2.5-pro low** | **1.299** | 98.1% | ~119 min | 27.9s | ⭐ Mejor calidad absoluta |
+| **gemini-3-pro-preview low** | **1.299** | 98.1% | ~44 min | **10.3s** | ⭐⭐ Misma calidad, 3x más rápido |
+| gemini-2.5-flash low | 1.434 | 98.1% | ~90 min | 21.1s | Buena relación calidad/velocidad |
+| grok-4-1-fast-reasoning | 1.448 | 97.7% | ~87 min | 20.4s | Fuerte alternativa no-Google |
+| gpt-5.4 full low | 1.502 | 98.8% | ~74 min | 17.3s | Modo avanzado OpenAI |
+| gpt-5.4-mini low | 1.526 | 98.1% | **~20 min** | **4.7s** | ⭐ Mejor relación calidad/velocidad OpenAI |
 | o3 high | 1.530 | 98.8% | ~68 min | 15.9s | Superado — no recomendado |
 | gpt-4o | 1.545 | 96.1% | ~44 min | 10.3s | Producción actual — superable |
 | gpt-5.4-mini medium | 1.570 | 98.1% | — | — | Peor que low — no usar |
 | gpt-5-mini | 1.588 | 97.7% | ~205 min | 48.1s | Muy lento — retirar |
+| claude-opus-4-7 | 1.668* | 80.1% (205/256) | ~73 min | 17.1s | ⚠️ Solo 80% coverage — prompt no optimizado para Claude |
+
+> `*` avg_position calculado solo sobre los 205 casos matched. Si se calcula sobre 256 (contando unmatched como posición infinita), el score es significativamente peor. 51/256 casos sin match — el diagnóstico correcto no aparece en el top-8 de Claude.
+
+> **Nota sobre Claude Opus 4.7:** El bajo coverage (~80%) sugiere que `juanjo_classic_v2` no está optimizado para Claude. Modelos OpenAI y Gemini logran 97-98% coverage con el mismo prompt. Pendiente: probar Sonnet/Haiku para ver si el patrón se mantiene, y evaluar si un prompt específico para Claude mejoraría los resultados.
+
+> **Nota:** El tiempo de emulación es solo DDX generation (sin evaluación). Los tiempos de evaluación (juez) son adicionales y similares entre modelos (~1-2h para 256 casos).
+
+**Hallazgos clave:**
+- **gemini-3-pro-preview empata con gemini-2.5-pro en 1.299** siendo 3x más rápido — candidato real para modo avanzado
+- **grok** como mejor opción fuera del ecosistema Google/OpenAI (1.448)
+- **gemini-2.5-flash** equilibra velocidad y calidad (1.434, similar a grok pero Google)
+- **gpt-5.4-mini low** sigue siendo el campeón en ecosistema OpenAI por velocidad (4.7s/caso)
 
 **Decisiones de producción recomendadas:**
 
@@ -570,21 +586,129 @@ Reportar ambos tracks por separado en cualquier comunicación externa.
    - Mejor avg position (1.526 vs 1.545), igual success%, 2.2x más rápido, más barato
    - También mejor en HPO: +15-19pp en R@1 sobre gpt-4o (LIRICAL, HMS, MyGene2)
 
-2. **Modo avanzado** → reemplazar `o3 high` por **`gemini-2.5-pro`** (si coste/latencia aceptable)
-   - O por **`gpt-5.4 full low`** como alternativa más rápida (1.502 vs 1.530, 4x más rápido)
-   - o3 queda en 3ª posición y es el más lento entre los modelos avanzados
+2. **Modo avanzado** → **`gemini-3-pro-preview`** o **`gemini-2.5-pro`** (misma calidad 1.299)
+   - gemini-3-pro-preview es 3x más rápido que gemini-2.5-pro con el mismo score
+   - `gpt-5.4 full low` como alternativa si se prefiere OpenAI (1.502, 17.3s/caso)
+   - o3 queda en posición 7 y es más lento que los top 3 — retirar
 
-3. **o3 queda obsoleto para producción**: superado en calidad por gemini y gpt-5.4 full, sin ventaja de velocidad
+3. **o3 queda obsoleto para producción**: superado en calidad por 6 modelos, sin ventaja de velocidad
+
+### Paso 3.5 — Evaluación de modelos adicionales (Claude, DeepSeek, etc.) 🔄 EN CURSO
+
+**Objetivo:** Ampliar la comparativa con modelos de Anthropic, DeepSeek y futuros modelos.
+
+**Estado Claude (Anthropic) — integración completada 2026-04-18:**
+
+| Modelo | Estado | Config | Resultado |
+|--------|--------|--------|-----------|
+| claude-opus-4-7 | ✅ Completado | `config_256clean_claude_opus47_reeval.yaml` | avg_pos=1.668 / **80.1%** ⚠️ |
+| claude-sonnet-4-6 | ⏳ Pendiente | `config_256clean_claude_sonnet46.yaml` | — |
+| claude-haiku-4-5 | ⏳ Pendiente | `config_256clean_claude_haiku45.yaml` | — |
+
+> **Nota técnica:** La API de Anthropic deprecó `temperature` en los modelos Claude 4.x. El provider `utils/llm/claude.py` detecta la versión del modelo y omite el parámetro automáticamente.
+
+**⚠️ Hallazgo importante — Claude Opus 4.7 (80.1% coverage):**
+
+Claude Opus 4.7 solo matcheó 205/256 casos — significativamente peor que otros modelos (97-99%). Hipótesis identificadas:
+
+1. **Claude genera diagnósticos más elaborados/específicos** que se alejan del gold standard. Ej: en lugar de "Lupus eritematoso sistémico", puede generar "SLE con afectación renal clase III y síndrome antifosfolípido secundario" — correcto clínicamente pero el juez LLM no siempre lo confirma como equivalente.
+2. **`juanjo_classic_v2` no está optimizado para Claude** — el prompt fue diseñado para OpenAI/Gemini. Claude interpreta las instrucciones de forma diferente (más detallado, más hedging, posiblemente omite enfermedades raras en favor de diferenciales más comunes).
+3. **Claude es más conservador** en enfermedades raras — puede no incluir la enfermedad rara correcta en su top-8 DDX.
+
+**Pendiente (Paso 3.6):** Evaluar Sonnet y Haiku para ver si el patrón se mantiene en toda la familia Claude. Si confirma, considerar crear `juanjo_claude_v1` — una versión del prompt optimizada para el estilo de respuesta de Claude.
+
+### Paso 3.6 — Optimización de prompt (todos los modelos) ⏳ PENDIENTE
+
+**Contexto:** El prompt `juanjo_classic_v2` es el prompt actual de producción, nunca reoptimizado desde que se introdujeron los modelos nuevos (gpt-5.4, gemini-2.5-pro, Claude, etc.). Cada familia de modelos tiene un estilo de respuesta diferente y puede beneficiarse de instrucciones adaptadas.
+
+**Por qué es relevante ahora:**
+- Claude Opus 4.7 evidenció que el prompt puede penalizar significativamente a algunos modelos (80% vs 98% coverage)
+- Los modelos han evolucionado — las instrucciones óptimas para gpt-4o pueden no ser óptimas para gemini-2.5-pro o gpt-5.4
+- Un prompt mejorado podría subir el ranking de todos los modelos, especialmente en enfermedades raras
+
+**Enfoque recomendado:**
+1. Analizar casos fallidos de los modelos top (Claude, gpt-4o) para identificar patrones de error
+2. Diseñar variantes del prompt (`juanjo_v3`, `juanjo_claude_v1`, etc.) con ajustes específicos:
+   - Instrucciones explícitas sobre formato de nombre de enfermedad (conciso, sin calificadores)
+   - Énfasis en incluir enfermedades raras aunque sean poco probables
+   - Instrucciones de ranking más claras
+3. Evaluar las variantes sobre `all_256_clean` con los 3-4 modelos top
+4. Seleccionar el mejor prompt universal o uno por familia de modelos
+
+**Nota:** Esta tarea es de alto valor pero requiere iteración manual + criterio clínico. No es bloqueante para la publicación con los resultados actuales.
+
+**Estado DeepSeek:**
+- ⏳ Pendiente añadir `DEEPSEEK_API_KEY` al `.env` y crear config
+- Candidatos: `deepseek-r1`, `deepseek-v3`
 
 ---
 
-## Fase 4 — Escalar y validar (aspiracional) ⏳ FUTURA
+## Fase 4 — Escalar y validar (aspiracional) 🔄 EN CURSO
 
-**Objetivo:** Extender a ~3.500 casos y añadir validación clínica humana.
+**Objetivo:** Extender a ~1.749 casos adicionales (DDD) y añadir validación clínica humana.
 
-### Paso 4.1 — Evaluar DDD dataset (~2.283 casos)
+### Paso 4.1 — Dataset DDD (Gene2Phenotype, 1.749 casos) 🔄 EN CURSO
 
-El dataset DDD (Deciphering Developmental Disorders) es el mayor público en el paper de Nature. Requiere evaluar acceso y licencia antes de proceder.
+**Fuente:** G2P EBI — `DDG2P_2025-05-28.csv.gz` (misma versión usada en paper DeepRare, mayo 2025)  
+**URL:** `https://ftp.ebi.ac.uk/pub/databases/gene2phenotype/G2P_data_downloads/2025_05_28/`
+
+**Diferencia con otros datasets HPO:**
+- RAMEDIS/MME/HMS/LIRICAL/MyGene2: casos de pacientes reales con síntomas (experiencia diagnóstica real)
+- DDD/G2P: asociaciones gen-enfermedad curadas + términos HPO de la literatura (base de conocimiento)
+- El DDD es más "teórico" — ideal para evaluar si el modelo conoce el espacio de enfermedades raras genéticas
+
+**Datos raw:**
+- `data29/data-repos/raw/ddd_g2p/DDG2P_2025-05-28.csv` — fuente oficial EBI
+- `data29/data-repos/raw/ddd_g2p/hp.obo` — ontología HPO (Feb 2026, 19.944 términos)
+
+**Conversión HP codes → texto (paso clave):**
+
+El dataset G2P almacena los fenotipos como códigos HPO (`HP:0001321; HP:0000750`). El pipeline necesita texto, por eso el script de conversión usa `hp.obo` para mapear cada código a su label canónica:
+
+```
+G2P raw:  HP:0001321; HP:0000750; HP:0003593
+              ↓  (hp.obo lookup)
+case_en:  "Cerebellar hypoplasia, Intellectual disability, Onset in infancy"
+              ↓
+          input al modelo (igual que RAMEDIS/MME/HMS/LIRICAL/MyGene2)
+```
+
+Esto es correcto y consistente con todos los otros datasets HPO — que ya vienen con los labels en texto desde su fuente original (RareBench, Harvard Dataverse). DDD es el único que requiere este paso de conversión explícita porque proviene directamente de una base de datos de ontología. Los HP: codes son solo identificadores de BD — el LLM entiende "Cerebellar hypoplasia", no "HP:0001321".
+
+**Dataset generado:**
+
+| Archivo | Casos | Descripción |
+|---------|-------|-------------|
+| `bench/datasets/ddd_hpo.json` | **1.749** | Todos los casos con fenotipos |
+| `bench/datasets/ddd_hpo_confident.json` | 1.596 | Solo definitive + strong |
+| `bench/datasets/ddd_hpo_pilot50.json` | 50 | Pilot (35 definitive + 15 strong, seed=42) |
+
+**Estadísticas:**
+- Avg HPO terms/caso: 20.2 (más que otros datasets — más fenotipos por caso)
+- Confidence: definitive 1187 (68%), strong 409 (23%), limited 122, moderate 30, refuted 1
+- Script conversión: `data29/data-repos/raw/ddd_g2p/convert_ddg2p.py`
+
+**Estado de ejecución:**
+
+| Run | Dataset | Modelo | R@1 | R@3 | R@5 | Avg Pos | Estado |
+|-----|---------|--------|-----|-----|-----|---------|--------|
+| Pilot | ddd_hpo_pilot50 (50c) | gpt-4o | 48% | 82% | 98% | 2.08 | ✅ COMPLETADO run 20260418173220 |
+| Full | ddd_hpo (1.749c) | gpt-4o | **44.9%** | **76.8%** | **97.0%** | **2.267** | ✅ COMPLETADO run 20260418225915 |
+| Full | ddd_hpo (1.749c) | gpt-5.4-mini low | **52.4%** | **79.6%** | **97.2%** | **2.036** | ✅ COMPLETADO run 20260419010722 |
+| Full | ddd_hpo (1.749c) | gemini-2.5-pro | — | — | — | — | 🔄 Ejecutando noche (`config_ddd_full_gemini25pro.yaml`) |
+
+**Conclusiones del pilot (50 casos, gpt-4o):**
+- ✅ Pipeline 100% funcional con datos DDD/G2P
+- ✅ 100% coverage — ningún caso sin match (mejor que RAMEDIS/MyGene2)
+- R@1=48% comparable con RAMEDIS gpt-4o (49.2%) — buen indicador
+- 0 matches SNOMED/ICD10 — esperado: los nombres G2P siguen convención gene-first (`KIAA0586-related Joubert syndrome`) no indexada en estándares. El juez LLM los resuelve correctamente (78% casos).
+- SapBERT activo: 22% BERT matches (11/50)
+
+**Para lanzar el run completo:**
+```powershell
+Set-Location "c:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
+python main.py --config config_ddd_full_gpt4o.yaml
+```
 
 ### Paso 4.2 — Estratificación de resultados
 
@@ -605,9 +729,9 @@ El paper de Nature usó un panel de 8 médicos independientes con 88% de concord
 ```
 FASE 0  ████████████████████  100% ✅  (línea base, ablación modelos)
 FASE 1  ████████████████████  100% ✅  (dataset limpio all_256_clean, arquitectura datos)
-FASE 2  ████████████████████  100% ✅  (5 datasets DeepRare, 2 modelos × 5 = 10 runs HPO)
-FASE 3  ████████░░░░░░░░░░░░   40% 🔄  (3.1 Recall@K ✅, 3.2 tabla ✅, 3.3-3.4 pendientes)
-FASE 4  ░░░░░░░░░░░░░░░░░░░░    0% ⏳
+FASE 2  ████████████████████  100% ✅  (5 datasets DeepRare, 3 modelos × 5 = 15 runs HPO)
+FASE 3  ████████████████░░░░   80% 🔄  (3.1 ✅ Recall@K, 3.2 ✅ tabla DeepRare, 3.3 ✅ tracks, 3.4 ✅ benchmark, 3.5 🔄 Claude/DeepSeek)
+FASE 4  ████████░░░░░░░░░░░░   40% 🔄  (4.1 DDD descargado, convertido, pilot ✅ R@1=48%)
 ```
 
 ---

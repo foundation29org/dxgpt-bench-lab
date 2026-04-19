@@ -1,0 +1,40 @@
+# Pipeline V4 Configuration — ddd_hpo FULL run 1749 casos con gpt-5.4-mini low
+# =============================================================================
+# Ejecutar en paralelo con config_ddd_full_gpt4o.yaml.
+# En otros HPO datasets, gpt-5.4-mini supera a gpt-4o en R@1 (+15-19pp en LIRICAL/HMS/MyGene2).
+# Estimado: ~1749 casos × 4.7s/caso = ~2.3h emulación + ~2h evaluación
+
+EXPERIMENT_NAME: "ddd_hpo-juanjo_classic_v2-gpt_5_4_mini_low"
+EXPERIMENT_DESCRIPTION: "DDD full run 1749 casos con gpt-5.4-mini low. En paralelo con gpt-4o. En LIRICAL/HMS/MyGene2, mini supero a gpt-4o en +15-19pp R@1."
+
+DATASET_PATH: "bench/datasets/ddd_hpo.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-5.4-mini"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: false
+
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    reasoning_effort: "low"
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null
