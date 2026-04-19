@@ -66,6 +66,20 @@ except ImportError:
     XaiLLM = None
     XaiLLMConfig = None
 
+# Try importing Anthropic Claude (optional dependency)
+try:
+    from .claude import (
+        ClaudeLLM,
+        ClaudeLLMConfig,
+        create_llm as create_claude_llm,
+        quick_generate as quick_generate_claude
+    )
+    CLAUDE_AVAILABLE = True
+except ImportError:
+    CLAUDE_AVAILABLE = False
+    ClaudeLLM = None
+    ClaudeLLMConfig = None
+
 def get_llm(model_name: str, **kwargs) -> BaseLLM:
     """Try each LLM provider until one works."""
     model_lower = model_name.lower()
@@ -84,6 +98,22 @@ def get_llm(model_name: str, **kwargs) -> BaseLLM:
             raise RuntimeError(
                 f"Failed to initialize XaiLLM for model '{model_name}': {str(e)}\n"
                 "Make sure XAI_API_KEY is set in your .env file."
+            ) from e
+
+    # Check if model is Claude (Anthropic)
+    is_claude = 'claude' in model_lower
+    if is_claude:
+        if not CLAUDE_AVAILABLE:
+            raise RuntimeError(
+                f"Claude model '{model_name}' requires anthropic package. "
+                "Install it with: pip install anthropic"
+            )
+        try:
+            return ClaudeLLM(model_name, **kwargs)
+        except Exception as e:
+            raise RuntimeError(
+                f"Failed to initialize ClaudeLLM for model '{model_name}': {str(e)}\n"
+                "Make sure ANTHROPIC_API_KEY is set in your .env file."
             ) from e
     
     # Check if model is Gemini
@@ -151,6 +181,10 @@ __all__ = [
     # xAI exports (if available)
     'XaiLLM',
     'XaiLLMConfig',
+
+    # Anthropic Claude exports (if available)
+    'ClaudeLLM',
+    'ClaudeLLMConfig',
     
     # Base class if available
     'BaseLLM',

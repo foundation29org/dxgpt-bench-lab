@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/all_256_clean.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gemini-3-pro-preview
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: 'all_256_clean con gemini-3-pro-preview low. Referencia: gemini-3-pro
+  en all_150 dio 1.447. ¿Mejora o empeora respecto a gemini-2.5-pro (1.299) en dataset
+  limpio?'
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-04-18T09:27:49.691752'
