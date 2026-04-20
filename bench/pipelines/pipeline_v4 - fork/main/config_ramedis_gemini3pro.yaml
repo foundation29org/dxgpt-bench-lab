@@ -1,0 +1,40 @@
+# Pipeline V4 Configuration — ramedis_hpo con gemini-3-pro-preview
+# ================================================================================
+# Objetivo: validar si gemini-3-pro-preview mantiene calidad en HPO vs gemini-2.5-pro
+# gemini-2.5-pro: R@1=54.2%, R@3=92.6%, R@5=98.4%, avg_pos=1.760 (run 20260418061358)
+# Estimado: ~624 casos × 10s/caso = ~104 min emulación + ~60 min evaluación
+
+EXPERIMENT_NAME: "ramedis_hpo-juanjo_classic_v2-gemini_3_pro_preview_low"
+EXPERIMENT_DESCRIPTION: "RAMEDIS HPO 624 casos con gemini-3-pro-preview. Validacion calidad vs gemini-2.5-pro (R@1=54.2%). Dataset mas grande de RareBench — referencia principal del paper DeepRare."
+
+DATASET_PATH: "bench/datasets/ramedis_hpo.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gemini-3-pro-preview"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: false
+
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    reasoning_effort: "low"
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

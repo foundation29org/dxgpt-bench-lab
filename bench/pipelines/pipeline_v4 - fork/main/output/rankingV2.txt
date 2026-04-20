@@ -73,19 +73,25 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=55.1% R@3=79.7% R@5=98.1% | BERT 37% + LLM_J 61% | ⭐ gpt-5.4-mini +18pp R@1 vs gpt-4o | run 20260417182706
  §6 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.529 │  99.2% (367/370)
     └─ R@1=37.0% R@3=73.0% R@5=97.8% | BERT 31.6% + LLM_J 67.6% | run 20260417125334
- §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.553 │  95.0% (38/40)
+ §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.342 │  95.0% (38/40)
+    └─ R@1=75.0% R@3=95.0% R@5=95.0% | PUMCH hospital chino | ⭐⭐⭐ +10pp vs gemini-2.5-pro, 3× más rápido | BERT 37% | run 20260420155541
+ §5b│ 🧬 mme_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.553 │  95.0% (38/40)
     └─ R@1=65.0% R@3=87.5% R@5=95.0% | PUMCH hospital chino | ⭐⭐ gemini +22pp vs gpt-4o | run 20260417214502
  §6 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.632 │  95.0% (38/40)
     └─ R@1=42.5% R@3=60.0% R@5=95.0% | PUMCH hospital chino | run 20260417113846
  §7 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.757 │  92.5% (37/40)
     └─ R@1=22.5% R@3=62.5% R@5=90.0% | PUMCH hospital chino | run 20260417174500
- §8 │ 🧬 hms_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.693 │ 100.0% (88/88)
+ §8 │ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.375 │ 100.0% (88/88)
+    └─ R@1=72.7% R@3=100.0% R@5=100.0% | Harvard Medical School | ⭐⭐⭐ +15.9pp vs gemini-2.5-pro, 3× más rápido | BERT 54% | run 20260420160939
+ §8b│ 🧬 hms_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.693 │ 100.0% (88/88)
     └─ R@1=56.8% R@3=90.9% R@5=100.0% | Harvard Medical School | BERT 58% | ⭐ gemini mejor que mini | run 20260417221140
  §9 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.909 │ 100.0% (88/88)
     └─ R@1=53.4% R@3=86.4% R@5=100.0% | Harvard Medical School | BERT 57% | ⭐ gpt-5.4-mini +19pp R@1 vs gpt-4o | run 20260417175146
 §10 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.761 │ 100.0% (88/88)
     └─ R@1=34.1% R@3=70.5% R@5=94.3% | Harvard Medical School | BERT 46.6% | run 20260417115441
-§11 │ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.782 │  97.3% (142/146)
+§11 │ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.521 │  95.9% (140/146)
+    └─ R@1=61.0% R@3=95.9% R@5=95.9% | Harvard Dataverse | ⭐⭐⭐ +5.5pp R@1 vs gemini-2.5-pro, +10.3pp R@3 | BERT 14% | run 20260420162510
+§11b│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.782 │  97.3% (142/146)
     └─ R@1=55.5% R@3=85.6% R@5=97.3% | BERT 26% + LLM_J 71% | ⭐⭐ +17pp vs mini, +32pp vs gpt-4o | run 20260417223452
 §12 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.282 │  97.3% (142/146)
     └─ R@1=38.4% R@3=77.4% R@5=97.3% | BERT 26.7% + LLM_J 70.5% | run 20260417154253

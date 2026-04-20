@@ -275,7 +275,7 @@
     <div class="callout callout-warn" style="margin-top:16px">
       <span class="callout-icon">⚡</span>
       <div>
-        <strong>Implicación práctica:</strong> el modo normal actual (<strong>gpt-5-mini low</strong>) es lento y ha perdido calidad respecto a gpt-4o. <strong>gpt-5.4-mini</strong> lo supera en calidad (avg_pos 1.526 vs 1.588), es ~10× más rápido (~5s vs ~48s/caso) y más barato. El modo avanzado (<strong>o3</strong>) puede sustituirse por <strong>gemini-2.5-pro</strong> o <strong>gemini-3-pro-preview</strong> con mayor rendimiento y menor coste.
+        <strong>Implicación práctica:</strong> el modo normal actual (<strong>gpt-5-mini low</strong>) es lento y ha perdido calidad respecto a gpt-4o. <strong>gpt-5.4-mini</strong> lo supera en calidad (avg_pos 1.526 vs 1.588), es ~10× más rápido (~5s vs ~48s/caso) y más barato. El modo avanzado (<strong>o3</strong>) debe sustituirse por <strong>gemini-3-pro-preview</strong>: supera a gemini-2.5-pro en HPO (+10 a +16pp R@1), iguala en texto narrativo, y es 3× más rápido.
       </div>
     </div>
   </div>
@@ -438,7 +438,7 @@
           </td>
           <td><span class="badge badge-green">98.1% (251/256)</span></td>
           <td><strong>10.3s</strong></td>
-          <td><span class="badge badge-gold">Igual calidad, 3× más rápido</span></td>
+          <td><span class="badge badge-gold">Igual calidad texto · <strong>supera en HPO</strong> · 3× más rápido</span></td>
         </tr>
         <tr>
           <td><span class="rank-silver">🥈</span></td>
@@ -556,7 +556,23 @@
     <div class="callout callout-win">
       <span class="callout-icon">🏆</span>
       <div>
-        <strong>gemini-2.5-pro gana en los 6/6 datasets en Recall@1</strong>, sin excepciones. En el dataset más grande (DDD, 1.749 casos): R@1=63.5%, R@3=91.8% — 9 de cada 10 casos con diagnóstico correcto en los 3 primeros.
+        <strong>gemini-2.5-pro gana en los 6/6 datasets en Recall@1</strong> frente a gpt-4o y gpt-5.4-mini. En el dataset más grande (DDD, 1.749 casos): R@1=63.5%, R@3=91.8% — 9 de cada 10 casos con diagnóstico correcto en los 3 primeros.
+      </div>
+    </div>
+
+    <div class="callout" style="background:#f5f3ff;border-left:4px solid #7c3aed;margin-bottom:16px;">
+      <span class="callout-icon">🚀</span>
+      <div>
+        <strong>Nuevo hallazgo (2026-04-20):</strong> <strong>gemini-3-pro-preview supera a gemini-2.5-pro en HPO</strong> en los 3 datasets validados, siendo 3× más rápido:
+        <table style="margin-top:10px;font-size:0.85rem;width:100%;">
+          <thead><tr><th>Dataset</th><th>gemini-2.5-pro R@1</th><th>gemini-3-pro R@1</th><th>Ventaja</th><th>gemini-3 R@3</th></tr></thead>
+          <tbody>
+            <tr><td>MME (40c)</td><td>65.0%</td><td><strong>75.0%</strong></td><td><span class="badge badge-green">+10pp</span></td><td>95.0%</td></tr>
+            <tr><td>HMS Harvard (88c)</td><td>56.8%</td><td><strong>72.7%</strong></td><td><span class="badge badge-green">+15.9pp</span></td><td>100.0% 🏆</td></tr>
+            <tr><td>MyGene2 (146c)</td><td>55.5%</td><td><strong>61.0%</strong></td><td><span class="badge badge-green">+5.5pp</span></td><td>95.9%</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;font-size:0.85rem;">Evaluación en curso: LIRICAL (370c), RAMEDIS (624c), DDD (1.749c). <strong>gemini-3-pro-preview es la recomendación definitiva para modo avanzado</strong>: mejor calidad HPO y 3× más rápido que gemini-2.5-pro.</p>
       </div>
     </div>
 
@@ -759,6 +775,7 @@
             <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini</strong> ⭐ <em>(propuesto)</em></td><td><strong style="color:#166534;">1× (más barato)</strong></td><td>~&lt;$0.50</td></tr>
             <tr><td>gemini-2.5-flash</td><td>~0.7×</td><td>~$0.35</td></tr>
             <tr><td>gemini-2.5-pro</td><td>~12×</td><td>~$6</td></tr>
+            <tr><td>gemini-3-pro-preview</td><td>~12-15×</td><td>~$6-8</td></tr>
             <tr><td>gpt-4o</td><td>~15×</td><td>~$7-8</td></tr>
             <tr><td>gpt-5.4 full</td><td>~22×</td><td>~$11</td></tr>
             <tr style="background:#fff7ed;"><td><strong>claude-opus-4-7</strong></td><td>—</td><td><strong>$8 (medido)</strong></td></tr>
@@ -793,9 +810,10 @@
         <div class="rec-title">Modo Avanzado — reemplaza o3 (actual)</div>
         <div class="rec-model">gemini-3-pro-preview low</div>
         <ul style="font-size:0.88rem;padding-left:18px;color:var(--text);">
-          <li>Avg position 1.299 — la mejor calidad medida</li>
+          <li>Avg position 1.299 en texto narrativo — empata gemini-2.5-pro</li>
+          <li><strong>Supera a gemini-2.5-pro en HPO:</strong> +10pp R@1 en MME, +15.9pp en HMS Harvard</li>
           <li>~10s/caso → <strong>3× más rápido que gemini-2.5-pro</strong></li>
-          <li>Empata gemini-2.5-pro en all_256_clean</li>
+          <li>Evaluación HPO completa en curso (MyGene2, LIRICAL, RAMEDIS, DDD)</li>
           <li><em>Alternativa:</em> gemini-2.5-pro si gemini-3 no disponible</li>
         </ul>
       </div>

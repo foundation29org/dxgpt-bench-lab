@@ -582,19 +582,24 @@ Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Docum
 > **Nota:** El tiempo de emulación es solo DDX generation (sin evaluación). Los tiempos de evaluación (juez) son adicionales y similares entre modelos (~1-2h para 256 casos).
 
 **Hallazgos clave:**
-- **gemini-3-pro-preview empata con gemini-2.5-pro en 1.299** siendo 3x más rápido — candidato real para modo avanzado
+- **gemini-3-pro-preview supera a gemini-2.5-pro en HPO** (no solo empata) — validado en 3/3 datasets pequeños:
+  - MME: R@1 75.0% vs 65.0% (+10pp)
+  - HMS Harvard: R@1 72.7% vs 56.8% (+15.9pp), R@3 100% vs 90.9%
+  - MyGene2: R@1 61.0% vs 55.5% (+5.5pp), R@3 95.9% vs 85.6% (+10.3pp)
+  - Pendiente confirmar en LIRICAL y RAMEDIS (en curso)
 - **grok** como mejor opción fuera del ecosistema Google/OpenAI (1.448)
 - **gemini-2.5-flash** equilibra velocidad y calidad (1.434, similar a grok pero Google)
 - **gpt-5.4-mini low** sigue siendo el campeón en ecosistema OpenAI por velocidad (4.7s/caso)
 
 **Decisiones de producción recomendadas:**
 
-1. **Modo normal** → migrar de `gpt-4o` a **`gpt-5.4-mini low`**
-   - Mejor avg position (1.526 vs 1.545), igual success%, 2.2x más rápido, más barato
+1. **Modo normal** → migrar de `gpt-5-mini low` (actual, ~48s/caso) a **`gpt-5.4-mini low`**
+   - Mejor avg position (1.526 vs 1.588), ~10x más rápido, mismo coste aproximado
    - También mejor en HPO: +15-19pp en R@1 sobre gpt-4o (LIRICAL, HMS, MyGene2)
 
-2. **Modo avanzado** → **`gemini-3-pro-preview`** o **`gemini-2.5-pro`** (misma calidad 1.299)
-   - gemini-3-pro-preview es 3x más rápido que gemini-2.5-pro con el mismo score
+2. **Modo avanzado** → **`gemini-3-pro-preview`** (supera a gemini-2.5-pro en HPO + 3x más rápido)
+   - Texto narrativo: empata gemini-2.5-pro (1.299 avg_pos)
+   - HPO: +5 a +16pp R@1 sobre gemini-2.5-pro en los 3 datasets validados
    - `gpt-5.4 full low` como alternativa si se prefiere OpenAI (1.502, 17.3s/caso)
    - o3 queda en posición 7 y es más lento que los top 3 — retirar
 
