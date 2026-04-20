@@ -2,34 +2,107 @@
 
 ## Overview
 
-This is the fourth iteration of our medical diagnosis evaluation pipeline, representing the culmination of extensive research and development in pediatric diagnostic AI assessment. The pipeline evolved through multiple iterations (PV0-PV4) to address critical methodological challenges in evaluating LLM-based diagnostic systems.
+Pipeline de evaluación de modelos LLM para diagnóstico diferencial médico, con foco en enfermedades raras. Compara el rendimiento de DxGPT contra el paper de Nature [DeepRare (2025)](https://www.nature.com/articles/s41586-025-10097-9) usando los mismos datasets y métricas (Recall@K).
 
-### Pipeline Evolution and Study Context
+**Estado actual (2026-04-20):** Evaluación completa de 10+ modelos sobre `all_256_clean` (texto narrativo) y 6 datasets HPO del paper DeepRare. **gemini-2.5-pro supera el baseline GPT-4 del paper en los 6 datasets HPO (+5 a +32pp en Recall@1). DDD (1.749 casos): R@1=63.5%, R@3=91.8% con gemini-2.5-pro.**
 
-This evaluation framework was developed through a comprehensive study involving 9,677 total medical cases curated from multiple specialized datasets including pediatric emergency medicine, rare diseases (RAMEDIS), and clinical vignettes. The final validated dataset of 450 cases represents a carefully stratified sample ensuring:
+### Datasets evaluados
 
-- **Diagnostic diversity**: 497 unique diagnoses across 22 ICD-10 chapters
-- **Complexity representation**: Cases ranging from C2 to C10 complexity levels  
-- **Multi-diagnostic scenarios**: 31.8% of cases with multiple concurrent diagnoses
-- **Source heterogeneity**: Integration of 7 distinct medical data sources (B, J, Q, R, S, T, U)
+| Dataset | Tipo | Casos | Fuente |
+|---------|------|-------|--------|
+| `all_256_clean` | Texto narrativo clínico | 256 | DxGPT interno (limpio) |
+| `ramedis_hpo` | HPO terms | 624 | RareBench (HuggingFace) |
+| `lirical_hpo` | HPO terms | 370 | RareBench (HuggingFace) |
+| `hms_hpo` | HPO terms | 88 | RareBench (HuggingFace) |
+| `mme_hpo` | HPO terms | 40 | RareBench (HuggingFace) |
+| `mygene2_hpo` | HPO terms | 146 | Harvard Dataverse |
+| `ddd_hpo` | HPO terms (G2P) | 1.749 | EBI Gene2Phenotype |
 
-The pipeline architecture addresses three critical evaluation phases:
-1. **Differential Diagnosis Generation (DDX)** using state-of-the-art LLM models
-2. **Medical Code Attribution** using Azure Text Analytics for standardized coding (ICD-10, SNOMED, OMIM, ORPHA)
-3. **Quality Evaluation** against gold standard reference diagnoses (GDX) using both BERT semantic matching and LLM-based judgment
+> Ver `docs/ROADMAP.md` para el plan completo y estado de los experimentos.
 
-### Key Research Findings
+### Current Benchmark Results (2026-04-20)
 
-Our comprehensive evaluation across multiple model architectures revealed significant performance variations:
+> Full results in `output/rankingV2.txt`. All runs use prompt `juanjo_classic_v2`, judge `gemini-2.5-pro`, `temperature=0.1`, `BERT_accept=0.8/0.9`.
 
-- **O3-Images**: Leading performance with 93.65% accuracy in top-3 diagnostic predictions
-- **GPT-4O-Summary**: Strong baseline performance at 84.31% accuracy  
-- **O3-PRO**: Specialized variant showing 88.8% accuracy but with specific failure patterns
-- **O1**: Advanced reasoning model achieving competitive diagnostic accuracy
+#### Track A — Narrative Clinical Text (`all_256_clean`, 256 casos)
 
-![Model Performance Comparison](../../__conceptual-model-and-research-notes/imgs/modelos_openai_rojos.jpg)
+| Rank | Model | Avg Pos ↓ | Success% | ~s/case | Notes |
+|------|-------|-----------|----------|---------|-------|
+| 🥇 | gemini-2.5-pro low | **1.299** | 98.1% | 27.9s | Best absolute quality |
+| 🥇 | gemini-3-pro-preview low | **1.299** | 98.1% | 10.3s | Same quality, 3× faster |
+| 3 | gemini-2.5-flash low | 1.434 | 98.1% | 21.1s | Good quality/speed balance |
+| 4 | grok-4-1-fast-reasoning | 1.448 | 97.7% | 20.4s | Best non-Google alternative |
+| 5 | gpt-5.4 full low | 1.502 | 98.8% | 17.3s | Best OpenAI quality |
+| 6 | gpt-5.4-mini low | 1.526 | 98.1% | **4.7s** | ⭐ Best quality/speed (OpenAI) |
+| 7 | o3 high | 1.530 | 98.8% | 15.9s | Obsolete — beaten in quality |
+| 8 | gpt-4o low | 1.545 | 96.1% | 10.3s | Current production — superable |
+| ⚠️ | claude-opus-4-7 | 1.668* | 80.1% | 17.1s | Low coverage — prompt not optimized |
 
-The study identified critical insights into diagnostic AI evaluation methodology, bias detection, and the importance of position-based ranking metrics in medical diagnostic systems.
+> `*` avg_pos over matched cases only. 51/256 unmatched — see Paso 3.6 in ROADMAP.
+
+#### Track B — HPO Datasets (DeepRare paper comparison)
+
+| Dataset | Casos | gpt-4o R@1 | gpt-5.4-mini R@1 | gemini-2.5-pro R@1 | Ganador |
+|---------|-------|-----------|-----------------|---------------------|---------|
+| RAMEDIS | 624 | 49.2% | 46.3% | **54.2%** 🏆 | gemini +5pp |
+| LIRICAL | 370 | 37.0% | 55.1% | **61.9%** 🏆 | gemini +7pp vs mini |
+| HMS | 88 | 34.1% | 53.4% | **56.8%** 🏆 | gemini +3pp vs mini |
+| MyGene2 | 146 | 23.3% | 38.4% | **55.5%** 🏆 | gemini +17pp vs mini |
+| MME | 40 | 42.5% | 22.5% | **65.0%** 🏆 | gemini +22pp vs gpt-4o |
+| **DDD** | **1.749** | **44.9%** | **52.4%** | **63.5%** 🏆 | gemini +18.6pp vs gpt-4o |
+
+> gemini-2.5-pro wins in all 5 completed HPO datasets. gpt-5.4-mini beats gpt-4o in 4/5.
+
+---
+
+### Model Timing Reference
+
+#### Emulation time (DDX generation only, excluding evaluation)
+
+| Model | s/case | 256 cases | 1749 cases | Source |
+|-------|--------|-----------|------------|--------|
+| **gpt-5.4-mini low** | **~5s** | **~21 min** | **~2.5h** | DDD run |
+| gpt-4o low | ~8-10s | ~40 min | ~3.7h | DDD + all_256 runs |
+| gemini-3-pro-preview low | ~10s | ~44 min | ~4.9h | all_256 run |
+| gpt-5.4 full low | ~17s | ~74 min | ~8.2h | all_256 run |
+| o3 high | ~16s | ~68 min | ~7.7h | all_256 run |
+| grok-4-1-fast-reasoning | ~20s | ~87 min | ~9.7h | all_256 run |
+| gemini-2.5-flash low | ~21s | ~90 min | ~10.5h | all_256 run |
+| gemini-2.5-pro low | ~28-34s | ~120 min | ~13-17h | all_256 + DDD runs |
+| gpt-5-mini low | ~48s | ~205 min | ~23h | all_256 run |
+
+> Evaluation phase (judge) adds ~1-3h per 256 cases regardless of the evaluated model.
+
+#### Cost reference (Azure/API pricing, approximate 2026-04)
+
+| Model | Input $/1M | Output $/1M | Relative cost/case | Real cost (256c) |
+|-------|-----------|------------|-------------------|------------------|
+| gpt-5.4-mini | ~$0.15 | ~$0.60 | ~1× (cheapest) | — |
+| gemini-2.5-flash | ~$0.10 | ~$0.40 | ~0.7× | — |
+| gemini-2.5-pro | ~$1.25 | ~$10.00 | ~12× | — |
+| gpt-4o | ~$2.50 | ~$10.00 | ~15× | — |
+| gpt-5.4 full | ~$3.75 | ~$15.00 | ~22× | — |
+| **claude-opus-4-7** | — | — | — | **~$8 / 256 casos** (medido) |
+| o3 | ~$10.00 | ~$40.00 | ~60× | — |
+
+> `claude-opus-4-7`: coste real medido en run de all_256_clean = **$8 USD** (256 casos, max_tokens=12000). Referencia útil para estimar coste de Sonnet (~3-4×) y Haiku (~10-15×) más baratos.
+
+---
+
+### Production Recommendations
+
+Based on the 2026-04 evaluation:
+
+**Normal mode (replace gpt-4o):**
+→ **`gpt-5.4-mini low`** — better avg_pos (1.526 vs 1.545), 2× faster, ~15× cheaper, better R@1 on HPO datasets
+
+**Advanced mode (replace o3):**
+→ **`gemini-3-pro-preview low`** — same quality as gemini-2.5-pro (1.299), 3× faster, better quality than gpt-5.4 full
+→ **`gemini-2.5-pro low`** as alternative if gemini-3-pro-preview is unavailable
+
+**o3 is obsolete:** beaten in quality by 6 models, no speed advantage.
+
+---
 
 ## Components
 
