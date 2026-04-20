@@ -586,7 +586,9 @@ Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Docum
   - MME: R@1 75.0% vs 65.0% (+10pp)
   - HMS Harvard: R@1 72.7% vs 56.8% (+15.9pp), R@3 100% vs 90.9%
   - MyGene2: R@1 61.0% vs 55.5% (+5.5pp), R@3 95.9% vs 85.6% (+10.3pp)
-  - Pendiente confirmar en LIRICAL y RAMEDIS (en curso)
+  - LIRICAL: R@1 67.8% vs 61.9% (+5.9pp), R@3 98.1% vs 90.8% (+7.3pp)
+  - RAMEDIS: R@1 54.3% vs 54.2% (≈empate), R@3 98.2% vs 92.6% (+5.6pp) — 72.7% BERT matches, nombres muy estandarizados
+  - Pendiente: DDD (1.749c, en curso esta noche)
 - **grok** como mejor opción fuera del ecosistema Google/OpenAI (1.448)
 - **gemini-2.5-flash** equilibra velocidad y calidad (1.434, similar a grok pero Google)
 - **gpt-5.4-mini low** sigue siendo el campeón en ecosistema OpenAI por velocidad (4.7s/caso)

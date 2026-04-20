@@ -61,13 +61,17 @@ Nota: Estos runs usan datasets HPO del paper DeepRare (Nature). El formato es di
 Average_position esperada: 2.0-3.5 (más difícil que texto narrativo — esperado).
 SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
 
- §1 │ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.760 │  98.7% (616/624)
+ §1 │ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.628 │  98.7% (616/624)
+    └─ R@1=54.3% R@3=98.2% R@5=98.7% | ⭐ R@1≈empate (+0.1pp), R@3 +5.6pp vs gemini-2.5-pro | BERT 72.7% | run 20260420194835
+ §1b│ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.760 │  98.7% (616/624)
     └─ R@1=54.2% R@3=92.6% R@5=98.4% | BERT 52% + LLM_J 47% | ⭐ gemini mejor en los 5 datasets | run 20260418061358
  §2 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  1.976 │  99.7% (622/624)
     └─ R@1=49.2% R@3=83.7% R@5=99.4% | BERT 52.6% + LLM_J 47.1% | run 20260417004913
  §3 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.067 │  97.9% (611/624)
     └─ R@1=46.3% R@3=80.6% R@5=97.9% | BERT 69.1% + LLM_J 28.5% | run 20260417105437
- §4 │ 🧬 lirical_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.631 │  97.3% (360/370)
+ §4 │ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.489 │  98.9% (366/370)
+    └─ R@1=67.8% R@3=98.1% R@5=98.9% | ⭐⭐⭐ +5.9pp R@1 vs gemini-2.5-pro, +7.3pp R@3 | BERT 41% | run 20260420191032
+ §4b│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.631 │  97.3% (360/370)
     └─ R@1=61.9% R@3=90.8% R@5=97.3% | BERT 38% + LLM_J 60% | ⭐ +7pp vs gpt-5.4-mini | run 20260418042750
  §5 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.975 │  98.4% (364/370)
     └─ R@1=55.1% R@3=79.7% R@5=98.1% | BERT 37% + LLM_J 61% | ⭐ gpt-5.4-mini +18pp R@1 vs gpt-4o | run 20260417182706
