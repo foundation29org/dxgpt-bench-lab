@@ -717,7 +717,20 @@ Set-Location "c:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
 python main.py --config config_ddd_full_gpt4o.yaml
 ```
 
-### Paso 4.2 — Estratificación de resultados
+### Paso 4.2 — Dataset MIMIC-IV ⏸️ APLAZADO / BAJA PRIORIDAD
+
+MIMIC-IV es el único dataset público del paper DeepRare no integrado. Razones para aplazar:
+
+1. **Requiere registro burocrático**: cuenta en PhysioNet + Data Use Agreement (tarda 1-2 días en aprobarse, aunque es gratuito).
+2. **No es específico de enfermedades raras**: son notas clínicas generales del Beth Israel Deaconess Medical Center (Boston). DeepRare usa un subconjunto filtrado — requeriría trabajo de preprocesamiento adicional para aislar los casos relevantes.
+3. **Ya tenemos cobertura completa**: con los 6 datasets HPO (RAMEDIS, LIRICAL, HMS, MME, MyGene2, DDD) la comparativa con DeepRare está completa y es publicable.
+4. **Texto narrativo ya cubierto**: `all_256_clean` (256 casos internos) cubre ya el track de texto narrativo.
+
+**Conclusión**: MIMIC-IV sería un "bonus" para el track de texto narrativo externo, pero no es bloqueante para la publicación. Reevaluar su necesidad en función del tipo de publicación objetivo y los revisores.
+
+Los otros 2 datasets del paper (Xinhua Hospital, 975 casos; Hunan Hospital, 162 casos) son **privados y no accesibles**.
+
+### Paso 4.3 — Estratificación de resultados
 
 Reportar resultados desglosados por:
 - Tipo de enfermedad (rara genética vs. pediátrica general)
