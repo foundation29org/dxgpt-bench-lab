@@ -99,6 +99,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=44.9% R@3=76.8% R@5=97.0% | G2P 1749 casos | 0 SNOMED/ICD10, BERT 20% + LLM_J 78% | max DDX hasta P10 | run 20260418225915
 §17 │ 🧬 ddd_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.036 │  97.6% (1707/1749)
     └─ R@1=52.4% R@3=79.6% R@5=97.2% | G2P 1749 casos | ⭐ +7.5pp R@1 vs gpt-4o | BERT 30% + LLM_J 67% | run 20260419010722
+§18 │ 🧬 ddd_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.614 │  98.3% (1719/1749)
+    └─ R@1=63.5% R@3=91.8% R@5=98.0% | G2P 1749 casos | ⭐⭐ +18.6pp vs gpt-4o, +11.1pp vs mini | BERT 31% | run 20260420042635
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
@@ -114,6 +116,7 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
 🤖 BY MODEL:
   🤖 gemini_2_5_flash_low_translated_en │  1 runs │ Avg: 1.434 │ Success: 98.1%
   🤖 gemini_2_5_pro_low_translated_en │  3 runs │ Avg: 1.309 │ Success: 97.9%
+  🤖 gemini_2_5_pro_low (HPO) │  6 runs HPO │ Avg pos: 1.675 (ddd=1.614, mme=1.553, lirical=1.631, hms=1.693, ramedis=1.760, mygene2=1.782)
   🤖 gemini_3_pro_preview_low_translated_en │  2 runs │ Avg: 1.373 │ Success: 99.0%
   🤖 grok_4_1_fast_reasoning_low_translated_en │  2 runs │ Avg: 1.438 │ Success: 98.8%
   🤖 gpt_4o_low           │  1 runs │ Avg: 1.753 │ Success: 98.6%
@@ -130,3 +133,4 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
   🤖 gpt_5_mini_low_translated_en │  4 runs │ Avg: 1.646 │ Success: 97.9%
   🤖 grok_4_1_fast_reasoning_low_translated_en │  1 runs │ Avg: 1.427 │ Success: 100.0%
   🤖 o3_dxgpt_high_translated_en │  3 runs │ Avg: 1.581 │ Success: 98.9%
+  🤖 claude_opus_4_7_translated_en │  1 runs │ Avg: 1.668 │ Success: 80.1% ⚠️ baja cobertura

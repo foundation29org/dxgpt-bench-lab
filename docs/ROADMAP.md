@@ -507,9 +507,9 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 
 ---
 
-### Paso 3.2 — Tabla comparativa contra DeepRare 🔄 EN CURSO
+### Paso 3.2 — Tabla comparativa contra DeepRare ✅ COMPLETADO
 
-**Tabla completa (Fase 2 finalizada, 2026-04-18 — 3 modelos × 5 datasets):**
+**Tabla completa (2026-04-20 — 3 modelos × 6 datasets incluyendo DDD):**
 
 | Dataset | Casos | Métrica | DeepRare (Nature) | DxGPT gpt-4o | DxGPT gpt-5.4-mini | DxGPT gemini-2.5-pro | Ganador |
 |---------|-------|---------|-------------------|--------------|---------------------|----------------------|---------|
@@ -523,10 +523,17 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 | MyGene2 | 146 | R@5 | ~90% | 95.9% | 97.3% | 97.3% | mini = gemini (ambos > DeepRare) |
 | MME | 40 | R@1 | — | 42.5% | 22.5% | **65.0%** 🏆 | gemini (+22pp vs gpt-4o) |
 | MME | 40 | R@5 | — | 95.0% | 90.0% | 95.0% | gemini = gpt-4o |
+| **DDD** | **1.749** | **R@1** | — | 44.9% | 52.4% | **63.5%** 🏆 | **gemini +18.6pp vs gpt-4o** |
+| **DDD** | **1.749** | **R@3** | — | 76.8% | 79.6% | **91.8%** 🏆 | **gemini +15pp vs gpt-4o** |
+| **DDD** | **1.749** | **R@5** | — | 97.0% | 97.2% | **98.0%** | gemini ≈ igual |
 
-**Conclusiones finales (tabla cerrada):**
-1. **gemini-2.5-pro gana en los 5 datasets** en R@1 — sin excepciones
-2. La "anomalía MME" (donde gpt-4o superaba a gpt-5.4-mini) se explica por capacidad del modelo: gemini hace 65% R@1 (+22pp vs gpt-4o), no era un problema del dataset
+**Conclusiones finales (tabla cerrada — 6 datasets):**
+1. **gemini-2.5-pro gana en los 6 datasets** en R@1 — sin excepciones
+2. **DDD (1.749 casos) es el resultado más sólido estadísticamente** — 63.5% R@1 con gemini, +18.6pp vs gpt-4o
+3. La ventaja de gemini en R@3 es especialmente llamativa en DDD: **91.8% vs 76.8%** (+15pp) — el diagnóstico correcto aparece casi siempre en el top-3
+4. La "anomalía MME" (donde gpt-4o superaba a gpt-5.4-mini) se explica por capacidad del modelo: gemini hace 65% R@1 (+22pp vs gpt-4o), no era un problema del dataset
+5. **MyGene2** sigue siendo el más discriminante: gpt-4o 23.3% → mini 38.4% → gemini **55.5%** (brechas enormes)
+6. En R@5 los modelos convergen (todos ~97-100%), el diferenciador real es R@1 y R@3
 3. **MyGene2** es el dataset más discriminante: gpt-4o 23.3% → gpt-5.4-mini 38.4% → gemini **55.5%** (gaps enormes)
 4. En R@5 los modelos convergen (todos ~97-100%), el diferenciador es R@1 (precisión del diagnóstico en primera posición)
 5. **DxGPT gemini-2.5-pro supera el baseline GPT-4 del paper en todos los datasets** (+5-32pp en R@1)
@@ -601,7 +608,7 @@ Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Docum
 
 | Modelo | Estado | Config | Resultado |
 |--------|--------|--------|-----------|
-| claude-opus-4-7 | ✅ Completado | `config_256clean_claude_opus47_reeval.yaml` | avg_pos=1.668 / **80.1%** ⚠️ |
+| claude-opus-4-7 | ✅ Completado | `config_256clean_claude_opus47_reeval.yaml` | avg_pos=1.668 / **80.1%** ⚠️ / **~$8 USD** (256c) |
 | claude-sonnet-4-6 | ⏳ Pendiente | `config_256clean_claude_sonnet46.yaml` | — |
 | claude-haiku-4-5 | ⏳ Pendiente | `config_256clean_claude_haiku45.yaml` | — |
 
@@ -695,7 +702,7 @@ Esto es correcto y consistente con todos los otros datasets HPO — que ya viene
 | Pilot | ddd_hpo_pilot50 (50c) | gpt-4o | 48% | 82% | 98% | 2.08 | ✅ COMPLETADO run 20260418173220 |
 | Full | ddd_hpo (1.749c) | gpt-4o | **44.9%** | **76.8%** | **97.0%** | **2.267** | ✅ COMPLETADO run 20260418225915 |
 | Full | ddd_hpo (1.749c) | gpt-5.4-mini low | **52.4%** | **79.6%** | **97.2%** | **2.036** | ✅ COMPLETADO run 20260419010722 |
-| Full | ddd_hpo (1.749c) | gemini-2.5-pro | — | — | — | — | 🔄 Ejecutando noche (`config_ddd_full_gemini25pro.yaml`) |
+| Full | ddd_hpo (1.749c) | gemini-2.5-pro | **63.5%** | **91.8%** | **98.0%** | **1.614** | ✅ COMPLETADO run 20260420042635 |
 
 **Conclusiones del pilot (50 casos, gpt-4o):**
 - ✅ Pipeline 100% funcional con datos DDD/G2P
