@@ -1,0 +1,312 @@
+{
+  "case_id": "MME_007",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert syndrome",
+      "details": {
+        "normalized_text": "Joubert syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dandy-Walker malformation",
+      "details": {
+        "normalized_text": "Dandy-Walker malformation",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "217"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Walker-Warburg syndrome",
+      "details": {
+        "normalized_text": "Walker-Warburg syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert syndrome": {
+          "normalized_text": "Joubert syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "253175003"
+            ],
+            "omim": [
+              "213300"
+            ],
+            "orpha": [
+              "475"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.558 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.3662952184677124
+            },
+            {
+              "position": 3,
+              "score": 0.4350529909133911
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5581815242767334
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_038",
+  "gdx_details": [
+    {
+      "name": "Combined immunodeficiency-enteropathy spectrum",
+      "details": {
+        "name": "Combined immunodeficiency-enteropathy spectrum",
+        "normalized_text": "Combined immunodeficiency-enteropathy spectrum",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "243150"
+          ],
+          "orpha": [
+            "436252"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Trisomy 18 (Edwards Syndrome)",
+      "details": {
+        "normalized_text": "Trisomy 18 (Edwards Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q91.3"
+          ],
+          "snomed": [
+            "51500006"
+          ],
+          "omim": [
+            "300484"
+          ],
+          "orpha": [
+            "3380"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Beckwith-Wiedemann Syndrome",
+      "details": {
+        "normalized_text": "Beckwith-Wiedemann Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q87.3"
+          ],
+          "snomed": [
+            "81780002"
+          ],
+          "omim": [
+            "130650"
+          ],
+          "orpha": [
+            "116"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jejunoileal Atresia",
+      "details": {
+        "normalized_text": "Jejunoileal Atresia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "84296002"
+          ],
+          "omim": [],
+          "orpha": [
+            "1201"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": false,
+    "final_resolution": null,
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Combined immunodeficiency-enteropathy spectrum": {
+            "name": "Combined immunodeficiency-enteropathy spectrum",
+            "normalized_text": "Combined immunodeficiency-enteropathy spectrum",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "243150"
+              ],
+              "orpha": [
+                "436252"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.424) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4051554203033447
+            },
+            {
+              "position": 2,
+              "score": 0.4237509071826935
+            },
+            {
+              "position": 3,
+              "score": 0.3564051389694214
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.4237509071826935
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      }
+    ]
+  }
+}

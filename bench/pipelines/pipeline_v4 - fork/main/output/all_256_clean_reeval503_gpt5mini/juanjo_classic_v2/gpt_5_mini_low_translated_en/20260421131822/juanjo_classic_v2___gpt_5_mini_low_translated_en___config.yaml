@@ -1,0 +1,31 @@
+DATASET_PATH: bench/datasets/all_256_clean_reeval503_gpt5mini.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5-mini
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+    TARGET_LANGUAGE: en
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: 'Re-eval 1 caso 503 en all_256_clean gpt-5-mini. Casos: [14]'
+EXPERIMENT_NAME: all_256_clean_reeval503_gpt5mini-juanjo_classic_v2-low
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+TIMESTAMP: '2026-04-21T13:18:47.410528'

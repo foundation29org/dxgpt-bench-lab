@@ -1,0 +1,445 @@
+{
+  "case_id": "B126",
+  "gdx_details": [
+    {
+      "name": "Cardiac rhabdomyoma",
+      "details": {
+        "name": "Cardiac rhabdomyoma",
+        "normalized_text": "Cardiac rhabdomyoma",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "D15.1"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Tuberous sclerosis complex (TSC)",
+      "details": {
+        "normalized_text": "Tuberous sclerosis complex (TSC)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q85.1"
+          ],
+          "snomed": [
+            "7199000"
+          ],
+          "omim": [
+            "191100"
+          ],
+          "orpha": [
+            "805"
+          ]
+        }
+      }
+    },
+    {
+      "name": "West syndrome (infantile spasms)",
+      "details": {
+        "normalized_text": "West syndrome (infantile spasms)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "G40.82"
+          ],
+          "snomed": [
+            "28055006"
+          ],
+          "omim": [],
+          "orpha": [
+            "3451"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Neurofibromatosis type 1 (NF1)",
+      "details": {
+        "normalized_text": "Neurofibromatosis type 1 (NF1)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q85.01"
+          ],
+          "snomed": [
+            "92824003"
+          ],
+          "omim": [
+            "162200"
+          ],
+          "orpha": [
+            "636"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hypomelanosis of Ito (incontinentia pigmenti achromians / pigmentary mosaicism)",
+      "details": {
+        "normalized_text": "Hypomelanosis of Ito (incontinentia pigmenti achromians / pigmentary mosaicism)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "218358001"
+          ],
+          "omim": [
+            "300337"
+          ],
+          "orpha": [
+            "263432"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Cardiac rhabdomyoma": {
+          "name": "Cardiac rhabdomyoma",
+          "normalized_text": "Cardiac rhabdomyoma",
+          "severity": "S7",
+          "medical_codes": {
+            "icd10": [
+              "D15.1"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Tuberous sclerosis complex (TSC)": {
+          "normalized_text": "Tuberous sclerosis complex (TSC)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "Q85.1"
+            ],
+            "snomed": [
+              "7199000"
+            ],
+            "omim": [
+              "191100"
+            ],
+            "orpha": [
+              "805"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cardiac rhabdomyoma": {
+            "name": "Cardiac rhabdomyoma",
+            "normalized_text": "Cardiac rhabdomyoma",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "D15.1"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D15.1']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.352 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.351614773273468
+            },
+            {
+              "position": 2,
+              "score": 0.2927093803882599
+            },
+            {
+              "position": 3,
+              "score": 0.2783758044242859
+            },
+            {
+              "position": 4,
+              "score": 0.24891605973243713
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.351614773273468
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "S175",
+  "gdx_details": [
+    {
+      "name": "Triploidy",
+      "details": {
+        "name": "Triploidy",
+        "normalized_text": "Triploidy",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "Q92.7"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Down syndrome (Trisomy 21)",
+      "details": {
+        "normalized_text": "Down syndrome (Trisomy 21)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q90.9"
+          ],
+          "snomed": [
+            "737542000"
+          ],
+          "omim": [
+            "190685"
+          ],
+          "orpha": [
+            "870"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Noonan syndrome",
+      "details": {
+        "normalized_text": "Noonan syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "205824006"
+          ],
+          "omim": [
+            "163950"
+          ],
+          "orpha": [
+            "648"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trisomy 18 (Edwards syndrome)",
+      "details": {
+        "normalized_text": "Trisomy 18 (Edwards syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q91.3"
+          ],
+          "snomed": [
+            "51500006"
+          ],
+          "omim": [
+            "300484"
+          ],
+          "orpha": [
+            "3380"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wolf–Hirschhorn syndrome",
+      "details": {
+        "normalized_text": "Wolf–Hirschhorn syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Fetal alcohol spectrum disorder (FASD)",
+      "details": {
+        "normalized_text": "Fetal alcohol spectrum disorder (FASD)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "609437000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Smith–Lemli–Opitz syndrome (SLOS)",
+      "details": {
+        "normalized_text": "Smith–Lemli–Opitz syndrome (SLOS)",
+        "position": 6,
+        "medical_codes": {
+          "icd10": [
+            "E78.72"
+          ],
+          "snomed": [
+            "43929004"
+          ],
+          "omim": [
+            "270400"
+          ],
+          "orpha": [
+            "818"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Triploidy": {
+          "name": "Triploidy",
+          "normalized_text": "Triploidy",
+          "severity": "S8",
+          "medical_codes": {
+            "icd10": [
+              "Q92.7"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Trisomy 18 (Edwards syndrome)": {
+          "normalized_text": "Trisomy 18 (Edwards syndrome)",
+          "position": 3,
+          "medical_codes": {
+            "icd10": [
+              "Q91.3"
+            ],
+            "snomed": [
+              "51500006"
+            ],
+            "omim": [
+              "300484"
+            ],
+            "orpha": [
+              "3380"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Triploidy": {
+            "name": "Triploidy",
+            "normalized_text": "Triploidy",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "Q92.7"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['Q92.7']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.584 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5836713910102844
+            },
+            {
+              "position": 2,
+              "score": 0.43438196182250977
+            },
+            {
+              "position": 3,
+              "score": 0.5796026587486267
+            },
+            {
+              "position": 4,
+              "score": 0.45061081647872925
+            },
+            {
+              "position": 5,
+              "score": 0.3594624400138855
+            },
+            {
+              "position": 6,
+              "score": 0.40458035469055176
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5836713910102844
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}

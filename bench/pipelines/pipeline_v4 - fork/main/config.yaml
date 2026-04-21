@@ -16,7 +16,7 @@ DXGPT_EMULATOR:
     temperature: 0.1
     max_tokens: 12000
     reasoning_effort: "low"  # For O3/GPT-5: "low", "medium", "high"
-    thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high", or omit for dynamic
+    thinking_level: "medium"  # For Gemini 2.5/3 Pro: "low", "medium", "high", or omit for dynamic
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
   TRANSLATE_CASE:

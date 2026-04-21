@@ -1,0 +1,223 @@
+{
+  "case_id": "LIRICAL_298",
+  "gdx_details": [
+    {
+      "name": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+      "details": {
+        "name": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+        "normalized_text": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "212050"
+          ],
+          "orpha": [
+            "457088"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Hyper IgE Syndrome (Job's Syndrome)",
+      "details": {
+        "normalized_text": "Hyper IgE Syndrome (Job's Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D82.4"
+          ],
+          "snomed": [
+            "50926003"
+          ],
+          "omim": [
+            "147060"
+          ],
+          "orpha": [
+            "331223"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Severe Combined Immunodeficiency (SCID)",
+      "details": {
+        "normalized_text": "Severe Combined Immunodeficiency (SCID)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "31323000"
+          ],
+          "omim": [],
+          "orpha": [
+            "183660"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Autoimmune Polyendocrinopathy-Candidiasis-Ectodermal Dystrophy (APECED)",
+      "details": {
+        "normalized_text": "Autoimmune Polyendocrinopathy-Candidiasis-Ectodermal Dystrophy (APECED)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "11244009"
+          ],
+          "omim": [
+            "240300"
+          ],
+          "orpha": [
+            "3453"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Common Variable Immunodeficiency (CVID)",
+      "details": {
+        "normalized_text": "Common Variable Immunodeficiency (CVID)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "D83.9"
+          ],
+          "snomed": [
+            "191010004"
+          ],
+          "omim": [
+            "607594"
+          ],
+          "orpha": [
+            "1572"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Chronic Mucocutaneous Candidiasis (CMC)",
+      "details": {
+        "normalized_text": "Chronic Mucocutaneous Candidiasis (CMC)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "234568006"
+          ],
+          "omim": [],
+          "orpha": [
+            "1334"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P5",
+      "method": "LLM_JUDGMENT",
+      "value": "5",
+      "matched_gdx": {
+        "Predisposition to invasive fungal disease due to CARD9 deficiency": {
+          "name": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+          "normalized_text": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "212050"
+            ],
+            "orpha": [
+              "457088"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Chronic Mucocutaneous Candidiasis (CMC)": {
+          "normalized_text": "Chronic Mucocutaneous Candidiasis (CMC)",
+          "position": 5,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "234568006"
+            ],
+            "omim": [],
+            "orpha": [
+              "1334"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Predisposition to invasive fungal disease due to CARD9 deficiency": {
+            "name": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+            "normalized_text": "Predisposition to invasive fungal disease due to CARD9 deficiency",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "212050"
+              ],
+              "orpha": [
+                "457088"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P5. BERT score 0.549 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.41377443075180054
+            },
+            {
+              "position": 2,
+              "score": 0.46124428510665894
+            },
+            {
+              "position": 3,
+              "score": 0.5493795275688171
+            },
+            {
+              "position": 4,
+              "score": 0.4947417080402374
+            },
+            {
+              "position": 5,
+              "score": 0.4648503065109253
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5493795275688171
+          },
+          "llm_judgment": {
+            "position": 5
+          }
+        }
+      }
+    ]
+  }
+}
