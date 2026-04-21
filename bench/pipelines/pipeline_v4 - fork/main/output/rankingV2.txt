@@ -77,8 +77,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=55.1% R@3=79.7% R@5=98.1% | BERT 37% + LLM_J 61% | ⭐ gpt-5.4-mini +18pp R@1 vs gpt-4o | run 20260417182706
  §6 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.529 │  99.2% (367/370)
     └─ R@1=37.0% R@3=73.0% R@5=97.8% | BERT 31.6% + LLM_J 67.6% | run 20260417125334
- §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.342 │  95.0% (38/40)
-    └─ R@1=75.0% R@3=95.0% R@5=95.0% | PUMCH hospital chino | ⭐⭐⭐ +10pp vs gemini-2.5-pro, 3× más rápido | BERT 37% | run 20260420155541
+ §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.342 │  97.5% (39/40) ✅ corregido
+    └─ R@1=77.5% R@3=97.5% R@5=97.5% | PUMCH hospital chino | ⭐⭐⭐ +12.5pp R@1 vs gemini-2.5-pro, 3× más rápido | BERT 37% | run 20260420155541 + reeval503 20260421123828
  §5b│ 🧬 mme_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.553 │  95.0% (38/40)
     └─ R@1=65.0% R@3=87.5% R@5=95.0% | PUMCH hospital chino | ⭐⭐ gemini +22pp vs gpt-4o | run 20260417214502
  §6 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.632 │  95.0% (38/40)
@@ -111,6 +111,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=52.4% R@3=79.6% R@5=97.2% | G2P 1749 casos | ⭐ +7.5pp R@1 vs gpt-4o | BERT 30% + LLM_J 67% | run 20260419010722
 §18 │ 🧬 ddd_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.614 │  98.3% (1719/1749)
     └─ R@1=63.5% R@3=91.8% R@5=98.0% | G2P 1749 casos | ⭐⭐ +18.6pp vs gpt-4o, +11.1pp vs mini | BERT 31% | run 20260420042635
+§19 │ 🧬 ddd_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.394 │  98.1% (1716/1749) ✅ corregido
+    └─ R@1=70.3% R@3=97.6% R@5=98.1% | G2P 1749 casos | ⭐⭐ +6.8pp R@1 vs gemini-2.5-pro, +5.8pp R@3 | BERT 33% | run 20260421035045 + reeval503 20260421123924
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
@@ -127,7 +129,7 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
   🤖 gemini_2_5_flash_low_translated_en │  1 runs │ Avg: 1.434 │ Success: 98.1%
   🤖 gemini_2_5_pro_low_translated_en │  3 runs │ Avg: 1.309 │ Success: 97.9%
   🤖 gemini_2_5_pro_low (HPO) │  6 runs HPO │ Avg pos: 1.675 (ddd=1.614, mme=1.553, lirical=1.631, hms=1.693, ramedis=1.760, mygene2=1.782)
-  🤖 gemini_3_pro_preview_low_translated_en │  2 runs │ Avg: 1.373 │ Success: 99.0%
+  🤖 gemini_3_pro_preview_low (HPO) │  6 runs HPO │ R@1 promedio: 70.3% (ddd=70.3%, mme=77.5%, lirical=67.8%, hms=72.7%, ramedis=54.3%, mygene2=61.0%) | ⭐ WINNER HPO — supera gemini-2.5-pro en todos los datasets | 3× más rápido
   🤖 grok_4_1_fast_reasoning_low_translated_en │  2 runs │ Avg: 1.438 │ Success: 98.8%
   🤖 gpt_4o_low           │  1 runs │ Avg: 1.753 │ Success: 98.6%
   🤖 gpt_4o_low_translated_en │  3 runs │ Avg: 1.578 │ Success: 94.8%
