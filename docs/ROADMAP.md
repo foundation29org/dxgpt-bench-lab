@@ -725,6 +725,15 @@ Reportar resultados desglosados por:
 
 El paper de Nature usó un panel de 8 médicos independientes con 88% de concordancia para validar sus resultados. Para una publicación de alto impacto, considerar un piloto similar (5-10 casos, 2-3 médicos).
 
+### Paso 4.5 — Candidatos futuros de expansión (opcional)
+
+Si en el futuro se quiere ampliar el trabajo más allá del benchmark actual, los candidatos más razonables son:
+
+- **MultiCaRe**: dataset multimodal de casos clínicos con texto + imagen. Interesa sobre todo como posible base para una evaluación multimodal futura de DxGPT, no como necesidad del benchmark actual.
+- **Orphanet case reports / official rare-disease sources**: potencial fuente adicional de casos raros con mejor alineación ORPHA y utilidad para futuras extensiones del track de enfermedades raras.
+
+No son tareas activas ahora mismo. Solo quedan anotadas como posibles líneas futuras.
+
 ---
 
 ## Resumen visual del estado
