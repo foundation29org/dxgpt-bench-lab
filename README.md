@@ -1,58 +1,58 @@
 # DxGPT Evaluation Framework
 
-Repositorio de evaluacion para benchmarking de modelos LLM en diagnostico diferencial medico.
+Repository for benchmarking LLMs on medical differential-diagnosis tasks.
 
-El pipeline actual toma un caso clinico o una lista HPO, genera un diferencial, lo codifica con ontologias medicas y evalua el resultado contra el gold diagnosis usando SNOMED, ICD-10, SapBERT y un juez LLM.
+The current pipeline takes either a clinical case or an HPO symptom list, generates a ranked differential, maps it to medical ontologies, and evaluates the result against the gold diagnosis using SNOMED, ICD-10, SapBERT, and an LLM judge.
 
-## Flujo del pipeline
+## Pipeline Flow
 
 ```text
 Clinical case or HPO list
         |
         v
-[1. Emulator]    LLM genera un DDX rankeado
+[1. Emulator]    LLM generates a ranked DDX
         |
         v
-[2. Medlabeler]  Azure Text Analytics asigna SNOMED / ICD-10 / OMIM / ORPHA
+[2. Medlabeler]  Azure Text Analytics assigns SNOMED / ICD-10 / OMIM / ORPHA
         |
         v
-[3. Evaluator]   SNOMED -> ICD-10 -> BERT -> juez LLM
+[3. Evaluator]   SNOMED -> ICD-10 -> BERT -> LLM judge
         |
         v
 summary.json + evaluation_details.txt + rankingV2.txt
 ```
 
-## Estado actual
+## Current Status
 
-- Benchmark narrativo canonico: `all_256_clean`
-- Mejor opcion OpenAI para produccion normal: `gpt-5.4-mini low`
-- Mejor opcion avanzada: `gemini-3-pro-preview low`
-- `thinking_level=medium` en Gemini se considero cerrado y no se recomienda
+- Canonical narrative benchmark: `all_256_clean`
+- Best OpenAI option for normal production use: `gpt-5.4-mini low`
+- Best advanced option: `gemini-3-pro-preview low`
+- Gemini `thinking_level=medium` has been tested and is not recommended
 
-La fuente canonica de resultados vivos no es este README, sino:
+The canonical sources for live results are not this README, but:
 
 - `bench/pipelines/pipeline_v4 - fork/main/README.md`
 - `docs/ROADMAP.md`
 - `bench/pipelines/pipeline_v4 - fork/main/output/rankingV2.txt`
 
-## Documentacion canonica
+## Canonical Documentation
 
-| Documento | Rol |
+| Document | Role |
 |---|---|
-| `README.md` | Entrada general al repo |
-| `docs/README.md` | Mapa de documentacion y clasificacion canonica/historica |
-| `bench/pipelines/pipeline_v4 - fork/main/README.md` | Estado actual del benchmark y recomendaciones de modelos |
-| `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md` | Runbook operativo para ejecutar y reanudar runs |
-| `docs/ROADMAP.md` | Roadmap, fases y decisiones del proyecto |
-| `docs/benchmark-report.html` | Informe ejecutivo para stakeholders |
-| `docs/pipeline/experiment-log.md` | Bitacora tecnica y trazabilidad de experimentos |
-| `docs/pipeline/methodology-notes.md` | Alineacion de metricas publicas y claims historicos |
-| `docs/analysis/run-analysis-notes.md` | Analisis cualitativo de runs |
-| `docs/archive/README.md` | Documentacion historica archivada |
+| `README.md` | General entry point to the repo |
+| `docs/README.md` | Documentation map and canonical/historical classification |
+| `bench/pipelines/pipeline_v4 - fork/main/README.md` | Current benchmark state and model recommendations |
+| `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md` | Operational runbook for launching and resuming runs |
+| `docs/ROADMAP.md` | Project roadmap, phases, and decisions |
+| `docs/benchmark-report.html` | Executive report for stakeholders |
+| `docs/pipeline/experiment-log.md` | Technical log and experiment traceability |
+| `docs/pipeline/methodology-notes.md` | Alignment of public metrics and historical claims |
+| `docs/analysis/run-analysis-notes.md` | Qualitative run analysis |
+| `docs/archive/README.md` | Archived historical documentation |
 
 ## Quick Start
 
-### 1. Preparar entorno
+### 1. Prepare the environment
 
 ```powershell
 py -m venv .venv
@@ -60,13 +60,13 @@ py -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 2. Configurar credenciales
+### 2. Configure credentials
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Rellena al menos:
+Fill in at least:
 
 ```env
 AZURE_LANGUAGE_ENDPOINT=...
@@ -77,7 +77,7 @@ GOOGLE_API_KEY=...
 SAPBERT_ENDPOINT_URL=...
 ```
 
-### 3. Lanzar un run
+### 3. Launch a run
 
 ```powershell
 cd "bench/pipelines/pipeline_v4 - fork/main"
@@ -85,31 +85,31 @@ py validate.py
 py main.py
 ```
 
-O con un config especifico:
+Or with a specific config:
 
 ```powershell
-py main.py --config config_mi_experimento.yaml
+py main.py --config config_my_experiment.yaml
 ```
 
-Los resultados quedan en `output/<dataset>/<prompt>/<model>/<timestamp>/`.
+Results are written to `output/<dataset>/<prompt>/<model>/<timestamp>/`.
 
-## Datasets y tracks
+## Datasets and Tracks
 
-### Track A - texto clinico narrativo
+### Track A - Narrative Clinical Text
 
-- Dataset de referencia: `bench/datasets/all_256_clean.json`
-- Uso: comparativa cercana al caso real de produccion
-- Metricas principales: `average_position` y cobertura
+- Reference dataset: `bench/datasets/all_256_clean.json`
+- Use case: closest benchmark to the real production workflow
+- Primary metrics: `average_position` and coverage
 
-### Track B - listas HPO
+### Track B - HPO Lists
 
-- Datasets tipo `*_hpo.json` y `ddd_hpo.json`
-- Uso: comparativa con DeepRare y otros benchmarks de enfermedades raras
-- Metricas principales: `Recall@1`, `Recall@3`, `Recall@5`
+- Datasets such as `*_hpo.json` and `ddd_hpo.json`
+- Use case: comparison against DeepRare and other rare-disease benchmarks
+- Primary metrics: `Recall@1`, `Recall@3`, `Recall@5`
 
-Los dos tracks no son comparables entre si.
+The two tracks are not directly comparable.
 
-## Estructura del repositorio
+## Repository Structure
 
 ```text
 eval/
@@ -117,7 +117,7 @@ eval/
 │   ├── datasets/
 │   ├── candidate-prompts/
 │   └── pipelines/
-│       └── pipeline_v4 - fork/main/     <- pipeline activo
+│       └── pipeline_v4 - fork/main/     <- active pipeline
 ├── docs/
 │   ├── README.md
 │   ├── ROADMAP.md
@@ -127,11 +127,11 @@ eval/
 └── utils/
 ```
 
-## Nota sobre reproducibilidad
+## Reproducibility Note
 
-Tras la limpieza del repo, los configs sueltos de experimentos ya no se conservan en la raiz del pipeline. La fuente de verdad para reejecutar o auditar un run es el snapshot guardado junto a sus resultados:
+After the repo cleanup, loose per-experiment config files are no longer kept in the pipeline root. The source of truth for reproducing or auditing a run is the snapshot stored with its outputs:
 
 - `output/<dataset>/<prompt>/<model>/<prompt>___<model>___config.yaml`
 - `output/<dataset>/<prompt>/<model>/<timestamp>/<prompt>___<model>___config.yaml`
 
-Esto mantiene trazabilidad sin volver a llenar la raiz del pipeline de `config_*.yaml`.
+This preserves traceability without cluttering the pipeline root with `config_*.yaml` files again.
