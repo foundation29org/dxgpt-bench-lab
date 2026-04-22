@@ -8,11 +8,14 @@ Average Position = Lower is Better | Success Rate = Higher is Better
 (†) Métricas extraídas de evaluation_details.txt — run sin summary.json generado
 (‡) Dataset limpio: sin label leakage ni boilerplate — primera línea base publicable
 (§) Dataset HPO externo — síntomas como lista HPO codes (sin narrativa), gold = OMIM/ORPHA. NO comparable directamente con datasets narrativos (all_150/all_256/all_275).
+(¶) thinking_level=medium en gemini-3-pro-preview — experimento concluido: NO mejora vs low (HPO degrada -7.1pp R@1, -10.8pp R@3; narrativa empate). NO usar.
 Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9, max_tokens=12000
 
 --------------------------------------------------------------------------------
 🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_2_5_pro_low_translated_en (‡) │ gemini-2.5-pro  │  1.299 │   98.1% (251/256)
 🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en (‡) │ gemini-2.5-pro  │  1.299 │   98.1% (251/256)
+ 3 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_pro_preview_medium_translated_en (‡)(¶) │ gemini-2.5-pro  │  1.315 │   98.1% (251/256)
+    └─ R@1=76.95% (197) vs low R@1=75.78% (194) (+1.17pp) | R@3=95.31% (244) vs low 98.05% (-2.74pp) | medium NO net-positive — empate técnico, NO USAR | run 20260421215831
 🥉 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
  4 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
  5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
@@ -45,14 +48,45 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 ⚠️ │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-claude_opus_4_7_translated_en (‡) │ gemini-2.5-pro  │  1.668* │   80.1% (205/256)
     └─ *avg_pos solo sobre 205 matched. 51/256 unmatched — diagnóstico correcto no aparece en top-8. Prompt juanjo_classic_v2 no optimizado para Claude. run 20260418165746
 --------------------------------------------------------------------------------
-📊 Total experiments: 38 (+ 2 Claude pendientes: sonnet-4-6, haiku-4-5)
+
+🧪 EXPERIMENTO CONCLUIDO — thinking_level=medium en gemini-3-pro-preview (¶)
+================================================================================
+Pregunta: ¿más razonamiento del modelo bajo prueba mejora avg_pos / R@1 / R@3?
+Diseño: mismos prompts, mismo juez (gemini-2.5-pro low), solo cambia thinking_level del emulator.
+n total medium: 900 casos (40 MME + 88 HMS + 146 MyGene2 + 370 LIRICAL + 256 all_256_clean).
+
+Resultados consolidados (medium - low, signo positivo = empeora):
+
+| Dataset             | n   | ΔR@1     | ΔR@3      | Δavg_pos | Δcoverage |
+|---------------------|-----|----------|-----------|----------|-----------|
+| MME (HPO)           |  40 | -15.0pp  |  0        | +0.31    |  0        |
+| HMS (HPO)           |  88 |  -2.2pp  |  -6.8pp   | +0.17    |  0        |
+| MyGene2 (HPO)       | 146 |  -6.9pp  | -17.1pp   | +0.43    | -0.7pp    |
+| LIRICAL (HPO)       | 370 |  -4.1pp  |  -7.0pp   | +0.15    | -0.5pp    |
+| HPO weighted (4ds)  | 644 |  -5.1pp  |  -8.8pp   | +0.22    | -0.4pp    |
+| all_256_clean (NAR) | 256 |  +1.2pp  |  -2.7pp   | +0.02    |  0        |
+| TOTAL (n=900)       | 900 |  -3.3pp  |  -7.1pp   | +0.17    | -0.3pp    |
+
+Conclusiones (cerradas):
+1. En HPO: medium DEGRADA claramente (R@1 -5pp, R@3 -9pp ponderado). Patrón consistente en 4/4 datasets independientes.
+2. En narrativa: trade-off neutro — R@1 sube +1pp, R@3 baja -3pp, avg_pos empata.
+3. Hipótesis: medium induce al modelo a generar diferenciales más diversos, lo que
+   beneficia marginalmente top-1 en narrativa (más exploración) pero penaliza el ranking
+   general en HPO terse (input ya estructurado, donde el spread es contraproducente).
+4. Coste: medium ~30-40s/caso vs ~22s/caso de low (+50% latencia, +50% coste tokens razonamiento).
+5. DECISIÓN: NO USAR medium en producción ni en benchmark. Mantener gemini-3-pro-preview low.
+6. CANCELADOS por evidencia suficiente: ramedis_medium, ddd_medium (~6h ahorradas — patrón ya
+   confirmado en 4 datasets HPO independientes con n=644).
+
+--------------------------------------------------------------------------------
+📊 Total experiments: 43 (38 base + 5 medium concluyentes; + 2 Claude pendientes: sonnet-4-6, haiku-4-5)
 ⚠️  Excluidos 2 runs de all_150/gemini_2_5_pro (SHOULD_LABEL=false, sin summary.json — re-evaluación parcial inválida, 34.7% éxito)
 ⚠️  Runs 13-23: SapBERT parcialmente offline → la mayoría de casos semánticos fueron a LLM_JUDGMENT
 ⚠️  Run 6 (all_256_clean gpt_4o): SapBERT activo a partir del caso 197/256 — 5 BERT matches (2 autoconfirm + 3)
 ⚠️  Run 10 (all_256_clean gpt_5_mini): SapBERT activo desde el inicio — primer run 100% limpio con SapBERT operativo — 16 BERT matches (4 autoconfirm + 12)
 ⚠️  gpt_5_2 (†): runs de Diciembre 2025 sin summary.json — métricas extraídas de evaluation_details.txt (ver docs/analysis/comparison-gpt52-reasoning-effort.md)
 ⚠️  claude_opus_4_7: 80.1% success — 51/256 sin match incluso tras re-evaluación limpia. DDX genuinamente no incluyen el diagnóstico correcto. Prompt juanjo_classic_v2 no optimizado para Claude. runs 20260418145715 (fallido Gemini timeout) + 20260418165746 (re-eval limpia, mismo resultado)
-🕐 Generated: 2026-04-24 (last run: claude_opus_4_7 re-eval 20260418165746)
+🕐 Generated: 2026-04-21 (last run: lirical_hpo gemini_3_pro_preview MEDIUM 20260421230733)
 
 🧪 FASE 2 — DATASETS HPO EXTERNOS (§) — NO COMPARABLE CON RANKING PRINCIPAL
 ================================================================================
@@ -71,6 +105,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=46.3% R@3=80.6% R@5=97.9% | BERT 69.1% + LLM_J 28.5% | run 20260417105437
  §4 │ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.489 │  98.9% (366/370)
     └─ R@1=67.8% R@3=98.1% R@5=98.9% | ⭐⭐⭐ +5.9pp R@1 vs gemini-2.5-pro, +7.3pp R@3 | BERT 41% | run 20260420191032
+ §4m│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.635 │  98.4% (364/370)
+    └─ R@1=63.8% (-4.05pp vs low) R@3=91.1% (-7.03pp) R@5=98.4% (-0.54pp) | confirma 4/4 datasets HPO degradados | run 20260421230733
  §4b│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.631 │  97.3% (360/370)
     └─ R@1=61.9% R@3=90.8% R@5=97.3% | BERT 38% + LLM_J 60% | ⭐ +7pp vs gpt-5.4-mini | run 20260418042750
  §5 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.975 │  98.4% (364/370)
@@ -79,6 +115,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=37.0% R@3=73.0% R@5=97.8% | BERT 31.6% + LLM_J 67.6% | run 20260417125334
  §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.342 │  97.5% (39/40) ✅ corregido
     └─ R@1=77.5% R@3=97.5% R@5=97.5% | PUMCH hospital chino | ⭐⭐⭐ +12.5pp R@1 vs gemini-2.5-pro, 3× más rápido | BERT 37% | run 20260420155541 + reeval503 20260421123828
+ §5m│ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.65  │ 100.0% (40/40)
+    └─ R@1=62.5% (-15pp vs low) R@3=97.5% (=) R@5=100% (+2.5pp) | medium PEOR en R@1 — desplaza correcto a P2/P3 | run 20260421202253
  §5b│ 🧬 mme_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.553 │  95.0% (38/40)
     └─ R@1=65.0% R@3=87.5% R@5=95.0% | PUMCH hospital chino | ⭐⭐ gemini +22pp vs gpt-4o | run 20260417214502
  §6 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.632 │  95.0% (38/40)
@@ -87,6 +125,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=22.5% R@3=62.5% R@5=90.0% | PUMCH hospital chino | run 20260417174500
  §8 │ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.375 │ 100.0% (88/88)
     └─ R@1=72.7% R@3=100.0% R@5=100.0% | Harvard Medical School | ⭐⭐⭐ +15.9pp vs gemini-2.5-pro, 3× más rápido | BERT 54% | run 20260420160939
+ §8m│ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.545 │ 100.0% (88/88)
+    └─ R@1=70.5% (-2.2pp vs low) R@3=93.2% (-6.8pp) R@5=100% (=) | medium degrada R@3 — 6 casos van de P1-P3 a P4-P5 | run 20260421204421
  §8b│ 🧬 hms_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.693 │ 100.0% (88/88)
     └─ R@1=56.8% R@3=90.9% R@5=100.0% | Harvard Medical School | BERT 58% | ⭐ gemini mejor que mini | run 20260417221140
  §9 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.909 │ 100.0% (88/88)
@@ -95,6 +135,8 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=34.1% R@3=70.5% R@5=94.3% | Harvard Medical School | BERT 46.6% | run 20260417115441
 §11 │ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.521 │  95.9% (140/146)
     └─ R@1=61.0% R@3=95.9% R@5=95.9% | Harvard Dataverse | ⭐⭐⭐ +5.5pp R@1 vs gemini-2.5-pro, +10.3pp R@3 | BERT 14% | run 20260420162510
+§11m│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.95  │  95.2% (139/146)
+    └─ R@1=54.1% (-6.9pp vs low) R@3=78.8% (-17.1pp) R@5=95.2% (-0.7pp) | señal MÁS FUERTE de degradación medium en HPO | run 20260421210815
 §11b│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.782 │  97.3% (142/146)
     └─ R@1=55.5% R@3=85.6% R@5=97.3% | BERT 26% + LLM_J 71% | ⭐⭐ +17pp vs mini, +32pp vs gpt-4o | run 20260417223452
 §12 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.282 │  97.3% (142/146)

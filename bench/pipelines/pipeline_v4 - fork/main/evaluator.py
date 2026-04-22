@@ -20,6 +20,8 @@ import os
 import sys
 import logging
 import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Any, Tuple, Optional
 from dataclasses import dataclass, asdict
 from datetime import datetime
@@ -110,6 +112,11 @@ class DiagnosticEvaluator:
         self.llm = get_llm(judge_model_name, logger=logger)
         self.bert_warmed_up = False
         self.logger = logger
+        # Lock for the lazy bert warm-up flag. Without this, two worker
+        # threads can race and both fire warm-up requests; harmless but
+        # wasteful. With the lock, only one thread does the warm-up and
+        # the rest see bert_warmed_up=True after release().
+        self._bert_warmup_lock = threading.Lock()
         
         if self.logger:
             self.logger.info(f"Judge model for LLM judgment: {judge_model_name} (evaluating model: {config.get('DXGPT_EMULATOR', {}).get('MODEL', 'unknown')})")
@@ -120,6 +127,28 @@ class DiagnosticEvaluator:
             else:
                 self.logger.info(f"Judge parameters: max_tokens={self.judge_max_tokens}, temperature={self.judge_temperature}")
         
+    def warmup_dependencies(self) -> None:
+        """Eagerly initialize lazy/shared state BEFORE spinning up worker threads.
+
+        Two pieces of shared state inside this evaluator are populated lazily
+        and would otherwise race the first time several threads hit them at
+        once: the SapBERT HTTP endpoint warm-up and the ICD10 taxonomy JSON
+        load. Doing both here once, on the main thread, makes the parallel
+        loop branch race-free without paying the cost on every call site.
+        """
+        try:
+            warm_up_endpoint()
+            self.bert_warmed_up = True
+        except Exception as e:
+            if self.logger:
+                self.logger.warning(f"BERT warm-up failed (will retry inside workers): {e}")
+        try:
+            # Force ICD10 taxonomy load by making one harmless query.
+            self.icd10_taxonomy.get("A00")
+        except Exception as e:
+            if self.logger:
+                self.logger.warning(f"ICD10 taxonomy preload failed: {e}")
+
     def evaluate_case(self, case_data: Dict, case_num: int = 0, total_cases: int = 0) -> EvaluationResult:
         """
         Evaluate a single case with complete tracing
@@ -366,10 +395,13 @@ class DiagnosticEvaluator:
         ddx_texts = [ddx_info.get("normalized_text", ddx_name) for ddx_name, ddx_info in ddx_list]
         
         try:
-            # Warm up BERT if needed
+            # Warm up BERT if needed (thread-safe via lock — only one thread
+            # actually fires warm-up; the rest see the flag already set).
             if not self.bert_warmed_up:
-                warm_up_endpoint()
-                self.bert_warmed_up = True
+                with self._bert_warmup_lock:
+                    if not self.bert_warmed_up:
+                        warm_up_endpoint()
+                        self.bert_warmed_up = True
             
             # Calculate BERT similarities
             similarities = calculate_semantic_similarity(gdx_text, ddx_texts)
@@ -881,18 +913,71 @@ def evaluate_dataset(input_path: str, output_dir: str, config: Dict[str, Any]) -
             all_cases.extend(cases)
     
     logger.info(f"Found {len(all_cases)} cases to evaluate")
-    
+
     # Initialize evaluator
     logger.info("Initializing evaluator...")
     evaluator = DiagnosticEvaluator(config, logger)
-    
-    # Process all cases
+
+    # Honor EVALUATOR.PARALLEL_WORKERS (default 1).
+    # The judge LLM is the bottleneck. With Tier 1 limits (gemini-2.5-pro
+    # is 150 RPM) 8 workers is comfortably safe. For OpenAI/Azure models
+    # adjust based on your quota.
+    parallel_workers = int(evaluator_config.get('PARALLEL_WORKERS', 1) or 1)
+    parallel_workers = max(1, parallel_workers)
+
+    total = len(all_cases)
+    if parallel_workers > 1:
+        logger.info(f"MODE: parallel ({parallel_workers} workers) — pre-warming shared deps...")
+        evaluator.warmup_dependencies()
+    else:
+        logger.info("MODE: sequential")
+
     logger.info("Processing cases...")
-    all_results = []
-    
-    for i, case_data in enumerate(all_cases, 1):
-        result = evaluator.evaluate_case(case_data, i, len(all_cases))
-        all_results.append(result)
+    all_results: List[EvaluationResult] = []
+
+    if parallel_workers == 1:
+        for i, case_data in enumerate(all_cases, 1):
+            result = evaluator.evaluate_case(case_data, i, total)
+            all_results.append(result)
+    else:
+        # Preserve original input order in the output despite out-of-order
+        # future completion. Pre-allocate the result slot per case.
+        ordered: List[Optional[EvaluationResult]] = [None] * total
+        completed = 0
+        with ThreadPoolExecutor(max_workers=parallel_workers,
+                                thread_name_prefix="eval") as executor:
+            future_to_idx = {
+                executor.submit(evaluator.evaluate_case, case_data, i + 1, total): i
+                for i, case_data in enumerate(all_cases)
+            }
+            for fut in as_completed(future_to_idx):
+                idx0 = future_to_idx[fut]
+                try:
+                    result = fut.result()
+                except Exception as e:
+                    case_data = all_cases[idx0]
+                    case_id = case_data.get("case_id", case_data.get("id", f"case_{idx0+1}"))
+                    logger.error(f"[{idx0+1}/{total}] WORKER_ERROR for case {case_id}: "
+                                 f"{type(e).__name__}: {e}")
+                    # Build an empty-result placeholder so dataset shape is
+                    # preserved and downstream stats don't crash.
+                    result = EvaluationResult(
+                        case_id=case_id,
+                        gdx_details=[],
+                        ddx_details=[],
+                        eval_details={
+                            "best_match_found": False,
+                            "final_resolution": None,
+                            "evaluation_trace": [],
+                            "worker_error": f"{type(e).__name__}: {e}",
+                        },
+                    )
+                ordered[idx0] = result
+                completed += 1
+                if completed % 5 == 0 or completed == total:
+                    logger.info(f"PROGRESS: {completed}/{total} cases evaluated "
+                                f"({100.0*completed/total:.1f}%)")
+        all_results = [r for r in ordered if r is not None]
     
     # Generate outputs
     logger.info("\nGenerating outputs...")

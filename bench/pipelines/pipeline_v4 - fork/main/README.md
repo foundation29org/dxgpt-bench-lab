@@ -4,7 +4,9 @@
 
 Pipeline de evaluación de modelos LLM para diagnóstico diferencial médico, con foco en enfermedades raras. Compara el rendimiento de DxGPT contra el paper de Nature [DeepRare (2025)](https://www.nature.com/articles/s41586-025-10097-9) usando los mismos datasets y métricas (Recall@K).
 
-**Estado actual (2026-04-20):** Evaluación completa de 10+ modelos sobre `all_256_clean` (texto narrativo) y 6 datasets HPO del paper DeepRare. **gemini-2.5-pro supera el baseline GPT-4 del paper en los 6 datasets HPO (+5 a +32pp en Recall@1). DDD (1.749 casos): R@1=63.5%, R@3=91.8% con gemini-2.5-pro.**
+**Estado actual (2026-04-21):** Evaluación completa de 10+ modelos sobre `all_256_clean` (texto narrativo) y 6 datasets HPO del paper DeepRare. **gemini-3-pro-preview gana en 6/6 datasets HPO sobre gemini-2.5-pro (+0.1 a +15.9pp R@1). En texto narrativo empata con gemini-2.5-pro (avg_pos 1.299) pero es 3× más rápido. DDD (1.749 casos): R@1=70.3% con gemini-3-pro-preview.**
+
+**Experimento `thinking_level=medium` cerrado (2026-04-21):** medium NO aporta — degrada en 4/4 datasets HPO (−5.1pp R@1, −8.8pp R@3 ponderado sobre n=644) y empata en narrativa (Δavg_pos +0.02). Mantener `low` en producción.
 
 ### Datasets evaluados
 
@@ -30,12 +32,13 @@ Pipeline de evaluación de modelos LLM para diagnóstico diferencial médico, co
 |------|-------|-----------|----------|---------|-------|
 | 🥇 | gemini-2.5-pro low | **1.299** | 98.1% | 27.9s | Best absolute quality |
 | 🥇 | gemini-3-pro-preview low | **1.299** | 98.1% | 10.3s | Same quality, 3× faster |
-| 3 | gemini-2.5-flash low | 1.434 | 98.1% | 21.1s | Good quality/speed balance |
-| 4 | grok-4-1-fast-reasoning | 1.448 | 97.7% | 20.4s | Best non-Google alternative |
-| 5 | gpt-5.4 full low | 1.502 | 98.8% | 17.3s | Best OpenAI quality |
-| 6 | gpt-5.4-mini low | 1.526 | 98.1% | **4.7s** | ⭐ Best quality/speed (OpenAI) |
-| 7 | o3 high | 1.530 | 98.8% | 15.9s | Obsolete — beaten in quality |
-| 8 | gpt-4o low | 1.545 | 96.1% | 10.3s | Current production — superable |
+| 3 | gemini-3-pro-preview **medium** | 1.315 | 98.1% | ~35s | ⚠️ ~tied with low — NOT worth the latency |
+| 4 | gemini-2.5-flash low | 1.434 | 98.1% | 21.1s | Good quality/speed balance |
+| 5 | grok-4-1-fast-reasoning | 1.448 | 97.7% | 20.4s | Best non-Google alternative |
+| 6 | gpt-5.4 full low | 1.502 | 98.8% | 17.3s | Best OpenAI quality |
+| 7 | gpt-5.4-mini low | 1.526 | 98.1% | **4.7s** | ⭐ Best quality/speed (OpenAI) |
+| 8 | o3 high | 1.530 | 98.8% | 15.9s | Obsolete — beaten in quality |
+| 9 | gpt-4o low | 1.545 | 96.1% | 10.3s | Current production — superable |
 | ⚠️ | claude-opus-4-7 | 1.668* | 80.1% | 17.1s | Low coverage — prompt not optimized |
 
 > `*` avg_pos over matched cases only. 51/256 unmatched — see Paso 3.6 in ROADMAP.
@@ -52,6 +55,8 @@ Pipeline de evaluación de modelos LLM para diagnóstico diferencial médico, co
 | **DDD** | **1.749** | **44.9%** | **52.4%** | **63.5%** 🏆 | gemini +18.6pp vs gpt-4o |
 
 > gemini-2.5-pro wins in all 5 completed HPO datasets. gpt-5.4-mini beats gpt-4o in 4/5.
+
+> ⚠️ **`thinking_level=medium` ablation (2026-04-21)** — Tested on MME, HMS, MyGene2, LIRICAL (n=644 HPO cases) + all_256_clean (n=256 narrative). Result: medium degrades R@1 by −5.1pp and R@3 by −8.8pp (weighted) vs `low` on HPO datasets — consistent across 4/4 independent datasets. On narrative: essentially tied (avg_pos +0.016). **Conclusion: NOT worth the latency cost (+50%). Production stays on `gemini-3-pro-preview low`.** Cancelled remaining medium runs (RAMEDIS, DDD).
 
 ---
 

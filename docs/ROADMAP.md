@@ -2,8 +2,8 @@
 
 **Objetivo final:** Poder publicar una comparativa de DxGPT contra los mejores sistemas del paper de Nature (DeepRare, 2025) sobre los mismos datasets, con métricas equivalentes y resultados auditables.
 
-**Última actualización:** 2026-04-24  
-**Estado actual:** Fase 0 ✅, Fase 1 ✅, Fase 2 ✅, Fase 3 🔄
+**Última actualización:** 2026-04-21  
+**Estado actual:** Fase 0 ✅, Fase 1 ✅, Fase 2 ✅, Fase 3 🔄 (experimento `thinking_level=medium` cerrado — no aporta)
 
 ---
 
@@ -606,17 +606,42 @@ Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Docum
 
 3. **o3 queda obsoleto para producción**: superado en calidad por 6 modelos, sin ventaja de velocidad
 
+**✅ COMPLETADO (2026-04-21) — Experimento `thinking_level=medium` en gemini-3-pro-preview:**
+
+Pregunta: ¿más razonamiento del modelo bajo prueba mejora avg_pos / R@1 / R@3?
+Diseño: mismos prompts, mismo juez (gemini-2.5-pro low), solo cambia `thinking_level` del emulator. n total = **900 casos**.
+
+| Dataset | n | ΔR@1 | ΔR@3 | Δavg_pos | Run |
+|---------|---|------|------|----------|-----|
+| MME (HPO) | 40 | **−15.0pp** | 0 | +0.31 | 20260421202253 |
+| HMS (HPO) | 88 | −2.2pp | **−6.8pp** | +0.17 | 20260421204421 |
+| MyGene2 (HPO) | 146 | −6.9pp | **−17.1pp** | +0.43 | 20260421210815 |
+| LIRICAL (HPO) | 370 | −4.1pp | **−7.0pp** | +0.15 | 20260421230733 |
+| **HPO weighted (4 ds)** | **644** | **−5.1pp** | **−8.8pp** | **+0.22** | — |
+| all_256_clean (narrativa) | 256 | +1.2pp | −2.7pp | +0.02 (≈ ruido) | 20260421215831 |
+| **TOTAL** | **900** | **−3.3pp** | **−7.1pp** | **+0.17** | — |
+
+**Conclusiones:**
+1. **HPO**: medium degrada claramente — patrón consistente en **4/4 datasets independientes** (n=644). R@1 baja 5pp, R@3 baja 9pp ponderado.
+2. **Narrativa**: trade-off neutro — R@1 +1pp, R@3 −3pp, avg_pos empata. NO net-positive.
+3. **Hipótesis**: medium induce diferenciales más diversos. Beneficia marginalmente top-1 en narrativa (más exploración) pero penaliza el ranking en HPO terse (input ya estructurado).
+4. **Coste**: medium ~30-40s/caso vs ~22s/caso low (+50% latencia, +50% coste tokens razonamiento).
+5. **DECISIÓN**: NO usar medium en producción ni en benchmark. Mantener `gemini-3-pro-preview low`.
+6. **CANCELADOS** por evidencia suficiente: `ramedis_medium`, `ddd_medium` (~6h ahorradas — patrón confirmado en 4 datasets HPO con n=644 ponderado).
+
+Reproducibilidad: los configs sueltos en `main/` se eliminaron tras la limpieza del repo (2026-04-21). Cada run conserva su snapshot en `output/<dataset>/<prompt>/<model>_medium/<run_id>/juanjo_classic_v2___<model>_medium___config.yaml` — esa es la fuente de verdad para reejecutar cualquiera de los 5 medium ya completados (MME, HMS, MyGene2, LIRICAL, all_256_clean). Los configs cancelados (RAMEDIS, DDD medium) recuperables desde git history si se quisieran lanzar.
+
 ### Paso 3.5 — Evaluación de modelos adicionales (Claude, DeepSeek, etc.) 🔄 EN CURSO
 
 **Objetivo:** Ampliar la comparativa con modelos de Anthropic, DeepSeek y futuros modelos.
 
 **Estado Claude (Anthropic) — integración completada 2026-04-18:**
 
-| Modelo | Estado | Config | Resultado |
-|--------|--------|--------|-----------|
-| claude-opus-4-7 | ✅ Completado | `config_256clean_claude_opus47_reeval.yaml` | avg_pos=1.668 / **80.1%** ⚠️ / **~$8 USD** (256c) |
-| claude-sonnet-4-6 | ⏳ Pendiente | `config_256clean_claude_sonnet46.yaml` | — |
-| claude-haiku-4-5 | ⏳ Pendiente | `config_256clean_claude_haiku45.yaml` | — |
+| Modelo | Estado | Snapshot config | Resultado |
+|--------|--------|-----------------|-----------|
+| claude-opus-4-7 | ✅ Completado | `output/all_256_clean/.../claude_opus_4_7_reeval/<run_id>/*___config.yaml` | avg_pos=1.668 / **80.1%** ⚠️ / **~$8 USD** (256c) |
+| claude-sonnet-4-6 | ⏳ Pendiente | _config eliminado en limpieza 2026-04-21; recuperar de git o recrear_ | — |
+| claude-haiku-4-5 | ⏳ Pendiente | _config eliminado en limpieza 2026-04-21; recuperar de git o recrear_ | — |
 
 > **Nota técnica:** La API de Anthropic deprecó `temperature` en los modelos Claude 4.x. El provider `utils/llm/claude.py` detecta la versión del modelo y omite el parámetro automáticamente.
 
@@ -709,6 +734,7 @@ Esto es correcto y consistente con todos los otros datasets HPO — que ya viene
 | Full | ddd_hpo (1.749c) | gpt-4o | **44.9%** | **76.8%** | **97.0%** | **2.267** | ✅ COMPLETADO run 20260418225915 |
 | Full | ddd_hpo (1.749c) | gpt-5.4-mini low | **52.4%** | **79.6%** | **97.2%** | **2.036** | ✅ COMPLETADO run 20260419010722 |
 | Full | ddd_hpo (1.749c) | gemini-2.5-pro | **63.5%** | **91.8%** | **98.0%** | **1.614** | ✅ COMPLETADO run 20260420042635 |
+| Full | ddd_hpo (1.749c) | gemini-3-pro-preview | **70.3%** ✅ | **97.6%** ✅ | **98.1%** ✅ | **1.394** | ✅ COMPLETADO run 20260421035045 + reeval503 20260421123924 |
 
 **Conclusiones del pilot (50 casos, gpt-4o):**
 - ✅ Pipeline 100% funcional con datos DDD/G2P
@@ -720,7 +746,9 @@ Esto es correcto y consistente con todos los otros datasets HPO — que ya viene
 **Para lanzar el run completo:**
 ```powershell
 Set-Location "c:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
-python main.py --config config_ddd_full_gpt4o.yaml
+# Recuperar el config del último snapshot (o de git history) y relanzar:
+Copy-Item "output\ddd_hpo\juanjo_classic_v2\gpt_4o\<run_id>\juanjo_classic_v2___gpt_4o___config.yaml" .\config_ddd_full_gpt4o.yaml
+py main.py --config config_ddd_full_gpt4o.yaml
 ```
 
 ### Paso 4.2 — Dataset MIMIC-IV ⏸️ APLAZADO / BAJA PRIORIDAD
@@ -757,7 +785,7 @@ FASE 0  ████████████████████  100% ✅  
 FASE 1  ████████████████████  100% ✅  (dataset limpio all_256_clean, arquitectura datos)
 FASE 2  ████████████████████  100% ✅  (5 datasets DeepRare, 3 modelos × 5 = 15 runs HPO)
 FASE 3  ████████████████░░░░   80% 🔄  (3.1 ✅ Recall@K, 3.2 ✅ tabla DeepRare, 3.3 ✅ tracks, 3.4 ✅ benchmark, 3.5 🔄 Claude/DeepSeek)
-FASE 4  ████████░░░░░░░░░░░░   40% 🔄  (4.1 DDD descargado, convertido, pilot ✅ R@1=48%)
+FASE 4  ████████████░░░░░░░░   60% 🔄  (4.1 DDD ✅ completado: 4 modelos × 1.749 casos, gemini-3 R@1=70.3%)
 ```
 
 ---
