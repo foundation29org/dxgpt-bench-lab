@@ -1,3 +1,11 @@
+# Archivo historico
+
+Origen: `bench/pipelines/summarization_feat (delete)/README.md`
+
+Se conserva como analisis puntual de una linea de trabajo descartada. No forma parte del benchmark actual.
+
+---
+
 # ⚠️ EXPERIMENTAL ANALYSIS WARNING ⚠️
 
 **IMPORTANTE**: Este benchmark **NO** fue diseñado originalmente para evaluar features de sumarización. Este análisis fue **improvisado** cuando Javi preguntó sobre el impacto de usar casos resumidos vs casos completos. Los resultados son informativos pero deben interpretarse con precaución dado el contexto experimental.

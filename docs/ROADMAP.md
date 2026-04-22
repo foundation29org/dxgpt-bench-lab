@@ -2,8 +2,14 @@
 
 **Objetivo final:** Poder publicar una comparativa de DxGPT contra los mejores sistemas del paper de Nature (DeepRare, 2025) sobre los mismos datasets, con métricas equivalentes y resultados auditables.
 
-**Última actualización:** 2026-04-21  
-**Estado actual:** Fase 0 ✅, Fase 1 ✅, Fase 2 ✅, Fase 3 🔄 (experimento `thinking_level=medium` cerrado — no aporta)
+**Última actualización:** 2026-04-22  
+**Estado actual:** Fase 0 ✅, Fase 1 ✅, Fase 2 ✅, Fase 3 ✅, Fase 4 🔄 (DDD completado; resto aspiracional)
+
+Este documento es el roadmap y la bitacora de decisiones del proyecto.
+
+- Para el estado actual del benchmark: `bench/pipelines/pipeline_v4 - fork/main/README.md`
+- Para ejecutar el pipeline: `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md`
+- Para el historial completo de runs: `bench/pipelines/pipeline_v4 - fork/main/output/rankingV2.txt`
 
 ---
 
@@ -13,8 +19,8 @@
 FASE 0 [✅ HECHA]    Línea base con pipeline actual
 FASE 1 [✅ HECHA]    Limpiar dataset + arquitectura de datos
 FASE 2 [✅ HECHA]    Integrar datasets del paper de Nature
-FASE 3 [🔄 AHORA]   Añadir Recall@K + comparativa pública
-FASE 4 [⏳ ASPIRAC.] Escalar a 3.500 casos + validación clínica
+FASE 3 [✅ HECHA]    Recall@K + comparativa pública cerrados
+FASE 4 [🔄 PARCIAL] DDD completado; MIMIC-IV y validación clínica siguen como aspiracional
 ```
 
 ---
@@ -34,7 +40,7 @@ FASE 4 [⏳ ASPIRAC.] Escalar a 3.500 casos + validación clínica
 - [x] **0.3** Ejecutar `validation_checks.py` sobre `all_275.json` y documentar fallos
 - [x] **0.4** Identificar causa de lentitud de gpt-5-mini (auto-upgrade Azure)
 - [x] **0.5** Añadir métricas de tiempo al pipeline (`emulator.py`)
-- [x] **0.6** Documentar hipótesis y conclusiones en `cleanInfo.md`
+- [x] **0.6** Documentar hipótesis y conclusiones en `docs/pipeline/experiment-log.md`
 
 ### Conclusiones clave de la Fase 0
 
@@ -474,22 +480,24 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 
 ---
 
-## Fase 3 — Añadir Recall@K y comparativa pública 🔄 AHORA
+## Fase 3 — Añadir Recall@K y comparativa pública ✅ COMPLETADA
 
-**Prerequisito:** Fase 2 completada con resultados estables + SapBERT activo (ver abajo).
+**Prerequisito real usado para cerrarla:** Fase 2 completada con resultados estables.
 
 **Objetivo:** Tener una comparativa directa contra el paper de Nature, reportable externamente.
 
-### Prerequisito — Reactivar SapBERT ⚠️ PENDIENTE
+> `SapBERT` sigue siendo deseable para una versión pre-publicación especialmente estricta, pero **ya no es bloqueante** para considerar esta fase cerrada. La comparativa pública y la tabla principal quedaron completadas sin ello.
+
+### Nota abierta — Reactivar SapBERT (opcional pre-publicación estricta)
 
 **Problema:** El endpoint SapBERT está pausado por falta de créditos en la cuenta HuggingFace `Devf29`. Todos los runs desde entonces tienen 0 BERT matches — todos los casos semánticos van al juez LLM.
 
 **Impacto en comparabilidad:**
 - Runs 1-12 del ranking: BERT activo (scores potencialmente ligeramente mejores en casos borderline)
 - Runs 13+ del ranking: BERT offline (solo LLM judge)
-- Esta diferencia no invalida los runs actuales pero **sí es un confound** para publicación externa
+- Esta diferencia no invalida los runs actuales, pero **sí introduce un confound** para una publicación externa especialmente estricta
 
-**Acción cuando se acerque la publicación:**
+**Acción si se quiere reforzar aún más la versión publicable:**
 1. Ir a [ui.endpoints.huggingface.co](https://ui.endpoints.huggingface.co/) con la cuenta `Devf29`
 2. Añadir créditos (endpoint: `doln60zovu62g568`, us-east-1 AWS, ~$0.06-0.15/hora)
 3. Reanudar el endpoint
@@ -509,25 +517,16 @@ El proceso de conversión es idéntico al de RAMEDIS: HPO codes → nombres legi
 
 ### Paso 3.2 — Tabla comparativa contra DeepRare ✅ COMPLETADO
 
-**Tabla completa (2026-04-21 — 4 modelos × 6 datasets incluyendo DDD — valores definitivos con re-evaluación 503):**
+**Resumen corto (tabla completa en `output/rankingV2.txt` y `bench/pipelines/pipeline_v4 - fork/main/README.md`):**
 
-| Dataset | Casos | Métrica | DeepRare (Nature) | DxGPT gpt-4o | DxGPT gpt-5.4-mini | DxGPT gemini-2.5-pro | DxGPT gemini-3-pro-preview | Ganador |
-|---------|-------|---------|-------------------|--------------|---------------------|----------------------|---------------------------|---------|
-| RAMEDIS | 624 | R@1 | ~60% (espec.) / ~25-35% (GPT-4 base) | 49.2% | 46.3% | **54.2%** | **54.3%** ≈empate | gemini-3≈gemini-2.5 (+0.1pp) |
-| RAMEDIS | 624 | R@3 | — | — | — | 92.6% | **98.2%** 🏆 | gemini-3 +5.6pp |
-| LIRICAL | 370 | R@1 | — | 37.0% | 55.1% | 61.9% | **67.8%** 🏆 | gemini-3 +5.9pp |
-| LIRICAL | 370 | R@3 | — | — | — | 90.8% | **98.1%** 🏆 | gemini-3 +7.3pp |
-| HMS | 88 | R@1 | — | 34.1% | 53.4% | 56.8% | **72.7%** 🏆 | gemini-3 +15.9pp |
-| HMS | 88 | R@3 | — | — | — | 90.9% | **100.0%** 🏆 | gemini-3 +9.1pp |
-| MyGene2 | 146 | R@1 | **74%** | 23.3% | 38.4% | 55.5% | **61.0%** 🏆 | gemini-3 +5.5pp |
-| MyGene2 | 146 | R@3 | ~90% | — | — | 85.6% | **95.9%** 🏆 | gemini-3 +10.3pp |
-| MME | 40 | R@1 | — | 42.5% | 22.5% | 65.0% | **77.5%** 🏆 ✅ | gemini-3 +12.5pp vs gemini-2.5 |
-| MME | 40 | R@3 | — | — | — | 87.5% | **97.5%** 🏆 ✅ | gemini-3 +10pp |
-| **DDD** | **1.749** | **R@1** | — | 44.9% | 52.4% | 63.5% | **70.3%** 🏆 ✅ | **gemini-3 +6.8pp vs gemini-2.5** |
-| **DDD** | **1.749** | **R@3** | — | 76.8% | 79.6% | 91.8% | **97.6%** 🏆 ✅ | **gemini-3 +5.8pp** |
-| **DDD** | **1.749** | **R@5** | — | 97.0% | 97.2% | 98.0% | **98.1%** ✅ | gemini-3 ≈ igual |
-
-*(✅ = valores definitivos tras re-evaluación quirúrgica de casos fallados por error 503)*
+| Dataset | Casos | Mejor modelo | Señal principal |
+|---------|-------|--------------|-----------------|
+| RAMEDIS | 624 | `gemini-3-pro-preview` | empate tecnico en R@1 con gemini-2.5, pero ventaja clara en R@3 |
+| LIRICAL | 370 | `gemini-3-pro-preview` | +5.9pp R@1 vs gemini-2.5 |
+| HMS | 88 | `gemini-3-pro-preview` | +15.9pp R@1 vs gemini-2.5 |
+| MyGene2 | 146 | `gemini-3-pro-preview` | mejor dataset para discriminar modelos |
+| MME | 40 | `gemini-3-pro-preview` | mejor R@1 y R@3 del benchmark |
+| DDD | 1.749 | `gemini-3-pro-preview` | resultado mas solido: 70.3% R@1, 97.6% R@3 |
 
 **Conclusiones finales (tabla cerrada — 6 datasets, 4 modelos):**
 1. **gemini-3-pro-preview gana en los 6 datasets** en R@1 — sin excepciones (empate técnico en RAMEDIS R@1, +0.1pp)
@@ -560,34 +559,19 @@ Reportar ambos tracks por separado en cualquier comunicación externa. ✅ Docum
 
 **Resultados all_256_clean (256 casos, juez gemini-2.5-pro) — tabla completa:**
 
-| Modelo | Avg Pos | Success% | Emulación (256c) | Avg/caso | Recomendación |
-|--------|---------|----------|------------------|----------|---------------|
-| **gemini-2.5-pro low** | **1.299** | 98.1% | ~119 min | 27.9s | ⭐ Mejor calidad absoluta |
-| **gemini-3-pro-preview low** | **1.299** | 98.1% | ~44 min | **10.3s** | ⭐⭐ Misma calidad, 3x más rápido |
-| gemini-2.5-flash low | 1.434 | 98.1% | ~90 min | 21.1s | Buena relación calidad/velocidad |
-| grok-4-1-fast-reasoning | 1.448 | 97.7% | ~87 min | 20.4s | Fuerte alternativa no-Google |
-| gpt-5.4 full low | 1.502 | 98.8% | ~74 min | 17.3s | Modo avanzado OpenAI |
-| gpt-5.4-mini low | 1.526 | 98.1% | **~20 min** | **4.7s** | ⭐ Mejor relación calidad/velocidad OpenAI |
-| o3 high | 1.530 | 98.8% | ~68 min | 15.9s | Superado — no recomendado |
-| gpt-4o | 1.545 | 96.1% | ~44 min | 10.3s | Producción actual — superable |
-| gpt-5.4-mini medium | 1.570 | 98.1% | — | — | Peor que low — no usar |
-| gpt-5-mini | 1.588 | 97.7% | ~205 min | 48.1s | Muy lento — retirar |
-| claude-opus-4-7 | 1.668* | 80.1% (205/256) | ~73 min | 17.1s | ⚠️ Solo 80% coverage — prompt no optimizado para Claude |
+| Modelo | Avg Pos | Success% | Avg/caso | Lectura |
+|--------|---------|----------|----------|---------|
+| `gemini-2.5-pro low` | **1.299** | 98.1% | 27.9s | mejor calidad absoluta |
+| `gemini-3-pro-preview low` | **1.299** | 98.1% | 10.3s | misma calidad, mucho mas rapido |
+| `gpt-5.4-mini low` | 1.526 | 98.1% | **4.7s** | mejor opcion OpenAI en calidad/latencia |
+| `gpt-5.4 full low` | 1.502 | 98.8% | 17.3s | opcion OpenAI avanzada |
+| `gpt-4o` | 1.545 | 96.1% | 10.3s | ya superado |
+| `gpt-5-mini` | 1.588 | 97.7% | 48.1s | demasiado lento |
 
-> `*` avg_position calculado solo sobre los 205 casos matched. Si se calcula sobre 256 (contando unmatched como posición infinita), el score es significativamente peor. 51/256 casos sin match — el diagnóstico correcto no aparece en el top-8 de Claude.
-
-> **Nota sobre Claude Opus 4.7:** El bajo coverage (~80%) sugiere que `juanjo_classic_v2` no está optimizado para Claude. Modelos OpenAI y Gemini logran 97-98% coverage con el mismo prompt. Pendiente: probar Sonnet/Haiku para ver si el patrón se mantiene, y evaluar si un prompt específico para Claude mejoraría los resultados.
-
-> **Nota:** El tiempo de emulación es solo DDX generation (sin evaluación). Los tiempos de evaluación (juez) son adicionales y similares entre modelos (~1-2h para 256 casos).
+> Tabla completa y resto de modelos: `output/rankingV2.txt` y `bench/pipelines/pipeline_v4 - fork/main/README.md`.
 
 **Hallazgos clave:**
-- **gemini-3-pro-preview supera a gemini-2.5-pro en HPO** (no solo empata) — validado en 3/3 datasets pequeños:
-  - MME: R@1 75.0% vs 65.0% (+10pp)
-  - HMS Harvard: R@1 72.7% vs 56.8% (+15.9pp), R@3 100% vs 90.9%
-  - MyGene2: R@1 61.0% vs 55.5% (+5.5pp), R@3 95.9% vs 85.6% (+10.3pp)
-  - LIRICAL: R@1 67.8% vs 61.9% (+5.9pp), R@3 98.1% vs 90.8% (+7.3pp)
-  - RAMEDIS: R@1 54.3% vs 54.2% (≈empate), R@3 98.2% vs 92.6% (+5.6pp) — 72.7% BERT matches, nombres muy estandarizados
-  - Pendiente: DDD (1.749c, en curso esta noche)
+- **gemini-3-pro-preview** empata a gemini-2.5-pro en narrativa y lo supera de forma consistente en HPO
 - **grok** como mejor opción fuera del ecosistema Google/OpenAI (1.448)
 - **gemini-2.5-flash** equilibra velocidad y calidad (1.434, similar a grok pero Google)
 - **gpt-5.4-mini low** sigue siendo el campeón en ecosistema OpenAI por velocidad (4.7s/caso)
@@ -635,6 +619,8 @@ Reproducibilidad: los configs sueltos en `main/` se eliminaron tras la limpieza 
 
 **Objetivo:** Ampliar la comparativa con modelos de Anthropic, DeepSeek y futuros modelos.
 
+> Esta línea de trabajo **no bloquea** el cierre de la Fase 3. La comparativa pública principal ya quedó cerrada con los modelos actuales.
+
 **Estado Claude (Anthropic) — integración completada 2026-04-18:**
 
 | Modelo | Estado | Snapshot config | Resultado |
@@ -681,39 +667,19 @@ Claude Opus 4.7 solo matcheó 205/256 casos — significativamente peor que otro
 
 ---
 
-## Fase 4 — Escalar y validar (aspiracional) 🔄 EN CURSO
+## Fase 4 — Escalar y validar (aspiracional) 🔄 PARCIAL
 
-**Objetivo:** Extender a ~1.749 casos adicionales (DDD) y añadir validación clínica humana.
+**Objetivo:** Extender la validación externa y preparar una versión más fuerte para publicación.
 
-### Paso 4.1 — Dataset DDD (Gene2Phenotype, 1.749 casos) 🔄 EN CURSO
+### Paso 4.1 — Dataset DDD (Gene2Phenotype, 1.749 casos) ✅ COMPLETADO
 
-**Fuente:** G2P EBI — `DDG2P_2025-05-28.csv.gz` (misma versión usada en paper DeepRare, mayo 2025)  
-**URL:** `https://ftp.ebi.ac.uk/pub/databases/gene2phenotype/G2P_data_downloads/2025_05_28/`
+**Resumen:**
 
-**Diferencia con otros datasets HPO:**
-- RAMEDIS/MME/HMS/LIRICAL/MyGene2: casos de pacientes reales con síntomas (experiencia diagnóstica real)
-- DDD/G2P: asociaciones gen-enfermedad curadas + términos HPO de la literatura (base de conocimiento)
-- El DDD es más "teórico" — ideal para evaluar si el modelo conoce el espacio de enfermedades raras genéticas
+- Fuente: G2P EBI `DDG2P_2025-05-28.csv.gz`
+- Conversión: HP codes a labels HPO legibles usando `hp.obo`
+- Rol: dataset HPO más grande y resultado más sólido del benchmark
 
-**Datos raw:**
-- `data29/data-repos/raw/ddd_g2p/DDG2P_2025-05-28.csv` — fuente oficial EBI
-- `data29/data-repos/raw/ddd_g2p/hp.obo` — ontología HPO (Feb 2026, 19.944 términos)
-
-**Conversión HP codes → texto (paso clave):**
-
-El dataset G2P almacena los fenotipos como códigos HPO (`HP:0001321; HP:0000750`). El pipeline necesita texto, por eso el script de conversión usa `hp.obo` para mapear cada código a su label canónica:
-
-```
-G2P raw:  HP:0001321; HP:0000750; HP:0003593
-              ↓  (hp.obo lookup)
-case_en:  "Cerebellar hypoplasia, Intellectual disability, Onset in infancy"
-              ↓
-          input al modelo (igual que RAMEDIS/MME/HMS/LIRICAL/MyGene2)
-```
-
-Esto es correcto y consistente con todos los otros datasets HPO — que ya vienen con los labels en texto desde su fuente original (RareBench, Harvard Dataverse). DDD es el único que requiere este paso de conversión explícita porque proviene directamente de una base de datos de ontología. Los HP: codes son solo identificadores de BD — el LLM entiende "Cerebellar hypoplasia", no "HP:0001321".
-
-**Dataset generado:**
+**Datasets generados:**
 
 | Archivo | Casos | Descripción |
 |---------|-------|-------------|
@@ -721,35 +687,18 @@ Esto es correcto y consistente con todos los otros datasets HPO — que ya viene
 | `bench/datasets/ddd_hpo_confident.json` | 1.596 | Solo definitive + strong |
 | `bench/datasets/ddd_hpo_pilot50.json` | 50 | Pilot (35 definitive + 15 strong, seed=42) |
 
-**Estadísticas:**
-- Avg HPO terms/caso: 20.2 (más que otros datasets — más fenotipos por caso)
-- Confidence: definitive 1187 (68%), strong 409 (23%), limited 122, moderate 30, refuted 1
-- Script conversión: `data29/data-repos/raw/ddd_g2p/convert_ddg2p.py`
-
-**Estado de ejecución:**
+**Resultado final por modelo:**
 
 | Run | Dataset | Modelo | R@1 | R@3 | R@5 | Avg Pos | Estado |
 |-----|---------|--------|-----|-----|-----|---------|--------|
-| Pilot | ddd_hpo_pilot50 (50c) | gpt-4o | 48% | 82% | 98% | 2.08 | ✅ COMPLETADO run 20260418173220 |
-| Full | ddd_hpo (1.749c) | gpt-4o | **44.9%** | **76.8%** | **97.0%** | **2.267** | ✅ COMPLETADO run 20260418225915 |
-| Full | ddd_hpo (1.749c) | gpt-5.4-mini low | **52.4%** | **79.6%** | **97.2%** | **2.036** | ✅ COMPLETADO run 20260419010722 |
-| Full | ddd_hpo (1.749c) | gemini-2.5-pro | **63.5%** | **91.8%** | **98.0%** | **1.614** | ✅ COMPLETADO run 20260420042635 |
-| Full | ddd_hpo (1.749c) | gemini-3-pro-preview | **70.3%** ✅ | **97.6%** ✅ | **98.1%** ✅ | **1.394** | ✅ COMPLETADO run 20260421035045 + reeval503 20260421123924 |
+| Modelo | R@1 | R@3 | R@5 | Avg Pos |
+|--------|-----|-----|-----|---------|
+| `gpt-4o` | 44.9% | 76.8% | 97.0% | 2.267 |
+| `gpt-5.4-mini low` | 52.4% | 79.6% | 97.2% | 2.036 |
+| `gemini-2.5-pro` | 63.5% | 91.8% | 98.0% | 1.614 |
+| `gemini-3-pro-preview` | **70.3%** | **97.6%** | **98.1%** | **1.394** |
 
-**Conclusiones del pilot (50 casos, gpt-4o):**
-- ✅ Pipeline 100% funcional con datos DDD/G2P
-- ✅ 100% coverage — ningún caso sin match (mejor que RAMEDIS/MyGene2)
-- R@1=48% comparable con RAMEDIS gpt-4o (49.2%) — buen indicador
-- 0 matches SNOMED/ICD10 — esperado: los nombres G2P siguen convención gene-first (`KIAA0586-related Joubert syndrome`) no indexada en estándares. El juez LLM los resuelve correctamente (78% casos).
-- SapBERT activo: 22% BERT matches (11/50)
-
-**Para lanzar el run completo:**
-```powershell
-Set-Location "c:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
-# Recuperar el config del último snapshot (o de git history) y relanzar:
-Copy-Item "output\ddd_hpo\juanjo_classic_v2\gpt_4o\<run_id>\juanjo_classic_v2___gpt_4o___config.yaml" .\config_ddd_full_gpt4o.yaml
-py main.py --config config_ddd_full_gpt4o.yaml
-```
+**Lectura:** DDD confirma el mismo orden que el resto del track HPO y refuerza a `gemini-3-pro-preview` como mejor modelo del benchmark para enfermedades raras estructuradas.
 
 ### Paso 4.2 — Dataset MIMIC-IV ⏸️ APLAZADO / BAJA PRIORIDAD
 
@@ -764,7 +713,7 @@ MIMIC-IV es el único dataset público del paper DeepRare no integrado. Razones 
 
 Los otros 2 datasets del paper (Xinhua Hospital, 975 casos; Hunan Hospital, 162 casos) son **privados y no accesibles**.
 
-### Paso 4.3 — Estratificación de resultados
+### Paso 4.3 — Estratificación de resultados ⏳ PENDIENTE
 
 Reportar resultados desglosados por:
 - Tipo de enfermedad (rara genética vs. pediátrica general)
@@ -772,7 +721,7 @@ Reportar resultados desglosados por:
 - Modalidad de input (HPO vs. texto libre)
 - Idioma (español vs. inglés)
 
-### Paso 4.3 — Validación clínica (opcional, muy alto valor)
+### Paso 4.4 — Validación clínica (opcional, muy alto valor)
 
 El paper de Nature usó un panel de 8 médicos independientes con 88% de concordancia para validar sus resultados. Para una publicación de alto impacto, considerar un piloto similar (5-10 casos, 2-3 médicos).
 
@@ -783,9 +732,9 @@ El paper de Nature usó un panel de 8 médicos independientes con 88% de concord
 ```
 FASE 0  ████████████████████  100% ✅  (línea base, ablación modelos)
 FASE 1  ████████████████████  100% ✅  (dataset limpio all_256_clean, arquitectura datos)
-FASE 2  ████████████████████  100% ✅  (5 datasets DeepRare, 3 modelos × 5 = 15 runs HPO)
-FASE 3  ████████████████░░░░   80% 🔄  (3.1 ✅ Recall@K, 3.2 ✅ tabla DeepRare, 3.3 ✅ tracks, 3.4 ✅ benchmark, 3.5 🔄 Claude/DeepSeek)
-FASE 4  ████████████░░░░░░░░   60% 🔄  (4.1 DDD ✅ completado: 4 modelos × 1.749 casos, gemini-3 R@1=70.3%)
+FASE 2  ████████████████████  100% ✅  (integrados los 6 datasets HPO del paper, incluido DDD)
+FASE 3  ████████████████████  100% ✅  (Recall@K, tabla DeepRare, benchmark público y ablation medium cerrados)
+FASE 4  ████████░░░░░░░░░░░░   40% 🔄  (4.1 DDD ✅; pendientes MIMIC-IV, estratificación y validación clínica)
 ```
 
 ---
@@ -796,7 +745,7 @@ FASE 4  ████████████░░░░░░░░   60% 🔄 
 |----------|---------|--------|
 | Dataset limpio | validation_checks.py | OVERALL: PASS |
 | Comparabilidad con Nature | Recall@1 en MyGene2 | ≥ 50% (Nature tiene 74%) |
-| Cobertura de datasets | Nº de datasets del paper integrados | ≥ 2 (MyGene2 + RAMEDIS) |
+| Cobertura de datasets | Nº de datasets HPO accesibles del paper integrados | **6/6 completados** |
 | Reproducibilidad | Mismos resultados en 2 runs del mismo modelo | ± 1% |
 | Trazabilidad | Cada caso en un dataset tiene `source` y `case_id` | 100% |
 
@@ -806,7 +755,7 @@ FASE 4  ████████████░░░░░░░░   60% 🔄 
 
 | Fichero | Contenido |
 |---------|-----------|
-| `bench/pipelines/pipeline_v4 - fork/main/cleanInfo.md` | Log detallado de experimentos Fase 0 |
+| `docs/pipeline/experiment-log.md` | Log detallado de experimentos y decisiones técnicas |
 | `bench/pipelines/pipeline_v4 - fork/main/output/rankingV2.txt` | Historial de benchmarks |
 | `.squad/decisions.md` | Decisiones arquitectónicas del equipo multidisciplinar |
 | `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md` | Guía paso a paso para ejecutar el pipeline |
