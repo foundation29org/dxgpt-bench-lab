@@ -1,516 +1,294 @@
-# Guía de Evaluación - Pipeline V4
+# Guia de Evaluacion - Pipeline V4
 
-Esta guía explica paso a paso cómo ejecutar la evaluación completa de diagnósticos diferenciales usando el Pipeline V4.
+Esta guia es el runbook operativo del pipeline actual. Su objetivo es explicar como lanzar, reanudar e interpretar runs.
 
-## 📋 Tabla de Contenidos
+No es la fuente canonica del benchmark. Para resultados y recomendaciones actuales usa:
 
-1. [Prerequisitos](#prerequisitos)
-2. [Configuración Inicial](#configuración-inicial)
-3. [Pasos de la Evaluación](#pasos-de-la-evaluación)
-4. [Configuración del Pipeline](#configuración-del-pipeline)
-5. [Ejecución](#ejecución)
-6. [Interpretación de Resultados](#interpretación-de-resultados)
-7. [Troubleshooting](#troubleshooting)
+- `bench/pipelines/pipeline_v4 - fork/main/README.md`
+- `docs/ROADMAP.md`
+- `bench/pipelines/pipeline_v4 - fork/main/output/rankingV2.txt`
 
----
+## 1. Antes de ejecutar
 
-## Prerequisitos
+### Requisitos
 
-### 1. Variables de Entorno
+- Tener el repo preparado en `C:\repos\DxGPT\eval`
+- Tener un `.env` en la raiz del repo: `C:\repos\DxGPT\eval\.env`
+- Tener accesible el dataset referenciado en `DATASET_PATH`
 
-Crea un archivo `.env` en la **raíz del proyecto** (`C:\repo\DxGPT\eval\.env`) con las siguientes variables:
+Variables habituales:
 
 ```env
-# Azure Text Analytics (para atribución de códigos médicos)
-AZURE_LANGUAGE_ENDPOINT=https://tu-endpoint.cognitiveservices.azure.com
-AZURE_LANGUAGE_KEY=tu_clave_azure
-
-# Azure OpenAI (para modelos LLM)
-AZURE_OPENAI_ENDPOINT=https://tu-endpoint.openai.azure.com
-AZURE_OPENAI_API_KEY=tu_clave_azure_openai
+AZURE_LANGUAGE_ENDPOINT=...
+AZURE_LANGUAGE_KEY=...
+AZURE_OPENAI_ENDPOINT=...
+AZURE_OPENAI_API_KEY=...
 AZURE_OPENAI_API_VERSION=2024-02-15-preview
-
-# Google Gemini (para modelos Gemini)
-GOOGLE_GENAI_API_KEY=tu_clave_gemini
-# O alternativamente:
-GEMINI_API_KEY=tu_clave_gemini
-
-# Azure Translator (opcional, para traducción de casos)
-AZURE_TRANSLATOR_KEY=tu_clave_translator
-AZURE_TRANSLATOR_ENDPOINT=https://api.cognitive.microsofttranslator.com
-AZURE_TRANSLATOR_REGION=tu_region
-
-# Hugging Face (para BERT similarity)
-HF_TOKEN=tu_token_huggingface
-SAPBERT_ENDPOINT_URL=tu_endpoint_sapbert
+GOOGLE_API_KEY=...
+GOOGLE_GENAI_API_KEY=...
+AZURE_TRANSLATOR_KEY=...
+AZURE_TRANSLATOR_ENDPOINT=...
+AZURE_TRANSLATOR_REGION=...
+HF_TOKEN=...
+SAPBERT_ENDPOINT_URL=...
 ```
 
-### 2. Dependencias Python
+Instalacion:
 
-Instala las dependencias necesarias:
-
-```bash
+```powershell
+py -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-O usando `uv`:
+### Dataset recomendado
 
-```bash
-uv pip install -r requirements.txt
-```
-
-### 3. Dataset
-
-Asegúrate de tener el dataset en la ruta especificada en `config.yaml`. Por defecto:
-- `bench/datasets/all_275.json`  
-  (también disponible `all_150.json` para pruebas más rápidas)
-
----
-
-## Configuración Inicial
-
-### 1. Navegar al Directorio del Pipeline
-
-```bash
-cd "bench/pipelines/pipeline_v4 - fork/main"
-```
-
-### 2. Validar Configuración
-
-Antes de ejecutar, valida que todo esté correcto:
-
-```bash
-py validate.py
-```
-
-Esto verificará:
-- ✅ Variables de entorno configuradas
-- ✅ Archivos de configuración válidos
-- ✅ Dataset accesible
-- ✅ Dependencias instaladas
-
----
-
-## Pasos de la Evaluación
-
-El pipeline ejecuta **3 pasos principales** en secuencia:
-
-### **PASO 1: Emulator (Generación de DDX)**
-
-**¿Qué hace?**
-- Lee cada caso del dataset
-- Envía el caso al modelo LLM configurado (GPT-5, Gemini, etc.)
-- El LLM genera diagnósticos diferenciales (DDX) basados en el caso clínico
-- Opcionalmente traduce el caso si `TRANSLATE_CASE.ENABLED: true`
-
-**Entrada:**
-- Dataset JSON con casos clínicos (`all_150.json`)
-
-**Salida:**
-- Archivo JSON con DDX generados por el LLM
-- Ubicación: `output/<dataset>/<prompt>/<model>/ddxs_from_emulator.json`
-
-**Tiempo estimado:**
-- Depende del modelo y número de casos
-- Gemini 2.5 Pro: ~75 segundos para 150 casos (con tier 1)
-- GPT-5.1: ~13-14 segundos por caso
-
----
-
-### **PASO 2: Medical Labeler (Atribución de Códigos Médicos)**
-
-**¿Qué hace?**
-- Toma los DDX generados en el Paso 1
-- Para cada diagnóstico diferencial, llama a Azure Text Analytics
-- Azure identifica entidades médicas y extrae códigos:
-  - **ICD-10**: Códigos de clasificación internacional
-  - **SNOMED**: Terminología clínica estandarizada
-  - **OMIM**: Base de datos de genes y fenotipos
-  - **ORPHA**: Enfermedades raras
-
-**Entrada:**
-- Archivo JSON con DDX del Paso 1
-
-**Salida:**
-- Archivo JSON con DDX + códigos médicos asignados
-- Ubicación: `output/<dataset>/<prompt>/<model>/ddxs_from_labeler.json`
-
-**Tiempo estimado:**
-- ~5-10 minutos para 150 casos (depende de Azure Text Analytics)
-
-**Nota:** El archivo del emulator se elimina automáticamente después de este paso.
-
----
-
-### **PASO 3: Evaluator (Evaluación de Calidad)**
-
-**¿Qué hace?**
-- Compara los DDX generados con los diagnósticos de referencia (GDX)
-- Usa **3 métodos de evaluación** en orden de prioridad:
-
-  1. **SNOMED Match**: Coincidencia exacta de códigos SNOMED
-  2. **ICD-10 Match**: Coincidencia de códigos ICD-10 (exacta, padre, hijo, hermano)
-  3. **Semantic Match**: Similaridad semántica usando BERT + juicio de LLM
-
-**Criterios de aceptación:**
-- **BERT_AUTOCONFIRM_THRESHOLD** (0.90): Si BERT score ≥ 0.90, acepta automáticamente (no llama al LLM)
-- **BERT_ACCEPTANCE_THRESHOLD** (0.80): Si BERT score ≥ 0.80, requiere confirmación del LLM juez
-- Si BERT < 0.80, el **LLM juez** decide si hay match (ver sección [Modelo Juez](#modelo-juez-judge_model) más abajo)
-
-**Entrada:**
-- Archivo JSON con DDX + códigos del Paso 2
-- Dataset original con GDX (diagnósticos de referencia)
-
-**Salida:**
-- `evaluation.log`: Log detallado del proceso
-- `evaluation_details.txt`: Detalles de cada caso evaluado
-- `summary.json`: Resumen estadístico de resultados
-- Ubicación: `output/<dataset>/<prompt>/<model>/<timestamp>/`
-
-**Tiempo estimado:**
-- ~5-10 minutos para 150 casos
-
----
-
-## Configuración del Pipeline
-
-Edita el archivo `config.yaml` para personalizar la evaluación:
-
-### Modelo LLM
+Para nuevos benchmarks narrativos, usa:
 
 ```yaml
+DATASET_PATH: "bench/datasets/all_256_clean.json"
+```
+
+Para comparativa tipo DeepRare, usa uno de los datasets HPO (`ramedis_hpo`, `lirical_hpo`, `hms_hpo`, `mme_hpo`, `mygene2_hpo`, `ddd_hpo`).
+
+`all_275.json` y otros historicos deben tratarse como referencia o auditoria, no como baseline nuevo.
+
+## 2. Que documento mirar para cada cosa
+
+- `README.md` del pipeline: estado actual del benchmark, tablas y recomendacion de modelos
+- `GUIA_EVALUACION.md`: como ejecutar el pipeline
+- `docs/ROADMAP.md`: historia del proyecto, fases y decisiones
+- `output/rankingV2.txt`: ranking completo de runs
+
+## 3. Configuracion minima
+
+El pipeline puede usar `config.yaml` o un fichero especifico pasado con `--config`.
+
+### Ejemplo narrativo recomendado
+
+```yaml
+EXPERIMENT_NAME: "all_256_clean-gpt54mini-low"
+DATASET_PATH: "bench/datasets/all_256_clean.json"
+
 DXGPT_EMULATOR:
-  MODEL: "gemini-2.5-pro"  # Opciones: "gpt-5.1", "gpt-5-mini", "gemini-2.5-pro", "gemini-2.0-flash", etc.
-```
+  MODEL: "gpt-5.4-mini"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
 
-**Modelos disponibles:**
-- **Azure OpenAI**: `gpt-5.1`, `gpt-5-mini`, `gpt-4o-summary`, `o3-mini`
-- **Google Gemini**: `gemini-2.5-pro`, `gemini-2.0-flash`, `gemini-3-pro-preview`
-
-### Parámetros del Modelo
-
-```yaml
-PARAMS:
-  temperature: 0.1          # Creatividad (0.0 = determinista, 1.0 = creativo)
-  max_tokens: 12000         # Máximo de tokens en la respuesta
-  reasoning_effort: "low"   # Para O3/GPT-5: "low", "medium", "high"
-  thinking_level: "low"     # Para Gemini 2.5/3: "low", "medium", "high"
-```
-
-### Traducción de Casos
-
-```yaml
-TRANSLATE_CASE:
-  ENABLED: true             # Activar/desactivar traducción
-  TARGET_LANGUAGE: "en"     # Idioma objetivo ("en" = inglés, "es" = español)
-```
-
-**¿Cuándo usar traducción?**
-- Si tu dataset tiene casos en español y quieres evaluar el modelo en inglés
-- Puede mejorar el rendimiento si el modelo está mejor entrenado en inglés
-
-### Thresholds de Evaluación
-
-```yaml
 EVALUATOR:
-  BERT_ACCEPTANCE_THRESHOLD: 0.80   # Score mínimo para considerar match (0.0-1.0)
-  BERT_AUTOCONFIRM_THRESHOLD: 0.90 # Score para aceptar automáticamente (0.0-1.0)
-  ENABLE_ICD10_PARENT_SEARCH: true  # Buscar códigos padre en ICD-10
-  ENABLE_ICD10_SIBLING_SEARCH: true # Buscar códigos hermanos en ICD-10
-  JUDGE_MODEL: null  # Modelo LLM para juzgar matches semánticos (opcional)
-```
+  BERT_ACCEPTANCE_THRESHOLD: 0.80
+  BERT_AUTOCONFIRM_THRESHOLD: 0.90
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  PARALLEL_WORKERS: 8
 
-**Recomendaciones:**
-- **BERT_ACCEPTANCE_THRESHOLD**: 0.80 es conservador, 0.70 es más permisivo
-- **BERT_AUTOCONFIRM_THRESHOLD**: 0.90 es estándar, no cambiar a menos que haya problemas
-- **JUDGE_MODEL**: Modelo usado para juzgar si hay match semántico cuando BERT < 0.80
-
-### Modelo Juez (JUDGE_MODEL)
-
-El modelo juez es el LLM que decide si hay match semántico cuando el score BERT está por debajo del threshold.
-
-**Configuración recomendada** (según resultados de benchmark interno):
-
-```yaml
-EVALUATOR:
-  JUDGE_MODEL: "gemini-2.5-pro"  # Mejor juez observado en los runs actuales
-```
-
-Puedes sustituirlo por cualquier modelo disponible:
-
-```yaml
-JUDGE_MODEL: "gemini-2.5-pro"  # Recomendado — más preciso en los benchmarks del equipo
-JUDGE_MODEL: "normalcalls"     # GPT-4o (deployment Azure) — alternativa para entornos sin Gemini
-JUDGE_MODEL: "gpt-5-mini"      # Más barato/rápido, algo menos preciso
-# JUDGE_MODEL: null             # Lógica automática (ver nota abajo)
-```
-
-**Si no se especifica (JUDGE_MODEL: null), lógica automática del código:**
-- Modelo **Gemini** evaluado → juez: **el mismo modelo Gemini**
-- Modelo **OpenAI / o3 / gpt-5** evaluado → juez: **`normalcalls`** (GPT-4o en Azure)
-
-> ⚠️ **Recomendación basada en experiencia:** fija siempre `JUDGE_MODEL` explícitamente en lugar de depender de la lógica automática. Así los resultados son comparables entre runs independientemente del modelo emulador.  
-> **`gemini-2.5-pro` como juez** ha mostrado los mejores resultados en los benchmarks del equipo (posición media más baja, mayor % de match).
-
-**¿Importa el juez para la comparabilidad?**  
-Sí, mucho. Dos runs con distinto juez no son directamente comparables aunque el resto de config sea igual. El juez afecta cuántos casos resuelve el paso semántico (en los runs actuales, ~34% de los casos pasan por el juez). Un juez más permisivo sube el % de match pero puede introducir falsos positivos.
-
-### Control del Pipeline
-
-```yaml
 MAIN:
-  SHOULD_EMULATE: true   # Paso 1: Generar DDX usando el modelo LLM
-  SHOULD_LABEL: true     # Paso 2: Asignar códigos médicos usando Azure Text Analytics
-  SHOULD_EVALUATE: true  # Paso 3: Evaluar DDX contra GDX
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
 ```
 
-**Casos de uso comunes:**
+### Ejemplo HPO recomendado
 
-| Escenario | SHOULD_EMULATE | SHOULD_LABEL | SHOULD_EVALUATE | Descripción |
-|-----------|----------------|--------------|-----------------|-------------|
-| **Ejecución completa desde cero** | `true` | `true` | `true` | Ejecuta todos los pasos (o omite estos valores) |
-| **Solo re-evaluar** | `false` | `false` | `true` | Usa DDX y códigos existentes, solo re-evalúa |
-| **Solo generar DDX** | `true` | `false` | `false` | Genera diagnósticos pero no asigna códigos ni evalúa |
-| **Generar DDX + códigos** | `true` | `true` | `false` | Genera DDX y asigna códigos, sin evaluar |
-| **Solo asignar códigos** | `false` | `true` | `false` | Si ya tienes DDX, solo asigna códigos médicos |
+```yaml
+EXPERIMENT_NAME: "ddd_hpo-gemini3pro-low"
+DATASET_PATH: "bench/datasets/ddd_hpo.json"
 
-**Nota:** Si omites estos valores, el pipeline asume `true` por defecto (ejecuta todos los pasos).
+DXGPT_EMULATOR:
+  MODEL: "gemini-3-pro-preview"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    thinking_level: "low"
+  TRANSLATE_CASE:
+    ENABLED: false
+  PARALLEL_WORKERS: 4
 
----
+EVALUATOR:
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  PARALLEL_WORKERS: 8
 
-## Ejecución
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+```
 
-### Ejecución Completa
+### Reglas practicas de configuracion
 
-```bash
-# Desde el directorio del pipeline
-cd "bench/pipelines/pipeline_v4 - fork/main"
+- `JUDGE_MODEL` afecta a la comparabilidad. Si cambias el juez, cambia el experimento.
+- `JUDGE_PARAMS` conviene fijarlos explicitamente, no dejar logica implicita.
+- `thinking_level=medium` en Gemini ya se cerro como experimento y no se recomienda para produccion ni benchmark. Mantener `low`.
+- `reasoning_effort=low` es el punto de partida recomendado para GPT-5.x y o3.
+- `TRANSLATE_CASE.ENABLED: false` suele ser lo correcto para datasets HPO ya en ingles.
+- `PARALLEL_WORKERS` existe tanto en emulador como en evaluador. Ajustalo al rate limit real del proveedor.
 
-# Ejecutar pipeline completo
+## 4. Como ejecutar
+
+Desde el directorio del pipeline:
+
+```powershell
+cd "C:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
+py validate.py
 py main.py
 ```
 
-### Ejecución por Pasos
+Con un config dedicado:
 
-Si quieres ejecutar pasos individuales:
-
-```bash
-# Solo Paso 1: Generar DDX
-py emulator.py
-
-# Solo Paso 2: Asignar códigos médicos
-py medlabeler.py
-
-# Solo Paso 3: Evaluar
-py evaluator.py
+```powershell
+cd "C:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
+py main.py --config config_mi_experimento.yaml
 ```
 
-### Gestión de Estado
+## 5. Como reanudar o re-evaluar
 
-El pipeline detecta automáticamente si ya existen resultados:
+El pipeline detecta automaticamente el estado de la carpeta de salida del experimento:
 
-**Si existen DDX del Paso 1:**
-```
-⚠️  DDX results already exist at output/...
+- Si ya existe el JSON del emulador, te ofrece continuar desde labeling
+- Si ya existe el JSON del labeler, te ofrece continuar desde evaluation
+- Si abortas, no borra los artefactos ya generados
 
-1. Re-run DDX generation (will overwrite existing results)
-2. Continue with medical code labeling using existing DDX
-3. ❌ Abort operation
+Casos tipicos:
 
-Enter your choice (number):
-```
+| Objetivo | SHOULD_EMULATE | SHOULD_LABEL | SHOULD_EVALUATE |
+|---|---|---|---|
+| Run completo | `true` | `true` | `true` |
+| Solo generar DDX | `true` | `false` | `false` |
+| Generar DDX y codigos | `true` | `true` | `false` |
+| Solo re-evaluar desde JSON ya etiquetado | `false` | `false` | `true` |
 
-**Si existen códigos del Paso 2:**
-```
-⚠️  Labeled results already exist at output/...
+Nota importante: para reproducibilidad fuerte, la fuente de verdad del run no es el `config.yaml` suelto del directorio, sino el snapshot guardado por el pipeline en:
 
-1. Re-run medical code labeling (will overwrite existing results)
-2. Continue with evaluation using existing labeled results
-3. ❌ Abort operation
+- `output/<dataset>/<prompt>/<model>/<prompt>___<model>___config.yaml`
+- `output/<dataset>/<prompt>/<model>/<timestamp>/<prompt>___<model>___config.yaml`
 
-Enter your choice (number):
-```
+## 6. Que genera el pipeline
 
----
+Estructura normal:
 
-## Interpretación de Resultados
-
-### Archivo `summary.json`
-
-Contiene las métricas principales:
-
-```json
-{
-  "configuration": {
-    "judge_model": "gemini-2.5-pro",
-    "dataset_path": "bench/datasets/all_275.json",
-    "timestamp": "2026-03-24T13:15:52.994256"
-  },
-  "global": {
-    "total_cases": 275,
-    "matched_cases": 271,
-    "unmatched_cases": 4,
-    "top_counts": {
-      "P1": 212,
-      "P2": 33,
-      "P3": 22,
-      "P4": 4
-    },
-    "resolution_method_counts": {
-      "snomed_match": 121,
-      "icd10_exact": 20,
-      "icd10_sibling": 20,
-      "bert_autoconfirm": 11,
-      "bert_match": 4,
-      "llm_judgment": 94
-    },
-    "average_position": 1.328,
-    "final_score_percentage": 98.55
-  }
-}
-```
-
-**Métricas clave:**
-- **final_score_percentage**: Porcentaje de casos donde se encontró el diagnóstico correcto (matched_cases/total)
-- **matched_cases / unmatched_cases**: Conteo absoluto de casos con/sin match
-- **P1, P2, P3, P4…**: Distribución de posiciones donde se encontró el diagnóstico correcto (P1 = mejor)
-- **average_position**: Posición promedio del diagnóstico correcto entre los matched (menor es mejor)
-- **resolution_method_counts**: Cómo se resolvió cada match (SNOMED, ICD10, BERT, LLM)
-
-### Archivo `evaluation.log`
-
-Log detallado con el resultado de cada caso:
-
-```
-[1/150] BERT_AUTOCONFIRM → GDX[1]: Systemic lupus erythematosus | DDX[1]: Systemic Lupus Erythematosus → **P1**
-[2/150] SEMANTIC → NO_MATCH → **REJECTED**
-[3/150] BERT_AUTOCONFIRM → GDX[1]: POEMS syndrome | DDX[2]: POEMS Syndrome → **P2**
-```
-
-**Códigos de resultado:**
-- `BERT_AUTOCONFIRM`: Match encontrado con score BERT ≥ 0.90
-- `BERT_ACCEPTANCE`: Match encontrado con score BERT ≥ 0.80 (confirmado por LLM)
-- `SNOMED`: Match encontrado por código SNOMED
-- `ICD10_EXACT`: Match encontrado por código ICD-10 exacto
-- `ICD10_PARENT`: Match encontrado por código ICD-10 padre
-- `ICD10_SIBLING`: Match encontrado por código ICD-10 hermano
-- `SEMANTIC`: Match encontrado por similaridad semántica (LLM)
-- `NO_MATCH` / `REJECTED`: No se encontró match
-
-### Archivo `evaluation_details.txt`
-
-Contiene información detallada de cada caso, incluyendo:
-- GDX evaluado (diagnóstico de referencia)
-- DDX generados (diagnósticos diferenciales)
-- Scores BERT para cada DDX
-- Traza completa de la evaluación (SNOMED → ICD-10 → Semantic)
-
----
-
-## Troubleshooting
-
-### Error: "Azure Language service credentials not found"
-
-**Solución:**
-- Verifica que el archivo `.env` esté en la raíz del proyecto (`C:\repo\DxGPT\eval\.env`)
-- Verifica que las variables `AZURE_LANGUAGE_ENDPOINT` y `AZURE_LANGUAGE_KEY` estén configuradas
-
-### Error: "Module not found"
-
-**Solución:**
-```bash
-pip install -r requirements.txt
-```
-
-### Error: "429 RESOURCE_EXHAUSTED" (Gemini)
-
-**Causa:** Límite de rate limit excedido
-
-**Solución:**
-- El código ya incluye delays automáticos según el modelo
-- Para tier gratuito, los delays son más largos (30s para 2.5-pro)
-- Con facturación (tier 1), los delays son más cortos (0.5s para 2.5-pro)
-- Si persiste, aumenta el delay en `emulator.py`
-
-### Muchos casos "REJECTED"
-
-**Posibles causas:**
-1. **Medlabeler no asignó códigos**: Revisa `medlabeler.log` para ver si Azure devolvió códigos
-2. **Threshold de BERT demasiado estricto**: Considera bajar `BERT_ACCEPTANCE_THRESHOLD` a 0.70
-3. **LLM demasiado conservador**: El LLM puede estar rechazando matches válidos
-
-**Solución:**
-- Revisa `evaluation_details.txt` para casos específicos
-- Verifica los scores BERT en los casos rechazados
-- Si los scores son altos (>0.65) pero no alcanzan el threshold, considera bajarlo
-
-### El pipeline se detiene en medio de la ejecución
-
-**Solución:**
-- El pipeline guarda el estado automáticamente
-- Puedes reanudar desde donde se quedó ejecutando `py main.py` de nuevo
-- Elige la opción "Continue" cuando te pregunte sobre archivos existentes
-
-### Resultados diferentes entre ejecuciones
-
-**Causa:** Los modelos LLM pueden tener variabilidad incluso con `temperature: 0.1`
-
-**Solución:**
-- Esto es normal, especialmente con modelos no deterministas
-- Para comparaciones justas, usa el mismo `seed` si el modelo lo soporta
-- Ejecuta múltiples veces y promedia los resultados
-
----
-
-## Estructura de Archivos de Salida
-
-```
+```text
 output/
-└── all_275/                          # Nombre del dataset
-    └── juanjo_classic_v2/            # Nombre del prompt
-        └── gemini_2_5_pro_low_translated_en/  # Nombre del modelo (con sufijos)
-            ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___ddxs_from_labeler.json
-            ├── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___config.yaml
+└── <dataset>/
+    └── <prompt>/
+        └── <model>/
+            ├── <prompt>___<model>___ddxs_from_labeler.json
+            ├── <prompt>___<model>___config.yaml
             ├── emulator.log
             ├── medlabeler.log
-            └── 20251204151832/        # Timestamp de la evaluación
+            └── <timestamp>/
                 ├── evaluation.log
                 ├── evaluation_details.txt
                 ├── summary.json
-                └── juanjo_classic_v2___gemini_2_5_pro_low_translated_en___config.yaml
+                └── <prompt>___<model>___config.yaml
 ```
 
-**Nota sobre nombres de modelos:**
-- Si `TRANSLATE_CASE.ENABLED: true`, se añade el sufijo `_translated_<idioma>`
-- Para Gemini se añade `_<thinking_level>` (ej: `_low`); para O3/GPT-5 se añade `_<reasoning_effort>` (ej: `_high`)
-- Los espacios y caracteres especiales se reemplazan por `_`
+## 7. Como interpretar los resultados
 
-**Nota sobre DDX translation (medlabeler):**  
-El labeler envía los textos DDX directamente a Azure Text Analytics con `language="en"`. No hay traducción intermedia de DDX: se asume inglés dado que el emulador traduce el caso y el prompt es en inglés. La opción `TRANSLATE_CASE` del emulador no afecta al labeler.
+### `summary.json`
 
----
+Campos mas utiles:
 
-**Última actualización:** Marzo 2026
+- `matched_cases` / `unmatched_cases`
+- `top_counts`
+- `average_position`
+- `final_score_percentage`
+- `resolution_method_counts`
 
-## Consejos y Mejores Prácticas
+Interpretacion rapida:
 
-1. **Empieza con un dataset pequeño**: Prueba con 5-10 casos antes de ejecutar 150
-2. **Revisa los logs**: Los archivos `.log` contienen información valiosa sobre errores
-3. **Compara modelos**: Ejecuta la misma configuración con diferentes modelos para comparar
-4. **Guarda configuraciones**: El pipeline guarda automáticamente una copia del `config.yaml` en cada ejecución
-5. **Monitorea los rate limits**: Especialmente con modelos Gemini en tier gratuito
-6. **Revisa casos específicos**: Usa `evaluation_details.txt` para entender por qué un caso fue rechazado
+- `average_position`: cuanto mas bajo, mejor
+- `final_score_percentage`: cobertura total del diagnostico correcto dentro del DDX
+- `P1`, `P2`, `P3`... permiten derivar `Recall@1`, `Recall@3`, `Recall@5`
+- `resolution_method_counts` indica cuanto resuelve SNOMED, ICD-10, BERT o juez LLM
 
----
+### `evaluation.log`
 
-## Siguiente Paso
+Sirve para seguir el resultado caso a caso y detectar:
 
-Una vez completada la evaluación, puedes:
-- Comparar resultados entre diferentes modelos
-- Analizar casos específicos en `evaluation_details.txt`
-- Ajustar thresholds si hay muchos falsos negativos/positivos
-- Generar visualizaciones de los resultados
+- muchos `NO_MATCH` o `REJECTED`
+- exceso de `LLM_JUDGMENT`
+- errores de rate limit o credenciales
 
----
+### `evaluation_details.txt`
 
-**Última actualización:** Marzo 2026
+Sirve para auditoria fina. Usalo cuando quieras responder preguntas como:
+
+- por que un caso no matcheo
+- por que un P1 paso a P3
+- si el juez esta siendo demasiado permisivo
+- si BERT esta resolviendo poco por estar offline o mal configurado
+
+## 8. Recomendaciones operativas actuales
+
+- Modo normal en OpenAI: `gpt-5.4-mini low`
+- Modo avanzado: `gemini-3-pro-preview low`
+- Juez por defecto para benchmark: `gemini-2.5-pro`
+- Prompt de referencia: `bench/candidate-prompts/juanjo_classic_v2.txt`
+- Dataset narrativo de referencia: `all_256_clean`
+
+## 9. Troubleshooting
+
+### Falta `.env` o credenciales
+
+- Verifica que el `.env` esta en `C:\repos\DxGPT\eval\.env`
+- Revisa variables `AZURE_*`, `GOOGLE_*`, `HF_TOKEN` y `SAPBERT_ENDPOINT_URL`
+
+### Error de modulos o dependencias
+
+```powershell
+pip install -r requirements.txt
+py validate.py
+```
+
+### Muchos `REJECTED` o `NO_MATCH`
+
+- Revisa `evaluation_details.txt`
+- Comprueba que el dataset es el esperado
+- Verifica si SapBERT esta activo
+- Confirma que el juez es comparable con otros runs
+
+### Rate limits o latencia alta
+
+- Baja `PARALLEL_WORKERS`
+- Cambia de region o deployment si el proveedor esta degradado
+- Para GPT-5-mini, no asumir que la latencia historica sigue siendo valida
+
+### Resultados no comparables con otro run
+
+Revisa siempre:
+
+- dataset
+- prompt
+- modelo
+- `JUDGE_MODEL`
+- `JUDGE_PARAMS`
+- `TRANSLATE_CASE`
+- thresholds BERT
+
+Si cambia cualquiera de esos bloques, no compares como si fuera el mismo experimento.
+
+## 10. Regla editorial del repo
+
+Si actualizas instrucciones operativas, hazlo aqui.
+
+Si actualizas resultados, recomendaciones de modelos o conclusiones del benchmark, hazlo en:
+
+- `bench/pipelines/pipeline_v4 - fork/main/README.md`
+- `docs/ROADMAP.md`
+- `output/rankingV2.txt`

@@ -1,3 +1,11 @@
+# Archivo historico
+
+Origen: `bench/README.md`
+
+Este documento se archiva porque describia una version antigua del sistema de bench, previa al foco actual en `pipeline_v4 - fork/main`.
+
+---
+
 # Bench - Sistema de Evaluación de Modelos de Diagnóstico 🏆
 
 El directorio `bench` contiene el sistema de benchmarking para evaluar modelos de IA médica en tareas de diagnóstico diferencial, comparando su rendimiento con diagnósticos de referencia validados.
@@ -129,6 +137,6 @@ llm_configs:
 ## 🔗 Referencias
 
 - [Pipeline v1 - Documentación](pipelines/pipeline_v1%20-%20icd10/README.md)
-- [Pipeline v2 - Documentación](pipelines/pipeline_v2%20-%20icd10%20+%20bert/pipeline_README.md)
+- [Pipeline v2 - Documentación](pipelines/pipeline_v2%20-%20icd10%20+%20bert/README.md)
 - [Modelo Conceptual - Investigación](__benchmarking-conceptual-model-and-research-notes/)
 - [Datasets - Origen y estructura](../data29/README.md)

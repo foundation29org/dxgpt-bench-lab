@@ -1,3 +1,11 @@
+# Archivo historico
+
+Origen: `bench/pipelines/pipeline_v4 - fork/mvp/BUILDRULES.md`
+
+Se conserva como especificacion temprana del MVP del pipeline v4. No describe el estado canonico del pipeline activo en `bench/pipelines/pipeline_v4 - fork/main/`.
+
+---
+
 Entendido. Se ha refinado la especificación de los requisitos para incorporar el nivel de detalle solicitado en los archivos de salida, sin alterar la lógica de evaluación ni los demás requisitos originales. El foco principal del cambio está en el archivo `evaluation_details.txt` para que proporcione una traza completa y transparente de la evaluación de cada caso.
 
 A continuación, se presenta el documento de requisitos completo y actualizado, conservando toda la información original y expandiendo la sección de archivos de salida según lo solicitado.
@@ -79,30 +87,29 @@ Para cada caso del JSON, se debe encontrar la mejor coincidencia para cada GDX c
             *   `gdx_evaluated`: (object) El GDX específico que se está evaluando en esta traza.
             *   `snomed_check`: (object) El resultado de la comprobación por SNOMED.
                 *   `status`: (string) "SUCCESS", "FAILED" o "SKIPPED".
-                *   `details`: (string) Explicación del resultado. Ej: "SUCCESS: Found match with DDX at P1 (code: 59621000).", "FAILED: No SNOMED code from GDX list ['...'] found in any DDX.", "SKIPPED: GDX has no SNOMED codes."
+                *   `details`: (string) Explicación del resultado.
             *   `icd10_check`: (object) El resultado de la comprobación por ICD-10.
                 *   `status`: (string) "SUCCESS", "FAILED" o "SKIPPED".
-                *   `details`: (string) Explicación. Ej: "SUCCESS: Found ICD10_CHILD match with DDX at P2 (J18 -> J18.0).", "FAILED: No ICD-10 relationship match found for GDX code 'J18'.", "SKIPPED: SNOMED match found first."
+                *   `details`: (string) Explicación del resultado.
             *   `semantic_check`: (object) El resultado de la comprobación semántica.
                 *   `status`: (string) "SUCCESS", "FAILED" o "SKIPPED".
-                *   `details`: (string) Una explicación narrativa de la decisión final. Ej: "BERT score 0.92 >= autoconfirm threshold 0.90. LLM call skipped.", "BERT result at P2 (score: 0.88) was better than LLM's choice P3 and score was >= acceptance threshold 0.80."
-                *   `bert_scores`: (list) Una lista de todos los scores de BERT calculados contra los 5 DDX. Ej: `[{"position": 2, "score": 0.92}, {"position": 4, "score": 0.88}, ...]`
-                *   `bert_best`: (object) El mejor resultado de BERT. Ej: `{"position": 2, "score": 0.92}`
-                *   `llm_judgment`: (object | null) El juicio del LLM si fue invocado. Ej: `{"position": 3}`.
+                *   `details`: (string) Explicación narrativa de la decisión final.
+                *   `bert_scores`: (list) Todos los scores de BERT contra los DDX.
+                *   `bert_best`: (object) Mejor resultado de BERT.
+                *   `llm_judgment`: (object | null) Juicio del LLM si fue invocado.
 
 2.  **`output/summary.json`**:
     *   Debe contener un único objeto JSON con las siguientes claves:
-        *   `total_cases`: Número total de casos evaluados.
-        *   `matched_cases`: Número de casos donde se encontró una coincidencia.
-        *   `unmatched_cases`: Número de casos donde ningún método encontró coincidencia.
-        *   `top_counts`: Un objeto con el recuento de aciertos en cada posición (`"P1": count, "P2": count, ..., "P5": count`).
-        *   **`resolution_method_counts`**: Desglose de casos resueltos por cada método:
-            *   `snomed_match`, `icd10_exact`, `icd10_child`, `icd10_parent`, `icd10_sibling`, `bert_autoconfirm`, `bert_match`, `llm_judgment`.
-        *   `average_position`: La posición media de acierto (solo de los `matched_cases`).
-        *   `final_score_percentage`: La posición media convertida a un porcentaje de acierto.
+        *   `total_cases`
+        *   `matched_cases`
+        *   `unmatched_cases`
+        *   `top_counts`
+        *   `resolution_method_counts`
+        *   `average_position`
+        *   `final_score_percentage`
 
 3.  **`output/evaluation.log`**:
-    *   Un archivo de registro con el progreso y los eventos clave del script, siguiendo el formato especificado.
+    *   Un archivo de registro con el progreso y los eventos clave del script.
 
 ---
 
@@ -111,11 +118,8 @@ Para cada caso del JSON, se debe encontrar la mejor coincidencia para cada GDX c
 *   **Modularidad:** Código organizado en funciones claras (`evaluate_snomed`, `evaluate_icd10`, `evaluate_semantic`, `run_evaluation`, etc.).
 *   **Configuración Global (al principio del script):**
     ```python
-    # Semantic Evaluation Thresholds
-    BERT_ACCEPTANCE_THRESHOLD = 0.80  # Min score for a BERT result to be considered in the final comparison with LLM
-    BERT_AUTOCONFIRM_THRESHOLD = 0.90 # Min score for a BERT result to be accepted without calling the LLM (must be >= BERT_ACCEPTANCE_THRESHOLD)
-    
-    # ICD-10 Search Configuration
+    BERT_ACCEPTANCE_THRESHOLD = 0.80
+    BERT_AUTOCONFIRM_THRESHOLD = 0.90
     ENABLE_ICD10_PARENT_SEARCH = True
     ENABLE_ICD10_SIBLING_SEARCH = True
     ```
@@ -125,17 +129,4 @@ Para cada caso del JSON, se debe encontrar la mejor coincidencia para cada GDX c
 ### **5. Requisitos Operacionales (Logging y Salida)**
 
 *   **Gestión de Directorio:** El script debe usar `os.makedirs(..., exist_ok=True)` para crear el directorio `output/` sin errores si ya existe.
-*   **Logging:**
-    *   Configurar un logger que escriba tanto en la **consola** como en el archivo **`output/evaluation.log`**.
-    *   El formato de log debe ser claro e informativo. Ejemplo:
-        ```
-        [2023-10-27 10:30:01] - INFO - --- Starting Evaluation Pipeline ---
-        [2023-10-27 10:30:02] - INFO - Processing case 1/450 (Case ID: A01)... ▶️ Match found: SNOMED_MATCH. Position: P1.
-        [2023-10-27 10:30:03] - INFO - Processing case 2/450 (Case ID: A05)... No code match. Running semantic analysis...
-        [2023-10-27 10:30:03] - INFO - BERT score 0.92 exceeds threshold 0.90. Auto-confirming.
-        [2023-10-27 10:30:03] - INFO - Processing case 2/450 (Case ID: A05)... ▶️ Match found: BERT_AUTOCONFIRM. Position: P2.
-        [2023-10-27 10:30:04] - INFO - Processing case 3/450 (Case ID: B27)... No code match. Running semantic analysis...
-        [2023-10-27 10:30:07] - INFO - BERT score 0.85. Awaiting LLM judgment...
-        [2023-10-27 10:30:07] - INFO - Processing case 3/450 (Case ID: B27)... ▶️ Match found: LLM_JUDGMENT. Position: P3.
-        [2023-10-27 10:31:00] - INFO - --- Evaluation Finished. Results saved to output/ directory. ---
-        ```
+*   **Logging:** consola + archivo `output/evaluation.log`.
