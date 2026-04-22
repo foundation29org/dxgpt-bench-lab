@@ -21,6 +21,15 @@ DXGPT_EMULATOR:
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
   TRANSLATE_CASE:
     ENABLED: false  # Desactivado — casos HPO ya están en inglés (RAMEDIS, MME, HMS)
+  # PARALLEL_WORKERS: nº de workers concurrentes en la fase de emulación.
+  #   1   = modo legacy secuencial (con sleeps por rate-limit).
+  #   N>1 = ThreadPoolExecutor con N threads. Se DESACTIVA el sleep porque
+  #         el propio worker count limita las RPM.
+  # Regla pulgar: N <= floor(RPM_tier1 * avg_seg_caso / 60).
+  #   gemini-3-pro-preview Tier 1 (50 RPM, ~22 s/caso) -> 4-8 cómodo, 18 max.
+  #   gemini-2.5-pro       Tier 1 (150 RPM, ~10 s/caso) -> 16-24 cómodo.
+  #   gpt-5-mini Azure                                  -> 8-16 según quota.
+  PARALLEL_WORKERS: 4
 
 # Evaluator Configuration
 EVALUATOR:
@@ -41,6 +50,13 @@ EVALUATOR:
     thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high"
     max_tokens: 10000
     temperature: 0.1
+  # PARALLEL_WORKERS: workers concurrentes en evaluator (judge LLM).
+  #   1   = legacy secuencial.
+  #   N>1 = ThreadPoolExecutor con N threads.
+  # Regla pulgar: N <= floor(RPM_judge * avg_seg_judge_call / 60).
+  #   gemini-2.5-pro Tier 1 (150 RPM, ~5-10s) -> 8-16 cómodo.
+  #   normalcalls (Azure gpt-4o, depende quota) -> 8 normalmente seguro.
+  PARALLEL_WORKERS: 8
 
 # Main Pipeline Control
 # Controla qué pasos del pipeline se ejecutan

@@ -4,6 +4,7 @@ Google Gemini LLM - Wrapper for Google Gemini API
 """
 
 import os
+import threading
 import warnings
 import json
 import time
@@ -137,9 +138,41 @@ class GeminiLLM(BaseLLM):
         self._logger = logger
     
     @cached_property
+    def _thread_local(self) -> threading.local:
+        """One thread-local storage per GeminiLLM instance.
+
+        We give every worker thread its own genai.Client because sharing a
+        single client across threads on Windows triggers
+        `[WinError 10038] An operation was attempted on something that is
+        not a socket` — the underlying httpx.Client + Python SSL pool races
+        when one thread recycles a connection that another thread is still
+        using. Per-thread clients sidestep that entirely with negligible
+        memory cost (one HTTPS keepalive pool per worker).
+        """
+        return threading.local()
+
+    @property
     def client(self) -> 'genai.Client':
-        """Lazy-initialized Google Gemini client."""
-        return genai.Client(api_key=self.config.api_key)
+        """Per-thread Google Gemini client.
+
+        The HTTP timeout (10 min default, overridable via
+        GEMINI_HTTP_TIMEOUT_MS env var) prevents a single hung request
+        from blocking the whole pipeline forever — the SDK has no default
+        timeout, which historically caused the emulator to freeze on one
+        case once daily quota was exhausted.
+        """
+        local = self._thread_local
+        cli = getattr(local, 'client', None)
+        if cli is None:
+            timeout_ms = int(os.getenv("GEMINI_HTTP_TIMEOUT_MS", "600000"))
+            try:
+                http_options = types.HttpOptions(timeout=timeout_ms)
+                cli = genai.Client(api_key=self.config.api_key, http_options=http_options)
+            except Exception:
+                # Older SDKs may not support HttpOptions(timeout=...).
+                cli = genai.Client(api_key=self.config.api_key)
+            local.client = cli
+        return cli
     
     def generate(
         self,

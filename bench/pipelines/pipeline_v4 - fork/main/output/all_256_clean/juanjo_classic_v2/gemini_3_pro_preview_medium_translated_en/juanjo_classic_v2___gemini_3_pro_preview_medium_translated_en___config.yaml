@@ -4,6 +4,7 @@ DXGPT_EMULATOR:
   MODEL: gemini-3-pro-preview
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 4
   PARAMS:
     max_tokens: 12000
     temperature: 0.1
@@ -22,6 +23,7 @@ EVALUATOR:
     reasoning_effort: low
     temperature: 0.1
     thinking_level: low
+  PARALLEL_WORKERS: 8
 EXPERIMENT_DESCRIPTION: 'all_256_clean con gemini-3-pro-preview thinking_level=medium.
   Comparar vs low (avg_pos=1.299, 98.1%). Objetivo: ver si más razonamiento mejora
   posición media en texto narrativo.'
@@ -30,4 +32,4 @@ MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2026-04-21T13:45:04.782925'
+TIMESTAMP: '2026-04-21T21:18:55.704765'

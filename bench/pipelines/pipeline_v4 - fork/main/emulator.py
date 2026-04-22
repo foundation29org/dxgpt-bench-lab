@@ -20,6 +20,8 @@ import sys
 import ast
 import logging
 import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 import yaml
@@ -224,9 +226,24 @@ class DXGPTEmulator:
         # Check for timeout/connection errors
         if "timeout" in error_str or "connection" in error_str or "timed out" in error_str:
             return True
-        
+
+        # Windows socket race conditions (e.g. WinError 10038 "operation on
+        # something that is not a socket", 10053/10054 "connection aborted/reset",
+        # 10060 "WSAETIMEDOUT") and generic socket/SSL errors. These are
+        # transient and almost always succeed on retry.
+        if any(token in error_str for token in [
+            "winerror 10038", "10038",
+            "winerror 10053", "10053",
+            "winerror 10054", "10054",
+            "winerror 10060", "10060",
+            "no es un socket", "not a socket",
+            "ssl", "broken pipe", "remotedisconnected",
+        ]):
+            return True
+
         # Check for specific error types that are typically retryable
-        retryable_types = ["RateLimitError", "TimeoutError", "ConnectionError", "HTTPError"]
+        retryable_types = ["RateLimitError", "TimeoutError", "ConnectionError",
+                           "HTTPError", "OSError", "RemoteProtocolError"]
         if any(rt in error_type for rt in retryable_types):
             return True
         
@@ -689,144 +706,176 @@ class DXGPTEmulator:
             
             return []
     
+    def _gemini_rate_limit_delay(self, model_name: str) -> float:
+        """Return the per-request sleep (seconds) needed to stay under Gemini Tier 1 RPM.
+
+        Used only in the SEQUENTIAL path. In the PARALLEL path the worker count
+        bounds RPM directly, so we skip the sleep entirely.
+
+        Tier 1 limits (source: https://ai.google.dev/gemini-api/docs/rate-limits):
+          - gemini-3-pro-preview: 50 RPM  -> 1.5s
+          - gemini-2.5-pro:       150 RPM -> 0.5s
+          - gemini-2.5-flash:     1,000 RPM -> 0.1s
+          - gemini-2.0-flash:     2,000 RPM -> 0.05s
+          - flash-lite:           4,000 RPM -> 0.05s
+        """
+        m = model_name.lower()
+        if '2.0-flash' in m or ('2.0' in m and 'flash' in m):
+            return 0.05
+        if '2.5-flash' in m or ('2.5' in m and 'flash' in m):
+            return 0.1
+        if 'flash-lite' in m:
+            return 0.05
+        if '2.5-pro' in m or ('2.5' in m and 'pro' in m):
+            return 0.5
+        if '3' in m and 'pro' in m:
+            return 1.5
+        return 0.3
+
+    def _process_one_case(self, idx: int, total: int, case: Dict[str, Any]) -> Tuple[Dict[str, Any], float]:
+        """Generate DDX for a single case and return (case_with_ddx, elapsed_seconds).
+
+        This is the unit of work shared by both the sequential and the parallel
+        execution paths. It MUST be safe to call concurrently from multiple
+        threads: it only touches its own `case` dict, the shared `self.llm`
+        client (which is thread-safe for HTTPS calls in the official SDKs we
+        use), and the logger (also thread-safe).
+        """
+        case_id = case.get('id', f'case_{idx}')
+        processing_msg = f"[{idx}/{total}] Processing case {case_id}..."
+        print(processing_msg)
+        if self.logger:
+            self.logger.info(processing_msg)
+
+        case_start = time.time()
+        ddx_list, raw_response = self._generate_ddx_for_case(case)
+        case_elapsed = time.time() - case_start
+
+        response_preview = str(raw_response)[:100] + "..." if len(str(raw_response)) > 100 else str(raw_response)
+        print(f"[{idx}/{total}] RESPONSE: {response_preview} | DDX_COUNT: {len(ddx_list)}")
+
+        if self.logger:
+            self.logger.info(f"[{idx}/{total}] RAW_LLM_RESPONSE for case {case_id}:")
+            if len(str(raw_response)) > 2000:
+                self.logger.info(f"RAW_RESPONSE (truncated): {str(raw_response)[:2000]}... [TRUNCATED - Total length: {len(str(raw_response))} chars]")
+            else:
+                self.logger.info(f"RAW_RESPONSE: {raw_response}")
+            self.logger.info(f"[{idx}/{total}] PARSED_DDX for case {case_id}: {ddx_list}")
+
+        case_with_ddx = case.copy()
+        if ddx_list:
+            print(f"[{idx}/{total}] SUCCESS: Generated {len(ddx_list)} DDX in {case_elapsed:.1f}s")
+            if self.logger:
+                self.logger.info(f"[{idx}/{total}] SUCCESS: Generated {len(ddx_list)} DDX for case {case_id}")
+                self.logger.info(f"[{idx}/{total}] Case time: {case_elapsed:.1f}s")
+                for j, ddx in enumerate(ddx_list, 1):
+                    self.logger.info(f"[{idx}/{total}] DDX[{j}]: {ddx}")
+            ddx_details = {ddx: {"normalized_text": ddx, "position": j}
+                           for j, ddx in enumerate(ddx_list, 1)}
+            case_with_ddx['ddx_details'] = ddx_details
+        else:
+            print(f"[{idx}/{total}] FAILED: No DDX generated ({case_elapsed:.1f}s)")
+            if self.logger:
+                self.logger.warning(f"[{idx}/{total}] FAILED: No DDX generated for case {case_id}")
+                self.logger.warning(f"[{idx}/{total}] Empty DDX might be due to: parsing failure, LLM error, or unexpected response format")
+            case_with_ddx['ddx_details'] = {}
+
+        case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
+        print("-" * 40)
+        return case_with_ddx, case_elapsed
+
     def generate_ddx_for_dataset(self, dataset: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Generate DDX for entire dataset
-        
-        Args:
-            dataset: List of case dictionaries
-            
-        Returns:
-            List of cases with DDX added
+        Generate DDX for entire dataset.
+
+        Honors `DXGPT_EMULATOR.PARALLEL_WORKERS` (int, default 1):
+          - 1  -> sequential mode (preserves the legacy per-model rate-limit sleep).
+          - >1 -> ThreadPoolExecutor with N workers; the rate-limit sleep is
+                  disabled because the worker count itself bounds RPM.
+                  Choose N <= floor(RPM_limit * avg_seconds_per_call / 60).
+                  Example for gemini-3-pro-preview Tier 1 (50 RPM, ~22s/case):
+                      N <= 50 * 22 / 60 ~= 18, so 4-8 is comfortably safe.
         """
-        start_msg = f"STARTING: DDX generation for {len(dataset)} cases..."
+        total = len(dataset)
+        parallel_workers = int(self.emulator_config.get('PARALLEL_WORKERS', 1) or 1)
+        parallel_workers = max(1, parallel_workers)
+
+        start_msg = f"STARTING: DDX generation for {total} cases..."
         model_msg = f"MODEL: {self.emulator_config['MODEL']}"
         prompt_msg = f"PROMPT: {self.emulator_config['CANDIDATE_PROMPT_PATH']}"
         schema_msg = f"SCHEMA: {'Enabled' if self.output_schema else 'Disabled'}"
-        
+        mode_msg = (f"MODE: parallel ({parallel_workers} workers, rate-limit sleep disabled)"
+                    if parallel_workers > 1 else "MODE: sequential")
+
         print(start_msg)
         print(model_msg)
         print(prompt_msg)
         print(schema_msg)
+        print(mode_msg)
         print("-" * 60)
-        
+
         if self.logger:
             self.logger.info(start_msg)
             self.logger.info(model_msg)
             self.logger.info(prompt_msg)
             self.logger.info(schema_msg)
-        
-        results = []
-        case_times = []  # per-case wall-clock seconds (translation + LLM call)
-        
-        for i, case in enumerate(dataset, 1):
-            case_id = case.get('id', f'case_{i}')
-            processing_msg = f"[{i}/{len(dataset)}] Processing case {case_id}..."
-            print(processing_msg)
-            if self.logger:
-                self.logger.info(processing_msg)
-            
-            # Generate DDX (timed)
-            case_start = time.time()
-            ddx_list, raw_response = self._generate_ddx_for_case(case)
-            case_elapsed = time.time() - case_start
-            case_times.append(case_elapsed)
-            
-            # Add delay between requests for Gemini models to respect rate limits
-            # Rate limits vary by tier (source: https://ai.google.dev/gemini-api/docs/rate-limits)
-            # 
-            # FREE TIER (sin facturación):
-            #   - gemini-2.5-pro: 2 RPM, 125K TPM, 50 RPD
-            #   - gemini-2.5-flash: 10 RPM, 250K TPM, 250 RPD
-            #   - gemini-2.0-flash: 15 RPM, 1M TPM, 200 RPD
-            # 
-            # TIER 1 (con facturación asociada):
-            #   - gemini-3-pro-preview: 50 RPM, 1M TPM, 1,000 RPD
-            #   - gemini-2.5-pro: 150 RPM, 2M TPM, 10,000 RPD
-            #   - gemini-2.5-flash: 1,000 RPM, 1M TPM, 10,000 RPD
-            #   - gemini-2.0-flash: 2,000 RPM, 4M TPM, unlimited RPD
-            # 
-            # Delays calculated to stay safely under tier 1 limits (using ~80% of max RPM)
-            model_name = self.emulator_config['MODEL'].lower()
-            is_gemini = 'gemini' in model_name
-            if is_gemini:
-                # Determine delay based on model type and tier 1 limits
-                if '2.0-flash' in model_name or ('2.0' in model_name and 'flash' in model_name):
-                    # Tier 1: 2,000 RPM = 0.03s per request, using 0.05s for safety
-                    delay_seconds = 0.05
-                elif '2.5-flash' in model_name or ('2.5' in model_name and 'flash' in model_name):
-                    # Tier 1: 1,000 RPM = 0.06s per request, using 0.1s for safety
-                    delay_seconds = 0.1
-                elif 'flash-lite' in model_name:
-                    # Tier 1: 4,000 RPM = 0.015s per request, using 0.05s for safety
-                    delay_seconds = 0.05
-                elif '2.5-pro' in model_name or ('2.5' in model_name and 'pro' in model_name):
-                    # Tier 1: 150 RPM = 0.4s per request, using 0.5s for safety
-                    delay_seconds = 0.5
-                elif '3' in model_name and 'pro' in model_name:
-                    # Tier 1: 50 RPM = 1.2s per request, using 1.5s for safety
-                    delay_seconds = 1.5
-                else:
-                    # Default: conservative delay for unknown models
-                    delay_seconds = 0.3
-                
-                if self.logger:
-                    self.logger.info(f"Waiting {delay_seconds}s before next Gemini API call (rate limit protection for {model_name})...")
-                time.sleep(delay_seconds)
-            
-            # Display minimal response info
-            response_preview = str(raw_response)[:100] + "..." if len(str(raw_response)) > 100 else str(raw_response)
-            print(f"RESPONSE: {response_preview} | DDX_COUNT: {len(ddx_list)}")
-            
-            # Log detailed raw response
-            if self.logger:
-                self.logger.info(f"[{i}/{len(dataset)}] RAW_LLM_RESPONSE for case {case_id}:")
-                # Log the full raw response with proper formatting
-                if len(str(raw_response)) > 2000:  # Truncate very long responses
-                    self.logger.info(f"RAW_RESPONSE (truncated): {str(raw_response)[:2000]}... [TRUNCATED - Total length: {len(str(raw_response))} chars]")
-                else:
-                    self.logger.info(f"RAW_RESPONSE: {raw_response}")
-                
-                # Log parsed DDX list
-                self.logger.info(f"[{i}/{len(dataset)}] PARSED_DDX for case {case_id}: {ddx_list}")
-            
-            if ddx_list:
-                success_msg = f"✅ SUCCESS: Generated {len(ddx_list)} DDX"
-                print(success_msg)
-                if self.logger:
-                    self.logger.info(f"[{i}/{len(dataset)}] SUCCESS: Generated {len(ddx_list)} DDX for case {case_id}")
-                    self.logger.info(f"[{i}/{len(dataset)}] Case time: {case_elapsed:.1f}s")
-                    # Log each individual DDX with position
-                    for j, ddx in enumerate(ddx_list, 1):
-                        self.logger.info(f"[{i}/{len(dataset)}] DDX[{j}]: {ddx}")
-                
-                # Create DDX details dictionary
-                ddx_details = {}
-                for j, ddx in enumerate(ddx_list, 1):
-                    ddx_details[ddx] = {
-                        "normalized_text": ddx,
-                        "position": j
-                    }
-                
-                # Add DDX to case
-                case_with_ddx = case.copy()
-                case_with_ddx['ddx_details'] = ddx_details
-                case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
+            self.logger.info(mode_msg)
+
+        model_name = self.emulator_config['MODEL'].lower()
+        is_gemini = 'gemini' in model_name
+        case_times: List[float] = []
+
+        if parallel_workers == 1:
+            results: List[Dict[str, Any]] = []
+            for i, case in enumerate(dataset, 1):
+                case_with_ddx, case_elapsed = self._process_one_case(i, total, case)
+                case_times.append(case_elapsed)
                 results.append(case_with_ddx)
-            else:
-                fail_msg = "FAILED: No DDX generated"
-                print(fail_msg)
-                if self.logger:
-                    self.logger.warning(f"[{i}/{len(dataset)}] FAILED: No DDX generated for case {case_id}")
-                    self.logger.warning(f"[{i}/{len(dataset)}] Empty DDX might be due to: parsing failure, LLM error, or unexpected response format")
-                # Add empty DDX to maintain structure
-                case_with_ddx = case.copy()
-                case_with_ddx['ddx_details'] = {}
-                case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
-                results.append(case_with_ddx)
-            
-            print("-" * 40)
-        
+
+                if is_gemini:
+                    delay_seconds = self._gemini_rate_limit_delay(model_name)
+                    if self.logger:
+                        self.logger.info(f"Waiting {delay_seconds}s before next Gemini API call (rate limit protection for {model_name})...")
+                    time.sleep(delay_seconds)
+        else:
+            # Preserve original dataset order in the output, even though
+            # futures complete out of order.
+            ordered: List[Optional[Dict[str, Any]]] = [None] * total
+            completed = 0
+            with ThreadPoolExecutor(max_workers=parallel_workers,
+                                    thread_name_prefix="emu") as executor:
+                future_to_idx = {
+                    executor.submit(self._process_one_case, i + 1, total, case): i
+                    for i, case in enumerate(dataset)
+                }
+                for fut in as_completed(future_to_idx):
+                    idx0 = future_to_idx[fut]
+                    try:
+                        case_with_ddx, case_elapsed = fut.result()
+                    except Exception as e:
+                        # _process_one_case already logs internal errors and
+                        # returns an empty-DDX case, so reaching here means a
+                        # truly unexpected failure (e.g. timeout). Record an
+                        # empty result so the dataset shape is preserved.
+                        case = dataset[idx0]
+                        case_id = case.get('id', f'case_{idx0+1}')
+                        err = f"[{idx0+1}/{total}] WORKER_ERROR for case {case_id}: {type(e).__name__}: {e}"
+                        print(err)
+                        if self.logger:
+                            self.logger.error(err)
+                        case_with_ddx = case.copy()
+                        case_with_ddx['ddx_details'] = {}
+                        case_with_ddx['emulator_time_seconds'] = 0.0
+                        case_elapsed = 0.0
+                    ordered[idx0] = case_with_ddx
+                    case_times.append(case_elapsed)
+                    completed += 1
+                    progress = f"PROGRESS: {completed}/{total} cases done ({100.0*completed/total:.1f}%)"
+                    print(progress)
+                    if self.logger:
+                        self.logger.info(progress)
+            results = [c for c in ordered if c is not None]
+
         print("-" * 60)
         successful_cases = sum(1 for r in results if r.get('ddx_details'))
         completion_msg = f"COMPLETED: DDX generation finished!"

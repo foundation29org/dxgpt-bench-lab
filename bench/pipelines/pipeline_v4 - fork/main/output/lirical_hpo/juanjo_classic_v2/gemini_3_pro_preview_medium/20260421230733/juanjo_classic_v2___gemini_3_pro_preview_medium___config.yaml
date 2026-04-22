@@ -1,4 +1,4 @@
-DATASET_PATH: bench/datasets/hms_hpo.json
+DATASET_PATH: bench/datasets/lirical_hpo.json
 DXGPT_EMULATOR:
   CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
   MODEL: gemini-3-pro-preview
@@ -8,6 +8,7 @@ DXGPT_EMULATOR:
   PARAMS:
     max_tokens: 12000
     temperature: 0.1
+    thinking_level: medium
   TRANSLATE_CASE:
     ENABLED: false
 EVALUATOR:
@@ -22,11 +23,11 @@ EVALUATOR:
     temperature: 0.1
     thinking_level: low
   PARALLEL_WORKERS: 8
-EXPERIMENT_DESCRIPTION: HMS HPO 88 casos con gemini-3-pro-preview. Validacion si mantiene
-  calidad vs gemini-2.5-pro (R@1=56.8%). Harvard Medical School dataset.
-EXPERIMENT_NAME: hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_low
+EXPERIMENT_DESCRIPTION: LIRICAL HPO 370 casos con gemini-3-pro-preview thinking_level=medium.
+  Compara vs low (R@1=67.8%, avg_pos=1.489).
+EXPERIMENT_NAME: lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium
 MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2026-04-21T19:31:42.874945'
+TIMESTAMP: '2026-04-21T23:21:30.529743'
