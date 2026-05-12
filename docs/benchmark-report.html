@@ -299,7 +299,7 @@
     <div class="callout callout-warn" style="margin-top:16px">
       <span class="callout-icon">⚡</span>
       <div>
-        <strong>Implicación práctica:</strong> el modo normal actual (<strong>gpt-5-mini low</strong>) es lento y ha perdido calidad respecto a gpt-4o. <strong>gpt-5.4-mini</strong> lo supera en calidad (avg_pos 1.526 vs 1.588), es ~10× más rápido (~5s vs ~48s/caso) y más barato. El modo avanzado (<strong>o3</strong>) debe sustituirse por <strong>gemini-3-pro-preview</strong>: supera a gemini-2.5-pro en HPO (+10 a +16pp R@1), iguala en texto narrativo, y es 3× más rápido.
+        <strong>Implicación práctica:</strong> el modo normal actual (<strong>gpt-5-mini low</strong>) es lento y ha perdido calidad respecto a gpt-4o. <strong>gpt-5.4-mini</strong> lo supera en calidad (avg_pos 1.526 vs 1.588), es ~10× más rápido (~5s vs ~48s/caso) y más barato. El nuevo run de <strong>gpt-5.5 low</strong> en <code>all_256_clean</code> tampoco justifica cambio: queda en <strong>1.548</strong>, <strong>97.7%</strong>, <strong>13.9s/caso</strong>, sin mejorar a <strong>gpt-5.4</strong>. El modo avanzado (<strong>o3</strong>) debe sustituirse por <strong>gemini-3-pro-preview</strong>: supera a gemini-2.5-pro en HPO (+10 a +16pp R@1), iguala en texto narrativo, y es 3× más rápido.
       </div>
     </div>
   </div>
@@ -559,12 +559,25 @@
               <span class="bar-label">1.545</span>
             </div>
           </td>
-          <td><span class="badge badge-green">98.8% ✅</span></td>
+          <td><span class="badge badge-blue">96.1% (246/256)</span></td>
           <td>10.3s</td>
           <td>Referencia histórica · corregido errores API</td>
         </tr>
+        <tr>
+          <td>9</td>
+          <td>gpt-5.5 low</td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:74%"></div></div>
+              <span class="bar-label">1.548</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">97.7% (250/256)</span></td>
+          <td>13.9s</td>
+          <td>No mejora a gpt-5.4 · coverage mejor que gpt-4o, pero peor avg_pos</td>
+        </tr>
         <tr style="background:#fff7ed;">
-          <td>9 ⚠️</td>
+          <td>10 ⚠️</td>
           <td><strong>gpt-5-mini low</strong> <em>(producción actual)</em></td>
           <td>
             <div class="bar-container">
@@ -768,6 +781,7 @@
             <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini</strong> ⭐ <em>(propuesto)</em></td><td><strong style="color:#166534;">~5s</strong></td><td>~21 min</td></tr>
             <tr><td>gpt-4o</td><td>~8-10s</td><td>~40 min</td></tr>
             <tr><td>gemini-3-pro-preview</td><td>~10s</td><td>~44 min</td></tr>
+            <tr><td>gpt-5.5 low</td><td>13.9s</td><td>~59 min</td></tr>
             <tr><td>o3 high</td><td>~16s</td><td>~68 min</td></tr>
             <tr><td>gpt-5.4 full</td><td>~17s</td><td>~74 min</td></tr>
             <tr><td>grok-4-1-fast-reasoning</td><td>~20s</td><td>~87 min</td></tr>
@@ -865,7 +879,7 @@
 </div>
 
 <footer>
-  <p>DxGPT Benchmark — Última actualización 2026-04-21 · 43 experimentos · 3.803 casos clínicos</p>
+  <p>DxGPT Benchmark — Última actualización 2026-05-12 · 44 experimentos · 4.059 casos clínicos</p>
   <p style="margin-top:4px;">Datasets: all_256_clean (interno) + 6 datasets HPO del paper DeepRare (Nature, 2025) · Ablación <code>thinking_level=medium</code> cerrada (4/4 datasets HPO confirman degradación, n=644)</p>
 </footer>
 <script>
@@ -882,12 +896,13 @@
     'gpt-5.4-mini ⭐',
     'o3',
     'gpt-4o',
+    'gpt-5.5',
     'gpt-5.4-mini\n(medium)',
     'gpt-5-mini ⚠️',
     'claude-opus ⚠️'
   ];
 
-  var values = [1.299, 1.299, 1.315, 1.434, 1.448, 1.502, 1.526, 1.530, 1.545, 1.570, 1.588, 1.668];
+  var values = [1.299, 1.299, 1.315, 1.434, 1.448, 1.502, 1.526, 1.530, 1.545, 1.548, 1.570, 1.588, 1.668];
 
   var colors = [
     '#059669',  // gemini-3-pro low      — emerald-600
@@ -899,6 +914,7 @@
     '#60a5fa',  // gpt-5.4-mini           — blue-400
     '#818cf8',  // o3                     — indigo-400
     '#93c5fd',  // gpt-4o                 — blue-300
+    '#7dd3fc',  // gpt-5.5                — sky-300
     '#f59e0b',  // gpt-5.4-mini med       — amber-500
     '#f97316',  // gpt-5-mini ⚠️         — orange-500
     '#ef4444',  // claude-opus ⚠️        — red-500

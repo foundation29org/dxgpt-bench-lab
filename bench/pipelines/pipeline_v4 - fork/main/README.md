@@ -13,11 +13,12 @@ Este README es la fuente canonica del estado actual del benchmark. Para ejecutar
 | `output/rankingV2.txt` | Historial completo de runs |
 | `docs/ROADMAP.md` | Fases, decisiones y trazabilidad |
 
-## Estado actual (2026-04-21)
+## Estado actual (2026-05-12)
 
 - `gemini-3-pro-preview low` es el mejor modelo HPO del benchmark actual
 - En texto narrativo (`all_256_clean`) empata en calidad con `gemini-2.5-pro low` y es mucho mas rapido
 - `gpt-5.4-mini low` es la mejor opcion OpenAI por velocidad/calidad
+- `gpt-5.5 low` fue probado en `all_256_clean` y no mejora a `gpt-5.4` (`1.548`, `97.7%`, `13.9s/caso`)
 - `thinking_level=medium` en Gemini no aporta: degrada en 4/4 datasets HPO y empata en narrativa
 
 ## Datasets evaluados
@@ -49,6 +50,7 @@ Prompt: `juanjo_classic_v2`
 | 7 | `gpt-5.4-mini low` | 1.526 | 98.1% | **4.7** | Mejor calidad/velocidad OpenAI |
 | 8 | `o3 high` | 1.530 | 98.8% | 15.9 | Obsoleto |
 | 9 | `gpt-4o low` | 1.545 | 96.1% | 10.3 | Superado |
+| 10 | `gpt-5.5 low` | 1.548 | 97.7% | 13.9 | No mejora a `gpt-5.4`; queda entre `gpt-4o` y `gpt-5-mini` |
 
 ## Track B - HPO Datasets
 
@@ -90,6 +92,7 @@ Tiempo de emulacion aproximado por caso:
 | `gpt-5.4-mini low` | **~5** |
 | `gpt-4o low` | ~8-10 |
 | `gemini-3-pro-preview low` | ~10 |
+| `gpt-5.5 low` | ~14 |
 | `gpt-5.4 full low` | ~17 |
 | `grok-4-1-fast-reasoning` | ~20 |
 | `gemini-2.5-flash low` | ~21 |

@@ -27,6 +27,8 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.1% (251/256)
 12 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-o3_dxgpt_high_translated_en (‡) │ gemini-2.5-pro  │  1.530 │   98.8% (253/256)
 13 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_4o_low_translated_en (‡) │ gemini-2.5-pro  │  1.545 │   96.1% (246/256)
+13b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_5_low_translated_en (‡) │ gemini-2.5-pro  │  1.548 │   97.7% (250/256)
+    └─ avg 13.9s/case (median 13.3, p95 19.2) | NO mejora vs gpt-5.4 full (+0.046 avg_pos, -1.1pp coverage) | run 20260512150832
 14 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en │ gemini-2.5-pro  │  1.547 │  100.0% (150/150)
 15 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en (‡) │ gemini-2.5-pro  │  1.570 │   98.1% (251/256)
 16 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.566 │   96.7% (145/150)
@@ -79,14 +81,14 @@ Conclusiones (cerradas):
    confirmado en 4 datasets HPO independientes con n=644).
 
 --------------------------------------------------------------------------------
-📊 Total experiments: 43 (38 base + 5 medium concluyentes; + 2 Claude pendientes: sonnet-4-6, haiku-4-5)
+📊 Total experiments: 44 (39 base + 5 medium concluyentes; + 2 Claude pendientes: sonnet-4-6, haiku-4-5)
 ⚠️  Excluidos 2 runs de all_150/gemini_2_5_pro (SHOULD_LABEL=false, sin summary.json — re-evaluación parcial inválida, 34.7% éxito)
 ⚠️  Runs 13-23: SapBERT parcialmente offline → la mayoría de casos semánticos fueron a LLM_JUDGMENT
 ⚠️  Run 6 (all_256_clean gpt_4o): SapBERT activo a partir del caso 197/256 — 5 BERT matches (2 autoconfirm + 3)
 ⚠️  Run 10 (all_256_clean gpt_5_mini): SapBERT activo desde el inicio — primer run 100% limpio con SapBERT operativo — 16 BERT matches (4 autoconfirm + 12)
 ⚠️  gpt_5_2 (†): runs de Diciembre 2025 sin summary.json — métricas extraídas de evaluation_details.txt (ver docs/analysis/comparison-gpt52-reasoning-effort.md)
 ⚠️  claude_opus_4_7: 80.1% success — 51/256 sin match incluso tras re-evaluación limpia. DDX genuinamente no incluyen el diagnóstico correcto. Prompt juanjo_classic_v2 no optimizado para Claude. runs 20260418145715 (fallido Gemini timeout) + 20260418165746 (re-eval limpia, mismo resultado)
-🕐 Generated: 2026-04-21 (last run: lirical_hpo gemini_3_pro_preview MEDIUM 20260421230733)
+🕐 Generated: 2026-05-12 (last run: all_256_clean gpt_5_5_low 20260512150832)
 
 🧪 FASE 2 — DATASETS HPO EXTERNOS (§) — NO COMPARABLE CON RANKING PRINCIPAL
 ================================================================================
