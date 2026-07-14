@@ -26,6 +26,7 @@ Los datasets canónicos (con metadata y trazabilidad completa) viven en
 | `ukranian.json` | 437 | Validación on/off de funcionalidad (idioma ucraniano) |
 | `largest_summarized_demo.json` | ~4K líneas | Probar reacción del prompt ante prompts largos |
 | `largest_extended.json` | ~4K líneas | Validar función resumidora en producción |
+| `product_mixed_24.json` | 24 | Mini-set sintético para evaluar texto mixto: síntomas, antecedentes, medicación y analíticas |
 
 ## Dataset recomendado para nuevos runs
 

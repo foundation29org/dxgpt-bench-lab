@@ -12,20 +12,34 @@ Average Position = Lower is Better | Success Rate = Higher is Better
 Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9, max_tokens=12000
 
 --------------------------------------------------------------------------------
+🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_1_pro_preview_low_translated_en (‡) │ gemini-2.5-pro  │  1.267 │   98.1% (251/256)
+    └─ R@1=77.3% (198) R@3=97.7% (250) R@5=98.1% (251) | 9.3s/case (median 9.0, p95 12.6) | nuevo líder por avg/R@1: avg -0.032 vs Gemini 3 Pro, R@1 +1.6pp, R@3 -0.4pp, misma coverage | run 20260710160926
+🥈 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_5_flash_low_translated_en (‡) │ gemini-2.5-pro  │  1.284 │   97.7% (250/256)
+    └─ R@1=77.0% (197) R@3=97.3% (249) R@5=97.7% (250) | 6.1s/case (median 5.7, p95 8.9) | casi Pro con +34% velocidad: avg +0.017, R@1 -0.4pp, un caso menos vs Gemini 3.1 Pro | mejor candidato calidad/latencia | run 20260710163857
 🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_2_5_pro_low_translated_en (‡) │ gemini-2.5-pro  │  1.299 │   98.1% (251/256)
 🥇 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en (‡) │ gemini-2.5-pro  │  1.299 │   98.1% (251/256)
  3 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_pro_preview_medium_translated_en (‡)(¶) │ gemini-2.5-pro  │  1.315 │   98.1% (251/256)
     └─ R@1=76.95% (197) vs low R@1=75.78% (194) (+1.17pp) | R@3=95.31% (244) vs low 98.05% (-2.74pp) | medium NO net-positive — empate técnico, NO USAR | run 20260421215831
 🥉 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ gemini-2.5-pro  │  1.328 │   98.5% (271/275)
  4 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
+ 4b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_low_translated_en (‡) │ gemini-2.5-pro  │  1.382 │   98.1% (251/256)
+    └─ R@1=74.6% (191) R@3=94.9% (243) R@5=98.1% (251) | 6.9s/case (median 6.8, p95 10.9) | ~$3.28 modelo | mejor OpenAI narrativo hasta ahora; low gana la ablación Terra | run 20260710140614
  5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
  6 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_2_5_flash_low_translated_en (‡) │ gemini-2.5-pro  │  1.434 │   98.1% (251/256)
  7 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.442 │   93.8% (258/275)
  8 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_3_pro_preview_low_translated_en │ normalcalls (*)  │  1.447 │  100.0% (150/150)
  9 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en (‡) │ gemini-2.5-pro  │  1.448 │   97.7% (250/256)
 10 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_low_translated_en (‡) │ gemini-2.5-pro  │  1.502 │   98.8% (253/256)
+10b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_medium_translated_en (‡) │ gemini-2.5-pro  │  1.516 │   97.7% (250/256)
+    └─ R@1=71.1% (182) R@3=91.0% (233) R@5=97.7% (250) | 8.4s/case (median 7.8, p95 16.1) | ~$3.95 modelo | medium PEOR que low: avg +0.134, R@1 -3.5pp, coverage -0.4pp, +22% latencia y +20% coste | DECISIÓN Terra: mantener low; no ejecutar high completo | run 20260710143407
 11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.1% (251/256)
+11b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_1_flash_lite_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.8% (253/256)
+    └─ R@1=69.1% (177) R@3=91.8% (235) R@5=98.8% (253) | 2.8s/case (median 2.7, p95 3.2) | igual avg a gpt-5.4-mini, +2 matches y 40% más rápido; nuevo candidato económico | run 20260710170553
 12 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-o3_dxgpt_high_translated_en (‡) │ gemini-2.5-pro  │  1.530 │   98.8% (253/256)
+12b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_low_translated_en (‡) │ gemini-2.5-pro  │  1.540 │   97.7% (250/256)
+    └─ R@1=69.1% (177) R@3=90.2% (231) R@5=97.7% (250) | 6.4s/case (median 5.9, p95 9.7); wall emulación ~3m28s con 8 workers | competitivo pero NO supera gpt-5.4-mini (avg 1.526, coverage 98.1%) | run 20260710130720
+12c│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_medium_translated_en (‡) │ gemini-2.5-pro  │  1.584 │   97.7% (250/256)
+    └─ R@1=66.0% (169) R@3=91.4% (234) R@5=97.3% (249) | 7.8s/case (median 7.2, p95 12.7) | medium PEOR que low: avg +0.044, R@1 -3.1pp, misma coverage, +22% latencia y ~$1.88 vs ~$1.52 | DECISIÓN Luna: mantener low; no ejecutar high completo | run 20260710133922
 13 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_4o_low_translated_en (‡) │ gemini-2.5-pro  │  1.545 │   96.1% (246/256)
 13b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_5_low_translated_en (‡) │ gemini-2.5-pro  │  1.548 │   97.7% (250/256)
     └─ avg 13.9s/case (median 13.3, p95 19.2) | NO mejora vs gpt-5.4 full (+0.046 avg_pos, -1.1pp coverage) | run 20260512150832
@@ -36,6 +50,10 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.588 │   97.7% (250/256)
 11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ normalcalls (*)  │  1.592 │   94.7% (142/150)
 12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.599 │   94.7% (142/150)
+12b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_sol_low_translated_en (‡) │ gemini-2.5-pro  │  1.619 │   98.4% (252/256)
+    └─ R@1=68.4% (175) R@3=88.7% (227) R@5=98.4% (252) | 14.1s/case (median 13.6, p95 20.5) | 106k input + 239k output tokens | buena coverage, pero ordena peor que Terra low y gpt-5.4-mini; no probar medium por ahora | run 20260710151007
+18b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-deepseek_v4_pro_translated_en (‡) │ gemini-2.5-pro  │  1.753 │   98.1% (251/256)
+    └─ R@1=63.3% (162) R@3=86.3% (221) R@5=98.1% (251) | JSON nativo válido, pero ordenación peor que Mini (+0.227 avg_pos, -5.8pp R@1) | no extender a HPO ni evaluar V4-Flash por calidad | run 20260714121929
 13 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
 14 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ normalcalls     │  1.639 │   92.7% (255/275)
 15 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_4o_low_translated_en │ gemini-2.5-pro  │  1.646 │   95.6% (263/275)
@@ -49,6 +67,8 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 23 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_2_high_translated_en (†) │ normalcalls (*)  │  1.781 │   91.3% (137/150)
 ⚠️ │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-claude_opus_4_7_translated_en (‡) │ gemini-2.5-pro  │  1.668* │   80.1% (205/256)
     └─ *avg_pos solo sobre 205 matched. 51/256 unmatched — diagnóstico correcto no aparece en top-8. Prompt juanjo_classic_v2 no optimizado para Claude. run 20260418165746
+⚠️ │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-claude_opus_4_8_translated_en (‡) │ gemini-2.5-pro  │  1.709 │   99.2% (254/256)
+    └─ R@1=69.5% R@3=88.7% R@5=94.5% | +49 matches vs Opus 4.7, pero avg_pos +0.041 y no competitivo con los finalistas | run 20260713185938
 --------------------------------------------------------------------------------
 
 🧪 EXPERIMENTO CONCLUIDO — thinking_level=medium en gemini-3-pro-preview (¶)
@@ -81,14 +101,17 @@ Conclusiones (cerradas):
    confirmado en 4 datasets HPO independientes con n=644).
 
 --------------------------------------------------------------------------------
-📊 Total experiments: 44 (39 base + 5 medium concluyentes; + 2 Claude pendientes: sonnet-4-6, haiku-4-5)
+📊 Total experiments: 67 (45 base + 5 medium Gemini + 2 medium GPT-5.6 + 6 HPO Gemini 3.1 Pro + Opus 4.8 + Flash DDD + 6 Terra HPO + DeepSeek V4-Pro; refresh 2026 cerrado)
 ⚠️  Excluidos 2 runs de all_150/gemini_2_5_pro (SHOULD_LABEL=false, sin summary.json — re-evaluación parcial inválida, 34.7% éxito)
 ⚠️  Runs 13-23: SapBERT parcialmente offline → la mayoría de casos semánticos fueron a LLM_JUDGMENT
 ⚠️  Run 6 (all_256_clean gpt_4o): SapBERT activo a partir del caso 197/256 — 5 BERT matches (2 autoconfirm + 3)
 ⚠️  Run 10 (all_256_clean gpt_5_mini): SapBERT activo desde el inicio — primer run 100% limpio con SapBERT operativo — 16 BERT matches (4 autoconfirm + 12)
 ⚠️  gpt_5_2 (†): runs de Diciembre 2025 sin summary.json — métricas extraídas de evaluation_details.txt (ver docs/analysis/comparison-gpt52-reasoning-effort.md)
 ⚠️  claude_opus_4_7: 80.1% success — 51/256 sin match incluso tras re-evaluación limpia. DDX genuinamente no incluyen el diagnóstico correcto. Prompt juanjo_classic_v2 no optimizado para Claude. runs 20260418145715 (fallido Gemini timeout) + 20260418165746 (re-eval limpia, mismo resultado)
-🕐 Generated: 2026-05-12 (last run: all_256_clean gpt_5_5_low 20260512150832)
+⚠️  claude_opus_4_8: cobertura recuperada a 99.2% (254/256), pero avg_pos 1.709 sigue fuera de los finalistas narrativos; no ejecutar HPO con el prompt histórico.
+⚠️  DeepSeek-V3.2-Speciale: 0/256 parseable sin schema; con schema parsea 24/24, pero devuelve placeholders/campos como diagnósticos. Excluido por calidad de salida.
+⚠️  DeepSeek-V4-Pro: JSON nativo válido (251/256), pero avg_pos 1.753 y R@1 63.3%; no competitivo con Mini (1.526, 69.1%). No extender a HPO.
+🕐 Generated: 2026-07-14 (last completed run: mygene2_hpo gpt_5_6_terra_low 20260714164159)
 
 🧪 FASE 2 — DATASETS HPO EXTERNOS (§) — NO COMPARABLE CON RANKING PRINCIPAL
 ================================================================================
@@ -99,24 +122,34 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
 
  §1 │ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.628 │  98.7% (616/624)
     └─ R@1=54.3% R@3=98.2% R@5=98.7% | ⭐ R@1≈empate (+0.1pp), R@3 +5.6pp vs gemini-2.5-pro | BERT 72.7% | run 20260420194835
+ §1a│ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.642 │  98.4% (614/624)
+    └─ R@1=53.8% R@3=98.1% R@5=98.4% | peor que 3 Pro: avg_pos +0.014, R@1 -0.5pp | BERT 72% | run 20260713171044
  §1b│ 🧬 ramedis_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.760 │  98.7% (616/624)
     └─ R@1=54.2% R@3=92.6% R@5=98.4% | BERT 52% + LLM_J 47% | ⭐ gemini mejor en los 5 datasets | run 20260418061358
  §2 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  1.976 │  99.7% (622/624)
     └─ R@1=49.2% R@3=83.7% R@5=99.4% | BERT 52.6% + LLM_J 47.1% | run 20260417004913
  §3 │ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.067 │  97.9% (611/624)
     └─ R@1=46.3% R@3=80.6% R@5=97.9% | BERT 69.1% + LLM_J 28.5% | run 20260417105437
+ §3a│ 🧬 ramedis_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  2.181 │  97.3% (607/624)
+    └─ R@1=45.4% R@3=76.9% R@5=96.8% | peor que §3 Mini: avg_pos +0.114, R@1 -0.9pp, R@3 -3.7pp, cov -0.6pp | run 20260714121853
  §4 │ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.489 │  98.9% (366/370)
     └─ R@1=67.8% R@3=98.1% R@5=98.9% | ⭐⭐⭐ +5.9pp R@1 vs gemini-2.5-pro, +7.3pp R@3 | BERT 41% | run 20260420191032
+ §4a│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.451 │  98.4% (364/370)
+    └─ R@1=68.6% R@3=97.6% R@5=98.4% | mejor avg_pos (-0.038), pero R@3/coverage -0.5pp | BERT 41% | run 20260713170651
  §4m│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.635 │  98.4% (364/370)
     └─ R@1=63.8% (-4.05pp vs low) R@3=91.1% (-7.03pp) R@5=98.4% (-0.54pp) | confirma 4/4 datasets HPO degradados | run 20260421230733
  §4b│ 🧬 lirical_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.631 │  97.3% (360/370)
     └─ R@1=61.9% R@3=90.8% R@5=97.3% | BERT 38% + LLM_J 60% | ⭐ +7pp vs gpt-5.4-mini | run 20260418042750
  §5 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.975 │  98.4% (364/370)
     └─ R@1=55.1% R@3=79.7% R@5=98.1% | BERT 37% + LLM_J 61% | ⭐ gpt-5.4-mini +18pp R@1 vs gpt-4o | run 20260417182706
+ §5a│ 🧬 lirical_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  2.076 │  99.2% (367/370)
+    └─ R@1=50.8% R@3=81.6% R@5=98.9% | peor que §5 Mini: avg_pos +0.101, R@1 -4.3pp; R@3 +1.9pp, cov +0.8pp | completar MME/HMS/MyGene2 antes del agregado HPO | run 20260714132951
  §6 │ 🧬 lirical_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.529 │  99.2% (367/370)
     └─ R@1=37.0% R@3=73.0% R@5=97.8% | BERT 31.6% + LLM_J 67.6% | run 20260417125334
  §5 │ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.342 │  97.5% (39/40) ✅ corregido
     └─ R@1=77.5% R@3=97.5% R@5=97.5% | PUMCH hospital chino | ⭐⭐⭐ +12.5pp R@1 vs gemini-2.5-pro, 3× más rápido | BERT 37% | run 20260420155541 + reeval503 20260421123828
+ §5a│ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.462 │  97.5% (39/40)
+    └─ R@1=72.5% R@3=97.5% R@5=97.5% | peor avg_pos (+0.120) y R@1 (-5.0pp) | BERT 33% | run 20260713164144
  §5m│ 🧬 mme_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.65  │ 100.0% (40/40)
     └─ R@1=62.5% (-15pp vs low) R@3=97.5% (=) R@5=100% (+2.5pp) | medium PEOR en R@1 — desplaza correcto a P2/P3 | run 20260421202253
  §5b│ 🧬 mme_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.553 │  95.0% (38/40)
@@ -125,24 +158,34 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=42.5% R@3=60.0% R@5=95.0% | PUMCH hospital chino | run 20260417113846
  §7 │ 🧬 mme_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.757 │  92.5% (37/40)
     └─ R@1=22.5% R@3=62.5% R@5=90.0% | PUMCH hospital chino | run 20260417174500
+ §7a│ 🧬 mme_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  1.921 │  95.0% (38/40)
+    └─ R@1=55.0% R@3=77.5% R@5=95.0% | mejor que §7 Mini: avg_pos -0.836, R@1 +32.5pp, R@3 +15.0pp, cov +2.5pp | run 20260714162759
  §8 │ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.375 │ 100.0% (88/88)
     └─ R@1=72.7% R@3=100.0% R@5=100.0% | Harvard Medical School | ⭐⭐⭐ +15.9pp vs gemini-2.5-pro, 3× más rápido | BERT 54% | run 20260420160939
+ §8a│ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.443 │ 100.0% (88/88)
+    └─ R@1=68.2% R@3=98.9% R@5=100.0% | peor avg_pos (+0.068), R@1 -4.5pp | BERT 52% | run 20260713164514
  §8m│ 🧬 hms_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.545 │ 100.0% (88/88)
     └─ R@1=70.5% (-2.2pp vs low) R@3=93.2% (-6.8pp) R@5=100% (=) | medium degrada R@3 — 6 casos van de P1-P3 a P4-P5 | run 20260421204421
  §8b│ 🧬 hms_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.693 │ 100.0% (88/88)
     └─ R@1=56.8% R@3=90.9% R@5=100.0% | Harvard Medical School | BERT 58% | ⭐ gemini mejor que mini | run 20260417221140
  §9 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  1.909 │ 100.0% (88/88)
     └─ R@1=53.4% R@3=86.4% R@5=100.0% | Harvard Medical School | BERT 57% | ⭐ gpt-5.4-mini +19pp R@1 vs gpt-4o | run 20260417175146
+ §9a│ 🧬 hms_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  1.908 │  98.9% (87/88)
+    └─ R@1=58.0% R@3=86.4% R@5=98.9% | empate práctico vs §9 Mini: avg_pos -0.001, R@1 +4.6pp, R@3 igual, cov -1.1pp | run 20260714163128
 §10 │ 🧬 hms_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.761 │ 100.0% (88/88)
     └─ R@1=34.1% R@3=70.5% R@5=94.3% | Harvard Medical School | BERT 46.6% | run 20260417115441
 §11 │ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.521 │  95.9% (140/146)
     └─ R@1=61.0% R@3=95.9% R@5=95.9% | Harvard Dataverse | ⭐⭐⭐ +5.5pp R@1 vs gemini-2.5-pro, +10.3pp R@3 | BERT 14% | run 20260420162510
+§11a│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.457 │  94.5% (138/146)
+    └─ R@1=63.7% R@3=93.8% R@5=94.5% | mejor avg_pos (-0.064) y R@1 (+2.7pp), pero dos matches menos | BERT 15% | run 20260713164921
 §11m│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_medium (§)(¶) │ gemini-2.5-pro │  1.95  │  95.2% (139/146)
     └─ R@1=54.1% (-6.9pp vs low) R@3=78.8% (-17.1pp) R@5=95.2% (-0.7pp) | señal MÁS FUERTE de degradación medium en HPO | run 20260421210815
 §11b│ 🧬 mygene2_hpo-juanjo_classic_v2-gemini_2_5_pro_low (§) │ gemini-2.5-pro │  1.782 │  97.3% (142/146)
     └─ R@1=55.5% R@3=85.6% R@5=97.3% | BERT 26% + LLM_J 71% | ⭐⭐ +17pp vs mini, +32pp vs gpt-4o | run 20260417223452
 §12 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_5_4_mini_low (§) │ gemini-2.5-pro │  2.282 │  97.3% (142/146)
     └─ R@1=38.4% R@3=77.4% R@5=97.3% | BERT 26.7% + LLM_J 70.5% | run 20260417154253
+§12a│ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  2.125 │  98.6% (144/146)
+    └─ R@1=50.0% R@3=77.4% R@5=98.6% | mejor que §12 Mini: avg_pos -0.157, R@1 +11.6pp, R@3 igual, cov +1.3pp | run 20260714164159
 §13 │ 🧬 mygene2_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.909 │  97.9% (143/146)
     └─ R@1=23.3% R@3=64.4% R@5=95.9% | BERT 8.2% + LLM_J 89.7% | run 20260417101125
 §14 │ 🧬 pilot_50_hpo-juanjo_classic_v2-gpt_4o_low (§) │ gemini-2.5-pro │  2.551 │  98.0% (49/50)
@@ -157,6 +200,12 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
     └─ R@1=63.5% R@3=91.8% R@5=98.0% | G2P 1749 casos | ⭐⭐ +18.6pp vs gpt-4o, +11.1pp vs mini | BERT 31% | run 20260420042635
 §19 │ 🧬 ddd_hpo-juanjo_classic_v2-gemini_3_pro_preview_low (§) │ gemini-2.5-pro │  1.394 │  98.1% (1716/1749) ✅ corregido
     └─ R@1=70.3% R@3=97.6% R@5=98.1% | G2P 1749 casos | ⭐⭐ +6.8pp R@1 vs gemini-2.5-pro, +5.8pp R@3 | BERT 33% | run 20260421035045 + reeval503 20260421123924
+§20 │ 🧬 ddd_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low (§) │ gemini-2.5-pro │  1.416 │  97.8% (1711/1749)
+    └─ R@1=70.0% R@3=96.9% R@5=97.8% | G2P 1749 casos | peor que §19: avg_pos +0.022, R@1 -0.3pp, R@3 -0.7pp | BERT 33% + LLM_J 65% | run 20260713135454
+§20a│ 🧬 ddd_hpo-juanjo_classic_v2-gemini_3_5_flash_low (§) │ gemini-2.5-pro │  1.465 │  98.1% (1716/1749)
+    └─ R@1=66.3% R@3=97.1% R@5=98.1% | G2P 1749 casos | peor que §19: avg_pos +0.071, R@1 -4.0pp, R@3 -0.5pp | run 20260713195025
+§21 │ 🧬 ddd_hpo-juanjo_classic_v2-gpt_5_6_terra_low (§) │ gemini-2.5-pro │  1.853 │  98.1% (1716/1749)
+    └─ R@1=56.6% R@3=85.4% R@5=98.0% | G2P 1749 casos | mejor que §17 Mini: avg_pos -0.183, R@1 +4.2pp, R@3 +5.8pp, cov +0.5pp; lejos de §19 | BERT 39% + LLM_J 59% | run 20260714094624
 
 🔍 DETAILED BREAKDOWN
 ================================================================================
@@ -174,6 +223,7 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
   🤖 gemini_2_5_pro_low_translated_en │  3 runs │ Avg: 1.309 │ Success: 97.9%
   🤖 gemini_2_5_pro_low (HPO) │  6 runs HPO │ Avg pos: 1.675 (ddd=1.614, mme=1.553, lirical=1.631, hms=1.693, ramedis=1.760, mygene2=1.782)
   🤖 gemini_3_pro_preview_low (HPO) │  6 runs HPO │ R@1 promedio: 70.3% (ddd=70.3%, mme=77.5%, lirical=67.8%, hms=72.7%, ramedis=54.3%, mygene2=61.0%) | ⭐ WINNER HPO — supera gemini-2.5-pro en todos los datasets | 3× más rápido
+  🤖 gemini_3_1_pro_preview_low (HPO) │  6 runs HPO │ Avg pos ponderado: 1.470 vs 1.459 de 3 Pro; R@1=66.2%, R@3=97.1%, coverage=97.9% | no sustituye a 3 Pro en HPO
   🤖 grok_4_1_fast_reasoning_low_translated_en │  2 runs │ Avg: 1.438 │ Success: 98.8%
   🤖 gpt_4o_low           │  1 runs │ Avg: 1.753 │ Success: 98.6%
   🤖 gpt_4o_low_translated_en │  3 runs │ Avg: 1.578 │ Success: 94.8%
@@ -190,3 +240,4 @@ SapBERT offline durante estos runs → 100% LLM_JUDGMENT.
   🤖 grok_4_1_fast_reasoning_low_translated_en │  1 runs │ Avg: 1.427 │ Success: 100.0%
   🤖 o3_dxgpt_high_translated_en │  3 runs │ Avg: 1.581 │ Success: 98.9%
   🤖 claude_opus_4_7_translated_en │  1 runs │ Avg: 1.668 │ Success: 80.1% ⚠️ baja cobertura
+  🤖 claude_opus_4_8_translated_en │  1 runs │ Avg: 1.709 │ Success: 99.2% ⚠️ ordenación baja

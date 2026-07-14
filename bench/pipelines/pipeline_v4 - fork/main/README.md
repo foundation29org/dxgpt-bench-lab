@@ -13,12 +13,20 @@ Este README es la fuente canonica del estado actual del benchmark. Para ejecutar
 | `output/rankingV2.txt` | Historial completo de runs |
 | `docs/ROADMAP.md` | Fases, decisiones y trazabilidad |
 
-## Estado actual (2026-05-12)
+## Estado actual (2026-07-10)
 
 - `gemini-3-pro-preview low` es el mejor modelo HPO del benchmark actual
 - En texto narrativo (`all_256_clean`) empata en calidad con `gemini-2.5-pro low` y es mucho mas rapido
 - `gpt-5.4-mini low` es la mejor opcion OpenAI por velocidad/calidad
 - `gpt-5.5 low` fue probado en `all_256_clean` y no mejora a `gpt-5.4` (`1.548`, `97.7%`, `13.9s/caso`)
+- `gpt-5.6-luna low` es competitivo, pero no reemplaza a `gpt-5.4-mini` (`1.540`, `97.7%`, `6.4s/caso`)
+- `gpt-5.6-luna medium` empeora (`1.584`, `97.7%`, `7.8s/caso`): mantener `low` y no ejecutar `high` completo
+- `gpt-5.6-terra low` es el mejor OpenAI narrativo hasta ahora (`1.382`, `98.1%`, `6.9s/caso`)
+- `gpt-5.6-terra medium` empeora (`1.516`, `97.7%`, `8.4s/caso`): mantener `low` y no ejecutar `high` completo
+- `gpt-5.6-sol low` no compite (`1.619`, `98.4%`, `14.1s/caso`): no ampliar a `medium` por ahora
+- `gemini-3.1-pro-preview low` es el nuevo líder narrativo (`1.267`, `98.1%`, `9.3s/caso`)
+- `gemini-3.5-flash low` casi iguala a Pro (`1.284`, `97.7%`, `6.1s/caso`): mejor candidato calidad/latencia
+- `gemini-3.1-flash-lite low` iguala el avg de `gpt-5.4-mini`, mejora cobertura (`98.8%`) y baja a `2.8s/caso`: candidato económico
 - `thinking_level=medium` en Gemini no aporta: degrada en 4/4 datasets HPO y empata en narrativa
 
 ## Datasets evaluados
@@ -41,16 +49,24 @@ Prompt: `juanjo_classic_v2`
 
 | Rank | Model | Avg Pos | Success% | ~s/case | Nota |
 |---|---|---:|---:|---:|---|
-| 1 | `gemini-2.5-pro low` | **1.299** | 98.1% | 27.9 | Mejor calidad absoluta |
-| 1 | `gemini-3-pro-preview low` | **1.299** | 98.1% | 10.3 | Misma calidad, 3x mas rapido |
-| 3 | `gemini-3-pro-preview medium` | 1.315 | 98.1% | ~35 | Casi empate, no compensa |
-| 4 | `gemini-2.5-flash low` | 1.434 | 98.1% | 21.1 | Buen equilibrio |
-| 5 | `grok-4-1-fast-reasoning` | 1.448 | 97.7% | 20.4 | Mejor alternativa no Google |
-| 6 | `gpt-5.4 full low` | 1.502 | 98.8% | 17.3 | Mejor calidad OpenAI |
-| 7 | `gpt-5.4-mini low` | 1.526 | 98.1% | **4.7** | Mejor calidad/velocidad OpenAI |
-| 8 | `o3 high` | 1.530 | 98.8% | 15.9 | Obsoleto |
-| 9 | `gpt-4o low` | 1.545 | 96.1% | 10.3 | Superado |
-| 10 | `gpt-5.5 low` | 1.548 | 97.7% | 13.9 | No mejora a `gpt-5.4`; queda entre `gpt-4o` y `gpt-5-mini` |
+| 1 | `gemini-3.1-pro-preview low` | **1.267** | 98.1% | 9.3 | Nuevo líder narrativo |
+| 2 | `gemini-3.5-flash low` | 1.284 | 97.7% | 6.1 | Casi Pro, más rápido; candidato calidad/latencia |
+| 3 | `gemini-2.5-pro low` | 1.299 | 98.1% | 27.9 | Empate histórico con Gemini 3 Pro |
+| 3 | `gemini-3-pro-preview low` | 1.299 | 98.1% | 10.3 | Anterior modo avanzado |
+| 5 | `gemini-3-pro-preview medium` | 1.315 | 98.1% | ~35 | Casi empate, no compensa |
+| 6 | `gpt-5.6-terra low` | 1.382 | 98.1% | 6.9 | Mejor OpenAI narrativo; gana la ablación Terra |
+| 7 | `gemini-2.5-flash low` | 1.434 | 98.1% | 21.1 | Buen equilibrio |
+| 8 | `grok-4-1-fast-reasoning` | 1.448 | 97.7% | 20.4 | Mejor alternativa no Google |
+| 9 | `gpt-5.4 full low` | 1.502 | 98.8% | 17.3 | Superado por Terra low en avg_pos |
+| 10 | `gpt-5.6-terra medium` | 1.516 | 97.7% | 8.4 | Peor que Terra low; no compensa |
+| 11 | `gpt-5.4-mini low` | 1.526 | 98.1% | **4.7** | Produccion actual; mejor latencia/coste |
+| 11 | `gemini-3.1-flash-lite low` | 1.526 | 98.8% | **2.8** | Mismo avg, +2 matches y 40% más rápido |
+| 12 | `o3 high` | 1.530 | 98.8% | 15.9 | Obsoleto |
+| 13 | `gpt-5.6-luna low` | 1.540 | 97.7% | 6.4 | R@1 mejora, pero pierde R@3 y un caso vs `gpt-5.4-mini` |
+| 14 | `gpt-4o low` | 1.545 | 96.1% | 10.3 | Superado |
+| 15 | `gpt-5.5 low` | 1.548 | 97.7% | 13.9 | No mejora a `gpt-5.4` |
+| 16 | `gpt-5.6-luna medium` | 1.584 | 97.7% | 7.8 | Peor que Luna low; no compensa |
+| 17 | `gpt-5.6-sol low` | 1.619 | 98.4% | 14.1 | Buena cobertura, mala ordenación; no compite |
 
 ## Track B - HPO Datasets
 
@@ -90,6 +106,14 @@ Tiempo de emulacion aproximado por caso:
 | Model | ~s/case |
 |---|---:|
 | `gpt-5.4-mini low` | **~5** |
+| `gpt-5.6-luna low` | ~6.4 |
+| `gpt-5.6-terra low` | ~6.9 |
+| `gpt-5.6-luna medium` | ~7.8 |
+| `gpt-5.6-terra medium` | ~8.4 |
+| `gemini-3.5-flash low` | ~6.1 |
+| `gemini-3.1-flash-lite low` | **~2.8** |
+| `gemini-3.1-pro-preview low` | ~9.3 |
+| `gpt-5.6-sol low` | ~14.1 |
 | `gpt-4o low` | ~8-10 |
 | `gemini-3-pro-preview low` | ~10 |
 | `gpt-5.5 low` | ~14 |

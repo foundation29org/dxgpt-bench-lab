@@ -1,16 +1,16 @@
-DATASET_PATH: bench/datasets/all_256_clean.json
+DATASET_PATH: bench/datasets/ramedis_hpo.json
 DXGPT_EMULATOR:
   CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
-  MODEL: gpt-5.5
+  MODEL: gemini-3.1-pro-preview
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
   PARALLEL_WORKERS: 4
   PARAMS:
     max_tokens: 12000
-    reasoning_effort: low
     temperature: 0.1
+    thinking_level: low
   TRANSLATE_CASE:
-    ENABLED: true
+    ENABLED: false
 EVALUATOR:
   BERT_ACCEPTANCE_THRESHOLD: 0.8
   BERT_AUTOCONFIRM_THRESHOLD: 0.9
@@ -23,11 +23,11 @@ EVALUATOR:
     temperature: 0.1
     thinking_level: low
   PARALLEL_WORKERS: 8
-EXPERIMENT_DESCRIPTION: all_256_clean (256 casos) con gpt-5.5 low. Comparativa directa
-  vs gpt-5.4 low para ver si mejora avg_pos manteniendo cobertura y latencia razonable.
-EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gpt_5_5_low
+EXPERIMENT_DESCRIPTION: 'Refresh Julio 2026: gemini-3.1-pro-preview low sobre RAMEDIS
+  HPO; comparacion directa contra gemini-3-pro-preview.'
+EXPERIMENT_NAME: ramedis_hpo-juanjo_classic_v2-gemini_3_1_pro_preview_low
 MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2026-05-29T13:10:53.451056'
+TIMESTAMP: '2026-07-13T17:29:53.131322'

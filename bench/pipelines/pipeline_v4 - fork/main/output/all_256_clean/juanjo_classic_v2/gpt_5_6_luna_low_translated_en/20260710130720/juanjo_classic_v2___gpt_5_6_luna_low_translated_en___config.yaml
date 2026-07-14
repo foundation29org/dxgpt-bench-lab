@@ -1,10 +1,10 @@
 DATASET_PATH: bench/datasets/all_256_clean.json
 DXGPT_EMULATOR:
   CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
-  MODEL: gpt-5.5
+  MODEL: gpt-5.6-luna
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
-  PARALLEL_WORKERS: 4
+  PARALLEL_WORKERS: 8
   PARAMS:
     max_tokens: 12000
     reasoning_effort: low
@@ -23,11 +23,11 @@ EVALUATOR:
     temperature: 0.1
     thinking_level: low
   PARALLEL_WORKERS: 8
-EXPERIMENT_DESCRIPTION: all_256_clean (256 casos) con gpt-5.5 low. Comparativa directa
-  vs gpt-5.4 low para ver si mejora avg_pos manteniendo cobertura y latencia razonable.
-EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gpt_5_5_low
+EXPERIMENT_DESCRIPTION: all_256_clean (256 casos) con gpt-5.6-luna low. Refresh Julio
+  2026 para comprobar si reemplaza a gpt-5.4-mini como modelo simple rapido/barato.
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gpt_5_6_luna_low
 MAIN:
   SHOULD_EMULATE: true
   SHOULD_EVALUATE: true
   SHOULD_LABEL: true
-TIMESTAMP: '2026-05-29T13:10:53.451056'
+TIMESTAMP: '2026-07-10T13:15:22.224486'
