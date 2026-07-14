@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-07-13T11:06:57.140234",
+  "checks": [
+    {
+      "check_name": "Label Leakage",
+      "status": "PASS",
+      "rate": 0.0,
+      "count": 0,
+      "threshold": 0.05,
+      "details": "0/24 cases have diagnosis terms in case text",
+      "failed_cases": []
+    },
+    {
+      "check_name": "Boilerplate Prefix",
+      "status": "PASS",
+      "rate": 0.0,
+      "count": 0,
+      "threshold": 0.1,
+      "details": "0/24 cases start with 'Motivo de consulta' prefix",
+      "failed_cases": []
+    },
+    {
+      "check_name": "Template Markers",
+      "status": "PASS",
+      "rate": 0.0,
+      "count": 0,
+      "threshold": 0.4,
+      "details": "0/24 cases have \u22652 section markers",
+      "failed_cases": []
+    },
+    {
+      "check_name": "List-Format Symptoms",
+      "status": "PASS",
+      "rate": 0.0,
+      "count": 0,
+      "threshold": 0.6,
+      "details": "0/24 cases use dash-separated symptom lists",
+      "failed_cases": []
+    }
+  ],
+  "overall_status": "PASS"
+}
