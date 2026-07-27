@@ -22,7 +22,7 @@ No se cambia producción hasta cerrar los runs activos y superar los gates descr
 
 - `DeepSeek-V3.2-Speciale`: el run histórico sin schema fue inválido (0/256 DDX parseables: razonamiento libre). La prueba técnica con `OUTPUT_SCHEMA: true` parseó 24/24 casos, pero produjo placeholders y campos como diagnósticos; descartado para el benchmark histórico.
 - `DeepSeek-V4-Pro`: cumple el JSON histórico, pero en `all_256_clean` obtiene `avg_pos 1.753`, cobertura `98.1%` (251/256) y R@1 `63.3%`; pierde frente a Mini (`1.526`) y Terra (`1.382`). No extender a HPO.
-- `gpt-5.6-luna`: `low` competitivo, pero no supera a Mini; `medium` degrada.
+- `gpt-5.6-luna`: serie `reasoning_effort` cerrada en `all_256_clean`. Mantener `low` (`avg_pos 1.540`, cov `97.7%`); `high`/`medium`/`xhigh` degradan. El colapso de `xhigh` (`89.5%` cov) es mayoritariamente técnico: 22/27 unmatched son respuestas vacías porque el reasoning agota `max_tokens=12000` (`finish_reason=length`). No es rechazo de diagnósticos más específicos. No candidato vs Mini.
 - `gpt-5.6-sol`: peor ordenación y mucha más latencia; no continuar.
 - `gpt-5.6-terra medium`: peor que `low`; no ejecutar `high`.
 - `gemini-3-pro-preview medium`: no aporta mejora; mantener `low`.

@@ -659,6 +659,19 @@
           <td>No mejora a gpt-5.4 · coverage mejor que gpt-4o, pero peor avg_pos</td>
         </tr>
         <tr style="background:#fffbeb;">
+          <td>15b ⚠️</td>
+          <td>gpt-5.6-luna <em>(high)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill" style="width:72%;background:#f59e0b;"></div></div>
+              <span class="bar-label">1.564</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">97.7% (250/256)</span></td>
+          <td>~7.6s</td>
+          <td><span class="badge badge-orange">Peor que Luna low · R@1 68.8%</span></td>
+        </tr>
+        <tr style="background:#fffbeb;">
           <td>16 ⚠️</td>
           <td>gpt-5.6-luna <em>(medium)</em></td>
           <td>
@@ -670,6 +683,19 @@
           <td><span class="badge badge-blue">97.7% (250/256)</span></td>
           <td>7.8s</td>
           <td><span class="badge badge-orange">Peor que Luna low · no compensa</span></td>
+        </tr>
+        <tr style="background:#fef2f2;">
+          <td>16b ❌</td>
+          <td>gpt-5.6-luna <em>(xhigh)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill" style="width:69%;background:#ef4444;"></div></div>
+              <span class="bar-label">1.594</span>
+            </div>
+          </td>
+          <td><span class="badge badge-red">89.5% (229/256)</span></td>
+          <td>~10.4s</td>
+          <td><span class="badge badge-red">Peor Luna · 22 empty DDX (max_tokens)</span></td>
         </tr>
         <tr style="background:#fff7ed;">
           <td>17 ⚠️</td>
@@ -1032,7 +1058,9 @@
             <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini</strong> ⭐ <em>(propuesto)</em></td><td><strong style="color:#166534;">~5s</strong></td><td>~21 min</td></tr>
             <tr><td>gpt-5.6-luna low</td><td>6.4s</td><td>~27 min <small>(~3.5 min wall con 8 workers)</small></td></tr>
             <tr><td>gpt-5.6-terra low</td><td>6.9s</td><td>~30 min <small>(~3.8 min wall con 8 workers)</small></td></tr>
+            <tr style="background:#fffbeb;"><td>gpt-5.6-luna high ⚠️</td><td>~7.6s</td><td>~32 min <small>(estimado)</small></td></tr>
             <tr><td>gpt-5.6-luna medium</td><td>7.8s</td><td>~33 min <small>(~4.2 min wall con 8 workers)</small></td></tr>
+            <tr style="background:#fef2f2;"><td>gpt-5.6-luna xhigh ❌</td><td>~10.4s</td><td>~44 min <small>(estimado)</small></td></tr>
             <tr><td>gpt-5.6-terra medium</td><td>8.4s</td><td>~36 min <small>(~4.6 min wall con 8 workers)</small></td></tr>
             <tr><td>gemini-3.5-flash low</td><td>6.1s</td><td>~26 min <small>(~6.5 min wall con 4 workers)</small></td></tr>
             <tr><td>gemini-3.1-flash-lite low</td><td><strong>2.8s</strong></td><td>~12 min <small>(~3 min wall con 4 workers)</small></td></tr>
