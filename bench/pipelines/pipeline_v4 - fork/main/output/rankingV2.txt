@@ -39,7 +39,11 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 12b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_low_translated_en (‡) │ gemini-2.5-pro  │  1.540 │   97.7% (250/256)
     └─ R@1=69.1% (177) R@3=90.2% (231) R@5=97.7% (250) | 6.4s/case (median 5.9, p95 9.7); wall emulación ~3m28s con 8 workers | competitivo pero NO supera gpt-5.4-mini (avg 1.526, coverage 98.1%) | run 20260710130720
 12c│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_medium_translated_en (‡) │ gemini-2.5-pro  │  1.584 │   97.7% (250/256)
-    └─ R@1=66.0% (169) R@3=91.4% (234) R@5=97.3% (249) | 7.8s/case (median 7.2, p95 12.7) | medium PEOR que low: avg +0.044, R@1 -3.1pp, misma coverage, +22% latencia y ~$1.88 vs ~$1.52 | DECISIÓN Luna: mantener low; no ejecutar high completo | run 20260710133922
+    └─ R@1=66.0% (169) R@3=91.4% (234) R@5=97.3% (249) | 7.8s/case (median 7.2, p95 12.7) | medium PEOR que low: avg +0.044, R@1 -3.1pp, misma coverage, +22% latencia y ~$1.88 vs ~$1.52 | run 20260710133922
+12d│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_high_translated_en (‡) │ gemini-2.5-pro  │  1.564 │   97.7% (250/256)
+    └─ R@1=68.8% (176) R@3=90.6% (232) R@5=97.3% (249) | ~7.6s/case (probe 24c; wall no registrado) | high PEOR que low: avg +0.024, R@1 -0.4pp, R@5 -0.4pp, misma coverage | run 20260727120622
+12e│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_luna_xhigh_translated_en (‡) │ gemini-2.5-pro  │  1.594 │   89.5% (229/256)
+    └─ R@1=62.9% (161) R@3=82.0% (210) R@5=89.1% (228) | ~10.4s/case (probe) | CAUSA coverage: 22/27 unmatched = EMPTY_RESPONSE (reasoning agota max_tokens=12000, response=0, finish=length); no es especificidad ni fallo del juez. Excl. vacíos: cov 97.9%, R@1 68.8%. avg sigue peor que low | DECISIÓN: mantener low; xhigh inválido con 12k | run 20260727132551
 13 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_4o_low_translated_en (‡) │ gemini-2.5-pro  │  1.545 │   96.1% (246/256)
 13b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_5_low_translated_en (‡) │ gemini-2.5-pro  │  1.548 │   97.7% (250/256)
     └─ avg 13.9s/case (median 13.3, p95 19.2) | NO mejora vs gpt-5.4 full (+0.046 avg_pos, -1.1pp coverage) | run 20260512150832

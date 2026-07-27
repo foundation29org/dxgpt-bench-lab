@@ -7,8 +7,15 @@ Comparacion de `gpt-5.6-luna`, `gpt-5.6-terra` y `gpt-5.6-sol` con `reasoning_ef
 | Modelo | Match | R@1 | R@3 | R@5 | Avg pos |
 |---|---:|---:|---:|---:|---:|
 | Terra | 251/256 | 74.6% | 94.9% | 98.1% | **1.382** |
-| Luna | 250/256 | 69.1% | 90.2% | 97.7% | 1.540 |
+| Luna low | 250/256 | 69.1% | 90.2% | 97.7% | **1.540** |
+| Luna high | 250/256 | 68.8% | 90.6% | 97.3% | 1.564 |
+| Luna medium | 250/256 | 66.0% | 91.4% | 97.3% | 1.584 |
+| Luna xhigh | 229/256 | 62.9% | 82.0% | 89.1% | 1.594 |
 | Sol | 252/256 | 68.4% | 88.7% | 98.4% | 1.619 |
+
+En Luna, mas `reasoning_effort` no mejora el benchmark: `low` gana en avg_pos y R@1 frente a `high` y `medium`. En `xhigh` ademas colapsa la cobertura (`89.5%`, 27 unmatched frente a 6 en el resto).
+
+**Causa del colapso xhigh (no es especificidad):** de los 27 unmatched, **22 son `EMPTY_RESPONSE`**: el modelo gasta los 12.000 `max_tokens` enteros en reasoning (`finish_reason=length`, `response=0`) y no emite JSON. No hay DDX que el juez pueda recuperar. Excluyendo esos 22, xhigh queda en cobertura `97.9%` y R@1 `68.8%` — casi como low en el mismo subconjunto. Los 2 unmatched con DDX donde low si matcheo (`B118`, `Q4774`) son falsos positivos del juez en low (p. ej. adenoma hepatico roto ↔ ectasia vascular; trisomia 18 ↔ valvula uretral posterior), no diagnosticos mas especificos rechazados.
 
 ## Hallazgo principal
 
@@ -58,8 +65,9 @@ La mayor cobertura de Sol incluye matches discutibles por taxonomia o juez; no d
 ## Decisiones
 
 1. Terra low es el mejor GPT-5.6 para este benchmark.
-2. No ejecutar Luna high, Terra high ni Sol medium: los resultados previos no justifican ampliar coste o latencia.
-3. Las futuras variantes de prompt deben validar primero con Terra y fijar la cantidad de diagnósticos.
+2. Luna: serie effort cerrada. Mantener `low`. El colapso de `xhigh` es tecnico (22 respuestas vacias por `max_tokens` agotados en reasoning), no especificidad ni juez. Aun sin esos vacios, no mejora a low.
+3. No ejecutar Terra high ni Sol medium: los resultados previos no justifican ampliar coste o latencia.
+4. Las futuras variantes de prompt deben validar primero con Terra y fijar la cantidad de diagnósticos.
 
 ## Implicaciones para el prompt
 
