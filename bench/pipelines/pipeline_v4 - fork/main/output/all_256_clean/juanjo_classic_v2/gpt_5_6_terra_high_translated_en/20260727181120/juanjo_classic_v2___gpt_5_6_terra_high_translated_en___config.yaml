@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/all_256_clean.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: high
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: 'Refresh Julio 2026: gpt-5.6-terra high sobre all_256_clean;
+  comparar con low (1.382) y medium (1.516). Cierre de curva effort.'
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gpt_5_6_terra_high_translated_en
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-07-27T18:17:48.659436'
