@@ -266,7 +266,7 @@
     <div class="callout callout-win">
       <span class="callout-icon">🏆</span>
       <div>
-        <strong>Hallazgo principal:</strong> <strong>gemini-3-pro-preview</strong> supera a gemini-2.5-pro, gpt-4o y gpt-5.4-mini en los 6 datasets de enfermedades raras del paper DeepRare (Nature, 2025), siendo 3× más rápido. Frente al nuevo gemini-3.1-pro-preview conserva una ligera ventaja HPO agregada. En el mayor dataset (DDD, 1.749 casos) alcanza un <strong>R@1=70.3%</strong>.
+        <strong>Hallazgo principal:</strong> <strong>gemini-3-pro-preview low</strong> supera a gemini-2.5-pro, gpt-4o y gpt-5.4-mini en los 6 datasets de enfermedades raras del paper DeepRare (Nature, 2025), siendo 3× más rápido. Frente al nuevo gemini-3.1-pro-preview conserva una ligera ventaja HPO agregada. En el mayor dataset (DDD, 1.749 casos) alcanza un <strong>R@1=70.3%</strong>.
       </div>
     </div>
 
@@ -286,12 +286,12 @@
       <div class="card card-green">
         <div class="card-label">Mejor R@1 HPO (DDD)</div>
         <div class="card-value">70.3%</div>
-        <div class="card-sub">gemini-3-pro-preview · 1.749 casos G2P EBI ✅</div>
+        <div class="card-sub">gemini-3-pro-preview low · producción avanzada · 1.749 casos G2P EBI ✅</div>
       </div>
       <div class="card card-gold">
         <div class="card-label">Velocidad / Calidad</div>
         <div class="card-value">~5s/caso</div>
-        <div class="card-sub">gpt-5.4-mini · avg_pos 1.526 · 98.1%</div>
+        <div class="card-sub">gpt-5.4-mini low · producción normal · avg_pos 1.526 · 98.1%</div>
       </div>
       <div class="card card-purple">
         <div class="card-label">R@3 DDD (gemini-3-pro)</div>
@@ -303,7 +303,7 @@
     <div class="callout callout-warn" style="margin-top:16px">
       <span class="callout-icon">⚡</span>
       <div>
-        <strong>Refresh julio 2026 completado:</strong> <strong>gemini-3.1-pro-preview low</strong> lidera narrativa por avg_pos y R@1 (`1.267`, `98.1%`, R@1 `77.3%`, `9.3s/caso`), pero no sustituye a <strong>gemini-3-pro-preview</strong> como avanzado: en los seis HPO queda ligeramente por detrás en agregado. <strong>gemini-3.5-flash low</strong> casi iguala a 3.1 Pro en narrativa (`1.284`, `97.7%`, R@1 `77.0%`, `6.1s/caso`) y es el candidato calidad/latencia. <strong>gemini-3.1-flash-lite low</strong> iguala el avg de `gpt-5.4-mini` (`1.526`), mejora cobertura (`98.8%`) y baja a <strong>2.8s/caso</strong>: candidato económico.
+        <strong>Refresh julio 2026 completado:</strong> <strong>gemini-3.1-pro-preview low</strong> lidera narrativa por avg_pos y R@1 (`1.267`, `98.1%`, R@1 `77.3%`, `9.3s/caso`), pero no sustituye a <strong>gemini-3-pro-preview low</strong> como avanzado: en los seis HPO queda ligeramente por detrás en agregado. <strong>gemini-3.5-flash low</strong> casi iguala a 3.1 Pro en narrativa (`1.284`, `97.7%`, R@1 `77.0%`, `6.1s/caso`) y es el candidato calidad/latencia. <strong>gemini-3.1-flash-lite low</strong> iguala el avg de `gpt-5.4-mini low` (`1.526`), mejora cobertura (`98.8%`) y baja a <strong>2.8s/caso</strong>: candidato económico.
       </div>
     </div>
   </div>
@@ -491,7 +491,7 @@
         </tr>
         <tr class="winner">
           <td>3</td>
-          <td><strong>gemini-3-pro-preview</strong></td>
+          <td><strong>gemini-3-pro-preview low</strong> <em>(producción avanzada)</em></td>
           <td>
             <div class="bar-container">
               <div class="bar-track"><div class="bar-fill bar-green" style="width:91%"></div></div>
@@ -527,6 +527,32 @@
           <td><span class="badge badge-green">98.1% (251/256)</span></td>
           <td>6.9s</td>
           <td><span class="badge badge-blue">Mejor OpenAI narrativo · low gana ablación</span></td>
+        </tr>
+        <tr>
+          <td>6b</td>
+          <td>gpt-5.6-terra <em>(high)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:85%"></div></div>
+              <span class="bar-label">1.426</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">97.3% (249/256)</span></td>
+          <td>~</td>
+          <td>Peor que low · mejor que xhigh/medium por avg_pos</td>
+        </tr>
+        <tr>
+          <td>6c</td>
+          <td>gpt-5.6-terra <em>(xhigh, 20k corregido)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:85%"></div></div>
+              <span class="bar-label">1.427</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">96.9% (248/256)</span></td>
+          <td>~</td>
+          <td>Mejor R@1 Terra: 76.2% · 4 vacíos reparados · peor avg/cov que low</td>
         </tr>
         <tr>
           <td>7</td>
@@ -582,7 +608,7 @@
         </tr>
         <tr style="background:#f0fdf4;">
           <td>11 ⭐</td>
-          <td><strong>gpt-5.4-mini</strong> <em>(propuesto modo normal)</em></td>
+          <td><strong>gpt-5.4-mini low</strong> <em>(producción normal actual)</em></td>
           <td>
             <div class="bar-container">
               <div class="bar-track"><div class="bar-fill bar-blue" style="width:77%"></div></div>
@@ -697,9 +723,22 @@
           <td>~10.4s</td>
           <td><span class="badge badge-red">Peor Luna · 22 empty DDX (max_tokens)</span></td>
         </tr>
+        <tr style="background:#fffbeb;">
+          <td>16b</td>
+          <td>gpt-5.6-sol <em>(medium)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill" style="width:71%;background:#f59e0b;"></div></div>
+              <span class="bar-label">1.584</span>
+            </div>
+          </td>
+          <td><span class="badge badge-blue">97.7% (250/256)</span></td>
+          <td>~</td>
+          <td>Mejor que Sol low (R@1 69.9%) · sigue lejos de Mini/Terra</td>
+        </tr>
         <tr style="background:#fff7ed;">
           <td>17 ⚠️</td>
-          <td><strong>gpt-5-mini low</strong> <em>(producción actual)</em></td>
+          <td><strong>gpt-5-mini low</strong> <em>(producción anterior · obsoleto)</em></td>
           <td>
             <div class="bar-container">
               <div class="bar-track"><div class="bar-fill" style="width:71%;background:#f97316;"></div></div>
@@ -721,7 +760,7 @@
           </td>
           <td><span class="badge badge-green">98.4% (252/256)</span></td>
           <td>14.1s</td>
-          <td>Buena cobertura, pero peor ordenación; no ampliar esfuerzo</td>
+          <td>Peor que Sol medium · buena coverage, mala ordenación</td>
         </tr>
         <tr>
           <td>⚠️</td>
@@ -774,7 +813,7 @@
     <div class="callout callout-win" style="margin-bottom:20px;">
       <span class="callout-icon">🏆</span>
       <div>
-        <strong>gemini-3-pro-preview supera a gemini-2.5-pro, gpt-4o y gpt-5.4-mini en los 6/6 datasets</strong>, siendo 3× más rápido (~10s/caso). Frente a gemini-3.1-pro-preview, el nuevo candidato gana R@1 en LIRICAL y MyGene2, pero 3 Pro conserva la ventaja agregada y se mantiene en producción avanzada.
+        <strong>gemini-3-pro-preview low supera a gemini-2.5-pro, gpt-4o y gpt-5.4-mini en los 6/6 datasets</strong>, siendo 3× más rápido (~10s/caso). Frente a gemini-3.1-pro-preview, el nuevo candidato gana R@1 en LIRICAL y MyGene2, pero 3 Pro low conserva la ventaja agregada y se mantiene en producción avanzada.
       </div>
     </div>
 
@@ -1055,9 +1094,11 @@
             <tr><th>Modelo</th><th>s/caso</th><th>256 casos</th></tr>
           </thead>
           <tbody>
-            <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini</strong> ⭐ <em>(propuesto)</em></td><td><strong style="color:#166534;">~5s</strong></td><td>~21 min</td></tr>
+            <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini low</strong> ⭐ <em>(producción normal actual)</em></td><td><strong style="color:#166534;">~5s</strong></td><td>~21 min</td></tr>
             <tr><td>gpt-5.6-luna low</td><td>6.4s</td><td>~27 min <small>(~3.5 min wall con 8 workers)</small></td></tr>
             <tr><td>gpt-5.6-terra low</td><td>6.9s</td><td>~30 min <small>(~3.8 min wall con 8 workers)</small></td></tr>
+            <tr><td>gpt-5.6-terra xhigh</td><td>~</td><td>4 vacíos a 12k reparados con retry 20k</td></tr>
+            <tr><td>gpt-5.6-terra high</td><td>~</td><td>reasoning avg 998 · max 5494 · 0 empty</td></tr>
             <tr style="background:#fffbeb;"><td>gpt-5.6-luna high ⚠️</td><td>~7.6s</td><td>~32 min <small>(estimado)</small></td></tr>
             <tr><td>gpt-5.6-luna medium</td><td>7.8s</td><td>~33 min <small>(~4.2 min wall con 8 workers)</small></td></tr>
             <tr style="background:#fef2f2;"><td>gpt-5.6-luna xhigh ❌</td><td>~10.4s</td><td>~44 min <small>(estimado)</small></td></tr>
@@ -1066,15 +1107,16 @@
             <tr><td>gemini-3.1-flash-lite low</td><td><strong>2.8s</strong></td><td>~12 min <small>(~3 min wall con 4 workers)</small></td></tr>
             <tr><td>gpt-4o</td><td>~8-10s</td><td>~40 min</td></tr>
             <tr><td>gemini-3.1-pro-preview low</td><td>9.3s</td><td>~40 min <small>(~9.8 min wall con 4 workers)</small></td></tr>
-            <tr><td>gemini-3-pro-preview</td><td>~10s</td><td>~44 min</td></tr>
+            <tr><td><strong>gemini-3-pro-preview low</strong> <em>(producción avanzada)</em></td><td>~10s</td><td>~44 min</td></tr>
             <tr><td>gpt-5.5 low</td><td>13.9s</td><td>~59 min</td></tr>
             <tr><td>gpt-5.6-sol low</td><td>14.1s</td><td>~60 min <small>(~7.7 min wall con 8 workers)</small></td></tr>
+            <tr><td>gpt-5.6-sol medium</td><td>~</td><td>reasoning avg 294 · max 1269 · 0 empty</td></tr>
             <tr><td>o3 high</td><td>~16s</td><td>~68 min</td></tr>
             <tr><td>gpt-5.4 full</td><td>~17s</td><td>~74 min</td></tr>
             <tr><td>grok-4-1-fast-reasoning</td><td>~20s</td><td>~87 min</td></tr>
             <tr><td>gemini-2.5-flash</td><td>~21s</td><td>~90 min</td></tr>
             <tr><td>gemini-2.5-pro</td><td>~28-34s</td><td>~120 min</td></tr>
-            <tr style="background:#fff7ed;"><td><strong>gpt-5-mini low</strong> ⚠️ <em>(actual)</em></td><td><strong style="color:#dc2626;">~48s</strong></td><td>~205 min</td></tr>
+            <tr style="background:#fff7ed;"><td><strong>gpt-5-mini low</strong> ⚠️ <em>(producción anterior)</em></td><td><strong style="color:#dc2626;">~48s</strong></td><td>~205 min</td></tr>
           </tbody>
         </table>
         <p style="font-size:0.78rem;color:var(--muted);margin-top:6px;">La fase de evaluación (juez) añade ~1-3h por 256 casos independientemente del modelo.</p>
@@ -1086,24 +1128,24 @@
             <tr><th>Modelo</th><th>Coste relativo</th><th>Coste real (256c)</th></tr>
           </thead>
           <tbody>
-            <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini</strong> ⭐ <em>(propuesto)</em></td><td><strong style="color:#166534;">1× (más barato)</strong></td><td>~&lt;$0.50</td></tr>
+            <tr style="background:#f0fdf4;"><td><strong>gpt-5.4-mini low</strong> ⭐ <em>(producción normal actual)</em></td><td><strong style="color:#166534;">1× (más barato)</strong></td><td>~&lt;$0.50</td></tr>
             <tr><td>gpt-5.6-luna low</td><td>~3× vs gpt-5.4-mini</td><td><strong>~$1.52 (medido por tokens)</strong></td></tr>
             <tr><td>gpt-5.6-terra low</td><td>~6.6× vs gpt-5.4-mini</td><td><strong>~$3.28 (medido por tokens)</strong></td></tr>
             <tr><td>gpt-5.6-luna medium</td><td>~3.8× vs gpt-5.4-mini</td><td><strong>~$1.88 (medido por tokens)</strong></td></tr>
             <tr><td>gpt-5.6-terra medium</td><td>~7.9× vs gpt-5.4-mini</td><td><strong>~$3.95 (medido por tokens)</strong></td></tr>
             <tr><td>gemini-2.5-flash</td><td>~0.7×</td><td>~$0.35</td></tr>
             <tr><td>gemini-2.5-pro</td><td>~12×</td><td>~$6</td></tr>
-            <tr><td>gemini-3-pro-preview</td><td>~12-15×</td><td>~$6-8</td></tr>
+            <tr><td><strong>gemini-3-pro-preview low</strong> <em>(producción avanzada)</em></td><td>~12-15×</td><td>~$6-8</td></tr>
             <tr><td>gpt-4o</td><td>~15×</td><td>~$7-8</td></tr>
             <tr><td>gpt-5.4 full</td><td>~22×</td><td>~$11</td></tr>
             <tr style="background:#fff7ed;"><td><strong>claude-opus-4-7</strong></td><td>—</td><td><strong>$8 (medido)</strong></td></tr>
             <tr><td>o3</td><td>~60×</td><td>~$30+</td></tr>
-            <tr style="background:#fff7ed;"><td><strong>gpt-5-mini low</strong> ⚠️ <em>(actual)</em></td><td>~1× (similar mini)</td><td>~&lt;$0.50</td></tr>
+            <tr style="background:#fff7ed;"><td><strong>gpt-5-mini low</strong> ⚠️ <em>(producción anterior)</em></td><td>~1× (similar mini)</td><td>~&lt;$0.50</td></tr>
           </tbody>
         </table>
         <div class="callout callout-warn" style="margin-top:12px;font-size:0.82rem;">
           <span class="callout-icon">💰</span>
-          <div><strong>gpt-5-mini low</strong> (actual) es ~10× más lento que <strong>gpt-5.4-mini</strong> con peor calidad, sin ventaja de coste significativa. El cambio a gpt-5.4-mini es directo.</div>
+          <div><strong>gpt-5-mini low</strong> (producción anterior) era ~10× más lento que <strong>gpt-5.4-mini low</strong> con peor calidad y sin ventaja de coste significativa. Producción normal actual ya usa <strong>gpt-5.4-mini low</strong>.</div>
         </div>
       </div>
     </div>
@@ -1125,7 +1167,7 @@
         </ul>
       </div>
       <div class="rec-box rec-adv">
-        <div class="rec-title">Modo Avanzado — reemplaza o3 (actual)</div>
+        <div class="rec-title">Modo Avanzado actual</div>
         <div class="rec-model">gemini-3-pro-preview low</div>
         <ul style="font-size:0.88rem;padding-left:18px;color:var(--text);">
           <li>Avg position 1.299 en texto narrativo — empata gemini-2.5-pro</li>
@@ -1140,7 +1182,7 @@
     <div class="callout callout-warn">
       <span class="callout-icon">⚠️</span>
       <div>
-        <strong>o3 es obsoleto:</strong> es superado en calidad por 6 modelos y no tiene ventaja de velocidad. Continuar usándolo representa un sobrecoste de ~60× sin beneficio de rendimiento.
+        <strong>o3 es una referencia histórica obsoleta:</strong> producción avanzada ya usa <strong>gemini-3-pro-preview low</strong>, que ofrece mejor calidad y velocidad.
       </div>
     </div>
   </div>
@@ -1180,15 +1222,17 @@
   var labels = [
     'gemini-3.1-pro ⭐',
     'gemini-3.5-flash ⭐',
-    'gemini-3-pro ⭐',
+    'gemini-3-pro\n(low, avanzado) ⭐',
     'gemini-2.5-pro',
     'gemini-3-pro\n(medium) ⚠️',
     'gpt-5.6-terra',
+    'gpt-5.6-terra\n(high)',
+    'gpt-5.6-terra\n(xhigh, 20k)',
     'gemini-2.5-flash',
     'grok-4.1',
     'gpt-5.4 full',
     'gpt-5.6-terra\n(medium) ⚠️',
-    'gpt-5.4-mini ⭐',
+    'gpt-5.4-mini\n(low, normal) ⭐',
     'gemini-3.1-flash-lite',
     'o3',
     'gpt-5.6-luna',
@@ -1196,13 +1240,14 @@
     'gpt-5.5',
     'gpt-5.4-mini\n(medium)',
     'gpt-5.6-luna\n(medium) ⚠️',
+    'gpt-5.6-sol\n(medium)',
     'gpt-5-mini ⚠️',
     'gpt-5.6-sol',
     'claude-opus-4.7 ⚠️',
     'claude-opus-4.8 ⚠️'
   ];
 
-  var values = [1.267, 1.284, 1.299, 1.299, 1.315, 1.382, 1.434, 1.448, 1.502, 1.516, 1.526, 1.526, 1.530, 1.540, 1.545, 1.548, 1.570, 1.584, 1.588, 1.619, 1.668, 1.709];
+  var values = [1.267, 1.284, 1.299, 1.299, 1.315, 1.382, 1.426, 1.427, 1.434, 1.448, 1.502, 1.516, 1.526, 1.526, 1.530, 1.540, 1.545, 1.548, 1.570, 1.584, 1.584, 1.588, 1.619, 1.668, 1.709];
 
   var colors = [
     '#047857',  // gemini-3.1-pro low    — emerald-700
@@ -1211,6 +1256,8 @@
     '#10b981',  // gemini-2.5-pro        — emerald-500
     '#fbbf24',  // gemini-3-pro medium   — amber-400 (highlighted as not-recommended)
     '#2563eb',  // gpt-5.6-terra         — blue-600
+    '#3b82f6',  // gpt-5.6-terra high    — blue-500
+    '#1d4ed8',  // gpt-5.6-terra xhigh   — blue-700
     '#34d399',  // gemini-2.5-flash      — emerald-400
     '#0891b2',  // grok                   — cyan-600
     '#3b82f6',  // gpt-5.4 full           — blue-500
@@ -1223,6 +1270,7 @@
     '#7dd3fc',  // gpt-5.5                — sky-300
     '#f59e0b',  // gpt-5.4-mini med       — amber-500
     '#fbbf24',  // gpt-5.6-luna medium    — amber-400
+    '#60a5fa',  // gpt-5.6-sol medium     — blue-400
     '#f97316',  // gpt-5-mini ⚠️         — orange-500
     '#2563eb',  // gpt-5.6-sol            — blue-600
     '#ef4444',  // claude-opus-4.7 ⚠️    — red-500

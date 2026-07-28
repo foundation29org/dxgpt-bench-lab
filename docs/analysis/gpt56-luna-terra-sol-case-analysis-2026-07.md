@@ -2,20 +2,49 @@
 
 ## Alcance
 
-Comparacion de `gpt-5.6-luna`, `gpt-5.6-terra` y `gpt-5.6-sol` con `reasoning_effort: low` en `all_256_clean` (`n=256`), usando el mismo prompt `juanjo_classic_v2`, juez `gemini-2.5-pro` y umbrales del evaluador.
+Comparacion de `gpt-5.6-luna`, `gpt-5.6-terra` y `gpt-5.6-sol` en `all_256_clean` (`n=256`), incluyendo la ablacion completa de `reasoning_effort` y las variantes de prompt rank-first. Todos los runs mantienen juez `gemini-2.5-pro` y los mismos umbrales del evaluador.
 
 | Modelo | Match | R@1 | R@3 | R@5 | Avg pos |
 |---|---:|---:|---:|---:|---:|
-| Terra | 251/256 | 74.6% | 94.9% | 98.1% | **1.382** |
+| Terra low | 251/256 | 74.6% | 94.9% | 98.1% | **1.382** |
+| Terra high | 249/256 | 71.9% | 93.0% | 97.3% | 1.426 |
+| Terra xhigh (20k corregido) | 248/256 | **76.2%** | 91.0% | 96.1% | 1.427 |
+| Terra medium | 250/256 | 71.1% | 91.0% | 97.7% | 1.516 |
 | Luna low | 250/256 | 69.1% | 90.2% | 97.7% | **1.540** |
 | Luna high | 250/256 | 68.8% | 90.6% | 97.3% | 1.564 |
 | Luna medium | 250/256 | 66.0% | 91.4% | 97.3% | 1.584 |
+| Sol medium | 250/256 | 69.9% | 89.5% | 96.9% | 1.584 |
 | Luna xhigh | 229/256 | 62.9% | 82.0% | 89.1% | 1.594 |
-| Sol | 252/256 | 68.4% | 88.7% | 98.4% | 1.619 |
+| Sol low | 252/256 | 68.4% | 88.7% | 98.4% | 1.619 |
+
+Terra effort (serie cerrada): por avg_pos `low` > `high` > `xhigh` > `medium`. El run xhigh original tuvo 4 `EMPTY_RESPONSE` a 12k; se reejecutaron solo esos casos con 20k y se recuperaron todos (`R176` P2, `R193` P4, `R254` P1, `R549` P1). El agregado corregido queda en avg_pos `1.427`, coverage `96.9%`, R@1 `76.2%`, R@3 `91.0%` y R@5 `96.1%`. Xhigh confirma una mayor concentracion en P1 (+1.6 pp vs low), pero pierde en avg_pos, cobertura y recall acumulado; no reemplaza a `low`.
+
+Sol: al contrario que Luna, `medium` mejora a `low` (`1.584` vs `1.619`, R@1 +1.5 pp). 0 truncaciones. Aun asi queda lejos de Mini (`1.526`) y Terra (`1.382`); no candidato.
 
 En Luna, mas `reasoning_effort` no mejora el benchmark: `low` gana en avg_pos y R@1 frente a `high` y `medium`. En `xhigh` ademas colapsa la cobertura (`89.5%`, 27 unmatched frente a 6 en el resto).
 
 **Causa del colapso xhigh (no es especificidad):** de los 27 unmatched, **22 son `EMPTY_RESPONSE`**: el modelo gasta los 12.000 `max_tokens` enteros en reasoning (`finish_reason=length`, `response=0`) y no emite JSON. No hay DDX que el juez pueda recuperar. Excluyendo esos 22, xhigh queda en cobertura `97.9%` y R@1 `68.8%` — casi como low en el mismo subconjunto. Los 2 unmatched con DDX donde low si matcheo (`B118`, `Q4774`) son falsos positivos del juez en low (p. ej. adenoma hepatico roto ↔ ectasia vascular; trisomia 18 ↔ valvula uretral posterior), no diagnosticos mas especificos rechazados.
+
+## Ablacion de prompt rank-first
+
+La hipotesis especifica para Sol fue atacar su relleno sistematico y su mala priorizacion sin fijar un numero exacto de diagnosticos. La variante `juanjo_classic_v2_rank_first` obliga a comparar y reordenar candidatos, priorizar la respuesta directa y omitir variantes solapadas o relleno poco probable.
+
+| Modelo / prompt | Match | R@1 | R@3 | Avg pos | DDX/caso |
+|---|---:|---:|---:|---:|---:|
+| Sol medium historico | 250/256 | 69.9% | 89.5% | 1.584 | 4.69 |
+| **Sol medium rank-first v1** | 250/256 | **71.9%** | **92.2%** | **1.476** | **3.89** |
+| Sol medium rank-first canonical v2 | 248/256 | 65.2% | 89.5% | 1.593 | — |
+| Terra low historico | 251/256 | **74.6%** | **94.9%** | **1.382** | 3.60 |
+| Terra low rank-first v1 | 251/256 | 73.8% | 93.4% | 1.414 | — |
+
+### Conclusiones de la ablacion
+
+- **Rank-first v1 mejora Sol de forma material:** avg_pos `-0.108`, R@1 `+2.0 pp`, misma cobertura y 0 truncaciones. Reduce la lista media de `4.69` a `3.89`, confirmando que el principal problema de Sol era relleno y ordenacion.
+- La mejora es **especifica del comportamiento de Sol**, no una mejora general del prompt. En Terra low, que ya genera listas cortas y bien priorizadas, rank-first empeora avg_pos `+0.032` y R@1 `-0.8 pp`.
+- La variante canonical v2 no recupera matches automaticos: SNOMED baja de `105` a `96`, R@1 cae a `65.2%` y avg_pos vuelve a `1.593`. Exigir nombres canonicos y adaptar el nivel de respuesta introduce demasiadas decisiones adicionales y perturba el ranking.
+- En comparacion pareada, rank-first v1 mejora `42` casos de Sol, empeora `33` y empata `181`. Frente a Terra low, Terra sigue mejor en `43` casos, Sol rank-first en `37` y empatan `176`.
+- Sol rank-first v1 supera a `gpt-5.4-mini` por avg_pos (`1.476` vs `1.526`), pero sigue por detras de Terra low (`1.382`) y no tiene validacion HPO independiente.
+- No continuar iterando prompts sobre `all_256_clean`: despues de usar el mismo dataset para diagnosticar y ajustar el comportamiento, una v3 aumentaria el riesgo de sobreajuste. La siguiente prueba valida debe ser rank-first v1 en un dataset independiente.
 
 ## Hallazgo principal
 
@@ -64,24 +93,29 @@ La mayor cobertura de Sol incluye matches discutibles por taxonomia o juez; no d
 
 ## Decisiones
 
-1. Terra low es el mejor GPT-5.6 para este benchmark.
+1. Terra low es el mejor GPT-5.6 para este benchmark (mejor avg_pos, coverage y R@3/R@5).
 2. Luna: serie effort cerrada. Mantener `low`. El colapso de `xhigh` es tecnico (22 respuestas vacias por `max_tokens` agotados en reasoning), no especificidad ni juez. Aun sin esos vacios, no mejora a low.
-3. No ejecutar Terra high ni Sol medium: los resultados previos no justifican ampliar coste o latencia.
-4. Las futuras variantes de prompt deben validar primero con Terra y fijar la cantidad de diagnósticos.
+3. Terra effort cerrado tras reparar las 4 truncaciones de xhigh con 20k: `low` > `high` > `xhigh` > `medium` por avg_pos. Xhigh logra el mejor R@1 (`76.2%`), pero pierde coverage, R@3/R@5 y avg_pos; no adoptar.
+4. Sol: conservar `medium + rank-first v1` como mejor configuracion experimental (`1.476`); descartar canonical v2. No ejecutar `high` ni crear una v3 sobre el mismo dataset.
+5. Terra: mantener prompt historico + `low`; rank-first no generaliza y empeora su resultado.
+6. Cualquier validacion adicional de Sol rank-first debe hacerse en un dataset independiente antes de considerarlo para producto.
 
 ## Implicaciones para el prompt
 
-El prompt actual pide `N` diagnosticos sin fijar `N`. La siguiente variante debe probar:
+Las ablaciones de cantidad fija (`exactly 4`, `exactly 5`, `up to 4`) y de contexto ya se probaron y degradaron o forzaron diagnosticos en entradas sin queja activa. No deben repetirse.
 
-- exactamente cuatro diagnósticos, ordenados por probabilidad;
-- etiquetas especificas y apoyadas por el caso;
-- no rellenar la lista con mimicos solapados;
-- priorizar una lista corta y precisa frente a un diferencial exhaustivo.
+Rank-first v1 confirma una conclusion mas precisa: **el prompt debe corregir el comportamiento concreto del modelo, no imponer una politica global**. Sol necesita una instruccion anti-relleno y de priorizacion; Terra ya exhibe ese comportamiento con el prompt historico y empeora al reforzarlo.
 
-Esta hipotesis se evaluara primero en `product_mixed_24`, junto con las reglas para separar sintomas activos, antecedentes, medicacion y analiticas.
+Por tanto:
+
+- produccion y Terra conservan `juanjo_classic_v2`;
+- `juanjo_classic_v2_rank_first` queda como variante experimental exclusiva de Sol;
+- no adoptar canonical v2;
+- no seguir optimizando contra `all_256_clean`; validar generalizacion en HPO u otro conjunto no utilizado para ajustar el prompt.
 
 ## Limitaciones
 
 - Se analizan artefactos post-labeling; no es una revision clinica independiente.
 - Los matches por `LLM_JUDGMENT` o `ICD10_PARENT` pueden sobreestimar cobertura.
-- El resultado aplica a este prompt, dataset y `reasoning_effort: low`; no es un ranking general de capacidad medica.
+- El resultado aplica a estos prompts, efforts y dataset; no es un ranking general de capacidad medica.
+- Las variantes rank-first se diseñaron despues de inspeccionar errores de `all_256_clean`; sus mejoras requieren confirmacion fuera de muestra.

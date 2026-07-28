@@ -1,0 +1,1 @@
+py main.py --config config_256clean_gpt56terra_low_rankfirst.yaml

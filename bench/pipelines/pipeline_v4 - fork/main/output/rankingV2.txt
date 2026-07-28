@@ -24,6 +24,10 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
  4 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gemini_2_5_pro_low_translated_en │ normalcalls (*)  │  1.357 │   95.3% (143/150)
  4b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_low_translated_en (‡) │ gemini-2.5-pro  │  1.382 │   98.1% (251/256)
     └─ R@1=74.6% (191) R@3=94.9% (243) R@5=98.1% (251) | 6.9s/case (median 6.8, p95 10.9) | ~$3.28 modelo | mejor OpenAI narrativo hasta ahora; low gana la ablación Terra | run 20260710140614
+4c│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_xhigh_translated_en (‡) │ gemini-2.5-pro  │  1.427 │   96.9% (248/256)
+    └─ CORREGIDO: 4 EMPTY del run 12k reejecutados con 20k → R176 P2, R193 P4, R254 P1, R549 P1 | R@1=76.2% (195) R@3=91.0% (233) R@5=96.1% (246) | mejor R@1 de Terra, pero avg/cov/R@3/R@5 peores que low | DECISIÓN: mantener low | runs 20260727185344 + retry 20260728103627
+4d│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_high_translated_en (‡) │ gemini-2.5-pro  │  1.426 │   97.3% (249/256)
+    └─ R@1=71.9% (184) R@3=93.0% (238) R@5=97.3% (249) | reasoning avg=998 (p95 3686, max 5494); 0 empty / 256×stop | high PEOR que low y que xhigh en avg; mejor que medium | run 20260727181120
  5 │ 📋 👌 🤖 all_150-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en │ normalcalls (*)  │  1.427 │  100.0% (150/150)
  6 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_2_5_flash_low_translated_en (‡) │ gemini-2.5-pro  │  1.434 │   98.1% (251/256)
  7 │ 📋 👌 🤖 all_275-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.442 │   93.8% (258/275)
@@ -31,7 +35,7 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
  9 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-grok_4_1_fast_reasoning_low_translated_en (‡) │ gemini-2.5-pro  │  1.448 │   97.7% (250/256)
 10 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_low_translated_en (‡) │ gemini-2.5-pro  │  1.502 │   98.8% (253/256)
 10b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_terra_medium_translated_en (‡) │ gemini-2.5-pro  │  1.516 │   97.7% (250/256)
-    └─ R@1=71.1% (182) R@3=91.0% (233) R@5=97.7% (250) | 8.4s/case (median 7.8, p95 16.1) | ~$3.95 modelo | medium PEOR que low: avg +0.134, R@1 -3.5pp, coverage -0.4pp, +22% latencia y +20% coste | DECISIÓN Terra: mantener low; no ejecutar high completo | run 20260710143407
+    └─ R@1=71.1% (182) R@3=91.0% (233) R@5=97.7% (250) | 8.4s/case (median 7.8, p95 16.1) | ~$3.95 modelo | medium PEOR que low/high/xhigh | DECISIÓN Terra: mantener low (curva low>high>xhigh>medium) | run 20260710143407
 11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.1% (251/256)
 11b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gemini_3_1_flash_lite_low_translated_en (‡) │ gemini-2.5-pro  │  1.526 │   98.8% (253/256)
     └─ R@1=69.1% (177) R@3=91.8% (235) R@5=98.8% (253) | 2.8s/case (median 2.7, p95 3.2) | igual avg a gpt-5.4-mini, +2 matches y 40% más rápido; nuevo candidato económico | run 20260710170553
@@ -51,11 +55,13 @@ Fixed params (all runs): temperature=0.1, BERT_accept=0.8, BERT_autoconfirm=0.9,
 15 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_4_mini_medium_translated_en (‡) │ gemini-2.5-pro  │  1.570 │   98.1% (251/256)
 16 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low   │ normalcalls (*)  │  1.566 │   96.7% (145/150)
 10 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.582 │   97.3% (146/150)
+12a│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_sol_medium_translated_en (‡) │ gemini-2.5-pro  │  1.584 │   97.7% (250/256)
+    └─ R@1=69.9% (179) R@3=89.5% (229) R@5=96.9% (248) | reasoning avg=294 (p95 715, max 1269); 0 empty | medium MEJOR que Sol low: avg -0.035, R@1 +1.5pp; sigue lejos de Mini/Terra | DECISIÓN Sol: medium > low, pero no candidato; no high | run 20260727194932
 11 │ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_mini_low_translated_en (‡) │ gemini-2.5-pro  │  1.588 │   97.7% (250/256)
 11 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_medium │ normalcalls (*)  │  1.592 │   94.7% (142/150)
 12 │ 📋 👌 🤖 all_150-juanjo_classic_v2-gpt_5_1_low_translated_en │ normalcalls (*)  │  1.599 │   94.7% (142/150)
 12b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-gpt_5_6_sol_low_translated_en (‡) │ gemini-2.5-pro  │  1.619 │   98.4% (252/256)
-    └─ R@1=68.4% (175) R@3=88.7% (227) R@5=98.4% (252) | 14.1s/case (median 13.6, p95 20.5) | 106k input + 239k output tokens | buena coverage, pero ordena peor que Terra low y gpt-5.4-mini; no probar medium por ahora | run 20260710151007
+    └─ R@1=68.4% (175) R@3=88.7% (227) R@5=98.4% (252) | 14.1s/case (median 13.6, p95 20.5) | 106k input + 239k output tokens | buena coverage, pero ordena peor; medium mejora avg | run 20260710151007
 18b│ 📋 👌 🤖 all_256_clean-juanjo_classic_v2-deepseek_v4_pro_translated_en (‡) │ gemini-2.5-pro  │  1.753 │   98.1% (251/256)
     └─ R@1=63.3% (162) R@3=86.3% (221) R@5=98.1% (251) | JSON nativo válido, pero ordenación peor que Mini (+0.227 avg_pos, -5.8pp R@1) | no extender a HPO ni evaluar V4-Flash por calidad | run 20260714121929
 13 │ 📋 👌 🤖 all_150-juanjo_classic_v2-o3_dxgpt_high_translated_en │ gemini-2.5-pro  │  1.633 │  100.0% (150/150)
