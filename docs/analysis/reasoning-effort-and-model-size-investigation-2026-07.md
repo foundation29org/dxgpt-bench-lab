@@ -87,6 +87,66 @@ El run xhigh original tuvo cuatro respuestas vacías a 12k. Se reejecutaron solo
 
 Después de corregirlos, xhigh logra el mejor R@1, pero low sigue ganando en `avg_pos`, coverage y recall acumulado. Esto demuestra que un effort puede mejorar una métrica y empeorar otras.
 
+#### Hallazgo adicional: high y xhigh polarizan el tamaño del diferencial
+
+La distribución completa del número de diagnósticos emitidos por Terra es:
+
+| Effort | 1 DDX | 2 DDX | 3 DDX | 4 DDX | 5 DDX | 6 DDX | 7 DDX | 8 DDX | Media |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| low | 26 | 2 | 86 | 78 | 62 | 2 | 0 | 0 | 3.602 |
+| medium | 29 | 1 | 73 | 74 | 72 | 5 | 2 | 0 | 3.711 |
+| high | 56 | 2 | 51 | 58 | 65 | 18 | 2 | 4 | 3.609 |
+| xhigh corregido | 71 | 2 | 37 | 56 | 66 | 13 | 6 | 5 | 3.516 |
+
+High devuelve una única hipótesis en `56/256` casos (`21.9%`) y xhigh en `71/256` (`27.7%`), frente a `26/256` (`10.2%`) en low. Pero también generan más listas muy largas: los diferenciales de 6–8 elementos pasan de `2` casos en low a `24` tanto en high como en xhigh. La media oculta este comportamiento bimodal.
+
+No es un error de parseo. Se contrastó, caso a caso, el mensaje del emulator (`Detected list format with N items`) con `evaluation_details.txt`:
+
+- low: `256/256` recuentos idénticos;
+- medium: `256/256`;
+- high: `256/256`;
+- xhigh: `252/252` respuestas visibles; los otros cuatro casos eran las truncaciones a 12k ya reparadas.
+
+El modelo emitió realmente esos arrays de un solo objeto. Por ejemplo, en `Q409`, low generó tres elementos y medium/high/xhigh uno; el parser conservó exactamente lo recibido.
+
+Sin embargo, **la mayor frecuencia de respuestas únicas no explica por sí sola el peor resultado global**. Una lista de un elemento solo puede acertar en P1 o quedar unmatched:
+
+- high: `51/56` listas únicas aciertan en P1;
+- xhigh corregido: `66/71` aciertan en P1;
+- comparadas con low en los mismos casos, las listas únicas de high mejoran `5`, empatan `49` y empeoran `2`; las de xhigh mejoran `10`, empatan `59` y empeoran `2`.
+
+Por tanto, las respuestas únicas probablemente contribuyen al R@1 alto de xhigh, aunque reducen la posibilidad de recuperar el diagnóstico en P2–P5 cuando la primera elección es incorrecta. La degradación de `avg_pos` y R@3 parece más compatible con la **polarización**: high/xhigh alternan entre una respuesta única muy decidida y diferenciales de 6–8 elementos donde la respuesta correcta puede quedar enterrada.
+
+#### Ablación cerrada: exactamente cinco diagnósticos
+
+Antes de esta ablación, las variantes de cantidad disponibles eran:
+
+- `exactly 4` y `exactly 5` se probaron solo con `gpt-5.4-mini low` sobre `product_mixed_24`; controlaron el tamaño, pero forzaron diagnósticos de relleno en entradas sin queja activa.
+- `up to 4` se probó con Terra low sobre `all_256_clean` y empeoró `avg_pos` (`1.382` → `1.462`) y R@1 (`74.6%` → `69.9%`).
+
+Para responder directamente a la nueva hipótesis se ejecutó `juanjo_classic_v2_exact_5.txt` sobre los 256 casos con Terra high y xhigh. Ambos runs usaron `max_tokens=20000`, el mismo juez y el mismo pipeline.
+
+| Configuración | Avg pos | R@1 | R@3 | Coverage | DDX |
+|---|---:|---:|---:|---:|---:|
+| high histórico | **1.426** | **71.9%** | **93.0%** | 97.3% | variable |
+| high exact-5, 20k | 1.599 | 69.9% | 90.2% | **98.4%** | 5 en 256/256 |
+| xhigh histórico corregido | **1.427** | **76.2%** | **91.0%** | 96.9% | variable |
+| xhigh exact-5, 20k | 1.639 | 68.8% | 88.7% | **98.4%** | 5 en 256/256 |
+
+El techo de 20k fue suficiente: `0` respuestas vacías y `0` terminaciones por longitud en ambos runs. High consumió de media `1.464` tokens de reasoning y `848` de respuesta; xhigh, `3.260` y `863`. El máximo de completion de xhigh fue `18.494`, por lo que 12k habría vuelto a ser insuficiente para algún caso.
+
+Obligar cinco candidatos recupera coverage (`+1.1 pp` en high; `+1.5 pp` en xhigh), pero perjudica todas las métricas de priorización:
+
+- high: `avg_pos +0.173`, R@1 `-2.0 pp`, R@3 `-2.8 pp`;
+- xhigh: `avg_pos +0.212`, R@1 `-7.4 pp`, R@3 `-2.3 pp`.
+
+La hipótesis queda refutada como explicación principal: high/xhigh no rinden peor porque a veces devuelvan una sola respuesta. Esas respuestas únicas eran casi siempre un P1 útil. Forzar cinco añade cobertura cuando la primera hipótesis falla, pero introduce alternativas de relleno y desplaza el diagnóstico correcto. El problema central sigue siendo la política de priorización y su polarización, no la cantidad mínima de diagnósticos.
+
+Artefactos:
+
+- `bench/pipelines/pipeline_v4 - fork/main/output/all_256_clean/juanjo_classic_v2_exact_5/gpt_5_6_terra_high_translated_en/20260730193646/summary.json`
+- `bench/pipelines/pipeline_v4 - fork/main/output/all_256_clean/juanjo_classic_v2_exact_5/gpt_5_6_terra_xhigh_translated_en/20260730202934/summary.json`
+
 ### GPT-5.6 Sol: medium y un prompt específico sí ayudan
 
 | Configuración | Avg pos | R@1 | Coverage |
