@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/all_256_clean.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2_exact_5.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 20000
+    reasoning_effort: xhigh
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: 'Ablacion causal de cantidad: Terra xhigh obligado a devolver
+  exactamente 5 diagnosticos sobre all_256_clean con techo de 20k para evitar truncaciones.'
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2_exact_5-gpt_5_6_terra_xhigh_20k
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-07-30T20:36:42.048163'
