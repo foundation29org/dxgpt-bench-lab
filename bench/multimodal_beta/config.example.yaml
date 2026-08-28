@@ -1,0 +1,27 @@
+api:
+  # Include the /api prefix used by Server/app.js.
+  base_url: "${DXGPT_API_BASE_URL:-http://localhost:8443/api}"
+  headers:
+    # Direct Server deployments accept this header.
+    X-Tenant-Id: "${DXGPT_TENANT_ID:-dxgpt-local}"
+    # Use this when calling through API Management.
+    Ocp-Apim-Subscription-Key: "${DXGPT_SUBSCRIPTION_KEY:-}"
+  connect_timeout_seconds: 15
+  request_timeout_seconds: 600
+  result_timeout_seconds: 600
+  verify_tls: true
+
+request:
+  lang: en
+  timezone: UTC
+  # Empty keeps the product rule: gpt54mini without images, gpt5 with images.
+  # Local/eval tenants may set a model later for a controlled comparison.
+  model: "${DXGPT_EVAL_MODEL:-}"
+
+run:
+  output_root: outputs
+  delay_seconds: 2
+  # Retry a 429 using Retry-After. The fallback matches the internal
+  # 100-requests-per-15-minutes window when that header is unavailable.
+  rate_limit_max_retries: 3
+  rate_limit_fallback_seconds: 905

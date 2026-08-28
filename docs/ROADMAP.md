@@ -725,7 +725,29 @@ Reportar resultados desglosados por:
 
 El paper de Nature usó un panel de 8 médicos independientes con 88% de concordancia para validar sus resultados. Para una publicación de alto impacto, considerar un piloto similar (5-10 casos, 2-3 médicos).
 
-### Paso 4.5 — Candidatos futuros de expansión (opcional)
+### Paso 4.5 — Auditoría del juez LLM ⏳ PENDIENTE / PRIORIDAD ALTA
+
+Los benchmarks narrativos históricos usan un prompt `legacy_similarity` que pide la opción clínicamente más similar o intercambiable. La evaluación multimodal demostró que esta política puede aceptar diagnósticos relacionados pero no equivalentes: sobre las mismas 100 respuestas, la cobertura pasó de 80% con `strict_equivalence` a 99% con legacy.
+
+Por tanto, la cobertura histórica —por ejemplo, 98,1% para `gpt-5.4-mini low` en `all_256_clean`— no debe interpretarse todavía como 98,1% de equivalencia diagnóstica estricta.
+
+Tareas:
+
+- [ ] Calibrar `strict_equivalence` mediante la revisión médico-técnica definida en `bench/multimodal_beta/MEDICAL_REVIEW.md`.
+- [ ] Reevaluar desde los artefactos ya etiquetados, sin repetir inferencia, una selección prioritaria:
+  - producción normal: `gpt-5.4-mini low`;
+  - producción avanzada: `gemini-3-pro-preview low`;
+  - candidato OpenAI: `gpt-5.6-terra low`;
+  - contraste: `gpt-5.6-sol medium`;
+  - baseline histórico principal.
+- [ ] Comparar cobertura, R@K, posición media, casos ganados/perdidos y falsos positivos legacy.
+- [ ] Etiquetar todas las cifras del informe como `legacy_similarity` o `strict_equivalence`.
+- [ ] Reevaluar el histórico completo solo si la muestra cambia rankings o decisiones de producción.
+- [ ] Actualizar `docs/benchmark-report.html` con la cautela metodológica y, cuando existan, ambas métricas.
+
+Esta auditoría afecta al evaluador, no a las respuestas originales de los modelos. Los resultados históricos siguen siendo reproducibles, pero su interpretación clínica queda pendiente.
+
+### Paso 4.6 — Candidatos futuros de expansión (opcional)
 
 Si en el futuro se quiere ampliar el trabajo más allá del benchmark actual, los candidatos más razonables son:
 

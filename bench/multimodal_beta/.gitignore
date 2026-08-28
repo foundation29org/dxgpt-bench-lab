@@ -1,0 +1,10 @@
+# Downloaded or derived clinical data
+datasets/raw/*
+datasets/processed/*
+!datasets/raw/.gitkeep
+!datasets/processed/.gitkeep
+
+# Local credentials and per-run responses
+config.yaml
+outputs/*
+!outputs/.gitkeep

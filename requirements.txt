@@ -12,6 +12,9 @@ openai>=1.0.0
 python-dotenv>=1.0.0
 PyYAML>=6.0.1
 requests
+requests-toolbelt>=1.0.0
+websocket-client>=1.9.0
+huggingface_hub>=0.20.0
 jsonschema>=4.0.0
 google-genai>=1.0.0  # Google Gemini API
 xai-sdk>=1.0.0  # xAI Grok API
