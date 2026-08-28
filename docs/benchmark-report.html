@@ -306,6 +306,12 @@
         <strong>Refresh julio 2026 completado:</strong> <strong>gemini-3.1-pro-preview low</strong> lidera narrativa por avg_pos y R@1 (`1.267`, `98.1%`, R@1 `77.3%`, `9.3s/caso`), pero no sustituye a <strong>gemini-3-pro-preview low</strong> como avanzado: en los seis HPO queda ligeramente por detrás en agregado. <strong>gemini-3.5-flash low</strong> casi iguala a 3.1 Pro en narrativa (`1.284`, `97.7%`, R@1 `77.0%`, `6.1s/caso`) y es el candidato calidad/latencia. <strong>gemini-3.1-flash-lite low</strong> iguala el avg de `gpt-5.4-mini low` (`1.526`), mejora cobertura (`98.8%`) y baja a <strong>2.8s/caso</strong>: candidato económico.
       </div>
     </div>
+    <div class="callout callout-warn" style="margin-top:16px">
+      <span class="callout-icon">🧭</span>
+      <div>
+        <strong>Cautela sobre la cobertura histórica:</strong> estas cifras narrativas usan el juez <code>legacy_similarity</code>, que acepta proximidad clínica además de equivalencia diagnóstica. Por tanto, el 98.1% de cobertura de <strong>gpt-5.4-mini low</strong> no debe interpretarse todavía como 98.1% de equivalencia estricta ni compararse directamente con el track multimodal strict. Está pendiente una reevaluación desde los artefactos existentes, sin repetir inferencia.
+      </div>
+    </div>
   </div>
 
   <!-- METODOLOGÍA -->

@@ -1,0 +1,21 @@
+dataset:
+  name: MedReaMM
+  version: pilot
+  source: https://huggingface.co/datasets/thomasweiX/MedReaMM
+
+cases:
+  - id: replace-with-case-id
+    # Use only pre-diagnosis information. Never include diagnosis-bearing captions.
+    text: |
+      Replace this text with the sanitized clinical history.
+    documents: []
+    images:
+      - datasets/processed/replace-with-case-id/image-1.jpg
+    gold:
+      diagnoses:
+        - name: Replace with the withheld final diagnosis
+          icd11: Replace with the ICD-11 code
+          role: primary
+    metadata:
+      source_id: replace-with-pmid
+      modality: replace-with-modality
