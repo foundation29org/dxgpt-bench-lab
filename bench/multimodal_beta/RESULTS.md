@@ -15,8 +15,8 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-08-27 | MedReaMM pilot100 | T | gpt54mini | legacy | 100 | 55% | 82% | 93% | 93% | 1,774 | Solo puente | [Informe](results/2026-08-27-medreamm-pilot100-t-gpt54mini.md) |
 | 2026-08-27 | MedReaMM pilot100 | T | gpt5 | strict | 100 | 43% | 58% | 63% | 64% | 1,641 | Provisional | [Informe](results/2026-08-27-medreamm-pilot100-t-gpt5.md) |
 | 2026-08-27 | MedReaMM pilot100 | T | gpt5 | legacy | 100 | 54% | 75% | 92% | 95% | 2,105 | Solo puente | [Informe](results/2026-08-27-medreamm-pilot100-t-gpt5.md) |
-| 2026-08-28 | MedReaMM pilot100 | T+shuffled-I | gpt5 | strict | 100 | — | — | — | — | — | En curso | [Informe](results/2026-08-28-medreamm-pilot100-t-shuffled-i-gpt5.md) |
-| 2026-08-28 | MedReaMM pilot100 | I | gpt5 | strict | 100 | — | — | — | — | — | En cola | [Informe](results/2026-08-28-medreamm-pilot100-i-gpt5.md) |
+| 2026-08-28 | MedReaMM pilot100 | T+shuffled-I | gpt5 | strict | 100 | 46% | 57% | 60% | 62% | 1,597 | Provisional | [Informe](results/2026-08-28-medreamm-pilot100-t-shuffled-i-gpt5.md) |
+| 2026-08-28 | MedReaMM pilot100 | I | gpt5 | strict | 100 | 32% | 42% | 49% | 50% | 1,860 | Provisional | [Informe](results/2026-08-28-medreamm-pilot100-i-gpt5.md) |
 
 ## Resultado técnico por inferencia
 
@@ -26,6 +26,8 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-08-27 | MedReaMM pilot100 | T+I | gpt5 | 100/100 | 32/100 | 40,2 s | Completa |
 | 2026-08-27 | MedReaMM pilot100 | T | gpt54mini | 100/100; 1 lista vacía | 32/100 | 14,3 s | Completa |
 | 2026-08-27 | MedReaMM pilot100 | T | gpt5 | 100/100; 1 lista vacía | 32/100 | 35,6 s | Completa |
+| 2026-08-28 | MedReaMM pilot100 | T+shuffled-I | gpt5 | 100/100 | 32/100 | 44,5 s | Completa |
+| 2026-08-28 | MedReaMM pilot100 | I | gpt5 | 100/100; 1 lista vacía | 0/100 | 34,5 s | Completa |
 
 Las filas strict y legacy de una misma cohorte reutilizan exactamente las
 mismas respuestas del modelo. Solo cambia la política del juez.
@@ -37,8 +39,13 @@ mismas respuestas del modelo. Solo cambia la política del juez.
   históricas; aceptó 99/100 casos frente a 80/100 con strict.
 - Todos los resultados son provisionales hasta completar
   [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md).
-- Con `gpt5`, `T+I` supera a `T` en 16 puntos de cobertura; falta confirmar
-  causalidad visual con `I`, `T+shuffled-I` y revisión clínica.
+- Con `gpt5`, `T+I` (80%) supera a `T` (64%). El control shuffled lo explica:
+  misma historia con imágenes de otro caso baja a 62%, indistinguible de `T`
+  (McNemar `p=0,79`). Frente a `T+I`, shuffled pierde 18 puntos de cobertura
+  (`p=0,00053`). El producto no gana por «llevar imágenes»; gana cuando las
+  imágenes pertenecen al mismo caso.
+- Solo imágenes (`I`) llega al 50%: hay señal visual, pero no sustituye a la
+  historia. La revisión clínica sigue pendiente.
 - Las tareas y su orden están en [ROADMAP.md](ROADMAP.md).
 
 ## Comparación con el benchmark narrativo

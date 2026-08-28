@@ -50,7 +50,7 @@ track end-to-end de DxGPT beta. Las métricas ejecutadas se registran en
 Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
 80%.
 
-### 4. Ablación de modalidad — en curso
+### 4. Ablación de modalidad — técnica completa, revisión pendiente
 
 - [x] `T+I`: 100 casos con `gpt5`.
 - [x] `T`: completar 100 respuestas con el modelo de producto `gpt54mini`.
@@ -66,11 +66,19 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
   - `T+I` mejora la cobertura en 16 puntos y R@1 en 18 puntos.
   - 20 casos hacen match solo con imágenes y 4 solo con texto.
   - McNemar exacto sobre discordantes: `p=0,00154`.
-- [ ] Ejecutar `I` — en cola tras shuffled.
-- [ ] Ejecutar `T+shuffled-I` — inferencia en curso.
-- [ ] Medir ganancia visual y sensibilidad al intercambio.
+- [x] Ejecutar `I` — 100/100 con `gpt5`.
+  - Resultado strict: R@1 32%, R@3 42%, R@5 49% y cobertura 50%.
+  - Un caso devolvió lista vacía (`23613701`).
+- [x] Ejecutar `T+shuffled-I` — 100/100 con `gpt5`; 100/100 usaron imágenes
+  de otro caso.
+  - Resultado strict: R@1 46%, R@3 57%, R@5 60% y cobertura 62%.
+- [x] Medir ganancia visual y sensibilidad al intercambio.
+  - `T+shuffled-I` es indistinguible de `T` (McNemar `p=0,79`).
+  - `T+I` supera a shuffled en 18 puntos de cobertura (`p=0,00053`).
+  - 22 casos hacen match solo con imágenes correctas y 4 solo con shuffled.
+  - `I` solo (50%) queda por debajo de `T` (64%; `p=0,049`).
 
-### 5. Calibración del evaluador — pendiente
+### 5. Calibración del evaluador — encargo a David
 
 - [x] Conservar el resultado legacy del piloto como diagnóstico metodológico.
 - [x] Documentar los cuatro falsos positivos que desaparecen con equivalencia
@@ -124,14 +132,15 @@ envía las imágenes. Una ejecución Terra `T` mediría únicamente texto.
 
 ## Orden recomendado
 
-1. Reanudar y terminar `T` con `gpt5`.
-2. Completar la revisión médica prioritaria.
-3. Comparar `T` frente a `T+I`.
-4. Ejecutar `I` y `T+shuffled-I`.
-5. Calibrar definitivamente el juez.
-6. Crear el puente strict/legacy con benchmarks narrativos.
-7. Integrar y evaluar Terra con visión.
-8. Ejecutar la ablación de resumen.
+1. David completa [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md) y devuelve
+   [reviews/david_deliverable.md](reviews/david_deliverable.md).
+2. Incorporar adjudicaciones. Ampliar a 100 o a los 24 discordantes solo si
+   David marca dos o más errores del juez o contradicciones ciegas.
+3. Decidir si 80/100 y la ganancia visual se pueden publicar.
+4. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
+   con producción, Terra low, Sol medium y baseline).
+5. Integrar visión para Terra y entonces comparar `T` frente a `T+I`.
+6. Medir el efecto del resumen de 1.000 caracteres.
 
 ## Criterio de cierre
 
