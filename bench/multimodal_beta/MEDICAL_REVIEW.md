@@ -1,189 +1,310 @@
-# Revisión médico-técnica de MedReaMM
+# Encargo para David — revisión clínica de DxGPT con imágenes
 
-## Objetivo para David
+Este documento es la guía. No hace falta saber programar ni lanzar
+evaluaciones. Abres ficheros, lees casos y escribes veredictos.
 
-Determinar si la evaluación automática mide equivalencia diagnóstica real y si
-las imágenes aportan información clínica útil.
+Cuando termines, devuelves relleno
+[reviews/david_deliverable.md](reviews/david_deliverable.md).
+Tiempo estimado: 3–4 horas.
 
-El resultado esperado es:
+---
 
-1. identificar falsos positivos y falsos negativos del juez strict;
-2. detectar golds ambiguos, incompletos o con granularidad inadecuada;
-3. comprobar que texto e imágenes no revelan explícitamente el diagnóstico;
-4. revisar de forma ciega los casos donde `T` y `T+I` discrepan;
-5. recomendar una política clínica de equivalencia.
+## 1. De qué va esto
 
-No hay que ejecutar código ni calcular métricas manualmente.
+DxGPT recibe una historia clínica y, a veces, imágenes (TAC, RM, foto,
+patología). Devuelve una lista ordenada de diagnósticos posibles, de más a
+menos probable.
 
-## Contexto mínimo
+Estamos midiendo esa lista contra un **gold**: el diagnóstico final que
+publicó el caso original. El corpus es [MedReaMM](https://huggingface.co/datasets/thomasweiX/MedReaMM):
+casos clínicos públicos, licencia MIT. Por eso las historias y las imágenes
+pueden estar en el repositorio. No son datos confidenciales de pacientes
+reales no publicados.
 
-Sobre las mismas 100 respuestas `T+I + gpt5`:
+Un programa ya comparó cada lista con su gold. Ese programa a veces acierta
+y a veces se pasa de la raya: acepta dos enfermedades que se parecen, o
+rechaza un sinónimo válido. Tu trabajo es decir, caso a caso, si esa
+comparación automática es clínicamente correcta.
 
-- strict encontró match en 80/100;
-- legacy encontró match en 99/100.
+Hasta que tú no cierres esto, no publicamos el 80/100 ni decimos que las
+imágenes “mejoran el diagnóstico”.
 
-Legacy acepta proximidad clínica; strict exige la misma entidad diagnóstica.
-Por ejemplo, legacy llegó a aceptar Burkitt frente a un gold de Hodgkin
-clásico. La revisión debe decidir si strict rechaza correctamente y si sus
-matches aceptados son verdaderas equivalencias.
+---
 
-Con el mismo `gpt5`:
+## 2. Qué vas a decidir, en cristiano
 
-- texto solo: cobertura strict 64%;
-- texto más imágenes: cobertura strict 80%;
-- 20 casos hicieron match solo con `T+I`;
-- 4 hicieron match solo con `T`.
+Hay cinco tareas, en este orden. No las mezcles.
 
-Esta señal no se considerará ganancia visual definitiva hasta revisar los casos
-discordantes y ejecutar el control con imágenes intercambiadas.
+1. **¿El caso está amañado?** Si el texto o la imagen ya dicen el
+   diagnóstico, el modelo no está diagnosticando: está leyendo la respuesta.
+2. **¿El juez automático acertó?** Mira el gold y la lista de DxGPT y di si
+   alguna propuesta es *la misma enfermedad*, no solo “parecida”.
+3. **¿El gold sirve?** A veces el gold es un hallazgo, un fenotipo o un
+   cajón demasiado ancho. Entonces el fallo no es de DxGPT.
+4. **¿Cuál de dos listas es mejor?** Vas a ver A y B sin saber cómo se
+   generaron. Eliges la más útil para llegar al gold.
+5. **Normas para el futuro.** Seis preguntas para que el equipo sepa qué
+   aceptar como acierto a partir de ahora.
 
-## Material que debe recibir
+---
 
-Este Markdown no basta por sí solo. David necesita un paquete local con:
+## 3. Cómo está montado un caso
 
-- `datasets/processed/medreamm_pilot25/`;
-- `datasets/processed/medreamm_pilot100/`;
-- los paquetes `clinical_review.md` indicados abajo;
-- manifests y `audit.yaml`;
-- historias e imágenes asociadas.
+Cada caso vive en una carpeta. Ejemplo:
 
-Los datos y outputs están ignorados por git. No deben publicarse ni añadirse al
-repositorio sin revisar licencia y condiciones del dataset.
+`datasets/processed/medreamm_pilot25/24174966/`
 
-`RESULTS.md` aporta contexto agregado, pero su lectura es opcional: los paquetes
-locales contienen los casos concretos.
+Dentro:
 
-## Paquetes clínicos preparados
+- `history.txt` — lo que vería un médico antes de saber el diagnóstico.
+- `images/` — las fotos, cortes o láminas de ese mismo caso.
 
-### Calibración inicial de 25 casos
+El **gold** no está en `history.txt` a propósito. Te lo ponemos nosotros en
+las tablas y en los paquetes de revisión, para que compares.
 
-`outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md`
+Cuando un paquete dice “Propuestas”, esa es la lista de DxGPT, ya ordenada:
 
-Contiene:
+1. lo más probable según el modelo  
+2. la siguiente  
+…  
 
-- 4 casos sin match;
-- 3 matches decididos por el juez LLM;
-- gold, diferencial completo, BERT y formulario de adjudicación.
+Si el programa marcó match en la posición 1, cree que la primera propuesta
+es el gold. Si marcó `0` / `NO_MATCH`, cree que ninguna lo es.
 
-### T+I con gpt5, 100 casos
+---
 
-`outputs/pilot100_product/evaluation_v4_primary_strict/clinical_review.md`
+## 4. Qué cuenta como la misma enfermedad
 
-Contiene:
+Acepta:
 
-- 20 casos sin match;
-- 16 matches decididos por el juez LLM;
-- pretriaje técnico para priorizar posibles problemas de equivalencia.
+- el mismo diagnóstico con otro nombre (*Wilson's disease* =
+  degeneración hepatolenticular);
+- una forma **más específica** del gold (*STEAMI anterior por LAD* cuando
+  el gold es STEMI).
 
-### T con gpt5, 100 casos
+No aceptes:
 
-`outputs/pilot100_gpt5_T_v2/evaluation_v4_primary_strict/clinical_review.md`
+- otra entidad del diagnóstico diferencial, aunque se presente igual
+  (cavernoma frente a angiofibroma cardíaco);
+- un subtipo distinto (Burkitt frente a Hodgkin de celularidad mixta);
+- la causa cuando el gold es la manifestación, o al revés, salvo que en
+  la práctica clínica sean intercambiables — eso lo decides tú y lo
+  anotas en la política.
 
-Contiene:
+Ejemplo que ya vimos: gold *mixed-cellularity Hodgkin*, propuesta *Burkitt*.
+El juez permisivo lo dio por bueno. El juez actual lo rechazó. Tú dices si
+ese rechazo es correcto.
 
-- 36 casos sin match;
-- 13 matches decididos por el juez LLM.
+Si dudas, pon `segunda_opinion` y escribe por qué.
 
-### T con gpt54mini, 100 casos
+---
 
-`outputs/pilot100_gpt54mini_T/evaluation_v4_primary_strict/clinical_review.md`
+## 5. Ficheros que necesitas
 
-Contiene:
+Parte de la carpeta `eval/bench/multimodal_beta/`.
 
-- 42 casos sin match, incluida una lista vacía;
-- 3 matches decididos por el juez LLM.
+| Para qué | Fichero |
+|---|---|
+| Esta guía | `MEDICAL_REVIEW.md` (este) |
+| Donde escribes | [reviews/david_deliverable.md](reviews/david_deliverable.md) |
+| Historias e imágenes del piloto | `datasets/processed/medreamm_pilot25/<id>/` |
+| Historias e imágenes de la muestra ciega | `datasets/processed/medreamm_pilot100/<id>/` |
+| Listas de DxGPT del piloto | `outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md` |
+| Las dos listas A/B | [reviews/ciego_t_vs_ti_muestra8.md](reviews/ciego_t_vs_ti_muestra8.md) |
 
-### Comparación ciega T frente a T+I
+No abras ningún fichero que se llame `coordinator_key.md`. Ahí está qué
+lista es cuál; si lo abres, la comparación ciega no vale.
 
-`outputs/comparisons/pilot100_gpt5_T_vs_TI/clinical_review.md`
+No hace falta leer `RESULTS.md` ni el resto de `outputs/`.
 
-Contiene los 24 casos discordantes como listas A y B. No entregar a David:
+MedReaMM es público. Puedes tener las carpetas `datasets/processed/` en el
+repo. Lo que no hay que difundir como “resultado clínico de DxGPT” son las
+listas del modelo y tus veredictos hasta que el equipo lo publique.
 
-`outputs/comparisons/pilot100_gpt5_T_vs_TI/coordinator_key.md`
+---
 
-## Orden de trabajo recomendado
+## 6. Etiquetas (usa solo estas)
 
-### Tarea 1 — Auditoría de fuga
+Si un caso no encaja, `segunda_opinion` y una frase.
 
-Revisar los diez primeros casos de
-`datasets/processed/medreamm_pilot25/audit.yaml`.
+| Campo | Qué significa | Valores |
+|---|---|---|
+| Fuga | ¿El caso enseña la respuesta? | `mantener` = no la enseña; `sanear` = hay que recortar texto o una imagen; `excluir` = el caso no sirve |
+| Posición equivalente | ¿En qué puesto de la lista está el gold? | `1` a `5`, o `0` si ninguno es el gold |
+| Juez | ¿El programa acertó al aceptar o rechazar? | `correcto`, `falso_positivo` (aceptó algo que no es el gold), `falso_negativo` (rechazó algo que sí lo es), `gold_ambiguo` |
+| Gold | ¿El diagnóstico de referencia sirve? | `gold_valido`, `demasiado_amplio`, `demasiado_especifico`, `no_es_entidad_diagnostica`, `rol_incorrecto`, `segunda_opinion` |
+| Lista ciega | ¿Qué diferencial es más útil? | `A`, `B`, `empate`, `ninguna` |
+| Imagen | ¿La foto cambia la decisión? | `util`, `distrae`, `no_cambia` |
+| Confianza | Lo seguro que estás | `alta`, `media`, `baja` |
 
-Para cada caso:
+---
 
-- leer `history.txt`;
-- revisar todas las imágenes;
-- buscar diagnóstico, sinónimo inequívoco, leyenda o desenlace posterior;
-- distinguir evidencia clínica legítima de una etiqueta que revela la solución;
-- decidir `mantener`, `sanear` o `excluir`.
+## Tarea 1 — ¿El caso está amañado? (10 casos)
 
-Registrar fuente exacta y justificación.
+Objetivo: pillar textos o imágenes que ya nombran el diagnóstico.
 
-### Tarea 2 — Calibración del juez
+Para cada fila de la tabla 1 del entregable:
 
-Completar primero el paquete de 25 casos. Para cada uno:
+1. Abre `datasets/processed/medreamm_pilot25/<id>/history.txt`.
+2. Abre todas las imágenes de `images/`.
+3. Ten el gold de la tabla delante.
+4. Pregúntate: si yo no supiera el gold, ¿el texto o una leyenda me lo
+   estarían diciendo?
 
-- indicar la primera posición equivalente o `0`;
-- clasificar el juez como `correcto`, `falso_positivo`, `falso_negativo` o
-  `gold_ambiguo`;
-- justificar en 1–3 frases;
-- asignar confianza alta, media o baja.
+Eso **sí** es fuga (poner `sanear` o `excluir`):
 
-Si aparecen dos o más errores del juez, ampliar la revisión al paquete `T+I`
-de 100 casos.
+- el texto dice “se diagnosticó angiofibroma cardíaco”;
+- una diapositiva tiene el nombre de la enfermedad escrito encima;
+- el desenlace revela el gold (“la biopsia confirmó Burkitt”).
 
-### Tarea 3 — Calidad del gold
+Eso **no** es fuga (poner `mantener`):
 
-En los casos revisados:
+- un TAC con un absceso hepático, si nadie escribe “amebiano”;
+- síntomas y exploraciones que un médico usaría de verdad;
+- una imagen típica que *sugiere* el diagnóstico sin etiquetarlo.
 
-- confirmar que el gold es el diagnóstico final;
-- comprobar que `primary` representa el objetivo principal;
-- distinguir enfermedad de síntoma, hallazgo, fenotipo o complicación;
-- revisar granularidad y correspondencia con ICD-11;
-- indicar diagnósticos secundarios que también deberían aceptarse.
+| id | Gold |
+|---|---|
+| 24174966 | Primary cardiac angiofibroma |
+| 25995698 | Extralobar pulmonary sequestration |
+| 23553973 | Amoebic liver abscess |
+| 27656661 | Multiple sclerosis-like disorder |
+| N-10000022 | Wilson's disease |
+| 27380346 | Erythema nodosum |
+| 28126713 | Retropharyngeal hematoma |
+| 23449674 | Insulinoma |
+| case-19003 | Slipping rib syndrome |
+| 20052363 | Lymphangiomatosis of the colon |
 
-Clasificar como `gold_valido`, `demasiado_amplio`, `demasiado_especifico`,
-`no_es_entidad_diagnostica`, `rol_incorrecto` o `segunda_opinion`.
+Ejemplo de fila (inventada, no copies el veredicto):
 
-### Tarea 4 — Comparación ciega de modalidad
+`24174966 | mantener | — | Historia de masa ventricular, sin nombre del tumor. Las imágenes no llevan leyenda diagnóstica. | alta`
 
-Revisar primero una muestra equilibrada de ocho casos del paquete A/B:
+---
 
-- seis casos ganados por una condición;
-- dos casos ganados por la otra;
-- sin consultar la clave del coordinador.
+## Tarea 2 — ¿El juez automático acertó? (7 casos)
 
-Para cada caso:
+Objetivo: auditar al programa que decide “esto es el mismo diagnóstico”.
 
-- elegir A, B, empate o ninguna;
-- indicar si la imagen aporta evidencia útil, distrae o no cambia la decisión;
-- verificar los matches automáticos;
-- justificar y asignar confianza.
+Abre
+`outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md`.
 
-Si dos o más decisiones contradicen la evaluación automática, ampliar la
-revisión a los 24 casos discordantes.
+Verás dos bloques:
 
-### Tarea 5 — Política de equivalencia
+- **Casos sin match** — el programa dijo que nadie en la lista es el gold.
+  Tus candidatos: `24174966`, `27656661`, `30687305`, `27074070`.
+- **Matches del juez LLM** — el programa aceptó una propuesta, casi
+  siempre la 1. Tus candidatos: `27068836`, `21424749`, `23281978`.
 
-Responder:
+Para cada uno:
 
-1. ¿Debe aceptarse una propuesta más específica que el gold?
-2. ¿Cuándo son equivalentes síndrome, causa y manifestación?
-3. ¿Pueden aceptarse subtipos histológicos diferentes?
-4. ¿Cómo tratar golds fenotípicos o morfológicos?
-5. ¿Debe evaluarse solo el gold primario o cualquier diagnóstico final?
-6. ¿Conviene publicar dos métricas: equivalencia y utilidad clínica?
+1. Lee gold, lista y, si hace falta, historia e imágenes de
+   `medreamm_pilot25/<id>/`.
+2. Elige la **primera** propuesta que sea la misma entidad que el gold.
+   Si ninguna lo es, `0`.
+3. Compara con lo que hizo el programa:
+   - él puso `0` y tú también → `correcto`;
+   - él aceptó P1 y tú crees que P1 no es el gold → `falso_positivo`;
+   - él puso `0` y tú ves el gold en P2 → `falso_negativo`;
+   - el gold no se puede juzgar → `gold_ambiguo`.
 
-## Entregable
+Ejemplo (Hodgkin vs Burkitt, no está en estos 7, solo para el criterio):
 
-Un documento breve con:
+- Gold: mixed-cellularity Hodgkin.
+- P1: Burkitt lymphoma.
+- Posición equivalente: `0`.
+- Juez que lo aceptó: `falso_positivo`.
+- Juez que lo rechazó: `correcto`.
 
-- veredicto y justificación de cada caso revisado;
-- fugas y acciones recomendadas;
-- problemas de gold;
-- resultado de la comparación ciega;
-- política de equivalencia propuesta;
-- confianza y casos que requieren segunda opinión;
-- decisión sobre si 80/100 y la ganancia visual pueden publicarse.
+Haz primero estos 7. Si marcas **2 o más** `falso_positivo` o
+`falso_negativo`, avisa y te pasamos el paquete de 100. No lo abras tú.
 
-El responsable técnico incorporará las adjudicaciones y regenerará las
-métricas.
+---
+
+## Tarea 3 — ¿El gold sirve? (los mismos 7)
+
+En la misma tabla del entregable, columna “Calidad gold”.
+
+Preguntas:
+
+- ¿Es el diagnóstico final del caso, o un síntoma / hallazgo / fenotipo?
+- ¿Es el objetivo principal, o un secundario?
+- ¿Está demasiado ancho (“trastorno tipo EM”) o demasiado fino
+  (un subtipo histológico que el texto no permite distinguir)?
+- ¿Hay sinónimos o diagnósticos secundarios que también deberíamos
+  aceptar? Escríbelos debajo de la tabla.
+
+Ejemplo: gold *Multiple sclerosis-like disorder*. Puede ser
+`demasiado_amplio` si la lista tiene PPMS o MOGAD y tú consideras que
+eso ya cumple el objetivo del caso. O `gold_valido` si el artículo
+dejó el diagnóstico a propósito en esa forma.
+
+---
+
+## Tarea 4 — Cuál lista es mejor, a ciegas (8 casos)
+
+Abre solo [reviews/ciego_t_vs_ti_muestra8.md](reviews/ciego_t_vs_ti_muestra8.md).
+
+Cada caso tiene el gold, la carpeta de `medreamm_pilot100`, una lista A
+y una lista B. Una se generó con texto solo y la otra con texto más
+imágenes. **No te decimos cuál es cuál.**
+
+Casos: `23553973`, `27380346`, `27068836`, `23281978`, `N-10000083`,
+`24054536`, `27709474`, `23574122`.
+
+Para cada uno:
+
+1. Abre `datasets/processed/medreamm_pilot100/<id>/` (historia e imágenes).
+2. Lee A y B.
+3. Elige la lista con la que un clínico llegaría mejor al gold
+   (`A`, `B`, `empate`, `ninguna`).
+4. Di si las imágenes de esa carpeta ayudan, distraen o no cambian.
+5. El paquete marca “Match automático: N” en cada lista. `0` significa
+   que el programa no vio el gold. Tú dices si ese marcaje es correcto.
+
+Si en **2 o más** casos tu elección contradice de forma clara el match
+automático, avisa. Entonces te pasamos los 24. No los abras por tu cuenta.
+
+---
+
+## Tarea 5 — Normas (las 6 preguntas del entregable)
+
+Responde en prosa corta. No hay respuesta “técnica” correcta: es criterio
+clínico para el equipo.
+
+1. Si el gold es “linfoma” y DxGPT dice “linfoma de Hodgkin clásico”,
+   ¿cuenta como acierto?
+2. ¿Cuándo un síndrome, su causa y su manifestación son lo mismo para
+   esta evaluación?
+3. ¿Hodgkin y Burkitt pueden ser equivalentes? ¿Y dos subtipos de
+   Hodgkin entre sí?
+4. ¿Qué hacemos con golds tipo “destrucción esofágica de espesor
+   completo” o “trastorno tipo EM”?
+5. Si el caso tiene un diagnóstico secundario también confirmado, ¿vale
+   acertar ese o solo el primario?
+6. ¿Quieres dos notas: una de equivalencia estricta y otra de “útil en
+   consulta”?
+
+Al final del entregable: ¿se pueden publicar el 80/100 y que las
+imágenes mejoran el resultado? `si` / `no` / `condicionado`.
+
+---
+
+## Qué no toques
+
+No forman parte de este encargo:
+
+- el resto de `outputs/` (texto solo, solo imágenes, imágenes
+  intercambiadas);
+- cualquier `coordinator_key.md`;
+- recalcular métricas o editar código.
+
+---
+
+## Cómo devolver el trabajo
+
+1. Copia o edita [reviews/david_deliverable.md](reviews/david_deliverable.md).
+2. Rellena las tres tablas, las seis preguntas y el cierre.
+3. Envíalo al responsable técnico.
+
+Él incorporará tus etiquetas. Tú no tienes que regenerar nada.

@@ -89,10 +89,9 @@ Entre los 60 matches compartidos, `T+I` mejoró la posición en 9, `T` la mejor�
 en 5 y 46 mantuvieron la misma posición. La prueba exacta de McNemar sobre los
 24 casos discordantes da `p=0,00154`.
 
-La señal es compatible con una contribución útil de las imágenes, pero sigue
-siendo provisional: el juez y los golds necesitan revisión clínica y falta el
-control `T+shuffled-I` para demostrar que la mejora depende de la imagen
-correcta.
+El control `T+shuffled-I` ya está medido: cobertura 62%, indistinguible de
+`T` y 18 puntos por debajo de `T+I`. La ganancia depende de la imagen
+correcta. El juez y los golds siguen pendientes de revisión clínica.
 
 ## Trazabilidad
 

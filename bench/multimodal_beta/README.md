@@ -76,9 +76,9 @@ multimodal_beta/
 ├── manifest.example.yaml
 ├── run_beta_api.py
 ├── datasets/
-│   ├── raw/          # descargas; ignoradas por git
-│   └── processed/    # vistas sin fuga; ignoradas por git
-└── outputs/          # respuestas por ejecución; ignoradas por git
+│   ├── raw/          # dump completo; ignorado por git
+│   └── processed/    # vistas MedReaMM (público, MIT); se pueden commitear
+└── outputs/          # respuestas del modelo por ejecución; ignoradas por git
 ```
 
 El manifest conserva el *gold* junto al caso para evaluar después, pero

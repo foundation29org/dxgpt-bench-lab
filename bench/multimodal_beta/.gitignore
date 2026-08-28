@@ -1,8 +1,7 @@
-# Downloaded or derived clinical data
+# Full Hugging Face dump (large). Processed MedReaMM views are public MIT
+# and may be committed.
 datasets/raw/*
-datasets/processed/*
 !datasets/raw/.gitkeep
-!datasets/processed/.gitkeep
 
 # Local credentials and per-run responses
 config.yaml
