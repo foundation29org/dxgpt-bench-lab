@@ -3,6 +3,10 @@
 Este documento es la guía. No hace falta saber programar ni lanzar
 evaluaciones. Abres ficheros, lees casos y escribes veredictos.
 
+No basta con este Markdown suelto: hace falta la carpeta
+`eval/bench/multimodal_beta/` del repo (historias, imágenes y
+`reviews/`). Si solo te han pasado este fichero, pide el repo.
+
 Cuando termines, devuelves relleno
 [reviews/david_deliverable.md](reviews/david_deliverable.md).
 Tiempo estimado: 3–4 horas.
@@ -109,7 +113,7 @@ Parte de la carpeta `eval/bench/multimodal_beta/`.
 | Donde escribes | [reviews/david_deliverable.md](reviews/david_deliverable.md) |
 | Historias e imágenes del piloto | `datasets/processed/medreamm_pilot25/<id>/` |
 | Historias e imágenes de la muestra ciega | `datasets/processed/medreamm_pilot100/<id>/` |
-| Listas de DxGPT del piloto | `outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md` |
+| Listas de DxGPT del piloto | [reviews/piloto25_juez.md](reviews/piloto25_juez.md) |
 | Las dos listas A/B | [reviews/ciego_t_vs_ti_muestra8.md](reviews/ciego_t_vs_ti_muestra8.md) |
 
 No abras ningún fichero que se llame `coordinator_key.md`. Ahí está qué
@@ -186,8 +190,7 @@ Ejemplo de fila (inventada, no copies el veredicto):
 
 Objetivo: auditar al programa que decide “esto es el mismo diagnóstico”.
 
-Abre
-`outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md`.
+Abre [reviews/piloto25_juez.md](reviews/piloto25_juez.md).
 
 Verás dos bloques:
 

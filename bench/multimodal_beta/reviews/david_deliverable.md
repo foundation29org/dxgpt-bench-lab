@@ -43,8 +43,7 @@ Ejemplo de formato (inventado; no copies el veredicto):
 
 ## Tareas 2 y 3 — Juez y gold (7 casos)
 
-Paquete:
-`outputs/pilot25_product/evaluation_v4_primary_strict/clinical_review.md`
+Paquete: [piloto25_juez.md](piloto25_juez.md)
 
 Ejemplo de formato (Hodgkin vs Burkitt; este id no está en la tabla):
 
