@@ -734,10 +734,11 @@ Por tanto, la cobertura histórica —por ejemplo, 98,1% para `gpt-5.4-mini low`
 Tareas:
 
 - [ ] Calibrar `strict_equivalence` mediante la revisión médico-técnica definida en `bench/multimodal_beta/MEDICAL_REVIEW.md`.
-- [ ] Reevaluar desde los artefactos ya etiquetados, sin repetir inferencia, una selección prioritaria:
-  - producción normal: `gpt-5.4-mini low`;
+- [x] Reevaluar `gpt-5.4-mini low` y `gpt-5.6-terra low` desde `evaluation_details` existentes (2026-08-31). Mismas respuestas; solo cambia el juez. Informe: `bench/multimodal_beta/results/2026-08-31-all256-judge-audit-strict-mini-terra.md`.
+  - Mini: cobertura 98,1% → 79,7%; R@1 68,0% → 58,2%.
+  - Terra: cobertura 98,1% → 83,2%; R@1 74,6% → 63,3%.
+- [ ] Reevaluar el resto de la selección, sin repetir inferencia:
   - producción avanzada: `gemini-3-pro-preview low`;
-  - candidato OpenAI: `gpt-5.6-terra low`;
   - contraste: `gpt-5.6-sol medium`;
   - baseline histórico principal.
 - [ ] Comparar cobertura, R@K, posición media, casos ganados/perdidos y falsos positivos legacy.

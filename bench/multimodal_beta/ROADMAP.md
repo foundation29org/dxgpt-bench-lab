@@ -97,12 +97,14 @@ multimodal. Para construir un puente:
 
 - [x] Reevaluar las respuestas multimodales de 100 casos también con
   `legacy_similarity`, sin repetir inferencia ni MedLabeler.
-- [ ] Tras calibración clínica, aplicar el juez estricto a una selección de
-  ejecuciones narrativas existentes usando sus artefactos ya etiquetados.
-- [ ] Empezar por:
-  - modelo normal de producción;
-  - modelo avanzado de producción;
-  - GPT-5.6 Terra low;
+- [x] Reevaluar `gpt-5.4-mini low` y `gpt-5.6-terra low` sobre `all_256_clean`
+  sin repetir inferencia (2026-08-31).
+  - Mini: 98,1% legacy → 79,7% strict.
+  - Terra: 98,1% legacy → 83,2% strict.
+  - Informe:
+    [results/2026-08-31-all256-judge-audit-strict-mini-terra.md](results/2026-08-31-all256-judge-audit-strict-mini-terra.md).
+- [ ] Tras calibración clínica, aplicar el mismo juez a:
+  - gemini-3-pro-preview low;
   - GPT-5.6 Sol medium;
   - principal baseline histórico.
 - [ ] Comparar cambios de ranking y falsos positivos.
