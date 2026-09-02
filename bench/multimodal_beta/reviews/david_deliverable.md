@@ -47,12 +47,12 @@ Paquete: [piloto25_juez.md](piloto25_juez.md)
 
 Ejemplo de formato (Hodgkin vs Burkitt; este id no está en la tabla):
 
-`ejemplo | 0 | correcto | gold_valido | Burkitt no es Hodgkin de celularidad mixta. El rechazo del juez es correcto. | alta`
+  `ejemplo | 0 | correcto | gold_valido | Burkitt no es Hodgkin de celularidad mixta. El rechazo del juez es correcto. | alta`
 
 | id | Posición equivalente | Veredicto juez | Calidad gold | Justificación | Confianza |
 |---|---|---|---|---|---|
-| 24174966 |  |  |  |  |  |
-| 27656661 |  |  |  |  |  |
+| 24174966 | 0 | correcto | gold_valido | Un hemangioma cavernoso no es un angiofibroma cardíaco primario; son tumores vasculares distintos. El rechazo del juez es correcto. | alta |
+| 27656661 | 1 |  |  |  |  |
 | 30687305 |  |  |  |  |  |
 | 27074070 |  |  |  |  |  |
 | 27068836 |  |  |  |  |  |
