@@ -28,16 +28,16 @@ Ejemplo de formato (inventado; no copies el veredicto):
 
 | id | Decisión | Fuente de fuga (si hay) | Justificación | Confianza |
 |---|---|---|---|---|
-| 24174966 |  |  |  |  |
-| 25995698 |  |  |  |  |
-| 23553973 |  |  |  |  |
-| 27656661 |  |  |  |  |
-| N-10000022 |  |  |  |  |
-| 27380346 |  |  |  |  |
-| 28126713 |  |  |  |  |
-| 23449674 |  |  |  |  |
-| case-19003 |  |  |  |  |
-| 20052363 |  |  |  |  |
+| 24174966 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 25995698 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 23553973 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 27656661 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| N-10000022 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 27380346 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 28126713 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 23449674 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| case-19003 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 20052363 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
 
 ---
 
