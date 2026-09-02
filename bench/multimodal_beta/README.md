@@ -12,6 +12,8 @@ El historial consolidado de ejecuciones y métricas se mantiene en
 [RESULTS.md](RESULTS.md).
 El estado y orden de las tareas pendientes se mantiene en
 [ROADMAP.md](ROADMAP.md).
+El mapa de ambos tracks (beta + narrativo + juez) está en
+[docs/archify/dxgpt-eval.architecture.html](../../docs/archify/dxgpt-eval.architecture.html).
 
 ## Qué se evalúa
 
