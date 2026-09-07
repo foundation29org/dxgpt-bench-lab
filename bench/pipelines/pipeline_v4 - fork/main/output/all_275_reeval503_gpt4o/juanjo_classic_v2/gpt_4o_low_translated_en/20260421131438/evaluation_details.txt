@@ -1,0 +1,2359 @@
+{
+  "case_id": "B126",
+  "gdx_details": [
+    {
+      "name": "Cardiac rhabdomyoma",
+      "details": {
+        "name": "Cardiac rhabdomyoma",
+        "normalized_text": "Cardiac rhabdomyoma",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "D15.1"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Infantile Spasms (West Syndrome)",
+      "details": {
+        "normalized_text": "Infantile Spasms (West Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "G40.82"
+          ],
+          "snomed": [
+            "28055006"
+          ],
+          "omim": [],
+          "orpha": [
+            "3451"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tuberous Sclerosis Complex (TSC)",
+      "details": {
+        "normalized_text": "Tuberous Sclerosis Complex (TSC)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q85.1"
+          ],
+          "snomed": [
+            "7199000"
+          ],
+          "omim": [
+            "191100"
+          ],
+          "orpha": [
+            "805"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lennox-Gastaut Syndrome",
+      "details": {
+        "normalized_text": "Lennox-Gastaut Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G40.81"
+          ],
+          "snomed": [
+            "230418006"
+          ],
+          "omim": [],
+          "orpha": [
+            "2382"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Focal Epilepsy",
+      "details": {
+        "normalized_text": "Focal Epilepsy",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "230381009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Neonatal Hypoxic-Ischemic Encephalopathy (HIE)",
+      "details": {
+        "normalized_text": "Neonatal Hypoxic-Ischemic Encephalopathy (HIE)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "P91.60"
+          ],
+          "snomed": [
+            "703300001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Cardiac rhabdomyoma": {
+          "name": "Cardiac rhabdomyoma",
+          "normalized_text": "Cardiac rhabdomyoma",
+          "severity": "S7",
+          "medical_codes": {
+            "icd10": [
+              "D15.1"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Tuberous Sclerosis Complex (TSC)": {
+          "normalized_text": "Tuberous Sclerosis Complex (TSC)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "Q85.1"
+            ],
+            "snomed": [
+              "7199000"
+            ],
+            "omim": [
+              "191100"
+            ],
+            "orpha": [
+              "805"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cardiac rhabdomyoma": {
+            "name": "Cardiac rhabdomyoma",
+            "normalized_text": "Cardiac rhabdomyoma",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "D15.1"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D15.1']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.357 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.2847307622432709
+            },
+            {
+              "position": 2,
+              "score": 0.351614773273468
+            },
+            {
+              "position": 3,
+              "score": 0.35693231225013733
+            },
+            {
+              "position": 4,
+              "score": 0.20465077459812164
+            },
+            {
+              "position": 5,
+              "score": 0.3084736466407776
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.35693231225013733
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "B133",
+  "gdx_details": [
+    {
+      "name": "Metastatic Colon Cancer",
+      "details": {
+        "name": "Metastatic Colon Cancer",
+        "normalized_text": "Malignant neoplasm of colon stage IV",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "C18.9"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Metastatic Colon Cancer",
+      "details": {
+        "normalized_text": "Metastatic Colon Cancer",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Anemia (secondary to chronic disease or blood loss)",
+      "details": {
+        "normalized_text": "Anemia (secondary to chronic disease or blood loss)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D64.9"
+          ],
+          "snomed": [
+            "271737000",
+            "27624003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Alcohol Use Disorder with Nutritional Deficiency",
+      "details": {
+        "normalized_text": "Alcohol Use Disorder with Nutritional Deficiency",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "END007",
+            "E63.9"
+          ],
+          "snomed": [
+            "70241007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Depression with Somatic Symptoms",
+      "details": {
+        "normalized_text": "Depression with Somatic Symptoms",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "F33.9"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hypotension (secondary to chronic illness or dehydration)",
+      "details": {
+        "normalized_text": "Hypotension (secondary to chronic illness or dehydration)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "CIR031",
+            "I95.9",
+            "E86.0"
+          ],
+          "snomed": [
+            "45007003",
+            "27624003",
+            "34095006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_MATCH",
+      "value": "0.8932648301124573",
+      "matched_gdx": {
+        "Metastatic Colon Cancer": {
+          "name": "Metastatic Colon Cancer",
+          "normalized_text": "Malignant neoplasm of colon stage IV",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "C18.9"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Metastatic Colon Cancer": {
+          "normalized_text": "Metastatic Colon Cancer",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Metastatic Colon Cancer": {
+            "name": "Metastatic Colon Cancer",
+            "normalized_text": "Malignant neoplasm of colon stage IV",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "C18.9"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C18.9']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.893) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8932648301124573
+            },
+            {
+              "position": 2,
+              "score": 0.1656384915113449
+            },
+            {
+              "position": 3,
+              "score": 0.08813908696174622
+            },
+            {
+              "position": 4,
+              "score": 0.18840739130973816
+            },
+            {
+              "position": 5,
+              "score": 0.16926279664039612
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8932648301124573
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q2",
+  "gdx_details": [
+    {
+      "name": "Septic shock due to gram-negative bacterial infection",
+      "details": {
+        "name": "Septic shock due to gram-negative bacterial infection",
+        "normalized_text": "Gram-Negative Bacterial Infections",
+        "severity": "S10",
+        "medical_codes": {
+          "icd10": [
+            "A41.5"
+          ],
+          "snomed": [
+            "76571007",
+            "371583007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Sepsis due to pelvic inflammatory disease (PID)",
+      "details": {
+        "normalized_text": "Sepsis due to pelvic inflammatory disease (PID)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "GEN018",
+            "N73.9"
+          ],
+          "snomed": [
+            "91302008",
+            "198130006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Disseminated intravascular coagulation (DIC)",
+      "details": {
+        "normalized_text": "Disseminated intravascular coagulation (DIC)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D65"
+          ],
+          "snomed": [
+            "67406007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Toxic shock syndrome (TSS)",
+      "details": {
+        "normalized_text": "Toxic shock syndrome (TSS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "A48.3"
+          ],
+          "snomed": [
+            "18504008"
+          ],
+          "omim": [],
+          "orpha": [
+            "36234"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Gram-negative sepsis",
+      "details": {
+        "normalized_text": "Gram-negative sepsis",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "A41.50"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pelvic abscess with secondary sepsis",
+      "details": {
+        "normalized_text": "Pelvic abscess with secondary sepsis",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111367007",
+            "91302008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "BERT_MATCH",
+      "value": "0.8850891590118408",
+      "matched_gdx": {
+        "Septic shock due to gram-negative bacterial infection": {
+          "name": "Septic shock due to gram-negative bacterial infection",
+          "normalized_text": "Gram-Negative Bacterial Infections",
+          "severity": "S10",
+          "medical_codes": {
+            "icd10": [
+              "A41.5"
+            ],
+            "snomed": [
+              "76571007",
+              "371583007"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Gram-negative sepsis": {
+          "normalized_text": "Gram-negative sepsis",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [
+              "A41.50"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Septic shock due to gram-negative bacterial infection": {
+            "name": "Septic shock due to gram-negative bacterial infection",
+            "normalized_text": "Gram-Negative Bacterial Infections",
+            "severity": "S10",
+            "medical_codes": {
+              "icd10": [
+                "A41.5"
+              ],
+              "snomed": [
+                "76571007",
+                "371583007"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['76571007', '371583007'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['A41.5']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P4 (score: 0.885) was better than LLM's choice P4 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3319928050041199
+            },
+            {
+              "position": 2,
+              "score": 0.24351617693901062
+            },
+            {
+              "position": 3,
+              "score": 0.2636093497276306
+            },
+            {
+              "position": 4,
+              "score": 0.8850891590118408
+            },
+            {
+              "position": 5,
+              "score": 0.19589203596115112
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.8850891590118408
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q3235",
+  "gdx_details": [
+    {
+      "name": "Colorectal cancer with metastasis",
+      "details": {
+        "name": "Colorectal cancer with metastasis",
+        "normalized_text": "Neoplasm Metastasis",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "C18.2"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Colorectal Cancer",
+      "details": {
+        "normalized_text": "Colorectal Cancer",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Iron Deficiency Anemia",
+      "details": {
+        "normalized_text": "Iron Deficiency Anemia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D50.9"
+          ],
+          "snomed": [
+            "87522002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Metastatic Cancer (likely colorectal origin)",
+      "details": {
+        "normalized_text": "Metastatic Cancer (likely colorectal origin)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "NEO070"
+          ],
+          "snomed": [
+            "128462008",
+            "264267007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Gastrointestinal Bleeding (secondary to malignancy)",
+      "details": {
+        "normalized_text": "Gastrointestinal Bleeding (secondary to malignancy)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "DIG021",
+            "K92.2",
+            "C80",
+            "M8000/3",
+            "C80.1"
+          ],
+          "snomed": [
+            "74474003",
+            "363346000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Anemia of Chronic Disease",
+      "details": {
+        "normalized_text": "Anemia of Chronic Disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "234347009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Colorectal cancer with metastasis": {
+          "name": "Colorectal cancer with metastasis",
+          "normalized_text": "Neoplasm Metastasis",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "C18.2"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Metastatic Cancer (likely colorectal origin)": {
+          "normalized_text": "Metastatic Cancer (likely colorectal origin)",
+          "position": 3,
+          "medical_codes": {
+            "icd10": [
+              "NEO070"
+            ],
+            "snomed": [
+              "128462008",
+              "264267007"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Colorectal cancer with metastasis": {
+            "name": "Colorectal cancer with metastasis",
+            "normalized_text": "Neoplasm Metastasis",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "C18.2"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C18.2']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.598 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4693821370601654
+            },
+            {
+              "position": 2,
+              "score": 0.027842693030834198
+            },
+            {
+              "position": 3,
+              "score": 0.5976293087005615
+            },
+            {
+              "position": 4,
+              "score": 0.5224561095237732
+            },
+            {
+              "position": 5,
+              "score": 0.20635415613651276
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5976293087005615
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q355",
+  "gdx_details": [
+    {
+      "name": "Left circumflex artery ischemia",
+      "details": {
+        "name": "Left circumflex artery ischemia",
+        "normalized_text": "Ischemia",
+        "severity": "S10",
+        "medical_codes": {
+          "icd10": [
+            "I21.29"
+          ],
+          "snomed": [
+            "52674009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Acute Myocardial Infarction (AMI)",
+      "details": {
+        "normalized_text": "Acute Myocardial Infarction (AMI)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "CIR009",
+            "I21.9"
+          ],
+          "snomed": [
+            "57054005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute Left Heart Failure",
+      "details": {
+        "normalized_text": "Acute Left Heart Failure",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "364006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Aortic Dissection",
+      "details": {
+        "normalized_text": "Aortic Dissection",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "I71.0",
+            "I71.00"
+          ],
+          "snomed": [
+            "308546005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pulmonary Embolism",
+      "details": {
+        "normalized_text": "Pulmonary Embolism",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "I26"
+          ],
+          "snomed": [
+            "59282003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Sepsis with Cardiovascular Compromise",
+      "details": {
+        "normalized_text": "Sepsis with Cardiovascular Compromise",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "91302008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Left circumflex artery ischemia": {
+          "name": "Left circumflex artery ischemia",
+          "normalized_text": "Ischemia",
+          "severity": "S10",
+          "medical_codes": {
+            "icd10": [
+              "I21.29"
+            ],
+            "snomed": [
+              "52674009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Acute Myocardial Infarction (AMI)": {
+          "normalized_text": "Acute Myocardial Infarction (AMI)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "CIR009",
+              "I21.9"
+            ],
+            "snomed": [
+              "57054005"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Left circumflex artery ischemia": {
+            "name": "Left circumflex artery ischemia",
+            "normalized_text": "Ischemia",
+            "severity": "S10",
+            "medical_codes": {
+              "icd10": [
+                "I21.29"
+              ],
+              "snomed": [
+                "52674009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['52674009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['I21.29']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.558 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5584802627563477
+            },
+            {
+              "position": 2,
+              "score": 0.39895108342170715
+            },
+            {
+              "position": 3,
+              "score": 0.3190311789512634
+            },
+            {
+              "position": 4,
+              "score": 0.31763362884521484
+            },
+            {
+              "position": 5,
+              "score": 0.46818047761917114
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5584802627563477
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q517",
+  "gdx_details": [
+    {
+      "name": "Substance abuse",
+      "details": {
+        "name": "Substance abuse",
+        "normalized_text": "Substance abuse",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "F10.20"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Alcoholic Liver Cirrhosis with Portal Hypertension",
+      "details": {
+        "normalized_text": "Alcoholic Liver Cirrhosis with Portal Hypertension",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "K70.3",
+            "K76.6"
+          ],
+          "snomed": [
+            "420054005",
+            "34742003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hepatitis B or C with Cirrhosis",
+      "details": {
+        "normalized_text": "Hepatitis B or C with Cirrhosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "K74.60"
+          ],
+          "snomed": [
+            "66071002",
+            "19943007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Non-Alcoholic Steatohepatitis (NASH) with Cirrhosis",
+      "details": {
+        "normalized_text": "Non-Alcoholic Steatohepatitis (NASH) with Cirrhosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "K75.81",
+            "K74.60"
+          ],
+          "snomed": [
+            "442685003",
+            "19943007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Primary Biliary Cholangitis (PBC)",
+      "details": {
+        "normalized_text": "Primary Biliary Cholangitis (PBC)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "K74.3"
+          ],
+          "snomed": [
+            "31712002"
+          ],
+          "omim": [],
+          "orpha": [
+            "186"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wilson Disease",
+      "details": {
+        "normalized_text": "Wilson Disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "E83.01"
+          ],
+          "snomed": [
+            "88518009"
+          ],
+          "omim": [
+            "277900"
+          ],
+          "orpha": [
+            "905"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Substance abuse": {
+          "name": "Substance abuse",
+          "normalized_text": "Substance abuse",
+          "severity": "S7",
+          "medical_codes": {
+            "icd10": [
+              "F10.20"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Alcoholic Liver Cirrhosis with Portal Hypertension": {
+          "normalized_text": "Alcoholic Liver Cirrhosis with Portal Hypertension",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "K70.3",
+              "K76.6"
+            ],
+            "snomed": [
+              "420054005",
+              "34742003"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Substance abuse": {
+            "name": "Substance abuse",
+            "normalized_text": "Substance abuse",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "F10.20"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['F10.20']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.317 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.21166127920150757
+            },
+            {
+              "position": 2,
+              "score": 0.1412484496831894
+            },
+            {
+              "position": 3,
+              "score": 0.24830205738544464
+            },
+            {
+              "position": 4,
+              "score": 0.1795029640197754
+            },
+            {
+              "position": 5,
+              "score": 0.31732988357543945
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.31732988357543945
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q548",
+  "gdx_details": [
+    {
+      "name": "Hemolytic anemia and ataxia",
+      "details": {
+        "name": "Hemolytic anemia and ataxia",
+        "normalized_text": "Cerebellar Ataxia",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "D59.9"
+          ],
+          "snomed": [
+            "85102008",
+            "61261009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Pelvic Fracture with Hemorrhagic Shock",
+      "details": {
+        "normalized_text": "Pelvic Fracture with Hemorrhagic Shock",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "S32.9"
+          ],
+          "snomed": [
+            "77493009",
+            "355001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Asthma Exacerbation",
+      "details": {
+        "normalized_text": "Asthma Exacerbation",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "RSP009",
+            "J45.9",
+            "J45"
+          ],
+          "snomed": [
+            "195967001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cocaine-Induced Cardiovascular Collapse",
+      "details": {
+        "normalized_text": "Cocaine-Induced Cardiovascular Collapse",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "SYM003",
+            "R57.9"
+          ],
+          "snomed": [
+            "27942005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute Respiratory Distress Syndrome (ARDS)",
+      "details": {
+        "normalized_text": "Acute Respiratory Distress Syndrome (ARDS)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "J80"
+          ],
+          "snomed": [
+            "67782005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Anaphylaxis",
+      "details": {
+        "normalized_text": "Anaphylaxis",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "39579001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": false,
+    "final_resolution": null,
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Hemolytic anemia and ataxia": {
+            "name": "Hemolytic anemia and ataxia",
+            "normalized_text": "Cerebellar Ataxia",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "D59.9"
+              ],
+              "snomed": [
+                "85102008",
+                "61261009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['85102008', '61261009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D59.9']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.402) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.1640535444021225
+            },
+            {
+              "position": 2,
+              "score": 0.2447950839996338
+            },
+            {
+              "position": 3,
+              "score": 0.28812694549560547
+            },
+            {
+              "position": 4,
+              "score": 0.2580603361129761
+            },
+            {
+              "position": 5,
+              "score": 0.4022539258003235
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.4022539258003235
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "S180",
+  "gdx_details": [
+    {
+      "name": "Rare Lymphatic Malformation",
+      "details": {
+        "name": "Rare Lymphatic Malformation",
+        "normalized_text": "Rare Lymphatic Malformation",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "Q82.8"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Lymphatic Malformation",
+      "details": {
+        "normalized_text": "Lymphatic Malformation",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "234095009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Primary Immunodeficiency Disorder",
+      "details": {
+        "normalized_text": "Primary Immunodeficiency Disorder",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "58606001"
+          ],
+          "omim": [],
+          "orpha": [
+            "101997"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cystic Fibrosis",
+      "details": {
+        "normalized_text": "Cystic Fibrosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "END012",
+            "E84.9"
+          ],
+          "snomed": [
+            "190905008"
+          ],
+          "omim": [
+            "219700"
+          ],
+          "orpha": [
+            "586"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lymphedema",
+      "details": {
+        "normalized_text": "Lymphedema",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "234097001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Autoimmune Lymphoproliferative Syndrome (ALPS)",
+      "details": {
+        "normalized_text": "Autoimmune Lymphoproliferative Syndrome (ALPS)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "D89.82"
+          ],
+          "snomed": [
+            "702444009"
+          ],
+          "omim": [
+            "601859"
+          ],
+          "orpha": [
+            "3261"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Whipple's Disease",
+      "details": {
+        "normalized_text": "Whipple's Disease",
+        "position": 6,
+        "medical_codes": {
+          "icd10": [
+            "K90.81"
+          ],
+          "snomed": [
+            "41545003"
+          ],
+          "omim": [],
+          "orpha": [
+            "3452"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Congenital Lymphatic Dysplasia",
+      "details": {
+        "normalized_text": "Congenital Lymphatic Dysplasia",
+        "position": 7,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Chronic Granulomatous Disease (CGD)",
+      "details": {
+        "normalized_text": "Chronic Granulomatous Disease (CGD)",
+        "position": 8,
+        "medical_codes": {
+          "icd10": [
+            "D71"
+          ],
+          "snomed": [
+            "387759001"
+          ],
+          "omim": [],
+          "orpha": [
+            "379"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hypogammaglobulinemia",
+      "details": {
+        "normalized_text": "Hypogammaglobulinemia",
+        "position": 9,
+        "medical_codes": {
+          "icd10": [
+            "D80.1"
+          ],
+          "snomed": [
+            "119250001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Systemic Mastocytosis",
+      "details": {
+        "normalized_text": "Systemic Mastocytosis",
+        "position": 10,
+        "medical_codes": {
+          "icd10": [
+            "D47.02"
+          ],
+          "snomed": [
+            "397016004"
+          ],
+          "omim": [
+            "154800"
+          ],
+          "orpha": [
+            "2467"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9107822775840759",
+      "matched_gdx": {
+        "Rare Lymphatic Malformation": {
+          "name": "Rare Lymphatic Malformation",
+          "normalized_text": "Rare Lymphatic Malformation",
+          "severity": "S6",
+          "medical_codes": {
+            "icd10": [
+              "Q82.8"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Lymphatic Malformation": {
+          "normalized_text": "Lymphatic Malformation",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "234095009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Rare Lymphatic Malformation": {
+            "name": "Rare Lymphatic Malformation",
+            "normalized_text": "Rare Lymphatic Malformation",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "Q82.8"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['Q82.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.911 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9107822775840759
+            },
+            {
+              "position": 2,
+              "score": 0.4680269658565521
+            },
+            {
+              "position": 3,
+              "score": 0.34339600801467896
+            },
+            {
+              "position": 4,
+              "score": 0.6304704546928406
+            },
+            {
+              "position": 5,
+              "score": 0.44945067167282104
+            },
+            {
+              "position": 6,
+              "score": 0.3237048387527466
+            },
+            {
+              "position": 7,
+              "score": 0.8127776384353638
+            },
+            {
+              "position": 8,
+              "score": 0.3542250990867615
+            },
+            {
+              "position": 9,
+              "score": 0.32098668813705444
+            },
+            {
+              "position": 10,
+              "score": 0.38518840074539185
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9107822775840759
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "T235",
+  "gdx_details": [
+    {
+      "name": "Mandibular fracture",
+      "details": {
+        "name": "Mandibular fracture",
+        "normalized_text": "Mandibular Fractures",
+        "severity": "S5",
+        "medical_codes": {
+          "icd10": [
+            "S02.6"
+          ],
+          "snomed": [
+            "263172003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Osteonecrosis",
+      "details": {
+        "name": "Osteonecrosis",
+        "normalized_text": "Bone necrosis",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "M87.9"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Radiation-Induced Mucositis",
+      "details": {
+        "normalized_text": "Radiation-Induced Mucositis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "109257007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thrombocytopenia",
+      "details": {
+        "normalized_text": "Thrombocytopenia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D69.6"
+          ],
+          "snomed": [
+            "302215000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Oral Candidiasis",
+      "details": {
+        "normalized_text": "Oral Candidiasis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "B37.0"
+          ],
+          "snomed": [
+            "79740000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Radiodermatitis",
+      "details": {
+        "normalized_text": "Radiodermatitis",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "L58.9"
+          ],
+          "snomed": [
+            "49084001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Vitamin K Deficiency",
+      "details": {
+        "normalized_text": "Vitamin K Deficiency",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "E56.1"
+          ],
+          "snomed": [
+            "52675005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Osteonecrosis": {
+          "name": "Osteonecrosis",
+          "normalized_text": "Bone necrosis",
+          "severity": "S6",
+          "medical_codes": {
+            "icd10": [
+              "M87.9"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Radiation-Induced Mucositis": {
+          "normalized_text": "Radiation-Induced Mucositis",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "109257007"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Mandibular fracture": {
+            "name": "Mandibular fracture",
+            "normalized_text": "Mandibular Fractures",
+            "severity": "S5",
+            "medical_codes": {
+              "icd10": [
+                "S02.6"
+              ],
+              "snomed": [
+                "263172003"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['263172003'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['S02.6']"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.317) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.29309380054473877
+            },
+            {
+              "position": 2,
+              "score": 0.2929719090461731
+            },
+            {
+              "position": 3,
+              "score": 0.31723690032958984
+            },
+            {
+              "position": 4,
+              "score": 0.13558244705200195
+            },
+            {
+              "position": 5,
+              "score": 0.1999548226594925
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.31723690032958984
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Osteonecrosis": {
+            "name": "Osteonecrosis",
+            "normalized_text": "Bone necrosis",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "M87.9"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['M87.9']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.342 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.31028449535369873
+            },
+            {
+              "position": 2,
+              "score": 0.3415680527687073
+            },
+            {
+              "position": 3,
+              "score": 0.26615193486213684
+            },
+            {
+              "position": 4,
+              "score": 0.3065425753593445
+            },
+            {
+              "position": 5,
+              "score": 0.2616395056247711
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.3415680527687073
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "T34",
+  "gdx_details": [
+    {
+      "name": "Shoulder lesion",
+      "details": {
+        "name": "Shoulder lesion",
+        "normalized_text": "Shoulder lesion",
+        "severity": "S3",
+        "medical_codes": {
+          "icd10": [
+            "M75.9"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Lymphoproliferative process",
+      "details": {
+        "name": "Lymphoproliferative process",
+        "normalized_text": "Lymphoproliferative process",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "D47.9"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Multiple Myeloma",
+      "details": {
+        "normalized_text": "Multiple Myeloma",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "NEO065",
+            "C90.0",
+            "M9732/3"
+          ],
+          "snomed": [
+            "109989006"
+          ],
+          "omim": [
+            "254500"
+          ],
+          "orpha": [
+            "29073"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bone Metastases from an Unknown Primary Cancer",
+      "details": {
+        "normalized_text": "Bone Metastases from an Unknown Primary Cancer",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "C79.5",
+            "C79.51"
+          ],
+          "snomed": [
+            "94222008",
+            "255052006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Primary Bone Tumor (e.g., Osteosarcoma or Chondrosarcoma)",
+      "details": {
+        "normalized_text": "Primary Bone Tumor (e.g., Osteosarcoma or Chondrosarcoma)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M9180/3",
+            "M9220/3"
+          ],
+          "snomed": [
+            "1163405004",
+            "443520009"
+          ],
+          "omim": [
+            "215300"
+          ],
+          "orpha": [
+            "668",
+            "55880"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lymphoma with Bone Involvement",
+      "details": {
+        "normalized_text": "Lymphoma with Bone Involvement",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Focal Hepatic Lesion (e.g., Hepatic Adenoma or Metastasis)",
+      "details": {
+        "normalized_text": "Focal Hepatic Lesion (e.g., Hepatic Adenoma or Metastasis)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "M8170/0"
+          ],
+          "snomed": [
+            "300331000",
+            "78058005"
+          ],
+          "omim": [],
+          "orpha": [
+            "54272"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Shoulder lesion": {
+          "name": "Shoulder lesion",
+          "normalized_text": "Shoulder lesion",
+          "severity": "S3",
+          "medical_codes": {
+            "icd10": [
+              "M75.9"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Bone Metastases from an Unknown Primary Cancer": {
+          "normalized_text": "Bone Metastases from an Unknown Primary Cancer",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "C79.5",
+              "C79.51"
+            ],
+            "snomed": [
+              "94222008",
+              "255052006"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Shoulder lesion": {
+            "name": "Shoulder lesion",
+            "normalized_text": "Shoulder lesion",
+            "severity": "S3",
+            "medical_codes": {
+              "icd10": [
+                "M75.9"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['M75.9']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.372 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.2793155312538147
+            },
+            {
+              "position": 2,
+              "score": 0.20806272327899933
+            },
+            {
+              "position": 3,
+              "score": 0.25307759642601013
+            },
+            {
+              "position": 4,
+              "score": 0.2376636266708374
+            },
+            {
+              "position": 5,
+              "score": 0.37206023931503296
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.37206023931503296
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Lymphoproliferative process": {
+            "name": "Lymphoproliferative process",
+            "normalized_text": "Lymphoproliferative process",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "D47.9"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D47.9']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P4. BERT score 0.486 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.43338263034820557
+            },
+            {
+              "position": 2,
+              "score": 0.13484947383403778
+            },
+            {
+              "position": 3,
+              "score": 0.29946887493133545
+            },
+            {
+              "position": 4,
+              "score": 0.48645925521850586
+            },
+            {
+              "position": 5,
+              "score": 0.19627735018730164
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.48645925521850586
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}

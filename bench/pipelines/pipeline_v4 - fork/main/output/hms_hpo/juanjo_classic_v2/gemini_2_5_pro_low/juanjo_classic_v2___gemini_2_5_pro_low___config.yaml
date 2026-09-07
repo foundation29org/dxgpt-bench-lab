@@ -1,0 +1,32 @@
+DATASET_PATH: bench/datasets/hms_hpo.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gemini-2.5-pro
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: 'HMS HPO 88 casos con gemini-2.5-pro. Completar tabla comparativa
+  modo avanzado. gpt-4o: R@1=34.1%, gpt-5.4-mini: R@1=53.4%.'
+EXPERIMENT_NAME: fase2-hms-88-gemini25pro
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-04-17T21:19:33.784013'

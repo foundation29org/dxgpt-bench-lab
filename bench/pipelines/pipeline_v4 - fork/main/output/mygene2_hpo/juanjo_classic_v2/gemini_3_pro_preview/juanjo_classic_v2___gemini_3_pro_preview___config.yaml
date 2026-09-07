@@ -1,0 +1,31 @@
+DATASET_PATH: bench/datasets/mygene2_hpo.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gemini-3-pro-preview
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: MyGene2 HPO 146 casos con gemini-3-pro-preview. Validacion
+  calidad vs gemini-2.5-pro (R@1=55.5%). Dataset Harvard con diagnostico genetico
+  confirmado — el mas discriminante.
+EXPERIMENT_NAME: mygene2_hpo-juanjo_classic_v2-gemini_3_pro_preview_low
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-04-20T15:45:32.790469'

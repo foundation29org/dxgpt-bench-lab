@@ -1,0 +1,7432 @@
+{
+  "case_id": "MME_000",
+  "gdx_details": [
+    {
+      "name": "Mandibulofacial dysostosis-microcephaly syndrome",
+      "details": {
+        "name": "Mandibulofacial dysostosis-microcephaly syndrome",
+        "normalized_text": "Mandibulofacial dysostosis-microcephaly syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "610536"
+          ],
+          "orpha": [
+            "79113"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "CHARGE Syndrome",
+      "details": {
+        "normalized_text": "CHARGE Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "47535005"
+          ],
+          "omim": [
+            "214800"
+          ],
+          "orpha": [
+            "138"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Treacher Collins Syndrome",
+      "details": {
+        "normalized_text": "Treacher Collins Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Nager Syndrome (Acrofacial Dysostosis, Nager Type)",
+      "details": {
+        "normalized_text": "Nager Syndrome (Acrofacial Dysostosis, Nager Type)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "35520007"
+          ],
+          "omim": [
+            "154400"
+          ],
+          "orpha": [
+            "245",
+            "364574"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Chromosome 18q Deletion Syndrome",
+      "details": {
+        "normalized_text": "Chromosome 18q Deletion Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "270889005"
+          ],
+          "omim": [
+            "601808"
+          ],
+          "orpha": [
+            "1600"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Mandibulofacial dysostosis-microcephaly syndrome": {
+          "name": "Mandibulofacial dysostosis-microcephaly syndrome",
+          "normalized_text": "Mandibulofacial dysostosis-microcephaly syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "610536"
+            ],
+            "orpha": [
+              "79113"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Treacher Collins Syndrome": {
+          "normalized_text": "Treacher Collins Syndrome",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "Q75.4"
+            ],
+            "snomed": [
+              "82203000"
+            ],
+            "omim": [],
+            "orpha": [
+              "861"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Mandibulofacial dysostosis-microcephaly syndrome": {
+            "name": "Mandibulofacial dysostosis-microcephaly syndrome",
+            "normalized_text": "Mandibulofacial dysostosis-microcephaly syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "610536"
+              ],
+              "orpha": [
+                "79113"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.706 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4903257489204407
+            },
+            {
+              "position": 2,
+              "score": 0.6240442991256714
+            },
+            {
+              "position": 3,
+              "score": 0.7064068913459778
+            },
+            {
+              "position": 4,
+              "score": 0.49847328662872314
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.7064068913459778
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_001",
+  "gdx_details": [
+    {
+      "name": "Microcephaly-Capillary Malformation Syndrome",
+      "details": {
+        "name": "Microcephaly-Capillary Malformation Syndrome",
+        "normalized_text": "Microcephaly-Capillary Malformation Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "614261"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Bohring-Opitz Syndrome",
+      "details": {
+        "normalized_text": "Bohring-Opitz Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720565000"
+          ],
+          "omim": [
+            "605039"
+          ],
+          "orpha": [
+            "97297"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Microcephaly-capillary malformation syndrome (MIC-CAP)",
+      "details": {
+        "normalized_text": "Microcephaly-capillary malformation syndrome (MIC-CAP)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703369003"
+          ],
+          "omim": [
+            "614261"
+          ],
+          "orpha": [
+            "294016"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PEHO Syndrome",
+      "details": {
+        "normalized_text": "PEHO Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "442511009"
+          ],
+          "omim": [
+            "260565"
+          ],
+          "orpha": [
+            "2836"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Aicardi-Goutières Syndrome",
+      "details": {
+        "normalized_text": "Aicardi-Goutières Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E79.81"
+          ],
+          "snomed": [
+            "230312006"
+          ],
+          "omim": [
+            "225750"
+          ],
+          "orpha": [
+            "51"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "BERT_MATCH",
+      "value": "0.8811382055282593",
+      "matched_gdx": {
+        "Microcephaly-Capillary Malformation Syndrome": {
+          "name": "Microcephaly-Capillary Malformation Syndrome",
+          "normalized_text": "Microcephaly-Capillary Malformation Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "614261"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Microcephaly-capillary malformation syndrome (MIC-CAP)": {
+          "normalized_text": "Microcephaly-capillary malformation syndrome (MIC-CAP)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "703369003"
+            ],
+            "omim": [
+              "614261"
+            ],
+            "orpha": [
+              "294016"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Microcephaly-Capillary Malformation Syndrome": {
+            "name": "Microcephaly-Capillary Malformation Syndrome",
+            "normalized_text": "Microcephaly-Capillary Malformation Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "614261"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P2 (score: 0.881) was better than LLM's choice P2 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4567047357559204
+            },
+            {
+              "position": 2,
+              "score": 0.8811382055282593
+            },
+            {
+              "position": 3,
+              "score": 0.4246107339859009
+            },
+            {
+              "position": 4,
+              "score": 0.3976832330226898
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.8811382055282593
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_002",
+  "gdx_details": [
+    {
+      "name": "Perrault Syndrome 1",
+      "details": {
+        "name": "Perrault Syndrome 1",
+        "normalized_text": "Perrault Syndrome 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "233400"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Refsum Disease",
+      "details": {
+        "normalized_text": "Refsum Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "G60.1"
+          ],
+          "snomed": [
+            "25362006"
+          ],
+          "omim": [
+            "266500"
+          ],
+          "orpha": [
+            "773"
+          ]
+        }
+      }
+    },
+    {
+      "name": "NARP (Neuropathy, Ataxia, and Retinitis Pigmentosa) Syndrome",
+      "details": {
+        "normalized_text": "NARP (Neuropathy, Ataxia, and Retinitis Pigmentosa) Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237984008"
+          ],
+          "omim": [
+            "551500"
+          ],
+          "orpha": [
+            "644"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Spinocerebellar Ataxia Type 7 (SCA7)",
+      "details": {
+        "normalized_text": "Spinocerebellar Ataxia Type 7 (SCA7)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "715726000"
+          ],
+          "omim": [
+            "164500"
+          ],
+          "orpha": [
+            "94147"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Friedreich's Ataxia",
+      "details": {
+        "normalized_text": "Friedreich's Ataxia",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "G11.11"
+          ],
+          "snomed": [
+            "10394003"
+          ],
+          "omim": [
+            "229300"
+          ],
+          "orpha": [
+            "95"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Perrault Syndrome 1": {
+          "name": "Perrault Syndrome 1",
+          "normalized_text": "Perrault Syndrome 1",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "233400"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Refsum Disease": {
+          "normalized_text": "Refsum Disease",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "G60.1"
+            ],
+            "snomed": [
+              "25362006"
+            ],
+            "omim": [
+              "266500"
+            ],
+            "orpha": [
+              "773"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Perrault Syndrome 1": {
+            "name": "Perrault Syndrome 1",
+            "normalized_text": "Perrault Syndrome 1",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "233400"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.486 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.43777477741241455
+            },
+            {
+              "position": 2,
+              "score": 0.48630625009536743
+            },
+            {
+              "position": 3,
+              "score": 0.35036909580230713
+            },
+            {
+              "position": 4,
+              "score": 0.36167198419570923
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.48630625009536743
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_003",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Walker-Warburg Syndrome (WWS)",
+      "details": {
+        "normalized_text": "Walker-Warburg Syndrome (WWS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pontocerebellar Hypoplasia (PCH)",
+      "details": {
+        "normalized_text": "Pontocerebellar Hypoplasia (PCH)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45163000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Joubert Syndrome and Related Disorders (JSRD)",
+      "details": {
+        "normalized_text": "Joubert Syndrome and Related Disorders (JSRD)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "140874"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Baraitser-Winter Cerebrofrontofacial Syndrome (BWCFFS)",
+      "details": {
+        "normalized_text": "Baraitser-Winter Cerebrofrontofacial Syndrome (BWCFFS)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1258972007"
+          ],
+          "omim": [],
+          "orpha": [
+            "2995"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome and Related Disorders (JSRD)": {
+          "normalized_text": "Joubert Syndrome and Related Disorders (JSRD)",
+          "position": 3,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "140874"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.540 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4382774829864502
+            },
+            {
+              "position": 2,
+              "score": 0.4770927429199219
+            },
+            {
+              "position": 3,
+              "score": 0.46611595153808594
+            },
+            {
+              "position": 4,
+              "score": 0.5400698184967041
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.5400698184967041
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_004",
+  "gdx_details": [
+    {
+      "name": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+      "details": {
+        "name": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+        "normalized_text": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "616007"
+          ],
+          "orpha": [
+            "436174"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cockayne Syndrome",
+      "details": {
+        "normalized_text": "Cockayne Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "21086008"
+          ],
+          "omim": [],
+          "orpha": [
+            "191"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kniest Dysplasia",
+      "details": {
+        "normalized_text": "Kniest Dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "53974002"
+          ],
+          "omim": [
+            "156550"
+          ],
+          "orpha": [
+            "485"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Laron Syndrome",
+      "details": {
+        "normalized_text": "Laron Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E34.321"
+          ],
+          "snomed": [
+            "38196001"
+          ],
+          "omim": [
+            "262500"
+          ],
+          "orpha": [
+            "633"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3-M Syndrome",
+      "details": {
+        "normalized_text": "3-M Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702342007"
+          ],
+          "omim": [
+            "273750"
+          ],
+          "orpha": [
+            "2616"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome": {
+          "name": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+          "normalized_text": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "616007"
+            ],
+            "orpha": [
+              "436174"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cockayne Syndrome": {
+          "normalized_text": "Cockayne Syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "Q87.19"
+            ],
+            "snomed": [
+              "21086008"
+            ],
+            "omim": [],
+            "orpha": [
+              "191"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome": {
+            "name": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+            "normalized_text": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "616007"
+              ],
+              "orpha": [
+                "436174"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.594 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.463582307100296
+            },
+            {
+              "position": 2,
+              "score": 0.5943847298622131
+            },
+            {
+              "position": 3,
+              "score": 0.5657645463943481
+            },
+            {
+              "position": 4,
+              "score": 0.4844159781932831
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5943847298622131
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_005",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert Syndrome",
+      "details": {
+        "normalized_text": "Joubert Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dandy-Walker Malformation",
+      "details": {
+        "normalized_text": "Dandy-Walker Malformation",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "217"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Walker-Warburg Syndrome",
+      "details": {
+        "normalized_text": "Walker-Warburg Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome": {
+          "normalized_text": "Joubert Syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "253175003"
+            ],
+            "omim": [
+              "213300"
+            ],
+            "orpha": [
+              "475"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.558 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.3662952184677124
+            },
+            {
+              "position": 3,
+              "score": 0.4350529909133911
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5581815242767334
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_006",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert Syndrome and Related Disorders (JSRD)",
+      "details": {
+        "normalized_text": "Joubert Syndrome and Related Disorders (JSRD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "140874"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Walker-Warburg Syndrome (WWS)",
+      "details": {
+        "normalized_text": "Walker-Warburg Syndrome (WWS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dandy-Walker Malformation",
+      "details": {
+        "normalized_text": "Dandy-Walker Malformation",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "217"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome and Related Disorders (JSRD)": {
+          "normalized_text": "Joubert Syndrome and Related Disorders (JSRD)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "140874"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.466 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.46611595153808594
+            },
+            {
+              "position": 2,
+              "score": 0.4382774829864502
+            },
+            {
+              "position": 3,
+              "score": 0.3662952184677124
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.46611595153808594
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_007",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert Syndrome",
+      "details": {
+        "normalized_text": "Joubert Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Arima Syndrome (Joubert Syndrome Type 10)",
+      "details": {
+        "normalized_text": "Arima Syndrome (Joubert Syndrome Type 10)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721862000"
+          ],
+          "omim": [
+            "243910"
+          ],
+          "orpha": [
+            "2318"
+          ]
+        }
+      }
+    },
+    {
+      "name": "COACH Syndrome",
+      "details": {
+        "normalized_text": "COACH Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002"
+          ],
+          "omim": [
+            "216360"
+          ],
+          "orpha": [
+            "1454"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome": {
+          "normalized_text": "Joubert Syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "253175003"
+            ],
+            "omim": [
+              "213300"
+            ],
+            "orpha": [
+              "475"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.559 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.5587262511253357
+            },
+            {
+              "position": 3,
+              "score": 0.48903173208236694
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5587262511253357
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_008",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert Syndrome",
+      "details": {
+        "normalized_text": "Joubert Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      }
+    },
+    {
+      "name": "COACH Syndrome",
+      "details": {
+        "normalized_text": "COACH Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002"
+          ],
+          "omim": [
+            "216360"
+          ],
+          "orpha": [
+            "1454"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Walker-Warburg Syndrome",
+      "details": {
+        "normalized_text": "Walker-Warburg Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pontocerebellar Hypoplasia (PCH)",
+      "details": {
+        "normalized_text": "Pontocerebellar Hypoplasia (PCH)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45163000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome": {
+          "normalized_text": "Joubert Syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "253175003"
+            ],
+            "omim": [
+              "213300"
+            ],
+            "orpha": [
+              "475"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.558 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.48903173208236694
+            },
+            {
+              "position": 3,
+              "score": 0.4350529909133911
+            },
+            {
+              "position": 4,
+              "score": 0.4770927429199219
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5581815242767334
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_009",
+  "gdx_details": [
+    {
+      "name": "Poretti-Boltshauser Syndrome",
+      "details": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Joubert Syndrome",
+      "details": {
+        "normalized_text": "Joubert Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Congenital Disorder of Glycosylation (CDG)",
+      "details": {
+        "normalized_text": "Congenital Disorder of Glycosylation (CDG)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009"
+          ],
+          "omim": [],
+          "orpha": [
+            "137"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Walker-Warburg Syndrome (or related Dystroglycanopathy)",
+      "details": {
+        "normalized_text": "Walker-Warburg Syndrome (or related Dystroglycanopathy)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899",
+            "371024"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Poretti-Boltshauser Syndrome": {
+          "name": "Poretti-Boltshauser Syndrome",
+          "normalized_text": "Poretti-Boltshauser Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615960"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Joubert Syndrome": {
+          "normalized_text": "Joubert Syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "253175003"
+            ],
+            "omim": [
+              "213300"
+            ],
+            "orpha": [
+              "475"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Poretti-Boltshauser Syndrome": {
+            "name": "Poretti-Boltshauser Syndrome",
+            "normalized_text": "Poretti-Boltshauser Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615960"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.558 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.27410924434661865
+            },
+            {
+              "position": 3,
+              "score": 0.40880584716796875
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5581815242767334
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_010",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DiGeorge Syndrome (22q11.2 Deletion Syndrome)",
+      "details": {
+        "normalized_text": "DiGeorge Syndrome (22q11.2 Deletion Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D82.1",
+            "Q93.81"
+          ],
+          "snomed": [
+            "767263007"
+          ],
+          "omim": [
+            "188400",
+            "192430"
+          ],
+          "orpha": [
+            "567"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jarcho-Levin Syndrome (Spondylocostal Dysostosis)",
+      "details": {
+        "normalized_text": "Jarcho-Levin Syndrome (Spondylocostal Dysostosis)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.48698684573173523
+            },
+            {
+              "position": 3,
+              "score": 0.6102944016456604
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_011",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "22q11.2 Deletion Syndrome (Velocardiofacial Syndrome)",
+      "details": {
+        "normalized_text": "22q11.2 Deletion Syndrome (Velocardiofacial Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Spondylocostal Dysostosis (SCDO)",
+      "details": {
+        "normalized_text": "Spondylocostal Dysostosis (SCDO)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.5881767272949219
+            },
+            {
+              "position": 3,
+              "score": 0.5843249559402466
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_012",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Aicardi-Goutières Syndrome (AGS)",
+      "details": {
+        "normalized_text": "Aicardi-Goutières Syndrome (AGS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E79.81"
+          ],
+          "snomed": [
+            "230312006"
+          ],
+          "omim": [
+            "225750"
+          ],
+          "orpha": [
+            "51"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.4335309863090515
+            },
+            {
+              "position": 3,
+              "score": 0.4473421573638916
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_013",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Multiple Pterygium Syndrome (Escobar Syndrome)",
+      "details": {
+        "normalized_text": "Multiple Pterygium Syndrome (Escobar Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "205819008",
+            "80773006"
+          ],
+          "omim": [
+            "265000"
+          ],
+          "orpha": [
+            "294060",
+            "2990"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Noonan Syndrome",
+      "details": {
+        "normalized_text": "Noonan Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "205824006"
+          ],
+          "omim": [
+            "163950"
+          ],
+          "orpha": [
+            "648"
+          ]
+        }
+      }
+    },
+    {
+      "name": "CHARGE Syndrome",
+      "details": {
+        "normalized_text": "CHARGE Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "47535005"
+          ],
+          "omim": [
+            "214800"
+          ],
+          "orpha": [
+            "138"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Multiple Pterygium Syndrome (Escobar Syndrome)": {
+          "normalized_text": "Multiple Pterygium Syndrome (Escobar Syndrome)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "205819008",
+              "80773006"
+            ],
+            "omim": [
+              "265000"
+            ],
+            "orpha": [
+              "294060",
+              "2990"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.546 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4785659909248352
+            },
+            {
+              "position": 2,
+              "score": 0.4638327360153198
+            },
+            {
+              "position": 3,
+              "score": 0.5456600189208984
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5456600189208984
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_014",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Velocardiofacial Syndrome (22q11.2 Deletion Syndrome)",
+      "details": {
+        "normalized_text": "Velocardiofacial Syndrome (22q11.2 Deletion Syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4335309863090515
+            },
+            {
+              "position": 2,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 3,
+              "score": 0.6074259281158447
+            },
+            {
+              "position": 4,
+              "score": 0.932741641998291
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_015",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+      "details": {
+        "normalized_text": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81",
+            "D82.1"
+          ],
+          "snomed": [
+            "767263007"
+          ],
+          "omim": [
+            "192430",
+            "188400"
+          ],
+          "orpha": [
+            "567"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.48047101497650146
+            },
+            {
+              "position": 3,
+              "score": 0.4335309863090515
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_016",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    },
+    {
+      "name": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+      "details": {
+        "normalized_text": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81",
+            "D82.1"
+          ],
+          "snomed": [
+            "767263007"
+          ],
+          "omim": [
+            "192430",
+            "188400"
+          ],
+          "orpha": [
+            "567"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 3,
+              "score": 0.4335309863090515
+            },
+            {
+              "position": 4,
+              "score": 0.48047101497650146
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_017",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 3,
+              "score": 0.4335309863090515
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_018",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Spondylocostal Dysostosis (SCDO)",
+      "details": {
+        "normalized_text": "Spondylocostal Dysostosis (SCDO)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jarcho-Levin Syndrome",
+      "details": {
+        "normalized_text": "Jarcho-Levin Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.5843249559402466
+            },
+            {
+              "position": 3,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 4,
+              "score": 0.5597617626190186
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_019",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.4335309863090515
+            },
+            {
+              "position": 3,
+              "score": 0.5145113468170166
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_020",
+  "gdx_details": [
+    {
+      "name": "Cerebrocostomandibular syndrome",
+      "details": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cerebrocostomandibular Syndrome (CCMS)",
+      "details": {
+        "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Campomelic Dysplasia",
+      "details": {
+        "normalized_text": "Campomelic Dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stickler Syndrome",
+      "details": {
+        "normalized_text": "Stickler Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.932741641998291",
+      "matched_gdx": {
+        "Cerebrocostomandibular syndrome": {
+          "name": "Cerebrocostomandibular syndrome",
+          "normalized_text": "Cerebrocostomandibular syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cerebrocostomandibular Syndrome (CCMS)": {
+          "normalized_text": "Cerebrocostomandibular Syndrome (CCMS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "51780007"
+            ],
+            "omim": [
+              "117650"
+            ],
+            "orpha": [
+              "1393"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebrocostomandibular syndrome": {
+            "name": "Cerebrocostomandibular syndrome",
+            "normalized_text": "Cerebrocostomandibular syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "117650"
+              ],
+              "orpha": [
+                "1393"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.933 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.932741641998291
+            },
+            {
+              "position": 2,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 3,
+              "score": 0.4335309863090515
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.932741641998291
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_021",
+  "gdx_details": [
+    {
+      "name": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+      "details": {
+        "name": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+        "normalized_text": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "245570"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Mowat-Wilson Syndrome",
+      "details": {
+        "normalized_text": "Mowat-Wilson Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703535000"
+          ],
+          "omim": [
+            "235730"
+          ],
+          "orpha": [
+            "2152"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pitt-Hopkins Syndrome",
+      "details": {
+        "normalized_text": "Pitt-Hopkins Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702344008"
+          ],
+          "omim": [
+            "610954"
+          ],
+          "orpha": [
+            "2896"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wolf-Hirschhorn Syndrome",
+      "details": {
+        "normalized_text": "Wolf-Hirschhorn Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.3"
+          ],
+          "snomed": [
+            "718226002"
+          ],
+          "omim": [
+            "194190"
+          ],
+          "orpha": [
+            "280"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bohring-Opitz Syndrome",
+      "details": {
+        "normalized_text": "Bohring-Opitz Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720565000"
+          ],
+          "omim": [
+            "605039"
+          ],
+          "orpha": [
+            "97297"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development": {
+          "name": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+          "normalized_text": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "245570"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Pitt-Hopkins Syndrome": {
+          "normalized_text": "Pitt-Hopkins Syndrome",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "702344008"
+            ],
+            "omim": [
+              "610954"
+            ],
+            "orpha": [
+              "2896"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development": {
+            "name": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+            "normalized_text": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "245570"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.505 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3704769015312195
+            },
+            {
+              "position": 2,
+              "score": 0.3831225633621216
+            },
+            {
+              "position": 3,
+              "score": 0.5047034621238708
+            },
+            {
+              "position": 4,
+              "score": 0.480575829744339
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5047034621238708
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_022",
+  "gdx_details": [
+    {
+      "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+      "details": {
+        "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "250220"
+          ],
+          "orpha": [
+            "93317"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Metatropic Dysplasia",
+      "details": {
+        "normalized_text": "Metatropic Dysplasia",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "22764001"
+          ],
+          "omim": [
+            "156530"
+          ],
+          "orpha": [
+            "2635"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Spondyloepimetaphyseal Dysplasia, Strudwick Type",
+      "details": {
+        "normalized_text": "Spondyloepimetaphyseal Dysplasia, Strudwick Type",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254062008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thanatophoric Dysplasia",
+      "details": {
+        "normalized_text": "Thanatophoric Dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q77.1"
+          ],
+          "snomed": [
+            "29352008"
+          ],
+          "omim": [],
+          "orpha": [
+            "2655"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kniest Dysplasia",
+      "details": {
+        "normalized_text": "Kniest Dysplasia",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "53974002"
+          ],
+          "omim": [
+            "156550"
+          ],
+          "orpha": [
+            "485"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Spondylometaphyseal dysplasia, Sedaghatian type": {
+          "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+          "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "250220"
+            ],
+            "orpha": [
+              "93317"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Metatropic Dysplasia": {
+          "normalized_text": "Metatropic Dysplasia",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "22764001"
+            ],
+            "omim": [
+              "156530"
+            ],
+            "orpha": [
+              "2635"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Spondylometaphyseal dysplasia, Sedaghatian type": {
+            "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+            "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "250220"
+              ],
+              "orpha": [
+                "93317"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM choice P1 was better than BERT's P2 (score: 0.812).",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5745469927787781
+            },
+            {
+              "position": 2,
+              "score": 0.8123522400856018
+            },
+            {
+              "position": 3,
+              "score": 0.44359493255615234
+            },
+            {
+              "position": 4,
+              "score": 0.5635800361633301
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.8123522400856018
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_023",
+  "gdx_details": [
+    {
+      "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+      "details": {
+        "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "250220"
+          ],
+          "orpha": [
+            "93317"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Spondylometaphyseal Dysplasia, Sedaghatian Type",
+      "details": {
+        "normalized_text": "Spondylometaphyseal Dysplasia, Sedaghatian Type",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "784006008"
+          ],
+          "omim": [],
+          "orpha": [
+            "254"
+          ]
+        }
+      }
+    },
+    {
+      "name": "RFT1-CDG (Congenital Disorder of Glycosylation, Type In)",
+      "details": {
+        "normalized_text": "RFT1-CDG (Congenital Disorder of Glycosylation, Type In)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "733084000"
+          ],
+          "omim": [
+            "612015"
+          ],
+          "orpha": [
+            "244310"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zellweger Spectrum Disorder",
+      "details": {
+        "normalized_text": "Zellweger Spectrum Disorder",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "1.0",
+      "matched_gdx": {
+        "Spondylometaphyseal dysplasia, Sedaghatian type": {
+          "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+          "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "250220"
+            ],
+            "orpha": [
+              "93317"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Spondylometaphyseal Dysplasia, Sedaghatian Type": {
+          "normalized_text": "Spondylometaphyseal Dysplasia, Sedaghatian Type",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "784006008"
+            ],
+            "omim": [],
+            "orpha": [
+              "254"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Spondylometaphyseal dysplasia, Sedaghatian type": {
+            "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+            "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "250220"
+              ],
+              "orpha": [
+                "93317"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0
+            },
+            {
+              "position": 2,
+              "score": 0.3381692171096802
+            },
+            {
+              "position": 3,
+              "score": 0.39190149307250977
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_024",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "NGLY1 Deficiency",
+      "details": {
+        "normalized_text": "NGLY1 Deficiency",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Allgrove Syndrome (Triple A Syndrome)",
+      "details": {
+        "normalized_text": "Allgrove Syndrome (Triple A Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Congenital Disorder of Glycosylation, Type Ia (PMM2-CDG)",
+      "details": {
+        "normalized_text": "Congenital Disorder of Glycosylation, Type Ia (PMM2-CDG)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "277893002"
+          ],
+          "omim": [
+            "212065"
+          ],
+          "orpha": [
+            "79318"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial DNA Depletion Syndrome (e.g., POLG-related)",
+      "details": {
+        "normalized_text": "Mitochondrial DNA Depletion Syndrome (e.g., POLG-related)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "NGLY1 Deficiency": {
+          "normalized_text": "NGLY1 Deficiency",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "768846004"
+            ],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.531 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5018230676651001
+            },
+            {
+              "position": 2,
+              "score": 0.5310120582580566
+            },
+            {
+              "position": 3,
+              "score": 0.3297065496444702
+            },
+            {
+              "position": 4,
+              "score": 0.40248215198516846
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5310120582580566
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_025",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "TRAPPC11-related disorder (Congenital disorder of intracellular trafficking)",
+      "details": {
+        "normalized_text": "TRAPPC11-related disorder (Congenital disorder of intracellular trafficking)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial Encephalomyopathy",
+      "details": {
+        "normalized_text": "Mitochondrial Encephalomyopathy",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "447292006"
+          ],
+          "omim": [
+            "516020"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Dystroglycanopathy (e.g., Muscle-Eye-Brain Disease)",
+      "details": {
+        "normalized_text": "Dystroglycanopathy (e.g., Muscle-Eye-Brain Disease)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "277950001"
+          ],
+          "omim": [],
+          "orpha": [
+            "371024",
+            "588"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Allgrove Syndrome (Triple A Syndrome)",
+      "details": {
+        "normalized_text": "Allgrove Syndrome (Triple A Syndrome)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "TRAPPC11-related disorder (Congenital disorder of intracellular trafficking)": {
+          "normalized_text": "TRAPPC11-related disorder (Congenital disorder of intracellular trafficking)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.531 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.497367799282074
+            },
+            {
+              "position": 2,
+              "score": 0.3467535972595215
+            },
+            {
+              "position": 3,
+              "score": 0.3843619227409363
+            },
+            {
+              "position": 4,
+              "score": 0.5310120582580566
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.5310120582580566
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_026",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)",
+      "details": {
+        "normalized_text": "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "277893002"
+          ],
+          "omim": [
+            "212065"
+          ],
+          "orpha": [
+            "79318"
+          ]
+        }
+      }
+    },
+    {
+      "name": "FARS2-related Disease (Combined Oxidative Phosphorylation Deficiency 14)",
+      "details": {
+        "normalized_text": "FARS2-related Disease (Combined Oxidative Phosphorylation Deficiency 14)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Alpers-Huttenlocher Syndrome (POLG1-related)",
+      "details": {
+        "normalized_text": "Alpers-Huttenlocher Syndrome (POLG1-related)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G31.81"
+          ],
+          "snomed": [
+            "20415001"
+          ],
+          "omim": [
+            "203700",
+            "174763"
+          ],
+          "orpha": [
+            "726"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Alpers-Huttenlocher Syndrome (POLG1-related)": {
+          "normalized_text": "Alpers-Huttenlocher Syndrome (POLG1-related)",
+          "position": 3,
+          "medical_codes": {
+            "icd10": [
+              "G31.81"
+            ],
+            "snomed": [
+              "20415001"
+            ],
+            "omim": [
+              "203700",
+              "174763"
+            ],
+            "orpha": [
+              "726"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.443 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3241617679595947
+            },
+            {
+              "position": 2,
+              "score": 0.44299745559692383
+            },
+            {
+              "position": 3,
+              "score": 0.4337966740131378
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.44299745559692383
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_027",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Zellweger Syndrome",
+      "details": {
+        "normalized_text": "Zellweger Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E71.510"
+          ],
+          "snomed": [
+            "88469006"
+          ],
+          "omim": [
+            "214100"
+          ],
+          "orpha": [
+            "912"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)",
+      "details": {
+        "normalized_text": "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "277893002"
+          ],
+          "omim": [
+            "212065"
+          ],
+          "orpha": [
+            "79318"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leigh Syndrome",
+      "details": {
+        "normalized_text": "Leigh Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G31.82"
+          ],
+          "snomed": [
+            "29570005"
+          ],
+          "omim": [],
+          "orpha": [
+            "506"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)": {
+          "normalized_text": "PMM2-CDG (Congenital Disorder of Glycosylation, Type Ia)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "277893002"
+            ],
+            "omim": [
+              "212065"
+            ],
+            "orpha": [
+              "79318"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.523 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5231619477272034
+            },
+            {
+              "position": 2,
+              "score": 0.3241617679595947
+            },
+            {
+              "position": 3,
+              "score": 0.4739936590194702
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5231619477272034
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_028",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Zellweger Spectrum Disorder",
+      "details": {
+        "normalized_text": "Zellweger Spectrum Disorder",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Congenital Disorder of Glycosylation (CDG)",
+      "details": {
+        "normalized_text": "Congenital Disorder of Glycosylation (CDG)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009"
+          ],
+          "omim": [],
+          "orpha": [
+            "137"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial Hepatocerebral Depletion Syndrome",
+      "details": {
+        "normalized_text": "Mitochondrial Hepatocerebral Depletion Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Citrin Deficiency (Citullinemia Type II)",
+      "details": {
+        "normalized_text": "Citrin Deficiency (Citullinemia Type II)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "429735007"
+          ],
+          "omim": [],
+          "orpha": [
+            "247582"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Congenital Disorder of Glycosylation (CDG)": {
+          "normalized_text": "Congenital Disorder of Glycosylation (CDG)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "238049009"
+            ],
+            "omim": [],
+            "orpha": [
+              "137"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.561 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5390343070030212
+            },
+            {
+              "position": 2,
+              "score": 0.4224669337272644
+            },
+            {
+              "position": 3,
+              "score": 0.5608462691307068
+            },
+            {
+              "position": 4,
+              "score": 0.41914990544319153
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5608462691307068
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_029",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Congenital Disorder of Glycosylation (CDG), Type Ia (PMM2-CDG)",
+      "details": {
+        "normalized_text": "Congenital Disorder of Glycosylation (CDG), Type Ia (PMM2-CDG)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009",
+            "277893002"
+          ],
+          "omim": [
+            "212065"
+          ],
+          "orpha": [
+            "137",
+            "79318"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Allgrove Syndrome (Triple A Syndrome)",
+      "details": {
+        "normalized_text": "Allgrove Syndrome (Triple A Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mowat-Wilson Syndrome",
+      "details": {
+        "normalized_text": "Mowat-Wilson Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703535000"
+          ],
+          "omim": [
+            "235730"
+          ],
+          "orpha": [
+            "2152"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial DNA Depletion Syndrome",
+      "details": {
+        "normalized_text": "Mitochondrial DNA Depletion Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Congenital Disorder of Glycosylation (CDG), Type Ia (PMM2-CDG)": {
+          "normalized_text": "Congenital Disorder of Glycosylation (CDG), Type Ia (PMM2-CDG)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "238049009",
+              "277893002"
+            ],
+            "omim": [
+              "212065"
+            ],
+            "orpha": [
+              "137",
+              "79318"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.531 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.31416603922843933
+            },
+            {
+              "position": 2,
+              "score": 0.5310120582580566
+            },
+            {
+              "position": 3,
+              "score": 0.48610633611679077
+            },
+            {
+              "position": 4,
+              "score": 0.4307553172111511
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5310120582580566
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_030",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Allgrove Syndrome (Triple A Syndrome)",
+      "details": {
+        "normalized_text": "Allgrove Syndrome (Triple A Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cockayne Syndrome",
+      "details": {
+        "normalized_text": "Cockayne Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "21086008"
+          ],
+          "omim": [],
+          "orpha": [
+            "191"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pitt-Hopkins Syndrome",
+      "details": {
+        "normalized_text": "Pitt-Hopkins Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702344008"
+          ],
+          "omim": [
+            "610954"
+          ],
+          "orpha": [
+            "2896"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial Encephalomyopathy",
+      "details": {
+        "normalized_text": "Mitochondrial Encephalomyopathy",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "447292006"
+          ],
+          "omim": [
+            "516020"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "LLM_JUDGMENT",
+      "value": "4",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Mitochondrial Encephalomyopathy": {
+          "normalized_text": "Mitochondrial Encephalomyopathy",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "447292006"
+            ],
+            "omim": [
+              "516020"
+            ],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P4. BERT score 0.531 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5310120582580566
+            },
+            {
+              "position": 2,
+              "score": 0.41035571694374084
+            },
+            {
+              "position": 3,
+              "score": 0.4887153208255768
+            },
+            {
+              "position": 4,
+              "score": 0.3467535972595215
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5310120582580566
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_031",
+  "gdx_details": [
+    {
+      "name": "Autosomal recessive primary microcephaly",
+      "details": {
+        "name": "Autosomal recessive primary microcephaly",
+        "normalized_text": "Autosomal recessive primary microcephaly",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "604317"
+          ],
+          "orpha": [
+            "2512"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Rett Syndrome",
+      "details": {
+        "normalized_text": "Rett Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "F84.2"
+          ],
+          "snomed": [
+            "68618008"
+          ],
+          "omim": [
+            "312750"
+          ],
+          "orpha": [
+            "778"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Angelman Syndrome",
+      "details": {
+        "normalized_text": "Angelman Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q93.51"
+          ],
+          "snomed": [
+            "76880004"
+          ],
+          "omim": [
+            "105830"
+          ],
+          "orpha": [
+            "72"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cornelia de Lange Syndrome (CdLS)",
+      "details": {
+        "normalized_text": "Cornelia de Lange Syndrome (CdLS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "40354009"
+          ],
+          "omim": [
+            "122470"
+          ],
+          "orpha": [
+            "199"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lissencephaly",
+      "details": {
+        "normalized_text": "Lissencephaly",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q04.3"
+          ],
+          "snomed": [
+            "204036008"
+          ],
+          "omim": [],
+          "orpha": [
+            "48471"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Phelan-McDermid Syndrome (22q13 Deletion Syndrome)",
+      "details": {
+        "normalized_text": "Phelan-McDermid Syndrome (22q13 Deletion Syndrome)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "Q93.52"
+          ],
+          "snomed": [
+            "699310000"
+          ],
+          "omim": [
+            "606232"
+          ],
+          "orpha": [
+            "48652"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "LLM_JUDGMENT",
+      "value": "4",
+      "matched_gdx": {
+        "Autosomal recessive primary microcephaly": {
+          "name": "Autosomal recessive primary microcephaly",
+          "normalized_text": "Autosomal recessive primary microcephaly",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "604317"
+            ],
+            "orpha": [
+              "2512"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Lissencephaly": {
+          "normalized_text": "Lissencephaly",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [
+              "Q04.3"
+            ],
+            "snomed": [
+              "204036008"
+            ],
+            "omim": [],
+            "orpha": [
+              "48471"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Autosomal recessive primary microcephaly": {
+            "name": "Autosomal recessive primary microcephaly",
+            "normalized_text": "Autosomal recessive primary microcephaly",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "604317"
+              ],
+              "orpha": [
+                "2512"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P4. BERT score 0.509 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.46337106823921204
+            },
+            {
+              "position": 2,
+              "score": 0.5089120864868164
+            },
+            {
+              "position": 3,
+              "score": 0.3763101100921631
+            },
+            {
+              "position": 4,
+              "score": 0.5067319273948669
+            },
+            {
+              "position": 5,
+              "score": 0.47907742857933044
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5089120864868164
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_032",
+  "gdx_details": [
+    {
+      "name": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+      "details": {
+        "name": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+        "normalized_text": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "601338"
+          ],
+          "orpha": [
+            "1171"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "POLG-related disorder",
+      "details": {
+        "normalized_text": "POLG-related disorder",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Wolfram Syndrome (DIDMOAD)",
+      "details": {
+        "normalized_text": "Wolfram Syndrome (DIDMOAD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "70694009"
+          ],
+          "omim": [
+            "222300"
+          ],
+          "orpha": [
+            "3463"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Friedreich's Ataxia",
+      "details": {
+        "normalized_text": "Friedreich's Ataxia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G11.11"
+          ],
+          "snomed": [
+            "10394003"
+          ],
+          "omim": [
+            "229300"
+          ],
+          "orpha": [
+            "95"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leber's Hereditary Optic Neuropathy (LHON) 'plus'",
+      "details": {
+        "normalized_text": "Leber's Hereditary Optic Neuropathy (LHON) 'plus'",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "H47.22"
+          ],
+          "snomed": [
+            "58610003"
+          ],
+          "omim": [
+            "535000"
+          ],
+          "orpha": [
+            "104"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome": {
+          "name": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+          "normalized_text": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "601338"
+            ],
+            "orpha": [
+              "1171"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "POLG-related disorder": {
+          "normalized_text": "POLG-related disorder",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome": {
+            "name": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+            "normalized_text": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "601338"
+              ],
+              "orpha": [
+                "1171"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.564 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.389427125453949
+            },
+            {
+              "position": 2,
+              "score": 0.405601441860199
+            },
+            {
+              "position": 3,
+              "score": 0.5640617609024048
+            },
+            {
+              "position": 4,
+              "score": 0.46466460824012756
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5640617609024048
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_033",
+  "gdx_details": [
+    {
+      "name": "Shprintzen-Goldberg syndrome",
+      "details": {
+        "name": "Shprintzen-Goldberg syndrome",
+        "normalized_text": "Shprintzen-Goldberg syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "182212"
+          ],
+          "orpha": [
+            "2462"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Shprintzen-Goldberg Syndrome (SGS)",
+      "details": {
+        "normalized_text": "Shprintzen-Goldberg Syndrome (SGS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "719069008"
+          ],
+          "omim": [
+            "182212"
+          ],
+          "orpha": [
+            "2462"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Loeys-Dietz Syndrome (LDS)",
+      "details": {
+        "normalized_text": "Loeys-Dietz Syndrome (LDS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "446263001"
+          ],
+          "omim": [],
+          "orpha": [
+            "60030"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lujan-Fryns Syndrome (LFS)",
+      "details": {
+        "normalized_text": "Lujan-Fryns Syndrome (LFS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "422437002"
+          ],
+          "omim": [
+            "309520"
+          ],
+          "orpha": [
+            "776"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_MATCH",
+      "value": "0.8887670636177063",
+      "matched_gdx": {
+        "Shprintzen-Goldberg syndrome": {
+          "name": "Shprintzen-Goldberg syndrome",
+          "normalized_text": "Shprintzen-Goldberg syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "182212"
+            ],
+            "orpha": [
+              "2462"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Shprintzen-Goldberg Syndrome (SGS)": {
+          "normalized_text": "Shprintzen-Goldberg Syndrome (SGS)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "719069008"
+            ],
+            "omim": [
+              "182212"
+            ],
+            "orpha": [
+              "2462"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Shprintzen-Goldberg syndrome": {
+            "name": "Shprintzen-Goldberg syndrome",
+            "normalized_text": "Shprintzen-Goldberg syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "182212"
+              ],
+              "orpha": [
+                "2462"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.889) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8887670636177063
+            },
+            {
+              "position": 2,
+              "score": 0.5589926838874817
+            },
+            {
+              "position": 3,
+              "score": 0.5238959789276123
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8887670636177063
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_034",
+  "gdx_details": [
+    {
+      "name": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+      "details": {
+        "name": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+        "normalized_text": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "614105"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Methylmalonic aciduria and homocystinuria, cblX type",
+      "details": {
+        "normalized_text": "Methylmalonic aciduria and homocystinuria, cblX type",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E72.11"
+          ],
+          "snomed": [
+            "11282001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cobalamin C (cblC) Deficiency",
+      "details": {
+        "normalized_text": "Cobalamin C (cblC) Deficiency",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Isolated Methylmalonic Acidemia (e.g., MUT, cblA, cblB types)",
+      "details": {
+        "normalized_text": "Isolated Methylmalonic Acidemia (e.g., MUT, cblA, cblB types)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E71.120"
+          ],
+          "snomed": [
+            "42393006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": false,
+    "final_resolution": null,
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Methylmalonate Semialdehyde Dehydrogenase Deficiency": {
+            "name": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+            "normalized_text": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "614105"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.742) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6179936528205872
+            },
+            {
+              "position": 2,
+              "score": 0.47220179438591003
+            },
+            {
+              "position": 3,
+              "score": 0.7417927980422974
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.7417927980422974
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_035",
+  "gdx_details": [
+    {
+      "name": "SHORT syndrome",
+      "details": {
+        "name": "SHORT syndrome",
+        "normalized_text": "SHORT syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "269880"
+          ],
+          "orpha": [
+            "3163"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "PCYT1A-related progeroid syndrome",
+      "details": {
+        "normalized_text": "PCYT1A-related progeroid syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "139033"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Axenfeld-Rieger Syndrome",
+      "details": {
+        "normalized_text": "Axenfeld-Rieger Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q13.81"
+          ],
+          "snomed": [
+            "417604002"
+          ],
+          "omim": [],
+          "orpha": [
+            "782"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hutchinson-Gilford Progeria Syndrome",
+      "details": {
+        "normalized_text": "Hutchinson-Gilford Progeria Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E34.8"
+          ],
+          "snomed": [
+            "238870004"
+          ],
+          "omim": [
+            "176670"
+          ],
+          "orpha": [
+            "740"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "SHORT syndrome": {
+          "name": "SHORT syndrome",
+          "normalized_text": "SHORT syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "269880"
+            ],
+            "orpha": [
+              "3163"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "PCYT1A-related progeroid syndrome": {
+          "normalized_text": "PCYT1A-related progeroid syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "139033"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "SHORT syndrome": {
+            "name": "SHORT syndrome",
+            "normalized_text": "SHORT syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "269880"
+              ],
+              "orpha": [
+                "3163"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.476 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.402890682220459
+            },
+            {
+              "position": 2,
+              "score": 0.47580641508102417
+            },
+            {
+              "position": 3,
+              "score": 0.4679226279258728
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.47580641508102417
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_036",
+  "gdx_details": [
+    {
+      "name": "Beaulieu-Boycott-Innes Syndrome",
+      "details": {
+        "name": "Beaulieu-Boycott-Innes Syndrome",
+        "normalized_text": "Beaulieu-Boycott-Innes Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "613680"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+      "details": {
+        "normalized_text": "22q11.2 Deletion Syndrome (DiGeorge Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81",
+            "D82.1"
+          ],
+          "snomed": [
+            "767263007"
+          ],
+          "omim": [
+            "192430",
+            "188400"
+          ],
+          "orpha": [
+            "567"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kabuki Syndrome",
+      "details": {
+        "normalized_text": "Kabuki Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mowat-Wilson Syndrome",
+      "details": {
+        "normalized_text": "Mowat-Wilson Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703535000"
+          ],
+          "omim": [
+            "235730"
+          ],
+          "orpha": [
+            "2152"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rubinstein-Taybi Syndrome",
+      "details": {
+        "normalized_text": "Rubinstein-Taybi Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q87.2"
+          ],
+          "snomed": [
+            "45582004"
+          ],
+          "omim": [
+            "180849"
+          ],
+          "orpha": [
+            "783"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Beaulieu-Boycott-Innes Syndrome": {
+          "name": "Beaulieu-Boycott-Innes Syndrome",
+          "normalized_text": "Beaulieu-Boycott-Innes Syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "613680"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Mowat-Wilson Syndrome": {
+          "normalized_text": "Mowat-Wilson Syndrome",
+          "position": 3,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "703535000"
+            ],
+            "omim": [
+              "235730"
+            ],
+            "orpha": [
+              "2152"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Beaulieu-Boycott-Innes Syndrome": {
+            "name": "Beaulieu-Boycott-Innes Syndrome",
+            "normalized_text": "Beaulieu-Boycott-Innes Syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "613680"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.597 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.459648072719574
+            },
+            {
+              "position": 2,
+              "score": 0.5231781005859375
+            },
+            {
+              "position": 3,
+              "score": 0.35554903745651245
+            },
+            {
+              "position": 4,
+              "score": 0.5974048376083374
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.5974048376083374
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_037",
+  "gdx_details": [
+    {
+      "name": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+      "details": {
+        "name": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+        "normalized_text": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "612541"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "GATA2 Deficiency",
+      "details": {
+        "normalized_text": "GATA2 Deficiency",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "778024005"
+          ],
+          "omim": [
+            "614172"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hermansky-Pudlak Syndrome Type 2 (HPS2)",
+      "details": {
+        "normalized_text": "Hermansky-Pudlak Syndrome Type 2 (HPS2)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "664500"
+          ]
+        }
+      }
+    },
+    {
+      "name": "WHIM Syndrome",
+      "details": {
+        "normalized_text": "WHIM Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "234571003"
+          ],
+          "omim": [
+            "193670"
+          ],
+          "orpha": [
+            "51636"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Neutropenia, Severe Congenital, 4, Autosomal Recessive": {
+          "name": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+          "normalized_text": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "612541"
+            ],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Hermansky-Pudlak Syndrome Type 2 (HPS2)": {
+          "normalized_text": "Hermansky-Pudlak Syndrome Type 2 (HPS2)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "664500"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Neutropenia, Severe Congenital, 4, Autosomal Recessive": {
+            "name": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+            "normalized_text": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "612541"
+              ],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.644 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6442593336105347
+            },
+            {
+              "position": 2,
+              "score": 0.3871345520019531
+            },
+            {
+              "position": 3,
+              "score": 0.38652634620666504
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6442593336105347
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_038",
+  "gdx_details": [
+    {
+      "name": "Combined immunodeficiency-enteropathy spectrum",
+      "details": {
+        "name": "Combined immunodeficiency-enteropathy spectrum",
+        "normalized_text": "Combined immunodeficiency-enteropathy spectrum",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "243150"
+          ],
+          "orpha": [
+            "436252"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Trisomy 18 (Edwards Syndrome)",
+      "details": {
+        "normalized_text": "Trisomy 18 (Edwards Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q91.3"
+          ],
+          "snomed": [
+            "51500006"
+          ],
+          "omim": [
+            "300484"
+          ],
+          "orpha": [
+            "3380"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Beckwith-Wiedemann Syndrome (BWS)",
+      "details": {
+        "normalized_text": "Beckwith-Wiedemann Syndrome (BWS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q87.3"
+          ],
+          "snomed": [
+            "81780002"
+          ],
+          "omim": [
+            "130650"
+          ],
+          "orpha": [
+            "116"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pentalogy of Cantrell",
+      "details": {
+        "normalized_text": "Pentalogy of Cantrell",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "281587000"
+          ],
+          "omim": [
+            "313850"
+          ],
+          "orpha": [
+            "1335"
+          ]
+        }
+      }
+    },
+    {
+      "name": "OEIS Complex (Omphalocele, Exstrophy, Imperforate anus, Spinal defects)",
+      "details": {
+        "normalized_text": "OEIS Complex (Omphalocele, Exstrophy, Imperforate anus, Spinal defects)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q79.2",
+            "Q42.3"
+          ],
+          "snomed": [
+            "18735004",
+            "110407002",
+            "204712000"
+          ],
+          "omim": [
+            "258040"
+          ],
+          "orpha": [
+            "93929",
+            "660"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": false,
+    "final_resolution": null,
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Combined immunodeficiency-enteropathy spectrum": {
+            "name": "Combined immunodeficiency-enteropathy spectrum",
+            "normalized_text": "Combined immunodeficiency-enteropathy spectrum",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "243150"
+              ],
+              "orpha": [
+                "436252"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "FAILED",
+          "details": "Both BERT (best: 0.450) and LLM found no acceptable matches.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4051554203033447
+            },
+            {
+              "position": 2,
+              "score": 0.44998884201049805
+            },
+            {
+              "position": 3,
+              "score": 0.28498712182044983
+            },
+            {
+              "position": 4,
+              "score": 0.42039918899536133
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.44998884201049805
+          },
+          "llm_judgment": {
+            "position": null
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "MME_039",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "NGLY1 Deficiency",
+      "details": {
+        "normalized_text": "NGLY1 Deficiency",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mitochondrial Disease",
+      "details": {
+        "normalized_text": "Mitochondrial Disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "240096000"
+          ],
+          "omim": [],
+          "orpha": [
+            "68380"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Allgrove Syndrome (Triple A Syndrome)",
+      "details": {
+        "normalized_text": "Allgrove Syndrome (Triple A Syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Peroxisomal Biogenesis Disorder (Zellweger Spectrum)",
+      "details": {
+        "normalized_text": "Peroxisomal Biogenesis Disorder (Zellweger Spectrum)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E71.50"
+          ],
+          "snomed": [
+            "238059005"
+          ],
+          "omim": [],
+          "orpha": [
+            "68373"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "severity": "S0",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "NGLY1 Deficiency": {
+          "normalized_text": "NGLY1 Deficiency",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "768846004"
+            ],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "severity": "S0",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.531 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5018230676651001
+            },
+            {
+              "position": 2,
+              "score": 0.33531081676483154
+            },
+            {
+              "position": 3,
+              "score": 0.5310120582580566
+            },
+            {
+              "position": 4,
+              "score": 0.5219449996948242
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5310120582580566
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+DATASET_PATH: bench/datasets/all_256_clean.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: claude-opus-4-7
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: all_256_clean con claude-opus-4-7. Primera evaluación de Claude
+  en DxGPT. Competidor directo de gemini-2.5-pro (1.299) y gpt-5.4 full (1.502).
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-claude_opus_4_7_low_translated_en
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+TIMESTAMP: '2026-04-18T17:48:01.935402'

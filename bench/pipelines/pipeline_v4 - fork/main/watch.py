@@ -122,6 +122,10 @@ def scan_for_summaries(output_dir: str) -> List[Dict]:
             total_cases = global_stats.get('total_cases', 0)
             matched_cases = global_stats.get('matched_cases', 0)
             
+            # Extract judge model from configuration (if available)
+            config_data = summary_data.get('configuration', {})
+            judge_model = config_data.get('judge_model', 'unknown')
+            
             # Get emojis
             dataset_emoji = get_emoji('dataset', dataset_name)
             prompt_emoji = get_emoji('prompt', prompt_name)
@@ -136,6 +140,7 @@ def scan_for_summaries(output_dir: str) -> List[Dict]:
                 'dataset_name': dataset_name,
                 'prompt_name': prompt_name,
                 'model_name': model_name,
+                'judge_model': judge_model,
                 'timestamp': timestamp,
                 'average_position': average_position,
                 'final_score_percentage': final_score_percentage,
@@ -173,7 +178,7 @@ def create_ranking_table(results: List[Dict]) -> str:
     table_lines.append("=" * 80)
     table_lines.append("")
     table_lines.append("Legend:")
-    table_lines.append("🏆 Rank | 📊 Dataset | 📝 Prompt | 🤖 Model | 🎯 Score | 📈 Success%")
+    table_lines.append("🏆 Rank | 📊 Dataset | 📝 Prompt | 🤖 Model | ⚖️ Judge | 🎯 Score | 📈 Success%")
     table_lines.append("Average Position = Lower is Better | Success Rate = Higher is Better")
     table_lines.append("")
     table_lines.append("-" * 80)
@@ -185,13 +190,18 @@ def create_ranking_table(results: List[Dict]) -> str:
         # Format the experiment name with emojis
         experiment_display = f"{result['dataset_emoji']} {result['prompt_emoji']} {result['model_emoji']} {result['experiment_id']}"
         
+        # Format judge model (show "unknown" if not available for old runs)
+        judge_display = result.get('judge_model', 'unknown')
+        if judge_display == 'unknown':
+            judge_display = 'N/A'
+        
         # Format metrics
         avg_pos = f"{result['average_position']:.3f}"
         success_rate = f"{result['final_score_percentage']:.1f}%"
         case_info = f"({result['matched_cases']}/{result['total_cases']})"
         
         # Create row
-        row = f"{rank_emoji} │ {experiment_display:<45} │ {avg_pos:>6} │ {success_rate:>7} {case_info}"
+        row = f"{rank_emoji} │ {experiment_display:<45} │ {judge_display:<15} │ {avg_pos:>6} │ {success_rate:>7} {case_info}"
         table_lines.append(row)
     
     table_lines.append("-" * 80)
@@ -289,13 +299,14 @@ def main():
     # Combine reports
     full_report = ranking_table + detailed_breakdown
     
-    # Save to file
-    ranking_file = os.path.join(output_dir, 'ranking.txt')
+    # Save to rankingV2.txt (leaving ranking.txt untouched)
+    ranking_file = os.path.join(output_dir, 'rankingV2.txt')
     try:
         with open(ranking_file, 'w', encoding='utf-8') as f:
             f.write(full_report)
         
         print(f"✅ Ranking report saved to: {ranking_file}")
+        print(f"ℹ️  Note: ranking.txt remains unchanged")
         
         # Also display the ranking table
         print("\n" + ranking_table)

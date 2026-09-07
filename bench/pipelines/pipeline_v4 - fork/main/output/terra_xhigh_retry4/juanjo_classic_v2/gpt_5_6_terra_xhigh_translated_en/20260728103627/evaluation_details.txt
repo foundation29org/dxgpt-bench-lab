@@ -1,0 +1,1139 @@
+{
+  "case_id": "R176",
+  "gdx_details": [
+    {
+      "name": "Glutaric acidemia type I",
+      "details": {
+        "name": "Glutaric acidemia type I",
+        "normalized_text": "Glutaric aciduria, type 1",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E72.1"
+          ],
+          "snomed": [
+            "360416003"
+          ],
+          "omim": [
+            "231670"
+          ],
+          "orpha": [
+            "25"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Glutaryl-CoA dehydrogenase deficiency",
+      "details": {
+        "name": "Glutaryl-CoA dehydrogenase deficiency",
+        "normalized_text": "Glutaric aciduria, type 1",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E72.1"
+          ],
+          "snomed": [
+            "360416003"
+          ],
+          "omim": [
+            "231670"
+          ],
+          "orpha": [
+            "25"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Glutaric acidemia type II (multiple acyl-CoA dehydrogenase deficiency, MADD)",
+      "details": {
+        "normalized_text": "Glutaric acidemia type II (multiple acyl-CoA dehydrogenase deficiency, MADD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E71.313"
+          ],
+          "snomed": [
+            "22886006"
+          ],
+          "omim": [
+            "231680"
+          ],
+          "orpha": [
+            "26791"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Glutaric acidemia type I",
+      "details": {
+        "normalized_text": "Glutaric acidemia type I",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E72.3"
+          ],
+          "snomed": [
+            "360416003"
+          ],
+          "omim": [],
+          "orpha": [
+            "25"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leigh syndrome (mitochondrial encephalopathy due to respiratory-chain dysfunction)",
+      "details": {
+        "normalized_text": "Leigh syndrome (mitochondrial encephalopathy due to respiratory-chain dysfunction)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G31.82"
+          ],
+          "snomed": [
+            "29570005"
+          ],
+          "omim": [],
+          "orpha": [
+            "506"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pyruvate dehydrogenase complex deficiency",
+      "details": {
+        "normalized_text": "Pyruvate dehydrogenase complex deficiency",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E74.4"
+          ],
+          "snomed": [
+            "46683007"
+          ],
+          "omim": [
+            "312170"
+          ],
+          "orpha": [
+            "765"
+          ]
+        }
+      }
+    },
+    {
+      "name": "L-2-hydroxyglutaric aciduria",
+      "details": {
+        "normalized_text": "L-2-hydroxyglutaric aciduria",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237961001"
+          ],
+          "omim": [
+            "236792"
+          ],
+          "orpha": [
+            "79314"
+          ]
+        }
+      }
+    },
+    {
+      "name": "NARP syndrome / MT-ATP6-related mitochondrial disease",
+      "details": {
+        "normalized_text": "NARP syndrome / MT-ATP6-related mitochondrial disease",
+        "position": 6,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237984008"
+          ],
+          "omim": [
+            "551500"
+          ],
+          "orpha": [
+            "644"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "SNOMED_MATCH",
+      "value": "360416003",
+      "matched_gdx": {
+        "Glutaric acidemia type I": {
+          "name": "Glutaric acidemia type I",
+          "normalized_text": "Glutaric aciduria, type 1",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "E72.1"
+            ],
+            "snomed": [
+              "360416003"
+            ],
+            "omim": [
+              "231670"
+            ],
+            "orpha": [
+              "25"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Glutaric acidemia type I": {
+          "normalized_text": "Glutaric acidemia type I",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "E72.3"
+            ],
+            "snomed": [
+              "360416003"
+            ],
+            "omim": [],
+            "orpha": [
+              "25"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Glutaric acidemia type I": {
+            "name": "Glutaric acidemia type I",
+            "normalized_text": "Glutaric aciduria, type 1",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E72.1"
+              ],
+              "snomed": [
+                "360416003"
+              ],
+              "omim": [
+                "231670"
+              ],
+              "orpha": [
+                "25"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P2 (code: 360416003)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Glutaryl-CoA dehydrogenase deficiency": {
+            "name": "Glutaryl-CoA dehydrogenase deficiency",
+            "normalized_text": "Glutaric aciduria, type 1",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E72.1"
+              ],
+              "snomed": [
+                "360416003"
+              ],
+              "omim": [
+                "231670"
+              ],
+              "orpha": [
+                "25"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P2 (code: 360416003)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R193",
+  "gdx_details": [
+    {
+      "name": "Carnitine palmitoyltransferase I deficiency",
+      "details": {
+        "name": "Carnitine palmitoyltransferase I deficiency",
+        "normalized_text": "Carnitine palmitoyl transferase 1A deficiency",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E71.310"
+          ],
+          "snomed": [
+            "238001003"
+          ],
+          "omim": [
+            "255120"
+          ],
+          "orpha": [
+            "156"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Carnitine palmitoyl transferase 1A deficiency",
+      "details": {
+        "name": "Carnitine palmitoyl transferase 1A deficiency",
+        "normalized_text": "Carnitine palmitoyl transferase 1A deficiency",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "E71.310"
+          ],
+          "snomed": [
+            "238001003"
+          ],
+          "omim": [
+            "255120"
+          ],
+          "orpha": [
+            "156"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Zellweger spectrum disorder (severe neonatal peroxisomal biogenesis disorder)",
+      "details": {
+        "normalized_text": "Zellweger spectrum disorder (severe neonatal peroxisomal biogenesis disorder)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "D-bifunctional protein deficiency",
+      "details": {
+        "normalized_text": "D-bifunctional protein deficiency",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238068007"
+          ],
+          "omim": [
+            "261515"
+          ],
+          "orpha": [
+            "300"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Riboflavin transporter deficiency (SLC52A3-related Brown-Vialetto-Van Laere syndrome)",
+      "details": {
+        "normalized_text": "Riboflavin transporter deficiency (SLC52A3-related Brown-Vialetto-Van Laere syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "699866005"
+          ],
+          "omim": [],
+          "orpha": [
+            "97229"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple acyl-CoA dehydrogenase deficiency, severe neonatal form",
+      "details": {
+        "normalized_text": "Multiple acyl-CoA dehydrogenase deficiency, severe neonatal form",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E71.313"
+          ],
+          "snomed": [
+            "22886006"
+          ],
+          "omim": [
+            "231680"
+          ],
+          "orpha": [
+            "26791"
+          ]
+        }
+      }
+    },
+    {
+      "name": "TMEM70-related mitochondrial ATP synthase deficiency",
+      "details": {
+        "normalized_text": "TMEM70-related mitochondrial ATP synthase deficiency",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Carnitine palmitoyltransferase II deficiency, lethal neonatal form",
+      "details": {
+        "normalized_text": "Carnitine palmitoyltransferase II deficiency, lethal neonatal form",
+        "position": 6,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238002005"
+          ],
+          "omim": [],
+          "orpha": [
+            "157"
+          ]
+        }
+      }
+    },
+    {
+      "name": "SERAC1-related MEGDEL syndrome",
+      "details": {
+        "normalized_text": "SERAC1-related MEGDEL syndrome",
+        "position": 7,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "711409002"
+          ],
+          "omim": [
+            "614725"
+          ],
+          "orpha": [
+            "352328"
+          ]
+        }
+      }
+    },
+    {
+      "name": "FBXL4-related mitochondrial DNA depletion syndrome",
+      "details": {
+        "normalized_text": "FBXL4-related mitochondrial DNA depletion syndrome",
+        "position": 8,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "ICD10_SIBLING",
+      "value": "<-> E71.313)",
+      "matched_gdx": {
+        "Carnitine palmitoyltransferase I deficiency": {
+          "name": "Carnitine palmitoyltransferase I deficiency",
+          "normalized_text": "Carnitine palmitoyl transferase 1A deficiency",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "E71.310"
+            ],
+            "snomed": [
+              "238001003"
+            ],
+            "omim": [
+              "255120"
+            ],
+            "orpha": [
+              "156"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Multiple acyl-CoA dehydrogenase deficiency, severe neonatal form": {
+          "normalized_text": "Multiple acyl-CoA dehydrogenase deficiency, severe neonatal form",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [
+              "E71.313"
+            ],
+            "snomed": [
+              "22886006"
+            ],
+            "omim": [
+              "231680"
+            ],
+            "orpha": [
+              "26791"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Carnitine palmitoyltransferase I deficiency": {
+            "name": "Carnitine palmitoyltransferase I deficiency",
+            "normalized_text": "Carnitine palmitoyl transferase 1A deficiency",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E71.310"
+              ],
+              "snomed": [
+                "238001003"
+              ],
+              "omim": [
+                "255120"
+              ],
+              "orpha": [
+                "156"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['238001003'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found ICD10_SIBLING match with DDX at P4 (E71.310 <-> E71.313)"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "ICD-10 match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Carnitine palmitoyl transferase 1A deficiency": {
+            "name": "Carnitine palmitoyl transferase 1A deficiency",
+            "normalized_text": "Carnitine palmitoyl transferase 1A deficiency",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "E71.310"
+              ],
+              "snomed": [
+                "238001003"
+              ],
+              "omim": [
+                "255120"
+              ],
+              "orpha": [
+                "156"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['238001003'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found ICD10_SIBLING match with DDX at P4 (E71.310 <-> E71.313)"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "ICD-10 match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R254",
+  "gdx_details": [
+    {
+      "name": "Medium chain acyl-CoA dehydrogenase deficiency",
+      "details": {
+        "name": "Medium chain acyl-CoA dehydrogenase deficiency",
+        "normalized_text": "Medium-chain acyl-coenzyme A dehydrogenase deficiency",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "E71.312"
+          ],
+          "snomed": [
+            "128596003"
+          ],
+          "omim": [
+            "201450"
+          ],
+          "orpha": [
+            "42"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Propionic acidemia",
+      "details": {
+        "normalized_text": "Propionic acidemia",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E71.121"
+          ],
+          "snomed": [
+            "69080001"
+          ],
+          "omim": [
+            "606054"
+          ],
+          "orpha": [
+            "35"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Methylmalonic acidemia",
+      "details": {
+        "normalized_text": "Methylmalonic acidemia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E71.120"
+          ],
+          "snomed": [
+            "42393006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pyruvate carboxylase deficiency",
+      "details": {
+        "normalized_text": "Pyruvate carboxylase deficiency",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E74.4"
+          ],
+          "snomed": [
+            "87694001"
+          ],
+          "omim": [
+            "266150"
+          ],
+          "orpha": [
+            "3008"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple acyl-CoA dehydrogenase deficiency (glutaric acidemia type II)",
+      "details": {
+        "normalized_text": "Multiple acyl-CoA dehydrogenase deficiency (glutaric acidemia type II)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E71.313"
+          ],
+          "snomed": [
+            "22886006"
+          ],
+          "omim": [
+            "231680"
+          ],
+          "orpha": [
+            "26791"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Carnitine-acylcarnitine translocase deficiency",
+      "details": {
+        "normalized_text": "Carnitine-acylcarnitine translocase deficiency",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238003000"
+          ],
+          "omim": [
+            "212138"
+          ],
+          "orpha": [
+            "159"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3-hydroxy-3-methylglutaryl-CoA lyase deficiency",
+      "details": {
+        "normalized_text": "3-hydroxy-3-methylglutaryl-CoA lyase deficiency",
+        "position": 6,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "124611007"
+          ],
+          "omim": [
+            "246450"
+          ],
+          "orpha": [
+            "20"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lysinuric protein intolerance",
+      "details": {
+        "normalized_text": "Lysinuric protein intolerance",
+        "position": 7,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "303852004"
+          ],
+          "omim": [
+            "222700"
+          ],
+          "orpha": [
+            "470"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "ICD10_SIBLING",
+      "value": "<-> E71.121)",
+      "matched_gdx": {
+        "Medium chain acyl-CoA dehydrogenase deficiency": {
+          "name": "Medium chain acyl-CoA dehydrogenase deficiency",
+          "normalized_text": "Medium-chain acyl-coenzyme A dehydrogenase deficiency",
+          "severity": "S8",
+          "medical_codes": {
+            "icd10": [
+              "E71.312"
+            ],
+            "snomed": [
+              "128596003"
+            ],
+            "omim": [
+              "201450"
+            ],
+            "orpha": [
+              "42"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Propionic acidemia": {
+          "normalized_text": "Propionic acidemia",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "E71.121"
+            ],
+            "snomed": [
+              "69080001"
+            ],
+            "omim": [
+              "606054"
+            ],
+            "orpha": [
+              "35"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Medium chain acyl-CoA dehydrogenase deficiency": {
+            "name": "Medium chain acyl-CoA dehydrogenase deficiency",
+            "normalized_text": "Medium-chain acyl-coenzyme A dehydrogenase deficiency",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "E71.312"
+              ],
+              "snomed": [
+                "128596003"
+              ],
+              "omim": [
+                "201450"
+              ],
+              "orpha": [
+                "42"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['128596003'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found ICD10_SIBLING match with DDX at P1 (E71.312 <-> E71.121)"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "ICD-10 match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R549",
+  "gdx_details": [
+    {
+      "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+      "details": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "NGLY1 deficiency",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E88.89"
+          ],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Congenital disorder of deglycosylation 1",
+      "details": {
+        "name": "Congenital disorder of deglycosylation 1",
+        "normalized_text": "NGLY1 deficiency",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "E74.8"
+          ],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "NGLY1-related congenital disorder of deglycosylation",
+      "details": {
+        "normalized_text": "NGLY1-related congenital disorder of deglycosylation",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "272151006",
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GMPPA-related congenital disorder of glycosylation (alacrima-achalasia-intellectual disability syndrome)",
+      "details": {
+        "normalized_text": "GMPPA-related congenital disorder of glycosylation (alacrima-achalasia-intellectual disability syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763741001"
+          ],
+          "omim": [
+            "615510"
+          ],
+          "orpha": [
+            "289483"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Allgrove syndrome (triple A syndrome, AAAS-related)",
+      "details": {
+        "normalized_text": "Allgrove syndrome (triple A syndrome, AAAS-related)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PNKP-related neurodevelopmental disorder (microcephaly with seizures or ataxia with oculomotor apraxia type 4 spectrum)",
+      "details": {
+        "normalized_text": "PNKP-related neurodevelopmental disorder (microcephaly with seizures or ataxia with oculomotor apraxia type 4 spectrum)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q02",
+            "R27.0"
+          ],
+          "snomed": [
+            "91175000",
+            "20262006"
+          ],
+          "omim": [],
+          "orpha": [
+            "199642"
+          ]
+        }
+      }
+    },
+    {
+      "name": "De Barsy syndrome (progeroid cutis laxa syndrome)",
+      "details": {
+        "normalized_text": "De Barsy syndrome (progeroid cutis laxa syndrome)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "59252009"
+          ],
+          "omim": [],
+          "orpha": [
+            "2962"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "768846004",
+      "matched_gdx": {
+        "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+          "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+          "normalized_text": "NGLY1 deficiency",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "E88.89"
+            ],
+            "snomed": [
+              "768846004"
+            ],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "NGLY1-related congenital disorder of deglycosylation": {
+          "normalized_text": "NGLY1-related congenital disorder of deglycosylation",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "272151006",
+              "768846004"
+            ],
+            "omim": [
+              "615273"
+            ],
+            "orpha": [
+              "404454"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+            "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+            "normalized_text": "NGLY1 deficiency",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E88.89"
+              ],
+              "snomed": [
+                "768846004"
+              ],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 768846004)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Congenital disorder of deglycosylation 1": {
+            "name": "Congenital disorder of deglycosylation 1",
+            "normalized_text": "NGLY1 deficiency",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "E74.8"
+              ],
+              "snomed": [
+                "768846004"
+              ],
+              "omim": [
+                "615273"
+              ],
+              "orpha": [
+                "404454"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 768846004)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}

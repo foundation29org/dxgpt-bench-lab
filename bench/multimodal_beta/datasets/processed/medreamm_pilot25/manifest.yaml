@@ -1,0 +1,692 @@
+dataset:
+  name: MedReaMM
+  version: pilot25
+  source: https://huggingface.co/datasets/thomasweiX/MedReaMM
+  selection:
+    limit: 25
+    seed: '20260727'
+    eligible: 385
+    rejected: 240
+    captions_included: false
+cases:
+- id: '24174966'
+  text_file: 24174966/history.txt
+  documents: []
+  images:
+  - 24174966/images/01.jpg
+  - 24174966/images/02.jpg
+  - 24174966/images/03.jpg
+  - 24174966/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Primary cardiac angiofibroma
+      icd11: 2E81.0Z
+      title: Angiofibroma of unspecified site
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '24174966'
+    year: 2013
+    classification: Neoplastic diseases
+    modalities:
+    - mri
+    - pathology
+    - ultrasound
+    image_count: 4
+    history_chars: 291
+    total_file_bytes: 857906
+    captions_included: false
+- id: '25995698'
+  text_file: 25995698/history.txt
+  documents: []
+  images:
+  - 25995698/images/01.jpg
+  - 25995698/images/02.jpg
+  - 25995698/images/03.jpg
+  - 25995698/images/04.jpg
+  - 25995698/images/05.jpg
+  gold:
+    diagnoses:
+    - name: Extralobar pulmonary sequestration
+      icd11: LA75.6
+      title: Extralobar sequestration of lung
+      role: primary
+    - name: Pulmonary hemorrhagic infarction
+      icd11: MD23
+      title: Pulmonary haemorrhage
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '25995698'
+    year: 2015
+    classification: Genetic and congenital disorders
+    modalities:
+    - mri
+    - ultrasound
+    image_count: 5
+    history_chars: 427
+    total_file_bytes: 233309
+    captions_included: false
+- id: '23553973'
+  text_file: 23553973/history.txt
+  documents: []
+  images:
+  - 23553973/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Amoebic liver abscess
+      icd11: 1A36.10
+      title: Amoebic liver abscess
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '23553973'
+    year: 2013
+    classification: Infectious and immunologic disorders
+    modalities:
+    - ct
+    image_count: 1
+    history_chars: 891
+    total_file_bytes: 76039
+    captions_included: false
+- id: '27656661'
+  text_file: 27656661/history.txt
+  documents: []
+  images:
+  - 27656661/images/01.jpg
+  - 27656661/images/02.jpg
+  gold:
+    diagnoses:
+    - name: Multiple sclerosis-like disorder
+      icd11: 8A44.1
+      title: Multiple sclerosis-like disorder
+      role: primary
+    - name: OPA1 mutation
+      icd11: 5C58.00
+      title: CNS1 - [Crigler-Najjar syndrome type 1]
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '27656661'
+    year: 2016
+    classification: Neurological disorders
+    modalities:
+    - mri
+    - ophthalmic imaging
+    image_count: 2
+    history_chars: 838
+    total_file_bytes: 354053
+    captions_included: false
+- id: N-10000022
+  text_file: N-10000022/history.txt
+  documents: []
+  images:
+  - N-10000022/images/01.jpg
+  - N-10000022/images/02.jpg
+  - N-10000022/images/03.jpg
+  - N-10000022/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Wilson's disease
+      icd11: 5C64.00
+      title: Wilson disease
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: N-10000022
+    year: 2025
+    classification: Gastrointestinal disorders
+    modalities:
+    - genetic
+    - mri
+    - ophthalmic imaging
+    - pathology
+    image_count: 4
+    history_chars: 595
+    total_file_bytes: 606530
+    captions_included: false
+- id: '27380346'
+  text_file: 27380346/history.txt
+  documents: []
+  images:
+  - 27380346/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Erythema nodosum
+      icd11: EB31
+      title: Erythema nodosum
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '27380346'
+    year: 2016
+    classification: Dermatologic and mucosal diseases
+    modalities:
+    - clinical
+    image_count: 1
+    history_chars: 1020
+    total_file_bytes: 128144
+    captions_included: false
+- id: '28126713'
+  text_file: 28126713/history.txt
+  documents: []
+  images:
+  - 28126713/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Retropharyngeal hematoma
+      icd11: NA20.2&XJ1C6&XA93V5
+      title: retropharyngeal haematoma
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '28126713'
+    year: 2017
+    classification: Cardiovascular and respiratory disorders
+    modalities:
+    - x-ray
+    image_count: 1
+    history_chars: 488
+    total_file_bytes: 84573
+    captions_included: false
+- id: '23449674'
+  text_file: 23449674/history.txt
+  documents: []
+  images:
+  - 23449674/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Insulinoma
+      icd11: 2C10.1
+      title: Insulinoma
+      role: primary
+    - name: Functioning islet cell tumor
+      icd11: 2E92.9
+      title: islet cell neoplasm
+      role: secondary
+    - name: Well differentiated islet cell tumor
+      icd11: 2E92.9
+      title: islet cell neoplasm
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '23449674'
+    year: 2013
+    classification: Endocrine and metabolic disorders
+    modalities:
+    - lab
+    image_count: 1
+    history_chars: 1809
+    total_file_bytes: 47271
+    captions_included: false
+- id: case-19003
+  text_file: case-19003/history.txt
+  documents: []
+  images:
+  - case-19003/images/01.jpg
+  - case-19003/images/02.jpg
+  - case-19003/images/03.jpg
+  - case-19003/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Slipping rib syndrome
+      icd11: FB82.Y
+      title: slipping rib syndrome
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: case-19003
+    year: 1977
+    classification: Orthopedic and connective tissue disorders
+    modalities:
+    - ultrasound
+    image_count: 4
+    history_chars: 367
+    total_file_bytes: 356411
+    captions_included: false
+- id: '20052363'
+  text_file: 20052363/history.txt
+  documents: []
+  images:
+  - 20052363/images/01.jpg
+  - 20052363/images/02.jpg
+  - 20052363/images/03.jpg
+  - 20052363/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Lymphangiomatosis of the colon
+      icd11: 2E81.10
+      title: diffuse lymphangiomatosis
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '20052363'
+    year: 2010
+    classification: Neoplastic diseases
+    modalities:
+    - endoscopy
+    - general imaging
+    - pathology
+    - ultrasound
+    image_count: 4
+    history_chars: 614
+    total_file_bytes: 725082
+    captions_included: false
+- id: '30687305'
+  text_file: 30687305/history.txt
+  documents: []
+  images:
+  - 30687305/images/01.jpg
+  - 30687305/images/02.jpg
+  - 30687305/images/03.jpg
+  gold:
+    diagnoses:
+    - name: Myelodysplastic syndrome
+      icd11: 2A3Z
+      title: Myelodysplastic syndromes, unspecified
+      role: secondary
+    - name: Refractory cytopenias with multilineage dysplasia
+      icd11: 2A34
+      title: Refractory cytopenia with multi-lineage dysplasia
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '30687305'
+    year: 2018
+    classification: Neoplastic diseases
+    modalities:
+    - genetic
+    - lab
+    - pathology
+    image_count: 3
+    history_chars: 709
+    total_file_bytes: 295466
+    captions_included: false
+- id: '27074070'
+  text_file: 27074070/history.txt
+  documents: []
+  images:
+  - 27074070/images/01.jpg
+  - 27074070/images/02.jpg
+  - 27074070/images/03.jpg
+  - 27074070/images/04.jpg
+  - 27074070/images/05.jpg
+  gold:
+    diagnoses:
+    - name: Mixed-cellularity subtype of classic Hodgkin's lymphoma
+      icd11: 2B30.12
+      title: Mixed cellularity classical Hodgkin lymphoma
+      role: primary
+    - name: Epstein-Barr virus infection
+      icd11: 1D81.0
+      title: Epstein-Barr virus infection NOS
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '27074070'
+    year: 2016
+    classification: Neoplastic diseases
+    modalities:
+    - ct
+    - pathology
+    - pet/spect/nuclear
+    - ultrasound
+    - x-ray
+    image_count: 5
+    history_chars: 999
+    total_file_bytes: 868684
+    captions_included: false
+- id: N-10000064
+  text_file: N-10000064/history.txt
+  documents: []
+  images:
+  - N-10000064/images/01.jpg
+  - N-10000064/images/02.jpg
+  - N-10000064/images/03.jpg
+  gold:
+    diagnoses:
+    - name: Plasmodium falciparum malaria
+      icd11: 1F40.Z
+      title: Malaria due to Plasmodium falciparum
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: N-10000064
+    year: 2024
+    classification: Infectious and immunologic disorders
+    modalities:
+    - lab
+    - pathology
+    - ultrasound
+    - x-ray
+    image_count: 3
+    history_chars: 987
+    total_file_bytes: 458539
+    captions_included: false
+- id: '27068836'
+  text_file: 27068836/history.txt
+  documents: []
+  images:
+  - 27068836/images/01.jpg
+  - 27068836/images/02.jpg
+  gold:
+    diagnoses:
+    - name: Mediastinal abscess
+      icd11: CA43.3
+      title: Abscess of mediastinum
+      role: secondary
+    - name: Full-thickness oesophageal segment destruction
+      icd11: DA2Z
+      title: disorder of oesophagus
+      role: primary
+    - name: Oesophageal perforation
+      icd11: DA20.3Z
+      title: Perforation of oesophagus
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '27068836'
+    year: 2016
+    classification: Infectious and immunologic disorders
+    modalities:
+    - endoscopy
+    - general imaging
+    image_count: 2
+    history_chars: 399
+    total_file_bytes: 142134
+    captions_included: false
+- id: case-18872
+  text_file: case-18872/history.txt
+  documents: []
+  images:
+  - case-18872/images/01.jpg
+  - case-18872/images/02.jpg
+  - case-18872/images/03.jpg
+  - case-18872/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Boerhaave syndrome
+      icd11: DA20.30
+      title: Boerhaave syndrome
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: case-18872
+    year: 1977
+    classification: Gastrointestinal disorders
+    modalities:
+    - ct
+    - x-ray
+    image_count: 4
+    history_chars: 338
+    total_file_bytes: 605925
+    captions_included: false
+- id: N-10000120
+  text_file: N-10000120/history.txt
+  documents: []
+  images:
+  - N-10000120/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Functional seizures
+      icd11: 8A68.Z
+      title: Seizure NOS
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: N-10000120
+    year: 2023
+    classification: Neurological disorders
+    modalities:
+    - electrophysiology
+    image_count: 1
+    history_chars: 1585
+    total_file_bytes: 269849
+    captions_included: false
+- id: '25016996'
+  text_file: 25016996/history.txt
+  documents: []
+  images:
+  - 25016996/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Obturator hernia
+      icd11: DD50.1
+      title: Obturator hernia
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '25016996'
+    year: 2014
+    classification: Gastrointestinal disorders
+    modalities:
+    - ct
+    image_count: 1
+    history_chars: 551
+    total_file_bytes: 78565
+    captions_included: false
+- id: '22065912'
+  text_file: 22065912/history.txt
+  documents: []
+  images:
+  - 22065912/images/01.jpg
+  - 22065912/images/02.jpg
+  - 22065912/images/03.jpg
+  - 22065912/images/04.jpg
+  gold:
+    diagnoses:
+    - name: Susac syndrome
+      icd11: 8A45.2Y
+      title: Susac syndrome
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '22065912'
+    year: 2011
+    classification: Neurological disorders
+    modalities:
+    - angiography
+    - electrophysiology
+    - mri
+    - ophthalmic imaging
+    image_count: 4
+    history_chars: 1342
+    total_file_bytes: 266008
+    captions_included: false
+- id: '21424749'
+  text_file: 21424749/history.txt
+  documents: []
+  images:
+  - 21424749/images/01.jpg
+  - 21424749/images/02.jpg
+  - 21424749/images/03.jpg
+  - 21424749/images/04.jpg
+  - 21424749/images/05.jpg
+  gold:
+    diagnoses:
+    - name: Mitochondrial disease
+      icd11: 5C53.Y
+      title: mitochondrial disease NOS
+      role: primary
+    - name: Axial myopathy
+      icd11: 8C7Y
+      title: Myopathy
+      role: secondary
+    - name: Encephalopathy
+      icd11: 8E47
+      title: encephalopathy NOS
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '21424749'
+    year: 2011
+    classification: Neurological disorders
+    modalities:
+    - clinical
+    - ct
+    - genetic
+    - lab
+    - mri
+    - pathology
+    image_count: 5
+    history_chars: 1179
+    total_file_bytes: 505289
+    captions_included: false
+- id: '22389885'
+  text_file: 22389885/history.txt
+  documents: []
+  images:
+  - 22389885/images/01.jpg
+  - 22389885/images/02.jpg
+  - 22389885/images/03.jpg
+  - 22389885/images/04.jpg
+  gold:
+    diagnoses:
+    - name: B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma
+        and Burkitt lymphoma
+      icd11: 2A86.1
+      title: B-cell lymphoma unclassifiable with features intermediate between Burkitt lymphoma and diffuse
+        large B-cell lymphoma
+      role: primary
+    - name: Diffuse large B-cell lymphoma
+      icd11: 2A81.Z
+      title: Diffuse large B-cell lymphomas
+      role: secondary
+    - name: Burkitt lymphoma
+      icd11: 2A85.6
+      title: “Burkitt-like” lymphoma
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '22389885'
+    year: 2012
+    classification: Neoplastic diseases
+    modalities:
+    - genetic
+    - pathology
+    image_count: 4
+    history_chars: 742
+    total_file_bytes: 485547
+    captions_included: false
+- id: case-18953
+  text_file: case-18953/history.txt
+  documents: []
+  images:
+  - case-18953/images/01.jpg
+  - case-18953/images/02.jpg
+  - case-18953/images/03.jpg
+  gold:
+    diagnoses:
+    - name: Liver pyogenic abscess
+      icd11: DB90.0&XN74M
+      title: Pyogenic liver abscess
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: case-18953
+    year: 1977
+    classification: Gastrointestinal disorders
+    modalities:
+    - ct
+    - ultrasound
+    image_count: 3
+    history_chars: 303
+    total_file_bytes: 512691
+    captions_included: false
+- id: '23281978'
+  text_file: 23281978/history.txt
+  documents: []
+  images:
+  - 23281978/images/01.jpg
+  gold:
+    diagnoses:
+    - name: ST-segment elevation myocardial infarction
+      icd11: BA41.0
+      title: Acute ST segment elevation myocardial infarction
+      role: primary
+    - name: Primary myelofibrosis
+      icd11: 2A20.2
+      title: Primary myelofibrosis
+      role: secondary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '23281978'
+    year: 2013
+    classification: Neoplastic diseases
+    modalities:
+    - electrophysiology
+    image_count: 1
+    history_chars: 1890
+    total_file_bytes: 254019
+    captions_included: false
+- id: N-10000083
+  text_file: N-10000083/history.txt
+  documents: []
+  images:
+  - N-10000083/images/01.jpg
+  - N-10000083/images/02.jpg
+  gold:
+    diagnoses:
+    - name: Intralobar bronchopulmonary sequestration
+      icd11: LA75.6
+      title: Intralobar sequestration of lung
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: N-10000083
+    year: 2024
+    classification: Cardiovascular and respiratory disorders
+    modalities:
+    - angiography
+    - ct
+    - ultrasound
+    - x-ray
+    image_count: 2
+    history_chars: 1452
+    total_file_bytes: 352172
+    captions_included: false
+- id: '29423197'
+  text_file: 29423197/history.txt
+  documents: []
+  images:
+  - 29423197/images/01.jpg
+  gold:
+    diagnoses:
+    - name: Cocaine-induced thrombotic microangiopathy
+      icd11: 3B65
+      title: Thrombotic microangiopathy, not elsewhere classified
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '29423197'
+    year: 2018
+    classification: Cardiovascular and respiratory disorders
+    modalities:
+    - pathology
+    image_count: 1
+    history_chars: 1185
+    total_file_bytes: 250471
+    captions_included: false
+- id: '29674473'
+  text_file: 29674473/history.txt
+  documents: []
+  images:
+  - 29674473/images/01.jpg
+  - 29674473/images/02.jpg
+  gold:
+    diagnoses:
+    - name: Neuromyelitis optica spectrum disorder
+      icd11: 8E4A.0
+      title: Neuromyelitis optica spectrum disorder
+      role: primary
+  metadata:
+    source: thomasweiX/MedReaMM
+    source_id: '29674473'
+    year: 2018
+    classification: Neurological disorders
+    modalities:
+    - mri
+    image_count: 2
+    history_chars: 1099
+    total_file_bytes: 20489
+    captions_included: false

@@ -19,15 +19,29 @@ import os
 import sys
 import ast
 import logging
+import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 import yaml
 
-# Add utils to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'utils'))
+# Add project root to path (so we can import utils)
+project_root = os.path.join(os.path.dirname(__file__), '..', '..', '..', '..')
+project_root = os.path.abspath(project_root)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 from utils.llm import get_llm
 from dotenv import load_dotenv
+from azure.core.credentials import AzureKeyCredential
+from azure.core.exceptions import HttpResponseError
+
+try:
+    from azure.ai.translation.text import TextTranslationClient
+    AZURE_TRANSLATOR_AVAILABLE = True
+except ImportError:
+    AZURE_TRANSLATOR_AVAILABLE = False
 
 # Load environment variables
 load_dotenv()
@@ -47,8 +61,8 @@ class DXGPTEmulator:
         self.emulator_config = config['DXGPT_EMULATOR']
         self.logger = logger
         
-        # Initialize LLM
-        self.llm = get_llm(self.emulator_config['MODEL'])
+        # Initialize LLM with logger
+        self.llm = get_llm(self.emulator_config['MODEL'], logger=self.logger)
         
         # Load prompt template
         self.prompt_template = self._load_prompt_template()
@@ -57,6 +71,21 @@ class DXGPTEmulator:
         self.output_schema = None
         if self.emulator_config.get('OUTPUT_SCHEMA', False):
             self.output_schema = self._load_output_schema()
+        
+        # Initialize translation client if enabled
+        self.translator_client = None
+        self.translate_enabled = self.emulator_config.get('TRANSLATE_CASE', {}).get('ENABLED', False)
+        self.target_language = self.emulator_config.get('TRANSLATE_CASE', {}).get('TARGET_LANGUAGE', 'en')
+        
+        if self.translate_enabled:
+            if not AZURE_TRANSLATOR_AVAILABLE:
+                if self.logger:
+                    self.logger.warning("⚠️  Translation enabled but azure-ai-translation-text not installed.")
+                    self.logger.warning("   Install it with: pip install azure-ai-translation-text")
+                    self.logger.warning("   Translation disabled. Cases will be sent to LLM in original language.")
+                self.translate_enabled = False
+            else:
+                self.translator_client = self._init_translator_client()
     
     def _load_prompt_template(self) -> str:
         """Load the prompt template from file"""
@@ -84,12 +113,158 @@ class DXGPTEmulator:
         except FileNotFoundError:
             raise FileNotFoundError(f"Output schema not found at: {schema_path}")
     
-    def _generate_ddx_for_case(self, case: Dict[str, Any]) -> Tuple[List[str], str]:
+    def _init_translator_client(self):
+        """Initialize Azure Translator client"""
+        translator_key = os.getenv('AZURE_TRANSLATOR_KEY')
+        translator_endpoint = os.getenv('AZURE_TRANSLATOR_ENDPOINT')
+        translator_region = os.getenv('AZURE_TRANSLATOR_REGION', 'global')
+        
+        if not translator_key or not translator_endpoint:
+            if self.logger:
+                self.logger.warning("Translation enabled but AZURE_TRANSLATOR_KEY or AZURE_TRANSLATOR_ENDPOINT not set. Translation disabled.")
+            self.translate_enabled = False
+            return None
+        
+        try:
+            client = TextTranslationClient(
+                endpoint=translator_endpoint,
+                credential=AzureKeyCredential(translator_key),
+                region=translator_region,
+            )
+            if self.logger:
+                self.logger.info(f"Azure Translator client initialized. Target language: {self.target_language}")
+            return client
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Failed to initialize Azure Translator client: {e}")
+            self.translate_enabled = False
+            return None
+    
+    def _translate_case_description(self, case_description: str) -> str:
         """
-        Generate DDX for a single case
+        Translate case description to target language using Azure Translator
+        Only translates if the detected language is different from target language
+        
+        Args:
+            case_description: Original case description
+            
+        Returns:
+            Translated case description, or original if translation fails or not needed
+        """
+        if not self.translate_enabled or not self.translator_client:
+            return case_description
+        
+        if not case_description or not case_description.strip():
+            return case_description
+        
+        try:
+            tgt = self.target_language
+            response = self.translator_client.translate(
+                body=[case_description],
+                to_language=[tgt],
+            )
+
+            if not response or len(response) == 0:
+                if self.logger:
+                    self.logger.warning("Empty translation response, skipping translation")
+                return case_description
+
+            item = response[0]
+            detected = item.detected_language
+            detected_language = (detected.language or "").lower() if detected else ""
+
+            if detected_language == tgt.lower():
+                if self.logger:
+                    self.logger.info(
+                        f"Case already in target language ({detected_language}), skipping translation"
+                    )
+                return case_description
+
+            if not item.translations or len(item.translations) == 0:
+                if self.logger:
+                    self.logger.warning("Translation returned empty result, using original text")
+                return case_description
+
+            translated_text = item.translations[0].text
+            confidence = getattr(detected, "score", None) if detected else None
+            if self.logger:
+                conf_str = f" (confidence: {confidence:.2f})" if confidence is not None else ""
+                src = detected_language or "unknown"
+                self.logger.info(f"Case translated from {src}{conf_str} to {tgt}")
+            return translated_text
+                
+        except HttpResponseError as e:
+            if self.logger:
+                self.logger.error(f"Azure Translator error: {e}. Using original text.")
+            return case_description
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"Unexpected error during translation: {e}. Using original text.")
+            return case_description
+    
+    def _is_retryable_error(self, error: Exception) -> bool:
+        """
+        Determine if an error is retryable (transient error that might succeed on retry)
+        
+        Args:
+            error: The exception that occurred
+            
+        Returns:
+            True if the error is retryable, False otherwise
+        """
+        error_str = str(error).lower()
+        error_type = type(error).__name__
+        
+        # Check for rate limit errors (429)
+        if "429" in error_str or "rate" in error_str or "limit" in error_str or "nocapacity" in error_str:
+            return True
+        
+        # Check for server errors (500, 502, 503, 504)
+        if any(code in error_str for code in ["500", "502", "503", "504", "server error", "internal error"]):
+            return True
+        
+        # Check for timeout/connection errors
+        if "timeout" in error_str or "connection" in error_str or "timed out" in error_str:
+            return True
+
+        # Windows socket race conditions (e.g. WinError 10038 "operation on
+        # something that is not a socket", 10053/10054 "connection aborted/reset",
+        # 10060 "WSAETIMEDOUT") and generic socket/SSL errors. These are
+        # transient and almost always succeed on retry.
+        if any(token in error_str for token in [
+            "winerror 10038", "10038",
+            "winerror 10053", "10053",
+            "winerror 10054", "10054",
+            "winerror 10060", "10060",
+            "no es un socket", "not a socket",
+            "ssl", "broken pipe", "remotedisconnected",
+        ]):
+            return True
+
+        # Check for specific error types that are typically retryable
+        retryable_types = ["RateLimitError", "TimeoutError", "ConnectionError",
+                           "HTTPError", "OSError", "RemoteProtocolError"]
+        if any(rt in error_type for rt in retryable_types):
+            return True
+        
+        # Non-retryable errors (authentication, invalid request, etc.)
+        if "authentication" in error_str or "unauthorized" in error_str or "401" in error_str or "403" in error_str:
+            return False
+        
+        if "invalid" in error_str and "request" in error_str:
+            return False
+        
+        # Default: don't retry unknown errors
+        return False
+    
+    def _generate_ddx_for_case(self, case: Dict[str, Any], max_retries: int = 5, base_delay: float = 5.0) -> Tuple[List[str], str]:
+        """
+        Generate DDX for a single case with automatic retry for transient errors
         
         Args:
             case: Case dictionary containing case description
+            max_retries: Maximum number of retry attempts (default: 5, increased for high-demand models)
+            base_delay: Base delay in seconds for exponential backoff (default: 5.0, increased for high-demand models)
             
         Returns:
             Tuple of (List of differential diagnoses, raw response)
@@ -103,96 +278,172 @@ class DXGPTEmulator:
             if alt_description:
                 case_description = alt_description
         
+        # Translate case description if enabled
+        if self.translate_enabled and case_description:
+            original_description = case_description
+            case_description = self._translate_case_description(case_description)
+            if self.logger and original_description != case_description:
+                self.logger.info(f"Case {case.get('id', 'unknown')}: Translated case description ({len(original_description)} -> {len(case_description)} chars)")
+        
         prompt = self.prompt_template.format(case_description=case_description)
         
         # Get LLM parameters
         params = self.emulator_config.get('PARAMS', {})
         
-        # Check if this is an O3 model
+        # Check if this is a reasoning model (O3, GPT-5, or Gemini 3 Pro)
         model_name = self.emulator_config['MODEL'].lower()
         is_o3_model = 'o3' in model_name
+        is_gpt5_model = 'gpt-5' in model_name or 'gpt5' in model_name
+        is_gemini_model = 'gemini' in model_name
+        is_reasoning_model = is_o3_model or is_gpt5_model
         
-        try:
-            # Log request details
-            if self.logger:
-                self.logger.info(f"Generating DDX for case {case.get('id', 'unknown')} using model {model_name}")
-                self.logger.info(f"Prompt length: {len(prompt)} characters")
-                if is_o3_model:
-                    self.logger.info(f"O3 Model parameters: reasoning_effort={params.get('reasoning_effort', 'low')}")
-                else:
-                    self.logger.info(f"Standard model parameters: max_tokens={params.get('max_tokens', 4000)}, temperature={params.get('temperature', 0.1)}")
-                self.logger.info(f"Output schema enabled: {self.output_schema is not None}")
-            
-            # Generate response with model-appropriate parameters
-            if is_o3_model:
-                # O3 models use reasoning_effort instead of temperature/max_tokens
-                if self.output_schema:
-                    response = self.llm.generate(
-                        prompt,
-                        reasoning_effort=params.get('reasoning_effort', 'low'),
-                        schema=self.output_schema
-                    )
-                else:
-                    response = self.llm.generate(
-                        prompt,
-                        reasoning_effort=params.get('reasoning_effort', 'low')
-                    )
-            else:
-                # Standard models use temperature and max_tokens
-                if self.output_schema:
-                    response = self.llm.generate(
-                        prompt,
-                        max_tokens=params.get('max_tokens', 4000),
-                        temperature=params.get('temperature', 0.1),
-                        schema=self.output_schema
-                    )
-                else:
-                    response = self.llm.generate(
-                        prompt,
-                        max_tokens=params.get('max_tokens', 4000),
-                        temperature=params.get('temperature', 0.1)
-                    )
-            
-            # Log successful API response
-            if self.logger:
-                self.logger.info(f"LLM API call successful for case {case.get('id', 'unknown')}")
-                self.logger.info(f"Response length: {len(str(response))} characters")
-            
-            # Extract DDX using unified parsing logic
-            ddx_list = self._extract_ddx_from_response(response, case.get('id', 'unknown'))
-            return ddx_list, str(response)
+        case_id = case.get('id', 'unknown')
+        last_error = None
         
-        except Exception as e:
-            case_id = case.get('id', 'unknown')
-            error_msg = f"ERROR: Error generating DDX for case {case_id}: {str(e)}"
-            print(error_msg)
-            if self.logger:
-                self.logger.error(error_msg)
-                # Log detailed error information
-                self.logger.error(f"Exception type: {type(e).__name__}")
-                self.logger.error(f"Full exception details: {repr(e)}")
-                
-                # Categorize different types of errors
-                error_str = str(e).lower()
-                if "timeout" in error_str or "connection" in error_str:
-                    self.logger.error(f"NETWORK_ERROR: Likely network/connection issue with LLM API")
-                elif "rate" in error_str or "limit" in error_str:
-                    self.logger.error(f"RATE_LIMIT_ERROR: API rate limit exceeded")
-                elif "authentication" in error_str or "api" in error_str:
-                    self.logger.error(f"API_ERROR: Authentication or API configuration issue")
-                elif "token" in error_str:
-                    self.logger.error(f"TOKEN_ERROR: Token limit or token-related issue")
-                else:
-                    self.logger.error(f"UNKNOWN_ERROR: Unclassified error during LLM generation")
-            
-            # Helpful tip for common configuration issues
-            if "diagnosis" in str(e) or "format" in str(e).lower():
-                tip_msg = f"TIP: Check if OUTPUT_SCHEMA setting conflicts with your prompt's expected format"
-                print(tip_msg)
+        # Retry loop
+        for attempt in range(max_retries + 1):
+            try:
+                # Log request details
                 if self.logger:
-                    self.logger.warning(tip_msg)
+                    self.logger.info(f"Generating DDX for case {case.get('id', 'unknown')} using model {model_name}")
+                    self.logger.info(f"Prompt length: {len(prompt)} characters")
+                    if is_gemini_model:
+                        self.logger.info(f"Gemini Model parameters: thinking_level={params.get('thinking_level', 'low')}, max_tokens={params.get('max_tokens', 12000)}, temperature={params.get('temperature', 0.1)}")
+                    elif is_reasoning_model:
+                        model_type = "O3" if is_o3_model else "GPT-5"
+                        self.logger.info(f"{model_type} Model parameters: reasoning_effort={params.get('reasoning_effort', 'low')}, max_tokens={params.get('max_tokens', 12000)}")
+                    else:
+                        self.logger.info(f"Standard model parameters: max_tokens={params.get('max_tokens', 4000)}, temperature={params.get('temperature', 0.1)}")
+                    self.logger.info(f"Output schema enabled: {self.output_schema is not None}")
+                
+                # Generate response with model-appropriate parameters
+                if is_gemini_model:
+                    # Gemini 3 Pro uses thinking_level instead of reasoning_effort
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            thinking_level=params.get('thinking_level', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            temperature=params.get('temperature', 0.1),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            thinking_level=params.get('thinking_level', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            temperature=params.get('temperature', 0.1)
+                        )
+                elif is_reasoning_model:
+                    # Reasoning models (O3 and GPT-5) use reasoning_effort
+                    # GPT-5 models can also use max_tokens (as max_completion_tokens)
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            reasoning_effort=params.get('reasoning_effort', 'low'),
+                            max_tokens=params.get('max_tokens', 12000),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            reasoning_effort=params.get('reasoning_effort', 'low'),
+                            max_tokens=params.get('max_tokens', 12000)
+                        )
+                else:
+                    # Standard models use temperature and max_tokens
+                    if self.output_schema:
+                        response = self.llm.generate(
+                            prompt,
+                            max_tokens=params.get('max_tokens', 4000),
+                            temperature=params.get('temperature', 0.1),
+                            schema=self.output_schema
+                        )
+                    else:
+                        response = self.llm.generate(
+                            prompt,
+                            max_tokens=params.get('max_tokens', 4000),
+                            temperature=params.get('temperature', 0.1)
+                        )
+                
+                # Log successful API response
+                if self.logger:
+                    if attempt > 0:
+                        self.logger.info(f"✅ Retry {attempt} succeeded for case {case_id}")
+                    self.logger.info(f"LLM API call successful for case {case_id}")
+                    self.logger.info(f"Response length: {len(str(response))} characters")
+                
+                # Extract DDX using unified parsing logic
+                ddx_list = self._extract_ddx_from_response(response, case_id)
+                return ddx_list, str(response)
             
-            return [], ""
+            except Exception as e:
+                last_error = e
+                error_msg = f"ERROR: Error generating DDX for case {case_id} (attempt {attempt + 1}/{max_retries + 1}): {str(e)}"
+                
+                if self.logger:
+                    self.logger.error(error_msg)
+                    # Log detailed error information
+                    self.logger.error(f"Exception type: {type(e).__name__}")
+                    self.logger.error(f"Full exception details: {repr(e)}")
+                    
+                    # Categorize different types of errors
+                    error_str = str(e).lower()
+                    if "timeout" in error_str or "connection" in error_str:
+                        self.logger.error(f"NETWORK_ERROR: Likely network/connection issue with LLM API")
+                    elif "rate" in error_str or "limit" in error_str:
+                        self.logger.error(f"RATE_LIMIT_ERROR: API rate limit exceeded")
+                    elif "authentication" in error_str or "api" in error_str:
+                        self.logger.error(f"API_ERROR: Authentication or API configuration issue")
+                    elif "token" in error_str:
+                        self.logger.error(f"TOKEN_ERROR: Token limit or token-related issue")
+                    else:
+                        self.logger.error(f"UNKNOWN_ERROR: Unclassified error during LLM generation")
+                
+                # Check if error is retryable
+                is_retryable = self._is_retryable_error(e)
+                
+                if not is_retryable:
+                    # Non-retryable error (authentication, invalid request, etc.)
+                    if self.logger:
+                        self.logger.error(f"❌ Non-retryable error for case {case_id}, giving up")
+                    break
+                
+                # If this was the last attempt, don't retry
+                if attempt >= max_retries:
+                    if self.logger:
+                        self.logger.error(f"❌ Max retries ({max_retries}) reached for case {case_id}, giving up")
+                    break
+                
+                # Calculate exponential backoff delay
+                # For NoCapacity errors, use longer delays and more informative logging
+                error_str = str(e).lower()
+                if "nocapacity" in error_str or "429" in error_str:
+                    # Use longer delays for capacity issues (5s, 10s, 20s, 40s, 80s)
+                    delay = base_delay * (2 ** attempt)
+                    if self.logger:
+                        self.logger.warning(f"⏳ NoCapacity error detected for case {case_id}, waiting {delay:.1f} seconds before retry... (attempt {attempt + 1}/{max_retries})")
+                        self.logger.warning(f"   💡 Tip: Model may be experiencing high demand. Consider waiting or using Provisioned Throughput.")
+                else:
+                    # Standard exponential backoff for other retryable errors
+                    delay = base_delay * (2 ** attempt)
+                    if self.logger:
+                        self.logger.warning(f"⏳ Retryable error detected for case {case_id}, retrying in {delay:.1f} seconds... (attempt {attempt + 1}/{max_retries})")
+                
+                time.sleep(delay)
+        
+        # All retries exhausted or non-retryable error
+        if self.logger:
+            self.logger.error(f"❌ Failed to generate DDX for case {case_id} after {max_retries + 1} attempts")
+        
+        # Helpful tip for common configuration issues
+        if last_error and ("diagnosis" in str(last_error) or "format" in str(last_error).lower()):
+            tip_msg = f"TIP: Check if OUTPUT_SCHEMA setting conflicts with your prompt's expected format"
+            print(tip_msg)
+            if self.logger:
+                self.logger.warning(tip_msg)
+        
+        return [], ""
     
     def _extract_ddx_from_response(self, response, case_id: str) -> List[str]:
         """
@@ -265,9 +516,7 @@ class DXGPTEmulator:
                         self.logger.info(f"Successfully parsed using ast.literal_eval for case {case_id}")
                 except (ValueError, SyntaxError) as literal_error:
                     error_msg = f"Failed to parse response for case {case_id}"
-                    print(f"WARNING: {error_msg}")
-                    print(f"WARNING: Response preview: {str(response)[:200]}...")
-                    print(f"TIP: If LLM returns unexpected format, check if OUTPUT_SCHEMA conflicts with prompt instructions")
+                    print(f"WARNING: {error_msg} - Response: {str(response)[:50]}...")
                     
                     if self.logger:
                         self.logger.error(f"PARSING_FAILURE: {error_msg}")
@@ -457,99 +706,195 @@ class DXGPTEmulator:
             
             return []
     
+    def _gemini_rate_limit_delay(self, model_name: str) -> float:
+        """Return the per-request sleep (seconds) needed to stay under Gemini Tier 1 RPM.
+
+        Used only in the SEQUENTIAL path. In the PARALLEL path the worker count
+        bounds RPM directly, so we skip the sleep entirely.
+
+        Tier 1 limits (source: https://ai.google.dev/gemini-api/docs/rate-limits):
+          - gemini-3-pro-preview: 50 RPM  -> 1.5s
+          - gemini-2.5-pro:       150 RPM -> 0.5s
+          - gemini-2.5-flash:     1,000 RPM -> 0.1s
+          - gemini-2.0-flash:     2,000 RPM -> 0.05s
+          - flash-lite:           4,000 RPM -> 0.05s
+        """
+        m = model_name.lower()
+        if '2.0-flash' in m or ('2.0' in m and 'flash' in m):
+            return 0.05
+        if '2.5-flash' in m or ('2.5' in m and 'flash' in m):
+            return 0.1
+        if 'flash-lite' in m:
+            return 0.05
+        if '2.5-pro' in m or ('2.5' in m and 'pro' in m):
+            return 0.5
+        if '3' in m and 'pro' in m:
+            return 1.5
+        return 0.3
+
+    def _process_one_case(self, idx: int, total: int, case: Dict[str, Any]) -> Tuple[Dict[str, Any], float]:
+        """Generate DDX for a single case and return (case_with_ddx, elapsed_seconds).
+
+        This is the unit of work shared by both the sequential and the parallel
+        execution paths. It MUST be safe to call concurrently from multiple
+        threads: it only touches its own `case` dict, the shared `self.llm`
+        client (which is thread-safe for HTTPS calls in the official SDKs we
+        use), and the logger (also thread-safe).
+        """
+        case_id = case.get('id', f'case_{idx}')
+        processing_msg = f"[{idx}/{total}] Processing case {case_id}..."
+        print(processing_msg)
+        if self.logger:
+            self.logger.info(processing_msg)
+
+        case_start = time.time()
+        ddx_list, raw_response = self._generate_ddx_for_case(case)
+        case_elapsed = time.time() - case_start
+
+        response_preview = str(raw_response)[:100] + "..." if len(str(raw_response)) > 100 else str(raw_response)
+        print(f"[{idx}/{total}] RESPONSE: {response_preview} | DDX_COUNT: {len(ddx_list)}")
+
+        if self.logger:
+            self.logger.info(f"[{idx}/{total}] RAW_LLM_RESPONSE for case {case_id}:")
+            if len(str(raw_response)) > 2000:
+                self.logger.info(f"RAW_RESPONSE (truncated): {str(raw_response)[:2000]}... [TRUNCATED - Total length: {len(str(raw_response))} chars]")
+            else:
+                self.logger.info(f"RAW_RESPONSE: {raw_response}")
+            self.logger.info(f"[{idx}/{total}] PARSED_DDX for case {case_id}: {ddx_list}")
+
+        case_with_ddx = case.copy()
+        if ddx_list:
+            print(f"[{idx}/{total}] SUCCESS: Generated {len(ddx_list)} DDX in {case_elapsed:.1f}s")
+            if self.logger:
+                self.logger.info(f"[{idx}/{total}] SUCCESS: Generated {len(ddx_list)} DDX for case {case_id}")
+                self.logger.info(f"[{idx}/{total}] Case time: {case_elapsed:.1f}s")
+                for j, ddx in enumerate(ddx_list, 1):
+                    self.logger.info(f"[{idx}/{total}] DDX[{j}]: {ddx}")
+            ddx_details = {ddx: {"normalized_text": ddx, "position": j}
+                           for j, ddx in enumerate(ddx_list, 1)}
+            case_with_ddx['ddx_details'] = ddx_details
+        else:
+            print(f"[{idx}/{total}] FAILED: No DDX generated ({case_elapsed:.1f}s)")
+            if self.logger:
+                self.logger.warning(f"[{idx}/{total}] FAILED: No DDX generated for case {case_id}")
+                self.logger.warning(f"[{idx}/{total}] Empty DDX might be due to: parsing failure, LLM error, or unexpected response format")
+            case_with_ddx['ddx_details'] = {}
+
+        case_with_ddx['emulator_time_seconds'] = round(case_elapsed, 2)
+        print("-" * 40)
+        return case_with_ddx, case_elapsed
+
     def generate_ddx_for_dataset(self, dataset: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Generate DDX for entire dataset
-        
-        Args:
-            dataset: List of case dictionaries
-            
-        Returns:
-            List of cases with DDX added
+        Generate DDX for entire dataset.
+
+        Honors `DXGPT_EMULATOR.PARALLEL_WORKERS` (int, default 1):
+          - 1  -> sequential mode (preserves the legacy per-model rate-limit sleep).
+          - >1 -> ThreadPoolExecutor with N workers; the rate-limit sleep is
+                  disabled because the worker count itself bounds RPM.
+                  Choose N <= floor(RPM_limit * avg_seconds_per_call / 60).
+                  Example for gemini-3-pro-preview Tier 1 (50 RPM, ~22s/case):
+                      N <= 50 * 22 / 60 ~= 18, so 4-8 is comfortably safe.
         """
-        start_msg = f"STARTING: DDX generation for {len(dataset)} cases..."
+        total = len(dataset)
+        parallel_workers = int(self.emulator_config.get('PARALLEL_WORKERS', 1) or 1)
+        parallel_workers = max(1, parallel_workers)
+
+        start_msg = f"STARTING: DDX generation for {total} cases..."
         model_msg = f"MODEL: {self.emulator_config['MODEL']}"
         prompt_msg = f"PROMPT: {self.emulator_config['CANDIDATE_PROMPT_PATH']}"
         schema_msg = f"SCHEMA: {'Enabled' if self.output_schema else 'Disabled'}"
-        
+        mode_msg = (f"MODE: parallel ({parallel_workers} workers, rate-limit sleep disabled)"
+                    if parallel_workers > 1 else "MODE: sequential")
+
         print(start_msg)
         print(model_msg)
         print(prompt_msg)
         print(schema_msg)
+        print(mode_msg)
         print("-" * 60)
-        
+
         if self.logger:
             self.logger.info(start_msg)
             self.logger.info(model_msg)
             self.logger.info(prompt_msg)
             self.logger.info(schema_msg)
-        
-        results = []
-        
-        for i, case in enumerate(dataset, 1):
-            case_id = case.get('id', f'case_{i}')
-            processing_msg = f"[{i}/{len(dataset)}] Processing case {case_id}..."
-            print(processing_msg)
-            if self.logger:
-                self.logger.info(processing_msg)
-            
-            # Generate DDX
-            ddx_list, raw_response = self._generate_ddx_for_case(case)
-            
-            # Display the raw response object
-            print(f"RAW_RESPONSE: {raw_response}")
-            print(f"PARSED_DDX: {ddx_list}")
-            
-            # Log detailed raw response
-            if self.logger:
-                self.logger.info(f"[{i}/{len(dataset)}] RAW_LLM_RESPONSE for case {case_id}:")
-                # Log the full raw response with proper formatting
-                if len(str(raw_response)) > 2000:  # Truncate very long responses
-                    self.logger.info(f"RAW_RESPONSE (truncated): {str(raw_response)[:2000]}... [TRUNCATED - Total length: {len(str(raw_response))} chars]")
-                else:
-                    self.logger.info(f"RAW_RESPONSE: {raw_response}")
-                
-                # Log parsed DDX list
-                self.logger.info(f"[{i}/{len(dataset)}] PARSED_DDX for case {case_id}: {ddx_list}")
-            
-            if ddx_list:
-                success_msg = f"✅ SUCCESS: Generated {len(ddx_list)} DDX"
-                print(success_msg)
-                if self.logger:
-                    self.logger.info(f"[{i}/{len(dataset)}] SUCCESS: Generated {len(ddx_list)} DDX for case {case_id}")
-                    # Log each individual DDX with position
-                    for j, ddx in enumerate(ddx_list, 1):
-                        self.logger.info(f"[{i}/{len(dataset)}] DDX[{j}]: {ddx}")
-                
-                # Create DDX details dictionary
-                ddx_details = {}
-                for j, ddx in enumerate(ddx_list, 1):
-                    ddx_details[ddx] = {
-                        "normalized_text": ddx,
-                        "position": j
-                    }
-                
-                # Add DDX to case
-                case_with_ddx = case.copy()
-                case_with_ddx['ddx_details'] = ddx_details
+            self.logger.info(mode_msg)
+
+        model_name = self.emulator_config['MODEL'].lower()
+        is_gemini = 'gemini' in model_name
+        case_times: List[float] = []
+
+        if parallel_workers == 1:
+            results: List[Dict[str, Any]] = []
+            for i, case in enumerate(dataset, 1):
+                case_with_ddx, case_elapsed = self._process_one_case(i, total, case)
+                case_times.append(case_elapsed)
                 results.append(case_with_ddx)
-            else:
-                fail_msg = "FAILED: No DDX generated"
-                print(fail_msg)
-                if self.logger:
-                    self.logger.warning(f"[{i}/{len(dataset)}] FAILED: No DDX generated for case {case_id}")
-                    self.logger.warning(f"[{i}/{len(dataset)}] Empty DDX might be due to: parsing failure, LLM error, or unexpected response format")
-                # Add empty DDX to maintain structure
-                case_with_ddx = case.copy()
-                case_with_ddx['ddx_details'] = {}
-                results.append(case_with_ddx)
-            
-            print("-" * 40)
-        
+
+                if is_gemini:
+                    delay_seconds = self._gemini_rate_limit_delay(model_name)
+                    if self.logger:
+                        self.logger.info(f"Waiting {delay_seconds}s before next Gemini API call (rate limit protection for {model_name})...")
+                    time.sleep(delay_seconds)
+        else:
+            # Preserve original dataset order in the output, even though
+            # futures complete out of order.
+            ordered: List[Optional[Dict[str, Any]]] = [None] * total
+            completed = 0
+            with ThreadPoolExecutor(max_workers=parallel_workers,
+                                    thread_name_prefix="emu") as executor:
+                future_to_idx = {
+                    executor.submit(self._process_one_case, i + 1, total, case): i
+                    for i, case in enumerate(dataset)
+                }
+                for fut in as_completed(future_to_idx):
+                    idx0 = future_to_idx[fut]
+                    try:
+                        case_with_ddx, case_elapsed = fut.result()
+                    except Exception as e:
+                        # _process_one_case already logs internal errors and
+                        # returns an empty-DDX case, so reaching here means a
+                        # truly unexpected failure (e.g. timeout). Record an
+                        # empty result so the dataset shape is preserved.
+                        case = dataset[idx0]
+                        case_id = case.get('id', f'case_{idx0+1}')
+                        err = f"[{idx0+1}/{total}] WORKER_ERROR for case {case_id}: {type(e).__name__}: {e}"
+                        print(err)
+                        if self.logger:
+                            self.logger.error(err)
+                        case_with_ddx = case.copy()
+                        case_with_ddx['ddx_details'] = {}
+                        case_with_ddx['emulator_time_seconds'] = 0.0
+                        case_elapsed = 0.0
+                    ordered[idx0] = case_with_ddx
+                    case_times.append(case_elapsed)
+                    completed += 1
+                    progress = f"PROGRESS: {completed}/{total} cases done ({100.0*completed/total:.1f}%)"
+                    print(progress)
+                    if self.logger:
+                        self.logger.info(progress)
+            results = [c for c in ordered if c is not None]
+
         print("-" * 60)
         successful_cases = sum(1 for r in results if r.get('ddx_details'))
         completion_msg = f"COMPLETED: DDX generation finished!"
         stats_msg = f"STATS: Success rate: {successful_cases}/{len(dataset)} ({successful_cases/len(dataset)*100:.1f}%)"
+        
+        # Timing summary
+        if case_times:
+            import statistics
+            total_time = sum(case_times)
+            avg_time = total_time / len(case_times)
+            median_time = statistics.median(case_times)
+            p95_time = sorted(case_times)[int(len(case_times) * 0.95)]
+            timing_msg = (
+                f"TIMING: total={total_time:.0f}s | avg={avg_time:.1f}s/case | "
+                f"median={median_time:.1f}s | p95={p95_time:.1f}s | cases={len(case_times)}"
+            )
+            print(timing_msg)
+            if self.logger:
+                self.logger.info(timing_msg)
         
         print(completion_msg)
         print(stats_msg)

@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dx": {
+            "type": "string",
+            "description": "A disease or medical condition"
+          },
+          "rationale": {
+            "type": "string",
+            "description": "Brief reason for this diagnosis"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["High", "Medium", "Low"],
+            "description": "Confidence level for this diagnosis"
+          }
+        },
+        "required": ["dx", "rationale", "confidence"],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "description": "List of differential diseases or medical conditions with rationale and confidence"
+    }
+  },
+  "required": ["diagnoses"],
+  "additionalProperties": false
+}

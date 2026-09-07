@@ -2,22 +2,34 @@
 # =========================
 
 # General Information
-EXPERIMENT_NAME: "no-name-provided"
-EXPERIMENT_DESCRIPTION: "no-description-provided"
+EXPERIMENT_NAME: "fase2-paso2.5-ramedis-624-gpt5mini"
+EXPERIMENT_DESCRIPTION: "RAMEDIS HPO 624 casos con gpt-5-mini. Comparativa vs gpt-4o (R1-A: R@1=49.2%, R@5=99.4%). Objetivo: ver si el modelo más pequeño/rápido mantiene el rendimiento en enfermedades raras HPO."
 
 # Dataset Configuration
-DATASET_PATH: "bench/datasets/all_150.json"
+DATASET_PATH: "bench/datasets/ramedis_hpo.json"
 
 # DXGPT Emulator Configuration
 DXGPT_EMULATOR:
-  MODEL: "o3-images"
-  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v4.txt"
+  MODEL: "gpt-5-mini"  # Options: "gpt-5.1", "gpt-5-mini", "o3-mini", "gemini-3-pro-preview", "gemini-2.5-pro", "grok-4-1-fast-reasoning", etc.
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
   PARAMS:
-    #temperature: 0.1
-    #max_tokens: 4000
-    reasoning_effort: "high"  # Uncomment for reasoning models
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"  # For O3/GPT-5: "low", "medium", "high"
+    thinking_level: "medium"  # For Gemini 2.5/3 Pro: "low", "medium", "high", or omit for dynamic
   OUTPUT_SCHEMA: false
   OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: false  # Desactivado — casos HPO ya están en inglés (RAMEDIS, MME, HMS)
+  # PARALLEL_WORKERS: nº de workers concurrentes en la fase de emulación.
+  #   1   = modo legacy secuencial (con sleeps por rate-limit).
+  #   N>1 = ThreadPoolExecutor con N threads. Se DESACTIVA el sleep porque
+  #         el propio worker count limita las RPM.
+  # Regla pulgar: N <= floor(RPM_tier1 * avg_seg_caso / 60).
+  #   gemini-3-pro-preview Tier 1 (50 RPM, ~22 s/caso) -> 4-8 cómodo, 18 max.
+  #   gemini-2.5-pro       Tier 1 (150 RPM, ~10 s/caso) -> 16-24 cómodo.
+  #   gpt-5-mini Azure                                  -> 8-16 según quota.
+  PARALLEL_WORKERS: 4
 
 # Evaluator Configuration
 EVALUATOR:
@@ -25,12 +37,42 @@ EVALUATOR:
   BERT_AUTOCONFIRM_THRESHOLD: 0.90
   ENABLE_ICD10_PARENT_SEARCH: true
   ENABLE_ICD10_SIBLING_SEARCH: true
+  # JUDGE_MODEL: Modelo LLM para juzgar matches semánticos (opcional)
+  # Si no se especifica, usa lógica automática:
+  # - Para modelos Gemini: usa el mismo modelo que se está evaluando
+  # - Para modelos OpenAI (gpt-*, o3-*): usa "normalcalls"
+  # Ejemplo: JUDGE_MODEL: "gemini-2.5-pro" o JUDGE_MODEL: "normalcalls", JUDGE_MODEL: "gpt-5-mini"
+  JUDGE_MODEL: "gemini-2.5-pro"  # Juez para validar si es demasiado permisivo
+  # JUDGE_PARAMS: Parámetros para el modelo juez (opcional)
+  # Si no se especifica, usa valores por defecto
+  JUDGE_PARAMS:
+    reasoning_effort: "low"  # For O3/GPT-5: "low", "medium", "high"
+    thinking_level: "low"  # For Gemini 2.5/3 Pro: "low", "medium", "high"
+    max_tokens: 10000
+    temperature: 0.1
+  # PARALLEL_WORKERS: workers concurrentes en evaluator (judge LLM).
+  #   1   = legacy secuencial.
+  #   N>1 = ThreadPoolExecutor con N threads.
+  # Regla pulgar: N <= floor(RPM_judge * avg_seg_judge_call / 60).
+  #   gemini-2.5-pro Tier 1 (150 RPM, ~5-10s) -> 8-16 cómodo.
+  #   normalcalls (Azure gpt-4o, depende quota) -> 8 normalmente seguro.
+  PARALLEL_WORKERS: 8
 
 # Main Pipeline Control
+# Controla qué pasos del pipeline se ejecutan
+# - SHOULD_EMULATE: Paso 1 - Generar DDX usando el modelo LLM (true = ejecutar, false = saltar)
+# - SHOULD_LABEL: Paso 2 - Asignar códigos médicos usando Azure Text Analytics (true = ejecutar, false = saltar)
+# - SHOULD_EVALUATE: Paso 3 - Evaluar DDX contra GDX (true = ejecutar, false = saltar)
+# 
+# Configuraciones comunes:
+# - Ejecución completa desde cero: todos a true (o omitir estos valores)
+# - Solo re-evaluar: EMULATE=false, LABEL=false, EVALUATE=true
+# - Solo generar DDX: EMULATE=true, LABEL=false, EVALUATE=false
+# - Generar DDX + códigos: EMULATE=true, LABEL=true, EVALUATE=false
 MAIN:
-  SHOULD_EMULATE: true
-  SHOULD_LABEL: true  # Re-enable medical code attribution 
-  SHOULD_EVALUATE: true
+  SHOULD_EMULATE: true   # Generar DDX con MODEL
+  SHOULD_LABEL: true     # Asignar códigos médicos
+  SHOULD_EVALUATE: true  # Evaluar DDX contra GDX
 
 # Timestamp (auto-generated when config is saved)
 TIMESTAMP: null

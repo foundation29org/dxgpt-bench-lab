@@ -17,6 +17,12 @@ _PRMT_REF/
 
 # Exclude ALL JSON, CSV and LOG files from entire codebase
 *.json
+# Allow only pipeline schemas and config schemas (NOT datasets)
+!bench/candidate-prompts/**/*.json
+!bench/pipelines/**/candidate_output_schema*.json
+!bench/pipelines/**/semantic_evaluation_batch_schema*.json
+!bench/pipelines/**/severity_assignment_batch_schema*.json
+# bench/datasets/ and bench/pipelines/**/output/ remain excluded (contain case data)
 *.csv
 *.log
 
@@ -68,3 +74,6 @@ dmypy.json
 # OS
 .DS_Store
 Thumbs.db
+PropuestasDocs/
+# Squad: ignore runtime state (logs, inbox, sessions)
+.squad

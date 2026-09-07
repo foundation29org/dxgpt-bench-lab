@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/pilot_50_hpo.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-4o
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: 'Piloto de validación con 50 casos HPO (25 RAMEDIS + 15 MME
+  + 10 HMS). Objetivo: verificar que el pipeline procesa correctamente listas de síntomas
+  HPO en inglés. TRANSLATE_CASE desactivado — datos ya en inglés.'
+EXPERIMENT_NAME: fase2-paso2.4-piloto-50-hpo
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-04-16T21:55:33.304925'

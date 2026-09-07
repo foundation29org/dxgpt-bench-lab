@@ -1,294 +1,169 @@
 # Pipeline V4 - Medical Diagnosis Evaluation System
 
-## Overview
+Pipeline de evaluacion de modelos LLM para diagnostico diferencial medico, con foco especial en enfermedades raras.
 
-This is the fourth iteration of our medical diagnosis evaluation pipeline, representing the culmination of extensive research and development in pediatric diagnostic AI assessment. The pipeline evolved through multiple iterations (PV0-PV4) to address critical methodological challenges in evaluating LLM-based diagnostic systems.
+Este README es la fuente canonica del estado actual del benchmark. Para ejecutar el pipeline paso a paso usa `GUIA_EVALUACION.md`. Para la historia completa del proyecto usa `docs/ROADMAP.md`.
 
-### Pipeline Evolution and Study Context
+## Rol de cada documento
 
-This evaluation framework was developed through a comprehensive study involving 9,677 total medical cases curated from multiple specialized datasets including pediatric emergency medicine, rare diseases (RAMEDIS), and clinical vignettes. The final validated dataset of 450 cases represents a carefully stratified sample ensuring:
+| Documento | Uso |
+|---|---|
+| `README.md` | Estado actual del benchmark, tablas y recomendaciones |
+| `GUIA_EVALUACION.md` | Runbook operativo |
+| `output/rankingV2.txt` | Historial completo de runs |
+| `docs/ROADMAP.md` | Fases, decisiones y trazabilidad |
 
-- **Diagnostic diversity**: 497 unique diagnoses across 22 ICD-10 chapters
-- **Complexity representation**: Cases ranging from C2 to C10 complexity levels  
-- **Multi-diagnostic scenarios**: 31.8% of cases with multiple concurrent diagnoses
-- **Source heterogeneity**: Integration of 7 distinct medical data sources (B, J, Q, R, S, T, U)
+## Estado actual (2026-07-10)
 
-The pipeline architecture addresses three critical evaluation phases:
-1. **Differential Diagnosis Generation (DDX)** using state-of-the-art LLM models
-2. **Medical Code Attribution** using Azure Text Analytics for standardized coding (ICD-10, SNOMED, OMIM, ORPHA)
-3. **Quality Evaluation** against gold standard reference diagnoses (GDX) using both BERT semantic matching and LLM-based judgment
+- `gemini-3-pro-preview low` es el mejor modelo HPO del benchmark actual
+- En texto narrativo (`all_256_clean`) empata en calidad con `gemini-2.5-pro low` y es mucho mas rapido
+- `gpt-5.4-mini low` es la mejor opcion OpenAI por velocidad/calidad
+- `gpt-5.5 low` fue probado en `all_256_clean` y no mejora a `gpt-5.4` (`1.548`, `97.7%`, `13.9s/caso`)
+- `gpt-5.6-luna low` es competitivo, pero no reemplaza a `gpt-5.4-mini` (`1.540`, `97.7%`, `6.4s/caso`)
+- `gpt-5.6-luna medium` empeora (`1.584`, `97.7%`, `7.8s/caso`): mantener `low` y no ejecutar `high` completo
+- `gpt-5.6-terra low` es el mejor OpenAI narrativo hasta ahora (`1.382`, `98.1%`, `6.9s/caso`)
+- `gpt-5.6-terra medium` empeora (`1.516`, `97.7%`, `8.4s/caso`): mantener `low` y no ejecutar `high` completo
+- `gpt-5.6-sol low` no compite (`1.619`, `98.4%`, `14.1s/caso`): no ampliar a `medium` por ahora
+- `gemini-3.1-pro-preview low` es el nuevo líder narrativo (`1.267`, `98.1%`, `9.3s/caso`)
+- `gemini-3.5-flash low` casi iguala a Pro (`1.284`, `97.7%`, `6.1s/caso`): mejor candidato calidad/latencia
+- `gemini-3.1-flash-lite low` iguala el avg de `gpt-5.4-mini`, mejora cobertura (`98.8%`) y baja a `2.8s/caso`: candidato económico
+- `thinking_level=medium` en Gemini no aporta: degrada en 4/4 datasets HPO y empata en narrativa
 
-### Key Research Findings
+## Datasets evaluados
 
-Our comprehensive evaluation across multiple model architectures revealed significant performance variations:
+| Dataset | Tipo | Casos | Uso |
+|---|---|---:|---|
+| `all_256_clean` | Texto narrativo | 256 | Track narrativo publicable |
+| `ramedis_hpo` | HPO | 624 | Comparativa DeepRare |
+| `lirical_hpo` | HPO | 370 | Comparativa DeepRare |
+| `hms_hpo` | HPO | 88 | Comparativa DeepRare |
+| `mme_hpo` | HPO | 40 | Comparativa DeepRare |
+| `mygene2_hpo` | HPO | 146 | Comparativa DeepRare |
+| `ddd_hpo` | HPO | 1749 | Resultado HPO mas solido |
 
-- **O3-Images**: Leading performance with 93.65% accuracy in top-3 diagnostic predictions
-- **GPT-4O-Summary**: Strong baseline performance at 84.31% accuracy  
-- **O3-PRO**: Specialized variant showing 88.8% accuracy but with specific failure patterns
-- **O1**: Advanced reasoning model achieving competitive diagnostic accuracy
+## Track A - Narrative Clinical Text
 
-![Model Performance Comparison](../../__conceptual-model-and-research-notes/imgs/modelos_openai_rojos.jpg)
+Dataset: `all_256_clean`  
+Juez de referencia: `gemini-2.5-pro`  
+Prompt: `juanjo_classic_v2`
 
-The study identified critical insights into diagnostic AI evaluation methodology, bias detection, and the importance of position-based ranking metrics in medical diagnostic systems.
+| Rank | Model | Avg Pos | Success% | ~s/case | Nota |
+|---|---|---:|---:|---:|---|
+| 1 | `gemini-3.1-pro-preview low` | **1.267** | 98.1% | 9.3 | Nuevo líder narrativo |
+| 2 | `gemini-3.5-flash low` | 1.284 | 97.7% | 6.1 | Casi Pro, más rápido; candidato calidad/latencia |
+| 3 | `gemini-2.5-pro low` | 1.299 | 98.1% | 27.9 | Empate histórico con Gemini 3 Pro |
+| 3 | `gemini-3-pro-preview low` | 1.299 | 98.1% | 10.3 | Anterior modo avanzado |
+| 5 | `gemini-3-pro-preview medium` | 1.315 | 98.1% | ~35 | Casi empate, no compensa |
+| 6 | `gpt-5.6-terra low` | 1.382 | 98.1% | 6.9 | Mejor OpenAI narrativo; gana la ablación Terra |
+| 7 | `gemini-2.5-flash low` | 1.434 | 98.1% | 21.1 | Buen equilibrio |
+| 8 | `grok-4-1-fast-reasoning` | 1.448 | 97.7% | 20.4 | Mejor alternativa no Google |
+| 9 | `gpt-5.4 full low` | 1.502 | 98.8% | 17.3 | Superado por Terra low en avg_pos |
+| 10 | `gpt-5.6-terra medium` | 1.516 | 97.7% | 8.4 | Peor que Terra low; no compensa |
+| 11 | `gpt-5.4-mini low` | 1.526 | 98.1% | **4.7** | Produccion actual; mejor latencia/coste |
+| 11 | `gemini-3.1-flash-lite low` | 1.526 | 98.8% | **2.8** | Mismo avg, +2 matches y 40% más rápido |
+| 12 | `o3 high` | 1.530 | 98.8% | 15.9 | Obsoleto |
+| 13 | `gpt-5.6-luna low` | 1.540 | 97.7% | 6.4 | R@1 mejora, pero pierde R@3 y un caso vs `gpt-5.4-mini` |
+| 14 | `gpt-4o low` | 1.545 | 96.1% | 10.3 | Superado |
+| 15 | `gpt-5.5 low` | 1.548 | 97.7% | 13.9 | No mejora a `gpt-5.4` |
+| 16 | `gpt-5.6-luna medium` | 1.584 | 97.7% | 7.8 | Peor que Luna low; no compensa |
+| 17 | `gpt-5.6-sol low` | 1.619 | 98.4% | 14.1 | Buena cobertura, mala ordenación; no compite |
 
-## Components
+## Track B - HPO Datasets
 
-### Core Files
+Comparativa principal entre familias en los datasets HPO ya cerrados:
 
-- **`main.py`** - Pipeline orchestrator with state management and interactive decision points
-- **`emulator.py`** - DDX generation using various LLM models (GPT-4O, O3, O1, Claude)
-- **`medlabeler.py`** - Medical code attribution using Azure Text Analytics for standardized coding
-- **`evaluator.py`** - Comprehensive DDX quality evaluation against GDX using dual methodology
-- **`config.yaml`** - Configuration file with all parameters and model specifications
+| Dataset | Casos | gpt-4o R@1 | gpt-5.4-mini R@1 | gemini-2.5-pro R@1 | gemini-3-pro-preview R@1 |
+|---|---:|---:|---:|---:|---:|
+| RAMEDIS | 624 | 49.2% | 46.3% | 54.2% | **54.3%** |
+| LIRICAL | 370 | 37.0% | 55.1% | 61.9% | **67.8%** |
+| HMS | 88 | 34.1% | 53.4% | 56.8% | **72.7%** |
+| MyGene2 | 146 | 23.3% | 38.4% | 55.5% | **61.0%** |
+| MME | 40 | 42.5% | 22.5% | 65.0% | **77.5%** |
+| DDD | 1749 | 44.9% | 52.4% | 63.5% | **70.3%** |
 
-### Utility Files
+### Conclusiones HPO
 
-- **`validate.py`** - Configuration and component validation
-- **`watch.py`** - Real-time monitoring and progress tracking
-- **`README.md`** - This comprehensive documentation
+- `gemini-3-pro-preview` gana en los 6 datasets HPO en `Recall@1`
+- `DDD` es el resultado mas robusto: `R@1=70.3%`
+- `gpt-5.4-mini` supera a `gpt-4o` en 4/6 datasets HPO y sigue siendo la mejor opcion OpenAI para produccion normal
 
-## Methodological Innovation
+### Ablacion `thinking_level=medium`
 
-Pipeline V4 represents significant methodological advances over previous iterations:
+Evaluado sobre MME, HMS, MyGene2, LIRICAL y `all_256_clean`:
 
-### PV0 → PV4 Evolution
-- **PV0**: Basic LLM-to-LLM evaluation with inherent bias
-- **PV2**: Introduction of BERT semantic matching for objective assessment
-- **PV3**: Dual evaluation methodology combining BERT + LLM judgment
-- **PV4**: Refined architecture with bias detection and statistical validation
+| Subconjunto | n | Delta R@1 | Delta R@3 | Delta avg_pos |
+|---|---:|---:|---:|---:|
+| HPO weighted | 644 | -5.1pp | -8.8pp | +0.22 |
+| Narrativa | 256 | +1.2pp | -2.7pp | +0.02 |
+| Total | 900 | -3.3pp | -7.1pp | +0.17 |
 
-### Evaluation Methodology
-The pipeline employs a sophisticated dual-track evaluation:
+Decision: mantener `low`.
 
-1. **BERT Semantic Matching**: Objective similarity assessment with configurable thresholds (0.80 acceptance, 0.90 auto-confirm)
-2. **LLM Judgment**: Contextual evaluation for cases where semantic matching is insufficient
-3. **Statistical Validation**: Comprehensive metrics including position-based ranking, confidence intervals, and effect size calculations
+## Referencia de tiempos
 
-![Pipeline Evolution](../../__conceptual-model-and-research-notes/imgs/pv12vspv3.jpg)
+Tiempo de emulacion aproximado por caso:
 
-## Configuration
+| Model | ~s/case |
+|---|---:|
+| `gpt-5.4-mini low` | **~5** |
+| `gpt-5.6-luna low` | ~6.4 |
+| `gpt-5.6-terra low` | ~6.9 |
+| `gpt-5.6-luna medium` | ~7.8 |
+| `gpt-5.6-terra medium` | ~8.4 |
+| `gemini-3.5-flash low` | ~6.1 |
+| `gemini-3.1-flash-lite low` | **~2.8** |
+| `gemini-3.1-pro-preview low` | ~9.3 |
+| `gpt-5.6-sol low` | ~14.1 |
+| `gpt-4o low` | ~8-10 |
+| `gemini-3-pro-preview low` | ~10 |
+| `gpt-5.5 low` | ~14 |
+| `gpt-5.4 full low` | ~17 |
+| `grok-4-1-fast-reasoning` | ~20 |
+| `gemini-2.5-flash low` | ~21 |
+| `gemini-2.5-pro low` | ~28-34 |
+| `gpt-5-mini low` | ~48 |
 
-The `config.yaml` file contains all configuration parameters:
+## Recomendaciones de produccion
 
-```yaml
-# General Information
-EXPERIMENT_NAME: "no-name-provided"
-EXPERIMENT_DESCRIPTION: "no-description-provided"
+### Modo normal
 
-# Dataset Configuration
-DATASET_PATH: "bench/datasets/all_450.json"
+Usar `gpt-5.4-mini low`.
 
-# DXGPT Emulator Configuration
-DXGPT_EMULATOR:
-  MODEL: "gpt-4o-summary"
-  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/dxgpt_dev.txt"
-  PARAMS:
-    temperature: 0.1
-    max_tokens: 4000
-  OUTPUT_SCHEMA: true
-  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+Motivos:
 
-# Evaluator Configuration
-EVALUATOR:
-  BERT_ACCEPTANCE_THRESHOLD: 0.80
-  BERT_AUTOCONFIRM_THRESHOLD: 0.90
-  ENABLE_ICD10_PARENT_SEARCH: true
-  ENABLE_ICD10_SIBLING_SEARCH: true
+- mejor que `gpt-4o` en calidad
+- mucho mas rapido que `gpt-5-mini`
+- mejor coste/latencia dentro del ecosistema OpenAI
 
-# Main Pipeline Control
-MAIN:
-  SHOULD_EMULATE: true
-  SHOULD_LABEL: true
-  SHOULD_EVALUATE: true
+### Modo avanzado
+
+Usar `gemini-3-pro-preview low`.
+
+Motivos:
+
+- mejor calidad HPO del benchmark actual
+- empate con `gemini-2.5-pro` en narrativa
+- mucha mejor latencia
+
+## Como ejecutar un benchmark
+
+Para instrucciones operativas completas:
+
+- `GUIA_EVALUACION.md`
+
+Comandos minimos:
+
+```powershell
+cd "C:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main"
+py validate.py
+py main.py --config config_mi_experimento.yaml
 ```
 
-## Prerequisites
+## Reproducibilidad
 
-### Python Dependencies
+Cada run guarda su snapshot de configuracion dentro de `output/`. Tras la limpieza del repo, esos snapshots son la fuente de verdad de cada experimento:
 
-The pipeline requires the following Python packages:
-- `yaml`
-- `json`
-- `os`
-- `sys`
-- `datetime`
-- `typing`
-- `azure-ai-textanalytics`
-- `python-dotenv`
+- `output/<dataset>/<prompt>/<model>/<prompt>___<model>___config.yaml`
+- `output/<dataset>/<prompt>/<model>/<timestamp>/<prompt>___<model>___config.yaml`
 
-### Environment Variables
-
-Create a `.env` file in the project root with:
-```
-AZURE_LANGUAGE_ENDPOINT=your_azure_endpoint
-AZURE_LANGUAGE_KEY=your_azure_key
-```
-
-### Utils Dependencies
-
-The pipeline uses utilities from the `utils/` directory:
-- `utils.llm` - LLM model interface
-- `utils.bert.bert_similarity` - BERT similarity calculations
-- `utils.icd10.taxonomy` - ICD-10 taxonomy operations
-
-## Usage
-
-### 1. Validation
-
-First, validate the configuration and dependencies:
-
-```bash
-python3 validate.py
-```
-
-### 2. Full Pipeline
-
-Run the complete pipeline:
-
-```bash
-python3 main.py
-```
-
-### 3. Individual Components
-
-Run individual components separately:
-
-```bash
-# DDX Generation only
-python3 emulator.py
-
-# Medical Code Attribution only
-python3 medlabeler.py
-
-# Evaluation only
-python3 evaluator.py
-```
-
-## Output Structure
-
-The pipeline creates outputs in the following structure:
-
-```
-output/
-├── <dataset_name>/
-│   └── <prompt_name>/
-│       └── <model_name>/
-│           ├── <prompt_name>___<model_name>___ddxs_from_emulator.json (temporary)
-│           ├── <prompt_name>___<model_name>___ddxs_from_labeler.json
-│           ├── <prompt_name>___<model_name>___config.yaml
-│           └── <timestamp>/
-│               ├── <prompt_name>___<model_name>___evaluation.log
-│               ├── <prompt_name>___<model_name>___evaluation_details.txt
-│               ├── <prompt_name>___<model_name>___summary.json
-│               └── <prompt_name>___<model_name>___config.yaml
-```
-
-For example, with dataset `all_5.json`, prompt `dxgpt_dev`, and model `gpt-4o-summary`:
-```
-output/
-├── all_5/
-│   └── dxgpt_dev/
-│       └── gpt_4o_summary/
-│           ├── dxgpt_dev___gpt_4o_summary___ddxs_from_emulator.json (temporary)
-│           ├── dxgpt_dev___gpt_4o_summary___ddxs_from_labeler.json
-│           ├── dxgpt_dev___gpt_4o_summary___config.yaml
-│           └── 20250117123456/
-│               ├── dxgpt_dev___gpt_4o_summary___evaluation.log
-│               ├── dxgpt_dev___gpt_4o_summary___evaluation_details.txt
-│               ├── dxgpt_dev___gpt_4o_summary___summary.json
-│               └── dxgpt_dev___gpt_4o_summary___config.yaml
-```
-
-### File Naming Convention
-
-- `-` characters are replaced with `_`
-- Spaces and special characters are replaced with `_`
-- Multiple consecutive `_` are collapsed to single `_`
-
-## Pipeline States
-
-The pipeline supports state management and resumption:
-
-1. **Fresh Run**: All steps executed from beginning
-2. **Resume from Labeling**: Skip DDX generation if results exist
-3. **Resume from Evaluation**: Skip DDX generation and labeling if results exist
-4. **Abort**: Users can abort the operation at any decision point
-
-## User Interaction
-
-The pipeline includes interactive prompts for decision-making:
-
-- **Overwrite decisions**: When outputs already exist, users can choose to overwrite or continue
-- **Abort option**: Every user prompt includes an abort option (❌ Abort operation)
-- **Keyboard interrupt**: Users can press Ctrl+C to abort at any time
-- **Clear options**: All choices are numbered and clearly presented
-
-Example user prompt:
-```
-⚠️  DDX results already exist at output/all_5/dxgpt_dev/gpt_4o_summary/file.json
-
-1. Re-run DDX generation (will overwrite existing results)
-2. Continue with medical code labeling using existing DDX
-3. ❌ Abort operation
-
-Enter your choice (number): 
-```
-
-## Error Handling
-
-The pipeline includes comprehensive error handling:
-
-- Configuration validation
-- File existence checks
-- API error handling
-- State consistency validation
-- User interaction for conflict resolution
-
-## Features
-
-### State Management
-- Automatic detection of existing outputs
-- User prompts for overwrite decisions
-- Resumption from any pipeline stage
-- **Abort functionality**: Users can always choose to abort the operation
-
-### File Organization
-- Structured output directories
-- Timestamped evaluation runs
-- Configuration snapshots for reproducibility
-
-### Validation
-- Pre-execution validation of all components
-- Configuration file validation
-- Dataset format validation
-- Prompt template validation
-
-### Monitoring
-- Progress tracking with terminal output
-- Detailed logging for debugging
-- Success/failure indicators
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Module not found errors**: Ensure the `utils/` directory is in the Python path
-2. **Azure API errors**: Check your `.env` file and API credentials
-3. **File path errors**: Verify the relative paths in `config.yaml`
-4. **Memory errors**: Reduce batch sizes or dataset size for testing
-
-### Debugging
-
-1. Run `python3 validate.py` to check configuration
-2. Check the evaluation log files for detailed error messages
-3. Verify that all required files exist in the expected locations
-4. Ensure Azure Text Analytics credentials are valid
-
-## Contributing
-
-When modifying the pipeline:
-
-1. Update the configuration validation in `validate.py`
-2. Update this README with any new features or requirements
-3. Test all pipeline states (fresh, resume, etc.)
-4. Ensure error handling is comprehensive
+No hace falta conservar decenas de `config_*.yaml` sueltos en la raiz del pipeline para reejecutar runs cerrados.

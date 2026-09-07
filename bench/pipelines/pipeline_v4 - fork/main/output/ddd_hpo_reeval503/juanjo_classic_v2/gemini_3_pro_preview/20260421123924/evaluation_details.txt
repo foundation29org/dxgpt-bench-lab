@@ -1,0 +1,1081 @@
+{
+  "case_id": "DDD_G2P01463",
+  "gdx_details": [
+    {
+      "name": "HPGD-related cranioosteoarthropathy",
+      "details": {
+        "name": "HPGD-related cranioosteoarthropathy",
+        "omim": "259100"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Primary hypertrophic osteoarthropathy",
+      "details": {
+        "normalized_text": "Primary hypertrophic osteoarthropathy",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "L62.0",
+            "M89.4"
+          ],
+          "snomed": [
+            "88220006"
+          ],
+          "omim": [
+            "259100"
+          ],
+          "orpha": [
+            "2796"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cleidocranial dysplasia",
+      "details": {
+        "normalized_text": "Cleidocranial dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q74.0"
+          ],
+          "snomed": [
+            "65976001"
+          ],
+          "omim": [
+            "119600"
+          ],
+          "orpha": [
+            "1452"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cantu syndrome",
+      "details": {
+        "normalized_text": "Cantu syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "239087008"
+          ],
+          "omim": [
+            "239850"
+          ],
+          "orpha": [
+            "1517"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "HPGD-related cranioosteoarthropathy": {
+          "name": "HPGD-related cranioosteoarthropathy",
+          "omim": "259100"
+        }
+      },
+      "matched_ddx": {
+        "Primary hypertrophic osteoarthropathy": {
+          "normalized_text": "Primary hypertrophic osteoarthropathy",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "L62.0",
+              "M89.4"
+            ],
+            "snomed": [
+              "88220006"
+            ],
+            "omim": [
+              "259100"
+            ],
+            "orpha": [
+              "2796"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "HPGD-related cranioosteoarthropathy": {
+            "name": "HPGD-related cranioosteoarthropathy",
+            "omim": "259100"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.641 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6409891247749329
+            },
+            {
+              "position": 2,
+              "score": 0.5830145478248596
+            },
+            {
+              "position": 3,
+              "score": 0.41924425959587097
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6409891247749329
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P01464",
+  "gdx_details": [
+    {
+      "name": "PEX7-related peroxisome biogenesis disorder complementation group 11",
+      "details": {
+        "name": "PEX7-related peroxisome biogenesis disorder complementation group 11",
+        "omim": "614879",
+        "mondo": "MONDO:0013945"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Rhizomelic chondrodysplasia punctata",
+      "details": {
+        "normalized_text": "Rhizomelic chondrodysplasia punctata",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E71.540"
+          ],
+          "snomed": [
+            "56692003"
+          ],
+          "omim": [
+            "215100"
+          ],
+          "orpha": [
+            "177"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zellweger syndrome",
+      "details": {
+        "normalized_text": "Zellweger syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E71.510"
+          ],
+          "snomed": [
+            "88469006"
+          ],
+          "omim": [
+            "214100"
+          ],
+          "orpha": [
+            "912"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Refsum disease",
+      "details": {
+        "normalized_text": "Refsum disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G60.1"
+          ],
+          "snomed": [
+            "25362006"
+          ],
+          "omim": [
+            "266500"
+          ],
+          "orpha": [
+            "773"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "PEX7-related peroxisome biogenesis disorder complementation group 11": {
+          "name": "PEX7-related peroxisome biogenesis disorder complementation group 11",
+          "omim": "614879",
+          "mondo": "MONDO:0013945"
+        }
+      },
+      "matched_ddx": {
+        "Rhizomelic chondrodysplasia punctata": {
+          "normalized_text": "Rhizomelic chondrodysplasia punctata",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "E71.540"
+            ],
+            "snomed": [
+              "56692003"
+            ],
+            "omim": [
+              "215100"
+            ],
+            "orpha": [
+              "177"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "PEX7-related peroxisome biogenesis disorder complementation group 11": {
+            "name": "PEX7-related peroxisome biogenesis disorder complementation group 11",
+            "omim": "614879",
+            "mondo": "MONDO:0013945"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.487 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4506855607032776
+            },
+            {
+              "position": 2,
+              "score": 0.45421767234802246
+            },
+            {
+              "position": 3,
+              "score": 0.48673656582832336
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.48673656582832336
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P01771",
+  "gdx_details": [
+    {
+      "name": "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger",
+      "details": {
+        "name": "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Sudden Infant Death Syndrome (SIDS)",
+      "details": {
+        "normalized_text": "Sudden Infant Death Syndrome (SIDS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "R95"
+          ],
+          "snomed": [
+            "51178009"
+          ],
+          "omim": [
+            "272120"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Long QT Syndrome (LQTS)",
+      "details": {
+        "normalized_text": "Long QT Syndrome (LQTS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "I45.81"
+          ],
+          "snomed": [
+            "9651007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Infantile-onset Pompe Disease",
+      "details": {
+        "normalized_text": "Infantile-onset Pompe Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E74.02"
+          ],
+          "snomed": [
+            "274864009"
+          ],
+          "omim": [
+            "232300"
+          ],
+          "orpha": [
+            "365"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger": {
+          "name": "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger"
+        }
+      },
+      "matched_ddx": {
+        "Long QT Syndrome (LQTS)": {
+          "normalized_text": "Long QT Syndrome (LQTS)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "I45.81"
+            ],
+            "snomed": [
+              "9651007"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger": {
+            "name": "PPA2-related sudden arrhythmic cardiac death after infectious or alcohol trigger"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.498 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4979540705680847
+            },
+            {
+              "position": 2,
+              "score": 0.34285980463027954
+            },
+            {
+              "position": 3,
+              "score": 0.3819497525691986
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.4979540705680847
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P01783",
+  "gdx_details": [
+    {
+      "name": "ARCN1-related microcephalic dwarfism",
+      "details": {
+        "name": "ARCN1-related microcephalic dwarfism",
+        "omim": "617164"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cornelia de Lange syndrome",
+      "details": {
+        "normalized_text": "Cornelia de Lange syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "40354009"
+          ],
+          "omim": [
+            "122470"
+          ],
+          "orpha": [
+            "199"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Fetal Alcohol Syndrome",
+      "details": {
+        "normalized_text": "Fetal Alcohol Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "PNL015",
+            "Q86.0"
+          ],
+          "snomed": [
+            "205788004"
+          ],
+          "omim": [],
+          "orpha": [
+            "1915"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Achondroplasia",
+      "details": {
+        "normalized_text": "Achondroplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q77.4"
+          ],
+          "snomed": [
+            "86268005"
+          ],
+          "omim": [
+            "100800"
+          ],
+          "orpha": [
+            "15"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "ARCN1-related microcephalic dwarfism": {
+          "name": "ARCN1-related microcephalic dwarfism",
+          "omim": "617164"
+        }
+      },
+      "matched_ddx": {
+        "Cornelia de Lange syndrome": {
+          "normalized_text": "Cornelia de Lange syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "Q87.19"
+            ],
+            "snomed": [
+              "40354009"
+            ],
+            "omim": [
+              "122470"
+            ],
+            "orpha": [
+              "199"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "ARCN1-related microcephalic dwarfism": {
+            "name": "ARCN1-related microcephalic dwarfism",
+            "omim": "617164"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.498 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.48284101486206055
+            },
+            {
+              "position": 2,
+              "score": 0.49820488691329956
+            },
+            {
+              "position": 3,
+              "score": 0.49326443672180176
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.49820488691329956
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P01849",
+  "gdx_details": [
+    {
+      "name": "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception",
+      "details": {
+        "name": "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception",
+        "omim": "617146"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Spinal muscular atrophy",
+      "details": {
+        "normalized_text": "Spinal muscular atrophy",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "G12.9"
+          ],
+          "snomed": [
+            "5262007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Charcot-Marie-Tooth disease",
+      "details": {
+        "normalized_text": "Charcot-Marie-Tooth disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "G60.0"
+          ],
+          "snomed": [],
+          "omim": [
+            "118200"
+          ],
+          "orpha": [
+            "166"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Arthrogryposis multiplex congenita",
+      "details": {
+        "normalized_text": "Arthrogryposis multiplex congenita",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q74.3"
+          ],
+          "snomed": [
+            "205402004"
+          ],
+          "omim": [],
+          "orpha": [
+            "1037"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception": {
+          "name": "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception",
+          "omim": "617146"
+        }
+      },
+      "matched_ddx": {
+        "Charcot-Marie-Tooth disease": {
+          "normalized_text": "Charcot-Marie-Tooth disease",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "G60.0"
+            ],
+            "snomed": [],
+            "omim": [
+              "118200"
+            ],
+            "orpha": [
+              "166"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception": {
+            "name": "PIEZO2-related ataxia, dysmetria, contractures and scoliosis with normal cognition but loss of discriminative touch perception",
+            "omim": "617146"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.523 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3362698256969452
+            },
+            {
+              "position": 2,
+              "score": 0.3896884620189667
+            },
+            {
+              "position": 3,
+              "score": 0.5226046442985535
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5226046442985535
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P01864",
+  "gdx_details": [
+    {
+      "name": "STAG1-related syndromic intellectual disability",
+      "details": {
+        "name": "STAG1-related syndromic intellectual disability",
+        "omim": "617635",
+        "mondo": "MONDO:0030912"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Mowat-Wilson syndrome",
+      "details": {
+        "normalized_text": "Mowat-Wilson syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703535000"
+          ],
+          "omim": [
+            "235730"
+          ],
+          "orpha": [
+            "2152"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pitt-Hopkins syndrome",
+      "details": {
+        "normalized_text": "Pitt-Hopkins syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702344008"
+          ],
+          "omim": [
+            "610954"
+          ],
+          "orpha": [
+            "2896"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Angelman syndrome",
+      "details": {
+        "normalized_text": "Angelman syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.51"
+          ],
+          "snomed": [
+            "76880004"
+          ],
+          "omim": [
+            "105830"
+          ],
+          "orpha": [
+            "72"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rett syndrome",
+      "details": {
+        "normalized_text": "Rett syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "F84.2"
+          ],
+          "snomed": [
+            "68618008"
+          ],
+          "omim": [
+            "312750"
+          ],
+          "orpha": [
+            "778"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "STAG1-related syndromic intellectual disability": {
+          "name": "STAG1-related syndromic intellectual disability",
+          "omim": "617635",
+          "mondo": "MONDO:0030912"
+        }
+      },
+      "matched_ddx": {
+        "Pitt-Hopkins syndrome": {
+          "normalized_text": "Pitt-Hopkins syndrome",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "702344008"
+            ],
+            "omim": [
+              "610954"
+            ],
+            "orpha": [
+              "2896"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "STAG1-related syndromic intellectual disability": {
+            "name": "STAG1-related syndromic intellectual disability",
+            "omim": "617635",
+            "mondo": "MONDO:0030912"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.565 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3387538492679596
+            },
+            {
+              "position": 2,
+              "score": 0.4310190677642822
+            },
+            {
+              "position": 3,
+              "score": 0.5652878284454346
+            },
+            {
+              "position": 4,
+              "score": 0.5374704599380493
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5652878284454346
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "DDD_G2P03311",
+  "gdx_details": [
+    {
+      "name": "RAF1-related Noonan syndrome",
+      "details": {
+        "name": "RAF1-related Noonan syndrome",
+        "mondo": "MONDO:0012690"
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Noonan syndrome",
+      "details": {
+        "normalized_text": "Noonan syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "205824006"
+          ],
+          "omim": [
+            "163950"
+          ],
+          "orpha": [
+            "648"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Costello syndrome",
+      "details": {
+        "normalized_text": "Costello syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "309776008"
+          ],
+          "omim": [
+            "218040"
+          ],
+          "orpha": [
+            "3071"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Turner syndrome",
+      "details": {
+        "normalized_text": "Turner syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q96.0"
+          ],
+          "snomed": [
+            "38804009"
+          ],
+          "omim": [],
+          "orpha": [
+            "881"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_MATCH",
+      "value": "0.8199771046638489",
+      "matched_gdx": {
+        "RAF1-related Noonan syndrome": {
+          "name": "RAF1-related Noonan syndrome",
+          "mondo": "MONDO:0012690"
+        }
+      },
+      "matched_ddx": {
+        "Noonan syndrome": {
+          "normalized_text": "Noonan syndrome",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [
+              "Q87.19"
+            ],
+            "snomed": [
+              "205824006"
+            ],
+            "omim": [
+              "163950"
+            ],
+            "orpha": [
+              "648"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "RAF1-related Noonan syndrome": {
+            "name": "RAF1-related Noonan syndrome",
+            "mondo": "MONDO:0012690"
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.820) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8199771046638489
+            },
+            {
+              "position": 2,
+              "score": 0.44000691175460815
+            },
+            {
+              "position": 3,
+              "score": 0.4940919876098633
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8199771046638489
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}

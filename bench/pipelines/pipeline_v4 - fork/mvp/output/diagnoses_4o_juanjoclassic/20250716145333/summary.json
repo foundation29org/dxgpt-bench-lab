@@ -1,0 +1,113 @@
+{
+  "configuration": {
+    "bert_acceptance_threshold": "0.85",
+    "llm_judgment_threshold": "0.7",
+    "note": "Excludes cases with 'No valid diagnoses' in DDX"
+  },
+  "global_statistics": {
+    "total_cases": 282,
+    "matched_cases": 267,
+    "unmatched_cases": 15,
+    "position_counts": {
+      "P2": 51,
+      "P1": 179,
+      "P5": 6,
+      "P4": 11,
+      "P3": 19,
+      "P13": 1
+    },
+    "method_counts": {
+      "snomed_match": 122,
+      "icd10_exact": 16,
+      "icd10_child": 0,
+      "icd10_parent": 3,
+      "icd10_sibling": 20,
+      "bert_autoconfirm": 8,
+      "bert_match": 14,
+      "llm_judgment": 84
+    },
+    "average_position": 1.592,
+    "final_score_percentage": 94.68
+  },
+  "method_statistics": {
+    "BERT_AUTOCONFIRM": {
+      "count": 8,
+      "percentage": 2.84,
+      "positions": {
+        "P1": 5,
+        "P3": 2,
+        "P13": 1
+      },
+      "average_position": 3
+    },
+    "BERT_MATCH": {
+      "count": 14,
+      "percentage": 4.96,
+      "positions": {
+        "P1": 10,
+        "P2": 2,
+        "P5": 1,
+        "P4": 1
+      },
+      "average_position": 1.643
+    },
+    "ICD10_EXACT": {
+      "count": 16,
+      "percentage": 5.67,
+      "positions": {
+        "P2": 4,
+        "P1": 12
+      },
+      "average_position": 1.25
+    },
+    "ICD10_PARENT": {
+      "count": 3,
+      "percentage": 1.06,
+      "positions": {
+        "P1": 3
+      },
+      "average_position": 1
+    },
+    "ICD10_SIBLING": {
+      "count": 20,
+      "percentage": 7.09,
+      "positions": {
+        "P1": 11,
+        "P2": 7,
+        "P4": 1,
+        "P5": 1
+      },
+      "average_position": 1.7
+    },
+    "LLM_JUDGMENT": {
+      "count": 84,
+      "percentage": 29.79,
+      "positions": {
+        "P2": 23,
+        "P4": 9,
+        "P3": 11,
+        "P1": 39,
+        "P5": 2
+      },
+      "average_position": 1.952
+    },
+    "SNOMED_MATCH": {
+      "count": 122,
+      "percentage": 43.26,
+      "positions": {
+        "P1": 99,
+        "P2": 15,
+        "P5": 2,
+        "P3": 6
+      },
+      "average_position": 1.287
+    }
+  },
+  "summary": {
+    "total_cases_processed": 282,
+    "successful_matches": 267,
+    "failed_matches": 15,
+    "success_rate": 94.68,
+    "average_position": 1.592
+  }
+}

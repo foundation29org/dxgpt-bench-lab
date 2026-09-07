@@ -73,7 +73,7 @@ class MedicalLabeler:
         
         for entity in entities:
             # Extract different types of medical codes
-            if hasattr(entity, 'data_sources'):
+            if hasattr(entity, 'data_sources') and entity.data_sources:
                 for data_source in entity.data_sources:
                     if hasattr(data_source, 'name') and hasattr(data_source, 'entity_id'):
                         source_name = data_source.name.lower()
@@ -100,22 +100,21 @@ class MedicalLabeler:
     
     def _get_medical_codes_for_texts(self, texts: List[str]) -> Dict[str, Dict[str, List[str]]]:
         """
-        Get medical codes for a list of texts using Azure Text Analytics
-        
+        Get medical codes for a list of texts using Azure Text Analytics.
+        DDX strings are sent as-is (English expected when the emulator uses TRANSLATE_CASE → en).
+
         Args:
-            texts: List of medical text strings
-            
+            texts: List of medical text strings (DDX labels)
+
         Returns:
-            Dictionary mapping text to medical codes
+            Dictionary mapping each input text to medical codes.
         """
         try:
-            # Log request details
             if self.logger:
                 self.logger.info(f"Making Azure Text Analytics request for {len(texts)} texts")
                 self.logger.info(f"Texts to process: {[text[:50] + ('...' if len(text) > 50 else '') for text in texts]}")
                 self.logger.info(f"Azure endpoint: {self.endpoint}")
-            
-            # Call Azure Text Analytics for health entities (Long Running Operation)
+
             poller = self.client.begin_analyze_healthcare_entities(
                 documents=texts,
                 language="en",
@@ -131,20 +130,28 @@ class MedicalLabeler:
             if self.logger:
                 self.logger.info(f"Azure Text Analytics LRO completed successfully")
             
+            # Check if response is valid
+            if response is None:
+                if self.logger:
+                    self.logger.error("Azure Text Analytics returned None response")
+                return {text: {"icd10": [], "snomed": [], "omim": [], "orpha": []} for text in texts}
+            
             results = {}
             
             for idx, result in enumerate(response):
-                text = texts[idx]
-                
+                original_text = texts[idx]
+
                 if not result.is_error:
-                    # Log successful processing
+                    # Check if entities exist and is not None
+                    entities = result.entities if hasattr(result, 'entities') and result.entities is not None else []
+
                     if self.logger:
-                        self.logger.info(f"Azure processing successful for text '{text[:30]}...' - Found {len(result.entities)} entities")
+                        self.logger.info(f"Azure processing successful for text '{original_text[:30]}...' - Found {len(entities)} entities")
                     
                     # 🔧 DEBUG: Show what entities we got
-                    print(f"🔍 DEBUG: Processing '{text}' - Found {len(result.entities)} entities")
+                    print(f"🔍 DEBUG: Processing '{original_text}' - Found {len(entities)} entities")
                     
-                    for entity_idx, entity in enumerate(result.entities):
+                    for entity_idx, entity in enumerate(entities):
                         print(f"   📋 Entity: '{entity.text}' | Category: {entity.category} | Confidence: {entity.confidence_score:.2f}")
                         
                         # Log detailed entity information
@@ -163,8 +170,9 @@ class MedicalLabeler:
                             if self.logger:
                                 self.logger.warning(f"    No data sources found for entity '{entity.text}'")
                     
-                    medical_codes = self._extract_medical_codes(result.entities)
-                    results[text] = medical_codes
+                    medical_codes = self._extract_medical_codes(entities)
+                    # Use original text as key (not translated)
+                    results[original_text] = medical_codes
                     
                     # Log extracted codes in detail
                     total_codes = sum(len(codes) for codes in medical_codes.values())
@@ -172,7 +180,7 @@ class MedicalLabeler:
                     print()
                     
                     if self.logger:
-                        self.logger.info(f"Medical codes extracted for '{text[:30]}...': Total={total_codes}")
+                        self.logger.info(f"Medical codes extracted for '{original_text[:30]}...': Total={total_codes}")
                         for code_type, codes in medical_codes.items():
                             if codes:
                                 self.logger.info(f"  {code_type.upper()}: {codes}")
@@ -181,16 +189,16 @@ class MedicalLabeler:
                 
                 else:
                     # Handle Azure Text Analytics errors
-                    error_msg = f"Azure Text Analytics error for text: {text[:50]}..."
+                    error_msg = f"Azure Text Analytics error for text: {original_text[:50]}..."
                     print(f"⚠️  {error_msg}")
                     
                     if self.logger:
                         self.logger.error(f"AZURE_ERROR: {error_msg}")
                         if hasattr(result, 'error'):
                             self.logger.error(f"Error details: {result.error}")
-                        self.logger.error(f"Full text that failed: {text}")
+                        self.logger.error(f"Full text that failed: {original_text}")
                     
-                    results[text] = {
+                    results[original_text] = {
                         "icd10": [],
                         "snomed": [],
                         "omim": [],
@@ -198,7 +206,7 @@ class MedicalLabeler:
                     }
             
             return results
-        
+
         except Exception as e:
             error_msg = f"❌ Error calling Azure Text Analytics: {str(e)}"
             print(error_msg)
@@ -225,7 +233,6 @@ class MedicalLabeler:
                 
                 self.logger.error(f"Failed texts: {[text[:30] + '...' for text in texts]}")
             
-            # Return empty results for all texts
             return {text: {"icd10": [], "snomed": [], "omim": [], "orpha": []} for text in texts}
     
     def process_dataset(self, dataset: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -303,7 +310,7 @@ class MedicalLabeler:
         
         print("-" * 60)
         
-        # Apply medical codes to all cases
+            # Apply medical codes to all cases
         results = []
         
         for i, case in enumerate(dataset, 1):
@@ -322,10 +329,10 @@ class MedicalLabeler:
             for ddx_name, ddx_info in ddx_details.items():
                 updated_ddx_info = ddx_info.copy()
                 
-                # Get medical codes from cache
+                # Get medical codes from cache (using original DDX name as key)
                 if ddx_name in ddx_codes_cache:
                     updated_ddx_info['medical_codes'] = ddx_codes_cache[ddx_name]
-                    
+
                     # Log when no codes are found for a DDX
                     codes = ddx_codes_cache[ddx_name]
                     total_codes = sum(len(code_list) for code_list in codes.values())
