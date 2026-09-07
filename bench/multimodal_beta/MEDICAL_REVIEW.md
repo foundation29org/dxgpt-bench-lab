@@ -1,6 +1,17 @@
 # Encargo para David — revisión clínica de DxGPT con imágenes
 
-Este documento es la guía. No hace falta saber programar ni lanzar
+**Ronda 1 (cerrada):** este documento +
+[reviews/david_deliverable.md](reviews/david_deliverable.md).
+
+**Ronda 2 (activa):** auditar los 20 unmatched y los 16 matches LLM del
+80/100. Guía:
+[MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md).
+Entregable:
+[reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
+
+---
+
+Este documento es la guía de ronda 1. No hace falta saber programar ni lanzar
 evaluaciones. Abres ficheros, lees casos y escribes veredictos.
 
 No basta con este Markdown suelto: hace falta la carpeta
