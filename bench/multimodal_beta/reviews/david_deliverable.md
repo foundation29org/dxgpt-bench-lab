@@ -52,12 +52,12 @@ Ejemplo de formato (Hodgkin vs Burkitt; este id no está en la tabla):
 | id | Posición equivalente | Veredicto juez | Calidad gold | Justificación | Confianza |
 |---|---|---|---|---|---|
 | 24174966 | 0 | correcto | gold_valido | Un hemangioma cavernoso no es un angiofibroma cardíaco primario; son tumores vasculares distintos. El rechazo del juez es correcto. | alta |
-| 27656661 | 1 |  |  |  |  |
-| 30687305 |  |  |  |  |  |
-| 27074070 |  |  |  |  |  |
-| 27068836 |  |  |  |  |  |
-| 21424749 |  |  |  |  |  |
-| 23281978 |  |  |  |  |  |
+| 27656661 | 1 | Incorrecto | gold_valido | Pongo que la posición equivalente es la 1 porque el gold es Multiple sclerosis-like disorder y la primera propesta que da es Primary progressive mltiple sclerosis, el cual es una variante de la gold pero más específica. El dilema está en que no podemos saber cual es la verdaderamente correcta pero por lo menos saber que el resultado quue ha dado no está mal del todo| media |
+| 30687305 | 0 | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. | baja |
+| 27074070 | 0 | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. | baja |
+| 27068836 | o | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. Concretamente sobre el primer caso de la lista de propuestas una perforación o fístula faringoesofágica por erosión de hardware no es una destrucción esofágica de espesor completo; es una lesión focal secundaria a un cuerpo extraño.| baja |
+| 21424749 | 1 | correcto | gold_valido | Una miopatía mitocondrial heredada por vía materna sí es una enfermedad mitocondrial; es una forma específica dentro del espectro del gold. | alta |
+| 23281978 | 1 | correcto | gold_valido | Un STEMI anterior por oclusión de la LAD sí es un infarto con elevación del ST; es una forma más específica del gold. | alta |
 
 Sinónimos o diagnósticos secundarios que también deberían aceptarse:
 
@@ -66,7 +66,7 @@ Sinónimos o diagnósticos secundarios que también deberían aceptarse:
 Si has marcado 2 o más `falso_positivo` o `falso_negativo`, escríbelo aquí
 y no abras el paquete de 100 por tu cuenta:
 
--
+-Como falso_positivo tengo al 27068836 y como falso_negativo al 27656661.
 
 ---
 
@@ -84,14 +84,14 @@ Ejemplo de formato (inventado):
 
 | id | Mejor lista | Imagen | Matches automáticos correctos | Justificación | Confianza |
 |---|---|---|---|---|---|
-| 23553973 |  |  |  |  |  |
-| 27380346 |  |  |  |  |  |
-| 27068836 |  |  |  |  |  |
-| 23281978 |  |  |  |  |  |
-| N-10000083 |  |  |  |  |  |
-| 24054536 |  |  |  |  |  |
-| 27709474 |  |  |  |  |  |
-| 23574122 |  |  |  |  |  |
+| 23553973 | B | util | si | La lista B si que nombra el amoebic liver abscess. | media |
+| 27380346 | B | util | si | La lista B si que nombra el Erythema nodosum. | media |
+| 27068836 | B | util | si | La lista B nombra diagnosticos más cercanos al gold que la lista A, así cómo Esophageal perforation with descending mediastinitis (likely secondary to cervical hardware erosion) o Retropharyngeal/paraesophageal abscess with mediastinal extension, siendo el primero de los dos el más cercano. | media |
+| 23281978 | B | util | si | La lista B nombra directamente al gold y de forma más específica como una de sus opciones. | alta |
+| N-10000083 | B | util | si | La lista B nombra directamente al gold pero sin especificar si se trata de intralobar o extralobar | media |
+| 24054536 | B | util | si | La lista B se acerca más veces al gold que la lista A, pero ninguna de las dos es capaz de acertarlo.| media |
+| 27709474 | B | util | si | La lista B nombra directamente al gold y además nombra como otra opción un diagnóstico muy cercano a diferencia de la lista A que no se acerca al gold con ningún diagnóstico. | alta |
+| 23574122 | A | util | si | La lista A nombra directamente al gold. La lista B no dda diagnósticos cercanos ni acierta el gold. | media |
 
 Si 2 o más decisiones contradicen el match automático, avisa aquí:
 
@@ -102,21 +102,43 @@ Si 2 o más decisiones contradicen el match automático, avisa aquí:
 ## Tarea 5 — Política de equivalencia
 
 1. ¿Debe aceptarse una propuesta más específica que el gold?
+En caso de que el modelo diga que la patología es un subtipo más especifico al gold, yo daría por correcto el gold inicial y mencionar que hay altas/medias/bajas probabilidades de que además se trate de el tipo concreto qeu sea en cada caso. 
 
 2. ¿Cuándo son equivalentes síndrome, causa y manifestación?
+Para ser equivalentes deben cumplir tres reglas simultaneamente. 1.Deben ser la misma entidad fisiológica, un síndrome una causa y una manifestación pueden ser quuivalentes si describen la misma enfermedad desde distintos niveles el ejemplo clásico es: 
+Síndrome: Tumor‑induced osteomalacia
+Causa: Phosphaturic mesenchymal tumor
+Manifestación: Hipofosfatemia con osteomalacia
+2.Relacion 1:1, quiere decir que la causa siempre produce ese síndrome y ese síndrome simepre implica esa manifestación. 
+La causa produce ese síndrome de forma característica.
+El síndrome siempre incluye esa manifestación.
+La manifestación es prácticamente patognomónica del síndrome.
+3.No hay otra interpretación posible, la manifestación no se explica por otra enfermedad, la causa no produce otros síndromes distintos, el síndrome no tiene múltiples etiologías divergentes.
+Torus palatinus
+Exostosis ósea del paladar duro
+Masa ósea fija en línea media del paladar duro
+No hay otra enfermedad que cumpla exactamente ese patrón.
 
 3. ¿Pueden aceptarse subtipos histológicos diferentes?
+Si pero el subtipo debe pertenecer exactamente a la misma enfermedad del gold.
 
 4. ¿Cómo tratar golds fenotípicos o morfológicos?
+Cuando el gold es fenotípico/morfológico, solo se aceptan entidades que describan la MISMA estructura, forma o patrón anatómico, aunque la causa sea distinta.
 
 5. ¿Debe evaluarse solo el gold primario o cualquier diagnóstico final?
+El gol es la única entidad contra la cual se comparan las propuestas. No importa si un apropuesta es un "diagnostico final" en la vida real. No importa si es una causa, una manifestación, un dubtipo, un síndrome. No importa si es más grave, más leve, más frecuente o más raro. Solo importa si se acerca al gold.
 
 6. ¿Conviene publicar dos métricas: equivalencia y utilidad clínica?
-
+Sí, conviene publicar dos métricas.
+La equivalencia decide la validez conceptual. La utilidad clínica decide la relevancia práctica.
+Separarlas hace tu sistema más preciso, más transparente y más robusto.
 ---
 
 ## Cierre
 
 - ¿Pueden publicarse 80/100 y la ganancia de imágenes? `si` / `no` / `condicionado`
+si
 - Condiciones o casos que bloquean publicación:
+.
 - Casos que requieren segunda opinión:
+Todos aquellos donde no se haya coincidido con el gold.
