@@ -1,0 +1,198 @@
+{
+  "case_id": "B13",
+  "gdx_details": [
+    {
+      "name": "Degmacytes (bite cells) due to hemolytic anemia",
+      "details": {
+        "name": "Degmacytes (bite cells) due to hemolytic anemia",
+        "normalized_text": "Anemia, Hemolytic",
+        "severity": "S6",
+        "medical_codes": {
+          "icd10": [
+            "D58.0"
+          ],
+          "snomed": [
+            "61261009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency with oxidative hemolysis",
+      "details": {
+        "normalized_text": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency with oxidative hemolysis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "124134002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Warm autoimmune hemolytic anemia (AIHA)",
+      "details": {
+        "normalized_text": "Warm autoimmune hemolytic anemia (AIHA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D59.11"
+          ],
+          "snomed": [
+            "3978000",
+            "413603009"
+          ],
+          "omim": [],
+          "orpha": [
+            "90033",
+            "98375"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Drug-induced non-immune hemolysis (oxidative hemolysis from sulfonamides)",
+      "details": {
+        "normalized_text": "Drug-induced non-immune hemolysis (oxidative hemolysis from sulfonamides)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "387406002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Paroxysmal nocturnal hemoglobinuria (PNH)",
+      "details": {
+        "normalized_text": "Paroxysmal nocturnal hemoglobinuria (PNH)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "D59.5"
+          ],
+          "snomed": [
+            "1963002"
+          ],
+          "omim": [],
+          "orpha": [
+            "447"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "LLM_JUDGMENT",
+      "value": "2",
+      "matched_gdx": {
+        "Degmacytes (bite cells) due to hemolytic anemia": {
+          "name": "Degmacytes (bite cells) due to hemolytic anemia",
+          "normalized_text": "Anemia, Hemolytic",
+          "severity": "S6",
+          "medical_codes": {
+            "icd10": [
+              "D58.0"
+            ],
+            "snomed": [
+              "61261009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Warm autoimmune hemolytic anemia (AIHA)": {
+          "normalized_text": "Warm autoimmune hemolytic anemia (AIHA)",
+          "position": 2,
+          "medical_codes": {
+            "icd10": [
+              "D59.11"
+            ],
+            "snomed": [
+              "3978000",
+              "413603009"
+            ],
+            "omim": [],
+            "orpha": [
+              "90033",
+              "98375"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Degmacytes (bite cells) due to hemolytic anemia": {
+            "name": "Degmacytes (bite cells) due to hemolytic anemia",
+            "normalized_text": "Anemia, Hemolytic",
+            "severity": "S6",
+            "medical_codes": {
+              "icd10": [
+                "D58.0"
+              ],
+              "snomed": [
+                "61261009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['61261009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D58.0']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P2. BERT score 0.508 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4045793414115906
+            },
+            {
+              "position": 2,
+              "score": 0.5075414776802063
+            },
+            {
+              "position": 3,
+              "score": 0.45782750844955444
+            },
+            {
+              "position": 4,
+              "score": 0.4476051330566406
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.5075414776802063
+          },
+          "llm_judgment": {
+            "position": 2
+          }
+        }
+      }
+    ]
+  }
+}

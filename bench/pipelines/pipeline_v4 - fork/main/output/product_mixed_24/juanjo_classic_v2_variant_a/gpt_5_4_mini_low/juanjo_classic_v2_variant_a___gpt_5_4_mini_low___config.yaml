@@ -1,0 +1,21 @@
+DATASET_PATH: bench/datasets/product_mixed_24.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2_variant_a.txt
+  MODEL: gpt-5.4-mini
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 4
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EXPERIMENT_DESCRIPTION: 'Variante A: clasificacion interna de sintomas, antecedentes,
+  medicacion y contexto. Mini-set mixto; revision cualitativa.'
+EXPERIMENT_NAME: product_mixed_24-juanjo_classic_v2_variant_a-gpt_5_4_mini_low
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: false
+  SHOULD_LABEL: false
+TIMESTAMP: '2026-07-13T11:17:58.385075'

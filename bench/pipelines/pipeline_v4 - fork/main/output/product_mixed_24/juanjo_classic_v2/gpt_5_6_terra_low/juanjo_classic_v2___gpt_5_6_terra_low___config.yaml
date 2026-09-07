@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/product_mixed_24.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 4
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: 'Control cualitativo: gpt-5.6-terra low sobre el mini-set
+  mixto de producto con prompt historico.'
+EXPERIMENT_NAME: product_mixed_24-juanjo_classic_v2-gpt_5_6_terra_low
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: false
+  SHOULD_LABEL: false
+TIMESTAMP: '2026-07-13T18:29:31.164839'

@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "best_match": {
+      "type": "object",
+      "properties": {
+        "ddx": {
+          "type": "string"
+        },
+        "gdx": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "required": ["ddx", "gdx", "score"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["case_id", "best_match"],
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/all_256_clean.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-4o
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+  TRANSLATE_CASE:
+    ENABLED: true
+    TARGET_LANGUAGE: en
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+    thinking_level: low
+EXPERIMENT_DESCRIPTION: Primera línea base sobre all_256_clean (dataset limpio sin
+  leakage ni boilerplate). Mismos params que Run B de Fase 0 para comparación directa.
+EXPERIMENT_NAME: fase1-paso1.4-A-gpt4o-clean-dataset
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-04-16T12:08:29.466102'

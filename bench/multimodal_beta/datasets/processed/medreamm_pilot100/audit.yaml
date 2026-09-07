@@ -1,0 +1,1234 @@
+manual_review_required: true
+rule: Read history.txt and look at the images. Reject the case if the final diagnosis, its synonyms, or
+  post-diagnosis outcome are visible.
+selected:
+- id: '24174966'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - mri
+  - pathology
+  - ultrasound
+  history_chars: 291
+  primary: Primary cardiac angiofibroma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25995698'
+  classification: Genetic and congenital disorders
+  images: 5
+  modalities:
+  - mri
+  - ultrasound
+  history_chars: 427
+  primary: Extralobar pulmonary sequestration
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23553973'
+  classification: Infectious and immunologic disorders
+  images: 1
+  modalities:
+  - ct
+  history_chars: 891
+  primary: Amoebic liver abscess
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27656661'
+  classification: Neurological disorders
+  images: 2
+  modalities:
+  - mri
+  - ophthalmic imaging
+  history_chars: 838
+  primary: Multiple sclerosis-like disorder
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000022
+  classification: Gastrointestinal disorders
+  images: 4
+  modalities:
+  - genetic
+  - mri
+  - ophthalmic imaging
+  - pathology
+  history_chars: 595
+  primary: Wilson's disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27380346'
+  classification: Dermatologic and mucosal diseases
+  images: 1
+  modalities:
+  - clinical
+  history_chars: 1020
+  primary: Erythema nodosum
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28126713'
+  classification: Cardiovascular and respiratory disorders
+  images: 1
+  modalities:
+  - x-ray
+  history_chars: 488
+  primary: Retropharyngeal hematoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23449674'
+  classification: Endocrine and metabolic disorders
+  images: 1
+  modalities:
+  - lab
+  history_chars: 1809
+  primary: Insulinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case-19003
+  classification: Orthopedic and connective tissue disorders
+  images: 4
+  modalities:
+  - ultrasound
+  history_chars: 367
+  primary: Slipping rib syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '20052363'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - endoscopy
+  - general imaging
+  - pathology
+  - ultrasound
+  history_chars: 614
+  primary: Lymphangiomatosis of the colon
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '30687305'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - genetic
+  - lab
+  - pathology
+  history_chars: 709
+  primary: Refractory cytopenias with multilineage dysplasia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27074070'
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - ct
+  - pathology
+  - pet/spect/nuclear
+  - ultrasound
+  - x-ray
+  history_chars: 999
+  primary: Mixed-cellularity subtype of classic Hodgkin's lymphoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000064
+  classification: Infectious and immunologic disorders
+  images: 3
+  modalities:
+  - lab
+  - pathology
+  - ultrasound
+  - x-ray
+  history_chars: 987
+  primary: Plasmodium falciparum malaria
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27068836'
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - endoscopy
+  - general imaging
+  history_chars: 399
+  primary: Full-thickness oesophageal segment destruction
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case-18872
+  classification: Gastrointestinal disorders
+  images: 4
+  modalities:
+  - ct
+  - x-ray
+  history_chars: 338
+  primary: Boerhaave syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000120
+  classification: Neurological disorders
+  images: 1
+  modalities:
+  - electrophysiology
+  history_chars: 1585
+  primary: Functional seizures
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25016996'
+  classification: Gastrointestinal disorders
+  images: 1
+  modalities:
+  - ct
+  history_chars: 551
+  primary: Obturator hernia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '22065912'
+  classification: Neurological disorders
+  images: 4
+  modalities:
+  - angiography
+  - electrophysiology
+  - mri
+  - ophthalmic imaging
+  history_chars: 1342
+  primary: Susac syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '21424749'
+  classification: Neurological disorders
+  images: 5
+  modalities:
+  - clinical
+  - ct
+  - genetic
+  - lab
+  - mri
+  - pathology
+  history_chars: 1179
+  primary: Mitochondrial disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '22389885'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - genetic
+  - pathology
+  history_chars: 742
+  primary: B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma
+    and Burkitt lymphoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case-18953
+  classification: Gastrointestinal disorders
+  images: 3
+  modalities:
+  - ct
+  - ultrasound
+  history_chars: 303
+  primary: Liver pyogenic abscess
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23281978'
+  classification: Neoplastic diseases
+  images: 1
+  modalities:
+  - electrophysiology
+  history_chars: 1890
+  primary: ST-segment elevation myocardial infarction
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000083
+  classification: Cardiovascular and respiratory disorders
+  images: 2
+  modalities:
+  - angiography
+  - ct
+  - ultrasound
+  - x-ray
+  history_chars: 1452
+  primary: Intralobar bronchopulmonary sequestration
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '29423197'
+  classification: Cardiovascular and respiratory disorders
+  images: 1
+  modalities:
+  - pathology
+  history_chars: 1185
+  primary: Cocaine-induced thrombotic microangiopathy
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '29674473'
+  classification: Neurological disorders
+  images: 2
+  modalities:
+  - mri
+  history_chars: 1099
+  primary: Neuromyelitis optica spectrum disorder
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '34134621'
+  classification: Infectious and immunologic disorders
+  images: 5
+  modalities:
+  - lab
+  - pathology
+  - ultrasound
+  history_chars: 290
+  primary: Infective endocarditis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24054536'
+  classification: Cardiovascular and respiratory disorders
+  images: 1
+  modalities:
+  - angiography
+  - ct
+  history_chars: 738
+  primary: Peripheral air embolism
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25092772'
+  classification: Neoplastic diseases
+  images: 1
+  modalities:
+  - mri
+  history_chars: 258
+  primary: Anaplastic pleomorphic xanthoastrocytoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24918376'
+  classification: Dermatologic and mucosal diseases
+  images: 2
+  modalities:
+  - lab
+  history_chars: 1586
+  primary: Dermatomyositis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27709474'
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - ct
+  - lab
+  - mri
+  - pet/spect/nuclear
+  history_chars: 606
+  primary: Phosphaturic mesenchymal tumor
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27514369'
+  classification: Infectious and immunologic disorders
+  images: 4
+  modalities:
+  - mri
+  - ultrasound
+  history_chars: 953
+  primary: Native valve infective endocarditis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32007091'
+  classification: Genetic and congenital disorders
+  images: 2
+  modalities:
+  - clinical
+  - genetic
+  history_chars: 854
+  primary: Sensenbrenner syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '29748223'
+  classification: Neoplastic diseases
+  images: 2
+  modalities:
+  - clinical
+  - ct
+  - pet/spect/nuclear
+  history_chars: 345
+  primary: Oesophageal cancer
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25248443'
+  classification: Orthopedic and connective tissue disorders
+  images: 1
+  modalities:
+  - x-ray
+  history_chars: 335
+  primary: Perthes' disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24103443'
+  classification: Gastrointestinal disorders
+  images: 3
+  modalities:
+  - ct
+  - general imaging
+  - x-ray
+  history_chars: 842
+  primary: Pyogenic liver abscess
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24265573'
+  classification: Genetic and congenital disorders
+  images: 1
+  modalities:
+  - mri
+  history_chars: 848
+  primary: Cri-du-Chat syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '30766756'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - ct
+  - pathology
+  - pet/spect/nuclear
+  history_chars: 1315
+  primary: Primary yolk sac tumor of intestine
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28355500'
+  classification: Gastrointestinal disorders
+  images: 2
+  modalities:
+  - lab
+  - pet/spect/nuclear
+  history_chars: 1031
+  primary: Meckel's diverticulum
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case-17647
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - ct
+  history_chars: 294
+  primary: Diffuse idiopathic pulmonary neuroendocrine cell hyperplasia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23509306'
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - ct
+  - pathology
+  - x-ray
+  history_chars: 1480
+  primary: Nodular sclerosis classical Hodgkin lymphoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32046748'
+  classification: Neurological disorders
+  images: 2
+  modalities:
+  - genetic
+  - lab
+  - mri
+  history_chars: 468
+  primary: Progressive multifocal leukoencephalopathy
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28382085'
+  classification: Genetic and congenital disorders
+  images: 3
+  modalities:
+  - electrophysiology
+  - ultrasound
+  history_chars: 691
+  primary: Fabry disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case-4402
+  classification: Gastrointestinal disorders
+  images: 1
+  modalities:
+  - ultrasound
+  history_chars: 238
+  primary: Acute acalculous cholecystitis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27332906'
+  classification: Dermatologic and mucosal diseases
+  images: 2
+  modalities:
+  - clinical
+  history_chars: 681
+  primary: Iododerma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32340587'
+  classification: Neoplastic diseases
+  images: 1
+  modalities:
+  - ct
+  - ultrasound
+  history_chars: 418
+  primary: Clear cell renal cell carcinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24670171'
+  classification: Infectious and immunologic disorders
+  images: 5
+  modalities:
+  - clinical
+  - lab
+  - pathology
+  - x-ray
+  history_chars: 1120
+  primary: Purpura fulminans
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23613701'
+  classification: Neurological disorders
+  images: 3
+  modalities:
+  - angiography
+  - mri
+  - ultrasound
+  history_chars: 879
+  primary: MELAS syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000032
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - ct
+  - endoscopy
+  - lab
+  - mri
+  - pathology
+  - pet/spect/nuclear
+  - ultrasound
+  history_chars: 1342
+  primary: Pancreatic ductal adenocarcinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: case0-15940
+  classification: Gastrointestinal disorders
+  images: 2
+  modalities:
+  - mri
+  history_chars: 283
+  primary: Cholecystocolonic fistula
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28642236'
+  classification: Orthopedic and connective tissue disorders
+  images: 1
+  modalities:
+  - x-ray
+  history_chars: 681
+  primary: Patellar dislocation
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32533553'
+  classification: Dermatologic and mucosal diseases
+  images: 3
+  modalities:
+  - clinical
+  - ophthalmic imaging
+  - pathology
+  history_chars: 397
+  primary: Graham Little-Piccardi-Lassueur syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '26120461'
+  classification: Endocrine and metabolic disorders
+  images: 2
+  modalities:
+  - clinical
+  - pathology
+  history_chars: 1313
+  primary: Atypical haemolytic uraemic syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '26644523'
+  classification: Neoplastic diseases
+  images: 1
+  modalities:
+  - pathology
+  history_chars: 610
+  primary: Gastrointestinal stromal tumor
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '26819809'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - ct
+  - pathology
+  history_chars: 375
+  primary: Malignant gastrointestinal stromal tumor
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '29634814'
+  classification: Dermatologic and mucosal diseases
+  images: 2
+  modalities:
+  - clinical
+  - pathology
+  history_chars: 770
+  primary: Hailey-Hailey disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23482507'
+  classification: Orthopedic and connective tissue disorders
+  images: 5
+  modalities:
+  - ct
+  - mri
+  - pet/spect/nuclear
+  - x-ray
+  history_chars: 324
+  primary: Cavernous hemangioma of bone
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32785838'
+  classification: Neurological disorders
+  images: 3
+  modalities:
+  - clinical
+  - electrophysiology
+  - lab
+  history_chars: 605
+  primary: Stiff Person Syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24910386'
+  classification: Cardiovascular and respiratory disorders
+  images: 2
+  modalities:
+  - angiography
+  - clinical
+  - mri
+  history_chars: 305
+  primary: Ischaemic scalp lesions
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24733745'
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - lab
+  - pathology
+  history_chars: 1567
+  primary: Visceral leishmaniasis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24915265'
+  classification: Dermatologic and mucosal diseases
+  images: 2
+  modalities:
+  - clinical
+  - pathology
+  history_chars: 582
+  primary: Necrobiosis lipoidica
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28591527'
+  classification: Endocrine and metabolic disorders
+  images: 2
+  modalities:
+  - genetic
+  - lab
+  history_chars: 1686
+  primary: Pseudohypoparathyroidism type 1b
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000086
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - ct
+  - lab
+  - pathology
+  - ultrasound
+  history_chars: 1074
+  primary: BRAF inhibitor-related toxic effects
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23752113'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - endoscopy
+  - mri
+  - pathology
+  - ultrasound
+  history_chars: 569
+  primary: Prostatic adenocarcinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23800107'
+  classification: Neurological disorders
+  images: 2
+  modalities:
+  - genetic
+  - mri
+  history_chars: 2018
+  primary: Triple A syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23733774'
+  classification: Neurological disorders
+  images: 1
+  modalities:
+  - mri
+  history_chars: 1149
+  primary: Posterior reversible encephalopathy syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '21218047'
+  classification: Neurological disorders
+  images: 4
+  modalities:
+  - mri
+  - pathology
+  history_chars: 1121
+  primary: Spinal cord neurosarcoidosis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000050
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - ct
+  - pathology
+  history_chars: 1006
+  primary: Cryptococcal pneumonia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '33117870'
+  classification: Infectious and immunologic disorders
+  images: 1
+  modalities:
+  - pathology
+  history_chars: 691
+  primary: Dirofilaria repens infection
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '19795006'
+  classification: Neurological disorders
+  images: 1
+  modalities:
+  - clinical
+  - mri
+  history_chars: 2021
+  primary: Progressive supranuclear palsy
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '30021095'
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - lab
+  - pathology
+  history_chars: 591
+  primary: Cryptococcal meningoencephalitis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24840913'
+  classification: Neurological disorders
+  images: 2
+  modalities:
+  - mri
+  history_chars: 601
+  primary: Acute posterior circulation infarct
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24552323'
+  classification: Infectious and immunologic disorders
+  images: 4
+  modalities:
+  - genetic
+  - lab
+  - pathology
+  - x-ray
+  history_chars: 1496
+  primary: Congenital babesiosis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23897952'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - ct
+  history_chars: 423
+  primary: Prostate adenocarcinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: N-10000042
+  classification: Endocrine and metabolic disorders
+  images: 3
+  modalities:
+  - lab
+  - pathology
+  - ultrasound
+  history_chars: 1310
+  primary: Thyrotoxic periodic paralysis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23574122'
+  classification: Dermatologic and mucosal diseases
+  images: 1
+  modalities:
+  - clinical
+  history_chars: 300
+  primary: Torus palatinus
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28302624'
+  classification: Neurological disorders
+  images: 1
+  modalities:
+  - mri
+  history_chars: 266
+  primary: Intervertebral disc prolapse
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '19721837'
+  classification: Infectious and immunologic disorders
+  images: 4
+  modalities:
+  - angiography
+  - ct
+  - mri
+  history_chars: 977
+  primary: Acute hypereosinophilic syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25038768'
+  classification: Cardiovascular and respiratory disorders
+  images: 3
+  modalities:
+  - ct
+  - pathology
+  - pet/spect/nuclear
+  history_chars: 936
+  primary: Pulmonary sarcoidosis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '24516032'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - general imaging
+  - pathology
+  - x-ray
+  history_chars: 1449
+  primary: Multiple myeloma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '27797319'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - lab
+  - mri
+  - ophthalmic imaging
+  history_chars: 1108
+  primary: Germinoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23390225'
+  classification: Infectious and immunologic disorders
+  images: 3
+  modalities:
+  - electrophysiology
+  - ultrasound
+  history_chars: 827
+  primary: Infective endocarditis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '33073026'
+  classification: Genetic and congenital disorders
+  images: 2
+  modalities:
+  - lab
+  - x-ray
+  history_chars: 809
+  primary: Infantile-onset Pompe disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23614590'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - ct
+  - lab
+  - pathology
+  - pet/spect/nuclear
+  history_chars: 1146
+  primary: B-cell lymphoblastic leukemia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '31970543'
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - clinical
+  - ultrasound
+  history_chars: 368
+  primary: Necrotizing soft tissue infection
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25096696'
+  classification: Infectious and immunologic disorders
+  images: 1
+  modalities:
+  - clinical
+  history_chars: 725
+  primary: Chronic graft-versus-host disease
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '33620676'
+  classification: Dermatologic and mucosal diseases
+  images: 3
+  modalities:
+  - clinical
+  - pathology
+  history_chars: 819
+  primary: Grzybowski's generalized eruptive keratoacanthomas
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '26946926'
+  classification: Infectious and immunologic disorders
+  images: 2
+  modalities:
+  - mri
+  history_chars: 1012
+  primary: Acute myelitis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '22563559'
+  classification: Neoplastic diseases
+  images: 5
+  modalities:
+  - genetic
+  - pathology
+  history_chars: 546
+  primary: T-lymphoblastic leukemia
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '32370734'
+  classification: Infectious and immunologic disorders
+  images: 5
+  modalities:
+  - ct
+  - lab
+  - pathology
+  history_chars: 753
+  primary: Hemophagocytic lymphohistiocytosis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '26958738'
+  classification: Infectious and immunologic disorders
+  images: 1
+  modalities:
+  - angiography
+  - ct
+  - mri
+  history_chars: 650
+  primary: Meningoencephalitis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28489991'
+  classification: Infectious and immunologic disorders
+  images: 4
+  modalities:
+  - clinical
+  - pathology
+  history_chars: 1201
+  primary: IgA vasculitis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25336332'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - ct
+  - pathology
+  - pet/spect/nuclear
+  - ultrasound
+  history_chars: 352
+  primary: Squamous cell carcinoma of tonsil
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '23690413'
+  classification: Neoplastic diseases
+  images: 4
+  modalities:
+  - genetic
+  - pathology
+  history_chars: 575
+  primary: Primary urinary bladder MALT lymphoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28620010'
+  classification: Orthopedic and connective tissue disorders
+  images: 1
+  modalities:
+  - x-ray
+  history_chars: 315
+  primary: Right femoral neck fracture
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '30213865'
+  classification: Orthopedic and connective tissue disorders
+  images: 2
+  modalities:
+  - x-ray
+  history_chars: 206
+  primary: Osteochondritis dissecans
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28706431'
+  classification: Neoplastic diseases
+  images: 3
+  modalities:
+  - ct
+  - pathology
+  history_chars: 462
+  primary: Primary pancreatic T-cell/histiocyte-rich large B-cell lymphoma
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25282086'
+  classification: Endocrine and metabolic disorders
+  images: 3
+  modalities:
+  - clinical
+  - ct
+  - pet/spect/nuclear
+  history_chars: 568
+  primary: Secondary tumoral calcinosis
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28104685'
+  classification: Orthopedic and connective tissue disorders
+  images: 2
+  modalities:
+  - x-ray
+  history_chars: 350
+  primary: Bicondylar tibial plateau fracture
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '25024074'
+  classification: Neoplastic diseases
+  images: 2
+  modalities:
+  - lab
+  - pathology
+  history_chars: 533
+  primary: Gastrointestinal stromal tumor
+  leakage_screen: pass_automatic
+  manual_review: pending
+- id: '28472977'
+  classification: Genetic and congenital disorders
+  images: 5
+  modalities:
+  - clinical
+  history_chars: 1008
+  primary: SHORT syndrome
+  leakage_screen: pass_automatic
+  manual_review: pending
+rejected_preview:
+- id: '15308855'
+  classification: Neoplastic diseases
+  reasons:
+  - history_too_short:112
+- id: '16643652'
+  classification: Endocrine and metabolic disorders
+  reasons:
+  - history_leakage:Ectopic
+- id: '15082907'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:anemia; Autoimmune; Autoimmune hemolytic anemia; hemolytic
+- id: '15745454'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:Chronic granulomatous disease; granulomatous
+- id: '17366829'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:ND4 mutation
+- id: '18810315'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:cerebral
+- id: '19033077'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:aphasia; dementia
+- id: '18253082'
+  classification: Neoplastic diseases
+  reasons:
+  - history_too_short:180
+- id: '16042772'
+  classification: Endocrine and metabolic disorders
+  reasons:
+  - history_leakage:Neurofibromatosis; Neurofibromatosis type I
+- id: '17728518'
+  classification: Genetic and congenital disorders
+  reasons:
+  - history_leakage:Neurofibroma; Neurofibromatosis; Neurofibromatosis type 1
+- id: '18303215'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:pneumoniae
+- id: '19543522'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:adrenal
+- id: '19672405'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:beryllium
+- id: '20920200'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:Progressive
+- id: '21165302'
+  classification: Genetic and congenital disorders
+  reasons:
+  - history_leakage:deficiency; Zinc deficiency
+- id: '16846490'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:respiratory; Septic; Septic shock
+- id: '20191052'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:T-cell
+- id: '21468271'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:Duchenne; Duchenne muscular dystrophy; dystrophy; muscular
+- id: '21409598'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:attacks; autonomic
+- id: '21103427'
+  classification: Gastrointestinal disorders
+  reasons:
+  - history_leakage:esophageal
+- id: '21473748'
+  classification: Endocrine and metabolic disorders
+  reasons:
+  - history_leakage:thyroiditis
+- id: '21708008'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:ascites
+- id: '22022196'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:alveolar; Pulmonary
+- id: '21165298'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:anemia; Severe anemia
+- id: '21267393'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:Angina
+- id: '21539747'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:Sarcoidosis
+- id: '21544649'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:Headache; pressure
+- id: '21935285'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:Factor; inhibitor
+- id: '23000292'
+  classification: Neurological disorders
+  reasons:
+  - history_too_short:110
+  - history_leakage:Hypertension
+- id: '22290282'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:artery
+- id: '20514321'
+  classification: Endocrine and metabolic disorders
+  reasons:
+  - history_leakage:Multiple; Pituitary
+- id: '23233711'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:melanoma; Metastatic; Metastatic melanoma
+- id: '22363383'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:cardiac
+- id: '22553953'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:spasms
+- id: '22977456'
+  classification: Infectious and immunologic disorders
+  reasons:
+  - history_leakage:Cardiac
+- id: '23374481'
+  classification: Genetic and congenital disorders
+  reasons:
+  - history_leakage:congenital
+- id: '23182990'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:cutaneous; Sézary syndrome; T-cell
+- id: '23439755'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:leukemia
+- id: '23445097'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:Thoracic
+- id: '23509308'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:lymphocytic
+- id: '23460716'
+  classification: Neoplastic diseases
+  reasons:
+  - history_too_short:99
+- id: '23530104'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:cutaneous; papillomatosis
+- id: '23509318'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:B-cell; Diffuse; Diffuse large B-cell lymphoma
+- id: '23614085'
+  classification: Cardiovascular and respiratory disorders
+  reasons:
+  - history_leakage:abdominal
+- id: '23460717'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:Colon adenocarcinoma
+- id: '23575567'
+  classification: Neurological disorders
+  reasons:
+  - history_leakage:atrial; fibrillation
+- id: '23610110'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:Gastrointestinal; mastocytosis; Systemic; Systemic mastocytosis
+- id: '23610111'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:Classical; Classical seminoma; seminoma
+- id: '23535257'
+  classification: Orthopedic and connective tissue disorders
+  reasons:
+  - history_too_short:189
+  - history_leakage:Scaphoid
+- id: '23656649'
+  classification: Neoplastic diseases
+  reasons:
+  - history_leakage:uterus

@@ -1,0 +1,1583 @@
+{
+  "case_id": "B7",
+  "gdx_details": [
+    {
+      "name": "Midbrain infarction",
+      "details": {
+        "name": "Midbrain infarction",
+        "normalized_text": "Midbrain infarction",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "I63.341"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Ischemic Stroke (Midbrain)",
+      "details": {
+        "normalized_text": "Ischemic Stroke (Midbrain)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "422504002",
+            "61962009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Third Nerve Palsy (due to aneurysm or compression)",
+      "details": {
+        "normalized_text": "Third Nerve Palsy (due to aneurysm or compression)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "H49.0",
+            "I72.9"
+          ],
+          "snomed": [
+            "388980004",
+            "432119003",
+            "71173004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hypertensive Hemorrhagic Stroke",
+      "details": {
+        "normalized_text": "Hypertensive Hemorrhagic Stroke",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Brainstem Glioma",
+      "details": {
+        "normalized_text": "Brainstem Glioma",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "444545003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Myasthenia Gravis",
+      "details": {
+        "normalized_text": "Myasthenia Gravis",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "G70.0"
+          ],
+          "snomed": [
+            "91637004"
+          ],
+          "omim": [
+            "254200"
+          ],
+          "orpha": [
+            "589"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9266399145126343",
+      "matched_gdx": {
+        "Midbrain infarction": {
+          "name": "Midbrain infarction",
+          "normalized_text": "Midbrain infarction",
+          "severity": "S8",
+          "medical_codes": {
+            "icd10": [
+              "I63.341"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Ischemic Stroke (Midbrain)": {
+          "normalized_text": "Ischemic Stroke (Midbrain)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "422504002",
+              "61962009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Midbrain infarction": {
+            "name": "Midbrain infarction",
+            "normalized_text": "Midbrain infarction",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "I63.341"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['I63.341']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.927 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9266399145126343
+            },
+            {
+              "position": 2,
+              "score": 0.3806728422641754
+            },
+            {
+              "position": 3,
+              "score": 0.3860931098461151
+            },
+            {
+              "position": 4,
+              "score": 0.42933332920074463
+            },
+            {
+              "position": 5,
+              "score": 0.2048787772655487
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9266399145126343
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "B94",
+  "gdx_details": [
+    {
+      "name": "Hypocalcemia",
+      "details": {
+        "name": "Hypocalcemia",
+        "normalized_text": "Hypocalcemia",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "E83.51"
+          ],
+          "snomed": [
+            "5291005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Heat Stroke",
+      "details": {
+        "normalized_text": "Heat Stroke",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "T67.01"
+          ],
+          "snomed": [
+            "52072009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Exertional Hyponatremia",
+      "details": {
+        "normalized_text": "Exertional Hyponatremia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E87.1"
+          ],
+          "snomed": [
+            "89627008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Rhabdomyolysis",
+      "details": {
+        "normalized_text": "Rhabdomyolysis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M62.82"
+          ],
+          "snomed": [
+            "240131006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Epileptic Seizure with Postictal Confusion",
+      "details": {
+        "normalized_text": "Epileptic Seizure with Postictal Confusion",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313307000",
+            "44031002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute Kidney Injury (AKI) secondary to dehydration",
+      "details": {
+        "normalized_text": "Acute Kidney Injury (AKI) secondary to dehydration",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "GEN002",
+            "N17.9",
+            "E86.0"
+          ],
+          "snomed": [
+            "14669001",
+            "34095006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "LLM_JUDGMENT",
+      "value": "4",
+      "matched_gdx": {
+        "Hypocalcemia": {
+          "name": "Hypocalcemia",
+          "normalized_text": "Hypocalcemia",
+          "severity": "S7",
+          "medical_codes": {
+            "icd10": [
+              "E83.51"
+            ],
+            "snomed": [
+              "5291005"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Epileptic Seizure with Postictal Confusion": {
+          "normalized_text": "Epileptic Seizure with Postictal Confusion",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "313307000",
+              "44031002"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Hypocalcemia": {
+            "name": "Hypocalcemia",
+            "normalized_text": "Hypocalcemia",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "E83.51"
+              ],
+              "snomed": [
+                "5291005"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['5291005'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['E83.51']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P4. BERT score 0.412 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.3004230856895447
+            },
+            {
+              "position": 2,
+              "score": 0.4124072194099426
+            },
+            {
+              "position": 3,
+              "score": 0.4082227051258087
+            },
+            {
+              "position": 4,
+              "score": 0.2946426570415497
+            },
+            {
+              "position": 5,
+              "score": 0.32354453206062317
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.4124072194099426
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q1030",
+  "gdx_details": [
+    {
+      "name": "Metabolic acidosis due to salicylate toxicity",
+      "details": {
+        "name": "Metabolic acidosis due to salicylate toxicity",
+        "normalized_text": "Poisoning by salicylate",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "T39.0X1A"
+          ],
+          "snomed": [
+            "7248001",
+            "59455009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Salicylate Toxicity",
+      "details": {
+        "normalized_text": "Salicylate Toxicity",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "255637000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Transient Ischemic Attack (TIA)",
+      "details": {
+        "normalized_text": "Transient Ischemic Attack (TIA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "G45.9"
+          ],
+          "snomed": [
+            "266257000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hyponatremia",
+      "details": {
+        "normalized_text": "Hyponatremia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E87.1"
+          ],
+          "snomed": [
+            "89627008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Carbon Monoxide Poisoning",
+      "details": {
+        "normalized_text": "Carbon Monoxide Poisoning",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "17383000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Delirium Secondary to Infection (e.g., UTI or Sepsis)",
+      "details": {
+        "normalized_text": "Delirium Secondary to Infection (e.g., UTI or Sepsis)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "GEN004",
+            "N39.0"
+          ],
+          "snomed": [
+            "68566005",
+            "91302008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9629300236701965",
+      "matched_gdx": {
+        "Metabolic acidosis due to salicylate toxicity": {
+          "name": "Metabolic acidosis due to salicylate toxicity",
+          "normalized_text": "Poisoning by salicylate",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "T39.0X1A"
+            ],
+            "snomed": [
+              "7248001",
+              "59455009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Salicylate Toxicity": {
+          "normalized_text": "Salicylate Toxicity",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "255637000"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Metabolic acidosis due to salicylate toxicity": {
+            "name": "Metabolic acidosis due to salicylate toxicity",
+            "normalized_text": "Poisoning by salicylate",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "T39.0X1A"
+              ],
+              "snomed": [
+                "7248001",
+                "59455009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['7248001', '59455009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['T39.0X1A']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.963 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9629300236701965
+            },
+            {
+              "position": 2,
+              "score": 0.3053116798400879
+            },
+            {
+              "position": 3,
+              "score": 0.3167288899421692
+            },
+            {
+              "position": 4,
+              "score": 0.4671227037906647
+            },
+            {
+              "position": 5,
+              "score": 0.24428986012935638
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9629300236701965
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q548",
+  "gdx_details": [
+    {
+      "name": "Hemolytic anemia and ataxia",
+      "details": {
+        "name": "Hemolytic anemia and ataxia",
+        "normalized_text": "Cerebellar Ataxia",
+        "severity": "S7",
+        "medical_codes": {
+          "icd10": [
+            "D59.9"
+          ],
+          "snomed": [
+            "85102008",
+            "61261009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Pelvic Fracture with Hemorrhagic Shock",
+      "details": {
+        "normalized_text": "Pelvic Fracture with Hemorrhagic Shock",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "S32.9"
+          ],
+          "snomed": [
+            "77493009",
+            "355001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Asthma Exacerbation",
+      "details": {
+        "normalized_text": "Asthma Exacerbation",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "RSP009",
+            "J45.9",
+            "J45"
+          ],
+          "snomed": [
+            "195967001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cocaine-Induced Cardiovascular Collapse",
+      "details": {
+        "normalized_text": "Cocaine-Induced Cardiovascular Collapse",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "SYM003",
+            "R57.9"
+          ],
+          "snomed": [
+            "27942005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Fat Embolism Syndrome",
+      "details": {
+        "normalized_text": "Fat Embolism Syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "T79.1"
+          ],
+          "snomed": [
+            "28398002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Anaphylaxis",
+      "details": {
+        "normalized_text": "Anaphylaxis",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "39579001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "LLM_JUDGMENT",
+      "value": "4",
+      "matched_gdx": {
+        "Hemolytic anemia and ataxia": {
+          "name": "Hemolytic anemia and ataxia",
+          "normalized_text": "Cerebellar Ataxia",
+          "severity": "S7",
+          "medical_codes": {
+            "icd10": [
+              "D59.9"
+            ],
+            "snomed": [
+              "85102008",
+              "61261009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Fat Embolism Syndrome": {
+          "normalized_text": "Fat Embolism Syndrome",
+          "position": 4,
+          "medical_codes": {
+            "icd10": [
+              "T79.1"
+            ],
+            "snomed": [
+              "28398002"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Hemolytic anemia and ataxia": {
+            "name": "Hemolytic anemia and ataxia",
+            "normalized_text": "Cerebellar Ataxia",
+            "severity": "S7",
+            "medical_codes": {
+              "icd10": [
+                "D59.9"
+              ],
+              "snomed": [
+                "85102008",
+                "61261009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['85102008', '61261009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D59.9']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P4. BERT score 0.402 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.1640535444021225
+            },
+            {
+              "position": 2,
+              "score": 0.2447950839996338
+            },
+            {
+              "position": 3,
+              "score": 0.28812694549560547
+            },
+            {
+              "position": 4,
+              "score": 0.22648835182189941
+            },
+            {
+              "position": 5,
+              "score": 0.4022539258003235
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.4022539258003235
+          },
+          "llm_judgment": {
+            "position": 4
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q6359",
+  "gdx_details": [
+    {
+      "name": "Medullary carcinoma",
+      "details": {
+        "name": "Medullary carcinoma",
+        "normalized_text": "Medullary carcinoma",
+        "severity": "S8",
+        "medical_codes": {
+          "icd10": [
+            "C73"
+          ],
+          "snomed": [
+            "32913002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Medullary Thyroid Carcinoma (MTC)",
+      "details": {
+        "normalized_text": "Medullary Thyroid Carcinoma (MTC)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "255032005"
+          ],
+          "omim": [],
+          "orpha": [
+            "1332"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Papillary Thyroid Carcinoma (PTC)",
+      "details": {
+        "normalized_text": "Papillary Thyroid Carcinoma (PTC)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "255029007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pheochromocytoma (with secondary thyroid nodule)",
+      "details": {
+        "normalized_text": "Pheochromocytoma (with secondary thyroid nodule)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M8700/0"
+          ],
+          "snomed": [
+            "237495005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thyroid Adenoma",
+      "details": {
+        "normalized_text": "Thyroid Adenoma",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "255033000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Multiple Endocrine Neoplasia Type 2 (MEN2)",
+      "details": {
+        "normalized_text": "Multiple Endocrine Neoplasia Type 2 (MEN2)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61808009"
+          ],
+          "omim": [],
+          "orpha": [
+            "653"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_MATCH",
+      "value": "0.8555330038070679",
+      "matched_gdx": {
+        "Medullary carcinoma": {
+          "name": "Medullary carcinoma",
+          "normalized_text": "Medullary carcinoma",
+          "severity": "S8",
+          "medical_codes": {
+            "icd10": [
+              "C73"
+            ],
+            "snomed": [
+              "32913002"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Medullary Thyroid Carcinoma (MTC)": {
+          "normalized_text": "Medullary Thyroid Carcinoma (MTC)",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "255032005"
+            ],
+            "omim": [],
+            "orpha": [
+              "1332"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Medullary carcinoma": {
+            "name": "Medullary carcinoma",
+            "normalized_text": "Medullary carcinoma",
+            "severity": "S8",
+            "medical_codes": {
+              "icd10": [
+                "C73"
+              ],
+              "snomed": [
+                "32913002"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['32913002'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C73']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.856) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8555330038070679
+            },
+            {
+              "position": 2,
+              "score": 0.5644782185554504
+            },
+            {
+              "position": 3,
+              "score": 0.5256906151771545
+            },
+            {
+              "position": 4,
+              "score": 0.3285772502422333
+            },
+            {
+              "position": 5,
+              "score": 0.5156856775283813
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8555330038070679
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "Q845",
+  "gdx_details": [
+    {
+      "name": "Invasive Pulmonary Aspergillosis",
+      "details": {
+        "name": "Invasive Pulmonary Aspergillosis",
+        "normalized_text": "Invasive Pulmonary Aspergillosis",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "B44.0"
+          ],
+          "snomed": [
+            "3214003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Invasive Aspergillosis",
+      "details": {
+        "normalized_text": "Invasive Aspergillosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721798004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Allergic Bronchopulmonary Aspergillosis (ABPA)",
+      "details": {
+        "normalized_text": "Allergic Bronchopulmonary Aspergillosis (ABPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "B44.81"
+          ],
+          "snomed": [
+            "37981002"
+          ],
+          "omim": [],
+          "orpha": [
+            "1164"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Acute Respiratory Distress Syndrome (ARDS)",
+      "details": {
+        "normalized_text": "Acute Respiratory Distress Syndrome (ARDS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "J80"
+          ],
+          "snomed": [
+            "67782005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pulmonary Mucormycosis",
+      "details": {
+        "normalized_text": "Pulmonary Mucormycosis",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "B46.0"
+          ],
+          "snomed": [
+            "233614003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cryptogenic Organizing Pneumonia (COP)",
+      "details": {
+        "normalized_text": "Cryptogenic Organizing Pneumonia (COP)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "J84.116"
+          ],
+          "snomed": [
+            "719218000"
+          ],
+          "omim": [],
+          "orpha": [
+            "1302"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9597772359848022",
+      "matched_gdx": {
+        "Invasive Pulmonary Aspergillosis": {
+          "name": "Invasive Pulmonary Aspergillosis",
+          "normalized_text": "Invasive Pulmonary Aspergillosis",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "B44.0"
+            ],
+            "snomed": [
+              "3214003"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Invasive Aspergillosis": {
+          "normalized_text": "Invasive Aspergillosis",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "721798004"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Invasive Pulmonary Aspergillosis": {
+            "name": "Invasive Pulmonary Aspergillosis",
+            "normalized_text": "Invasive Pulmonary Aspergillosis",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "B44.0"
+              ],
+              "snomed": [
+                "3214003"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['3214003'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['B44.0']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.960 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9597772359848022
+            },
+            {
+              "position": 2,
+              "score": 0.79909747838974
+            },
+            {
+              "position": 3,
+              "score": 0.4606377184391022
+            },
+            {
+              "position": 4,
+              "score": 0.4993363618850708
+            },
+            {
+              "position": 5,
+              "score": 0.4352027475833893
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9597772359848022
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "R132",
+  "gdx_details": [
+    {
+      "name": "Pearson syndrome",
+      "details": {
+        "name": "Pearson syndrome",
+        "normalized_text": "Pearson's marrow-pancreas syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "D61.8"
+          ],
+          "snomed": [
+            "237985009"
+          ],
+          "omim": [
+            "557000"
+          ],
+          "orpha": [
+            "699"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pearson marrow-pancreas syndrome",
+      "details": {
+        "name": "Pearson marrow-pancreas syndrome",
+        "normalized_text": "Pearson's marrow-pancreas syndrome",
+        "severity": "S9",
+        "medical_codes": {
+          "icd10": [
+            "D61.8"
+          ],
+          "snomed": [
+            "237985009"
+          ],
+          "omim": [
+            "557000"
+          ],
+          "orpha": [
+            "699"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Mitochondrial Disease",
+      "details": {
+        "normalized_text": "Mitochondrial Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "240096000"
+          ],
+          "omim": [],
+          "orpha": [
+            "68380"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Fanconi Syndrome",
+      "details": {
+        "normalized_text": "Fanconi Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "40488004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Carnitine Transport Defect",
+      "details": {
+        "normalized_text": "Carnitine Transport Defect",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E71.41"
+          ],
+          "snomed": [
+            "21764004"
+          ],
+          "omim": [
+            "212140"
+          ],
+          "orpha": [
+            "158"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Organic Aciduria",
+      "details": {
+        "normalized_text": "Organic Aciduria",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "289899"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Congenital Nephrotic Syndrome",
+      "details": {
+        "normalized_text": "Congenital Nephrotic Syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "N04"
+          ],
+          "snomed": [
+            "48796009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Pearson syndrome": {
+          "name": "Pearson syndrome",
+          "normalized_text": "Pearson's marrow-pancreas syndrome",
+          "severity": "S9",
+          "medical_codes": {
+            "icd10": [
+              "D61.8"
+            ],
+            "snomed": [
+              "237985009"
+            ],
+            "omim": [
+              "557000"
+            ],
+            "orpha": [
+              "699"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Mitochondrial Disease": {
+          "normalized_text": "Mitochondrial Disease",
+          "position": 1,
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "240096000"
+            ],
+            "omim": [],
+            "orpha": [
+              "68380"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Pearson syndrome": {
+            "name": "Pearson syndrome",
+            "normalized_text": "Pearson's marrow-pancreas syndrome",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "D61.8"
+              ],
+              "snomed": [
+                "237985009"
+              ],
+              "omim": [
+                "557000"
+              ],
+              "orpha": [
+                "699"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['237985009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D61.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.477 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.36482706665992737
+            },
+            {
+              "position": 2,
+              "score": 0.47680768370628357
+            },
+            {
+              "position": 3,
+              "score": 0.32328560948371887
+            },
+            {
+              "position": 4,
+              "score": 0.25767451524734497
+            },
+            {
+              "position": 5,
+              "score": 0.39851659536361694
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.47680768370628357
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      },
+      {
+        "gdx_evaluated": {
+          "Pearson marrow-pancreas syndrome": {
+            "name": "Pearson marrow-pancreas syndrome",
+            "normalized_text": "Pearson's marrow-pancreas syndrome",
+            "severity": "S9",
+            "medical_codes": {
+              "icd10": [
+                "D61.8"
+              ],
+              "snomed": [
+                "237985009"
+              ],
+              "omim": [
+                "557000"
+              ],
+              "orpha": [
+                "699"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['237985009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['D61.8']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.477 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.36482706665992737
+            },
+            {
+              "position": 2,
+              "score": 0.47680768370628357
+            },
+            {
+              "position": 3,
+              "score": 0.32328560948371887
+            },
+            {
+              "position": 4,
+              "score": 0.25767451524734497
+            },
+            {
+              "position": 5,
+              "score": 0.39851659536361694
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.47680768370628357
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}

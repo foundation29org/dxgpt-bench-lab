@@ -1,0 +1,3368 @@
+{
+  "Q": [
+    {
+      "case_id": "Q335",
+      "case_description": "Methods: In this double-blind, randomized controlled trial, patients (N=1200) with a history of coronary artery disease, myocardial infarction in the past 2 years, and a diagnosis of comorbid adult-onset asthma were recruited from cardiology clinics at a large academic medical center in Philadelphia, PA. Patients who were immunocompromised or had a history of recurrent infections were excluded. All participants were included in analysis and analyzed in the groups to which they were randomized regardless of medication adherence. Variables measured included plaque volume, serum LDL-C levels, FEV1/FVC ratio, and Asthma Control Questionnaire (ACQ) scores, which quantified the severity of asthma symptoms. Results: At baseline, participants in the two groups did not differ by age, gender, race, plaque volume, serum LDL-C levels, FEV1/FVC ratio, and ACQ scores (p > 0.05 for all). Pulmharkimab 75 mg/d, (Mean +/- 2 SE) Pulmharkimab 150 mg/d, (Mean +/- 2 SE) Placebo, (Mean +/- 2 SE) P-value Plaque volume (mm3), change from baseline 6.6 ± 2.8 1.2 ± 4.7 15.8 ± 2.9 < 0.01 LDL-C levels, change from baseline -9.4 ± 3.6 -11.2 ± 14.3 -8.4 ± 3.9 0.28 FEV1/FVC ratio, change from baseline 0.29 ± 2.21 0.34 ± 5.54 -0.22 ± 3.21 0.27 ACQ scores, change from baseline 0.31 ± 1.22 0.46 ± 3.25 0.12 ± 1.33 0.43 Conclusion: Pulmharkimab may be effective in reducing plaque volume but does not lead to improved asthma control in patients with a history of myocardial infarction and comorbid asthma.",
+      "gdx_details": {
+        "Increased standard error due to smaller sample size": {
+          "normalized_text": "Increased standard error due to smaller sample size",
+          "medical_codes": {"icd10": ["Z00.0"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Coronary Artery Disease": {
+          "normalized_text": "Coronary Artery Disease",
+          "medical_codes": {"icd10": ["I25.1"], "orpha": [], "omim": ["MTHU002067"], "snomed": ["414024009"]}
+        },
+        "Myocardial Infarction": {
+          "normalized_text": "Myocardial Infarction",
+          "medical_codes": {"icd10": ["I21"], "orpha": [], "omim": ["MTHU008101"], "snomed": ["22298006"]}
+        },
+        "Adult-Onset Asthma": {
+          "normalized_text": "Adult onset asthma",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hyperlipidemia": {
+          "normalized_text": "Hyperlipidemia",
+          "medical_codes": {"icd10": ["E78.5"], "orpha": [], "omim": ["MTHU002043"], "snomed": ["55822004"]}
+        },
+        "Atherosclerosis": {
+          "normalized_text": "Atherosclerosis",
+          "medical_codes": {"icd10": ["I70"], "orpha": [], "omim": ["MTHU036909"], "snomed": ["38716007"]}
+        }
+      }
+    },
+    {
+      "case_id": "Q559",
+      "case_description": "Methods: In this multicenter, pragmatic, comparative effectiveness trial, we randomly assigned patients 18 to 76 years of age who presented to the emergency department with suspected nephrolithiasis to undergo initial diagnostic ultrasonography performed by an emergency physician (point-of-care ultrasonography), ultrasonography performed by a radiologist (radiology ultrasonography), or abdominal non-contrast CT. Subsequent management, including additional imaging, was at the discretion of the physician. We compared the three groups with respect to the 30-day incidence of high-risk diagnoses with complications that could be related to missed or delayed diagnosis and the 6-month cumulative radiation exposure. Secondary outcomes were serious adverse events, related serious adverse events (deemed attributable to study participation), pain (assessed on an 11-point visual-analog scale, with higher scores indicating more severe pain), return emergency department visits, hospitalizations, and diagnostic accuracy. Results: A total of 2759 patients underwent randomization: 908 to point-of-care ultrasonography, 893 to radiology ultrasonography, and 958 to non-contrast CT abdomen The incidence of high-risk diagnoses with complications in the first 30 days was low (0.4%) and did not vary according to imaging method.",
+      "gdx_details": {
+        "Measurement bias in nephrolithiasis imaging study": {
+          "normalized_text": "Nephrolithiasis",
+          "medical_codes": {"icd10": ["Z00.6"], "orpha": [], "omim": [], "snomed": ["95570007"]}
+        }
+      },
+      "ddx_details": {
+        "Nephrolithiasis": {
+          "normalized_text": "Nephrolithiasis",
+          "medical_codes": {"icd10": ["N20.0"], "orpha": [], "omim": ["MTHU007103"], "snomed": ["95570007"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Renal colic": {
+          "normalized_text": "Renal Colic",
+          "medical_codes": {"icd10": ["N23"], "orpha": [], "omim": ["MTHU069551"], "snomed": ["7093002"]}
+        },
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Hydronephrosis": {
+          "normalized_text": "Hydronephrosis",
+          "medical_codes": {"icd10": ["N13.30"], "orpha": [], "omim": ["MTHU001611"], "snomed": ["43064006"]}
+        }
+      }
+    }
+  ],
+  "T": [
+    {
+      "case_id": "T1059",
+      "gdx_details": {
+        "Viral infection": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": [], "snomed": ["34014006"]}
+        }
+      },
+      "ddx_details": {
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Common Cold": {
+          "normalized_text": "Common Cold",
+          "medical_codes": {"icd10": ["J00"], "orpha": [], "omim": [], "snomed": ["82272006"]}
+        },
+        "Viral Syndrome": {
+          "normalized_text": "Viral syndrome",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["445939008"]}
+        },
+        "Mild Dehydration": {
+          "normalized_text": "Dehydration",
+          "medical_codes": {"icd10": ["E86.0"], "orpha": [], "omim": ["MTHU000177"], "snomed": ["34095006"]}
+        },
+        "Age-Related Cognitive Decline": {
+          "normalized_text": "Mental deterioration",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU003010"], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1066",
+      "gdx_details": {
+        "Mild traumatic brain injury": {
+          "normalized_text": "Mild traumatic brain injury",
+          "medical_codes": {"icd10": ["S06.0X0A"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Syncope": {
+          "normalized_text": "Syncope",
+          "medical_codes": {"icd10": ["R55"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Vasovagal Syncope": {
+          "normalized_text": "Vasovagal syncope",
+          "medical_codes": {"icd10": ["R55"], "orpha": [], "omim": ["MTHU046178"], "snomed": ["398665005"]}
+        },
+        "Orthostatic Hypotension": {
+          "normalized_text": "Hypotension, Orthostatic",
+          "medical_codes": {"icd10": ["I95.1"], "orpha": [], "omim": ["MTHU001817"], "snomed": ["28651003"]}
+        },
+        "Transient Ischemic Attack": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Anxiety Disorder": {
+          "normalized_text": "Anxiety Disorders",
+          "medical_codes": {"icd10": ["F41.9"], "orpha": [], "omim": ["MTHU004077"], "snomed": ["197480006"]}
+        },
+        "Menopausal Hot Flashes": {
+          "normalized_text": "Menopause",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["161712005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1069",
+      "gdx_details": {
+        "Pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": ["J18.9"], "orpha": [], "omim": [], "snomed": ["233604007"]}
+        }
+      },
+      "ddx_details": {
+        "Hypertensive heart disease": {
+          "normalized_text": "Hypertensive heart disease",
+          "medical_codes": {"icd10": ["I11"], "orpha": [], "omim": [], "snomed": ["64715009"]}
+        },
+        "Chronic obstructive pulmonary disease (COPD)": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Congestive heart failure": {
+          "normalized_text": "Congestive heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU005753"], "snomed": ["42343007"]}
+        },
+        "Pulmonary fibrosis": {
+          "normalized_text": "Pulmonary Fibrosis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU007791"], "snomed": ["51615001"]}
+        },
+        "Aortic stenosis": {
+          "normalized_text": "Aortic Valve Stenosis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU002342"], "snomed": ["60573004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1082",
+      "gdx_details": {
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        }
+      },
+      "ddx_details": {
+        "Neumonía adquirida en la comunidad": {
+          "normalized_text": "Neumonía adquirida en la comunidad",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia cardíaca congestiva": {
+          "normalized_text": "Insuficiencia cardíaca congestiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Embolia pulmonar": {
+          "normalized_text": "Embolia pulmonar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Derrame pleural": {
+          "normalized_text": "Derrame pleural",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bronquitis aguda": {
+          "normalized_text": "Bronquitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1173",
+      "gdx_details": {
+        "Fever under investigation": {
+          "normalized_text": "Fever under investigation",
+          "medical_codes": {"icd10": ["R50.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Viral upper respiratory infection": {
+          "normalized_text": "Common Cold",
+          "medical_codes": {"icd10": ["J00"], "orpha": [], "omim": [], "snomed": ["82272006"]}
+        },
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Tuberculosis": {
+          "normalized_text": "Tuberculosis",
+          "medical_codes": {"icd10": ["A15-A19"], "orpha": [], "omim": [], "snomed": ["56717001"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1186",
+      "gdx_details": {
+        "Acute lower respiratory infection": {
+          "normalized_text": "Acute lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["195742007"]}
+        }
+      },
+      "ddx_details": {
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Interstitial Cystitis": {
+          "normalized_text": "Interstitial Cystitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["111409009"]}
+        },
+        "Diverticulitis": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        },
+        "Pelvic Inflammatory Disease": {
+          "normalized_text": "Pelvic Inflammatory Disease",
+          "medical_codes": {"icd10": ["N73.9"], "orpha": [], "omim": [], "snomed": ["198130006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1202",
+      "gdx_details": {
+        "Acute lower respiratory infection": {
+          "normalized_text": "Acute lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["195742007"]}
+        }
+      },
+      "ddx_details": {
+        "Acute Viral Pharyngitis": {
+          "normalized_text": "Acute viral pharyngitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["195662009"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1212",
+      "gdx_details": {
+        "Paroxysmal atrial fibrillation": {
+          "normalized_text": "Paroxysmal atrial fibrillation",
+          "medical_codes": {"icd10": ["I48.0"], "orpha": [], "omim": [], "snomed": ["282825002"]}
+        }
+      },
+      "ddx_details": {
+        "Atrial Fibrillation": {
+          "normalized_text": "Atrial Fibrillation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU006249"], "snomed": ["49436004"]}
+        },
+        "Flecainide Toxicity": {
+          "normalized_text": "Flecainide Toxicity",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Electrolyte Imbalance": {
+          "normalized_text": "Electrolyte imbalance",
+          "medical_codes": {"icd10": ["E87.8"], "orpha": [], "omim": ["MTHU060319"], "snomed": ["105593004"]}
+        },
+        "Thyroid Dysfunction": {
+          "normalized_text": "Thyroid dysfunction",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU071190"], "snomed": ["264580006"]}
+        },
+        "Structural Heart Disease": {
+          "normalized_text": "Structural Heart Disease",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1213",
+      "gdx_details": {
+        "Bronchiectasis infection": {
+          "normalized_text": "Bronchiectasis infection",
+          "medical_codes": {"icd10": ["J47.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Bronchiectasis exacerbation": {
+          "normalized_text": "Bronchiectasis exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bacterial pneumonia": {
+          "normalized_text": "Pneumonia, Bacterial",
+          "medical_codes": {"icd10": ["J15.9"], "orpha": [], "omim": [], "snomed": ["53084003"]}
+        },
+        "Pulmonary tuberculosis": {
+          "normalized_text": "Tuberculosis, Pulmonary",
+          "medical_codes": {"icd10": ["A15.0"], "orpha": [], "omim": ["MTHU068152"], "snomed": ["154283005"]}
+        },
+        "Lung abscess": {
+          "normalized_text": "Lung Abscess",
+          "medical_codes": {"icd10": ["J85.2"], "orpha": [], "omim": [], "snomed": ["73452002"]}
+        },
+        "Chronic obstructive pulmonary disease (COPD) exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1214",
+      "gdx_details": {
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        },
+        "Acute kidney injury": {
+          "normalized_text": "Kidney Failure, Acute",
+          "medical_codes": {"icd10": ["N17.9"], "orpha": [], "omim": [], "snomed": ["14669001"]}
+        },
+        "Confusional syndrome": {
+          "normalized_text": "Confusional syndrome",
+          "medical_codes": {"icd10": ["R41.0"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Over-anticoagulation due to Warfarin therapy": {
+          "normalized_text": "Over-anticoagulation due to Warfarin therapy",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Respiratory infection sequelae": {
+          "normalized_text": "Respiratory Tract Infections",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU008079"], "snomed": ["275498002"]}
+        },
+        "Anemia of chronic disease": {
+          "normalized_text": "Anemia of chronic disease",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["234347009"]}
+        },
+        "Hypotension": {
+          "normalized_text": "Hypotension",
+          "medical_codes": {"icd10": ["I95.9"], "orpha": [], "omim": ["MTHU001921"], "snomed": ["45007003"]}
+        },
+        "Somnolence secondary to systemic effects": {
+          "normalized_text": "Somnolence secondary to systemic effects",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1233",
+      "gdx_details": {
+        "Febrile syndrome": {
+          "normalized_text": "Disorder characterized by fever",
+          "medical_codes": {"icd10": ["R50.9"], "orpha": [], "omim": [], "snomed": ["416113008"]}
+        },
+        "Mononucleosis": {
+          "normalized_text": "Infectious Mononucleosis",
+          "medical_codes": {"icd10": ["B27.9"], "orpha": [], "omim": [], "snomed": ["271558008"]}
+        }
+      },
+      "ddx_details": {
+        "Viral infection": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": ["MTHU054517"], "snomed": ["34014006"]}
+        },
+        "Bacterial infection": {
+          "normalized_text": "Bacterial Infections",
+          "medical_codes": {"icd10": ["A49.9"], "orpha": [], "omim": ["MTHU054518"], "snomed": ["87628006"]}
+        },
+        "Parasitic infection": {
+          "normalized_text": "Parasitic Diseases",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["17322007"]}
+        },
+        "Allergic reaction": {
+          "normalized_text": "Allergic Reaction",
+          "medical_codes": {"icd10": ["T78.40"], "orpha": [], "omim": [], "snomed": ["419076005"]}
+        },
+        "Autoimmune condition": {
+          "normalized_text": "Autoimmune Diseases",
+          "medical_codes": {"icd10": ["M30-M36"], "orpha": [], "omim": ["MTHU027840"], "snomed": ["85828009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1242",
+      "gdx_details": {
+        "Bronchitis": {
+          "normalized_text": "Bronchitis",
+          "medical_codes": {"icd10": ["J40"], "orpha": [], "omim": [], "snomed": ["32398004"]}
+        }
+      },
+      "ddx_details": {
+        "Chronic obstructive pulmonary disease (COPD) exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Interstitial lung disease": {
+          "normalized_text": "Lung Diseases, Interstitial",
+          "medical_codes": {"icd10": ["J84.9"], "orpha": [], "omim": ["MTHU012852"], "snomed": ["233703007"]}
+        },
+        "Heart failure with preserved ejection fraction": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Post-viral syndrome": {
+          "normalized_text": "post viral syndrome",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1264",
+      "gdx_details": {
+        "Hyperglycemia": {
+          "normalized_text": "Hyperglycemia",
+          "medical_codes": {"icd10": ["R73.9"], "orpha": [], "omim": [], "snomed": ["80394007"]}
+        },
+        "Type 2 diabetes mellitus": {
+          "normalized_text": "Diabetes Mellitus, Non-Insulin-Dependent",
+          "medical_codes": {"icd10": ["E11.9"], "orpha": [], "omim": [], "snomed": ["44054006"]}
+        },
+        "Viral illness": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": [], "snomed": ["34014006"]}
+        }
+      },
+      "ddx_details": {
+        "Diabetes Mellitus Type 2": {
+          "normalized_text": "Diabetes Mellitus, Non-Insulin-Dependent",
+          "medical_codes": {"icd10": ["E11"], "orpha": [], "omim": ["MTHU047504"], "snomed": ["44054006"]}
+        },
+        "Diabetic Ketoacidosis": {
+          "normalized_text": "Diabetic Ketoacidosis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU010100"], "snomed": ["420422005"]}
+        },
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Hyperglycemic Hyperosmolar State": {
+          "normalized_text": "Hyperosmolar Hyperglycemic State",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["310505005"]}
+        },
+        "Chronic Kidney Disease": {
+          "normalized_text": "Chronic Kidney Diseases",
+          "medical_codes": {"icd10": ["N18.9"], "orpha": [], "omim": ["MTHU055845"], "snomed": ["709044004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1294",
+      "gdx_details": {
+        "Respiratory infection": {
+          "normalized_text": "Respiratory Tract Infections",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["275498002"]}
+        },
+        "Heart failure exacerbation": {
+          "normalized_text": "Heart failure exacerbation",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Partial respiratory failure": {
+          "normalized_text": "Partial respiratory failure",
+          "medical_codes": {"icd10": ["J96.10"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Pulmonary embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Congestive heart failure": {
+          "normalized_text": "Congestive heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU005753"], "snomed": ["42343007"]}
+        },
+        "Pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU002638"], "snomed": ["233604007"]}
+        },
+        "Chronic obstructive pulmonary disease exacerbation": {
+          "normalized_text": "Chronic obstructive pulmonary disease exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Post-surgical infection": {
+          "normalized_text": "Post-surgical infection",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1295",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        }
+      },
+      "ddx_details": {
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Acute Pharyngitis": {
+          "normalized_text": "Acute pharyngitis",
+          "medical_codes": {"icd10": ["J02.9"], "orpha": [], "omim": [], "snomed": ["363746003"]}
+        },
+        "Catheter-Associated Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Pancreatic Cancer Progression": {
+          "normalized_text": "Malignant neoplasm of pancreas",
+          "medical_codes": {"icd10": ["C25.9"], "orpha": [], "omim": ["MTHU015030"], "snomed": ["363418001"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1299",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Bacterial superinfection": {
+          "normalized_text": "Superinfection bacterial",
+          "medical_codes": {"icd10": ["J15.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Partial respiratory failure": {
+          "normalized_text": "Partial respiratory failure",
+          "medical_codes": {"icd10": ["J96.20"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "COVID-19 pneumonia": {
+          "normalized_text": "Pneumonia caused by SARS-CoV-2",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["882784691000119100"]}
+        },
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute respiratory distress syndrome (ARDS)": {
+          "normalized_text": "Respiratory Distress Syndrome, Adult",
+          "medical_codes": {"icd10": ["J80"], "orpha": [], "omim": [], "snomed": ["67782005"]}
+        },
+        "Chronic obstructive pulmonary disease (COPD) exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Interstitial lung disease exacerbation": {
+          "normalized_text": "Lung Diseases, Interstitial",
+          "medical_codes": {"icd10": ["J84.9"], "orpha": [], "omim": ["MTHU012852"], "snomed": ["233703007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1301",
+      "gdx_details": {
+        "Oral candidiasis": {
+          "normalized_text": "Oral candidiasis",
+          "medical_codes": {"icd10": ["B37.0"], "orpha": [], "omim": [], "snomed": ["79740000"]}
+        },
+        "Abdominal pain": {
+          "normalized_text": "Abdominal pain",
+          "medical_codes": {"icd10": ["R10.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hypokalemia": {
+          "normalized_text": "Hypokalemia",
+          "medical_codes": {"icd10": ["E87.6"], "orpha": [], "omim": [], "snomed": ["43339004"]}
+        }
+      },
+      "ddx_details": {
+        "Colelitiasis": {
+          "normalized_text": "Colelitiasis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pancreatitis aguda": {
+          "normalized_text": "Pancreatitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de intestino irritable": {
+          "normalized_text": "Síndrome de intestino irritable",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Gastritis": {
+          "normalized_text": "Gastritis",
+          "medical_codes": {"icd10": ["K29.7"], "orpha": [], "omim": ["MTHU062400"], "snomed": ["4556007"]}
+        },
+        "Obstrucción intestinal": {
+          "normalized_text": "Obstrucción intestinal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1302",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Partial respiratory failure": {
+          "normalized_text": "Partial respiratory failure",
+          "medical_codes": {"icd10": ["J96.10"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Mild hypokalemia": {
+          "normalized_text": "Mild hypokalemia",
+          "medical_codes": {"icd10": ["E87.6"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Heart Failure Exacerbation": {
+          "normalized_text": "Heart Failure Exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1305",
+      "gdx_details": {
+        "Acute diverticulitis": {
+          "normalized_text": "Acute diverticulitis",
+          "medical_codes": {"icd10": ["K57.92"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Costochondritis": {
+          "normalized_text": "Costal chondritis",
+          "medical_codes": {"icd10": ["M94.0"], "orpha": [], "omim": ["MTHU077196"], "snomed": ["64109004"]}
+        },
+        "Renal colic": {
+          "normalized_text": "Renal Colic",
+          "medical_codes": {"icd10": ["N23"], "orpha": [], "omim": ["MTHU069551"], "snomed": ["7093002"]}
+        },
+        "Musculoskeletal pain": {
+          "normalized_text": "Musculoskeletal pain",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Herpes zoster": {
+          "normalized_text": "Herpes zoster (disorder)",
+          "medical_codes": {"icd10": ["B02"], "orpha": [], "omim": ["MTHU078675"], "snomed": ["4740000"]}
+        },
+        "Pleuritis": {
+          "normalized_text": "Pleurisy",
+          "medical_codes": {"icd10": ["R09.1"], "orpha": [], "omim": ["MTHU011705"], "snomed": ["196075003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1306",
+      "gdx_details": {
+        "Cerebral infarction": {
+          "normalized_text": "Cerebral Infarction",
+          "medical_codes": {"icd10": ["I63.9"], "orpha": [], "omim": [], "snomed": ["432504007"]}
+        }
+      },
+      "ddx_details": {
+        "Ischemic Stroke": {
+          "normalized_text": "Ischemic stroke",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU000098"], "snomed": ["422504002"]}
+        },
+        "Transient Ischemic Attack": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Optic Neuritis": {
+          "normalized_text": "Optic Neuritis",
+          "medical_codes": {"icd10": ["H46.9"], "orpha": [], "omim": ["MTHU074779"], "snomed": ["66760008"]}
+        },
+        "Brain Tumor": {
+          "normalized_text": "Brain Neoplasms",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU017414"], "snomed": ["126952004"]}
+        },
+        "Multiple Sclerosis": {
+          "normalized_text": "Multiple Sclerosis",
+          "medical_codes": {"icd10": ["G35"], "orpha": [], "omim": [], "snomed": ["24700007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1307",
+      "gdx_details": {
+        "Lumbosciatica": {
+          "normalized_text": "Lumbosciatica",
+          "medical_codes": {"icd10": ["M54.4"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Chronic pelvic pain syndrome": {
+          "normalized_text": "Chronic pelvic pain syndrome",
+          "medical_codes": {"icd10": ["N94.89"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Hernia discal L4-L5": {
+          "normalized_text": "Intervertebral Disk Displacement",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["73589001"]}
+        },
+        "Síndrome de dolor pélvico crónico postquirúrgico": {
+          "normalized_text": "Síndrome de dolor pélvico crónico postquirúrgico",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome miofascial de suelo pélvico postquirúrgico": {
+          "normalized_text": "Síndrome miofascial de suelo pélvico postquirúrgico",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome lumbar facetario": {
+          "normalized_text": "Síndrome lumbar facetario",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Radiculopatía lumbar": {
+          "normalized_text": "Radiculopatía lumbar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1308",
+      "gdx_details": {
+        "Hepatic mass": {
+          "normalized_text": "Hepatic mass",
+          "medical_codes": {"icd10": ["K76.89"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Gastritis": {
+          "normalized_text": "Gastritis",
+          "medical_codes": {"icd10": ["K29.7"], "orpha": [], "omim": ["MTHU062400"], "snomed": ["4556007"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        },
+        "Cholecystitis": {
+          "normalized_text": "Cholecystitis",
+          "medical_codes": {"icd10": ["K81.9"], "orpha": [], "omim": ["MTHU009746"], "snomed": ["76581006"]}
+        },
+        "Pancreatitis": {
+          "normalized_text": "Pancreatitis",
+          "medical_codes": {"icd10": ["K85.9"], "orpha": [], "omim": ["MTHU003881"], "snomed": ["75694006"]}
+        },
+        "Hepatitis": {
+          "normalized_text": "Hepatitis",
+          "medical_codes": {"icd10": ["K75.9"], "orpha": [], "omim": ["MTHU067436"], "snomed": ["128241005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1310",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Transient ischemic attack": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": [], "snomed": ["266257000"]}
+        }
+      },
+      "ddx_details": {
+        "Transient Ischemic Attack (TIA)": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Vertigo due to Vestibular Dysfunction": {
+          "normalized_text": "Vestibular hypofunction",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU008876"], "snomed": []}
+        },
+        "Hypoglycemia": {
+          "normalized_text": "Hypoglycemia",
+          "medical_codes": {"icd10": ["E16.2"], "orpha": [], "omim": ["MTHU000371"], "snomed": ["302866003"]}
+        },
+        "Transient Global Amnesia": {
+          "normalized_text": "Amnesia, Transient Global",
+          "medical_codes": {"icd10": ["G45.4"], "orpha": [], "omim": [], "snomed": ["230736007"]}
+        },
+        "Migraine with Aura": {
+          "normalized_text": "Migraine with Aura",
+          "medical_codes": {"icd10": ["G43.1"], "orpha": [], "omim": ["MTHU036930"], "snomed": ["4473006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1313",
+      "gdx_details": {
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        }
+      },
+      "ddx_details": {
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Respiratory Syncytial Virus Infection": {
+          "normalized_text": "Respiratory Syncytial Virus Infections",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["55735004"]}
+        },
+        "Mycoplasma Pneumonia": {
+          "normalized_text": "Mycoplasma pneumonia",
+          "medical_codes": {"icd10": ["J15.7"], "orpha": [], "omim": [], "snomed": ["46970008"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "COVID-19 (False Negative)": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1322",
+      "gdx_details": {
+        "Pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": ["J18.9"], "orpha": [], "omim": [], "snomed": ["233604007"]}
+        },
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        },
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        },
+        "Chronic kidney disease": {
+          "normalized_text": "Chronic Kidney Diseases",
+          "medical_codes": {"icd10": ["N18.9"], "orpha": [], "omim": [], "snomed": ["709044004"]}
+        },
+        "Hypoactive confusional state": {
+          "normalized_text": "Hypoactive confusional state",
+          "medical_codes": {"icd10": ["F05"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Delirium secondary to infection": {
+          "normalized_text": "Infection",
+          "medical_codes": {"icd10": ["R41.0"], "orpha": [], "omim": ["MTHU035152", "MTHU077215"], "snomed": ["2776000"]}
+        },
+        "Anemia of chronic disease": {
+          "normalized_text": "Anemia of chronic disease",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["234347009"]}
+        },
+        "Hypoxemia": {
+          "normalized_text": "Hypoxemia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Age-related cognitive decline": {
+          "normalized_text": "Age-related cognitive decline",
+          "medical_codes": {"icd10": ["R41.81"], "orpha": [], "omim": [], "snomed": ["102891000"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1324",
+      "gdx_details": {
+        "Acute pyelonephritis": {
+          "normalized_text": "Acute pyelonephritis",
+          "medical_codes": {"icd10": ["N10"], "orpha": [], "omim": [], "snomed": ["36689008"]}
+        },
+        "Moderate hyponatremia": {
+          "normalized_text": "Moderate hyponatremia",
+          "medical_codes": {"icd10": ["E87.1"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Chronic kidney disease": {
+          "normalized_text": "Chronic Kidney Diseases",
+          "medical_codes": {"icd10": ["N18.9"], "orpha": [], "omim": [], "snomed": ["709044004"]}
+        }
+      },
+      "ddx_details": {
+        "Neumonía adquirida en la comunidad": {
+          "normalized_text": "Neumonía adquirida en la comunidad",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Fractura costal": {
+          "normalized_text": "Fractura costal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Anemia ferropénica": {
+          "normalized_text": "Anemia ferropénica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia cardíaca congestiva": {
+          "normalized_text": "Insuficiencia cardíaca congestiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección del tracto urinario": {
+          "normalized_text": "Infección del tracto urinario",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1328",
+      "gdx_details": {
+        "Left orchitis": {
+          "normalized_text": "Orchitis",
+          "medical_codes": {"icd10": ["N45.2"], "orpha": [], "omim": [], "snomed": ["274718005"]}
+        }
+      },
+      "ddx_details": {
+        "Epididimitis": {
+          "normalized_text": "Epididimitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Orquitis": {
+          "normalized_text": "Orquitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pielonefritis": {
+          "normalized_text": "Pielonefritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Neumonía": {
+          "normalized_text": "Neumonía",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Torsión testicular": {
+          "normalized_text": "Torsión testicular",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1329",
+      "gdx_details": {
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        }
+      },
+      "ddx_details": {
+        "Shock hipovolémico": {
+          "normalized_text": "Shock hipovolémico",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia cardíaca congestiva": {
+          "normalized_text": "Insuficiencia cardíaca congestiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Embolia pulmonar": {
+          "normalized_text": "Embolia pulmonar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Anemia aguda": {
+          "normalized_text": "Anemia aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1330",
+      "gdx_details": {
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": [], "snomed": ["271737000"]}
+        }
+      },
+      "ddx_details": {
+        "Severe anemia": {
+          "normalized_text": "Anemia, severe",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU043773"], "snomed": []}
+        },
+        "Heart failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Arrhythmia": {
+          "normalized_text": "Cardiac Arrhythmia",
+          "medical_codes": {"icd10": ["I49.9"], "orpha": [], "omim": ["MTHU010895"], "snomed": ["698247007"]}
+        },
+        "Drug reaction": {
+          "normalized_text": "Reaction",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["263851003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1332",
+      "gdx_details": {
+        "Acute prostatitis": {
+          "normalized_text": "Acute prostatitis",
+          "medical_codes": {"icd10": ["N41.0"], "orpha": [], "omim": [], "snomed": ["79411002"]}
+        }
+      },
+      "ddx_details": {
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Prostatitis": {
+          "normalized_text": "prostatitis",
+          "medical_codes": {"icd10": ["N41.9"], "orpha": [], "omim": ["MTHU007521"], "snomed": ["9713002"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Neurogenic Bladder": {
+          "normalized_text": "Neurogenic Urinary Bladder",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU037120"], "snomed": ["398064005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1339",
+      "gdx_details": {
+        "Right basal pneumonia": {
+          "normalized_text": "Basal pneumonia",
+          "medical_codes": {"icd10": ["J18.1"], "orpha": [], "omim": [], "snomed": ["300999006"]}
+        },
+        "Abdominal aortic aneurysm": {
+          "normalized_text": "Aortic Aneurysm, Abdominal",
+          "medical_codes": {"icd10": ["I71.4"], "orpha": [], "omim": [], "snomed": ["233985008"]}
+        }
+      },
+      "ddx_details": {
+        "Aneurisma de la aorta abdominal infrarrenal": {
+          "normalized_text": "Aneurisma de la aorta abdominal infrarrenal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Diverticulitis colónica": {
+          "normalized_text": "Diverticulitis colónica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Vasculitis incipiente del tronco celíaco": {
+          "normalized_text": "Vasculitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU018875"], "snomed": ["31996006"]}
+        },
+        "Hiperplasia prostática benigna": {
+          "normalized_text": "Hiperplasia prostática benigna",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Enfermedad de Paget ósea": {
+          "normalized_text": "Enfermedad de Paget ósea",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1340",
+      "gdx_details": {
+        "Right basal pneumonia": {
+          "normalized_text": "Basal pneumonia",
+          "medical_codes": {"icd10": ["J18.1"], "orpha": [], "omim": [], "snomed": ["300999006"]}
+        },
+        "Partial respiratory failure": {
+          "normalized_text": "Partial respiratory failure",
+          "medical_codes": {"icd10": ["J96.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Chronic Obstructive Pulmonary Disease Exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Heart Failure Exacerbation": {
+          "normalized_text": "Heart Failure Exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1342",
+      "gdx_details": {
+        "Right basal pneumonia": {
+          "normalized_text": "Basal pneumonia",
+          "medical_codes": {"icd10": ["J18.1"], "orpha": [], "omim": [], "snomed": ["300999006"]}
+        },
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        }
+      },
+      "ddx_details": {
+        "Neumonía adquirida en la comunidad": {
+          "normalized_text": "Neumonía adquirida en la comunidad",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Crisis epiléptica tónica": {
+          "normalized_text": "Crisis epiléptica tónica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia respiratoria aguda": {
+          "normalized_text": "Insuficiencia respiratoria aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bronquitis aguda": {
+          "normalized_text": "Bronquitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Embolia pulmonar": {
+          "normalized_text": "Embolia pulmonar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1343",
+      "gdx_details": {
+        "Pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": ["J18.9"], "orpha": [], "omim": [], "snomed": ["233604007"]}
+        },
+        "Respiratory failure": {
+          "normalized_text": "Respiratory Failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": ["409622000"]}
+        },
+        "Mild hyponatremia": {
+          "normalized_text": "Mild hyponatremia",
+          "medical_codes": {"icd10": ["E87.1"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute Respiratory Distress Syndrome": {
+          "normalized_text": "Respiratory Distress Syndrome, Adult",
+          "medical_codes": {"icd10": ["J80"], "orpha": [], "omim": [], "snomed": ["67782005"]}
+        },
+        "Chronic Obstructive Pulmonary Disease Exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Heart Failure Exacerbation": {
+          "normalized_text": "Heart Failure Exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1344",
+      "gdx_details": {
+        "Acute pancreatitis": {
+          "normalized_text": "Pancreatitis, Acute",
+          "medical_codes": {"icd10": ["K85.9"], "orpha": [], "omim": [], "snomed": ["197456007"]}
+        },
+        "Acute left parotitis": {
+          "normalized_text": "Acute left parotitis",
+          "medical_codes": {"icd10": ["K11.2"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Angina de pecho": {
+          "normalized_text": "Angina de pecho",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infarto agudo de miocardio": {
+          "normalized_text": "Infarto agudo de miocardio",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Dispepsia funcional": {
+          "normalized_text": "Dispepsia funcional",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de intestino irritable": {
+          "normalized_text": "Síndrome de intestino irritable",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hipoglucemia reactiva": {
+          "normalized_text": "Hipoglucemia reactiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1347",
+      "gdx_details": {
+        "Right grade II hydronephrosis secondary to upper ureteral lithiasis": {
+          "normalized_text": "Right grade II hydronephrosis secondary to upper ureteral lithiasis",
+          "medical_codes": {"icd10": ["N13.2"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Colelitiasis": {
+          "normalized_text": "Colelitiasis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Colecistitis aguda": {
+          "normalized_text": "Colecistitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pielonefritis aguda": {
+          "normalized_text": "Pielonefritis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Apendicitis retrocecal": {
+          "normalized_text": "Apendicitis retrocecal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Úlcera péptica perforada": {
+          "normalized_text": "Úlcera péptica perforada",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1348",
+      "gdx_details": {
+        "Acute gastroenteritis": {
+          "normalized_text": "Acute gastroenteritis",
+          "medical_codes": {"icd10": ["A09"], "orpha": [], "omim": [], "snomed": ["69776003"]}
+        },
+        "Moderate symptomatic hyponatremia": {
+          "normalized_text": "Moderate symptomatic hyponatremia",
+          "medical_codes": {"icd10": ["E87.1"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Mild hypokalemia": {
+          "normalized_text": "Mild hypokalemia",
+          "medical_codes": {"icd10": ["E87.6"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Gastroenteritis aguda": {
+          "normalized_text": "Gastroenteritis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección por Clostridioides difficile": {
+          "normalized_text": "Infección por Clostridioides difficile",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Intoxicación alimentaria": {
+          "normalized_text": "Intoxicación alimentaria",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de intestino irritable agudizado": {
+          "normalized_text": "Síndrome de intestino irritable agudizado",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hipovolemia leve": {
+          "normalized_text": "Hipovolemia leve",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1349",
+      "gdx_details": {
+        "Bilateral community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": ["J18.9"], "orpha": [], "omim": [], "snomed": ["385093006"]}
+        },
+        "Acute kidney injury": {
+          "normalized_text": "Kidney Failure, Acute",
+          "medical_codes": {"icd10": ["N17.9"], "orpha": [], "omim": [], "snomed": ["14669001"]}
+        },
+        "Simple hyperglycemia": {
+          "normalized_text": "Simple hyperglycemia",
+          "medical_codes": {"icd10": ["R73.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Acute Gastroenteritis": {
+          "normalized_text": "Acute gastroenteritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["69776003"]}
+        },
+        "Heart Failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1356",
+      "gdx_details": {
+        "Gastrointestinal hemorrhage": {
+          "normalized_text": "Gastrointestinal Hemorrhage",
+          "medical_codes": {"icd10": ["K92.2"], "orpha": [], "omim": [], "snomed": ["74474003"]}
+        }
+      },
+      "ddx_details": {
+        "Upper Gastrointestinal Bleeding": {
+          "normalized_text": "Upper gastrointestinal hemorrhage",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU034257"], "snomed": ["37372002"]}
+        },
+        "Iron Deficiency Anemia": {
+          "normalized_text": "Iron deficiency anemia",
+          "medical_codes": {"icd10": ["D50.9"], "orpha": [], "omim": ["MTHU036458"], "snomed": ["87522002"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        },
+        "Gastric Cancer": {
+          "normalized_text": "Malignant neoplasm of stomach",
+          "medical_codes": {"icd10": ["C16.9"], "orpha": [], "omim": ["MTHU056036"], "snomed": ["363349007"]}
+        },
+        "Esophageal Varices": {
+          "normalized_text": "Esophageal Varices",
+          "medical_codes": {"icd10": ["I85.0"], "orpha": [], "omim": ["MTHU037473"], "snomed": ["28670008"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1370",
+      "gdx_details": {
+        "Right pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": ["J18.9"], "orpha": [], "omim": [], "snomed": ["233604007"]}
+        },
+        "Global respiratory failure": {
+          "normalized_text": "Global respiratory failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Right pleural effusion": {
+          "normalized_text": "Pleural effusion (disorder)",
+          "medical_codes": {"icd10": ["J90"], "orpha": [], "omim": [], "snomed": ["60046008"]}
+        }
+      },
+      "ddx_details": {
+        "Neumonía": {
+          "normalized_text": "Neumonía",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Embolia pulmonar": {
+          "normalized_text": "Embolia pulmonar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia cardíaca congestiva": {
+          "normalized_text": "Insuficiencia cardíaca congestiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Derrame pleural": {
+          "normalized_text": "Derrame pleural",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de distrés respiratorio agudo": {
+          "normalized_text": "Síndrome de distrés respiratorio agudo",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1371",
+      "gdx_details": {
+        "Renal infarction": {
+          "normalized_text": "Renal infarction",
+          "medical_codes": {"icd10": ["N28.0"], "orpha": [], "omim": [], "snomed": ["45456005"]}
+        }
+      },
+      "ddx_details": {
+        "Infarto renal": {
+          "normalized_text": "Infarto renal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Nefritis intersticial aguda": {
+          "normalized_text": "Nefritis intersticial aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Aneurisma de la arteria iliaca": {
+          "normalized_text": "Aneurisma de la arteria iliaca",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hernia inguinal incarcerada": {
+          "normalized_text": "Hernia inguinal incarcerada",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Diverticulitis del colon derecho": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1372",
+      "gdx_details": {
+        "Upper gastrointestinal bleeding": {
+          "normalized_text": "Upper gastrointestinal bleeding",
+          "medical_codes": {"icd10": ["K92.2"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Upper Gastrointestinal Bleeding": {
+          "normalized_text": "Upper gastrointestinal hemorrhage",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU034257"], "snomed": ["37372002"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Iron Deficiency Anemia": {
+          "normalized_text": "Iron deficiency anemia",
+          "medical_codes": {"icd10": ["D50.9"], "orpha": [], "omim": ["MTHU036458"], "snomed": ["87522002"]}
+        },
+        "Gastrointestinal Malignancy": {
+          "normalized_text": "Gastrointestinal Malignancy",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Anticoagulant-Related Hemorrhage": {
+          "normalized_text": "Anticoagulant-Related Hemorrhage",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T1382",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Acute pancreatitis": {
+          "normalized_text": "Pancreatitis, Acute",
+          "medical_codes": {"icd10": ["K85.9"], "orpha": [], "omim": [], "snomed": ["197456007"]}
+        }
+      },
+      "ddx_details": {
+        "Acute Pancreatitis": {
+          "normalized_text": "Pancreatitis, Acute",
+          "medical_codes": {"icd10": ["K85"], "orpha": [], "omim": ["MTHU002054"], "snomed": ["197456007"]}
+        },
+        "COVID-19 Infection": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Cholecystitis": {
+          "normalized_text": "Cholecystitis",
+          "medical_codes": {"icd10": ["K81.9"], "orpha": [], "omim": ["MTHU009746"], "snomed": ["76581006"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1383",
+      "gdx_details": {
+        "Hand cellulitis": {
+          "normalized_text": "Cellulitis of hand",
+          "medical_codes": {"icd10": ["L03.01"], "orpha": [], "omim": [], "snomed": ["62837005"]}
+        },
+        "Hyperglycemia": {
+          "normalized_text": "Hyperglycemia",
+          "medical_codes": {"icd10": ["R73.9"], "orpha": [], "omim": [], "snomed": ["80394007"]}
+        },
+        "Basal ganglia hypodensity": {
+          "normalized_text": "Basal ganglia hypodensity",
+          "medical_codes": {"icd10": ["R90.89"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hypoactive confusion syndrome": {
+          "normalized_text": "Hypoactive confusion syndrome",
+          "medical_codes": {"icd10": ["R41.0"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Sepsis": {
+          "normalized_text": "Sepsis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU055817"], "snomed": ["91302008"]}
+        },
+        "Cellulitis": {
+          "normalized_text": "Cellulitis",
+          "medical_codes": {"icd10": ["L03.90"], "orpha": [], "omim": ["MTHU034281"], "snomed": ["128045006"]}
+        },
+        "Drug-induced delirium": {
+          "normalized_text": "Delirium caused by drug",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["191492000"]}
+        },
+        "Hypoglycemia": {
+          "normalized_text": "Hypoglycemia",
+          "medical_codes": {"icd10": ["E16.2"], "orpha": [], "omim": ["MTHU000371"], "snomed": ["302866003"]}
+        },
+        "Stroke": {
+          "normalized_text": "Cerebrovascular accident",
+          "medical_codes": {"icd10": ["I63.9"], "orpha": [], "omim": ["MTHU012420"], "snomed": ["230690007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1385",
+      "gdx_details": {
+        "Unstable angina": {
+          "normalized_text": "Angina, Unstable",
+          "medical_codes": {"icd10": ["I20.0"], "orpha": [], "omim": [], "snomed": ["25106000"]}
+        }
+      },
+      "ddx_details": {
+        "Heart Failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Atrial Fibrillation": {
+          "normalized_text": "Atrial Fibrillation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU006249"], "snomed": ["49436004"]}
+        },
+        "Coronary Artery Disease": {
+          "normalized_text": "Coronary Artery Disease",
+          "medical_codes": {"icd10": ["I25.1"], "orpha": [], "omim": ["MTHU002067"], "snomed": ["414024009"]}
+        },
+        "Hypertrophic Cardiomyopathy": {
+          "normalized_text": "Hypertrophic Cardiomyopathy",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU038926"], "snomed": ["233873004"]}
+        },
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": ["MTHU002606"], "snomed": ["271737000"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1387",
+      "gdx_details": {
+        "Right basal pneumonia": {
+          "normalized_text": "Basal pneumonia",
+          "medical_codes": {"icd10": ["J18.1"], "orpha": [], "omim": [], "snomed": ["300999006"]}
+        },
+        "Partial respiratory failure": {
+          "normalized_text": "Partial respiratory failure",
+          "medical_codes": {"icd10": ["J96.10"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Prerenal acute kidney injury": {
+          "normalized_text": "Prerenal acute kidney injury",
+          "medical_codes": {"icd10": ["N17.0"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Chronic Obstructive Pulmonary Disease Exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Congestive Heart Failure": {
+          "normalized_text": "Congestive heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU005753"], "snomed": ["42343007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Interstitial Lung Disease": {
+          "normalized_text": "Lung Diseases, Interstitial",
+          "medical_codes": {"icd10": ["J84.9"], "orpha": [], "omim": ["MTHU012852"], "snomed": ["233703007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1393",
+      "gdx_details": {
+        "Decompensated heart failure": {
+          "normalized_text": "Decompensated heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute Coronary Syndrome": {
+          "normalized_text": "Acute Coronary Syndrome",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["394659003"]}
+        },
+        "Aortic Valve Disease": {
+          "normalized_text": "Aortic valve disorder",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU052460"], "snomed": ["8722008"]}
+        },
+        "Mitral Valve Disease": {
+          "normalized_text": "Diseases of mitral valve",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU042827"], "snomed": ["11851006"]}
+        },
+        "Gastroesophageal Reflux Disease": {
+          "normalized_text": "Gastroesophageal reflux disease",
+          "medical_codes": {"icd10": ["K21.9"], "orpha": [], "omim": ["MTHU001906"], "snomed": ["235595009"]}
+        },
+        "Heart Failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1394",
+      "gdx_details": {
+        "Obstructive jaundice": {
+          "normalized_text": "Jaundice, Obstructive",
+          "medical_codes": {"icd10": ["K83.1"], "orpha": [], "omim": [], "snomed": ["59848001"]}
+        }
+      },
+      "ddx_details": {
+        "Hypertension": {
+          "normalized_text": "Hypertensive disease",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["MTHU002068"], "snomed": ["38341003"]}
+        },
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": ["MTHU002606"], "snomed": ["271737000"]}
+        },
+        "Nutritional deficiency": {
+          "normalized_text": "Nutritional Deficiency",
+          "medical_codes": {"icd10": ["E63.9"], "orpha": [], "omim": [], "snomed": ["70241007"]}
+        },
+        "Chronic kidney disease": {
+          "normalized_text": "Chronic Kidney Diseases",
+          "medical_codes": {"icd10": ["N18.9"], "orpha": [], "omim": ["MTHU055845"], "snomed": ["709044004"]}
+        },
+        "Mild cognitive impairment": {
+          "normalized_text": "Mild cognitive disorder",
+          "medical_codes": {"icd10": ["G31.84"], "orpha": [], "omim": ["MTHU000616"], "snomed": ["386805003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T1396",
+      "gdx_details": {
+        "Decompensated heart failure": {
+          "normalized_text": "Decompensated heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Secondary respiratory failure": {
+          "normalized_text": "Secondary respiratory failure",
+          "medical_codes": {"icd10": ["J96.90"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Heart Failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Pneumonia": {
+          "normalized_text": "Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU002638"], "snomed": ["233604007"]}
+        },
+        "Chronic Obstructive Pulmonary Disease": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Atrial Fibrillation": {
+          "normalized_text": "Atrial Fibrillation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU006249"], "snomed": ["49436004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T213",
+      "gdx_details": {
+        "Influenza A": {
+          "normalized_text": "influenza A",
+          "medical_codes": {"icd10": ["J10.1"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Neumonía recurrente": {
+          "normalized_text": "Neumonía recurrente",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección viral respiratoria": {
+          "normalized_text": "Infección viral respiratoria",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de fatiga post-infecciosa": {
+          "normalized_text": "Síndrome de fatiga post-infecciosa",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bronquitis aguda": {
+          "normalized_text": "Bronquitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Reacción adversa a medicamentos": {
+          "normalized_text": "Reacción adversa a medicamentos",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T238",
+      "gdx_details": {
+        "Viral infection": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": [], "snomed": ["34014006"]}
+        },
+        "Mechanical low back pain": {
+          "normalized_text": "Mechanical low back pain",
+          "medical_codes": {"icd10": ["M54.5"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute gastroenteritis": {
+          "normalized_text": "Acute gastroenteritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["69776003"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Viral pharyngitis": {
+          "normalized_text": "Viral pharyngitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["1532007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T255",
+      "gdx_details": {
+        "Mild bronchial hyperreactivity": {
+          "normalized_text": "Mild bronchial hyperreactivity",
+          "medical_codes": {"icd10": ["J45.998"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute Exacerbation of Chronic Obstructive Pulmonary Disease (COPD)": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Asthma Exacerbation": {
+          "normalized_text": "Asthma",
+          "medical_codes": {"icd10": ["J45"], "orpha": [], "omim": ["MTHU003537"], "snomed": ["195967001"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T256",
+      "gdx_details": {
+        "Atypical chest pain": {
+          "normalized_text": "Atypical chest pain",
+          "medical_codes": {"icd10": ["R07.89"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Costochondritis": {
+          "normalized_text": "Costal chondritis",
+          "medical_codes": {"icd10": ["M94.0"], "orpha": [], "omim": ["MTHU077196"], "snomed": ["64109004"]}
+        },
+        "Musculoskeletal chest pain": {
+          "normalized_text": "Musculoskeletal chest pain",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pleuritis": {
+          "normalized_text": "Pleurisy",
+          "medical_codes": {"icd10": ["R09.1"], "orpha": [], "omim": ["MTHU011705"], "snomed": ["196075003"]}
+        },
+        "Gastroesophageal reflux disease (GERD)": {
+          "normalized_text": "Gastroesophageal reflux disease",
+          "medical_codes": {"icd10": ["K21.9"], "orpha": [], "omim": ["MTHU001906"], "snomed": ["235595009"]}
+        },
+        "Stable angina pectoris": {
+          "normalized_text": "Stable angina",
+          "medical_codes": {"icd10": ["I20.89"], "orpha": [], "omim": [], "snomed": ["233819005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T259",
+      "gdx_details": {
+        "Emetic syndrome": {
+          "normalized_text": "Emetic syndrome",
+          "medical_codes": {"icd10": ["R11.10"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Possible food poisoning": {
+          "normalized_text": "Food Poisoning",
+          "medical_codes": {"icd10": ["A05.9"], "orpha": [], "omim": [], "snomed": ["75258004"]}
+        },
+        "Migraine": {
+          "normalized_text": "Migraine Disorders",
+          "medical_codes": {"icd10": ["G43.909"], "orpha": [], "omim": [], "snomed": ["37796009"]}
+        }
+      },
+      "ddx_details": {
+        "Acute Gastroenteritis": {
+          "normalized_text": "Acute gastroenteritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["69776003"]}
+        },
+        "Food Poisoning": {
+          "normalized_text": "Food Poisoning",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["75258004"]}
+        },
+        "Viral Gastroenteritis": {
+          "normalized_text": "Viral gastroenteritis",
+          "medical_codes": {"icd10": ["A08.4"], "orpha": [], "omim": [], "snomed": ["111843007"]}
+        },
+        "Bacterial Gastroenteritis": {
+          "normalized_text": "Bacterial gastroenteritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["274080003"]}
+        },
+        "Gastrointestinal Infection": {
+          "normalized_text": "Gastrointestinal infection",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU002414"], "snomed": ["715852004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T283",
+      "gdx_details": {
+        "Brain mass": {
+          "normalized_text": "Mass lesion of brain",
+          "medical_codes": {"icd10": ["D43.0"], "orpha": [], "omim": [], "snomed": ["422840005"]}
+        }
+      },
+      "ddx_details": {
+        "High-grade glioma": {
+          "normalized_text": "High grade glioma",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["772292003"]}
+        },
+        "Metastatic brain lesion": {
+          "normalized_text": "Metastatic brain lesion",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Transient ischemic attack": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Migraine with aura": {
+          "normalized_text": "Migraine Disorders",
+          "medical_codes": {"icd10": ["G43"], "orpha": [], "omim": ["MTHU000541"], "snomed": ["37796009"]}
+        },
+        "Alzheimer's disease": {
+          "normalized_text": "Alzheimer's Disease",
+          "medical_codes": {"icd10": ["G30.9"], "orpha": [], "omim": ["104300"], "snomed": ["26929004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T301",
+      "gdx_details": {
+        "Viral illness": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": [], "snomed": ["34014006"]}
+        },
+        "Mild hepatitis": {
+          "normalized_text": "Mild hepatitis",
+          "medical_codes": {"icd10": ["K73.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Febrile presyncope": {
+          "normalized_text": "Febrile presyncope",
+          "medical_codes": {"icd10": ["R55"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Viral Upper Respiratory Infection": {
+          "normalized_text": "Common Cold",
+          "medical_codes": {"icd10": ["J00"], "orpha": [], "omim": [], "snomed": ["82272006"]}
+        },
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Dengue Fever": {
+          "normalized_text": "Dengue Fever",
+          "medical_codes": {"icd10": ["A90"], "orpha": [], "omim": [], "snomed": ["38362002"]}
+        },
+        "Typhoid Fever": {
+          "normalized_text": "Typhoid Fever",
+          "medical_codes": {"icd10": ["A01.00"], "orpha": [], "omim": [], "snomed": ["4834000"]}
+        },
+        "Mononucleosis": {
+          "normalized_text": "Infectious Mononucleosis",
+          "medical_codes": {"icd10": ["B27"], "orpha": [], "omim": ["MTHU043155"], "snomed": ["271558008"]}
+        }
+      }
+    },
+    {
+      "case_id": "T314",
+      "gdx_details": {
+        "Angioedema": {
+          "normalized_text": "Angioedema",
+          "medical_codes": {"icd10": ["T78.3XXA"], "orpha": [], "omim": [], "snomed": ["41291007"]}
+        }
+      },
+      "ddx_details": {
+        "Rosacea": {
+          "normalized_text": "Rosacea",
+          "medical_codes": {"icd10": ["L71.9"], "orpha": [], "omim": ["MTHU064119"], "snomed": ["398909004"]}
+        },
+        "Carcinoid Syndrome": {
+          "normalized_text": "Malignant Carcinoid Syndrome",
+          "medical_codes": {"icd10": ["E34.0"], "orpha": [], "omim": [], "snomed": ["35868009"]}
+        },
+        "Systemic Lupus Erythematosus": {
+          "normalized_text": "Lupus Erythematosus, Systemic",
+          "medical_codes": {"icd10": ["M32.9"], "orpha": [], "omim": ["152700"], "snomed": ["55464009"]}
+        },
+        "Polycystic Ovary Syndrome": {
+          "normalized_text": "Polycystic Ovary Syndrome",
+          "medical_codes": {"icd10": ["E28.2"], "orpha": [], "omim": ["MTHU053019"], "snomed": ["237055002"]}
+        },
+        "Erythromelalgia": {
+          "normalized_text": "Erythromelalgia",
+          "medical_codes": {"icd10": ["I73.81"], "orpha": [], "omim": ["MTHU069389"], "snomed": ["37151006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T316",
+      "gdx_details": {
+        "Acute upper respiratory infection": {
+          "normalized_text": "Acute upper respiratory infection",
+          "medical_codes": {"icd10": ["J06.9"], "orpha": [], "omim": [], "snomed": ["54398005"]}
+        },
+        "Hypertensive urgency": {
+          "normalized_text": "Hypertensive Urgency",
+          "medical_codes": {"icd10": ["I16.0"], "orpha": [], "omim": [], "snomed": ["443482000"]}
+        }
+      },
+      "ddx_details": {
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Acute Viral Pharyngitis": {
+          "normalized_text": "Acute viral pharyngitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["195662009"]}
+        },
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Heart Failure Exacerbation": {
+          "normalized_text": "Heart Failure Exacerbation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T368",
+      "gdx_details": {
+        "Bilateral bronchopneumonia": {
+          "normalized_text": "Bilateral bronchopneumonia",
+          "medical_codes": {"icd10": ["J18.0"], "orpha": [], "omim": [], "snomed": ["396286008"]}
+        }
+      },
+      "ddx_details": {
+        "Bronchopneumonia": {
+          "normalized_text": "Bronchopneumonia",
+          "medical_codes": {"icd10": ["J18.0"], "orpha": [], "omim": [], "snomed": ["396285007"]}
+        },
+        "Idiopathic pulmonary fibrosis": {
+          "normalized_text": "Idiopathic Pulmonary Fibrosis",
+          "medical_codes": {"icd10": ["J84.112"], "orpha": [], "omim": ["178500"], "snomed": ["700250006"]}
+        },
+        "Chronic obstructive pulmonary disease (COPD)": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Hypersensitivity pneumonitis": {
+          "normalized_text": "Extrinsic allergic alveolitis",
+          "medical_codes": {"icd10": ["J67.9"], "orpha": [], "omim": [], "snomed": ["37471005"]}
+        },
+        "Sarcoidosis": {
+          "normalized_text": "Sarcoidosis",
+          "medical_codes": {"icd10": ["D86.9"], "orpha": [], "omim": ["MTHU070178"], "snomed": ["31541009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T375",
+      "gdx_details": {
+        "Allergic prurigo": {
+          "normalized_text": "Allergic prurigo",
+          "medical_codes": {"icd10": ["L29.8"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Lip angioedema": {
+          "normalized_text": "Angioedema of lip",
+          "medical_codes": {"icd10": ["T78.3XXA"], "orpha": [], "omim": [], "snomed": ["846579005"]}
+        },
+        "Normocytic hypochromic anemia": {
+          "normalized_text": "Normocytic hypochromic anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": [], "snomed": ["44452003"]}
+        }
+      },
+      "ddx_details": {
+        "Urticaria": {
+          "normalized_text": "Urticaria",
+          "medical_codes": {"icd10": ["L50.9"], "orpha": [], "omim": ["MTHU037793"], "snomed": ["126485001"]}
+        },
+        "Angioedema": {
+          "normalized_text": "Angioedema",
+          "medical_codes": {"icd10": ["T78.3"], "orpha": [], "omim": ["MTHU010698"], "snomed": ["41291007"]}
+        },
+        "Iron-deficiency anemia": {
+          "normalized_text": "Iron deficiency anemia",
+          "medical_codes": {"icd10": ["D50.9"], "orpha": [], "omim": ["MTHU036458"], "snomed": ["87522002"]}
+        },
+        "Allergic reaction to supplement": {
+          "normalized_text": "Allergic Reaction",
+          "medical_codes": {"icd10": ["T78.40"], "orpha": [], "omim": [], "snomed": ["419076005"]}
+        },
+        "Contact dermatitis": {
+          "normalized_text": "Contact Dermatitis",
+          "medical_codes": {"icd10": ["L25.9"], "orpha": [], "omim": [], "snomed": ["40275004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T387",
+      "gdx_details": {
+        "Lower respiratory tract infection": {
+          "normalized_text": "Lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["50417007"]}
+        },
+        "Bronchiectasis": {
+          "normalized_text": "Bronchiectasis",
+          "medical_codes": {"icd10": ["J47"], "orpha": [], "omim": [], "snomed": ["12295008"]}
+        },
+        "SIADH": {
+          "normalized_text": "Inappropriate ADH Syndrome",
+          "medical_codes": {"icd10": ["E22.2"], "orpha": [], "omim": [], "snomed": ["55004003"]}
+        }
+      },
+      "ddx_details": {
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Chronic Obstructive Pulmonary Disease Exacerbation": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Heart Failure": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T408",
+      "gdx_details": {
+        "Lower urinary tract infection": {
+          "normalized_text": "Lower urinary tract infectious disease",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["4009004"]}
+        },
+        "COVID-19 infection": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        }
+      },
+      "ddx_details": {
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Hematuria secondary to UTI": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["R31.9", "N39.0"], "orpha": [], "omim": ["MTHU036916", "MTHU037523"], "snomed": ["34436003", "68566005"]}
+        },
+        "Post-viral asthenia": {
+          "normalized_text": "post-viral asthenia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hypertension": {
+          "normalized_text": "Hypertensive disease",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["MTHU002068"], "snomed": ["38341003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T427",
+      "gdx_details": {
+        "Peripheral vertigo": {
+          "normalized_text": "Vertigo, Peripheral",
+          "medical_codes": {"icd10": ["H81.4"], "orpha": [], "omim": [], "snomed": ["50438001"]}
+        }
+      },
+      "ddx_details": {
+        "Hemorragia digestiva recurrente": {
+          "normalized_text": "Hemorragia digestiva recurrente",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Hipertensión arterial": {
+          "normalized_text": "Hipertensión arterial",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Anemia ferropénica": {
+          "normalized_text": "Anemia ferropénica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Enfermedad cardiovascular": {
+          "normalized_text": "Enfermedad cardiovascular",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Gastritis erosiva": {
+          "normalized_text": "Gastritis erosiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T438",
+      "gdx_details": {
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        },
+        "Diverticulosis": {
+          "normalized_text": "Diverticulosis",
+          "medical_codes": {"icd10": ["K57.90"], "orpha": [], "omim": [], "snomed": ["63532004"]}
+        }
+      },
+      "ddx_details": {
+        "Diverticulitis recurrente complicada": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        },
+        "Infección del tracto urinario": {
+          "normalized_text": "Infección del tracto urinario",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Colitis isquémica": {
+          "normalized_text": "Colitis isquémica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Endometriosis": {
+          "normalized_text": "Endometriosis",
+          "medical_codes": {"icd10": ["N80.9"], "orpha": [], "omim": ["MTHU036719"], "snomed": ["396224008"]}
+        },
+        "Neoplasia colorrectal": {
+          "normalized_text": "Neoplasia colorrectal",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T443",
+      "gdx_details": {
+        "Noninfective gastroenteritis": {
+          "normalized_text": "Noninfectious gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": [], "snomed": ["12574004"]}
+        }
+      },
+      "ddx_details": {
+        "Appendicitis": {
+          "normalized_text": "Appendicitis",
+          "medical_codes": {"icd10": ["K37"], "orpha": [], "omim": [], "snomed": ["74400008"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Diverticulitis": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        },
+        "Irritable Bowel Syndrome": {
+          "normalized_text": "Irritable Bowel Syndrome",
+          "medical_codes": {"icd10": ["K58"], "orpha": [], "omim": ["MTHU038673"], "snomed": ["10743008"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T451",
+      "gdx_details": {
+        "Atypical chest pain": {
+          "normalized_text": "Atypical chest pain",
+          "medical_codes": {"icd10": ["R07.89"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Costochondritis": {
+          "normalized_text": "Costal chondritis",
+          "medical_codes": {"icd10": ["M94.0"], "orpha": [], "omim": ["MTHU077196"], "snomed": ["64109004"]}
+        },
+        "Musculoskeletal chest pain": {
+          "normalized_text": "Musculoskeletal chest pain",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Anxiety-related chest pain": {
+          "normalized_text": "Anxiety-related chest pain",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pleuritic chest pain": {
+          "normalized_text": "Pleuritic chest pain",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Fibromyalgia": {
+          "normalized_text": "Fibromyalgia",
+          "medical_codes": {"icd10": ["M79.7"], "orpha": [], "omim": ["MTHU038078"], "snomed": ["203082005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T476",
+      "gdx_details": {
+        "Benign prostatic hyperplasia": {
+          "normalized_text": "Benign Prostatic Hyperplasia",
+          "medical_codes": {"icd10": ["N40.0"], "orpha": [], "omim": [], "snomed": ["266569009"]}
+        },
+        "Hyperglycemia": {
+          "normalized_text": "Hyperglycemia",
+          "medical_codes": {"icd10": ["R73.9"], "orpha": [], "omim": [], "snomed": ["80394007"]}
+        }
+      },
+      "ddx_details": {
+        "Diabetes Mellitus": {
+          "normalized_text": "Diabetes Mellitus",
+          "medical_codes": {"icd10": ["E08-E13"], "orpha": [], "omim": ["MTHU036798"], "snomed": ["73211009"]}
+        },
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Glomerulonephritis": {
+          "normalized_text": "Glomerulonephritis",
+          "medical_codes": {"icd10": ["N08"], "orpha": [], "omim": ["MTHU036986"], "snomed": ["36171008"]}
+        },
+        "Renal Calculi": {
+          "normalized_text": "Nephrolithiasis",
+          "medical_codes": {"icd10": ["N20.0"], "orpha": [], "omim": ["MTHU007103"], "snomed": ["95570007"]}
+        },
+        "Hypertension": {
+          "normalized_text": "Hypertensive disease",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["MTHU002068"], "snomed": ["38341003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T501",
+      "gdx_details": {
+        "Bronchitis": {
+          "normalized_text": "Bronchitis",
+          "medical_codes": {"icd10": ["J40"], "orpha": [], "omim": [], "snomed": ["32398004"]}
+        }
+      },
+      "ddx_details": {
+        "Hypertension": {
+          "normalized_text": "Hypertensive disease",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["MTHU002068"], "snomed": ["38341003"]}
+        },
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": ["MTHU002606"], "snomed": ["271737000"]}
+        },
+        "Atrial fibrillation": {
+          "normalized_text": "Atrial Fibrillation",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU006249"], "snomed": ["49436004"]}
+        },
+        "Hypothyroidism": {
+          "normalized_text": "Hypothyroidism",
+          "medical_codes": {"icd10": ["E03.9"], "orpha": [], "omim": ["MTHU002670"], "snomed": ["40930008"]}
+        },
+        "Chronic kidney disease": {
+          "normalized_text": "Chronic Kidney Diseases",
+          "medical_codes": {"icd10": ["N18.9"], "orpha": [], "omim": ["MTHU055845"], "snomed": ["709044004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T551",
+      "gdx_details": {
+        "Elevated D-dimer": {
+          "normalized_text": "Elevated D-dimer",
+          "medical_codes": {"icd10": ["R79.1"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "COVID-19 infection": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        }
+      },
+      "ddx_details": {
+        "Post-COVID-19 syndrome": {
+          "normalized_text": "Post-COVID-19 syndrome",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Functional gastrointestinal disorder": {
+          "normalized_text": "Functional Gastrointestinal Disorders",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["150541000119104"]}
+        },
+        "Reactive airway disease": {
+          "normalized_text": "Reactive airway disease",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU003536"], "snomed": ["991000119106"]}
+        },
+        "Essential hypertension": {
+          "normalized_text": "Essential Hypertension",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["145500"], "snomed": ["59621000"]}
+        },
+        "Tachycardia": {
+          "normalized_text": "Tachycardia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T588",
+      "gdx_details": {
+        "Atypical chest pain": {
+          "normalized_text": "Atypical chest pain",
+          "medical_codes": {"icd10": ["R07.89"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Angina microvascular": {
+          "normalized_text": "Microvascular Angina",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["233845001"]}
+        },
+        "Costochondritis": {
+          "normalized_text": "Costal chondritis",
+          "medical_codes": {"icd10": ["M94.0"], "orpha": [], "omim": ["MTHU077196"], "snomed": ["64109004"]}
+        },
+        "Pericarditis": {
+          "normalized_text": "Pericarditis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU011706"], "snomed": ["3238004"]}
+        },
+        "Gastroesophageal reflux disease (GERD)": {
+          "normalized_text": "Gastroesophageal reflux disease",
+          "medical_codes": {"icd10": ["K21.9"], "orpha": [], "omim": ["MTHU001906"], "snomed": ["235595009"]}
+        },
+        "Anxiety disorder": {
+          "normalized_text": "Anxiety Disorders",
+          "medical_codes": {"icd10": ["F41.9"], "orpha": [], "omim": ["MTHU004077"], "snomed": ["197480006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T590",
+      "gdx_details": {
+        "Chest and abdominal discomfort": {
+          "normalized_text": "Chest and abdominal discomfort",
+          "medical_codes": {"icd10": ["R10.84"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute Coronary Syndrome": {
+          "normalized_text": "Acute Coronary Syndrome",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["394659003"]}
+        },
+        "Acute Pancreatitis": {
+          "normalized_text": "Pancreatitis, Acute",
+          "medical_codes": {"icd10": ["K85"], "orpha": [], "omim": ["MTHU002054"], "snomed": ["197456007"]}
+        },
+        "Gastroesophageal Reflux Disease": {
+          "normalized_text": "Gastroesophageal reflux disease",
+          "medical_codes": {"icd10": ["K21.9"], "orpha": [], "omim": ["MTHU001906"], "snomed": ["235595009"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        },
+        "Functional Dyspepsia": {
+          "normalized_text": "Nonulcer dyspepsia",
+          "medical_codes": {"icd10": ["K30"], "orpha": [], "omim": [], "snomed": ["3696007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T594",
+      "gdx_details": {
+        "Acute pyelonephritis": {
+          "normalized_text": "Acute pyelonephritis",
+          "medical_codes": {"icd10": ["N10"], "orpha": [], "omim": [], "snomed": ["36689008"]}
+        },
+        "Acute upper respiratory infection": {
+          "normalized_text": "Acute upper respiratory infection",
+          "medical_codes": {"icd10": ["J06.9"], "orpha": [], "omim": [], "snomed": ["54398005"]}
+        }
+      },
+      "ddx_details": {
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        },
+        "Diverticulitis": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        },
+        "Viral Pharyngitis": {
+          "normalized_text": "Viral pharyngitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["1532007"]}
+        }
+      }
+    },
+    {
+      "case_id": "T598",
+      "gdx_details": {
+        "Left renal colic": {
+          "normalized_text": "Left renal colic",
+          "medical_codes": {"icd10": ["N23"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Nephrolithiasis": {
+          "normalized_text": "Nephrolithiasis",
+          "medical_codes": {"icd10": ["N20.0"], "orpha": [], "omim": ["MTHU007103"], "snomed": ["95570007"]}
+        },
+        "Acute Pancreatitis": {
+          "normalized_text": "Pancreatitis, Acute",
+          "medical_codes": {"icd10": ["K85"], "orpha": [], "omim": ["MTHU002054"], "snomed": ["197456007"]}
+        },
+        "Peptic Ulcer Disease": {
+          "normalized_text": "Peptic Ulcer",
+          "medical_codes": {"icd10": ["K27"], "orpha": [], "omim": ["MTHU068453"], "snomed": ["13200003"]}
+        },
+        "Cholecystitis": {
+          "normalized_text": "Cholecystitis",
+          "medical_codes": {"icd10": ["K81.9"], "orpha": [], "omim": ["MTHU009746"], "snomed": ["76581006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T602",
+      "gdx_details": {
+        "Intestinal subocclusion": {
+          "normalized_text": "Intestinal subocclusion",
+          "medical_codes": {"icd10": ["K56.6"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Intestinal Adhesions": {
+          "normalized_text": "Intestinal Adhesions",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Partial Intestinal Obstruction": {
+          "normalized_text": "Partial obstruction of intestine",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["16834011000119109"]}
+        },
+        "Irritable Bowel Syndrome": {
+          "normalized_text": "Irritable Bowel Syndrome",
+          "medical_codes": {"icd10": ["K58"], "orpha": [], "omim": ["MTHU038673"], "snomed": ["10743008"]}
+        },
+        "Colonic Diverticulitis": {
+          "normalized_text": "Colonic Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["111359004"]}
+        },
+        "Post-Surgical Complications": {
+          "normalized_text": "Post-Surgical Complications",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T609",
+      "gdx_details": {
+        "Rectal hemorrhage": {
+          "normalized_text": "Rectal hemorrhage",
+          "medical_codes": {"icd10": ["K62.5"], "orpha": [], "omim": [], "snomed": ["12063002"]}
+        },
+        "Hemorrhoids": {
+          "normalized_text": "Hemorrhoids",
+          "medical_codes": {"icd10": ["I84.9"], "orpha": [], "omim": [], "snomed": ["70153002"]}
+        }
+      },
+      "ddx_details": {
+        "Diverticulosis": {
+          "normalized_text": "Diverticulosis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU014943"], "snomed": ["63532004"]}
+        },
+        "Hemorrhoids": {
+          "normalized_text": "Hemorrhoids",
+          "medical_codes": {"icd10": ["K64"], "orpha": [], "omim": [], "snomed": ["70153002"]}
+        },
+        "Colorectal cancer": {
+          "normalized_text": "Colorectal Carcinoma",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU039240"], "snomed": []}
+        },
+        "Inflammatory bowel disease": {
+          "normalized_text": "Inflammatory Bowel Diseases",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU001680"], "snomed": ["24526004"]}
+        },
+        "Anal fissure": {
+          "normalized_text": "Anal Fissure",
+          "medical_codes": {"icd10": ["K60.2"], "orpha": [], "omim": ["MTHU071362"], "snomed": ["30037006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T610",
+      "gdx_details": {
+        "Syncope": {
+          "normalized_text": "Syncope",
+          "medical_codes": {"icd10": ["R55"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Urinary infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        }
+      },
+      "ddx_details": {
+        "Syncope": {
+          "normalized_text": "Syncope",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Acute gastroenteritis": {
+          "normalized_text": "Acute gastroenteritis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["69776003"]}
+        },
+        "Vasovagal reaction": {
+          "normalized_text": "Vasovagal syncope",
+          "medical_codes": {"icd10": ["R55"], "orpha": [], "omim": ["MTHU046178"], "snomed": ["398665005"]}
+        },
+        "Transient ischemic attack (TIA)": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Orthostatic hypotension": {
+          "normalized_text": "Hypotension, Orthostatic",
+          "medical_codes": {"icd10": ["I95.1"], "orpha": [], "omim": ["MTHU001817"], "snomed": ["28651003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T642",
+      "gdx_details": {
+        "Myalgia": {
+          "normalized_text": "Myalgia",
+          "medical_codes": {"icd10": ["M79.1"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Viral illness": {
+          "normalized_text": "Virus Diseases",
+          "medical_codes": {"icd10": ["B34.9"], "orpha": [], "omim": [], "snomed": ["34014006"]}
+        }
+      },
+      "ddx_details": {
+        "Pyomyositis": {
+          "normalized_text": "Pyomyositis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["65110003"]}
+        },
+        "Septic arthritis": {
+          "normalized_text": "Arthritis, Bacterial",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["48245008"]}
+        },
+        "Osteomyelitis": {
+          "normalized_text": "Osteomyelitis",
+          "medical_codes": {"icd10": ["M86.9"], "orpha": [], "omim": ["MTHU037798"], "snomed": ["60168000"]}
+        },
+        "Viral myositis": {
+          "normalized_text": "Viral myositis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["240105009"]}
+        },
+        "Kawasaki disease": {
+          "normalized_text": "Mucocutaneous Lymph Node Syndrome",
+          "medical_codes": {"icd10": ["M30.3"], "orpha": [], "omim": ["611775"], "snomed": ["75053002"]}
+        }
+      }
+    },
+    {
+      "case_id": "T656",
+      "gdx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Pleural effusion": {
+          "normalized_text": "Pleural effusion (disorder)",
+          "medical_codes": {"icd10": ["J90"], "orpha": [], "omim": [], "snomed": ["60046008"]}
+        }
+      },
+      "ddx_details": {
+        "COVID-19": {
+          "normalized_text": "COVID-19 Virus Disease",
+          "medical_codes": {"icd10": ["U07.1"], "orpha": [], "omim": [], "snomed": ["840539006"]}
+        },
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": ["MTHU002606"], "snomed": ["271737000"]}
+        },
+        "Chronic Venous Insufficiency": {
+          "normalized_text": "Chronic venous insufficiency",
+          "medical_codes": {"icd10": ["I87.2"], "orpha": [], "omim": [], "snomed": ["20696009"]}
+        },
+        "Common Cold": {
+          "normalized_text": "Common Cold",
+          "medical_codes": {"icd10": ["J00"], "orpha": [], "omim": [], "snomed": ["82272006"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        }
+      }
+    },
+    {
+      "case_id": "T669",
+      "gdx_details": {
+        "Acute lower respiratory infection": {
+          "normalized_text": "Acute lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["195742007"]}
+        }
+      },
+      "ddx_details": {
+        "Common Cold": {
+          "normalized_text": "Common Cold",
+          "medical_codes": {"icd10": ["J00"], "orpha": [], "omim": [], "snomed": ["82272006"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Allergic Rhinitis": {
+          "normalized_text": "Allergic rhinitis (disorder)",
+          "medical_codes": {"icd10": ["J30.9"], "orpha": [], "omim": ["MTHU005135"], "snomed": ["61582004"]}
+        },
+        "Influenza-like Illness": {
+          "normalized_text": "Influenza-like illness",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["95891005"]}
+        },
+        "Mild Hypertension": {
+          "normalized_text": "Hypertensive disease",
+          "medical_codes": {"icd10": ["I10"], "orpha": [], "omim": ["MTHU002068"], "snomed": ["38341003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T670",
+      "gdx_details": {
+        "Pleurodynia": {
+          "normalized_text": "Pleuritic pain",
+          "medical_codes": {"icd10": ["R07.1"], "orpha": [], "omim": [], "snomed": ["2237002"]}
+        }
+      },
+      "ddx_details": {
+        "Asthma": {
+          "normalized_text": "Asthma",
+          "medical_codes": {"icd10": ["J45"], "orpha": [], "omim": ["MTHU003537"], "snomed": ["195967001"]}
+        },
+        "Acute Bronchitis": {
+          "normalized_text": "Acute bronchitis",
+          "medical_codes": {"icd10": ["J20.9"], "orpha": [], "omim": [], "snomed": ["10509002"]}
+        },
+        "Costochondritis": {
+          "normalized_text": "Costal chondritis",
+          "medical_codes": {"icd10": ["M94.0"], "orpha": [], "omim": ["MTHU077196"], "snomed": ["64109004"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Gastroesophageal Reflux Disease": {
+          "normalized_text": "Gastroesophageal reflux disease",
+          "medical_codes": {"icd10": ["K21.9"], "orpha": [], "omim": ["MTHU001906"], "snomed": ["235595009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T672",
+      "gdx_details": {
+        "Abdominal pain": {
+          "normalized_text": "Abdominal pain",
+          "medical_codes": {"icd10": ["R10.9"], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        }
+      },
+      "ddx_details": {
+        "Appendicitis": {
+          "normalized_text": "Appendicitis",
+          "medical_codes": {"icd10": ["K37"], "orpha": [], "omim": [], "snomed": ["74400008"]}
+        },
+        "Ovarian torsion": {
+          "normalized_text": "Ovarian Torsion",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["13595002"]}
+        },
+        "Ectopic pregnancy": {
+          "normalized_text": "Ectopic Pregnancy",
+          "medical_codes": {"icd10": ["O00"], "orpha": [], "omim": [], "snomed": ["34801009"]}
+        },
+        "Pelvic inflammatory disease": {
+          "normalized_text": "Pelvic Inflammatory Disease",
+          "medical_codes": {"icd10": ["N73.9"], "orpha": [], "omim": [], "snomed": ["198130006"]}
+        },
+        "Diverticulitis": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        }
+      }
+    },
+    {
+      "case_id": "T697",
+      "gdx_details": {
+        "Respiratory infection": {
+          "normalized_text": "Respiratory Tract Infections",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["275498002"]}
+        }
+      },
+      "ddx_details": {
+        "Chronic Obstructive Pulmonary Disease (COPD)": {
+          "normalized_text": "Chronic Obstructive Airway Disease",
+          "medical_codes": {"icd10": ["J44.9"], "orpha": [], "omim": ["MTHU042800"], "snomed": ["13645005"]}
+        },
+        "Congestive Heart Failure": {
+          "normalized_text": "Congestive heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU005753"], "snomed": ["42343007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        },
+        "Interstitial Lung Disease": {
+          "normalized_text": "Lung Diseases, Interstitial",
+          "medical_codes": {"icd10": ["J84.9"], "orpha": [], "omim": ["MTHU012852"], "snomed": ["233703007"]}
+        },
+        "Anemia of Chronic Disease": {
+          "normalized_text": "Anemia of chronic disease",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["234347009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T7",
+      "gdx_details": {
+        "Lower respiratory tract infection": {
+          "normalized_text": "Lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["50417007"]}
+        }
+      },
+      "ddx_details": {
+        "Community-acquired pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Viral upper respiratory tract infection": {
+          "normalized_text": "Viral upper respiratory tract infection",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["281794004"]}
+        },
+        "Bronchitis": {
+          "normalized_text": "Bronchitis",
+          "medical_codes": {"icd10": ["J40"], "orpha": [], "omim": ["MTHU004684"], "snomed": ["32398004"]}
+        },
+        "Influenza": {
+          "normalized_text": "Influenza",
+          "medical_codes": {"icd10": ["J11.1"], "orpha": [], "omim": [], "snomed": ["6142004"]}
+        },
+        "Atypical pneumonia": {
+          "normalized_text": "Atypical pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["233606009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T771",
+      "gdx_details": {
+        "Viral pneumonia": {
+          "normalized_text": "Pneumonia, Viral",
+          "medical_codes": {"icd10": ["J12.9"], "orpha": [], "omim": [], "snomed": ["75570004"]}
+        }
+      },
+      "ddx_details": {
+        "Acute Exacerbation of COPD": {
+          "normalized_text": "Acute exacerbation of chronic obstructive pulmonary disease",
+          "medical_codes": {"icd10": ["J44.1"], "orpha": [], "omim": [], "snomed": ["195951007"]}
+        },
+        "COVID-19 Pneumonia": {
+          "normalized_text": "Pneumonia caused by SARS-CoV-2",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["882784691000119100"]}
+        },
+        "Community-Acquired Pneumonia": {
+          "normalized_text": "Community-Acquired Pneumonia",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU076075"], "snomed": ["385093006"]}
+        },
+        "Heart Failure with Preserved Ejection Fraction": {
+          "normalized_text": "Heart failure",
+          "medical_codes": {"icd10": ["I50.9"], "orpha": [], "omim": ["MTHU009472"], "snomed": ["84114007"]}
+        },
+        "Pulmonary Embolism": {
+          "normalized_text": "Pulmonary Embolism",
+          "medical_codes": {"icd10": ["I26"], "orpha": [], "omim": ["MTHU037124"], "snomed": ["59282003"]}
+        }
+      }
+    },
+    {
+      "case_id": "T792",
+      "gdx_details": {
+        "Ileocolitis": {
+          "normalized_text": "Ileocolitis",
+          "medical_codes": {"icd10": ["K50.80"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Appendicitis": {
+          "normalized_text": "Appendicitis",
+          "medical_codes": {"icd10": ["K37"], "orpha": [], "omim": [], "snomed": ["74400008"]}
+        },
+        "Pelvic Inflammatory Disease": {
+          "normalized_text": "Pelvic Inflammatory Disease",
+          "medical_codes": {"icd10": ["N73.9"], "orpha": [], "omim": [], "snomed": ["198130006"]}
+        },
+        "Ovarian Cyst Rupture": {
+          "normalized_text": "Ruptured cyst of ovary",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["95598005"]}
+        },
+        "Diverticulitis": {
+          "normalized_text": "Diverticulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": ["MTHU026283"], "snomed": ["18126004"]}
+        },
+        "Ectopic Pregnancy": {
+          "normalized_text": "Ectopic Pregnancy",
+          "medical_codes": {"icd10": ["O00"], "orpha": [], "omim": [], "snomed": ["34801009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T795",
+      "gdx_details": {
+        "Lower respiratory infection": {
+          "normalized_text": "Lower respiratory tract infection",
+          "medical_codes": {"icd10": ["J22"], "orpha": [], "omim": [], "snomed": ["50417007"]}
+        },
+        "Hypoactive confusional syndrome": {
+          "normalized_text": "Hypoactive confusional syndrome",
+          "medical_codes": {"icd10": ["F05"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Upper Respiratory Tract Infection": {
+          "normalized_text": "Upper Respiratory Infections",
+          "medical_codes": {"icd10": ["J06.9"], "orpha": [], "omim": ["MTHU006278"], "snomed": ["54150009"]}
+        },
+        "Delirium": {
+          "normalized_text": "Delirium",
+          "medical_codes": {"icd10": ["R41.0"], "orpha": [], "omim": ["MTHU035152"], "snomed": ["2776000"]}
+        },
+        "Epistaxis": {
+          "normalized_text": "Epistaxis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Aspiration Pneumonia": {
+          "normalized_text": "Aspiration Pneumonia",
+          "medical_codes": {"icd10": ["J69.0"], "orpha": [], "omim": ["MTHU005362"], "snomed": ["422588002"]}
+        },
+        "Anemia": {
+          "normalized_text": "Anemia",
+          "medical_codes": {"icd10": ["D64.9"], "orpha": [], "omim": ["MTHU002606"], "snomed": ["271737000"]}
+        }
+      }
+    },
+    {
+      "case_id": "T798",
+      "gdx_details": {
+        "Biliary colic": {
+          "normalized_text": "Biliary Colic",
+          "medical_codes": {"icd10": ["K80.4"], "orpha": [], "omim": [], "snomed": ["37389005"]}
+        }
+      },
+      "ddx_details": {
+        "Colelitiasis": {
+          "normalized_text": "Colelitiasis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Colecistitis aguda": {
+          "normalized_text": "Colecistitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Pancreatitis aguda": {
+          "normalized_text": "Pancreatitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Úlcera péptica": {
+          "normalized_text": "Úlcera péptica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome de intestino irritable": {
+          "normalized_text": "Síndrome de intestino irritable",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T840",
+      "gdx_details": {
+        "Emetic syndrome": {
+          "normalized_text": "Emetic syndrome",
+          "medical_codes": {"icd10": ["T50.9X1"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Gastritis": {
+          "normalized_text": "Gastritis",
+          "medical_codes": {"icd10": ["K29.7"], "orpha": [], "omim": ["MTHU062400"], "snomed": ["4556007"]}
+        },
+        "Functional dyspepsia": {
+          "normalized_text": "Nonulcer dyspepsia",
+          "medical_codes": {"icd10": ["K30"], "orpha": [], "omim": [], "snomed": ["3696007"]}
+        },
+        "Cholelithiasis": {
+          "normalized_text": "Cholelithiasis",
+          "medical_codes": {"icd10": ["K80"], "orpha": [], "omim": ["MTHU009745"], "snomed": ["266474003"]}
+        },
+        "Panic disorder": {
+          "normalized_text": "Panic Disorder",
+          "medical_codes": {"icd10": ["F41.0"], "orpha": [], "omim": ["MTHU074123"], "snomed": ["371631005"]}
+        },
+        "Irritable bowel syndrome": {
+          "normalized_text": "Irritable Bowel Syndrome",
+          "medical_codes": {"icd10": ["K58"], "orpha": [], "omim": ["MTHU038673"], "snomed": ["10743008"]}
+        }
+      }
+    },
+    {
+      "case_id": "T842",
+      "gdx_details": {
+        "Moderate bronchospasm": {
+          "normalized_text": "Moderate bronchospasm",
+          "medical_codes": {"icd10": ["J98.01"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Neumonía bacteriana": {
+          "normalized_text": "Neumonía bacteriana",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bronquitis aguda": {
+          "normalized_text": "Bronquitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección viral respiratoria": {
+          "normalized_text": "Infección viral respiratoria",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia cardíaca congestiva": {
+          "normalized_text": "Insuficiencia cardíaca congestiva",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Embolia pulmonar": {
+          "normalized_text": "Embolia pulmonar",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T844",
+      "gdx_details": {
+        "Superficial thrombophlebitis": {
+          "normalized_text": "Superficial Thrombophlebitis",
+          "medical_codes": {"icd10": ["I80.0"], "orpha": [], "omim": [], "snomed": ["2477008"]}
+        }
+      },
+      "ddx_details": {
+        "Trombosis venosa profunda": {
+          "normalized_text": "Trombosis venosa profunda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Insuficiencia venosa crónica": {
+          "normalized_text": "Insuficiencia venosa crónica",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Flebitis superficial": {
+          "normalized_text": "Flebitis superficial",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección respiratoria viral": {
+          "normalized_text": "Infección respiratoria viral",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Síndrome postflebítico": {
+          "normalized_text": "Síndrome postflebítico",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T874",
+      "gdx_details": {
+        "Urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        }
+      },
+      "ddx_details": {
+        "Renal Colic": {
+          "normalized_text": "Renal Colic",
+          "medical_codes": {"icd10": ["N23"], "orpha": [], "omim": ["MTHU069551"], "snomed": ["7093002"]}
+        },
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Acute Pyelonephritis": {
+          "normalized_text": "Acute pyelonephritis",
+          "medical_codes": {"icd10": ["N10"], "orpha": [], "omim": [], "snomed": ["36689008"]}
+        },
+        "Appendicitis": {
+          "normalized_text": "Appendicitis",
+          "medical_codes": {"icd10": ["K37"], "orpha": [], "omim": [], "snomed": ["74400008"]}
+        },
+        "Ovarian Cyst": {
+          "normalized_text": "Ovarian Cysts",
+          "medical_codes": {"icd10": ["N83.209"], "orpha": [], "omim": ["MTHU016093"], "snomed": ["79883001"]}
+        }
+      }
+    },
+    {
+      "case_id": "T888",
+      "gdx_details": {
+        "Acute upper respiratory infection": {
+          "normalized_text": "Acute upper respiratory infection",
+          "medical_codes": {"icd10": ["J06.9"], "orpha": [], "omim": [], "snomed": ["54398005"]}
+        },
+        "Possible urinary tract infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": [], "snomed": ["68566005"]}
+        }
+      },
+      "ddx_details": {
+        "Infección del tracto respiratorio inferior": {
+          "normalized_text": "Infección del tracto respiratorio inferior",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Gastroenteritis viral": {
+          "normalized_text": "Viral gastroenteritis",
+          "medical_codes": {"icd10": ["A08.4"], "orpha": [], "omim": [], "snomed": ["111843007"]}
+        },
+        "Neumonía bacteriana": {
+          "normalized_text": "Neumonía bacteriana",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Infección del tracto urinario": {
+          "normalized_text": "Infección del tracto urinario",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Bronquitis aguda": {
+          "normalized_text": "Bronquitis aguda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T891",
+      "gdx_details": {
+        "Cellulitis of right upper limb": {
+          "normalized_text": "Cellulitis",
+          "medical_codes": {"icd10": ["L03.111"], "orpha": [], "omim": [], "snomed": ["128045006"]}
+        }
+      },
+      "ddx_details": {
+        "Celulitis": {
+          "normalized_text": "Celulitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Trombosis venosa profunda": {
+          "normalized_text": "Trombosis venosa profunda",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Linfedema": {
+          "normalized_text": "Linfedema",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Erisipela": {
+          "normalized_text": "Erisipela",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Absceso subcutáneo": {
+          "normalized_text": "Absceso subcutáneo",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        }
+      }
+    },
+    {
+      "case_id": "T925",
+      "gdx_details": {
+        "Acute pyelonephritis": {
+          "normalized_text": "Acute pyelonephritis",
+          "medical_codes": {"icd10": ["N10"], "orpha": [], "omim": [], "snomed": ["36689008"]}
+        },
+        "Acute upper respiratory infection": {
+          "normalized_text": "Acute upper respiratory infection",
+          "medical_codes": {"icd10": ["J06.9"], "orpha": [], "omim": [], "snomed": ["54398005"]}
+        }
+      },
+      "ddx_details": {
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Vaginal Candidiasis": {
+          "normalized_text": "Candidiasis of vagina",
+          "medical_codes": {"icd10": ["B37.3"], "orpha": [], "omim": ["MTHU039348"], "snomed": ["72934000"]}
+        },
+        "Pyelonephritis": {
+          "normalized_text": "Pyelonephritis",
+          "medical_codes": {"icd10": ["N16"], "orpha": [], "omim": ["MTHU042201"], "snomed": ["45816000"]}
+        },
+        "Acute Viral Upper Respiratory Infection": {
+          "normalized_text": "Acute Viral Upper Respiratory Infection",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": []}
+        },
+        "Interstitial Cystitis": {
+          "normalized_text": "Interstitial Cystitis",
+          "medical_codes": {"icd10": [], "orpha": [], "omim": [], "snomed": ["111409009"]}
+        }
+      }
+    },
+    {
+      "case_id": "T926",
+      "gdx_details": {
+        "Mesenteric adenitis": {
+          "normalized_text": "Mesenteric Lymphadenitis",
+          "medical_codes": {"icd10": ["I88.0"], "orpha": [], "omim": [], "snomed": ["44897000"]}
+        }
+      },
+      "ddx_details": {
+        "Acute Appendicitis": {
+          "normalized_text": "Acute appendicitis NOS (disorder)",
+          "medical_codes": {"icd10": ["K35.80"], "orpha": [], "omim": [], "snomed": ["85189001"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Mesenteric Adenitis": {
+          "normalized_text": "Mesenteric Lymphadenitis",
+          "medical_codes": {"icd10": ["I88.0"], "orpha": [], "omim": [], "snomed": ["44897000"]}
+        },
+        "Urinary Tract Infection": {
+          "normalized_text": "Urinary tract infection",
+          "medical_codes": {"icd10": ["N39.0"], "orpha": [], "omim": ["MTHU037523"], "snomed": ["68566005"]}
+        },
+        "Pelvic Inflammatory Disease": {
+          "normalized_text": "Pelvic Inflammatory Disease",
+          "medical_codes": {"icd10": ["N73.9"], "orpha": [], "omim": [], "snomed": ["198130006"]}
+        }
+      }
+    },
+    {
+      "case_id": "T931",
+      "gdx_details": {
+        "Migraine": {
+          "normalized_text": "Migraine Disorders",
+          "medical_codes": {"icd10": ["G43.9"], "orpha": [], "omim": [], "snomed": ["37796009"]}
+        }
+      },
+      "ddx_details": {
+        "Migraine with aura": {
+          "normalized_text": "Migraine Disorders",
+          "medical_codes": {"icd10": ["G43"], "orpha": [], "omim": ["MTHU000541"], "snomed": ["37796009"]}
+        },
+        "Transient ischemic attack (TIA)": {
+          "normalized_text": "Transient Ischemic Attack",
+          "medical_codes": {"icd10": ["G45.9"], "orpha": [], "omim": ["MTHU000097"], "snomed": ["266257000"]}
+        },
+        "Retinal migraine": {
+          "normalized_text": "Retinal migraine",
+          "medical_codes": {"icd10": ["G43.1"], "orpha": [], "omim": [], "snomed": ["79267007"]}
+        },
+        "Hypertensive crisis": {
+          "normalized_text": "Hypertensive Crisis",
+          "medical_codes": {"icd10": ["I16"], "orpha": [], "omim": ["MTHU070856"], "snomed": ["706882009"]}
+        },
+        "Posterior reversible encephalopathy syndrome (PRES)": {
+          "normalized_text": "Posterior reversible encephalopathy syndrome",
+          "medical_codes": {"icd10": ["I67.83"], "orpha": [], "omim": [], "snomed": ["450886002"]}
+        }
+      }
+    },
+    {
+      "case_id": "T933",
+      "gdx_details": {
+        "Bronchoaspiration": {
+          "normalized_text": "Bronchoaspiration",
+          "medical_codes": {"icd10": ["J69.0"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute Respiratory Distress Syndrome (ARDS)": {
+          "normalized_text": "Respiratory Distress Syndrome, Adult",
+          "medical_codes": {"icd10": ["J80"], "orpha": [], "omim": [], "snomed": ["67782005"]}
+        },
+        "Aspiration Pneumonia": {
+          "normalized_text": "Aspiration Pneumonia",
+          "medical_codes": {"icd10": ["J69.0"], "orpha": [], "omim": ["MTHU005362"], "snomed": ["422588002"]}
+        },
+        "Electrolyte Imbalance": {
+          "normalized_text": "Electrolyte imbalance",
+          "medical_codes": {"icd10": ["E87.8"], "orpha": [], "omim": ["MTHU060319"], "snomed": ["105593004"]}
+        },
+        "Parkinsonian Syndrome": {
+          "normalized_text": "Parkinsonian Disorders",
+          "medical_codes": {"icd10": ["G20.C"], "orpha": [], "omim": ["MTHU000764"], "snomed": ["32798002"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        }
+      }
+    },
+    {
+      "case_id": "T962",
+      "gdx_details": {
+        "Abdominal pain": {
+          "normalized_text": "Abdominal pain",
+          "medical_codes": {"icd10": ["R10.9"], "orpha": [], "omim": [], "snomed": []}
+        }
+      },
+      "ddx_details": {
+        "Acute Appendicitis": {
+          "normalized_text": "Acute appendicitis NOS (disorder)",
+          "medical_codes": {"icd10": ["K35.80"], "orpha": [], "omim": [], "snomed": ["85189001"]}
+        },
+        "Mesenteric Adenitis": {
+          "normalized_text": "Mesenteric Lymphadenitis",
+          "medical_codes": {"icd10": ["I88.0"], "orpha": [], "omim": [], "snomed": ["44897000"]}
+        },
+        "Gastroenteritis": {
+          "normalized_text": "Gastroenteritis",
+          "medical_codes": {"icd10": ["K52.9"], "orpha": [], "omim": ["MTHU035020"], "snomed": ["25374005"]}
+        },
+        "Intestinal Obstruction": {
+          "normalized_text": "Intestinal Obstruction",
+          "medical_codes": {"icd10": ["K56.609"], "orpha": [], "omim": ["MTHU022262"], "snomed": ["81060008"]}
+        },
+        "Meckel's Diverticulum": {
+          "normalized_text": "Meckel Diverticulum",
+          "medical_codes": {"icd10": ["Q43.0"], "orpha": [], "omim": ["155140"], "snomed": ["37373007"]}
+        }
+      }
+    }
+  ]
+}
