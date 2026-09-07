@@ -28,16 +28,16 @@ Ejemplo de formato (inventado; no copies el veredicto):
 
 | id | Decisión | Fuente de fuga (si hay) | Justificación | Confianza |
 |---|---|---|---|---|
-| 24174966 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 25995698 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 23553973 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 27656661 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| N-10000022 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 27380346 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 28126713 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 23449674 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| case-19003 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
-| 20052363 | mantener | - | No hay nada en las imágenes que pueda generar una fuga, sobre todo porque no hay texto. | alta |
+| 24174966 | mantener | - | Historia: masa ventricular incidental, sin nombrar angiofibroma. David: las imágenes no llevan el diagnóstico escrito. | alta |
+| 25995698 | mantener | - | Historia: dolor en hipocondrio izquierdo, fiebre y tos; no nombra secuestro pulmonar. David: imágenes sin texto diagnóstico. | alta |
+| 23553973 | mantener | - | Historia: fiebre tras viaje a Australia; no nombra absceso amebiano. David: imágenes sin texto diagnóstico. | alta |
+| 27656661 | mantener | - | Historia: marcha espástica, bandas oligoclonales, AQP4 negativo; no nombra EM ni «MS-like». David: imágenes sin texto diagnóstico. | alta |
+| N-10000022 | mantener | - | Historia: prurito, ictericia y hierbas chinas; no nombra Wilson. David: imágenes sin texto diagnóstico. | alta |
+| 27380346 | mantener | - | Historia: fiebre y rash a los 10 días de azatioprina; no nombra eritema nodoso. David: imágenes sin texto diagnóstico. | alta |
+| 28126713 | mantener | - | Historia: traumatismo cervical, disfonía e hinchazón; no nombra hematoma retrofaríngeo. David: imágenes sin texto diagnóstico. | alta |
+| 23449674 | mantener | - | Historia: hipoglucemias y lesión pancreática hipervascular; no nombra insulinoma. David: imágenes sin texto diagnóstico. | alta |
+| case-19003 | mantener | - | Historia: dolor torácico atraumático con CrossFit; no nombra slipping rib. David: imágenes sin texto diagnóstico. | alta |
+| 20052363 | mantener | - | Historia: enema de bario en chequeo, asintomática; no nombra linfangiomatosis. David: imágenes sin texto diagnóstico. | alta |
 
 ---
 
@@ -52,10 +52,10 @@ Ejemplo de formato (Hodgkin vs Burkitt; este id no está en la tabla):
 | id | Posición equivalente | Veredicto juez | Calidad gold | Justificación | Confianza |
 |---|---|---|---|---|---|
 | 24174966 | 0 | correcto | gold_valido | Un hemangioma cavernoso no es un angiofibroma cardíaco primario; son tumores vasculares distintos. El rechazo del juez es correcto. | alta |
-| 27656661 | 1 | Incorrecto | gold_valido | Pongo que la posición equivalente es la 1 porque el gold es Multiple sclerosis-like disorder y la primera propesta que da es Primary progressive mltiple sclerosis, el cual es una variante de la gold pero más específica. El dilema está en que no podemos saber cual es la verdaderamente correcta pero por lo menos saber que el resultado quue ha dado no está mal del todo| media |
-| 30687305 | 0 | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. | baja |
-| 27074070 | 0 | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. | baja |
-| 27068836 | o | Incorrecto | gold_valido | Ninguna de las propuestas puede darse como correcta comparando con el gold porque no se trata del mismo tipo de enfermedad o de patologías mas específicas que el gold puedan englobar. Concretamente sobre el primer caso de la lista de propuestas una perforación o fístula faringoesofágica por erosión de hardware no es una destrucción esofágica de espesor completo; es una lesión focal secundaria a un cuerpo extraño.| baja |
+| 27656661 | 1 | falso_negativo | gold_valido | Gold: Multiple sclerosis-like disorder. P1: PPMS, forma más específica. El juez dijo no-match (0); David sí ve equivalencia. | media |
+| 30687305 | 0 | correcto | gold_valido | Ninguna propuesta es RCMD ni una forma más específica. El juez también dijo 0: acertó. | baja |
+| 27074070 | 0 | correcto | gold_valido | Burkitt no es Hodgkin de celularidad mixta. El juez dijo 0: acertó. | baja |
+| 27068836 | 0 | falso_positivo | gold_valido | El juez aceptó P1 (fístula faringoesofágica por hardware). Eso no es destrucción esofágica de espesor completo. | baja |
 | 21424749 | 1 | correcto | gold_valido | Una miopatía mitocondrial heredada por vía materna sí es una enfermedad mitocondrial; es una forma específica dentro del espectro del gold. | alta |
 | 23281978 | 1 | correcto | gold_valido | Un STEMI anterior por oclusión de la LAD sí es un infarto con elevación del ST; es una forma más específica del gold. | alta |
 
@@ -66,7 +66,7 @@ Sinónimos o diagnósticos secundarios que también deberían aceptarse:
 Si has marcado 2 o más `falso_positivo` o `falso_negativo`, escríbelo aquí
 y no abras el paquete de 100 por tu cuenta:
 
--Como falso_positivo tengo al 27068836 y como falso_negativo al 27656661.
+- Recuento limpio (mismos veredictos de David, etiquetas del formulario): `falso_positivo` `27068836`; `falso_negativo` `27656661`. `30687305` y `27074070` quedan `correcto` porque él mismo dijo que ninguna propuesta es el gold y el juez también dijo 0.
 
 ---
 

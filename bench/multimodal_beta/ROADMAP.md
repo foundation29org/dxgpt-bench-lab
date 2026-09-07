@@ -83,12 +83,53 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
 - [x] Conservar el resultado legacy del piloto como diagnóstico metodológico.
 - [x] Documentar los cuatro falsos positivos que desaparecen con equivalencia
   estricta.
-- [ ] Adjudicar clínicamente los 7 casos que alcanzaron el juez en el piloto.
-- [ ] Adjudicar los 20 rechazos y una muestra de los 16 matches LLM de la
-  cohorte de 100.
+- [x] Adjudicar clínicamente los 7 casos que alcanzaron el juez en el piloto
+  ([reviews/david_deliverable.md](reviews/david_deliverable.md)).
+  Recuento limpio: 1 `falso_positivo` (`27068836`) y 1 `falso_negativo`
+  (`27656661`).
+- [ ] Adjudicar los 20 unmatched y los 16 matches LLM de la corrida T+I de
+  100. Guía: [MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md).
+  Entregable:
+  [reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
 - [ ] Fijar una política para golds amplios, fenotípicos o morfológicos.
 - [ ] Decidir si se publican dos métricas: equivalencia exacta y utilidad
   clínica.
+
+### 5b. Ablación del modelo del juez — ⏳ PENDIENTE (después de la ronda 2)
+
+Ingeniería tuya, no de David. Bloqueada hasta que cierre
+[reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
+
+Cuando David cierre los 36 casos, esas etiquetas son el gold del **árbitro**,
+no de DxGPT. Entonces se prueban otros `JUDGE_MODEL` con el mismo prompt
+`strict_equivalence`, las mismas 100 respuestas y el mismo
+`labeled_input.json`. No se repite inferencia.
+
+Objetivo: un juez más rápido y barato que **acuerde con David** en esos 36
+casi tanto como `gemini-2.5-pro`. No es “poner el último modelo”. Un Flash
+que cubra 80/100 pero se equivoque en sitios distintos no vale.
+
+Métrica: precisión / FP / FN frente a David en unmatched + LLM. La cobertura
+de los 100 es secundaria (SNOMED/ICD/BERT no se mueven; solo esos 36 pueden
+cambiar).
+
+- [ ] Esperar ronda 2 de David (36 veredictos = gold del juez).
+- [ ] Reusar `labeled_input.json` de T+I; no repetir inferencia ni MedLabeler.
+- [ ] Probar primero jueces baratos/rápidos (Flash / mini), no flagships.
+- [ ] Medir acuerdo con David en los 36, no si la cobertura vuelve a 80/100.
+- [ ] Conservar `gemini-2.5-pro` como referencia; un flagship nuevo solo si
+  los baratos fallan el criterio de David.
+- [ ] Si un barato empata con Pro vs David, documentar y considerar
+  sustituir el juez de evaluación.
+
+```powershell
+py "bench\multimodal_beta\evaluate_v4.py" `
+  --responses "bench\multimodal_beta\outputs\pilot100_product\responses.jsonl" `
+  --reuse-labeled "bench\multimodal_beta\outputs\pilot100_product\evaluation_v4_primary_strict\labeled_input.json" `
+  --judge-model "gemini-2.5-flash" `
+  --judge-mode strict_equivalence `
+  --output-dir "bench\multimodal_beta\outputs\judge_audit\pilot100_ti_gemini25flash"
+```
 
 ### 6. Comparabilidad con benchmarks narrativos — pendiente
 
@@ -136,13 +177,16 @@ envía las imágenes. Una ejecución Terra `T` mediría únicamente texto.
 
 1. David completa [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md) y devuelve
    [reviews/david_deliverable.md](reviews/david_deliverable.md).
-2. Incorporar adjudicaciones. Ampliar a 100 o a los 24 discordantes solo si
-   David marca dos o más errores del juez o contradicciones ciegas.
+   **Hecho.**
+2. David recorre los 20 unmatched y los 16 LLM
+   ([MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md)).
 3. Decidir si 80/100 y la ganancia visual se pueden publicar.
-4. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
+4. Tras David: probar jueces baratos/rápidos contra sus 36 etiquetas
+   (§5b). No lanzar antes.
+5. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
    con producción, Terra low, Sol medium y baseline).
-5. Integrar visión para Terra y entonces comparar `T` frente a `T+I`.
-6. Medir el efecto del resumen de 1.000 caracteres.
+6. Integrar visión para Terra y entonces comparar `T` frente a `T+I`.
+7. Medir el efecto del resumen de 1.000 caracteres.
 
 ## Criterio de cierre
 

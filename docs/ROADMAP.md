@@ -733,7 +733,9 @@ Por tanto, la cobertura histórica —por ejemplo, 98,1% para `gpt-5.4-mini low`
 
 Tareas:
 
-- [ ] Calibrar `strict_equivalence` mediante la revisión médico-técnica definida en `bench/multimodal_beta/MEDICAL_REVIEW.md`.
+- [ ] Calibrar `strict_equivalence` mediante la revisión médico-técnica:
+  ronda 1 hecha (`MEDICAL_REVIEW.md`); ronda 2 activa
+  (`bench/multimodal_beta/MEDICAL_REVIEW_RONDA2.md`, 20 unmatched + 16 LLM).
 - [x] Reevaluar `gpt-5.4-mini low` y `gpt-5.6-terra low` desde `evaluation_details` existentes (2026-08-31). Mismas respuestas; solo cambia el juez. Informe: `bench/multimodal_beta/results/2026-08-31-all256-judge-audit-strict-mini-terra.md`.
   - Mini: cobertura 98,1% → 79,7%; R@1 68,0% → 58,2%.
   - Terra: cobertura 98,1% → 83,2%; R@1 74,6% → 63,3%.
@@ -745,6 +747,7 @@ Tareas:
 - [ ] Etiquetar todas las cifras del informe como `legacy_similarity` o `strict_equivalence`.
 - [ ] Reevaluar el histórico completo solo si la muestra cambia rankings o decisiones de producción.
 - [ ] Actualizar `docs/benchmark-report.html` con la cautela metodológica y, cuando existan, ambas métricas.
+- [ ] **Tras la ronda 2 de David:** probar otros modelos de juez (`JUDGE_MODEL`) con el mismo prompt `strict_equivalence` y las mismas 100 respuestas T+I. Prioridad: **baratos y rápidos** (Flash / mini), no flagships. Gold del árbitro = veredictos de David en los 36 (20 unmatched + 16 LLM). Éxito = acordar con David casi tanto como `gemini-2.5-pro`, no clavar el 80/100. Detalle: `bench/multimodal_beta/ROADMAP.md` §5b.
 
 Esta auditoría afecta al evaluador, no a las respuestas originales de los modelos. Los resultados históricos siguen siendo reproducibles, pero su interpretación clínica queda pendiente.
 
