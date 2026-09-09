@@ -49,7 +49,7 @@ BERT ≥ 0,90 ni pregunta: match directo.
 | Hermanos / padres ICD | Siguen aceptando relacionados |
 | BERT 0,90 automático | Sigue |
 | BERT 0,80 puede pisar al juez | Sigue |
-| Paquete de casos de David para no romper el árbitro | Pendiente de ronda 2 |
+| Paquete de 36 casos de David | Entregado; referencia inicial en readjudicación |
 
 El flujo **sí se puede endurecer**. No hace falta un producto nuevo.
 Hay palancas ya en el `config.yaml` / `reeval_traditional_strict.py`.
@@ -78,11 +78,13 @@ mueve **una** palanca, se vuelve a puntuar **las mismas listas DDX**.
    David considera correcto, la palanca se ha pasado. Se revierte o se
    afina. No se apilan tres palancas a la vez.
 
-El gold de este loop, cuando exista, es David en los 36 (unmatched +
-LLM), no el 80/100. Subir cobertura apretando el examen al revés es
-volver a legacy.
+La referencia de este loop debe ser una adjudicación humana estable sobre
+los 36 (unmatched + LLM), no el 80/100. La primera tira de David encontró
+casos inconsistentes y golds ambiguos; no se trata como gold definitivo
+hasta cerrar la rúbrica con Julián y readjudicar esos ids. Subir cobertura
+apretando el examen al revés es volver a legacy.
 
-## Qué se puede hacer ya, sin esperar a David
+## Ablación pendiente de las capas 4–6
 
 El criterio de producto ya es equivalencia, no parentesco. Las palancas
 ICD/BERT no necesitan a David para **medirlas**. Sí para **cerrarlas**.
@@ -115,15 +117,15 @@ los tres el mismo viernes.
 
 ## Relación con la ronda 2 de David
 
-David etiqueta FP/FN del **juez** (paso 7). Eso no calibra hermanos ICD:
-esos casos no llegan al juez. Por eso hay dos colas:
+David etiquetó FP/FN del **juez** (paso 7). Eso no calibra hermanos ICD:
+esos casos no llegan al juez. Por eso siguen existiendo dos colas:
 
-- **Ahora:** ablación de capas 4–6 (sibling / parent / BERT), listas
-  congeladas, informe de delta.
-- **Cuando David cierre:** paquete de 36. Cualquier cambio de prompt o
-  modelo de juez tiene que acertar esos 36 casi tanto como
-  `gemini-2.5-pro`. Un Flash más barato que se equivoque en otros sitios
-  no sustituye al árbitro.
+- **Capas 4–6:** ablación sibling / parent / BERT, una palanca cada vez,
+  listas congeladas e informe de delta.
+- **Paso 7:** Julián fija la rúbrica; David readjudica la tira corta
+  conflictiva; después se comparan Pro, Flash 2.5 y Flash 3.8 por
+  precisión, recall, matriz de confusión y concordancia.
 
-Hasta que no haya esas 36 etiquetas, el paso 7 no tiene sensor. Las
-capas 4–6 sí: el método ya está en cada `evaluation_details`.
+Hasta que esa referencia esté cerrada, el paso 7 no tiene un sensor fiable.
+Las capas 4–6 sí pueden medirse: el método ya está en cada
+`evaluation_details`.
