@@ -1,8 +1,28 @@
-# Encargo para Julián — revisar el examen (harness + juez)
+# Encargo para Julián — revisar el evaluador automático
 
-No es código. Es decidir **qué cuenta como acierto** y **cómo lo
-publicamos**. David ya etiquetó 35 casos del paso 7 (el LLM). Falta
-cerrar el diseño del evaluador.
+No es una revisión de código. Hay que decidir **cuándo el evaluador
+automático debe considerar que un diagnóstico generado coincide con
+el diagnóstico de referencia**, qué métrica publicamos y cómo
+validamos el LLM usado como juez.
+
+DxGPT genera una lista de diagnósticos. Después, otro sistema compara
+esa lista con el diagnóstico publicado del caso (`gold`) mediante
+códigos médicos, SapBERT y, en los casos dudosos, un LLM. Este
+documento revisa ese segundo sistema.
+
+David etiquetó 36 comparaciones dudosas. Una quedó con una etiqueta
+inválida, por lo que inicialmente usamos 35 como referencia para
+comparar varios LLM juez. Al revisar sus desacuerdos contra los
+artículos fuente encontramos:
+
+- al menos una corrección humana probablemente errónea;
+- una fila internamente contradictoria;
+- varios `gold` demasiado amplios;
+- casos que el prompt actual no resuelve de forma inequívoca.
+
+Por eso todavía no podemos afirmar si Pro, Flash 2.5 o Flash 3.8 es
+el juez más preciso. Primero necesitamos cerrar la rúbrica; después
+David readjudicará únicamente los casos conflictivos.
 
 Tiempo estimado: 45–60 min. Devuelves comentarios en este fichero o
 en un mail; no hace falta un PR.
@@ -16,18 +36,26 @@ para no discutir a ciegas.
 
 ---
 
-## 2. Dos cosas distintas (no mezclar)
+## 2. Dos componentes distintos
 
-| | Alumno | Examen |
-|---|---|---|
-| Qué es | DxGPT (gpt5, Terra, mini…) | Pipeline V4: códigos → BERT → LLM |
-| Prompt | `juanjo_classic_v2` | prompt del **juez** (strict o legacy) |
-| Nota típica | R@1, cobertura | acuerdo con David en 35 ids |
+1. **Modelo diagnóstico:** recibe el caso y genera una lista ordenada
+   de propuestas (`P1`, `P2`, etc.). Ejemplos: gpt5, Terra o mini.
+2. **Evaluador automático:** compara esas propuestas con el `gold`.
+   Pipeline V4 usa códigos médicos, SapBERT y un LLM juez.
 
-Mismo alumno, distinto examen → distinta nota. El 98% narrativo era el
-examen facilón (`legacy_similarity`), no que Gemini diagnosticara mejor.
+Cambiar el modelo diagnóstico cambia las respuestas. Cambiar el LLM
+juez o sus reglas cambia cómo puntuamos **las mismas respuestas**.
+Esta revisión trata del segundo componente.
 
-Guía corta del examen: [HARNESS_EVAL.md](HARNESS_EVAL.md).
+Cada caso se identifica con un número como `22563559`; normalmente es
+el PMID del artículo fuente en MedReaMM. Los “ids conflictivos” son
+simplemente los números de los casos que hay que volver a revisar.
+
+El 98% narrativo se obtuvo con `legacy_similarity`, que aceptaba
+proximidad clínica. No equivale a un 98% de coincidencia diagnóstica
+estricta.
+
+Guía técnica corta: [HARNESS_EVAL.md](HARNESS_EVAL.md).
 
 ---
 
