@@ -735,8 +735,11 @@ Tareas:
 
 - [x] Calibrar `strict_equivalence` mediante la revisión médico-técnica:
   ronda 1 hecha (`MEDICAL_REVIEW.md`); ronda 2 entregada 2026-09-09
-  (`reviews/david_deliverable_ronda2.md`). 2 FP, 3 FN, 2 golds amplios;
-  80/100 recodifica a 81. Pendiente recodificar `24910386`.
+  (`reviews/david_deliverable_ronda2.md`). El recuento inicial (2 FP,
+  3 FN, 2 golds amplios; 80→81) **no es una cifra clínica cerrada**:
+  la auditoría posterior encontró etiquetas humanas inconsistentes y
+  casos que el prompt no define. Pendientes `24910386`, la rúbrica de
+  Julián y una readjudicación corta.
 - [x] Reevaluar `gpt-5.4-mini low` y `gpt-5.6-terra low` desde `evaluation_details` existentes (2026-08-31). Mismas respuestas; solo cambia el juez. Informe: `bench/multimodal_beta/results/2026-08-31-all256-judge-audit-strict-mini-terra.md`.
   - Mini: cobertura 98,1% → 79,7%; R@1 68,0% → 58,2%.
   - Terra: cobertura 98,1% → 83,2%; R@1 74,6% → 63,3%.
@@ -762,7 +765,16 @@ Tareas:
   Borrador strict (2026-09-09), no sustituye al HTML oficial:
   `docs/benchmark-report-strict-texto.html` (all_256 + HPO),
   `docs/benchmark-report-strict-multimodal.html` (MedReaMM).
-- [x] **Tras la ronda 2 de David:** ablación del juez (`JUDGE_MODEL`) con `strict_equivalence` y las mismas 100 T+I. Gold = David, 35 ids (`24910386` fuera). Flash 31/35, mini 30/35, Pro 30/35, gemini-3.5-flash-lite 28/35. Se queda Pro. Detalle: `bench/multimodal_beta/ROADMAP.md` §5b.
+- [x] **Tras la ronda 2 de David:** ablación del juez (`JUDGE_MODEL`) con
+  `strict_equivalence` y las mismas 100 T+I, sin repetir inferencia.
+  Acuerdo bruto con las etiquetas iniciales (35 ids; `24910386` fuera):
+  Flash 2.5 31/35, mini 30/35, Pro 30/35, Flash 3.8 y flash-lite 28/35.
+  Estos números no permiten elegir juez: varios desacuerdos revelaron
+  problemas en la referencia humana y en la rúbrica. Pro queda solo por
+  continuidad hasta readjudicar. Detalle:
+  `bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md` y §5b del roadmap local.
+- [ ] Ablación de capas del harness: apagar primero solo hermanos ICD en
+  las listas congeladas de Terra/mini; luego parent y BERT por separado.
 
 Esta auditoría afecta al evaluador, no a las respuestas originales de los modelos. Los resultados históricos siguen siendo reproducibles, pero su interpretación clínica queda pendiente.
 

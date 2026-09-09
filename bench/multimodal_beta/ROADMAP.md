@@ -90,32 +90,31 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
 - [x] Adjudicar los 20 unmatched y los 16 matches LLM de la corrida T+I de
   100 (David, 2026-09-09, `91163da`). Entregable:
   [reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
-  Recuento: 2 FP (`27068836`, `22563559`), 3 FN (`27656661`, `26819809`,
-  `19721837`), 2 golds amplios (`24054536`, `24910386`). Recodificado
-  81/100. Pendiente recodificar `24910386` (`incorrecto` no es etiqueta).
+  Recuento inicial de David: 2 FP, 3 FN y 2 golds amplios; daba una
+  recodificación provisional de 81/100. No usarla como cifra clínica
+  cerrada: al contrastar los desacuerdos con los artículos aparecieron
+  etiquetas inconsistentes y casos que la rúbrica no resuelve. Pendiente
+  `24910386` y readjudicación corta tras la revisión de Julián (§5c).
 - [ ] Fijar una política para golds amplios, fenotípicos o morfológicos.
 - [ ] Decidir si se publican dos métricas: equivalencia exacta y utilidad
   clínica.
 
-### 5b. Ablación del modelo del juez — hecho (2026-09-09)
+### 5b. Ablación del modelo del juez — ejecutada, adjudicación abierta
 
-Ingeniería tuya, no de David. La ronda 2 está entregada; no lanzar 5b
-hasta recodificar `24910386` (`incorrecto` no es etiqueta del formulario).
+Se probaron otros `JUDGE_MODEL` con el mismo prompt `strict_equivalence`,
+las mismas 100 respuestas y el mismo `labeled_input.json`. No se repitió
+inferencia. `24910386` quedó fuera.
 
-Cuando David cierre los 36 casos, esas etiquetas son el gold del **árbitro**,
-no de DxGPT. Entonces se prueban otros `JUDGE_MODEL` con el mismo prompt
-`strict_equivalence`, las mismas 100 respuestas y el mismo
-`labeled_input.json`. No se repite inferencia.
-
-Objetivo: un juez más rápido y barato que **acuerde con David** en esos 36
-casi tanto como `gemini-2.5-pro`. No es “poner el último modelo”. Un Flash
-que cubra 80/100 pero se equivoque en sitios distintos no vale.
+Objetivo: encontrar un juez rápido y barato que concuerde con una referencia
+humana estable. Los números siguientes solo miden acuerdo con las **etiquetas
+iniciales** de David; no son precisión clínica definitiva porque la auditoría
+posterior encontró errores/ambigüedades en esa referencia.
 
 Métrica: precisión / FP / FN frente a David en unmatched + LLM. La cobertura
 de los 100 es secundaria (SNOMED/ICD/BERT no se mueven; solo esos 36 pueden
 cambiar).
 
-- [x] Esperar ronda 2 de David (36 veredictos = gold del juez).
+- [x] Esperar ronda 2 de David (36 veredictos iniciales).
   5b cerrado (2026-09-09): segunda tira de jueces baratos, mismas 100 T+I.
   DeepSeek-V4-Pro inválido (Azure). `gemini-2.5-flash-lite` 404; sustituto
   `gemini-3.5-flash-lite`. `24910386` fuera.
@@ -132,12 +131,10 @@ cambiar).
   [results/2026-09-09-judge-ablation-gemini35flashlite.md](results/2026-09-09-judge-ablation-gemini35flashlite.md).
 - [x] Medir acuerdo con David en los 36, no si la cobertura vuelve a 80/100.
   Hecho sobre 35 ids.
-- [x] Conservar `gemini-2.5-pro` como referencia; un flagship nuevo solo si
-  los baratos fallan el criterio de David. Los baratos no lo ganan: se
-  queda Pro.
-- [x] Si un barato empata con Pro vs David, documentar y considerar
-  sustituir el juez de evaluación. Mini empata el recuento (30/35) en
-  sitios distintos; Flash 31/35 por ser más laxo. No sustituir.
+- [ ] Readjudicar los casos conflictivos con la rúbrica cerrada y recalcular
+  precisión, recall, matriz de confusión y concordancia de todos los jueces.
+- [ ] Elegir juez. Hasta entonces Pro se conserva solo por continuidad; no
+  está demostrado que sea más preciso que Flash 2.5 o Flash 3.8.
 
 ### 5c. Revisión de Julián del examen — pendiente
 
@@ -151,9 +148,14 @@ Pro. Brief:
   R@1 como P@1; escala 2/1/0; hermanos ICD; modelo del juez).
 - [ ] No poner Flash como juez publicado hasta esa respuesta.
 - [x] Curiosidad (2026-09-09): `gemini-3.8-flash` low, mismo 5b.
-  28/35 vs David, cobertura 72/100. Más estricto y peor que Pro.
+  Acuerdo bruto 28/35 con las etiquetas iniciales de David y cobertura
+  72/100. No interpretarlo como peor precisión: varios desacuerdos favorecen
+  a 3.8 al contrastarlos con el artículo fuente.
   Informe:
   [results/2026-09-09-judge-ablation-gemini38flash.md](results/2026-09-09-judge-ablation-gemini38flash.md).
+- [ ] Tras cerrar la política, apagar **solo** hermanos ICD en las listas
+  congeladas de Terra low y mini, y medir el delta de R@1/cobertura y los
+  ids afectados. Después, en experimentos separados, parent y BERT.
 
 ```powershell
 py "bench\multimodal_beta\evaluate_v4.py" `
@@ -299,18 +301,19 @@ multimodal. Para construir un puente:
 1. David completa [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md) y devuelve
    [reviews/david_deliverable.md](reviews/david_deliverable.md).
    **Hecho.**
-2. David recorre los 20 unmatched y los 16 LLM
-   ([MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md)).
-3. Decidir si 80/100 y la ganancia visual se pueden publicar.
-4. Tras David: jueces baratos vs 35 etiquetas (§5b) **hecho**. Siguiente:
-   Julián cierra el examen ([JULIAN_HARNESS_REVIEW.md](JULIAN_HARNESS_REVIEW.md));
-   entonces `gemini-3.8-flash` vs David. No poner Flash 2.5 de árbitro
-   publicado mientras tanto.
-5. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
+2. David recorre los 20 unmatched y los 16 LLM: **hecho**, pendiente
+   `24910386`.
+3. Julián fija la rúbrica y las métricas
+   ([JULIAN_HARNESS_REVIEW.md](JULIAN_HARNESS_REVIEW.md)).
+4. David readjudica solo los casos conflictivos; recalcular 5b y elegir juez.
+5. Publicar el 80/100 únicamente como resultado automático provisional
+   (`strict_equivalence`, Pro) hasta cerrar esa adjudicación. No presentar
+   80 ni 81 como precisión clínica final.
+6. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
    con producción, Terra low, Sol medium y baseline).
-6. ~~Integrar visión para Terra y comparar `T` frente a `T+I`.~~ Hecho
+7. ~~Integrar visión para Terra y comparar `T` frente a `T+I`.~~ Hecho
    (2026-09-08): Terra usa la imagen (`p=0,00055`).
-7. ~~Medir el efecto del resumen de 1.000 caracteres.~~ Hecho
+8. ~~Medir el efecto del resumen de 1.000 caracteres.~~ Hecho
    (2026-09-09): saltarlo no gana cobertura. El umbral se queda.
 
 ## Criterio de cierre
