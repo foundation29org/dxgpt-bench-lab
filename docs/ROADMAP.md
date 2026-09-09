@@ -733,21 +733,36 @@ Por tanto, la cobertura histórica —por ejemplo, 98,1% para `gpt-5.4-mini low`
 
 Tareas:
 
-- [ ] Calibrar `strict_equivalence` mediante la revisión médico-técnica:
-  ronda 1 hecha (`MEDICAL_REVIEW.md`); ronda 2 activa
-  (`bench/multimodal_beta/MEDICAL_REVIEW_RONDA2.md`, 20 unmatched + 16 LLM).
+- [x] Calibrar `strict_equivalence` mediante la revisión médico-técnica:
+  ronda 1 hecha (`MEDICAL_REVIEW.md`); ronda 2 entregada 2026-09-09
+  (`reviews/david_deliverable_ronda2.md`). 2 FP, 3 FN, 2 golds amplios;
+  80/100 recodifica a 81. Pendiente recodificar `24910386`.
 - [x] Reevaluar `gpt-5.4-mini low` y `gpt-5.6-terra low` desde `evaluation_details` existentes (2026-08-31). Mismas respuestas; solo cambia el juez. Informe: `bench/multimodal_beta/results/2026-08-31-all256-judge-audit-strict-mini-terra.md`.
   - Mini: cobertura 98,1% → 79,7%; R@1 68,0% → 58,2%.
   - Terra: cobertura 98,1% → 83,2%; R@1 74,6% → 63,3%.
-- [ ] Reevaluar el resto de la selección, sin repetir inferencia:
-  - producción avanzada: `gemini-3-pro-preview low`;
-  - contraste: `gpt-5.6-sol medium`;
-  - baseline histórico principal.
+- [x] Reevaluar el resto de la selección, sin repetir inferencia (2026-09-08):
+  - producción avanzada: `gemini-3-pro-preview low` → 98,0% legacy / 75,0% strict;
+  - contraste: `gpt-5.6-sol medium` → 97,7% / 82,4%;
+  - baseline histórico: `gpt-4o low` → 96,1% / 75,0%.
+  Informe: `bench/multimodal_beta/results/2026-09-08-all256-judge-audit-strict-gemini3pro-sol-gpt4o.md`.
+  Ranking strict: Terra 83% > Sol 82% > mini 80% > gemini-3-pro = gpt-4o 75%.
+  gemini-3-pro no era el nº 1; el 98% era el juez legacy (LLM judge 74 → 16).
+  No se regeneraron DDX: SNOMED/ICD/BERT iguales; solo el último paso del árbitro.
+- [x] Inferencia nueva `gpt-6-astra` low sobre `all_256_clean` (2026-09-08) y
+  re-score strict. Legacy: 98,1% / R@1 72,3% / pos. 1,442. Strict: cobertura
+  83,2% (empate con Terra), R@1 62,1% (Terra 63,3%). LLM judge 67 → 24.
+  Informe: `bench/multimodal_beta/results/2026-09-08-all256-judge-audit-strict-gpt6astra.md`.
+  Decisión: Astra no a producto (latencia/coste; no gana a Terra). Un HPO
+  pequeño queda como curiosidad. HMS 88 (2026-09-09), mismo juez strict:
+  Terra 65,9% > Astra 59,1%; R@1 empatado 43,2%. No gana raras. **No DDD**.
 - [ ] Comparar cobertura, R@K, posición media, casos ganados/perdidos y falsos positivos legacy.
 - [ ] Etiquetar todas las cifras del informe como `legacy_similarity` o `strict_equivalence`.
 - [ ] Reevaluar el histórico completo solo si la muestra cambia rankings o decisiones de producción.
 - [ ] Actualizar `docs/benchmark-report.html` con la cautela metodológica y, cuando existan, ambas métricas.
-- [ ] **Tras la ronda 2 de David:** probar otros modelos de juez (`JUDGE_MODEL`) con el mismo prompt `strict_equivalence` y las mismas 100 respuestas T+I. Prioridad: **baratos y rápidos** (Flash / mini), no flagships. Gold del árbitro = veredictos de David en los 36 (20 unmatched + 16 LLM). Éxito = acordar con David casi tanto como `gemini-2.5-pro`, no clavar el 80/100. Detalle: `bench/multimodal_beta/ROADMAP.md` §5b.
+  Borrador strict (2026-09-09), no sustituye al HTML oficial:
+  `docs/benchmark-report-strict-texto.html` (all_256 + HPO),
+  `docs/benchmark-report-strict-multimodal.html` (MedReaMM).
+- [x] **Tras la ronda 2 de David:** ablación del juez (`JUDGE_MODEL`) con `strict_equivalence` y las mismas 100 T+I. Gold = David, 35 ids (`24910386` fuera). Flash 31/35, mini 30/35, Pro 30/35, gemini-3.5-flash-lite 28/35. Se queda Pro. Detalle: `bench/multimodal_beta/ROADMAP.md` §5b.
 
 Esta auditoría afecta al evaluador, no a las respuestas originales de los modelos. Los resultados históricos siguen siendo reproducibles, pero su interpretación clínica queda pendiente.
 

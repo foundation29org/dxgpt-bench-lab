@@ -293,7 +293,12 @@ class DXGPTEmulator:
         # Check if this is a reasoning model (O3, GPT-5, or Gemini 3 Pro)
         model_name = self.emulator_config['MODEL'].lower()
         is_o3_model = 'o3' in model_name
-        is_gpt5_model = 'gpt-5' in model_name or 'gpt5' in model_name
+        is_gpt5_model = (
+            'gpt-5' in model_name
+            or 'gpt5' in model_name
+            or 'gpt-6' in model_name
+            or 'gpt6' in model_name
+        )
         is_gemini_model = 'gemini' in model_name
         is_reasoning_model = is_o3_model or is_gpt5_model
         

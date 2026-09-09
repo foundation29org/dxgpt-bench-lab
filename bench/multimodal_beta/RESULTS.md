@@ -17,6 +17,11 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-08-27 | MedReaMM pilot100 | T | gpt5 | legacy | 100 | 54% | 75% | 92% | 95% | 2,105 | Solo puente | [Informe](results/2026-08-27-medreamm-pilot100-t-gpt5.md) |
 | 2026-08-28 | MedReaMM pilot100 | T+shuffled-I | gpt5 | strict | 100 | 46% | 57% | 60% | 62% | 1,597 | Provisional | [Informe](results/2026-08-28-medreamm-pilot100-t-shuffled-i-gpt5.md) |
 | 2026-08-28 | MedReaMM pilot100 | I | gpt5 | strict | 100 | 32% | 42% | 49% | 50% | 1,860 | Provisional | [Informe](results/2026-08-28-medreamm-pilot100-i-gpt5.md) |
+| 2026-09-08 | MedReaMM pilot100 | T+I | gpt56terra | strict | 100 | 67% | 82% | 84% | 84% | 1,310 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt56terra.md) |
+| 2026-09-08 | MedReaMM pilot100 | T | gpt56terra | strict | 100 | 50% | 60% | 65% | 65% | 1,477 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-gpt56terra.md) |
+| 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | strict | 100 | 76% | 87% | 88% | 88% | 1,205 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt6astra.md) |
+| 2026-09-08 | MedReaMM pilot100 | T | gpt6astra | strict | 100 | 54% | 66% | 67% | 67% | 1,313 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-gpt6astra.md) |
+| 2026-09-09 | MedReaMM 32 resumidos | T+I sin resumen | gpt5 | strict | 32 | 68,8% | 75% | 84,4% | 84,4% | 1,407 | Provisional | [Informe](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md) |
 
 ## Resultado técnico por inferencia
 
@@ -28,6 +33,11 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-08-27 | MedReaMM pilot100 | T | gpt5 | 100/100; 1 lista vacía | 32/100 | 35,6 s | Completa |
 | 2026-08-28 | MedReaMM pilot100 | T+shuffled-I | gpt5 | 100/100 | 32/100 | 44,5 s | Completa |
 | 2026-08-28 | MedReaMM pilot100 | I | gpt5 | 100/100; 1 lista vacía | 0/100 | 34,5 s | Completa |
+| 2026-09-08 | MedReaMM pilot100 | T+I | gpt56terra | 100/100 | 32/100 | 24,3 s | Completa |
+| 2026-09-08 | MedReaMM pilot100 | T | gpt56terra | 100/100; 1 lista vacía | 32/100 | 20,1 s | Completa |
+| 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | 100/100 | 32/100 | 55,1 s | Completa |
+| 2026-09-08 | MedReaMM pilot100 | T | gpt6astra | 100/100; 1 lista vacía | 32/100 | 47,3 s | Completa |
+| 2026-09-09 | MedReaMM 32 resumidos | T+I sin resumen | gpt5 | 32/32 | 0/32 | 43,2 s | Completa |
 
 Las filas strict y legacy de una misma cohorte reutilizan exactamente las
 mismas respuestas del modelo. Solo cambia la política del juez.
@@ -46,6 +56,22 @@ mismas respuestas del modelo. Solo cambia la política del juez.
   imágenes pertenecen al mismo caso.
 - Solo imágenes (`I`) llega al 50%: hay señal visual, pero no sustituye a la
   historia. La revisión clínica sigue pendiente.
+- `gpt56terra` T+I (WestUS, override de eval): cobertura 84%, R@1 67%,
+  24,3 s/caso, frente a gpt5 T+I 80% / 61% / 40,2 s. McNemar de cobertura
+  `p≈0,45`: la ventaja entre modelos no es significativa.
+- Terra **usa la imagen**: T 65% / R@1 50% vs T+I 84% / 67% (24 vs 5;
+  McNemar `p=0,00055`). En texto solo, Terra T y gpt5 T son
+  indistinguibles (65% vs 64%, `p≈1`).
+- `gpt6astra` T+I: cobertura 88%, R@1 76%, 55,1 s/caso. Frente a gpt5 T+I
+  el R@1 sí es significativo (21 vs 6, `p=0,0059`); la cobertura +8 pp no
+  (`p=0,057`). Frente a Terra T+I, ni cobertura ni R@1 lo son.
+- Astra **usa la imagen**: T 67% / R@1 54% vs T+I 88% / 76% (22 vs 1;
+  McNemar `p=0,00001`). En texto solo, cobertura indistinguible de Terra
+  y gpt5; el R@1 vs gpt5 T sí (54% vs 43%, `p=0,007`).
+- Ablación de resumen (32 casos gpt5 T+I que superaban 1.000 caracteres):
+  sin resumen, cobertura 27/32 vs 30/32 con resumen (3 vs 0; McNemar
+  `p=0,25`). R@1 22 vs 21 (`p=1,0`). **El umbral se queda.** Informe:
+  [results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md).
 - Las tareas y su orden están en [ROADMAP.md](ROADMAP.md).
 
 ## Comparación con el benchmark narrativo
@@ -64,8 +90,16 @@ media 1,526 de `all_256_clean`:
 
 La posición media se calcula solo entre casos con match. Por ello, una posición
 1,397 con 58% de cobertura no es mejor que 1,526 con cobertura alta: los 42
-casos fallidos desaparecen del promedio. La comparación narrativa justa exige
-reevaluar sus respuestas existentes con el juez strict.
+casos fallidos desaparecen del promedio. La comparación narrativa justa exige reevaluar sus respuestas existentes
+con el juez strict. Hecho para mini, Terra, Sol medium, gemini-3-pro-preview
+low, gemini-3.1-pro-preview low, gemini-3.5-flash low, gemini-3.1-flash-lite
+low, gpt-4o, Astra low, gpt-5.4, Terra high y Terra medium: el 98% era
+`legacy_similarity`. Rank por R@1: Terra low 63,3% > gpt-5.4 62,9% >
+Terra high = medium = xhigh 62,5% (cobertura high 85,2% > medium 84,4% >
+xhigh 79,7%) > Astra = Flash 62,1%. Low sigue 1º. xhigh no usar. Informes:
+[results/2026-09-09-all256-judge-audit-strict-terra-medium.md](results/2026-09-09-all256-judge-audit-strict-terra-medium.md),
+[results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md](results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md).
+Ronda 2 de David (36 casos) entregada: 2 FP, 3 FN; 80/100 → 81 recodificado.
 
 ## Ubicación de los jueces
 

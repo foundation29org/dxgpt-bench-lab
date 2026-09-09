@@ -193,9 +193,10 @@ class RequestBuilder:
         deployment_name = config.deployment_name or ""
         deployment_lower = deployment_name.lower()
         self.is_gpt5_model = (
-            'gpt-5' in deployment_lower or 
-            'gpt5' in deployment_lower or
-            'gpt-5.1' in deployment_lower
+            'gpt-5' in deployment_lower
+            or 'gpt5' in deployment_lower
+            or 'gpt-6' in deployment_lower
+            or 'gpt6' in deployment_lower
         )
     
     def build(

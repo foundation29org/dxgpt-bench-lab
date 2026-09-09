@@ -12,6 +12,8 @@ El historial consolidado de ejecuciones y métricas se mantiene en
 [RESULTS.md](RESULTS.md).
 El estado y orden de las tareas pendientes se mantiene en
 [ROADMAP.md](ROADMAP.md).
+Cómo endurecer el examen (capas ICD/BERT/juez, no el modelo) está en
+[HARNESS_EVAL.md](HARNESS_EVAL.md).
 El mapa de ambos tracks (beta + narrativo + juez) está en
 [docs/archify/dxgpt-eval.architecture.html](../../docs/archify/dxgpt-eval.architecture.html).
 
@@ -123,11 +125,12 @@ La primera ejecución mide el beta tal como está:
 - resumen si texto+documentos superan 1.000 caracteres;
 - `gpt54mini` sin imágenes y `gpt5` con imágenes.
 
-No subas el umbral de resumen todavía. Ese corte existía para que modelos
-antiguos no se dispersaran. Puede seguir siendo útil. El runner anota si el
-caso se resumió (`pipeline.summarized`) para no mezclar fallos de resumen con
-fallos diagnósticos. La ablación —mismo caso sin resumen, o con umbral más
-alto— va después, cuando ya exista una línea base.
+El umbral de 1.000 caracteres **se queda**: en los 32 casos gpt5 T+I que
+se resumían, saltarlo bajó la cobertura 30→27 (McNemar `p=0,25`) y no
+movió el R@1. Informe:
+[results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md).
+El runner anota si el caso se resumió (`pipeline.summarized`) para no
+mezclar fallos de resumen con fallos diagnósticos.
 
 Lo mismo con el modelo. Hoy, si comparas texto solo contra texto+imagen,
 comparas `gpt54mini` contra `gpt5`. Eso no dice si la imagen ayuda: dice que

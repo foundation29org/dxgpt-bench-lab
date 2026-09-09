@@ -87,18 +87,20 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
   ([reviews/david_deliverable.md](reviews/david_deliverable.md)).
   Recuento limpio: 1 `falso_positivo` (`27068836`) y 1 `falso_negativo`
   (`27656661`).
-- [ ] Adjudicar los 20 unmatched y los 16 matches LLM de la corrida T+I de
-  100. Guía: [MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md).
-  Entregable:
+- [x] Adjudicar los 20 unmatched y los 16 matches LLM de la corrida T+I de
+  100 (David, 2026-09-09, `91163da`). Entregable:
   [reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
+  Recuento: 2 FP (`27068836`, `22563559`), 3 FN (`27656661`, `26819809`,
+  `19721837`), 2 golds amplios (`24054536`, `24910386`). Recodificado
+  81/100. Pendiente recodificar `24910386` (`incorrecto` no es etiqueta).
 - [ ] Fijar una política para golds amplios, fenotípicos o morfológicos.
 - [ ] Decidir si se publican dos métricas: equivalencia exacta y utilidad
   clínica.
 
-### 5b. Ablación del modelo del juez — ⏳ PENDIENTE (después de la ronda 2)
+### 5b. Ablación del modelo del juez — hecho (2026-09-09)
 
-Ingeniería tuya, no de David. Bloqueada hasta que cierre
-[reviews/david_deliverable_ronda2.md](reviews/david_deliverable_ronda2.md).
+Ingeniería tuya, no de David. La ronda 2 está entregada; no lanzar 5b
+hasta recodificar `24910386` (`incorrecto` no es etiqueta del formulario).
 
 Cuando David cierre los 36 casos, esas etiquetas son el gold del **árbitro**,
 no de DxGPT. Entonces se prueban otros `JUDGE_MODEL` con el mismo prompt
@@ -113,14 +115,45 @@ Métrica: precisión / FP / FN frente a David en unmatched + LLM. La cobertura
 de los 100 es secundaria (SNOMED/ICD/BERT no se mueven; solo esos 36 pueden
 cambiar).
 
-- [ ] Esperar ronda 2 de David (36 veredictos = gold del juez).
-- [ ] Reusar `labeled_input.json` de T+I; no repetir inferencia ni MedLabeler.
-- [ ] Probar primero jueces baratos/rápidos (Flash / mini), no flagships.
-- [ ] Medir acuerdo con David en los 36, no si la cobertura vuelve a 80/100.
-- [ ] Conservar `gemini-2.5-pro` como referencia; un flagship nuevo solo si
-  los baratos fallan el criterio de David.
-- [ ] Si un barato empata con Pro vs David, documentar y considerar
-  sustituir el juez de evaluación.
+- [x] Esperar ronda 2 de David (36 veredictos = gold del juez).
+  5b cerrado (2026-09-09): segunda tira de jueces baratos, mismas 100 T+I.
+  DeepSeek-V4-Pro inválido (Azure). `gemini-2.5-flash-lite` 404; sustituto
+  `gemini-3.5-flash-lite`. `24910386` fuera.
+- [x] Reusar `labeled_input.json` de T+I; no repetir inferencia ni MedLabeler.
+- [x] Probar primero jueces baratos/rápidos (Flash / mini), no flagships.
+  Flash (2026-09-09): 31/35 vs David (Pro 30/35), cobertura 85/100.
+  Recupera los 3 FN; añade 2 matches que David dejó en 0. Informe:
+  [results/2026-09-09-judge-ablation-gemini25flash.md](results/2026-09-09-judge-ablation-gemini25flash.md).
+  Mini (2026-09-09): 30/35, cobertura 78/100. Empata el recuento de Pro
+  en casos distintos. Informe conjunto:
+  [results/2026-09-09-judge-ablation-flash-mini.md](results/2026-09-09-judge-ablation-flash-mini.md).
+  gemini-3.5-flash-lite (2026-09-09): 28/35, cobertura 75/100. Más
+  estricto y peor que Pro. Informe:
+  [results/2026-09-09-judge-ablation-gemini35flashlite.md](results/2026-09-09-judge-ablation-gemini35flashlite.md).
+- [x] Medir acuerdo con David en los 36, no si la cobertura vuelve a 80/100.
+  Hecho sobre 35 ids.
+- [x] Conservar `gemini-2.5-pro` como referencia; un flagship nuevo solo si
+  los baratos fallan el criterio de David. Los baratos no lo ganan: se
+  queda Pro.
+- [x] Si un barato empata con Pro vs David, documentar y considerar
+  sustituir el juez de evaluación. Mini empata el recuento (30/35) en
+  sitios distintos; Flash 31/35 por ser más laxo. No sustituir.
+
+### 5c. Revisión de Julián del examen — pendiente
+
+No es un run. Es cerrar diseño: métricas, juez binario vs grado,
+capas ICD/BERT, y si Flash / `gemini-3.8-flash` pueden sustituir a
+Pro. Brief:
+
+[JULIAN_HARNESS_REVIEW.md](JULIAN_HARNESS_REVIEW.md).
+
+- [ ] Julián responde las preguntas del brief (cobertura ≠ precisión;
+  R@1 como P@1; escala 2/1/0; hermanos ICD; modelo del juez).
+- [ ] No poner Flash como juez publicado hasta esa respuesta.
+- [x] Curiosidad (2026-09-09): `gemini-3.8-flash` low, mismo 5b.
+  28/35 vs David, cobertura 72/100. Más estricto y peor que Pro.
+  Informe:
+  [results/2026-09-09-judge-ablation-gemini38flash.md](results/2026-09-09-judge-ablation-gemini38flash.md).
 
 ```powershell
 py "bench\multimodal_beta\evaluate_v4.py" `
@@ -144,34 +177,122 @@ multimodal. Para construir un puente:
   - Terra: 98,1% legacy → 83,2% strict.
   - Informe:
     [results/2026-08-31-all256-judge-audit-strict-mini-terra.md](results/2026-08-31-all256-judge-audit-strict-mini-terra.md).
-- [ ] Tras calibración clínica, aplicar el mismo juez a:
-  - gemini-3-pro-preview low;
-  - GPT-5.6 Sol medium;
-  - principal baseline histórico.
-- [ ] Comparar cambios de ranking y falsos positivos.
+- [x] Reevaluar gemini-3-pro-preview low, gpt-5.6-sol medium y gpt-4o low
+  (2026-09-08). Informe:
+  [results/2026-09-08-all256-judge-audit-strict-gemini3pro-sol-gpt4o.md](results/2026-09-08-all256-judge-audit-strict-gemini3pro-sol-gpt4o.md).
+  Strict: Terra 83% > Sol 82% > mini 80% > gemini-3-pro = gpt-4o 75%.
+  El 98% de gemini-3-pro era el juez legacy (listas DDX congeladas; solo
+  cambia el árbitro).
+- [x] Astra `all_256_clean` (2026-09-08): `gpt-6-astra` +
+  `reasoning_effort: low` + `juanjo_classic_v2`. Inferencia nueva, luego
+  re-score strict. Legacy 98,1% / R@1 72,3% / pos. 1,442. Strict: cobertura
+  83,2% (empate con Terra), R@1 62,1% (Terra 63,3%). Informe:
+  [results/2026-09-08-all256-judge-audit-strict-gpt6astra.md](results/2026-09-08-all256-judge-audit-strict-gpt6astra.md).
+- [x] gemini-3.1-pro-preview low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gemini31pro.md](results/2026-09-09-all256-judge-audit-strict-gemini31pro.md).
+  Strict: R@1 61,3%, cobertura 75% (192/256), igual que 3-pro. LLM 75→17.
+  El 98,1% / 1,267 del HTML oficial era el juez legacy.
+- [x] gemini-3.5-flash low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gemini35flash.md](results/2026-09-09-all256-judge-audit-strict-gemini35flash.md).
+  Strict: R@1 62,1% (empate Astra), cobertura 75,4% (193/256). Gana a
+  3.1-pro en R@1. LLM 72→14. El 97,7% legacy era el juez.
+- [x] gemini-3.1-flash-lite low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gemini31flashlite.md](results/2026-09-09-all256-judge-audit-strict-gemini31flashlite.md).
+  Strict: R@1 57,8%, cobertura 78,1% (200/256). No gana a mini
+  (58,2% / 79,7%). LLM 83→27.
+- [x] gemini-2.5-flash low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gemini25flash.md](results/2026-09-09-all256-judge-audit-strict-gemini25flash.md).
+  Strict: R@1 56,6%, cobertura 74,2% (190/256). Por debajo de gpt-4o.
+  LLM 82→20.
+- [x] gpt-5.4 full low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gpt54.md](results/2026-09-09-all256-judge-audit-strict-gpt54.md).
+  Strict: R@1 62,9%, cobertura 86,3% (221/256, la más alta). Gana a mini.
+  Terra sigue 1º por R@1 (63,3%). LLM 64→27.
+- [x] gemini-3-pro-preview medium (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-gemini3pro-medium.md](results/2026-09-09-all256-judge-audit-strict-gemini3pro-medium.md).
+  Strict peor que low en R@1 y cobertura (59,4% / 73% vs 59,8% / 75%).
+  Medium no usar. LLM 81→17.
+- [x] gpt-5.6-terra high (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-terra-high.md](results/2026-09-09-all256-judge-audit-strict-terra-high.md).
+  Strict: R@1 62,5% < low 63,3%; cobertura 85,2% > low 83,2%. Low sigue
+  1º por R@1. LLM 71→35.
+- [x] gpt-5.6-terra medium (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-terra-medium.md](results/2026-09-09-all256-judge-audit-strict-terra-medium.md).
+  Strict: R@1 62,5% (empate high), cobertura 84,4% < high 85,2%. Low
+  sigue 1º. LLM 73→32.
+- [x] gpt-5.6-terra xhigh (2026-09-09, merge 20k). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md](results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md).
+  Strict: R@1 62,5% (empate high/medium), cobertura 79,7% (peor Terra).
+  LLM 75→29. No usar. Low sigue 1º. El HTML oficial no se toca.
+- [x] gpt-5.6-sol low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-sol-low.md](results/2026-09-09-all256-judge-audit-strict-sol-low.md).
+  Strict: R@1 59,0% < medium 60,9%; cobertura 80,9%. Gana a mini.
+  Mantener medium. LLM 74→24. Cola luna+sol cerrada.
+- [x] gpt-5.6-luna low (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-luna-low.md](results/2026-09-09-all256-judge-audit-strict-luna-low.md).
+  Strict: R@1 57,0% < mini 58,2%; cobertura 79,7% (igual que mini). No
+  desplaza a mini. LLM 79→29.
+- [x] gpt-5.6-luna medium (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-luna-medium.md](results/2026-09-09-all256-judge-audit-strict-luna-medium.md).
+  Strict: R@1 56,6% < low 57,0%; misma cobertura 79,7%. Medium no usar.
+  LLM 80→31.
+- [x] gpt-5.6-luna high (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-luna-high.md](results/2026-09-09-all256-judge-audit-strict-luna-high.md).
+  Strict: R@1 60,9% > low 57,0%; cobertura 83,6%. Invierte la decisión
+  legacy (mantener low). Empate R@1 con Sol medium, más cobertura.
+  LLM 71→31.
+- [x] gpt-5.6-luna xhigh (2026-09-09). Informe:
+  [results/2026-09-09-all256-judge-audit-strict-luna-xhigh.md](results/2026-09-09-all256-judge-audit-strict-luna-xhigh.md).
+  Strict: R@1 55,5%, cobertura 75% (22 EMPTY a 12k). Inválido. No usar.
+  LLM 73→34.
 - [ ] Reevaluar todo el histórico solo si cambia una conclusión o ranking
   relevante.
 - [ ] Etiquetar explícitamente cada resultado como `legacy_similarity` o
   `strict_equivalence`.
+- `docs/benchmark-report.html` **no se reescribe**. Las cifras strict van
+  a `docs/benchmark-report-strict-texto.html` y
+  `docs/benchmark-report-strict-multimodal.html`.
 
 ### 7. Comparación de modelos multimodales — pendiente
 
 - [x] Establecer `gpt5` como primera línea base con visión.
 - [ ] Confirmar qué modelos reciben realmente las imágenes en el servidor.
-- [ ] Integrar visión para GPT-5.6 Terra antes de evaluarlo como multimodal.
-- [ ] Ejecutar Terra low con `T` y `T+I` cuando ambas condiciones usen el mismo
-  modelo y el mismo contenido.
-- [ ] Comparar Terra con `gpt5` sin mezclar cambios de prompt, juez o resumen.
+- [x] Integrar visión para GPT-5.6 Terra en Server (`feature/terra-westus-vision`).
+  Deployment `gpt-5.6-terra` solo en WestUS (`us1`). Slug interno
+  `gpt56terra`. No es producto: solo override de eval.
+- [x] Ejecutar Terra T+I en los mismos 100 casos (2026-09-08).
+  Informe:
+  [results/2026-09-08-medreamm-pilot100-t-plus-i-gpt56terra.md](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt56terra.md).
+- [x] Ejecutar Terra `T` (mismo modelo, sin imágenes) para la ablación.
+  Informe:
+  [results/2026-09-08-medreamm-pilot100-t-gpt56terra.md](results/2026-09-08-medreamm-pilot100-t-gpt56terra.md).
+- [x] Comparar Terra con `gpt5` en T y en T+I, mismo juez.
+  - T+I: Terra 84/67% vs gpt5 80/61%; McNemar cobertura `p≈0,45`.
+  - T: Terra 65/50% vs gpt5 64/43%; McNemar cobertura `p≈1`.
+  - Terra T vs T+I: +19 cobertura, 24 vs 5, `p=0,00055`. Usa la imagen.
+- [x] Ejecutar Astra T+I (WestUS, slug `gpt6astra`). Informe:
+  [results/2026-09-08-medreamm-pilot100-t-plus-i-gpt6astra.md](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt6astra.md).
+  R@1 76% vs gpt5 61% (`p=0,0059`); cobertura 88% vs 80% (`p=0,057`).
+  vs Terra no significativo.
+- [x] Ejecutar Astra `T`. Informe:
+  [results/2026-09-08-medreamm-pilot100-t-gpt6astra.md](results/2026-09-08-medreamm-pilot100-t-gpt6astra.md).
+  T 67/54% vs T+I 88/76%; 22 vs 1, `p=0,00001`. Usa la imagen.
+- Decisión (2026-09-08, actualizada 09): **Astra no a producto ni a
+  override de eval.** Quitar del Server. Terra sigue como override de
+  eval; un A/B de producto Mini/Terra es otra decisión.
+- [x] HMS HPO 88, Astra vs Terra, mismo juez strict (2026-09-09).
+  Cobertura Terra 65,9% > Astra 59,1%; R@1 empatado 43,2%. No gana raras.
+  Informe:
+  [results/2026-09-09-hms88-gpt6astra.md](results/2026-09-09-hms88-gpt6astra.md).
 
-Terra no debe evaluarse todavía como sustituto multimodal si el servidor no le
-envía las imágenes. Una ejecución Terra `T` mediría únicamente texto.
+### 8. Ablación de resumen — hecha
 
-### 8. Ablación de resumen — pendiente
-
-- [ ] Identificar los casos resumidos en la cohorte de 100.
-- [ ] Repetir esos mismos casos sin resumen o con umbral superior.
-- [ ] Comparar pérdidas de información, latencia y acierto.
-- [ ] Decidir si el umbral de 1.000 caracteres debe mantenerse.
+- [x] Ablación resumen (2026-09-09): los 32 casos de gpt5 T+I que se
+  resumieron, mismos casos T+I, **sin resumen**, mismo gpt5. Flag
+  eval-only `skipSummarize`. Informe:
+  [results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md).
+  Cobertura 27/32 vs 30/32 con resumen (3 vs 0, `p=0,25`); R@1 22 vs 21
+  (`p=1,0`). **El umbral de 1.000 caracteres se queda.**
 
 ## Orden recomendado
 
@@ -181,12 +302,16 @@ envía las imágenes. Una ejecución Terra `T` mediría únicamente texto.
 2. David recorre los 20 unmatched y los 16 LLM
    ([MEDICAL_REVIEW_RONDA2.md](MEDICAL_REVIEW_RONDA2.md)).
 3. Decidir si 80/100 y la ganancia visual se pueden publicar.
-4. Tras David: probar jueces baratos/rápidos contra sus 36 etiquetas
-   (§5b). No lanzar antes.
+4. Tras David: jueces baratos vs 35 etiquetas (§5b) **hecho**. Siguiente:
+   Julián cierra el examen ([JULIAN_HARNESS_REVIEW.md](JULIAN_HARNESS_REVIEW.md));
+   entonces `gemini-3.8-flash` vs David. No poner Flash 2.5 de árbitro
+   publicado mientras tanto.
 5. Aplicar el juez strict a artefactos narrativos ya etiquetados (puente
    con producción, Terra low, Sol medium y baseline).
-6. Integrar visión para Terra y entonces comparar `T` frente a `T+I`.
-7. Medir el efecto del resumen de 1.000 caracteres.
+6. ~~Integrar visión para Terra y comparar `T` frente a `T+I`.~~ Hecho
+   (2026-09-08): Terra usa la imagen (`p=0,00055`).
+7. ~~Medir el efecto del resumen de 1.000 caracteres.~~ Hecho
+   (2026-09-09): saltarlo no gana cobertura. El umbral se queda.
 
 ## Criterio de cierre
 

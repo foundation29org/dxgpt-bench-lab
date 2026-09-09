@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DxGPT — borrador strict · multimodal</title>
+<link rel="stylesheet" href="benchmark-report-strict.css">
+</head>
+<body>
+<div class="hero">
+  <div class="hero-badge">Borrador · multimodal · 9 sep 2026</div>
+  <h1>MedReaMM · flujo beta</h1>
+  <p>Misma cohorte de 100, juez <code>strict_equivalence</code>. T sin imagen está aquí
+     porque es el mismo flujo de producto (no es all_256).
+     No sustituye a <a href="benchmark-report.html" style="color:#dbeafe;">benchmark-report.html</a>.</p>
+  <p class="hero-nav">
+    <a href="benchmark-report-strict-texto.html">Texto (256 + HPO)</a>
+    ·
+    <a href="benchmark-report-strict-multimodal.html">Multimodal</a>
+  </p>
+</div>
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">Ranking T+I · n=100 · historia + imágenes del mismo caso</div>
+    <div class="callout callout-warn">
+      Orden: R@1, luego cobertura. Astra encabeza la tabla pero <strong>no va a producto</strong>
+      (latencia/coste; vs Terra p n.s.). gpt5 es el default con imagen hoy.
+    </div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Modelo</th>
+          <th>R@1</th>
+          <th>R@3</th>
+          <th>R@5</th>
+          <th>Cobertura</th>
+          <th>Pos. media</th>
+          <th>~s/caso</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-gold">1</span></td>
+          <td>gpt-6-astra <span class="badge badge-muted">no producto</span></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-green" style="width:100%"></div></div>
+              <span class="bar-label">76%</span>
+            </div>
+          </td>
+          <td>87%</td>
+          <td>88%</td>
+          <td>88%</td>
+          <td>1,205</td>
+          <td>55,1 s</td>
+          <td>vs Terra cobertura p=0,42 · R@1 p=0,11</td>
+        </tr>
+        <tr class="winner">
+          <td><span class="rank-silver">2</span></td>
+          <td><strong>gpt-5.6-terra</strong></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:88%"></div></div>
+              <span class="bar-label">67%</span>
+            </div>
+          </td>
+          <td>82%</td>
+          <td>84%</td>
+          <td>84%</td>
+          <td>1,310</td>
+          <td>24,3 s</td>
+          <td>Override eval · vs gpt5 cobertura p≈0,45</td>
+        </tr>
+        <tr>
+          <td><span class="rank-bronze">3</span></td>
+          <td><strong>gpt5</strong> <em>(producto con imagen)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div>
+              <span class="bar-label">61%</span>
+            </div>
+          </td>
+          <td>74%</td>
+          <td>78%</td>
+          <td>80%</td>
+          <td>1,462</td>
+          <td>40,2 s</td>
+          <td>Default actual si hay foto</td>
+        </tr>
+        <tr>
+          <td class="blank">—</td>
+          <td>gpt54mini T+I</td>
+          <td class="blank">—</td>
+          <td class="blank">—</td>
+          <td class="blank">—</td>
+          <td class="blank">—</td>
+          <td class="blank">—</td>
+          <td class="blank">—</td>
+          <td>Mini no recibe imágenes en producto</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Ranking T · n=100 · misma historia, cero imágenes</div>
+    <div class="callout callout-info">
+      Sigue siendo este track: mismos 100 casos MedReaMM y el mismo API.
+      No es all_256. Sirve para ver si T+I gana de verdad o solo cambió el modelo.
+    </div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Modelo</th>
+          <th>R@1</th>
+          <th>R@3</th>
+          <th>R@5</th>
+          <th>Cobertura</th>
+          <th>Pos. media</th>
+          <th>~s/caso</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>gpt-6-astra <span class="badge badge-muted">no producto</span></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-green" style="width:100%"></div></div>
+              <span class="bar-label">54%</span>
+            </div>
+          </td>
+          <td>66%</td>
+          <td>67%</td>
+          <td>67%</td>
+          <td>1,313</td>
+          <td>47,3 s</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>gpt-5.6-terra</td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:93%"></div></div>
+              <span class="bar-label">50%</span>
+            </div>
+          </td>
+          <td>60%</td>
+          <td>65%</td>
+          <td>65%</td>
+          <td>1,477</td>
+          <td>20,1 s</td>
+          <td>vs gpt5 T cobertura p≈1</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>gpt5</td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div>
+              <span class="bar-label">43%</span>
+            </div>
+          </td>
+          <td>58%</td>
+          <td>63%</td>
+          <td>64%</td>
+          <td>1,641</td>
+          <td>35,6 s</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>gpt54mini</strong> <em>(producto sin imagen)</em></td>
+          <td>
+            <div class="bar-container">
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div>
+              <span class="bar-label">43%</span>
+            </div>
+          </td>
+          <td>56%</td>
+          <td>58%</td>
+          <td>58%</td>
+          <td>1,397</td>
+          <td>14,3 s</td>
+          <td>Default actual si no hay foto</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Terra T→T+I: +19 pp cobertura, p=0,00055. Astra T→T+I: +21 pp, p=0,00001. gpt5 T→T+I: +16 pp, p=0,00154. Los tres usan la imagen.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Controles · no entran en el ranking de modelos</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Condición</th>
+          <th>Modelo</th>
+          <th>R@1</th>
+          <th>R@3</th>
+          <th>R@5</th>
+          <th>Cobertura</th>
+          <th>Qué responde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>I (solo imagen)</td>
+          <td>gpt5</td>
+          <td>32%</td><td>42%</td><td>49%</td><td>50%</td>
+          <td>Hay señal visual, no sustituye a la historia</td>
+        </tr>
+        <tr>
+          <td>T+shuffled-I</td>
+          <td>gpt5</td>
+          <td>46%</td><td>57%</td><td>60%</td><td>62%</td>
+          <td>Indistinguible de T (p=0,79). La foto tiene que ser del caso.</td>
+        </tr>
+        <tr>
+          <td>T+I sin resumen (32 casos)</td>
+          <td>gpt5</td>
+          <td>69%</td><td>75%</td><td>84%</td><td>84%</td>
+          <td>Vs mismos 32 resumidos: cobertura 30→27 (p=0,25). El umbral de 1.000 caracteres se queda.</td>
+        </tr>
+        <tr>
+          <td>T+shuffled-I</td>
+          <td>terra / astra</td>
+          <td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td>
+          <td>No corrido</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<footer>Borrador interno · track multimodal · 2026-09-09</footer>
+</body>
+</html>

@@ -535,6 +535,10 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Validate case files and limits without calling DxGPT.",
     )
+    parser.add_argument(
+        "--case-ids",
+        help="Comma-separated case IDs to run. Default: all cases in the manifest.",
+    )
     return parser.parse_args()
 
 
@@ -555,6 +559,13 @@ def main() -> int:
         validate_case(case, manifest_path.parent)
         for case in conditioned_cases
     ]
+    if args.case_ids:
+        wanted = {item.strip() for item in args.case_ids.split(",") if item.strip()}
+        known = {case["id"] for case in cases}
+        missing = sorted(wanted - known)
+        if missing:
+            raise EvaluationError(f"Unknown case IDs: {', '.join(missing)}")
+        cases = [case for case in cases if case["id"] in wanted]
     print(f"Validated {len(cases)} case(s) from {manifest_path.name}")
 
     if args.dry_run:
