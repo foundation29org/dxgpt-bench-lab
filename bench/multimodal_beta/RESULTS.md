@@ -72,7 +72,8 @@ mismas respuestas del modelo. Solo cambia la política del juez.
   sin resumen, cobertura 27/32 vs 30/32 con resumen (3 vs 0; McNemar
   `p=0,25`). R@1 22 vs 21 (`p=1,0`). **El umbral se queda.** Informe:
   [results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md).
-- Las tareas y su orden están en [ROADMAP.md](ROADMAP.md).
+- Las tareas y su orden están en el
+  [roadmap general](../../docs/ROADMAP.md).
 
 ## Comparación con el benchmark narrativo
 
@@ -93,13 +94,32 @@ La posición media se calcula solo entre casos con match. Por ello, una posició
 casos fallidos desaparecen del promedio. La comparación narrativa justa exige reevaluar sus respuestas existentes
 con el juez strict. Hecho para mini, Terra, Sol medium, gemini-3-pro-preview
 low, gemini-3.1-pro-preview low, gemini-3.5-flash low, gemini-3.1-flash-lite
-low, gpt-4o, Astra low, gpt-5.4, Terra high y Terra medium: el 98% era
-`legacy_similarity`. Rank por R@1: Terra low 63,3% > gpt-5.4 62,9% >
-Terra high = medium = xhigh 62,5% (cobertura high 85,2% > medium 84,4% >
-xhigh 79,7%) > Astra = Flash 62,1%. Low sigue 1º. xhigh no usar. Informes:
+low, gpt-4o, Astra low, gpt-5.4, Terra high, Terra medium y gemini-2.5-pro
+low: el 98% era `legacy_similarity`. Rank por R@1: Terra low 63,3% >
+gpt-5.4 62,9% > Terra high = medium = xhigh 62,5% (cobertura high 85,2% >
+medium 84,4% > xhigh 79,7%) > Astra = Flash 62,1%. Low sigue 1º. xhigh no
+usar. gemini-2.5-pro low (2026-09-15): 59,4% / cobertura 75,4%, empata con
+3-pro; es el avanzado **real** de producción porque el slug 3-pro devuelve
+404 y el Server cae al fallback. Informes:
 [results/2026-09-09-all256-judge-audit-strict-terra-medium.md](results/2026-09-09-all256-judge-audit-strict-terra-medium.md),
-[results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md](results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md).
-Ronda 2 de David (36 casos) entregada: 2 FP, 3 FN; 80/100 → 81 recodificado.
+[results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md](results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md),
+[results/2026-09-15-all256-judge-audit-strict-gemini25pro.md](results/2026-09-15-all256-judge-audit-strict-gemini25pro.md).
+HMS 88 strict (2026-09-15), paso 1 HPO: 3-pro R@1 46,6% > Terra 43,2% >
+3.8-flash 42,0% > 2.5-pro 40,9% > 3.5-flash 38,6% > mini 36,4%.
+Cobertura Terra 65,9% > 2.5-pro 59,1% > mini = 3.8 54,5% > 3-pro 52,3%
+> 3.5-flash 48,9%. En raras se invierte all_256: 3.8 gana a 3.5 y pierde
+con Terra (37 vs 38 P1). 3.5-flash no vale como avanzado barato aquí.
+DDD no lanzado. Informes:
+[results/2026-09-15-hms88-judge-audit-strict-mini-gemini3pro.md](results/2026-09-15-hms88-judge-audit-strict-mini-gemini3pro.md),
+[results/2026-09-15-hms88-judge-audit-strict-gemini25pro-31pro.md](results/2026-09-15-hms88-judge-audit-strict-gemini25pro-31pro.md),
+[results/2026-09-15-hms88-judge-audit-strict-gemini35-38flash.md](results/2026-09-15-hms88-judge-audit-strict-gemini35-38flash.md).
+gemini-3.8-flash low (2026-09-15): R@1 59,8% / cobertura 77,7% / 4,4 s.
+No gana a 3.5-flash en R@1 (62,1%); sube un poco el techo Gemini de
+cobertura (75→78). No sustituye. Informe:
+[results/2026-09-15-all256-judge-audit-strict-gemini38flash.md](results/2026-09-15-all256-judge-audit-strict-gemini38flash.md).
+Ronda 2 de David (36 casos) entregada: 2 FP, 3 FN; `24910386` =
+`gold_ambiguo` (2026-09-14, no FN). 80/100 → 81 recodificado: no usar
+como cifra clínica cerrada.
 
 ## Ubicación de los jueces
 

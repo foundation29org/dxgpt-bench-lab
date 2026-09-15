@@ -10,8 +10,9 @@ La revisión clínica pendiente está preparada en
 [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md).
 El historial consolidado de ejecuciones y métricas se mantiene en
 [RESULTS.md](RESULTS.md).
-El estado y orden de las tareas pendientes se mantiene en
-[ROADMAP.md](ROADMAP.md).
+El único estado operativo y orden de tareas se mantiene en el
+[roadmap general](../../docs/ROADMAP.md). El antiguo roadmap específico se
+conserva como [historial](ROADMAP_HISTORY.md).
 Cómo endurecer el examen (capas ICD/BERT/juez, no el modelo) está en
 [HARNESS_EVAL.md](HARNESS_EVAL.md).
 El mapa de ambos tracks (beta + narrativo + juez) está en

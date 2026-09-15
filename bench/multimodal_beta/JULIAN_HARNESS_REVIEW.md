@@ -10,10 +10,10 @@ esa lista con el diagnóstico publicado del caso (`gold`) mediante
 códigos médicos, SapBERT y, en los casos dudosos, un LLM. Este
 documento revisa ese segundo sistema.
 
-David etiquetó 36 comparaciones dudosas. Una quedó con una etiqueta
-inválida, por lo que inicialmente usamos 35 como referencia para
-comparar varios LLM juez. Al revisar sus desacuerdos contra los
-artículos fuente encontramos:
+David etiquetó 36 comparaciones dudosas. `24910386` quedó
+`gold_ambiguo` (2026-09-14): el gold no es una enfermedad y no cuenta
+para acierto/error del juez. Usamos 35 como referencia. Al revisar
+sus desacuerdos contra los artículos fuente encontramos:
 
 - al menos una corrección humana probablemente errónea;
 - una fila internamente contradictoria;
@@ -162,8 +162,8 @@ no se aplica a esos casos: el hermano ICD ya cerró.
 ## 6. Ablación del modelo y auditoría de las etiquetas (2026-09-09)
 
 Mismas 100 T+I gpt5, mismo `labeled_input.json`, prompt strict.
-Gold = David ronda 2, **35 ids** (`24910386` fuera: etiqueta inválida
-`incorrecto`; mail ya enviado).
+Gold = David ronda 2, **35 ids** (`24910386` fuera: `gold_ambiguo`,
+cerrado 2026-09-14; no es FN).
 
 Estas cifras miden **acuerdo con las etiquetas iniciales de David**,
 no precisión clínica definitiva:
@@ -221,8 +221,8 @@ Informes: `results/2026-09-09-judge-ablation-*.md`.
    (narrativo) y `docs/benchmark-report-strict-multimodal.html`.
    `docs/benchmark-report.html` está congelado (legacy).
 
-Detalles abiertos para David: recodificar `24910386` y readjudicar la
-tabla de §6.1 una vez Julián haya cerrado la rúbrica.
+`24910386` cerrado. Falta readjudicar la tabla de §6.1 una vez Julián
+haya cerrado las reglas de corrección.
 
 ---
 

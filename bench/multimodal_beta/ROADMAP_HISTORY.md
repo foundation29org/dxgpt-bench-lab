@@ -1,3 +1,10 @@
+# Historial detallado del roadmap multimodal
+
+Snapshot archivado a 2026-09-15 del contenido completo que tenía
+`ROADMAP.md`. Se conserva como registro de tareas, métricas, criterios,
+comandos y referencias históricas. El estado operativo vigente está en
+el [roadmap general](../../docs/ROADMAP.md).
+
 # Roadmap de evaluación multimodal
 
 Este documento mantiene el estado, las decisiones y las tareas pendientes del
@@ -93,8 +100,10 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
   Recuento inicial de David: 2 FP, 3 FN y 2 golds amplios; daba una
   recodificación provisional de 81/100. No usarla como cifra clínica
   cerrada: al contrastar los desacuerdos con los artículos aparecieron
-  etiquetas inconsistentes y casos que la rúbrica no resuelve. Pendiente
-  `24910386` y readjudicación corta tras la revisión de Julián (§5c).
+  etiquetas inconsistentes y casos que la rúbrica no resuelve.
+  `24910386` cerrado 2026-09-14: `gold_ambiguo` (el gold no es
+  enfermedad; no cuenta para el juez). Sigue fuera de los 35. Falta
+  readjudicación corta de los conflictivos tras Julián (§5c).
 - [ ] Fijar una política para golds amplios, fenotípicos o morfológicos.
 - [ ] Decidir si se publican dos métricas: equivalencia exacta y utilidad
   clínica.
@@ -103,7 +112,7 @@ Resultado provisional de 100 casos: R@1 61%, R@3 74%, R@5 78% y cobertura
 
 Se probaron otros `JUDGE_MODEL` con el mismo prompt `strict_equivalence`,
 las mismas 100 respuestas y el mismo `labeled_input.json`. No se repitió
-inferencia. `24910386` quedó fuera.
+inferencia. `24910386` quedó fuera (ahora confirmado `gold_ambiguo`).
 
 Objetivo: encontrar un juez rápido y barato que concuerde con una referencia
 humana estable. Los números siguientes solo miden acuerdo con las **etiquetas
@@ -117,7 +126,7 @@ cambiar).
 - [x] Esperar ronda 2 de David (36 veredictos iniciales).
   5b cerrado (2026-09-09): segunda tira de jueces baratos, mismas 100 T+I.
   DeepSeek-V4-Pro inválido (Azure). `gemini-2.5-flash-lite` 404; sustituto
-  `gemini-3.5-flash-lite`. `24910386` fuera.
+  `gemini-3.5-flash-lite`. `24910386` fuera (`gold_ambiguo`, 2026-09-14).
 - [x] Reusar `labeled_input.json` de T+I; no repetir inferencia ni MedLabeler.
 - [x] Probar primero jueces baratos/rápidos (Flash / mini), no flagships.
   Flash (2026-09-09): 31/35 vs David (Pro 30/35), cobertura 85/100.
@@ -301,8 +310,8 @@ multimodal. Para construir un puente:
 1. David completa [MEDICAL_REVIEW.md](MEDICAL_REVIEW.md) y devuelve
    [reviews/david_deliverable.md](reviews/david_deliverable.md).
    **Hecho.**
-2. David recorre los 20 unmatched y los 16 LLM: **hecho**, pendiente
-   `24910386`.
+2. David recorre los 20 unmatched y los 16 LLM: **hecho**.
+   `24910386` = `gold_ambiguo` (2026-09-14).
 3. Julián fija la rúbrica y las métricas
    ([JULIAN_HARNESS_REVIEW.md](JULIAN_HARNESS_REVIEW.md)).
 4. David readjudica solo los casos conflictivos; recalcular 5b y elegir juez.
