@@ -1,0 +1,38 @@
+EXPERIMENT_NAME: all_256_clean-juanjo_classic_v2-gemini_3_8_flash_low
+EXPERIMENT_DESCRIPTION: >-
+  gemini-3.8-flash low sobre all_256_clean, mismo prompt y juez que 3.5-flash.
+  Inferencia nueva; ranking comparable en legacy y luego strict.
+  Pregunta: ¿rompe el techo Gemini ~75% cobertura strict o cae igual?
+
+DATASET_PATH: bench/datasets/all_256_clean.json
+
+DXGPT_EMULATOR:
+  MODEL: gemini-3.8-flash
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    thinking_level: low
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 4
+
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    reasoning_effort: low
+    thinking_level: low
+    max_tokens: 10000
+    temperature: 0.1
+  PARALLEL_WORKERS: 4
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
