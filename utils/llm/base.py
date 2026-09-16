@@ -9,6 +9,10 @@ from typing import Dict, Any, Optional, Union, List
 
 class BaseLLM(ABC):
     """Abstract base class for LLM implementations."""
+
+    def get_last_usage(self) -> Optional[Dict[str, Any]]:
+        """Return provider usage for the current thread, when available."""
+        return None
     
     @abstractmethod
     def generate(

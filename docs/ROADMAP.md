@@ -1,6 +1,6 @@
 # DxGPT — roadmap operativo
 
-**Actualizado:** 2026-09-15
+**Actualizado:** 2026-09-16
 **Estado:** decisión de producto cerrada; implementación UI/Server pendiente.
 
 ## Decisión vigente de producto
@@ -66,10 +66,33 @@ Terra y no modifica UI, Server, routing ni deployments.**
 
 ## Trabajo pendiente de evaluación/publicación
 
+- [x] Reevaluar `o3-dxgpt high` en `all_256_clean` con strict como referencia
+  del otro tenant: R@1 56,6%, cobertura 80,9%; no supera a Terra.
+- [x] Medir jueces Pro, Flash dinámico/sin thinking, Grok y Kimi sobre las 256
+  listas congeladas de Terra, incluyendo tokens, latencia y coste. Flash sin
+  thinking: $0,0087 y p50 0,57 s vs $1,800 y 9,60 s de Pro.
+- [x] Ejecutar `Kimi-K2.6` mediante el deployment Azure de `dxgptbot`:
+  $1,125, p50 6,09 s, p95 39,62 s y 28/35 frente a las etiquetas humanas
+  iniciales. No promover.
+- [ ] **David — nueva tarea, no continuación de ronda 2:** revisar las
+  13 discrepancias que deciden Pro vs Flash sin thinking en la
+  [tarea ciega](../bench/multimodal_beta/reviews/david_review_all256_pro_vs_flash_blind.md).
+  Entrega: gold válido/ambiguo, posición equivalente o 0 y justificación
+  breve. Las discrepancias adicionales de Kimi/Grok quedan fuera porque no son
+  candidatos a juez.
+- [ ] DeepSeek V4 Flash está retirado y V4 Pro redirige actualmente a V4.1
+  Flash: probar solo `deepseek-flash` cuando exista acceso verificable.
+- [ ] Mantener una tarea continua de radar, no de selección de producto:
+  evaluar modelos nuevos únicamente cuando estén disponibles por API y aporten
+  una hipótesis concreta. Próximos candidatos: Kimi K3/K2.6, Grok posterior a
+  4.6, DeepSeek V4.1 Pro, próximos Gemini Flash y lanzamientos médicos o
+  multimodales de Qwen/Alibaba. Metodología: strict, regresión congelada,
+  coste/latencia y auditoría humana del juez. Terra sigue siendo el único
+  modelo de producto salvo decisión explícita posterior.
 - [ ] Julián cierra la rúbrica: métrica principal, escala binaria o 2/1/0,
   tratamiento de especificidad/subtipos y papel de ICD/BERT.
-- [ ] David readjudica únicamente los casos conflictivos con la rúbrica
-  cerrada; recalcular acuerdo, precisión/recall y matriz de confusión del juez.
+- [ ] Al recibir la nueva revisión de David, recalcular acuerdo,
+  precisión/recall y matriz de confusión Pro vs Flash sin thinking.
 - [ ] Ablacionar por separado hermanos ICD, padres ICD y umbrales BERT sobre
   listas congeladas; no mezclar cambios en una sola medición.
 - [ ] Etiquetar toda cifra publicada como `strict_equivalence` o
@@ -136,4 +159,5 @@ producto vigente.
 - [Índice de resultados multimodales y strict](../bench/multimodal_beta/RESULTS.md)
 - [Brief de Julián sobre el evaluador](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md)
 - [Informe strict de texto](benchmark-report-strict-texto.html)
+- [Informe de coste, latencia y acuerdo de jueces](benchmark-report-jueces.html)
 - [Log histórico del pipeline](pipeline/experiment-log.md)
