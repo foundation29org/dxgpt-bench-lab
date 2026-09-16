@@ -4,6 +4,7 @@ xAI SDK wrapper for Grok models
 """
 
 import os
+import threading
 import warnings
 import json
 from typing import Dict, Any, Optional, Union, List
@@ -101,6 +102,7 @@ class XaiLLM(BaseLLM):
         
         self.model_name = model_name
         self._logger = logger
+        self._thread_local = threading.local()
     
     @cached_property
     def client(self) -> Client:
@@ -109,6 +111,10 @@ class XaiLLM(BaseLLM):
             api_key=self.config.api_key,
             timeout=self.config.timeout
         )
+
+    def get_last_usage(self) -> Optional[Dict[str, Any]]:
+        """Return token usage from this thread's latest xAI response."""
+        return getattr(self._thread_local, "last_usage", None)
     
     def generate(
         self,
@@ -145,10 +151,16 @@ class XaiLLM(BaseLLM):
             except KeyError as e:
                 raise KeyError(f"Missing template variable: {e}")
         
-        # Create chat and add user message
-        # Note: xAI SDK's chat.sample() doesn't accept max_tokens or temperature directly
-        # These parameters might need to be set at chat creation or are not supported
-        chat = self.client.chat.create(model=self.model_name)
+        # Generation controls belong to chat creation in the xAI SDK.
+        chat_params: Dict[str, Any] = {"model": self.model_name}
+        if max_tokens is not None:
+            chat_params["max_tokens"] = max_tokens
+        if temperature is not None:
+            chat_params["temperature"] = temperature
+        reasoning_effort = kwargs.pop("reasoning_effort", None)
+        if reasoning_effort is not None:
+            chat_params["reasoning_effort"] = reasoning_effort
+        chat = self.client.chat.create(**chat_params)
         chat.append(user(prompt))
         
         # Log request
@@ -156,27 +168,39 @@ class XaiLLM(BaseLLM):
             self._logger.info(f"xAI API call - Model: {self.model_name}")
             self._logger.info(f"xAI API call - Prompt length: {len(prompt)} chars")
             if max_tokens:
-                self._logger.info(f"xAI API call - max_tokens: {max_tokens} (not supported by xAI SDK, ignoring)")
+                self._logger.info(f"xAI API call - max_tokens: {max_tokens}")
             if temperature is not None:
-                self._logger.info(f"xAI API call - temperature: {temperature} (not supported by xAI SDK, ignoring)")
+                self._logger.info(f"xAI API call - temperature: {temperature}")
+            if reasoning_effort is not None:
+                self._logger.info(
+                    f"xAI API call - reasoning_effort: {reasoning_effort}"
+                )
         
         try:
-            # xAI SDK's chat.sample() doesn't accept parameters
-            # Parameters like max_tokens and temperature are not supported in the current SDK version
             response = chat.sample()
             
             # Extract content
             content = response.content
             
+            usage = getattr(response, "usage", None)
+            usage_record = {
+                "input_tokens": getattr(usage, "prompt_tokens", 0) or 0,
+                "cached_input_tokens": (
+                    getattr(usage, "cached_prompt_text_tokens", 0) or 0
+                ),
+                "output_tokens": getattr(usage, "completion_tokens", 0) or 0,
+                "reasoning_tokens": getattr(usage, "reasoning_tokens", 0) or 0,
+                "total_tokens": getattr(usage, "total_tokens", 0) or 0,
+            }
+            self._thread_local.last_usage = usage_record
+
             # Log response
             if self._logger:
                 self._logger.info(f"xAI API response type: {type(response)}")
-                if hasattr(response, 'usage'):
-                    usage = response.usage
-                    if usage:
-                        self._logger.info(f"xAI usage - prompt_tokens: {getattr(usage, 'prompt_tokens', 'N/A')}, "
-                                        f"completion_tokens: {getattr(usage, 'completion_tokens', 'N/A')}, "
-                                        f"total_tokens: {getattr(usage, 'total_tokens', 'N/A')}")
+                self._logger.info(
+                    "LLM_USAGE_JSON %s",
+                    json.dumps(usage_record, sort_keys=True),
+                )
             
             # Handle schema if provided (parse JSON)
             if schema is not None:

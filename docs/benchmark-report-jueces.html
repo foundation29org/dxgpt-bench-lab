@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DxGPT — benchmark de jueces strict</title>
+<link rel="stylesheet" href="benchmark-report-strict.css">
+</head>
+<body>
+<div class="hero">
+  <div class="hero-badge">Borrador · jueces strict · 16 sep 2026</div>
+  <h1>Coste, latencia y acuerdo del juez</h1>
+  <p>Las mismas 256 listas congeladas de Terra y 133 prompts de equivalencia
+     para Pro, Flash, Grok y Kimi. Incluye Flash con thinking desactivado.</p>
+  <p class="hero-nav">
+    <a href="benchmark-report-strict-texto.html">Texto (256 + HPO)</a>
+    ·
+    <a href="benchmark-report-strict-multimodal.html">Multimodal</a>
+    ·
+    <a href="benchmark-report-jueces.html">Jueces</a>
+  </p>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="section-title">Conclusión operativa</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-label">Pro · coste 133 llamadas</div>
+        <div class="card-value">$1,800</div>
+        <div class="card-sub">Referencia actual · mediana 9,60 s</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Flash sin thinking · 133 llamadas</div>
+        <div class="card-value">$0,0087</div>
+        <div class="card-sub">208× más barato · mediana 0,57 s</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Kimi K2.6 · 133 llamadas</div>
+        <div class="card-value">$1,125</div>
+        <div class="card-sub">Mediana 6,09 s · p95 39,62 s</div>
+      </div>
+    </div>
+    <div class="callout callout-warn">
+      <strong>Flash sin thinking es ahora el candidato claro.</strong>
+      Mantiene 30/35 de acuerdo humano inicial, igual que Pro, con 11
+      discrepancias binarias frente a él en los 256. Cuesta unas 208 veces
+      menos y reduce la mediana de 9,60 a 0,57 s. Falta revisar esas
+      discrepancias antes de sustituir el juez.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tabla formal de latencia y coste · 133 llamadas</div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Juez</th>
+          <th>Entrada</th>
+          <th>Salida + reasoning</th>
+          <th>Mediana</th>
+          <th>p95</th>
+          <th>Coste</th>
+          <th>vs Pro</th>
+          <th>Acuerdo humano inicial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gemini 2.5 Pro</strong></td>
+          <td>27.730 tok</td>
+          <td>176.529 tok</td>
+          <td>9,60 s</td>
+          <td>17,05 s</td>
+          <td>$1,800</td>
+          <td>Referencia</td>
+          <td>30/35 · 85,7%</td>
+        </tr>
+        <tr>
+          <td><strong>Gemini 2.5 Flash dinámico</strong></td>
+          <td>27.730 tok</td>
+          <td>151.463 tok</td>
+          <td>4,08 s</td>
+          <td>18,18 s</td>
+          <td>$0,387</td>
+          <td>−78,5% coste · 2,35× mediana</td>
+          <td>31/35 · 88,6%</td>
+        </tr>
+        <tr class="winner">
+          <td><strong>Gemini 2.5 Flash sin thinking</strong></td>
+          <td>27.730 tok</td>
+          <td>133 tok</td>
+          <td>0,57 s</td>
+          <td>0,77 s</td>
+          <td>$0,0087</td>
+          <td>−99,5% coste · 16,9× mediana</td>
+          <td>30/35 · 85,7%</td>
+        </tr>
+        <tr>
+          <td>Grok 4.6 low</td>
+          <td>110.685 tok · 67.328 cacheados</td>
+          <td>41.587 tok</td>
+          <td>4,90 s</td>
+          <td>11,67 s</td>
+          <td>$0,370</td>
+          <td>−79,4% coste</td>
+          <td>27/35 · 77,1%</td>
+        </tr>
+        <tr>
+          <td>Kimi K2.6</td>
+          <td>28.882 tok · 256 cacheados</td>
+          <td>274.504 tok</td>
+          <td>6,09 s</td>
+          <td>39,62 s</td>
+          <td>$1,125</td>
+          <td>−37,5% coste</td>
+          <td>28/35 · 80,0%</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">
+      Latencia por llamada API, cuatro workers. Coste estimado con uso real:
+      reasoning se factura como salida. Los 35 son las etiquetas iniciales de
+      David en el piloto multimodal de 100; no son todavía un gold clínico
+      definitivo. Azure no separó el reasoning de Kimi: sus 274.504
+      completion tokens se contabilizan íntegramente como salida.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Efecto del juez sobre las mismas 256 listas de Terra</div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Juez</th>
+          <th>R@1</th>
+          <th>R@3</th>
+          <th>R@5</th>
+          <th>Cobertura</th>
+          <th>Pos. media</th>
+          <th>MRR</th>
+          <th>Acuerdo binario vs Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gemini 2.5 Pro</td>
+          <td>62,9%</td><td>80,1%</td><td>83,6%</td><td>83,6%</td>
+          <td>1,416</td><td>0,713</td><td>Referencia</td>
+        </tr>
+        <tr>
+          <td>Gemini 2.5 Flash dinámico</td>
+          <td>66,4%</td><td>84,4%</td><td>87,9%</td><td>87,9%</td>
+          <td>1,404</td><td>0,752</td><td>94,9%</td>
+        </tr>
+        <tr class="winner">
+          <td>Gemini 2.5 Flash sin thinking</td>
+          <td>65,2%</td><td>82,4%</td><td>85,5%</td><td>85,5%</td>
+          <td>1,393</td><td>0,736</td><td>95,7%</td>
+        </tr>
+        <tr>
+          <td>Grok 4.6 low</td>
+          <td>59,0%</td><td>75,0%</td><td>78,1%</td><td>78,1%</td>
+          <td>1,415</td><td>0,667</td><td>94,5%</td>
+        </tr>
+        <tr>
+          <td>Kimi K2.6</td>
+          <td>61,3%</td><td>77,7%</td><td>80,5%</td><td>80,5%</td>
+          <td>1,398</td><td>0,691</td><td>95,3%</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout callout-info">
+      Pro dio 214 matches en esta repetición y 213 en la anterior. Esa
+      diferencia de un caso muestra que temperatura 0,1 + thinking dinámico
+      no es totalmente determinista.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Qué significa «readjudicar» y siguiente paso</div>
+    <p>
+      David ya terminó la ronda 2 original. Esta es una tarea nueva sobre los
+      256: revisar únicamente los 13 casos donde Pro y Flash sin thinking
+      discrepan. Las otras discrepancias de Kimi y Grok quedan fuera porque
+      esos modelos ya no son candidatos.
+    </p>
+    <h3>Orden recomendado</h3>
+    <ol style="padding-left:24px;">
+      <li>Enviar a David la
+          <a href="../bench/multimodal_beta/reviews/david_review_all256_pro_vs_flash_blind.md">tarea ciega ya preparada</a>
+          con los 13 casos.</li>
+      <li>Aplicar antes de mirar el resultado el criterio de no inferioridad:
+          Flash puede tener como máximo un error adicional frente a Pro y no
+          debe añadir falsos positivos clínicamente peligrosos.</li>
+      <li>Con las respuestas de David, recalcular acuerdo, precisión,
+          recall y matriz FP/FN de Pro y Flash.</li>
+      <li>Si Flash sin thinking cumple el criterio, sustituir Pro como juez
+          operativo y conservar Pro para auditorías periódicas.</li>
+      <li>Si no se hace la revisión humana, mantener Pro. No hacen falta más
+          ejecuciones sobre los 256.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Estado de los jueces solicitados</div>
+    <table>
+      <thead>
+        <tr><th>Modelo</th><th>Estado</th><th>Acción</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kimi K2.6</td>
+          <td>Completado mediante el deployment Azure existente</td>
+          <td>No promover: 28/35 y coste $1,125</td>
+        </tr>
+        <tr>
+          <td>Grok 4.6</td>
+          <td>Completado</td>
+          <td>No promover: 27/35 con las etiquetas humanas iniciales</td>
+        </tr>
+        <tr>
+          <td>DeepSeek V4 Flash</td>
+          <td>Retirado; el alias sirve V4.1 Flash</td>
+          <td>Usar <code>deepseek-flash</code> si se habilita acceso</td>
+        </tr>
+        <tr>
+          <td>DeepSeek V4 Pro</td>
+          <td>Redirigido temporalmente a V4.1 Flash</td>
+          <td>No duplicar el test de Flash</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Precios y trazabilidad</div>
+    <p>
+      Tarifa oficial usada: Gemini 2.5 Pro $1,25/M entrada y $10/M salida;
+      Gemini 2.5 Flash $0,30/M entrada y $2,50/M salida; Grok 4.6 $2/M
+      entrada, $0,50/M cacheada y $6/M salida; Kimi K2.6 $0,95/M entrada
+      y $4/M salida en Azure Foundry.
+    </p>
+    <div class="callout callout-warn">
+      La tarifa oficial vigente de Gemini 2.5 Flash es $2,50/M de salida
+      incluyendo thinking. El dato de $0,60 sin thinking no es la tarifa
+      oficial actual.
+    </div>
+    <p class="note">
+      Fuentes:
+      <a href="https://ai.google.dev/gemini-api/docs/pricing">Google Gemini API</a>
+      ·
+      <a href="https://docs.x.ai/developers/pricing">xAI</a>
+      ·
+      <a href="https://azure.microsoft.com/pricing/details/ai-foundry-models/kimi/">Azure Kimi</a>
+      ·
+      <a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek</a>.
+      Artefactos: <code>bench/multimodal_beta/outputs/judge_benchmark/</code>.
+    </p>
+  </div>
+</div>
+
+<footer>Borrador interno · benchmark de jueces · 2026-09-16</footer>
+</body>
+</html>

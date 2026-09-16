@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · solo texto · 9 sep 2026</div>
+  <div class="hero-badge">Borrador · solo texto · 16 sep 2026</div>
   <h1>Texto narrativo y HPO</h1>
   <p>Pipeline V4, juez <code>strict_equivalence</code>. No incluye MedReaMM ni imágenes.
      No sustituye a <a href="benchmark-report.html" style="color:#dbeafe;">benchmark-report.html</a>.
@@ -17,6 +17,8 @@
     <a href="benchmark-report-strict-texto.html">Texto (256 + HPO)</a>
     ·
     <a href="benchmark-report-strict-multimodal.html">Multimodal</a>
+    ·
+    <a href="benchmark-report-jueces.html">Jueces</a>
   </p>
 </div>
 <div class="container">
@@ -152,18 +154,24 @@
         </tr>
         <tr>
           <td>20</td>
+          <td>o3-dxgpt high <span class="badge badge-muted">otro tenant</span></td>
+          <td>56,6%</td><td>74,2%</td><td>80,5%</td><td>80,9%</td><td>1,614</td><td>—</td>
+          <td>Referencia strict · no supera a Terra · LLM 76→23</td>
+        </tr>
+        <tr>
+          <td>21</td>
           <td>gpt-5.6-luna medium</td>
           <td>56,6%</td><td>74,2%</td><td>78,9%</td><td>79,7%</td><td>1,554</td><td>7,8</td>
           <td>Peor R@1 que low · LLM 80→31 · no usar</td>
         </tr>
         <tr>
-          <td>21</td>
+          <td>22</td>
           <td>gemini-2.5-flash low</td>
           <td>56,6%</td><td>72,7%</td><td>74,2%</td><td>74,2%</td><td>1,342</td><td>~21</td>
           <td>Suelo Gemini · LLM 82→20</td>
         </tr>
         <tr>
-          <td>22</td>
+          <td>23</td>
           <td>gpt-5.6-luna xhigh</td>
           <td>55,5%</td><td>69,5%</td><td>73,0%</td><td>75,0%</td><td>1,573</td><td>~10,4</td>
           <td>22 EMPTY a 12k · inválido · LLM 73→34 · no usar</td>
@@ -178,7 +186,7 @@
         <tr><th>Modelo</th><th>R@1</th><th>R@3</th><th>R@5</th><th>Cobertura</th><th>Pos. media</th></tr>
       </thead>
       <tbody>
-        <tr><td>gpt-5.5 low · gpt-5-mini · o3 high</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td></tr>
+        <tr><td>gpt-5.5 low · gpt-5-mini</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td></tr>
         <tr><td>grok-4-1-fast-reasoning</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td></tr>
         <tr><td>claude-opus-4-7 / 4-8 · DeepSeek-V4-Pro</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td><td class="blank">—</td></tr>
       </tbody>
@@ -209,6 +217,6 @@
     <p class="blank">— sin strict. Mini y Terra tienen legado; no copiar esos % aquí.</p>
   </div>
 </div>
-<footer>Borrador interno · track texto · 2026-09-09</footer>
+<footer>Borrador interno · track texto · 2026-09-16</footer>
 </body>
 </html>

@@ -32,6 +32,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--source-label", required=True)
     parser.add_argument("--judge-model", default="gemini-2.5-pro")
+    parser.add_argument(
+        "--judge-thinking-level",
+        choices=("off", "low", "medium", "high"),
+        default="low",
+        help=(
+            "Judge reasoning setting. 'off' maps to thinking_budget=0 for "
+            "Gemini 2.5 Flash."
+        ),
+    )
     parser.add_argument("--workers", type=int, default=8)
     return parser.parse_args()
 
@@ -98,7 +107,7 @@ def build_config(
             "ENABLE_ICD10_SIBLING_SEARCH": True,
             "JUDGE_MODEL": args.judge_model,
             "JUDGE_PARAMS": {
-                "thinking_level": "low",
+                "thinking_level": args.judge_thinking_level,
                 "max_tokens": 10000,
                 "temperature": 0.1,
             },

@@ -117,6 +117,19 @@ gemini-3.8-flash low (2026-09-15): R@1 59,8% / cobertura 77,7% / 4,4 s.
 No gana a 3.5-flash en R@1 (62,1%); sube un poco el techo Gemini de
 cobertura (75→78). No sustituye. Informe:
 [results/2026-09-15-all256-judge-audit-strict-gemini38flash.md](results/2026-09-15-all256-judge-audit-strict-gemini38flash.md).
+o3 high (2026-09-16): R@1 56,6% / R@3 74,2% / cobertura 80,9% /
+posición media 1,614. No supera a Terra low con strict. Informe:
+[results/2026-09-16-all256-o3-strict.md](results/2026-09-16-all256-o3-strict.md).
+Benchmark de jueces sobre las 256 listas congeladas de Terra (2026-09-16):
+Flash sin thinking cuesta $0,0087 vs $1,800 de Pro y reduce la mediana
+9,60→0,57 s; obtiene el mismo acuerdo humano inicial, 30/35. Kimi K2.6
+funciona vía Azure: $1,125, p50 6,09 s, p95 39,62 s y 28/35. Grok queda en
+27/35. David ya terminó la ronda 2 original; se creó una tarea ciega nueva
+solo con las 13 discrepancias Pro vs Flash. Las discrepancias exploratorias de
+Kimi/Grok quedan fuera. Informe:
+[results/2026-09-16-judge-benchmark-all256-terra.md](results/2026-09-16-judge-benchmark-all256-terra.md).
+Tabla HTML:
+[benchmark-report-jueces.html](../../docs/benchmark-report-jueces.html).
 Ronda 2 de David (36 casos) entregada: 2 FP, 3 FN; `24910386` =
 `gold_ambiguo` (2026-09-14, no FN). 80/100 → 81 recodificado: no usar
 como cifra clínica cerrada.

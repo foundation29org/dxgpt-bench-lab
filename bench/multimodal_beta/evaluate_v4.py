@@ -6,6 +6,8 @@ import argparse
 import json
 import logging
 import sys
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,6 +40,16 @@ class AdapterError(RuntimeError):
 class StrictMultimodalEvaluator(DiagnosticEvaluator):
     """Pipeline V4 evaluator with a diagnosis-equivalence judge."""
 
+    def __init__(self, config: dict[str, Any], logger: logging.Logger):
+        super().__init__(config, logger)
+        self.judge_model_name = str(
+            config.get("EVALUATOR", {}).get("JUDGE_MODEL") or "auto"
+        )
+        if "grok" in self.judge_model_name.lower():
+            self.is_judge_reasoning = True
+        self.judge_call_metrics: list[dict[str, Any]] = []
+        self._judge_metrics_lock = threading.Lock()
+
     def _get_llm_judgment(
         self, gdx_text: str, ddx_texts: list[str]
     ) -> dict[str, Any]:
@@ -65,6 +77,11 @@ Respond with ONLY the number (1-{len(ddx_texts)}) of the equivalent option.
 If none are diagnostically equivalent, respond with "0".
 
 Answer:"""
+        started = time.perf_counter()
+        response_text = ""
+        selected_position: int | None = None
+        call_succeeded = False
+        error_text: str | None = None
         try:
             if self.is_judge_gemini:
                 response = self.llm.generate(
@@ -85,15 +102,38 @@ Answer:"""
                     max_tokens=self.judge_max_tokens,
                     temperature=self.judge_temperature,
                 )
-            position = int(str(response).strip())
+            response_text = str(response).strip()
+            call_succeeded = True
+            position = int(response_text)
             if 1 <= position <= len(ddx_texts):
-                return {"position": position}
+                selected_position = position
         except (TypeError, ValueError):
             pass
         except Exception as error:
+            error_text = f"{type(error).__name__}: {error}"
             if self.logger:
                 self.logger.error("Strict LLM judgment failed: %s", error)
-        return {"position": None}
+        finally:
+            usage = self.llm.get_last_usage() if call_succeeded else None
+            metric = {
+                "model": self.judge_model_name,
+                "duration_seconds": round(time.perf_counter() - started, 6),
+                "prompt_characters": len(prompt),
+                "option_count": len(ddx_texts),
+                "response": response_text,
+                "selected_position": selected_position,
+                "call_succeeded": call_succeeded,
+                "error": error_text,
+                **(usage or {}),
+            }
+            with self._judge_metrics_lock:
+                self.judge_call_metrics.append(metric)
+            if self.logger:
+                self.logger.info(
+                    "JUDGE_CALL_METRIC %s",
+                    json.dumps(metric, sort_keys=True),
+                )
+        return {"position": selected_position}
 
 
 def parse_args() -> argparse.Namespace:
@@ -117,6 +157,11 @@ def parse_args() -> argparse.Namespace:
         help="Use the primary diagnosis only (canonical) or all MedReaMM diagnoses.",
     )
     parser.add_argument("--judge-model", default="gemini-2.5-pro")
+    parser.add_argument(
+        "--judge-thinking-level",
+        choices=("off", "low", "medium", "high"),
+        default="low",
+    )
     parser.add_argument(
         "--judge-mode",
         choices=("strict_equivalence", "legacy_similarity"),
@@ -265,7 +310,7 @@ def evaluator_config(
             "ENABLE_ICD10_SIBLING_SEARCH": True,
             "JUDGE_MODEL": args.judge_model,
             "JUDGE_PARAMS": {
-                "thinking_level": "low",
+                "thinking_level": args.judge_thinking_level,
                 "max_tokens": 10000,
                 "temperature": 0.1,
             },
@@ -389,6 +434,14 @@ def evaluate_dataset_multimodal(
         completed, str(output_dir / "evaluation_details.txt")
     )
     generate_summary_json(completed, str(output_dir / "summary.json"), config)
+    if isinstance(evaluator, StrictMultimodalEvaluator):
+        write_json(
+            output_dir / "judge_metrics.json",
+            {
+                "judge_model": evaluator.judge_model_name,
+                "calls": evaluator.judge_call_metrics,
+            },
+        )
     stats = calculate_global_statistics(completed)
     logger.info(
         "%s multimodal result: %s/%s matches; avg position %.3f",

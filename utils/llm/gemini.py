@@ -173,6 +173,10 @@ class GeminiLLM(BaseLLM):
                 cli = genai.Client(api_key=self.config.api_key)
             local.client = cli
         return cli
+
+    def get_last_usage(self) -> Optional[Dict[str, Any]]:
+        """Return token usage from this thread's latest Gemini response."""
+        return getattr(self._thread_local, "last_usage", None)
     
     def generate(
         self,
@@ -221,16 +225,26 @@ class GeminiLLM(BaseLLM):
         if final_max_tokens is not None:
             generation_config_params['max_output_tokens'] = final_max_tokens
         
-        # Add thinking level for Gemini 3 Pro (if specified and model supports it)
-        # Only gemini-3-pro-preview and gemini-3-pro support thinking_level
-        # gemini-2.5-pro and other models do NOT support it
+        # Gemini 3 accepts thinking_level. Gemini 2.5 Flash instead uses a
+        # numeric thinking budget and supports budget=0 to disable reasoning.
         thinking_config = None
         if final_thinking_level is not None:
-            # Check if model supports thinking_level (only gemini-3-pro models)
             model_name_lower = self.config.model_name.lower()
             supports_thinking = 'gemini-3' in model_name_lower or 'gpt-3' in model_name_lower
-            
-            if supports_thinking:
+            disables_25_flash = (
+                final_thinking_level.lower() == "off"
+                and "gemini-2.5-flash" in model_name_lower
+            )
+
+            if disables_25_flash:
+                thinking_config = types.ThinkingConfig(thinking_budget=0)
+                generation_config_params['thinking_config'] = thinking_config
+                if self._logger:
+                    self._logger.info(
+                        "Using thinking_budget=0 for %s",
+                        self.config.model_name,
+                    )
+            elif supports_thinking:
                 # Convert string to ThinkingLevel enum
                 thinking_level_enum = None
                 if hasattr(types, 'ThinkingLevel'):
@@ -324,8 +338,24 @@ class GeminiLLM(BaseLLM):
                         # Not a rate limit error, re-raise immediately
                         raise
             
+            usage = getattr(response, "usage_metadata", None)
+            usage_record = {
+                "input_tokens": getattr(usage, "prompt_token_count", 0) or 0,
+                "cached_input_tokens": (
+                    getattr(usage, "cached_content_token_count", 0) or 0
+                ),
+                "output_tokens": getattr(usage, "candidates_token_count", 0) or 0,
+                "reasoning_tokens": getattr(usage, "thoughts_token_count", 0) or 0,
+                "total_tokens": getattr(usage, "total_token_count", 0) or 0,
+            }
+            self._thread_local.last_usage = usage_record
+
             # Log response details for debugging
             if self._logger:
+                self._logger.info(
+                    "LLM_USAGE_JSON %s",
+                    json.dumps(usage_record, sort_keys=True),
+                )
                 self._logger.info(f"Gemini API response type: {type(response)}")
                 self._logger.info(f"Gemini API response attributes: {[attr for attr in dir(response) if not attr.startswith('_')][:10]}")
             
