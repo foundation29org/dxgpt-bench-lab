@@ -49,10 +49,76 @@ BERT ≥ 0,90 ni pregunta: match directo.
 | Hermanos / padres ICD | Siguen aceptando relacionados |
 | BERT 0,90 automático | Sigue |
 | BERT 0,80 puede pisar al juez | Sigue |
-| Paquete de 36 casos de David | Entregado; referencia inicial en readjudicación |
+| Ronda 2 de David (36 comparaciones MedReaMM) | Terminada; sirve como referencia inicial, con varios golds ambiguos |
+| Revisión ciega Pro vs Flash (13 casos all_256) | Nueva tarea; pendiente |
 
 El flujo **sí se puede endurecer**. No hace falta un producto nuevo.
 Hay palancas ya en el `config.yaml` / `reeval_traditional_strict.py`.
+
+## Dos decisiones distintas: alumno y árbitro
+
+No elegimos el modelo de producto y el modelo juez con el mismo test.
+
+1. **Modelo de producto (alumno):** recibe el caso y genera la lista DDX.
+2. **Modelo juez (árbitro del paso 7):** solo compara un gold con una lista
+   ya generada.
+
+Ningún nombre de modelo forma parte del contrato. El alumno y el árbitro son
+roles reemplazables y versionados. Un candidato puede ser bueno en un rol y
+malo en el otro.
+
+### Cómo se elige un modelo de producto
+
+- Misma cohorte, prompt, parámetros y harness para todos los candidatos.
+- Métrica principal: R@1; cobertura como segunda lectura. Posición media solo
+  se compara cuando la cobertura es similar.
+- Re-score strict para no confundir proximidad clínica legacy con
+  equivalencia diagnóstica.
+- En multimodal, comparación emparejada `T` vs `T+I` con el mismo modelo para
+  comprobar que la imagen aporta señal.
+- Revisión de complejidad, latencia, coste y restricciones de despliegue.
+- La decisión final combina calidad y restricciones de producto; no sale de
+  la ablación de jueces.
+
+### Cómo se elige un modelo juez
+
+1. Se congelan las listas DDX de una cohorte representativa. No se repite la
+   inferencia del alumno.
+2. El juez vigente y cada candidato reciben exactamente los mismos prompts
+   que alcanzan el paso 7.
+3. Se registran decisiones, tokens, latencia, coste, errores y versión exacta.
+4. Las discrepancias miden estabilidad, no quién tiene razón. Se selecciona
+   una tira manejable y un clínico la revisa sin ver la identidad ni respuesta
+   de los jueces.
+5. La clave automática permanece cerrada hasta terminar la revisión. Después
+   se calculan acuerdo, precisión, recall y matriz FP/FN.
+6. El umbral de promoción se fija antes de abrir las respuestas humanas:
+   máximo deterioro tolerado y tratamiento de falsos positivos relevantes.
+
+Una cobertura mayor al cambiar de juez no demuestra más precisión: puede
+significar que el candidato acepta más falsos positivos.
+
+### Ejemplo vigente · 2026-09-16
+
+- **Producto:** la decisión actual es un único Terra, sin avanzado ni segunda
+  opinión, con fallback entre regiones compatibles. Es una decisión fechada,
+  no una regla del harness.
+- **Juez:** se compararon cinco configuraciones sobre 256 listas congeladas y
+  133 prompts idénticos. Flash sin thinking quedó como candidato frente a Pro.
+- **Validación:** ambos obtuvieron 30/35 frente a las etiquetas humanas
+  iniciales. Sus 13 discrepancias exactas están en un
+  [formulario ciego](reviews/david_review_all256_pro_vs_flash_blind.md);
+  la [clave interna](reviews/david_deliverable_all256_judge_discrepancies.md)
+  se abre después.
+- **Criterio propuesto:** como máximo un error adicional y ningún falso
+  positivo clínicamente relevante. Sin revisión humana se conserva el juez
+  vigente.
+
+Resultados fechados:
+[texto](../../docs/benchmark-report-strict-texto.html),
+[multimodal](../../docs/benchmark-report-strict-multimodal.html),
+[jueces](../../docs/benchmark-report-jueces.html) y
+[roadmap](../../docs/ROADMAP.md).
 
 ## El loop (fallo → sensor → palanca → re-medir)
 
@@ -78,11 +144,11 @@ mueve **una** palanca, se vuelve a puntuar **las mismas listas DDX**.
    David considera correcto, la palanca se ha pasado. Se revierte o se
    afina. No se apilan tres palancas a la vez.
 
-La referencia de este loop debe ser una adjudicación humana estable sobre
-los 36 (unmatched + LLM), no el 80/100. La primera tira de David encontró
-casos inconsistentes y golds ambiguos; no se trata como gold definitivo
-hasta cerrar la rúbrica con Julián y readjudicar esos ids. Subir cobertura
-apretando el examen al revés es volver a legacy.
+La referencia de este loop debe ser humana y corresponder a la capa que se
+está tocando. Las 35 etiquetas utilizables de la ronda 2 sirven como señal
+inicial del paso 7; no validan hermanos ICD ni BERT. Para elegir entre Pro y
+Flash, la referencia será la revisión ciega de sus 13 discrepancias. Subir
+cobertura apretando el examen al revés es volver a legacy.
 
 ## Ablación pendiente de las capas 4–6
 
@@ -117,15 +183,23 @@ los tres el mismo viernes.
 
 ## Relación con la ronda 2 de David
 
-David etiquetó FP/FN del **juez** (paso 7). Eso no calibra hermanos ICD:
-esos casos no llegan al juez. Por eso siguen existiendo dos colas:
+David **terminó** la ronda 2: etiquetó 36 comparaciones del paso 7 en
+MedReaMM. Esa revisión encontró FP/FN, pero después aparecieron golds ambiguos
+y contradicciones; por eso sus 35 etiquetas utilizables son una referencia
+inicial, no un gold definitivo.
+
+La tarea actual no repite aquella ronda. Es una revisión ciega nueva de las
+13 discrepancias Pro vs Flash sin thinking en `all_256_clean`. David solo
+decide equivalencia; el equipo de evaluación abre después la clave interna y
+calcula las métricas.
+
+Siguen existiendo dos colas independientes:
 
 - **Capas 4–6:** ablación sibling / parent / BERT, una palanca cada vez,
   listas congeladas e informe de delta.
-- **Paso 7:** Julián fija la rúbrica; David readjudica la tira corta
-  conflictiva; después se comparan Pro, Flash 2.5 y Flash 3.8 por
-  precisión, recall, matriz de confusión y concordancia.
+- **Paso 7:** revisión ciega de los 13 casos, apertura de la clave y decisión
+  Pro vs Flash con el criterio fijado de antemano.
 
-Hasta que esa referencia esté cerrada, el paso 7 no tiene un sensor fiable.
-Las capas 4–6 sí pueden medirse: el método ya está en cada
-`evaluation_details`.
+Así queda trazable por qué se elige cada pieza: el modelo de producto por
+calidad y restricciones operativas; el juez por concordancia clínica,
+errores, latencia y coste.
