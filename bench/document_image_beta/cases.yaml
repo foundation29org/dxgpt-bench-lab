@@ -1,0 +1,246 @@
+dataset:
+  name: DxGPT synthetic document-image benchmark
+  version: 1
+  language: en
+  pii: none
+  note: All records describe fictional patients and contain no real identifiers.
+
+cases:
+  - id: iron-deficiency-pattern
+    gold:
+      diagnoses:
+        - name: Iron deficiency anemia
+          role: primary
+    reports:
+      - date: 2026-01-12
+        title: Hematology and iron studies
+        sections:
+          Clinical context:
+            - Adult with progressive fatigue and exertional dyspnea.
+            - No overt bleeding reported.
+          Results:
+            - Hemoglobin 8.4 g/dL
+            - MCV 68 fL
+            - Ferritin 6 ng/mL
+            - Transferrin saturation 7%
+    expected_facts:
+      - Hemoglobin 8.4 g/dL
+      - MCV 68 fL
+      - Ferritin 6 ng/mL
+      - No overt bleeding
+
+  - id: diabetic-ketoacidosis-pattern
+    gold:
+      diagnoses:
+        - name: Diabetic ketoacidosis
+          role: primary
+    reports:
+      - date: 2026-02-03
+        title: Emergency laboratory report
+        sections:
+          Clinical context:
+            - Adult with vomiting, abdominal pain, deep breathing and dehydration.
+          Results:
+            - Glucose 420 mg/dL
+            - Arterial pH 7.18
+            - Bicarbonate 11 mmol/L
+            - Blood ketones positive
+            - Potassium 5.2 mmol/L
+    expected_facts:
+      - Glucose 420 mg/dL
+      - Arterial pH 7.18
+      - Bicarbonate 11 mmol/L
+      - Blood ketones positive
+
+  - id: primary-hypothyroid-pattern
+    gold:
+      diagnoses:
+        - name: Primary hypothyroidism
+          role: primary
+    reports:
+      - date: 2026-02-18
+        title: Thyroid function report
+        sections:
+          Clinical context:
+            - Adult with cold intolerance, constipation and slowed thinking.
+            - No fever or neck pain.
+          Results:
+            - TSH 18.6 mIU/L
+            - Free T4 0.6 ng/dL
+            - Anti-TPO antibodies positive
+    expected_facts:
+      - TSH 18.6 mIU/L
+      - Free T4 0.6 ng/dL
+      - Anti-TPO antibodies positive
+      - No fever
+
+  - id: community-pneumonia-pattern
+    gold:
+      diagnoses:
+        - name: Community-acquired pneumonia
+          role: primary
+    reports:
+      - date: 2026-03-02
+        title: Acute respiratory assessment
+        sections:
+          Clinical context:
+            - Adult with productive cough, pleuritic pain and fever 38.7 C.
+            - Penicillin allergy documented.
+          Findings:
+            - Oxygen saturation 91% on room air
+            - Focal crackles at the right base
+            - New right lower lobe air-space opacity
+        include_chart: true
+        include_mixed: true
+    expected_facts:
+      - Fever 38.7 C
+      - Oxygen saturation 91%
+      - Right lower lobe air-space opacity
+      - Penicillin allergy
+
+  - id: vitamin-b12-pattern
+    gold:
+      diagnoses:
+        - name: Vitamin B12 deficiency
+          role: primary
+    reports:
+      - date: 2026-03-20
+        title: Neurology and hematology report
+        sections:
+          Clinical context:
+            - Adult with distal numbness, gait instability and glossitis.
+          Results:
+            - Hemoglobin 10.2 g/dL
+            - MCV 112 fL
+            - Vitamin B12 118 pg/mL
+            - Folate normal
+            - Intrinsic factor antibody positive
+    expected_facts:
+      - MCV 112 fL
+      - Vitamin B12 118 pg/mL
+      - Folate normal
+      - Intrinsic factor antibody positive
+
+  - id: celiac-pattern
+    gold:
+      diagnoses:
+        - name: Celiac disease
+          role: primary
+    reports:
+      - date: 2026-04-08
+        title: Gastroenterology investigation
+        sections:
+          Clinical context:
+            - Adult with chronic diarrhea, weight loss and iron deficiency.
+          Results:
+            - Tissue transglutaminase IgA 86 U/mL
+            - Total IgA normal
+            - Duodenal biopsy shows villous atrophy
+            - Crypt hyperplasia present
+    expected_facts:
+      - Tissue transglutaminase IgA 86 U/mL
+      - Total IgA normal
+      - Villous atrophy
+      - Crypt hyperplasia
+
+  - id: glomerulonephritis-pattern
+    gold:
+      diagnoses:
+        - name: Lupus nephritis
+          role: primary
+    reports:
+      - date: 2026-04-27
+        title: Renal and immunology report
+        sections:
+          Clinical context:
+            - Adult with edema, arthralgia and photosensitive rash.
+          Results:
+            - Urine protein 2.8 g/day
+            - Dysmorphic red cells present
+            - C3 48 mg/dL
+            - Anti-dsDNA 156 IU/mL
+            - Serum creatinine 1.6 mg/dL
+    expected_facts:
+      - Urine protein 2.8 g/day
+      - Dysmorphic red cells present
+      - C3 48 mg/dL
+      - Anti-dsDNA 156 IU/mL
+
+  - id: pulmonary-embolism-pattern
+    gold:
+      diagnoses:
+        - name: Pulmonary embolism
+          role: primary
+    reports:
+      - date: 2026-05-11
+        title: Acute cardiopulmonary assessment
+        sections:
+          Clinical context:
+            - Adult with sudden dyspnea and pleuritic chest pain after recent surgery.
+          Findings:
+            - Heart rate 118 bpm
+            - Oxygen saturation 89% on room air
+            - D-dimer 3.2 mg/L FEU
+            - CT angiography shows a segmental filling defect
+        include_mixed: true
+    expected_facts:
+      - Heart rate 118 bpm
+      - Oxygen saturation 89%
+      - D-dimer 3.2 mg/L FEU
+      - Segmental filling defect
+
+  - id: heart-failure-pattern
+    gold:
+      diagnoses:
+        - name: Acute decompensated heart failure
+          role: primary
+    reports:
+      - date: 2026-06-04
+        title: Cardiology assessment
+        sections:
+          Clinical context:
+            - Adult with orthopnea, bilateral ankle edema and rapid weight gain.
+          Findings:
+            - BNP 1450 pg/mL
+            - Left ventricular ejection fraction 30%
+            - Bilateral interstitial opacities
+            - Troponin not elevated
+        include_chart: true
+        include_mixed: true
+    expected_facts:
+      - BNP 1450 pg/mL
+      - Left ventricular ejection fraction 30%
+      - Bilateral interstitial opacities
+      - Troponin not elevated
+
+  - id: dated-potassium-contradiction
+    gold:
+      diagnoses:
+        - name: Acute kidney injury with resolved hyperkalemia
+          role: primary
+    reports:
+      - date: 2026-06-19
+        title: Initial metabolic panel
+        sections:
+          Clinical context:
+            - Adult with reduced urine output after gastroenteritis.
+          Results:
+            - Creatinine 2.4 mg/dL
+            - Potassium 5.8 mmol/L
+            - Bicarbonate 17 mmol/L
+      - date: 2026-06-21
+        title: Follow-up metabolic panel
+        sections:
+          Treatment:
+            - Intravenous fluids administered.
+          Results:
+            - Creatinine 1.7 mg/dL
+            - Potassium 4.1 mmol/L
+            - Bicarbonate 22 mmol/L
+            - No dialysis performed
+    expected_facts:
+      - '2026-06-19'
+      - Potassium 5.8 mmol/L
+      - '2026-06-21'
+      - Potassium 4.1 mmol/L
+      - No dialysis performed

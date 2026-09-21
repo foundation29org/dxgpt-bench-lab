@@ -17,6 +17,29 @@ Los datasets canónicos (con metadata y trazabilidad completa) viven en
 | `all_150.json` | 150 | ⚠️ Histórico | Subset para runs rápidos |
 | `all_450.json` | 450 | ⚠️ Sin validar para publicación | Pool sin QA |
 
+### Origen del track narrativo
+
+El pipeline ETL fusionó 9.583 casos procedentes de MedQA/USMLE, MedBullets,
+urgencias hospitalarias, Ramebench y ProCheck. Ese corpus se redujo a
+`all_997`, un conjunto representativo equilibrado por fuente, capítulo ICD-10,
+complejidad y severidad. De él se derivaron conjuntos operativos más pequeños.
+
+`all_256_clean` no representa todo el banco: es la línea base compacta y
+reproducible usada para las comparaciones publicables actuales. Parte de
+`all_275`; elimina 19 casos con label leakage y limpia el boilerplate de 49
+casos. El track HPO de 3.017 casos de enfermedades raras se evalúa por separado.
+
+### Track multimodal
+
+El corpus seleccionado, [MedReaMM](../multimodal_beta/DATASETS.md), contiene
+625 casos validados por expertos y 1.746 imágenes. El benchmark emparejado
+actual usa una cohorte curada de 100 casos para comparar texto (`T`) con texto
+más imágenes (`T+I`) manteniendo el mismo modelo.
+
+También se estudió MultiCaRe (>90.000 narrativas y >130.000 imágenes), pero no
+se usa como benchmark de modelos porque no ofrece un diagnóstico canónico
+limpio y exige resolver riesgos de fuga y segmentación temporal.
+
 ## Datasets de testing
 
 | Dataset | Casos | Uso |

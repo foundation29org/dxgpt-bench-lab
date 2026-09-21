@@ -300,7 +300,11 @@ class DXGPTEmulator:
             or 'gpt6' in model_name
         )
         is_gemini_model = 'gemini' in model_name
-        is_reasoning_model = is_o3_model or is_gpt5_model
+        is_grok_model = 'grok' in model_name
+        is_claude_model = 'claude' in model_name
+        is_reasoning_model = (
+            is_o3_model or is_gpt5_model or is_grok_model or is_claude_model
+        )
         
         case_id = case.get('id', 'unknown')
         last_error = None
@@ -315,7 +319,12 @@ class DXGPTEmulator:
                     if is_gemini_model:
                         self.logger.info(f"Gemini Model parameters: thinking_level={params.get('thinking_level', 'low')}, max_tokens={params.get('max_tokens', 12000)}, temperature={params.get('temperature', 0.1)}")
                     elif is_reasoning_model:
-                        model_type = "O3" if is_o3_model else "GPT-5"
+                        model_type = (
+                            "O3" if is_o3_model
+                            else "Grok" if is_grok_model
+                            else "Claude" if is_claude_model
+                            else "GPT-5"
+                        )
                         self.logger.info(f"{model_type} Model parameters: reasoning_effort={params.get('reasoning_effort', 'low')}, max_tokens={params.get('max_tokens', 12000)}")
                     else:
                         self.logger.info(f"Standard model parameters: max_tokens={params.get('max_tokens', 4000)}, temperature={params.get('temperature', 0.1)}")

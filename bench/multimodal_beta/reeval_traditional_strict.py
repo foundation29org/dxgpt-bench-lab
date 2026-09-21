@@ -24,7 +24,7 @@ HERE = Path(__file__).resolve().parent
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Re-evaluate a traditional all_256_clean run with "
+            "Re-evaluate a traditional Pipeline V4 run with "
             "strict_equivalence, without modifying Pipeline V4."
         )
     )
@@ -42,6 +42,12 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument(
+        "--case-id",
+        action="append",
+        dest="case_ids",
+        help="Evaluate only this case ID. Repeat to select multiple cases.",
+    )
     return parser.parse_args()
 
 
@@ -61,11 +67,32 @@ def details_to_labeled(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         case_id = str(row.get("case_id") or "")
         if not case_id:
             raise ValueError("evaluation_details row has no case_id")
+        source_bert_by_gdx = {}
+        source_traces = (
+            row.get("eval_details", {}).get("evaluation_trace") or []
+        )
+        for trace in source_traces:
+            semantic = trace.get("semantic_check") or {}
+            if semantic.get("status") not in {"SUCCESS", "FAILED"}:
+                continue
+            if str(semantic.get("details") or "").startswith(
+                "Semantic evaluation error:"
+            ):
+                continue
+            for trace_gdx_name in (trace.get("gdx_evaluated") or {}):
+                source_bert_by_gdx[trace_gdx_name] = {
+                    "bert_scores": semantic.get("bert_scores") or [],
+                    "bert_best": semantic.get("bert_best"),
+                }
+
         gdx = {}
         for item in row.get("gdx_details") or []:
             name = str(item.get("name") or "").strip()
             if name:
-                gdx[name] = item.get("details") or {}
+                details = dict(item.get("details") or {})
+                if name in source_bert_by_gdx:
+                    details["_source_bert_evaluation"] = source_bert_by_gdx[name]
+                gdx[name] = details
         ddx = {}
         for item in row.get("ddx_details") or []:
             name = str(item.get("name") or "").strip()
@@ -82,6 +109,16 @@ def details_to_labeled(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             }
         )
     return labeled
+
+
+def infer_dataset_path(source_details: Path) -> str:
+    """Recover the dataset path from the source run's config snapshot."""
+    config_paths = sorted(source_details.parent.glob("*___config.yaml"))
+    if not config_paths:
+        return "unknown"
+    with config_paths[0].open(encoding="utf-8") as stream:
+        source_config = yaml.safe_load(stream) or {}
+    return str(source_config.get("DATASET_PATH") or "unknown")
 
 
 def build_config(
@@ -111,16 +148,20 @@ def build_config(
                 "max_tokens": 10000,
                 "temperature": 0.1,
             },
+            "JUDGE_MAX_ATTEMPTS": 3,
+            "JUDGE_RETRY_DELAY_SECONDS": 2,
             "PARALLEL_WORKERS": max(1, args.workers),
         },
         "MULTIMODAL_BETA": {
             "GOLD_SCOPE": "primary",
             "GOLD_ONTOLOGY": "source_run",
             "NORMALIZATION": "reused_from_evaluation_details",
+            "BERT_SCORES": "reused_from_source_evaluation_trace",
             "LLM_MATCH_MODE": "strict_equivalence",
             "SOURCE_EVALUATION_DETAILS": str(source_details.resolve()),
+            "SOURCE_CASE_COUNT": case_count,
         },
-        "DATASET_PATH": "bench/datasets/all_256_clean.json",
+        "DATASET_PATH": infer_dataset_path(source_details),
     }
 
 
@@ -131,6 +172,17 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     rows = load_evaluation_details(source)
+    if args.case_ids:
+        requested_ids = set(args.case_ids)
+        rows = [
+            row for row in rows if str(row.get("case_id") or "") in requested_ids
+        ]
+        found_ids = {str(row.get("case_id") or "") for row in rows}
+        missing_ids = requested_ids - found_ids
+        if missing_ids:
+            raise ValueError(
+                "Requested case IDs not found: " + ", ".join(sorted(missing_ids))
+            )
     labeled = details_to_labeled(rows)
     labeled_path = output_dir / "labeled_from_details.json"
     labeled_path.write_text(
