@@ -104,12 +104,16 @@ usar. gemini-2.5-pro low (2026-09-15): 59,4% / cobertura 75,4%, empata con
 [results/2026-09-09-all256-judge-audit-strict-terra-medium.md](results/2026-09-09-all256-judge-audit-strict-terra-medium.md),
 [results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md](results/2026-09-09-all256-judge-audit-strict-terra-xhigh.md),
 [results/2026-09-15-all256-judge-audit-strict-gemini25pro.md](results/2026-09-15-all256-judge-audit-strict-gemini25pro.md).
-HMS 88 strict (2026-09-15), paso 1 HPO: 3-pro R@1 46,6% > Terra 43,2% >
-3.8-flash 42,0% > 2.5-pro 40,9% > 3.5-flash 38,6% > mini 36,4%.
-Cobertura Terra 65,9% > 2.5-pro 59,1% > mini = 3.8 54,5% > 3-pro 52,3%
-> 3.5-flash 48,9%. En raras se invierte all_256: 3.8 gana a 3.5 y pierde
-con Terra (37 vs 38 P1). 3.5-flash no vale como avanzado barato aquí.
-DDD no lanzado. Informes:
+HPO Terra completo (2026-09-16): 3.017 listas congeladas de DDD, RAMEDIS,
+LIRICAL, MME, MyGene2 y HMS reevaluadas con strict, sin nueva inferencia,
+MedLabeler ni SapBERT. Total ponderado: R@1 29,8%, R@3 42,4%, R@5 46,6% y
+cobertura 46,7%. Por dataset, la cobertura va de 40,7% (DDD) a 65,0% (MME);
+HMS queda en R@1 42,0% y cobertura 64,8%. La diferencia frente al 95–99%
+legacy mide el cambio de criterio, no una regresión de Terra. Cero errores
+finales; coste retenido del juez $37,39. Informe:
+[results/2026-09-16-rare-hpo-terra-strict.md](results/2026-09-16-rare-hpo-terra-strict.md).
+
+La comparación histórica HMS entre modelos (2026-09-15) permanece en:
 [results/2026-09-15-hms88-judge-audit-strict-mini-gemini3pro.md](results/2026-09-15-hms88-judge-audit-strict-mini-gemini3pro.md),
 [results/2026-09-15-hms88-judge-audit-strict-gemini25pro-31pro.md](results/2026-09-15-hms88-judge-audit-strict-gemini25pro-31pro.md),
 [results/2026-09-15-hms88-judge-audit-strict-gemini35-38flash.md](results/2026-09-15-hms88-judge-audit-strict-gemini35-38flash.md).
@@ -120,6 +124,13 @@ cobertura (75→78). No sustituye. Informe:
 o3 high (2026-09-16): R@1 56,6% / R@3 74,2% / cobertura 80,9% /
 posición media 1,614. No supera a Terra low con strict. Informe:
 [results/2026-09-16-all256-o3-strict.md](results/2026-09-16-all256-o3-strict.md).
+Grok 4.6 low y Claude Opus 5 low (2026-09-17) completaron inferencia nueva y
+strict sobre los 256 casos. Grok queda 3º: R@1 62,9%, R@3 78,1%, cobertura
+81,6%, posición media 1,373 y 17,0 s/caso. Claude, con el parseo de
+`thinking` ya corregido (0 listas vacías): R@1 59,4%, R@3 76,2%, R@5 82,8%,
+cobertura 87,1% (la más alta de la tabla), posición media 1,803 y 22,7 s/caso.
+El 35,2% anterior era un fallo de wrapper, no del modelo. Informe:
+[results/2026-09-17-all256-strict-grok46-claude-opus5.md](results/2026-09-17-all256-strict-grok46-claude-opus5.md).
 Benchmark de jueces sobre las 256 listas congeladas de Terra (2026-09-16):
 Flash sin thinking cuesta $0,0087 vs $1,800 de Pro y reduce la mediana
 9,60→0,57 s; obtiene el mismo acuerdo humano inicial, 30/35. Kimi K2.6

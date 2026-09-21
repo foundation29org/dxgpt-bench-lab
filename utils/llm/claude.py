@@ -4,6 +4,8 @@ Anthropic Claude wrapper
 """
 
 import os
+import re
+import threading
 import warnings
 import json
 from typing import Dict, Any, Optional, Union, List
@@ -17,6 +19,39 @@ try:
 except ImportError:
     ANTHROPIC_AVAILABLE = False
     anthropic = None
+
+
+def _claude_major_version(model_name: str) -> Optional[int]:
+    """Return the leading Claude version number, if present in the model id."""
+    version_match = re.search(
+        r"claude-(?:[a-z]+-)?(\d+)(?:-|$)",
+        model_name.lower(),
+    )
+    return int(version_match.group(1)) if version_match else None
+
+
+def supports_temperature(model_name: str) -> bool:
+    """Return whether the Claude model accepts the temperature parameter."""
+    version = _claude_major_version(model_name)
+    return version is None or version < 4
+
+
+def supports_effort(model_name: str) -> bool:
+    """Return whether the model accepts output_config.effort."""
+    version = _claude_major_version(model_name)
+    return version is not None and version >= 5
+
+
+def extract_text_blocks(response) -> str:
+    """Join visible text blocks, skipping thinking/redacted thinking."""
+    parts = []
+    for block in getattr(response, "content", None) or []:
+        if getattr(block, "type", None) != "text":
+            continue
+        text = getattr(block, "text", None)
+        if text:
+            parts.append(text)
+    return "".join(parts).strip()
 
 
 @dataclass(frozen=True)
@@ -73,6 +108,7 @@ class ClaudeLLM(BaseLLM):
 
         self.model_name = model_name
         self._logger = logger
+        self._thread_local = threading.local()
 
     @cached_property
     def client(self):
@@ -80,6 +116,35 @@ class ClaudeLLM(BaseLLM):
             api_key=self.config.api_key,
             timeout=self.config.timeout
         )
+
+    def get_last_usage(self) -> Optional[Dict[str, Any]]:
+        """Return token usage from this thread's latest Claude response."""
+        return getattr(self._thread_local, "last_usage", None)
+
+    def _record_usage(self, response) -> None:
+        usage = getattr(response, "usage", None)
+        usage_record = {
+            "input_tokens": getattr(usage, "input_tokens", 0) or 0,
+            "cached_input_tokens": getattr(
+                usage, "cache_read_input_tokens", 0
+            ) or 0,
+            "output_tokens": getattr(usage, "output_tokens", 0) or 0,
+            "reasoning_tokens": 0,
+            "total_tokens": (
+                (getattr(usage, "input_tokens", 0) or 0)
+                + (getattr(usage, "output_tokens", 0) or 0)
+            ),
+        }
+        self._thread_local.last_usage = usage_record
+        if self._logger:
+            self._logger.info(
+                f"Claude usage — input={usage_record['input_tokens']}, "
+                f"output={usage_record['output_tokens']}"
+            )
+            self._logger.info(
+                "LLM_USAGE_JSON %s",
+                json.dumps(usage_record, sort_keys=True),
+            )
 
     def generate(
         self,
@@ -104,17 +169,13 @@ class ClaudeLLM(BaseLLM):
 
         max_tok = max_tokens or 16000
         temp = temperature if temperature is not None else 0.1
+        effort = kwargs.pop("reasoning_effort", None) or kwargs.pop("effort", None)
 
         if self._logger:
             self._logger.info(f"Claude API call — Model: {self.model_name}")
             self._logger.info(f"Claude params: max_tokens={max_tok}")
-
-        # Determine if model supports temperature (Claude 4.x+ deprecated it)
-        model_lower = self.model_name.lower()
-        supports_temperature = not any(
-            f"claude-{v}" in model_lower
-            for v in ["opus-4", "sonnet-4", "haiku-4"]
-        )
+            if effort:
+                self._logger.info(f"Claude params: effort={effort}")
 
         try:
             create_params = dict(
@@ -122,18 +183,22 @@ class ClaudeLLM(BaseLLM):
                 max_tokens=max_tok,
                 messages=[{"role": "user", "content": prompt}]
             )
-            if supports_temperature:
+            if supports_temperature(self.model_name):
                 create_params["temperature"] = temp
+            if effort and supports_effort(self.model_name):
+                create_params["output_config"] = {"effort": effort}
 
             response = self.client.messages.create(**create_params)
-
-            content = response.content[0].text
-
-            if self._logger:
-                usage = response.usage
-                self._logger.info(
-                    f"Claude usage — input={usage.input_tokens}, "
-                    f"output={usage.output_tokens}"
+            self._record_usage(response)
+            content = extract_text_blocks(response)
+            if not content:
+                block_types = [
+                    getattr(block, "type", type(block).__name__)
+                    for block in (response.content or [])
+                ]
+                raise ValueError(
+                    f"Claude {self.model_name} returned no text blocks "
+                    f"(content types: {block_types})"
                 )
 
             if schema is not None:

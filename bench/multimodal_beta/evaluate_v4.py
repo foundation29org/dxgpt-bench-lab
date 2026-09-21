@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import re
 import sys
 import threading
 import time
@@ -47,12 +48,22 @@ class StrictMultimodalEvaluator(DiagnosticEvaluator):
         )
         if "grok" in self.judge_model_name.lower():
             self.is_judge_reasoning = True
+        evaluator_config = config.get("EVALUATOR", {})
+        self.judge_max_attempts = max(
+            1, int(evaluator_config.get("JUDGE_MAX_ATTEMPTS", 3))
+        )
+        self.judge_retry_delay_seconds = max(
+            0.0,
+            float(evaluator_config.get("JUDGE_RETRY_DELAY_SECONDS", 2.0)),
+        )
         self.judge_call_metrics: list[dict[str, Any]] = []
         self._judge_metrics_lock = threading.Lock()
 
     def _get_llm_judgment(
         self, gdx_text: str, ddx_texts: list[str]
     ) -> dict[str, Any]:
+        if not ddx_texts:
+            return {"position": None}
         ddx_options = "\n".join(
             f"{index}. {text}" for index, text in enumerate(ddx_texts, start=1)
         )
@@ -77,63 +88,204 @@ Respond with ONLY the number (1-{len(ddx_texts)}) of the equivalent option.
 If none are diagnostically equivalent, respond with "0".
 
 Answer:"""
-        started = time.perf_counter()
-        response_text = ""
-        selected_position: int | None = None
-        call_succeeded = False
-        error_text: str | None = None
-        try:
-            if self.is_judge_gemini:
-                response = self.llm.generate(
-                    prompt,
-                    thinking_level=self.judge_thinking_level,
-                    max_tokens=self.judge_max_tokens,
-                    temperature=self.judge_temperature,
-                )
-            elif self.is_judge_reasoning:
-                response = self.llm.generate(
-                    prompt,
-                    reasoning_effort=self.judge_reasoning_effort,
-                    max_tokens=self.judge_max_tokens,
-                )
-            else:
-                response = self.llm.generate(
-                    prompt,
-                    max_tokens=self.judge_max_tokens,
-                    temperature=self.judge_temperature,
-                )
-            response_text = str(response).strip()
-            call_succeeded = True
-            position = int(response_text)
-            if 1 <= position <= len(ddx_texts):
-                selected_position = position
-        except (TypeError, ValueError):
-            pass
-        except Exception as error:
-            error_text = f"{type(error).__name__}: {error}"
+        for attempt in range(1, self.judge_max_attempts + 1):
+            started = time.perf_counter()
+            response_text = ""
+            selected_position: int | None = None
+            call_succeeded = False
+            response_valid = False
+            error_text: str | None = None
+            response_normalization: str | None = None
+            try:
+                if self.is_judge_gemini:
+                    response = self.llm.generate(
+                        prompt,
+                        thinking_level=self.judge_thinking_level,
+                        max_tokens=self.judge_max_tokens,
+                        temperature=self.judge_temperature,
+                    )
+                elif self.is_judge_reasoning:
+                    response = self.llm.generate(
+                        prompt,
+                        reasoning_effort=self.judge_reasoning_effort,
+                        max_tokens=self.judge_max_tokens,
+                    )
+                else:
+                    response = self.llm.generate(
+                        prompt,
+                        max_tokens=self.judge_max_tokens,
+                        temperature=self.judge_temperature,
+                    )
+                response_text = str(response).strip()
+                call_succeeded = True
+                normalized_response = response_text.strip("`").strip()
+                if re.fullmatch(
+                    r"\d+(?:\s*(?:,|\n)\s*\d+)*", normalized_response
+                ):
+                    positions = [
+                        int(value)
+                        for value in re.findall(r"\d+", normalized_response)
+                    ]
+                    if len(positions) > 1:
+                        if 0 in positions:
+                            raise ValueError(
+                                "response mixes no-match with match positions"
+                            )
+                        selected_position = min(positions)
+                        position = selected_position
+                        response_normalization = (
+                            "Multiple equivalent positions returned; "
+                            f"selected earliest P{selected_position}"
+                        )
+                    else:
+                        position = positions[0]
+                    response_valid = 0 <= position <= len(ddx_texts)
+                    if 1 <= position <= len(ddx_texts):
+                        selected_position = position
+                    elif not response_valid:
+                        error_text = (
+                            f"Judge returned out-of-range position {position}; "
+                            f"expected 0-{len(ddx_texts)}"
+                        )
+                else:
+                    raise ValueError("expected one position or a position list")
+            except (TypeError, ValueError) as error:
+                error_text = f"Invalid judge response {response_text!r}: {error}"
+            except Exception as error:
+                error_text = f"{type(error).__name__}: {error}"
+            finally:
+                usage = self.llm.get_last_usage() if call_succeeded else None
+                metric = {
+                    "model": self.judge_model_name,
+                    "attempt": attempt,
+                    "duration_seconds": round(time.perf_counter() - started, 6),
+                    "prompt_characters": len(prompt),
+                    "option_count": len(ddx_texts),
+                    "response": response_text,
+                    "selected_position": selected_position,
+                    "call_succeeded": call_succeeded,
+                    "response_valid": response_valid,
+                    "response_normalization": response_normalization,
+                    "error": error_text,
+                    **(usage or {}),
+                }
+                with self._judge_metrics_lock:
+                    self.judge_call_metrics.append(metric)
+                if self.logger:
+                    self.logger.info(
+                        "JUDGE_CALL_METRIC %s",
+                        json.dumps(metric, sort_keys=True),
+                    )
+
+            if response_valid:
+                return {"position": selected_position}
             if self.logger:
-                self.logger.error("Strict LLM judgment failed: %s", error)
-        finally:
-            usage = self.llm.get_last_usage() if call_succeeded else None
-            metric = {
-                "model": self.judge_model_name,
-                "duration_seconds": round(time.perf_counter() - started, 6),
-                "prompt_characters": len(prompt),
-                "option_count": len(ddx_texts),
-                "response": response_text,
-                "selected_position": selected_position,
-                "call_succeeded": call_succeeded,
-                "error": error_text,
-                **(usage or {}),
+                self.logger.error(
+                    "Strict LLM judgment attempt %s/%s failed: %s",
+                    attempt,
+                    self.judge_max_attempts,
+                    error_text,
+                )
+            if attempt < self.judge_max_attempts:
+                time.sleep(self.judge_retry_delay_seconds * attempt)
+
+        raise RuntimeError(
+            "Strict LLM judge failed after "
+            f"{self.judge_max_attempts} attempts: {error_text}"
+        )
+
+    def _evaluate_semantic_match(
+        self,
+        gdx_name: str,
+        gdx_info: dict[str, Any],
+        ddx_list: list[tuple[str, dict[str, Any]]],
+    ) -> dict[str, Any]:
+        """Reuse frozen BERT scores when a re-score source provides them."""
+        source_bert = gdx_info.get("_source_bert_evaluation")
+        if not source_bert:
+            return super()._evaluate_semantic_match(gdx_name, gdx_info, ddx_list)
+
+        gdx_text = gdx_info.get("normalized_text", gdx_name)
+        ddx_texts = [
+            ddx_info.get("normalized_text", ddx_name)
+            for ddx_name, ddx_info in ddx_list
+        ]
+        bert_scores = source_bert.get("bert_scores") or []
+        bert_best = source_bert.get("bert_best")
+        best_bert_score = (
+            float(bert_best.get("score") or 0.0) if bert_best else 0.0
+        )
+        best_bert_position = (
+            int(bert_best["position"])
+            if bert_best and bert_best.get("position") is not None
+            else None
+        )
+
+        if best_bert_score >= self.bert_autoconfirm_threshold:
+            return {
+                "status": "SUCCESS",
+                "details": (
+                    f"Reused BERT score {best_bert_score:.3f} >= autoconfirm "
+                    f"threshold {self.bert_autoconfirm_threshold}. "
+                    "LLM call skipped."
+                ),
+                "bert_scores": bert_scores,
+                "bert_best": bert_best,
+                "llm_judgment": None,
             }
-            with self._judge_metrics_lock:
-                self.judge_call_metrics.append(metric)
-            if self.logger:
-                self.logger.info(
-                    "JUDGE_CALL_METRIC %s",
-                    json.dumps(metric, sort_keys=True),
-                )
-        return {"position": selected_position}
+
+        llm_result = self._get_llm_judgment(gdx_text, ddx_texts)
+        selected_position = llm_result["position"]
+        if (
+            best_bert_score >= self.bert_acceptance_threshold
+            and best_bert_position is not None
+            and selected_position is not None
+        ):
+            if best_bert_position <= selected_position:
+                return {
+                    "status": "SUCCESS",
+                    "details": (
+                        f"BERT result at P{best_bert_position} (reused score: "
+                        f"{best_bert_score:.3f}) was better than LLM's choice "
+                        f"P{selected_position}."
+                    ),
+                    "bert_scores": bert_scores,
+                    "bert_best": bert_best,
+                    "llm_judgment": llm_result,
+                }
+            return {
+                "status": "SUCCESS",
+                "details": (
+                    f"LLM choice P{selected_position} was better than BERT's "
+                    f"P{best_bert_position} (reused score: "
+                    f"{best_bert_score:.3f})."
+                ),
+                "bert_scores": bert_scores,
+                "bert_best": bert_best,
+                "llm_judgment": llm_result,
+            }
+        if selected_position is not None:
+            return {
+                "status": "SUCCESS",
+                "details": (
+                    f"LLM selected P{selected_position}. Reused BERT score "
+                    f"{best_bert_score:.3f} below acceptance threshold "
+                    f"{self.bert_acceptance_threshold}."
+                ),
+                "bert_scores": bert_scores,
+                "bert_best": bert_best,
+                "llm_judgment": llm_result,
+            }
+        return {
+            "status": "FAILED",
+            "details": (
+                f"Both reused BERT (best: {best_bert_score:.3f}) and LLM "
+                "found no acceptable matches."
+            ),
+            "bert_scores": bert_scores,
+            "bert_best": bert_best,
+            "llm_judgment": llm_result,
+        }
 
 
 def parse_args() -> argparse.Namespace:
@@ -169,6 +321,14 @@ def parse_args() -> argparse.Namespace:
         help="Diagnostic equivalence is canonical; legacy is a comparison bridge.",
     )
     parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument(
+        "--experiment-name",
+        help="Override the experiment name stored in Pipeline V4 outputs.",
+    )
+    parser.add_argument(
+        "--experiment-description",
+        help="Override the experiment description stored in Pipeline V4 outputs.",
+    )
     return parser.parse_args()
 
 
@@ -290,14 +450,20 @@ def evaluator_config(
     case_count: int,
     evaluated_model: str,
 ) -> dict[str, Any]:
-    return {
-        "EXPERIMENT_NAME": (
-            f"medreamm-pilot{case_count}-dxgpt-beta-product"
-        ),
-        "EXPERIMENT_DESCRIPTION": (
+    experiment_name = (
+        args.experiment_name
+        or f"medreamm-pilot{case_count}-dxgpt-beta-product"
+    )
+    experiment_description = (
+        args.experiment_description
+        or (
             f"DxGPT beta end-to-end MedReaMM {case_count}-case cohort "
             "evaluated with Pipeline V4."
-        ),
+        )
+    )
+    return {
+        "EXPERIMENT_NAME": experiment_name,
+        "EXPERIMENT_DESCRIPTION": experiment_description,
         "DXGPT_EMULATOR": {
             "MODEL": evaluated_model,
             "CANDIDATE_PROMPT_PATH": "Server/assets/prompts.js",
@@ -391,7 +557,16 @@ def evaluate_dataset_multimodal(
     results: list[EvaluationResult | None] = [None] * total
 
     if workers > 1:
-        evaluator.warmup_dependencies()
+        reuses_all_bert_scores = all(
+            bool(case.get("gdx_details"))
+            and all(
+                "_source_bert_evaluation" in gdx_info
+                for gdx_info in case["gdx_details"].values()
+            )
+            for case in labeled_cases
+        )
+        if not reuses_all_bert_scores:
+            evaluator.warmup_dependencies()
         with ThreadPoolExecutor(
             max_workers=workers, thread_name_prefix="multimodal-eval"
         ) as executor:

@@ -1,0 +1,55 @@
+review:
+  date: 2026-09-21
+  rule: Label the primary visual content, not the dataset or clinical modality.
+  reviewer_count: 1
+  status: provisional_pending_second_review
+
+assets:
+  - case_id: '24174966'
+    image_index: 0
+    expected_class: medical_image
+    note: MRI and ultrasound composite.
+  - case_id: '25995698'
+    image_index: 0
+    expected_class: medical_image
+    note: Ultrasound.
+  - case_id: '23553973'
+    image_index: 0
+    expected_class: medical_image
+    note: Axial CT.
+  - case_id: '27656661'
+    image_index: 0
+    expected_class: medical_image
+    note: Fundus and ophthalmic imaging composite.
+  - case_id: N-10000022
+    image_index: 0
+    expected_class: medical_image
+    note: Brain MRI composite with a caption.
+  - case_id: '27380346'
+    image_index: 0
+    expected_class: medical_image
+    note: Clinical dermatology photograph.
+  - case_id: '28126713'
+    image_index: 0
+    expected_class: medical_image
+    note: Sagittal CT.
+  - case_id: '23449674'
+    image_index: 0
+    expected_class: document_image
+    note: Laboratory result table; no clinical image.
+  - case_id: case-19003
+    image_index: 0
+    expected_class: medical_image
+    note: Annotated ultrasound.
+  - case_id: '20052363'
+    image_index: 0
+    expected_class: medical_image
+    note: Contrast radiograph.
+  - case_id: '30687305'
+    image_index: 0
+    expected_class: document_image
+    note: Multi-column laboratory result table; no clinical image.
+  - case_id: '27074070'
+    image_index: 0
+    expected_class: medical_image
+    note: Abdominal radiograph.

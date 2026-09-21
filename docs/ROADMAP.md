@@ -1,7 +1,7 @@
 # DxGPT — roadmap operativo
 
-**Actualizado:** 2026-09-16
-**Estado:** decisión de producto cerrada; implementación UI/Server pendiente.
+**Actualizado:** 2026-09-21
+**Estado:** decisión de producto cerrada; Home y Preguntas médicas ya están separados.
 
 ## Decisión vigente de producto
 
@@ -11,14 +11,14 @@ todos los flujos: diagnóstico en Home y preguntas médicas generales en Beta.
 - No habrá modo avanzado ni selector de modelo.
 - No habrá segunda opinión basada en otro modelo.
 - No habrá un camino de producto con Gemini.
-- Home evolucionará para aceptar texto, imágenes y documentos con Terra.
-- Beta quedará solo para preguntas médicas generales, no para diagnóstico.
+- Home acepta texto, imágenes y documentos.
+- Preguntas médicas es una página aparte, no un input mixto; Aragón igual.
 - El fallback interno será entre deployments regionales de Terra, nunca a
   mini, gpt5 o Gemini. Cada región deberá validar disponibilidad, capacidad y
   soporte de visión antes de entrar en la cadena.
 
-Esta edición es exclusivamente documental. **No cambia producción, no activa
-Terra y no modifica UI, Server, routing ni deployments.**
+La separación Home / Preguntas médicas ya está en Client y Server. El flip
+de Terra y el fallback regional siguen pendientes.
 
 ## Estado actual
 
@@ -29,8 +29,9 @@ Terra y no modifica UI, Server, routing ni deployments.**
 - Terra ya tiene evidencia de evaluación en texto y texto+imagen, pero eso no
   equivale a un despliegue de producto. En MedReaMM, `T+I` obtuvo
   cobertura/R@1 84%/67% frente a 65%/50% con `T` (`p=0,00055`).
-- La implementación de Home multimodal/documental y la simplificación de Beta
-  están pendientes.
+- Home ya acepta texto, imágenes y documentos; Preguntas médicas es una
+  página aparte (también en Aragón). El fallback regional de Terra sigue
+  pendiente.
 - La estrategia regional de fallback Terra está por validar e implementar.
 
 ### Evaluación y publicación
@@ -55,19 +56,38 @@ Terra y no modifica UI, Server, routing ni deployments.**
 - [ ] Dejar un solo modelo diagnóstico visible en todos los puntos de entrada.
 - [ ] Retirar de la experiencia de producto el modo avanzado, la segunda
   opinión y cualquier ruta/configuración de Gemini.
-- [ ] Habilitar en Home texto, imágenes y documentos: imágenes directas a
+- [x] Habilitar en Home texto, imágenes y documentos: imágenes directas a
   Terra vision; documentos extraídos primero a texto; validación explícita
   de tipos, tamaño y errores.
-- [ ] Limitar Beta a preguntas médicas generales y separar ese flujo del
-  diagnóstico de Home.
+- [x] Limitar Beta a preguntas médicas generales y separar ese flujo del
+  diagnóstico de Home. Aragón/SaludGPT usa la misma separación.
 - [ ] Añadir telemetría y pruebas de regresión que acrediten modelo solicitado,
   deployment final, modalidad recibida y fallback aplicado.
 - [ ] Preparar despliegue gradual y rollback antes de cualquier flip real.
 
 ## Trabajo pendiente de evaluación/publicación
 
+- [x] Preparar el benchmark sintético de imagen documental en
+  [`bench/document_image_beta`](../bench/document_image_beta/README.md):
+  10 casos sin PII, 50 variantes end-to-end y controles médicos MedReaMM.
+- [x] Ejecutar la clasificación `document_image` / `medical_image` / `mixed`
+  y el manifest end-to-end: ruta 45/45, 0/10 imágenes médicas a OCR; PDF
+  nativo/escaneado conservó 100%/97,5% de hechos frente a 10% en escaneo PNG
+  directo. En strict, ambos PDF lograron cobertura 10/10 frente a 1/10 del
+  escaneo directo. [Informe](../bench/document_image_beta/RESULTS.md).
+- [ ] Segunda revisión de etiquetas MedReaMM y revisión clínica de los diez
+  casos antes de convertir el piloto en gate de producción.
 - [x] Reevaluar `o3-dxgpt high` en `all_256_clean` con strict como referencia
   del otro tenant: R@1 56,6%, cobertura 80,9%; no supera a Terra.
+- [x] Evaluar `grok-4.6 low` y `claude-opus-5 low` sobre los 256 casos
+  narrativos con el mismo prompt y strict. Grok queda 3º: R@1 62,9%,
+  cobertura 81,6%, 17,0 s/caso. Claude, tras corregir el parseo de
+  `thinking`: R@1 59,4%, cobertura 87,1%, 22,7 s/caso. El 35,2% era inválido.
+  [Informe](../bench/multimodal_beta/results/2026-09-17-all256-strict-grok46-claude-opus5.md).
+- [x] Reevaluar con strict las 3.017 respuestas HPO congeladas de Terra:
+  DDD, RAMEDIS, LIRICAL, MME, MyGene2 y HMS. Total ponderado R@1 29,8%,
+  cobertura 46,7%; cero errores finales. No hubo nueva inferencia, MedLabeler
+  ni SapBERT. [Informe](../bench/multimodal_beta/results/2026-09-16-rare-hpo-terra-strict.md).
 - [x] Medir jueces Pro, Flash dinámico/sin thinking, Grok y Kimi sobre las 256
   listas congeladas de Terra, incluyendo tokens, latencia y coste. Flash sin
   thinking: $0,0087 y p50 0,57 s vs $1,800 y 9,60 s de Pro.
@@ -107,8 +127,9 @@ Terra y no modifica UI, Server, routing ni deployments.**
 
 - [x] **Selección de un modelo avanzado/Gemini:** cancelada; ya no existe ese
   rol en el producto.
-- [x] **DDD strict para decidir el avanzado:** cancelado; no está bloqueado ni
-  pendiente. No se justifica gastar horas de juez para una decisión eliminada.
+- [x] **DDD strict para decidir el avanzado:** cancelado como criterio de
+  selección. Posteriormente se ejecutó dentro del benchmark HPO de Terra para
+  documentar el modelo único de producción, no para recuperar un modo avanzado.
 - [x] **Runs adicionales de Gemini/HPO destinados a elegir avanzado:**
   cancelados por la misma razón.
 - [x] **Segunda opinión con un modelo distinto:** cancelada.
@@ -143,9 +164,9 @@ producto vigente.
 ### Para la futura implementación de producto
 
 - [ ] Solo Terra es visible y solicitado en Home y Beta.
-- [ ] Home acepta texto e imágenes con Terra; los documentos se extraen a
+- [x] Home acepta texto e imágenes con Terra; los documentos se extraen a
   texto antes de enviarlos a Terra.
-- [ ] Beta ofrece únicamente preguntas médicas generales.
+- [x] Beta ofrece únicamente preguntas médicas generales.
 - [ ] No quedan controles ni rutas activas de avanzado, segunda opinión o
   Gemini en la experiencia de producto.
 - [ ] Todo fallback termina en otro deployment Terra previamente validado.
@@ -159,5 +180,6 @@ producto vigente.
 - [Índice de resultados multimodales y strict](../bench/multimodal_beta/RESULTS.md)
 - [Brief de Julián sobre el evaluador](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md)
 - [Informe strict de texto](benchmark-report-strict-texto.html)
+- [Informe HPO completo de Terra con strict](../bench/multimodal_beta/results/2026-09-16-rare-hpo-terra-strict.md)
 - [Informe de coste, latencia y acuerdo de jueces](benchmark-report-jueces.html)
 - [Log histórico del pipeline](pipeline/experiment-log.md)
