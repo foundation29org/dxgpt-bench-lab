@@ -135,9 +135,11 @@ Benchmark de jueces sobre las 256 listas congeladas de Terra (2026-09-16):
 Flash sin thinking cuesta $0,0087 vs $1,800 de Pro y reduce la mediana
 9,60→0,57 s; obtiene el mismo acuerdo humano inicial, 30/35. Kimi K2.6
 funciona vía Azure: $1,125, p50 6,09 s, p95 39,62 s y 28/35. Grok queda en
-27/35. David ya terminó la ronda 2 original; se creó una tarea ciega nueva
-solo con las 13 discrepancias Pro vs Flash. Las discrepancias exploratorias de
-Kimi/Grok quedan fuera. Informe:
+27/35. David completó la revisión ciega de las 13 discrepancias Pro vs Flash:
+en las 11 binarias Pro gana 8–3. Pro obtuvo 3 TP, 5 TN, 2 FP y 3 FN; Flash,
+3 TP, 0 TN, 7 FP y 3 FN. Flash añade cinco errores y cinco falsos positivos,
+incumple el criterio de promoción y no sustituye a Pro. Las discrepancias
+exploratorias de Kimi/Grok quedan fuera. Informe:
 [results/2026-09-16-judge-benchmark-all256-terra.md](results/2026-09-16-judge-benchmark-all256-terra.md).
 Tabla HTML:
 [benchmark-report-jueces.html](../../docs/benchmark-report-jueces.html).

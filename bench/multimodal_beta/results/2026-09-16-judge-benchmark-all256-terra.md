@@ -1,6 +1,7 @@
 # Benchmark de jueces — Terra all_256_clean
 
-Estado: **completado para Pro, Flash, Grok y Kimi; DeepSeek no ejecutado**.
+Estado: **completado, incluida la revisión clínica ciega Pro vs Flash;
+DeepSeek no ejecutado**.
 
 ## Qué mide
 
@@ -56,8 +57,33 @@ contiene casos ambiguos o mal etiquetados y sigue pendiente de readjudicación.
 - Coste estimado: **$0,0087**: unas 208 veces menos que Pro.
 - En las etiquetas humanas iniciales: 30/35, igual que Pro; cobertura 84/100.
 
-Es el candidato operativo principal. Frente a Pro quedan 13 discrepancias
-exactas —11 binarias— que requieren revisión clínica.
+Fue el candidato operativo a revisión. La adjudicación clínica posterior de
+las 13 discrepancias rechazó su promoción y mantiene Pro como juez.
+
+## Adjudicación clínica ciega · 22 de septiembre de 2026
+
+David revisó los 13 casos sin conocer qué respuesta pertenecía a Pro o Flash.
+Consideró válidos los 13 diagnósticos de referencia y estableció 6 matches y
+7 no-matches.
+
+- Pro: 3 TP, 5 TN, 2 FP y 3 FN; 8/13 decisiones binarias correctas,
+  precisión 60% y recall 50%.
+- Flash sin thinking: 3 TP, 0 TN, 7 FP y 3 FN; 3/13 correctas,
+  precisión 30% y recall 50%.
+- En las 11 discrepancias binarias, Pro gana 8–3.
+- En las dos discrepancias que eran solo de posición (`T208` y `T795`),
+  ambos jueces produjeron falsos positivos.
+
+El formulario exigía una sola posición, pero en cinco justificaciones se
+declaran varias opciones clínicamente aceptables. Por ello la posición exacta
+no se usa para decidir la promoción: leída literalmente sería 6/13 para Pro y
+2/13 para Flash; aceptando todas las posiciones mencionadas en la prosa sería
+8/13 frente a 3/13. La conclusión binaria no cambia.
+
+Flash incumple el criterio fijado antes de abrir la clave —como máximo un
+error adicional y ningún falso positivo clínicamente relevante—: comete cinco
+errores y cinco falsos positivos más que Pro. El ahorro de coste y latencia no
+compensa este deterioro.
 
 ### Grok 4.6 low
 
@@ -130,18 +156,17 @@ https://api-docs.deepseek.com/quick_start/pricing
 
 ## Decisión
 
-Flash sin thinking merece la revisión clínica prioritaria: reduce el coste
-unas 208 veces y la mediana unas 16,9 veces, manteniendo el mismo 30/35 inicial
-que Pro. No cambiar el juez solo por la cobertura de los 256. El criterio de
-promoción debe ser el acuerdo con una referencia humana corregida, con matriz
-FP/FN y una tolerancia predefinida frente a Pro.
+**Mantener Gemini 2.5 Pro como juez strict. No promover Flash sin thinking.**
+Flash reduce el coste unas 208 veces y la mediana unas 16,9 veces, pero la
+revisión ciega demuestra que su cobertura adicional procede principalmente de
+falsos positivos. Puede conservarse como opción experimental para nuevas
+ablaciones, no como árbitro canónico.
 
-Se generó una
-[tarea ciega para David](../reviews/david_review_all256_pro_vs_flash_blind.md)
-con únicamente las 13 discrepancias que deciden Pro vs Flash sin thinking.
-La [clave interna](../reviews/david_deliverable_all256_judge_discrepancies.md)
-conserva las decisiones automáticas y no debe enviarse antes de completar la
-revisión.
+La
+[tarea ciega completada](../reviews/david_review_all256_pro_vs_flash_blind.md)
+contiene las 13 adjudicaciones. La
+[clave interna](../reviews/david_deliverable_all256_judge_discrepancies.md)
+conserva las decisiones automáticas que se abrieron después de la entrega.
 
 ## Trazabilidad
 

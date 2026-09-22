@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · jueces strict · 16 sep 2026</div>
+  <div class="hero-badge">Borrador · jueces strict · 22 sep 2026</div>
   <h1>Coste, latencia y acuerdo del juez</h1>
   <p>Las mismas 256 listas congeladas de Terra y 133 prompts de equivalencia
      para Pro, Flash, Grok y Kimi. Incluye Flash con thinking desactivado.</p>
@@ -42,11 +42,11 @@
       </div>
     </div>
     <div class="callout callout-warn">
-      <strong>Flash sin thinking es ahora el candidato claro.</strong>
-      Mantiene 30/35 de acuerdo humano inicial, igual que Pro, con 11
-      discrepancias binarias frente a él en los 256. Cuesta unas 208 veces
-      menos y reduce la mediana de 9,60 a 0,57 s. Falta revisar esas
-      discrepancias antes de sustituir el juez.
+      <strong>Mantener Pro; no promover Flash sin thinking.</strong>
+      David completó la revisión ciega de las 13 discrepancias. En las 11
+      binarias Pro gana 8–3. Flash añade cinco errores y cinco falsos
+      positivos, por lo que incumple el criterio prefijado pese a ser 208
+      veces más barato y mucho más rápido.
     </div>
   </div>
 
@@ -146,7 +146,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="winner">
           <td>Gemini 2.5 Pro</td>
           <td>62,9%</td><td>80,1%</td><td>83,6%</td><td>83,6%</td>
           <td>1,416</td><td>0,713</td><td>Referencia</td>
@@ -156,7 +156,7 @@
           <td>66,4%</td><td>84,4%</td><td>87,9%</td><td>87,9%</td>
           <td>1,404</td><td>0,752</td><td>94,9%</td>
         </tr>
-        <tr class="winner">
+        <tr>
           <td>Gemini 2.5 Flash sin thinking</td>
           <td>65,2%</td><td>82,4%</td><td>85,5%</td><td>85,5%</td>
           <td>1,393</td><td>0,736</td><td>95,7%</td>
@@ -182,28 +182,29 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Qué significa «readjudicar» y siguiente paso</div>
+    <div class="section-title">Revisión clínica ciega y decisión</div>
     <p>
-      David ya terminó la ronda 2 original. Esta es una tarea nueva sobre los
-      256: revisar únicamente los 13 casos donde Pro y Flash sin thinking
-      discrepan. Las otras discrepancias de Kimi y Grok quedan fuera porque
-      esos modelos ya no son candidatos.
+      David revisó los 13 casos donde Pro y Flash sin thinking discrepaban,
+      sin conocer la identidad ni las respuestas de los jueces. Consideró
+      válidos los 13 gold y fijó 6 matches y 7 no-matches.
     </p>
-    <h3>Orden recomendado</h3>
+    <h3>Resultado binario</h3>
     <ol style="padding-left:24px;">
-      <li>Enviar a David la
-          <a href="../bench/multimodal_beta/reviews/david_review_all256_pro_vs_flash_blind.md">tarea ciega ya preparada</a>
-          con los 13 casos.</li>
-      <li>Aplicar antes de mirar el resultado el criterio de no inferioridad:
-          Flash puede tener como máximo un error adicional frente a Pro y no
-          debe añadir falsos positivos clínicamente peligrosos.</li>
-      <li>Con las respuestas de David, recalcular acuerdo, precisión,
-          recall y matriz FP/FN de Pro y Flash.</li>
-      <li>Si Flash sin thinking cumple el criterio, sustituir Pro como juez
-          operativo y conservar Pro para auditorías periódicas.</li>
-      <li>Si no se hace la revisión humana, mantener Pro. No hacen falta más
-          ejecuciones sobre los 256.</li>
+      <li>Pro: 3 TP, 5 TN, 2 FP y 3 FN; 8/13 correctas, precisión 60% y
+          recall 50%.</li>
+      <li>Flash sin thinking: 3 TP, 0 TN, 7 FP y 3 FN; 3/13 correctas,
+          precisión 30% y recall 50%.</li>
+      <li>En las 11 discrepancias binarias Pro gana 8–3. En las otras dos,
+          ambos jueces produjeron falsos positivos.</li>
+      <li>El criterio previo permitía como máximo un error adicional y ningún
+          falso positivo relevante. Flash añade cinco de cada uno: no se
+          promueve.</li>
     </ol>
+    <p>
+      <a href="../bench/multimodal_beta/reviews/david_review_all256_pro_vs_flash_blind.md">Ver revisión ciega completada</a>
+      ·
+      <a href="../bench/multimodal_beta/results/2026-09-16-judge-benchmark-all256-terra.md">Ver informe completo</a>
+    </p>
   </div>
 
   <div class="section">
@@ -213,6 +214,11 @@
         <tr><th>Modelo</th><th>Estado</th><th>Acción</th></tr>
       </thead>
       <tbody>
+        <tr>
+          <td>Gemini 2.5 Flash sin thinking</td>
+          <td>Revisión clínica ciega completada</td>
+          <td>No promover: 7 FP frente a 2 de Pro</td>
+        </tr>
         <tr>
           <td>Kimi K2.6</td>
           <td>Completado mediante el deployment Azure existente</td>
@@ -264,6 +270,6 @@
   </div>
 </div>
 
-<footer>Borrador interno · benchmark de jueces · 2026-09-16</footer>
+<footer>Borrador interno · benchmark de jueces · 2026-09-22</footer>
 </body>
 </html>
