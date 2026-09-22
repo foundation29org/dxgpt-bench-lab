@@ -81,6 +81,10 @@ even if the same canvas also contains substantial report text. Small labels,
 arrows, measurements, and image annotations belong to the medical visual and
 must not cause it to be treated as a text-only document.
 
+Set has_document_text=true only for substantial standalone clinical prose,
+forms, tables, or laboratory values worth extracting with OCR. Keep it false
+for labels, arrows, measurements, legends, and annotations alone.
+
 Return unknown whenever the distinction is uncertain. Prefer unknown over
 document_only."""
 
@@ -153,11 +157,17 @@ def route_for_prediction(
             and prediction.get("has_document_text") is True
             and prediction.get("has_medical_visual") is False
         )
-        return (
-            "ocr_text"
-            if is_consistent_document and confidence >= threshold
-            else "direct_vision"
+        is_mixed_document = (
+            classification == "contains_medical_visual"
+            and prediction.get("has_document_text") is True
+            and prediction.get("has_medical_visual") is True
         )
+        if confidence >= threshold:
+            if is_consistent_document:
+                return "ocr_text"
+            if is_mixed_document:
+                return "ocr_plus_image"
+        return "direct_vision"
     if classification in {"document_image", "mixed"} and confidence >= threshold:
         return "ocr_plus_image"
     return "direct_vision"
@@ -173,7 +183,7 @@ def expected_for_policy(
         return expected_class, str(asset.get("expected_route") or "direct_vision")
     source_case_id = str((asset.get("metadata") or {}).get("source_case_id") or "")
     if source_case_id and source_case_id in (mixed_source_ids or set()):
-        return "contains_medical_visual", "direct_vision"
+        return "contains_medical_visual", "ocr_plus_image"
     if expected_class == "document_image":
         return "document_only", "ocr_text"
     if expected_class in {"medical_image", "mixed"}:

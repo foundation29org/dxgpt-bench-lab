@@ -7,6 +7,7 @@ under generated/ and are intentionally ignored by git.
 from __future__ import annotations
 
 import argparse
+import copy
 import os
 import random
 import textwrap
@@ -312,22 +313,37 @@ def product_case(
     manifest_dir: Path,
     *,
     image: bool,
+    contains_medical_visual: bool,
 ) -> dict[str, Any]:
+    metadata = {
+        "source_case_id": case_id,
+        "artifact_type": artifact_type,
+        "synthetic": True,
+        "expected_facts": [
+            str(value)
+            for value in case["expected_facts"]
+        ],
+    }
+    if image:
+        metadata.update({
+            "expected_image_class": (
+                "contains_medical_visual"
+                if contains_medical_visual
+                else "document_only"
+            ),
+            "expected_image_route": (
+                "vision"
+                if contains_medical_visual
+                else "ocr_text"
+            ),
+        })
     return {
         "id": f"{case_id}-{artifact_type}",
         "text": "",
         "documents": [] if image else [relative_path(path, manifest_dir)],
         "images": [relative_path(path, manifest_dir)] if image else [],
         "gold": case["gold"],
-        "metadata": {
-            "source_case_id": case_id,
-            "artifact_type": artifact_type,
-            "synthetic": True,
-            "expected_facts": [
-                str(value)
-                for value in case["expected_facts"]
-            ],
-        },
+        "metadata": metadata,
     }
 
 
@@ -403,6 +419,9 @@ def generate_case(
     reports = case.get("reports") or []
     if not reports:
         raise GenerationError(f"Case {case_id} has no reports")
+    contains_medical_visual = any(
+        report.get("include_mixed") for report in reports
+    )
 
     pages = [
         render_report_page(report, seed=SEED + index * 100 + page_index)
@@ -455,6 +474,7 @@ def generate_case(
                 path,
                 product_manifest_dir,
                 image=is_image,
+                contains_medical_visual=contains_medical_visual,
             )
         )
 
@@ -467,14 +487,18 @@ def generate_case(
             {
                 "id": f"{case_id}-{asset_type}",
                 "path": relative_path(path, product_manifest_dir),
-                "expected_class": "document_image",
+                "expected_class": (
+                    "mixed"
+                    if contains_medical_visual
+                    else "document_image"
+                ),
                 "expected_route": "ocr_plus_image",
                 "source": "synthetic",
                 "metadata": {"source_case_id": case_id, "artifact_type": asset_type},
             }
         )
 
-    if any(report.get("include_mixed") for report in reports):
+    if contains_medical_visual:
         mixed_path = case_dir / "mixed.jpg"
         combined.save(mixed_path, quality=90, optimize=True)
         classification_assets.append(
@@ -487,6 +511,32 @@ def generate_case(
                 "metadata": {"source_case_id": case_id, "artifact_type": "mixed"},
             }
         )
+
+
+def build_mixed_hybrid_cases(
+    product_cases: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Pair each mixed image with OCR from its matching scanned PDF."""
+    scanned_pdf_by_source = {
+        str(item["metadata"]["source_case_id"]): item["documents"]
+        for item in product_cases
+        if item["metadata"]["artifact_type"] == "scanned-pdf"
+    }
+    hybrid_cases = []
+    for item in product_cases:
+        metadata = item["metadata"]
+        if metadata.get("expected_image_route") != "vision":
+            continue
+        hybrid = copy.deepcopy(item)
+        source_case_id = str(metadata["source_case_id"])
+        hybrid["id"] = f"{item['id']}-ocr-plus-image"
+        hybrid["documents"] = list(scanned_pdf_by_source[source_case_id])
+        hybrid["metadata"]["artifact_type"] = (
+            f"{metadata['artifact_type']}-ocr-plus-image"
+        )
+        hybrid["metadata"]["routing_experiment"] = "ocr_plus_image"
+        hybrid_cases.append(hybrid)
+    return hybrid_cases
 
 
 def main() -> int:
@@ -548,12 +598,33 @@ def main() -> int:
         },
         "cases": product_cases,
     }
+    mixed_hybrid_cases = build_mixed_hybrid_cases(product_cases)
+    mixed_hybrid_manifest = {
+        "dataset": {
+            "name": source["dataset"]["name"],
+            "version": source["dataset"]["version"],
+            "task": "mixed_image_ocr_plus_image",
+            "synthetic": True,
+        },
+        "cases": mixed_hybrid_cases,
+    }
     with (output_dir / "classification_manifest.yaml").open("w", encoding="utf-8") as stream:
         yaml.safe_dump(classification_manifest, stream, sort_keys=False, allow_unicode=True)
     with (output_dir / "product_manifest.yaml").open("w", encoding="utf-8") as stream:
         yaml.safe_dump(product_manifest, stream, sort_keys=False, allow_unicode=True)
+    with (output_dir / "mixed_hybrid_manifest.yaml").open(
+        "w",
+        encoding="utf-8",
+    ) as stream:
+        yaml.safe_dump(
+            mixed_hybrid_manifest,
+            stream,
+            sort_keys=False,
+            allow_unicode=True,
+        )
 
     print(f"Generated {len(product_cases)} product cases in {output_dir}")
+    print(f"Generated {len(mixed_hybrid_cases)} mixed hybrid cases")
     print(f"Generated {len(classification_assets)} classification assets")
     if not any(asset["expected_class"] == "medical_image" for asset in classification_assets):
         print("WARNING: no reviewed medical-image controls were available")

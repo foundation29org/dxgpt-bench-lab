@@ -75,6 +75,19 @@ de Terra y el fallback regional siguen pendientes.
   nativo/escaneado conservó 100%/97,5% de hechos frente a 10% en escaneo PNG
   directo. En strict, ambos PDF lograron cobertura 10/10 frente a 1/10 del
   escaneo directo. [Informe](../bench/document_image_beta/RESULTS.md).
+- [x] Validar V1 end-to-end sobre las mismas 50 entradas: ruta 30/30,
+  documentos-imagen puros con 100% de hechos y cobertura 21/21; strict global
+  sube de cobertura/R@1 54%/44% a 86%/68%. Las imágenes mixtas con visión
+  directa solo conservan 22,2% de los hechos.
+- [x] Comparar `OCR + imagen original` frente a visión directa en nueve
+  imágenes mixtas: hechos, cobertura y R@1 pasan de 2/9 a 9/9; coste por caso
+  cubierto baja de 0,0361 a 0,0263 USD; latencia híbrida media 27,84 s.
+- [x] Implementar la ruta híbrida mixta y su fallback OCR → visión en Server,
+  manteniendo imagen original y resumen por encima de 1.000 caracteres.
+- [x] Repetir las nueve regresiones mixtas contra el flujo real actualizado:
+  OCR + visión 9/9, hechos y cobertura 9/9, strict repetido 9/9, 28,18 s de
+  latencia media y 0,02676 USD por caso. El primer juez dio 8/9 y el segundo
+  aceptó la misma equivalencia, por lo que se documenta su inestabilidad.
 - [ ] Segunda revisión de etiquetas MedReaMM y revisión clínica de los diez
   casos antes de convertir el piloto en gate de producción.
 - [x] Reevaluar `o3-dxgpt high` en `all_256_clean` con strict como referencia
