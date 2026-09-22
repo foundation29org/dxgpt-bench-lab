@@ -15,8 +15,15 @@ La ejecución inicial evaluó 45 imágenes con el manifest legacy:
 
 Al adaptar el gold a V1 se detectó que las nueve variantes escaneo/foto/
 manuscrito de los tres casos mixtos también contenían el panel médico. El gold
-corregido usado por V1 es 23 documentales, 10 médicas y 12 mixtas. El generador
-ya marca esa verdad upstream para todos los formatos.
+usado por la primera corrida V1 fue 23 documentales, 10 médicas y 12 mixtas.
+
+La preauditoría del 22 de septiembre reclasificó `N-10000022` como mixta:
+contiene cuatro MRI y un pie clínico chino sustancial. El gold vigente queda en
+23 documentales, 9 médicas y 13 mixtas. La repetición dirigida produjo
+`ocr_plus_image` tanto con Terra como con GPT-5.4-mini. Las cifras agregadas
+siguientes pertenecen a la corrida anterior; al sustituir ese único caso por
+su repetición auditada, Terra conserva ruta correcta 45/45. No se recalculan
+latencia ni coste globales a partir de ejecuciones tomadas en momentos distintos.
 
 Resultado:
 
@@ -210,5 +217,7 @@ end-to-end quedan completadas. Si el OCR falla o devuelve texto insuficiente,
 se mantiene visión directa como fallback. El texto combinado sigue pasando por
 el resumen actual cuando supera 1.000 caracteres.
 
-Antes del rollout siguen haciendo falta la segunda revisión de etiquetas
-MedReaMM y más controles médicos difíciles.
+La preauditoría técnica-clínica de 12 etiquetas MedReaMM, 10 casos y 41 hechos
+está en `clinical_review_precheck.yaml`: confirmó 11 etiquetas, corrigió una y
+no encontró bloqueos. Antes del rollout siguen haciendo falta la firma
+independiente del biomédico y más controles médicos difíciles.

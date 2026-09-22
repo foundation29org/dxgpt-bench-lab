@@ -1,7 +1,8 @@
 # Benchmark de imagen documental
 
-Este track decide si merece la pena añadir OCR híbrido a las imágenes subidas
-a DxGPT. No cambia el servidor ni activa OCR en producción.
+Este track valida la ruta V1 de OCR y visión para las imágenes subidas a
+DxGPT. La implementación ya existe en el servidor; el benchmark decide si
+puede avanzar como gate de producción.
 
 ## Decisión que evalúa
 
@@ -20,12 +21,15 @@ clasificador usa cuatro clases:
 La regla de seguridad es deliberadamente asimétrica:
 
 ```text
-document_image o mixed con confianza >= 0,90 → OCR + imagen original
-medical_image o unknown                       → imagen original directa a Terra
-fallo del clasificador                        → imagen original directa a Terra
+document_image con confianza >= 0,90 → OCR; no enviar imagen al diagnóstico
+mixed con confianza >= 0,90          → OCR + imagen original
+medical_image o unknown              → imagen original directa a Terra
+fallo del clasificador               → imagen original directa a Terra
 ```
 
-OCR sería siempre aditivo: nunca sustituiría la imagen original.
+OCR es aditivo para imágenes mixtas. En una imagen exclusivamente documental,
+el texto extraído sustituye al visual en la llamada diagnóstica; el blob
+original se conserva.
 
 ## Datos
 
@@ -46,6 +50,11 @@ laboratorio y, correctamente, se etiquetan como `document_image`.
 
 La primera revisión queda en `medreamm_labels.yaml` y requiere una segunda
 revisión antes de usar el resultado como evidencia clínica definitiva.
+
+El formulario autosuficiente para esa segunda revisión está en
+[`DAVID_CLINICAL_REVIEW_FORM.md`](DAVID_CLINICAL_REVIEW_FORM.md). Incluye las
+instrucciones, imágenes y campos en lenguaje natural. El revisor devuelve ese
+mismo Markdown rellenado y no edita directamente el gold ni la preauditoría.
 
 Los binarios generados viven en `generated/` y no se versionan. Las
 definiciones, semillas y scripts sí se versionan.
@@ -177,8 +186,10 @@ py "bench\document_image_beta\evaluate.py" `
 El piloto de Terra y las 50 entradas end-to-end ya se ejecutaron. Los
 resultados están en [RESULTS.md](RESULTS.md).
 
-1. Realizar una segunda revisión de las etiquetas MedReaMM.
-2. Revisar clínicamente los diez casos y sus hechos esperados.
+1. Obtener la firma independiente del biomédico sobre
+   `clinical_review_precheck.yaml`: la preauditoría confirmó 11/12 etiquetas,
+   propuso una corrección y verificó 10/10 casos y 41/41 hechos.
+2. Resolver las cautelas clínicas y visuales que el biomédico rechace.
 3. Ampliar los controles médicos difíciles y reales.
 
 La ruta mixta `OCR + imagen original`, su fallback a visión y la regresión

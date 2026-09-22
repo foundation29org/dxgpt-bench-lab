@@ -1,0 +1,219 @@
+review:
+  date: 2026-09-22
+  reviewer_type: AI-assisted technical and clinical precheck
+  status: complete_pending_independent_human_signoff
+  scope:
+    medreamm_assets: 12
+    synthetic_cases: 10
+    expected_facts: 41
+  limitations:
+    - This is not an independent human clinical review.
+    - Diagnostic support was assessed from the benchmark content, not from a full patient record.
+    - Final acceptance or rejection must be recorded by the biomedical reviewer.
+
+summary:
+  medreamm_labels_confirmed: 11
+  medreamm_labels_changed: 1
+  synthetic_golds_supported: 10
+  expected_facts_verified: 41
+  blocking_findings: 0
+  human_attention_findings: 4
+
+medreamm_assets:
+  - case_id: '24174966'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Cardiac MRI and echocardiography panels with arrows; no standalone document text.
+    human_signoff: pending
+  - case_id: '25995698'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Ultrasound image with measurement scale and visual annotations only.
+    human_signoff: pending
+  - case_id: '23553973'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Axial abdominal CT with arrows; no document content.
+    human_signoff: pending
+  - case_id: '27656661'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Fundus photographs and OCT maps/plots; labels and measurements are part of the medical visual.
+    human_signoff: pending
+  - case_id: N-10000022
+    image_index: 0
+    recommendation: mixed
+    decision: change_from_medical_image
+    evidence: Four brain MRI panels plus a substantial multi-line Chinese clinical caption suitable for additive OCR.
+    automated_recheck:
+      expected_route: ocr_plus_image
+      gpt56terra: ocr_plus_image
+      gpt54mini: ocr_plus_image
+    human_signoff: pending
+  - case_id: '27380346'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Clinical dermatology photographs without standalone document text.
+    human_signoff: pending
+  - case_id: '28126713'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Sagittal head and neck CT with clinically meaningful anatomy.
+    human_signoff: pending
+  - case_id: '23449674'
+    image_index: 0
+    recommendation: document_image
+    decision: confirm
+    evidence: Laboratory result table with values, units and reference ranges; no medical visual.
+    human_signoff: pending
+  - case_id: case-19003
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Annotated ultrasound; rib labels are visual annotations, not document prose.
+    human_signoff: pending
+  - case_id: '20052363'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Contrast colon radiograph with arrows; no standalone document text.
+    human_signoff: pending
+  - case_id: '30687305'
+    image_index: 0
+    recommendation: document_image
+    decision: confirm
+    evidence: Multi-column laboratory table; no clinical image, waveform or plot.
+    human_signoff: pending
+  - case_id: '27074070'
+    image_index: 0
+    recommendation: medical_image
+    decision: confirm
+    evidence: Abdominal radiograph; no substantial standalone text.
+    human_signoff: pending
+
+synthetic_cases:
+  - case_id: iron-deficiency-pattern
+    gold: Iron deficiency anemia
+    support: strong
+    facts_verified: 4
+    rationale: Microcytic anemia with low ferritin and low transferrin saturation.
+    acceptable_equivalents:
+      - Iron-deficiency anaemia
+      - Microcytic iron-deficiency anemia
+    human_signoff: pending
+  - case_id: diabetic-ketoacidosis-pattern
+    gold: Diabetic ketoacidosis
+    support: strong
+    facts_verified: 4
+    rationale: Hyperglycemia, acidemia, low bicarbonate and positive blood ketones.
+    acceptable_equivalents:
+      - DKA
+      - Acute diabetic ketoacidosis
+    human_signoff: pending
+  - case_id: primary-hypothyroid-pattern
+    gold: Primary hypothyroidism
+    support: strong
+    facts_verified: 4
+    rationale: High TSH, low free T4 and positive anti-TPO antibodies.
+    acceptable_equivalents:
+      - Primary autoimmune hypothyroidism
+      - Hashimoto hypothyroidism
+    human_signoff: pending
+  - case_id: community-pneumonia-pattern
+    gold: Community-acquired pneumonia
+    support: strong
+    facts_verified: 4
+    rationale: Acute respiratory syndrome with focal crackles and a new right lower lobe opacity.
+    acceptable_equivalents:
+      - Community-acquired bacterial pneumonia
+      - Right lower lobe community-acquired pneumonia
+    human_signoff: pending
+  - case_id: vitamin-b12-pattern
+    gold: Vitamin B12 deficiency
+    support: strong
+    facts_verified: 4
+    rationale: Low vitamin B12, macrocytosis, neurologic symptoms and positive intrinsic factor antibody.
+    acceptable_equivalents:
+      - Cobalamin deficiency
+      - Pernicious anemia with vitamin B12 deficiency
+    human_signoff: pending
+  - case_id: celiac-pattern
+    gold: Celiac disease
+    support: strong
+    facts_verified: 4
+    rationale: Elevated tissue transglutaminase IgA with normal total IgA and compatible duodenal histology.
+    acceptable_equivalents:
+      - Coeliac disease
+      - Gluten-sensitive enteropathy
+    human_signoff: pending
+  - case_id: glomerulonephritis-pattern
+    gold: Lupus nephritis
+    support: strong_pattern_without_histologic_class
+    facts_verified: 4
+    rationale: Proteinuria, dysmorphic red cells, low C3, high anti-dsDNA and systemic lupus features.
+    caution: Do not require or infer a histologic lupus nephritis class without biopsy.
+    acceptable_equivalents:
+      - SLE nephritis
+      - Systemic lupus erythematosus nephritis
+    human_signoff: pending
+  - case_id: pulmonary-embolism-pattern
+    gold: Pulmonary embolism
+    support: strong
+    facts_verified: 4
+    rationale: Acute symptoms after surgery with hypoxemia and a segmental filling defect on CT angiography.
+    acceptable_equivalents:
+      - Acute pulmonary embolism
+      - Postoperative pulmonary embolism
+    human_signoff: pending
+  - case_id: heart-failure-pattern
+    gold: Acute decompensated heart failure
+    support: strong
+    facts_verified: 4
+    rationale: Orthopnea, edema, rapid weight gain, high BNP, reduced ejection fraction and interstitial opacities.
+    caution: Cardiogenic pulmonary edema alone is a complication and should not automatically count as equivalent.
+    acceptable_equivalents:
+      - Acute decompensated HFrEF
+      - Acute systolic heart failure
+    human_signoff: pending
+  - case_id: dated-potassium-contradiction
+    gold: Acute kidney injury with resolved hyperkalemia
+    support: adequate_with_baseline_caveat
+    facts_verified: 5
+    rationale: Reduced urine output after gastroenteritis with creatinine and potassium improving after intravenous fluids.
+    caution: Baseline creatinine is absent; do not claim that the kidney injury itself fully resolved.
+    acceptable_equivalents:
+      - Prerenal acute kidney injury with resolved hyperkalemia
+      - Acute kidney injury with corrected hyperkalemia
+    human_signoff: pending
+
+dataset_findings:
+  - severity: medium
+    finding: Several transformed scan images clip the left edge of headings or context text.
+    affected_cases:
+      - diabetic-ketoacidosis-pattern
+      - celiac-pattern
+      - heart-failure-pattern
+    impact: Expected facts remain visible, but the artifact is less representative of a clean scan.
+    recommendation: Keep for robustness testing, but add unclipped controls before using the set as a production gate.
+  - severity: medium
+    finding: Synthetic medical panels are schematic rather than diagnostically realistic.
+    affected_cases:
+      - community-pneumonia-pattern
+      - pulmonary-embolism-pattern
+      - heart-failure-pattern
+    impact: They validate routing and text preservation, not true medical-image interpretation.
+    recommendation: Add real difficult mixed-image controls with appropriate rights and clinical review.
+  - severity: medium
+    finding: The strict LLM judge changed one obvious pneumonia equivalence from reject to accept on identical labeled input.
+    impact: Single strict runs are not fully stable for unresolved semantic matches.
+    recommendation: Persist judge traces and require adjudication or consensus for unstable cases.
+  - severity: low
+    finding: The ten synthetic cases are intentionally diagnosis-obvious.
+    impact: High scores should not be presented as general clinical accuracy.
+    recommendation: Add ambiguous and competing-diagnosis controls after human review.
