@@ -94,6 +94,21 @@ py "bench\document_image_beta\run_classifier.py"
 py "bench\document_image_beta\evaluate.py"
 ```
 
+Para evaluar la política desplegada en V1 —solo las imágenes exclusivamente
+documentales van a OCR— se usa:
+
+```powershell
+py "bench\document_image_beta\run_classifier.py" `
+  --policy v1 `
+  --deployment "<deployment-visual>" `
+  --output "bench\document_image_beta\outputs\classification-v1.jsonl"
+
+py "bench\document_image_beta\evaluate.py" `
+  --classification-results `
+    "bench\document_image_beta\outputs\classification-v1.jsonl" `
+  --output "bench\document_image_beta\outputs\evaluation-v1.md"
+```
+
 El benchmark exige:
 
 - cobertura >= 95%;

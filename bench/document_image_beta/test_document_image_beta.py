@@ -51,6 +51,35 @@ class RoutingTests(unittest.TestCase):
             "direct_vision",
         )
 
+    def test_v1_only_ocr_routes_consistent_text_only_images(self) -> None:
+        document = {
+            "has_document_text": True,
+            "has_medical_visual": False,
+        }
+        mixed = {
+            "has_document_text": True,
+            "has_medical_visual": True,
+        }
+
+        self.assertEqual(
+            route_for_prediction(
+                "document_only", 0.95, 0.9, "v1", document
+            ),
+            "ocr_text",
+        )
+        self.assertEqual(
+            route_for_prediction(
+                "document_only", 0.95, 0.9, "v1", mixed
+            ),
+            "direct_vision",
+        )
+        self.assertEqual(
+            route_for_prediction(
+                "contains_medical_visual", 0.99, 0.9, "v1", mixed
+            ),
+            "direct_vision",
+        )
+
     def test_safety_metrics_fail_on_medical_image_ocr(self) -> None:
         records = [
             {
@@ -113,6 +142,76 @@ class RoutingTests(unittest.TestCase):
         metrics = classification_metrics(records)
 
         self.assertTrue(metrics["passed"])
+
+    def test_v1_treats_mixed_images_as_direct_vision(self) -> None:
+        records = [
+            {
+                "id": "document",
+                "status": "success",
+                "policy": "v1",
+                "expected_class": "document_only",
+                "predicted_class": "document_only",
+                "expected_route": "ocr_text",
+                "predicted_route": "ocr_text",
+                "latency_seconds": 1,
+            },
+            {
+                "id": "mixed",
+                "status": "success",
+                "policy": "v1",
+                "expected_class": "contains_medical_visual",
+                "predicted_class": "contains_medical_visual",
+                "expected_route": "direct_vision",
+                "predicted_route": "direct_vision",
+                "latency_seconds": 1,
+            },
+        ]
+
+        metrics = classification_metrics(records)
+
+        self.assertTrue(metrics["passed"])
+        self.assertEqual(metrics["route_accuracy"], 1.0)
+        self.assertEqual(metrics["unsafe_medical_ocr_rate"], 0.0)
+
+    def test_v1_applies_mixed_source_label_to_all_renderings(self) -> None:
+        records = [
+            {
+                "id": "case-scan",
+                "status": "success",
+                "policy": "v1",
+                "expected_class": "document_only",
+                "predicted_class": "contains_medical_visual",
+                "expected_route": "ocr_text",
+                "predicted_route": "direct_vision",
+                "latency_seconds": 1,
+                "metadata": {
+                    "source_case_id": "mixed-case",
+                    "artifact_type": "scan",
+                },
+            },
+            {
+                "id": "case-mixed",
+                "status": "success",
+                "policy": "v1",
+                "expected_class": "contains_medical_visual",
+                "predicted_class": "contains_medical_visual",
+                "expected_route": "direct_vision",
+                "predicted_route": "direct_vision",
+                "latency_seconds": 1,
+                "metadata": {
+                    "source_case_id": "mixed-case",
+                    "artifact_type": "mixed",
+                },
+            },
+        ]
+
+        metrics = classification_metrics(records)
+
+        self.assertEqual(metrics["route_accuracy"], 1.0)
+        self.assertEqual(
+            metrics["per_class"]["contains_medical_visual"]["support"],
+            2,
+        )
 
     def test_product_metrics_preserve_numeric_facts(self) -> None:
         records = [

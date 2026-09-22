@@ -37,6 +37,24 @@ Dos controles MedReaMM que inicialmente parecían falsos positivos eran tablas
 de laboratorio, no imágenes clínicas. Se corrigió el gold tras inspeccionar
 los archivos. Las etiquetas revisadas están en `medreamm_labels.yaml`.
 
+### Comparación V1 con GPT-5.4-mini
+
+El 22 de septiembre de 2026 se repitió solo la fase de clasificación sobre
+las mismas 45 imágenes con el prompt y la política exactos de V1. En esta
+política una imagen mixta debe ir a visión y nunca a OCR aislado.
+
+- Terra: clase y ruta correctas 45/45; 0 rutas inseguras;
+- GPT-5.4-mini: clase correcta 43/45 y ruta correcta 44/45;
+- GPT-5.4-mini envió una composición mixta de embolia pulmonar a OCR aislado,
+  por lo que no superó la puerta de seguridad;
+- latencia media: 1,98 s con Terra frente a 2,33 s con GPT-5.4-mini;
+- p95: 2,65 s con Terra frente a 3,10 s con GPT-5.4-mini;
+- coste estimado de las 45 llamadas: 0,088 USD con Terra frente a 0,039 USD
+  con GPT-5.4-mini, usando los precios configurados en el servidor.
+
+GPT-5.4-mini fue aproximadamente un 56% más barato, pero fue más lento y tuvo
+una ruta clínicamente insegura. V1 mantiene Terra.
+
 ## Flujo de producto actual
 
 Se ejecutaron 50 entradas: diez casos por cinco formatos. Las 50 peticiones
