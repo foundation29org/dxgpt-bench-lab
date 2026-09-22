@@ -68,6 +68,29 @@ def percentile(values: list[float], percentile_value: float) -> float:
 
 def classification_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
     successful = [record for record in records if record.get("status") == "success"]
+    policy = (
+        "v1"
+        if any(record.get("policy") == "v1" for record in records)
+        else "legacy"
+    )
+    if policy == "v1":
+        mixed_source_ids = {
+            str((record.get("metadata") or {}).get("source_case_id") or "")
+            for record in successful
+            if (record.get("metadata") or {}).get("artifact_type") == "mixed"
+        }
+        mixed_source_ids.discard("")
+        successful = [
+            {
+                **record,
+                "expected_class": "contains_medical_visual",
+                "expected_route": "direct_vision",
+            }
+            if str((record.get("metadata") or {}).get("source_case_id") or "")
+            in mixed_source_ids
+            else record
+            for record in successful
+        ]
     confusion: dict[str, Counter[str]] = defaultdict(Counter)
     route_correct = 0
     class_correct = 0
@@ -80,21 +103,38 @@ def classification_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
         class_correct += expected_class == predicted_class
         route_correct += record.get("expected_route") == record.get("predicted_route")
 
+    medical_class = (
+        "contains_medical_visual" if policy == "v1" else "medical_image"
+    )
+    document_class = "document_only" if policy == "v1" else "document_image"
     medical = [
-        record for record in successful if record.get("expected_class") == "medical_image"
+        record for record in successful
+        if record.get("expected_class") == medical_class
     ]
     documents = [
-        record for record in successful if record.get("expected_class") == "document_image"
+        record for record in successful
+        if record.get("expected_class") == document_class
     ]
-    mixed = [record for record in successful if record.get("expected_class") == "mixed"]
+    mixed = (
+        []
+        if policy == "v1"
+        else [
+            record for record in successful
+            if record.get("expected_class") == "mixed"
+        ]
+    )
+    ocr_routes = {"ocr_text"} if policy == "v1" else {"ocr_plus_image"}
     unsafe_medical = [
-        record for record in medical if record.get("predicted_route") == "ocr_plus_image"
+        record for record in medical
+        if record.get("predicted_route") in ocr_routes
     ]
     routed_documents = [
-        record for record in documents if record.get("predicted_route") == "ocr_plus_image"
+        record for record in documents
+        if record.get("predicted_route") in ocr_routes
     ]
     routed_mixed = [
-        record for record in mixed if record.get("predicted_route") == "ocr_plus_image"
+        record for record in mixed
+        if record.get("predicted_route") in ocr_routes
     ]
     latencies = [
         float(record.get("latency_seconds") or 0)
@@ -109,12 +149,15 @@ def classification_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
     metrics = {
         "records": len(records),
+        "policy": policy,
         "successful": len(successful),
         "coverage": ratio(len(successful), len(records)),
         "class_accuracy": ratio(class_correct, len(successful)),
         "route_accuracy": ratio(route_correct, len(successful)),
         "document_ocr_recall": ratio(len(routed_documents), len(documents)),
-        "mixed_ocr_recall": ratio(len(routed_mixed), len(mixed)),
+        "mixed_ocr_recall": (
+            1.0 if policy == "v1" else ratio(len(routed_mixed), len(mixed))
+        ),
         "unsafe_medical_ocr_rate": ratio(len(unsafe_medical), len(medical)),
         "latency_mean_seconds": statistics.mean(latencies) if latencies else 0.0,
         "latency_p95_seconds": percentile(latencies, 0.95),
@@ -128,9 +171,16 @@ def classification_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
     metrics["acceptance"] = {
         "coverage_at_least_95pct": metrics["coverage"] >= 0.95,
         "document_ocr_recall_at_least_90pct": metrics["document_ocr_recall"] >= 0.90,
-        "mixed_ocr_recall_at_least_90pct": metrics["mixed_ocr_recall"] >= 0.90,
-        "unsafe_medical_ocr_is_zero": metrics["unsafe_medical_ocr_rate"] == 0,
+        (
+            "unsafe_medical_or_mixed_ocr_is_zero"
+            if policy == "v1"
+            else "unsafe_medical_ocr_is_zero"
+        ): metrics["unsafe_medical_ocr_rate"] == 0,
     }
+    if policy != "v1":
+        metrics["acceptance"]["mixed_ocr_recall_at_least_90pct"] = (
+            metrics["mixed_ocr_recall"] >= 0.90
+        )
     metrics["passed"] = all(metrics["acceptance"].values())
     return metrics
 
@@ -260,6 +310,7 @@ def percentage(value: float) -> str:
 
 
 def classification_markdown(metrics: dict[str, Any]) -> list[str]:
+    v1_policy = metrics.get("policy") == "v1"
     lines = [
         "# Document-image routing benchmark",
         "",
@@ -269,8 +320,17 @@ def classification_markdown(metrics: dict[str, Any]) -> list[str]:
         f"- Class accuracy: {percentage(metrics['class_accuracy'])}",
         f"- Route accuracy: {percentage(metrics['route_accuracy'])}",
         f"- Document OCR recall: {percentage(metrics['document_ocr_recall'])}",
-        f"- Mixed-image OCR recall: {percentage(metrics['mixed_ocr_recall'])}",
-        f"- Unsafe OCR on medical images: {percentage(metrics['unsafe_medical_ocr_rate'])}",
+        *(
+            []
+            if v1_policy
+            else [
+                f"- Mixed-image OCR recall: "
+                f"{percentage(metrics['mixed_ocr_recall'])}"
+            ]
+        ),
+        f"- Unsafe OCR on "
+        f"{'medical or mixed images' if v1_policy else 'medical images'}: "
+        f"{percentage(metrics['unsafe_medical_ocr_rate'])}",
         f"- Mean / p95 latency: {metrics['latency_mean_seconds']:.2f}s / "
         f"{metrics['latency_p95_seconds']:.2f}s",
         "",
