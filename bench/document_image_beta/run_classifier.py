@@ -118,6 +118,10 @@ def parse_args() -> argparse.Namespace:
         help="Use the legacy benchmark policy or the exact production V1 policy.",
     )
     parser.add_argument("--limit", type=int)
+    parser.add_argument(
+        "--asset-ids",
+        help="Comma-separated asset IDs to run. Default: all assets.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
@@ -186,7 +190,9 @@ def expected_for_policy(
         return "contains_medical_visual", "ocr_plus_image"
     if expected_class == "document_image":
         return "document_only", "ocr_text"
-    if expected_class in {"medical_image", "mixed"}:
+    if expected_class == "mixed":
+        return "contains_medical_visual", "ocr_plus_image"
+    if expected_class == "medical_image":
         return "contains_medical_visual", "direct_vision"
     return "unknown", "direct_vision"
 
@@ -283,6 +289,22 @@ def main() -> int:
         if asset.get("expected_class") == "mixed"
     }
     mixed_source_ids.discard("")
+    if args.asset_ids:
+        wanted = {
+            item.strip()
+            for item in args.asset_ids.split(",")
+            if item.strip()
+        }
+        known = {str(asset.get("id") or "") for asset in assets}
+        missing = sorted(wanted - known)
+        if missing:
+            raise ClassifierError(
+                f"Unknown asset IDs: {', '.join(missing)}"
+            )
+        assets = [
+            asset for asset in assets
+            if str(asset.get("id") or "") in wanted
+        ]
     if args.limit:
         assets = assets[: args.limit]
     validated = [
@@ -327,6 +349,8 @@ def main() -> int:
                     "expected_route": expected_route,
                     "predicted_class": predicted_class,
                     "confidence": confidence,
+                    "has_document_text": prediction.get("has_document_text"),
+                    "has_medical_visual": prediction.get("has_medical_visual"),
                     "predicted_route": route_for_prediction(
                         predicted_class,
                         confidence,

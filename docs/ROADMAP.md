@@ -88,8 +88,11 @@ de Terra y el fallback regional siguen pendientes.
   OCR + visión 9/9, hechos y cobertura 9/9, strict repetido 9/9, 28,18 s de
   latencia media y 0,02676 USD por caso. El primer juez dio 8/9 y el segundo
   aceptó la misma equivalencia, por lo que se documenta su inestabilidad.
-- [ ] Segunda revisión de etiquetas MedReaMM y revisión clínica de los diez
-  casos antes de convertir el piloto en gate de producción.
+- [ ] Cerrar la segunda revisión antes de convertir el piloto en gate:
+  preauditoría completada sobre 12 etiquetas MedReaMM, 10 casos y 41 hechos;
+  11 etiquetas confirmadas y `N-10000022` corregida a mixta, con ruta híbrida
+  confirmada por Terra y GPT-5.4-mini. Falta la firma independiente del
+  biomédico y resolver sus posibles desacuerdos.
 - [x] Reevaluar `o3-dxgpt high` en `all_256_clean` con strict como referencia
   del otro tenant: R@1 56,6%, cobertura 80,9%; no supera a Terra.
 - [x] Evaluar `grok-4.6 low` y `claude-opus-5 low` sobre los 256 casos

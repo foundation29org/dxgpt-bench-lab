@@ -18,7 +18,7 @@ from generate_dataset import (  # noqa: E402
     generate_case,
     load_yaml,
 )
-from run_classifier import route_for_prediction  # noqa: E402
+from run_classifier import expected_for_policy, route_for_prediction  # noqa: E402
 
 
 EVALUATE_V4_PATH = ROOT.parent / "multimodal_beta" / "evaluate_v4.py"
@@ -88,6 +88,16 @@ class RoutingTests(unittest.TestCase):
                 "contains_medical_visual", 0.89, 0.9, "v1", mixed
             ),
             "direct_vision",
+        )
+
+    def test_v1_gold_routes_standalone_mixed_assets_to_ocr_plus_image(self) -> None:
+        self.assertEqual(
+            expected_for_policy({"expected_class": "mixed"}, "v1"),
+            ("contains_medical_visual", "ocr_plus_image"),
+        )
+        self.assertEqual(
+            expected_for_policy({"expected_class": "medical_image"}, "v1"),
+            ("contains_medical_visual", "direct_vision"),
         )
 
     def test_safety_metrics_fail_on_medical_image_ocr(self) -> None:
