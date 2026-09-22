@@ -50,7 +50,7 @@ BERT ≥ 0,90 ni pregunta: match directo.
 | BERT 0,90 automático | Sigue |
 | BERT 0,80 puede pisar al juez | Sigue |
 | Ronda 2 de David (36 comparaciones MedReaMM) | Terminada; sirve como referencia inicial, con varios golds ambiguos |
-| Revisión ciega Pro vs Flash (13 casos all_256) | Nueva tarea; pendiente |
+| Revisión ciega Pro vs Flash (13 casos all_256) | Terminada; Pro gana 8–3 las 11 discrepancias binarias |
 
 El flujo **sí se puede endurecer**. No hace falta un producto nuevo.
 Hay palancas ya en el `config.yaml` / `reeval_traditional_strict.py`.
@@ -105,14 +105,14 @@ significar que el candidato acepta más falsos positivos.
   no una regla del harness.
 - **Juez:** se compararon cinco configuraciones sobre 256 listas congeladas y
   133 prompts idénticos. Flash sin thinking quedó como candidato frente a Pro.
-- **Validación:** ambos obtuvieron 30/35 frente a las etiquetas humanas
-  iniciales. Sus 13 discrepancias exactas están en un
-  [formulario ciego](reviews/david_review_all256_pro_vs_flash_blind.md);
-  la [clave interna](reviews/david_deliverable_all256_judge_discrepancies.md)
-  se abre después.
-- **Criterio propuesto:** como máximo un error adicional y ningún falso
-  positivo clínicamente relevante. Sin revisión humana se conserva el juez
-  vigente.
+- **Validación:** David completó el
+  [formulario ciego](reviews/david_review_all256_pro_vs_flash_blind.md) antes
+  de abrir la
+  [clave interna](reviews/david_deliverable_all256_judge_discrepancies.md).
+  En las 11 discrepancias binarias Pro gana 8–3. Flash añade cinco errores y
+  cinco falsos positivos.
+- **Criterio aplicado:** como máximo un error adicional y ningún falso
+  positivo clínicamente relevante. Flash lo incumple; se conserva Pro.
 
 Resultados fechados:
 [texto](../../docs/benchmark-report-strict-texto.html),
@@ -146,9 +146,10 @@ mueve **una** palanca, se vuelve a puntuar **las mismas listas DDX**.
 
 La referencia de este loop debe ser humana y corresponder a la capa que se
 está tocando. Las 35 etiquetas utilizables de la ronda 2 sirven como señal
-inicial del paso 7; no validan hermanos ICD ni BERT. Para elegir entre Pro y
-Flash, la referencia será la revisión ciega de sus 13 discrepancias. Subir
-cobertura apretando el examen al revés es volver a legacy.
+inicial del paso 7; no validan hermanos ICD ni BERT. La revisión ciega de las
+13 discrepancias eligió Pro frente a Flash: su cobertura adicional eran sobre
+todo falsos positivos. Subir cobertura apretando el examen al revés es volver
+a legacy.
 
 ## Ablación pendiente de las capas 4–6
 
@@ -188,17 +189,17 @@ MedReaMM. Esa revisión encontró FP/FN, pero después aparecieron golds ambiguo
 y contradicciones; por eso sus 35 etiquetas utilizables son una referencia
 inicial, no un gold definitivo.
 
-La tarea actual no repite aquella ronda. Es una revisión ciega nueva de las
-13 discrepancias Pro vs Flash sin thinking en `all_256_clean`. David solo
-decide equivalencia; el equipo de evaluación abre después la clave interna y
-calcula las métricas.
+La segunda tarea no repitió aquella ronda: revisó de forma ciega las 13
+discrepancias Pro vs Flash sin thinking en `all_256_clean`. David decidió
+equivalencia antes de abrir la clave. Pro ganó 8–3 las 11 discrepancias
+binarias y Flash no superó el criterio de promoción.
 
 Siguen existiendo dos colas independientes:
 
 - **Capas 4–6:** ablación sibling / parent / BERT, una palanca cada vez,
   listas congeladas e informe de delta.
-- **Paso 7:** revisión ciega de los 13 casos, apertura de la clave y decisión
-  Pro vs Flash con el criterio fijado de antemano.
+- **Paso 7:** revisión ciega completada; mantener Pro y conservar Flash solo
+  como configuración experimental.
 
 Así queda trazable por qué se elige cada pieza: el modelo de producto por
 calidad y restricciones operativas; el juez por concordancia clínica,

@@ -1,9 +1,12 @@
 # Tarea clínica ciega — Pro vs Flash sin thinking en all_256_clean
 
-**Estado:** New
+**Estado:** Completada por David el 22 de septiembre de 2026
 
-**Responsable sugerido:** David o cualquier clínico que no haya visto
-las respuestas automáticas antes de aplicar la regla.
+La clave automática se abrió después de recibir esta revisión. El resultado
+cuantitativo y la decisión están documentados en el
+[benchmark de jueces](../results/2026-09-16-judge-benchmark-all256-terra.md).
+
+**Responsable:** David Isla
 
 **Contexto:** David ya terminó la ronda 2 original de MedReaMM. Esta es
 una tarea nueva sobre `all_256_clean`, creada por discrepancias encontradas

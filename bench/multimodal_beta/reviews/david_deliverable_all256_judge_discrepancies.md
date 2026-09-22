@@ -1,10 +1,11 @@
 # Clave interna — Pro vs Flash sin thinking
 
-**No enviar a David antes de completar la revisión ciega.**
+**Clave abierta después de que David completara la revisión ciega el
+22 de septiembre de 2026.**
 
-Estas no son soluciones clínicas confirmadas. Son las decisiones
-automáticas que originaron la tarea y se conservan para recalcular
-métricas después de recibir la revisión.
+Estas son las decisiones automáticas que originaron la tarea; no son
+soluciones clínicas. Tras compararlas con la adjudicación humana, Pro acertó
+8/13 decisiones binarias y Flash sin thinking 3/13. Se mantiene Pro.
 
 **Alcance:** 13 discrepancias exactas.
 

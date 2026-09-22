@@ -110,12 +110,13 @@ de Terra y el fallback regional siguen pendientes.
 - [x] Ejecutar `Kimi-K2.6` mediante el deployment Azure de `dxgptbot`:
   $1,125, p50 6,09 s, p95 39,62 s y 28/35 frente a las etiquetas humanas
   iniciales. No promover.
-- [ ] **David — nueva tarea, no continuación de ronda 2:** revisar las
+- [x] **David — nueva tarea, no continuación de ronda 2:** revisó las
   13 discrepancias que deciden Pro vs Flash sin thinking en la
   [tarea ciega](../bench/multimodal_beta/reviews/david_review_all256_pro_vs_flash_blind.md).
-  Entrega: gold válido/ambiguo, posición equivalente o 0 y justificación
-  breve. Las discrepancias adicionales de Kimi/Grok quedan fuera porque no son
-  candidatos a juez.
+  Los 13 gold fueron válidos. En las 11 discrepancias binarias Pro ganó 8–3;
+  matriz Pro: 3 TP, 5 TN, 2 FP, 3 FN; Flash: 3 TP, 0 TN, 7 FP, 3 FN. Flash
+  incumple el criterio prefijado al añadir cinco errores y cinco FP: mantener
+  Pro como juez strict. Las discrepancias de Kimi/Grok quedan fuera.
 - [ ] DeepSeek V4 Flash está retirado y V4 Pro redirige actualmente a V4.1
   Flash: probar solo `deepseek-flash` cuando exista acceso verificable.
 - [ ] Mantener una tarea continua de radar, no de selección de producto:
@@ -127,8 +128,9 @@ de Terra y el fallback regional siguen pendientes.
   modelo de producto salvo decisión explícita posterior.
 - [ ] Julián cierra la rúbrica: métrica principal, escala binaria o 2/1/0,
   tratamiento de especificidad/subtipos y papel de ICD/BERT.
-- [ ] Al recibir la nueva revisión de David, recalcular acuerdo,
-  precisión/recall y matriz de confusión Pro vs Flash sin thinking.
+- [x] Recalcular acuerdo, precisión/recall y matriz de confusión Pro vs Flash
+  sin thinking tras la revisión de David. Pro: 8/13, precisión 60%, recall
+  50%; Flash: 3/13, precisión 30%, recall 50%. No promover Flash.
 - [ ] Ablacionar por separado hermanos ICD, padres ICD y umbrales BERT sobre
   listas congeladas; no mezclar cambios en una sola medición.
 - [ ] Etiquetar toda cifra publicada como `strict_equivalence` o
