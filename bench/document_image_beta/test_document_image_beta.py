@@ -13,7 +13,11 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from evaluate import classification_metrics, product_metrics  # noqa: E402
-from generate_dataset import generate_case, load_yaml  # noqa: E402
+from generate_dataset import (  # noqa: E402
+    build_mixed_hybrid_cases,
+    generate_case,
+    load_yaml,
+)
 from run_classifier import route_for_prediction  # noqa: E402
 
 
@@ -51,7 +55,7 @@ class RoutingTests(unittest.TestCase):
             "direct_vision",
         )
 
-    def test_v1_only_ocr_routes_consistent_text_only_images(self) -> None:
+    def test_v1_routes_document_text_without_dropping_medical_visuals(self) -> None:
         document = {
             "has_document_text": True,
             "has_medical_visual": False,
@@ -76,6 +80,12 @@ class RoutingTests(unittest.TestCase):
         self.assertEqual(
             route_for_prediction(
                 "contains_medical_visual", 0.99, 0.9, "v1", mixed
+            ),
+            "ocr_plus_image",
+        )
+        self.assertEqual(
+            route_for_prediction(
+                "contains_medical_visual", 0.89, 0.9, "v1", mixed
             ),
             "direct_vision",
         )
@@ -143,7 +153,7 @@ class RoutingTests(unittest.TestCase):
 
         self.assertTrue(metrics["passed"])
 
-    def test_v1_treats_mixed_images_as_direct_vision(self) -> None:
+    def test_v1_treats_mixed_images_as_ocr_plus_vision(self) -> None:
         records = [
             {
                 "id": "document",
@@ -161,8 +171,8 @@ class RoutingTests(unittest.TestCase):
                 "policy": "v1",
                 "expected_class": "contains_medical_visual",
                 "predicted_class": "contains_medical_visual",
-                "expected_route": "direct_vision",
-                "predicted_route": "direct_vision",
+                "expected_route": "ocr_plus_image",
+                "predicted_route": "ocr_plus_image",
                 "latency_seconds": 1,
             },
         ]
@@ -182,7 +192,7 @@ class RoutingTests(unittest.TestCase):
                 "expected_class": "document_only",
                 "predicted_class": "contains_medical_visual",
                 "expected_route": "ocr_text",
-                "predicted_route": "direct_vision",
+                "predicted_route": "ocr_plus_image",
                 "latency_seconds": 1,
                 "metadata": {
                     "source_case_id": "mixed-case",
@@ -195,8 +205,8 @@ class RoutingTests(unittest.TestCase):
                 "policy": "v1",
                 "expected_class": "contains_medical_visual",
                 "predicted_class": "contains_medical_visual",
-                "expected_route": "direct_vision",
-                "predicted_route": "direct_vision",
+                "expected_route": "ocr_plus_image",
+                "predicted_route": "ocr_plus_image",
                 "latency_seconds": 1,
                 "metadata": {
                     "source_case_id": "mixed-case",
@@ -232,6 +242,55 @@ class RoutingTests(unittest.TestCase):
 
         self.assertEqual(metrics["technical_success_rate"], 1.0)
         self.assertEqual(metrics["fact_recall_mean"], 1.0)
+
+    def test_product_metrics_measure_v1_image_routes(self) -> None:
+        records = [
+            {
+                "case_id": "document-image",
+                "status": "success",
+                "duration_seconds": 10,
+                "inputs": {"images": ["document.png"]},
+                "metadata": {
+                    "source_case_id": "document-case",
+                    "artifact_type": "scan-image",
+                    "expected_facts": [],
+                },
+                "http_response": {
+                    "imageRouting": [{
+                        "route": "ocr_text",
+                        "ocr": {"status": "succeeded"},
+                    }],
+                },
+                "final_response": {"data": []},
+            },
+            {
+                "case_id": "mixed-image",
+                "status": "success",
+                "duration_seconds": 12,
+                "inputs": {"images": ["mixed.png"]},
+                "metadata": {
+                    "source_case_id": "mixed-case",
+                    "artifact_type": "photo-image",
+                    "expected_facts": [],
+                },
+                "http_response": {
+                    "imageRouting": [{
+                        "route": "vision",
+                        "ocrTextUsed": True,
+                        "ocr": {"status": "succeeded"},
+                    }],
+                },
+                "final_response": {"data": []},
+            },
+        ]
+
+        metrics = product_metrics(records, {"mixed-case"})
+
+        self.assertEqual(metrics["image_route_accuracy"], 1.0)
+        self.assertEqual(metrics["document_image_ocr_success"], 1.0)
+        self.assertEqual(metrics["mixed_image_vision_recall"], 1.0)
+        self.assertEqual(metrics["mixed_image_hybrid_success"], 1.0)
+        self.assertEqual(metrics["unsafe_mixed_image_ids"], [])
 
 
 class StrictEvaluatorTests(unittest.TestCase):
@@ -270,6 +329,47 @@ class GenerationTests(unittest.TestCase):
             self.assertTrue((case_dir / "handwritten-simulated.jpg").is_file())
             self.assertEqual(len(product_cases), 5)
             self.assertEqual(len(classification_assets), 3)
+
+    def test_mixed_visual_cases_mark_every_image_route_as_vision(self) -> None:
+        cases = load_yaml(ROOT / "cases.yaml")["cases"]
+        case = next(
+            item for item in cases
+            if item["id"] == "community-pneumonia-pattern"
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            classification_assets = []
+            product_cases = []
+
+            generate_case(
+                case,
+                output,
+                output,
+                classification_assets,
+                product_cases,
+                0,
+            )
+
+            image_cases = [item for item in product_cases if item["images"]]
+            self.assertTrue(image_cases)
+            self.assertTrue(all(
+                item["metadata"]["expected_image_route"] == "vision"
+                for item in image_cases
+            ))
+            self.assertTrue(all(
+                item["expected_class"] == "mixed"
+                for item in classification_assets
+            ))
+            hybrid_cases = build_mixed_hybrid_cases(product_cases)
+            self.assertEqual(len(hybrid_cases), 3)
+            self.assertTrue(all(
+                len(item["documents"]) == 1 and len(item["images"]) == 1
+                for item in hybrid_cases
+            ))
+            self.assertTrue(all(
+                item["metadata"]["routing_experiment"] == "ocr_plus_image"
+                for item in hybrid_cases
+            ))
 
 
 if __name__ == "__main__":

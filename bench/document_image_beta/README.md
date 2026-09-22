@@ -69,7 +69,9 @@ La salida incluye:
 
 - `generated/classification_manifest.yaml`: imágenes y ruta esperada;
 - `generated/product_manifest.yaml`: 50 entradas compatibles con
-  `multimodal_beta/run_beta_api.py`.
+  `multimodal_beta/run_beta_api.py`;
+- `generated/mixed_hybrid_manifest.yaml`: nueve controles mixtos con el PDF
+  escaneado equivalente como OCR proxy y la imagen original.
 
 Si no existe el piloto MedReaMM local, el generador sigue funcionando, pero
 avisa de que faltan controles médicos reales. Ese resultado no sirve para
@@ -124,12 +126,17 @@ El manifest generado se puede ejecutar contra un entorno no productivo:
 
 ```powershell
 py "bench\multimodal_beta\run_beta_api.py" `
-  --config "bench\multimodal_beta\config.yaml" `
+  --config "bench\multimodal_beta\config.example.yaml" `
   --manifest "bench\document_image_beta\generated\product_manifest.yaml" `
-  --output "bench\document_image_beta\outputs\product-responses.jsonl"
+  --output "bench\document_image_beta\outputs\product-responses-v1.jsonl"
 
 py "bench\document_image_beta\evaluate.py" `
-  --product-responses "bench\document_image_beta\outputs\product-responses.jsonl"
+  --classification-results `
+    "bench\document_image_beta\outputs\classification-v1-terra.jsonl" `
+  --product-responses `
+    "bench\document_image_beta\outputs\product-responses-v1.jsonl" `
+  --output `
+    "bench\document_image_beta\outputs\evaluation-v1-end-to-end.md"
 ```
 
 Esto compara cuánto se conserva de fechas, valores, unidades y negaciones
@@ -147,12 +154,22 @@ Evaluación diagnóstica canónica:
 ```powershell
 $env:PYTHONUTF8 = "1"
 py "bench\multimodal_beta\evaluate_v4.py" `
-  --responses "bench\document_image_beta\outputs\product-responses.jsonl" `
-  --output-dir "bench\document_image_beta\outputs\evaluation-v4-primary-strict" `
+  --responses "bench\document_image_beta\outputs\product-responses-v1.jsonl" `
+  --output-dir `
+    "bench\document_image_beta\outputs\evaluation-v4-v1-primary-strict" `
   --judge-mode strict_equivalence `
   --gold-scope primary `
-  --experiment-name "document-image-beta-v1" `
-  --experiment-description "Synthetic document-image routing benchmark"
+  --experiment-name "document-image-v1-end-to-end" `
+  --experiment-description "V1 document OCR and mixed-image hybrid routing"
+```
+
+Para una regresión parcial del producto sin volver a evaluar el clasificador:
+
+```powershell
+py "bench\document_image_beta\evaluate.py" `
+  --product-only `
+  --product-responses "path\to\responses.jsonl" `
+  --output "path\to\evaluation.md"
 ```
 
 ## Qué falta antes de producción
@@ -163,10 +180,7 @@ resultados están en [RESULTS.md](RESULTS.md).
 1. Realizar una segunda revisión de las etiquetas MedReaMM.
 2. Revisar clínicamente los diez casos y sus hechos esperados.
 3. Ampliar los controles médicos difíciles y reales.
-4. Implementar el enrutado en el servidor detrás de un feature flag.
-5. Comparar realmente `OCR + imagen` con la imagen directa antes de rollout.
-6. Solo si se mantienen los umbrales, activar el enrutado
-   detrás de un feature flag.
 
-Este benchmark mide el riesgo. No constituye todavía un detector de
-producción.
+La ruta mixta `OCR + imagen original`, su fallback a visión y la regresión
+end-to-end de nueve entradas ya están completados. Esta evidencia todavía no
+autoriza por sí sola un rollout de producción.
