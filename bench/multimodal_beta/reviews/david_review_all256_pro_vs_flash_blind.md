@@ -17,17 +17,17 @@ automáticos dieron resultados finales distintos.
 
 **Alcance:** 13 casos de 256. No hay que revisar los demás.
 
-
 ## Regla de equivalencia
 
 - Aceptar sinónimos, abreviaturas, variantes ortográficas y una formulación
-  más específica que conserve inequívocamente la enfermedad de referencia.
+más específica que conserve inequívocamente la enfermedad de referencia.
 - Rechazar diagnósticos solo relacionados por síntomas, localización,
-  mecanismo o tratamiento.
+mecanismo o tratamiento.
 - Rechazar otra causa, complicación, precursor, subtipo incompatible o
-  categoría amplia que cambie la entidad diagnóstica.
+categoría amplia que cambie la entidad diagnóstica.
 - Si el diagnóstico de referencia es ambiguo, incorrecto o no es una
-  enfermedad, marcarlo explícitamente; no forzar una posición.
+enfermedad, marcarlo explícitamente; no forzar una posición.
+
 
 ## Entregable
 
@@ -38,7 +38,11 @@ En cada caso:
 3. justificar la decisión en una o dos frases;
 4. marcar `consulta` si la regla no permite resolverlo.
 
+
+
 ## Casos
+
+
 
 ### 1. B110
 
@@ -59,11 +63,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1` 
+- Justificación: Tanto P1 Sertoli-Leydig cell tumor of the ovary cómo P2 Ovarian steroid cell tumor, not otherwise specified podrían valer pues ambos son un subtipo de tumor ovárico pero más preciso, cómo no sé el diagnóstico correcto cualqueira de las dos estarían bien.
 
 ---
+
+
 
 ### 2. B126
 
@@ -83,11 +89,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente:  `0` 
+- Justificación: El diagnóstico de referencia es un tumor y ninguna de las opciones dadas lo son.
 
 ---
+
+
 
 ### 3. Q1103
 
@@ -108,11 +116,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1` 
+- Justificación: Tanto P1 Hepatic encephalopathy due to decompensated cirrhosis cómo P2 Alcohol-related cirrhosis with liver failure nos valen ùes el diagnostico de referencia no es una enfermedad como tal, es una relación causal concreta, un aumento del TP es debida por una disfunción hepática por tanto aceptaremos solo aquellos diagnósticos que tengan la misma causa al aumento del TP.
 
 ---
+
+
 
 ### 4. Q3449
 
@@ -132,11 +142,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: Angelman no es paternal UPD 15; implica pérdida materna, no duplicación paterna, Prader-Willi no es paternal UPD 15; es un síndrome que puede tener varias causas genéticas, Rett no es paternal UPD 15; es un trastorno MECP2 del cromosoma X.
 
 ---
+
+
 
 ### 5. Q4527
 
@@ -154,11 +166,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1`
+- Justificación: Es el mismo diagnóstico madre pero más específico.
 
 ---
+
+
 
 ### 6. Q6173
 
@@ -176,11 +190,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: MELAS es un síndrome mitocondrial multisitémico que puede presentar ragged red fibers, pero no es equivalente a la entidad específica "mithocondrial myopathy ragged red fibers"; representa una categoría más amplia y un subtipo clínico incompatible con el diagnóstico madre.
 
 ---
+
+
 
 ### 7. Q6697
 
@@ -201,11 +217,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1`
+- Justificación: Las cuatro opciones menos la segunda pueden valer porque la primera es un subtipo específico de pNET y la tercera y la cuarta son subtipos comaptibles de pNET.
 
 ---
+
+
 
 ### 8. S180
 
@@ -227,11 +245,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1` 
+- Justificación: Son todos válidos salvo el último: Hennekam syndrome es un síndrome cuya entidad central es una malformación linfática, Primary intestinal lymphangiectasia es un subtipo específico de malformación linfática, Generalized lymphatic anomaly es una malfroamción linfática rara compatible, Primary lymphedema with lymphatic malformations es una malformación linfática primaria.
 
 ---
+
+
 
 ### 9. T208
 
@@ -253,11 +273,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: El diagnóstico de referencia es válido pero al ser un conjunto de tres daign´soticos simultaneos para qeu una opción sea equivalente debe representar simultaneamente las tres entidades o ser una formulación más específica que conserve inequivocamente las tres y en estas opciones no se da ese caso.
 
 ---
+
+
 
 ### 10. T34
 
@@ -279,11 +301,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `P1`
+- Justificación: Pasa como en el caso anterior donde el diagnóstico de referencia está formado por más de un diagnóstico y por tanto apra validar un diagnóstico este debe cuadrar por completo con todas las partes del de referencia. Multiple myeloma cumple porqeu es lesión ósea y proceso linfoproliferativo, Primary/secondary bone lymphoma tambien es valido porque tambien es lesión osea y proceso linfoproliferativo, Bone metastasis (solid tumor) y Hepatocellular carcinoma with bone metastasis son lesión ósea sin linfoproliferación, por último Primary malignant bone tumor (scapula) es un tumor óseo no linfoproliferativo.
 
 ---
+
+
 
 ### 11. T385
 
@@ -304,11 +328,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: De nuevo se trata de un diagnóstico de referencia el cual está formado por más de un diagnóstico y eso condiciona que para poder validar alguna opción esta debe cumplir ambas partes. Crisis hipertensiva sin daño de órgano solo cubre la mitad del gold (crisis hipertensiva), Cefalea tensional cervical solo cubre la mitad del gold (cefalea cervical), encefalopatía hipertensiva no es cefalea cervicogénica; cambia la entidad y evento cerebrovascular posterior / AIT es un diagnóstico distinto; npo cosnerva ninguna parte del gold.
 
 ---
+
+
 
 ### 12. T5
 
@@ -329,11 +355,13 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: Vuelve a ser un diagnóstico doble. Ninguna de las opciones llega a cubrirlo del todo. Viral pharyngotonsillitis solo cubre la parte de tonsilitis; no incluye osteocondritis, Musculoskeletal chest pain (precordial catch / chest wall) es compatible con solor osteomuscualr, pero no incluye tonsilitis, GERD o acute gastritis son diagnósticos digestivos, no tonsilitis ni osteocondritis, Anxiety-related tachycardia with functional chest pain es dolor funcional sin correlato inflamatorio osteocondral ni tonsilitis.
 
 ---
+
+
 
 ### 13. T795
 
@@ -355,8 +383,8 @@ En cada caso:
 
 **Revisión clínica**
 
-- Diagnóstico de referencia: `[ ] válido` `[ ] ambiguo` `[ ] incorrecto`
-- Opción equivalente: `P__ / 0 / consulta`
-- Justificación:
+- Diagnóstico de referencia: `[x] válido` `[ ] ambiguo` `[ ] incorrecto`
+- Opción equivalente: `0`
+- Justificación: Diagnóstico doble, ninguna llega as er válido del todo, Community-acquired pneumonia dolo cubre la infección respiratoria baja; no incluye síndrome confusional hipoactivo, Aspiration pneumonia igual, solo la infección puilmonar sin componente confusional, Acute viral URTI (rhinitis/laryngitis) es una infección de via aérea alta, no baja; además sin delirium, Delirium secondary to acute infection solo cubre el síndrome confusional; no especifica infección respiratoria baja, COVID-19 es una enfermedad etiolñogica ámplia; puede causar ambos, pero no es sinónimo del combo "LRI + hypoactive delirium".
 
 ---
