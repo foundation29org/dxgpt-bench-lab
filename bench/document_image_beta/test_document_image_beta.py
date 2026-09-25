@@ -55,6 +55,31 @@ class RoutingTests(unittest.TestCase):
             "direct_vision",
         )
 
+    def test_v2_discards_only_consistent_high_confidence_not_medical(self) -> None:
+        clean = {"has_document_text": False, "has_medical_visual": False}
+        visual = {"has_document_text": False, "has_medical_visual": True}
+
+        self.assertEqual(
+            route_for_prediction("not_medical", 0.95, 0.9, "v2", clean),
+            "discarded",
+        )
+        self.assertEqual(
+            route_for_prediction("not_medical", 0.89, 0.9, "v2", clean),
+            "direct_vision",
+        )
+        self.assertEqual(
+            route_for_prediction("not_medical", 0.99, 0.9, "v2", visual),
+            "direct_vision",
+        )
+        self.assertEqual(
+            route_for_prediction("unknown", 0.99, 0.9, "v2", clean),
+            "direct_vision",
+        )
+        self.assertEqual(
+            route_for_prediction("not_medical", 0.99, 0.9, "v1", clean),
+            "direct_vision",
+        )
+
     def test_v1_routes_document_text_without_dropping_medical_visuals(self) -> None:
         document = {
             "has_document_text": True,

@@ -1,0 +1,240 @@
+{"id": "15308855", "reasons": ["history_too_short:112"]}
+{"id": "16643652", "reasons": ["history_leakage:Ectopic"]}
+{"id": "15082907", "reasons": ["history_leakage:anemia; Autoimmune; Autoimmune hemolytic anemia; hemolytic"]}
+{"id": "15745454", "reasons": ["history_leakage:Chronic granulomatous disease; granulomatous"]}
+{"id": "17366829", "reasons": ["history_leakage:ND4 mutation"]}
+{"id": "18810315", "reasons": ["history_leakage:cerebral"]}
+{"id": "19033077", "reasons": ["history_leakage:aphasia; dementia"]}
+{"id": "18253082", "reasons": ["history_too_short:180"]}
+{"id": "16042772", "reasons": ["history_leakage:Neurofibromatosis; Neurofibromatosis type I"]}
+{"id": "17728518", "reasons": ["history_leakage:Neurofibroma; Neurofibromatosis; Neurofibromatosis type 1"]}
+{"id": "18303215", "reasons": ["history_leakage:pneumoniae"]}
+{"id": "19543522", "reasons": ["history_leakage:adrenal"]}
+{"id": "19672405", "reasons": ["history_leakage:beryllium"]}
+{"id": "20920200", "reasons": ["history_leakage:Progressive"]}
+{"id": "21165302", "reasons": ["history_leakage:deficiency; Zinc deficiency"]}
+{"id": "16846490", "reasons": ["history_leakage:respiratory; Septic; Septic shock"]}
+{"id": "20191052", "reasons": ["history_leakage:T-cell"]}
+{"id": "21468271", "reasons": ["history_leakage:Duchenne; Duchenne muscular dystrophy; dystrophy; muscular"]}
+{"id": "21409598", "reasons": ["history_leakage:attacks; autonomic"]}
+{"id": "21103427", "reasons": ["history_leakage:esophageal"]}
+{"id": "21473748", "reasons": ["history_leakage:thyroiditis"]}
+{"id": "21708008", "reasons": ["history_leakage:ascites"]}
+{"id": "22022196", "reasons": ["history_leakage:alveolar; Pulmonary"]}
+{"id": "21165298", "reasons": ["history_leakage:anemia; Severe anemia"]}
+{"id": "21267393", "reasons": ["history_leakage:Angina"]}
+{"id": "21539747", "reasons": ["history_leakage:Sarcoidosis"]}
+{"id": "21544649", "reasons": ["history_leakage:Headache; pressure"]}
+{"id": "21935285", "reasons": ["history_leakage:Factor; inhibitor"]}
+{"id": "23000292", "reasons": ["history_too_short:110", "history_leakage:Hypertension"]}
+{"id": "22290282", "reasons": ["history_leakage:artery"]}
+{"id": "20514321", "reasons": ["history_leakage:Multiple; Pituitary"]}
+{"id": "23233711", "reasons": ["history_leakage:melanoma; Metastatic; Metastatic melanoma"]}
+{"id": "22363383", "reasons": ["history_leakage:cardiac"]}
+{"id": "22553953", "reasons": ["history_leakage:spasms"]}
+{"id": "22977456", "reasons": ["history_leakage:Cardiac"]}
+{"id": "23374481", "reasons": ["history_leakage:congenital"]}
+{"id": "23182990", "reasons": ["history_leakage:cutaneous; S\u00e9zary syndrome; T-cell"]}
+{"id": "23439755", "reasons": ["history_leakage:leukemia"]}
+{"id": "23445097", "reasons": ["history_leakage:Thoracic"]}
+{"id": "23509308", "reasons": ["history_leakage:lymphocytic"]}
+{"id": "23460716", "reasons": ["history_too_short:99"]}
+{"id": "23530104", "reasons": ["history_leakage:cutaneous; papillomatosis"]}
+{"id": "23509318", "reasons": ["history_leakage:B-cell; Diffuse; Diffuse large B-cell lymphoma"]}
+{"id": "23614085", "reasons": ["history_leakage:abdominal"]}
+{"id": "23460717", "reasons": ["history_leakage:Colon adenocarcinoma"]}
+{"id": "23575567", "reasons": ["history_leakage:atrial; fibrillation"]}
+{"id": "23610110", "reasons": ["history_leakage:Gastrointestinal; mastocytosis; Systemic; Systemic mastocytosis"]}
+{"id": "23610111", "reasons": ["history_leakage:Classical; Classical seminoma; seminoma"]}
+{"id": "23535257", "reasons": ["history_too_short:189", "history_leakage:Scaphoid"]}
+{"id": "23656649", "reasons": ["history_leakage:uterus"]}
+{"id": "23690421", "reasons": ["history_leakage:Multiple"]}
+{"id": "23680354", "reasons": ["history_leakage:cornea"]}
+{"id": "23715581", "reasons": ["history_leakage:gefitinib"]}
+{"id": "23727167", "reasons": ["history_leakage:Respiratory"]}
+{"id": "23733776", "reasons": ["history_leakage:metastases"]}
+{"id": "23697517", "reasons": ["history_leakage:Celiac; Celiac disease"]}
+{"id": "23738548", "reasons": ["history_leakage:Hepatitis; Hepatitis B virus infection"]}
+{"id": "23758256", "reasons": ["history_leakage:atrioventricular; Reversible; Reversible atrioventricular block"]}
+{"id": "23797003", "reasons": ["history_leakage:Aggressive digital papillary adenocarcinoma; Digital; Digital papillary adenocarcinoma; Metastatic; papillary"]}
+{"id": "23752114", "reasons": ["history_leakage:effusion; Pericardial; Pericardial effusion"]}
+{"id": "23752111", "reasons": ["history_leakage:Multiple; Multiple myeloma; myeloma"]}
+{"id": "23798615", "reasons": ["history_leakage:tubular"]}
+{"id": "23782198", "reasons": ["history_leakage:hemispheric; stroke"]}
+{"id": "23800936", "reasons": ["history_leakage:Vulvar"]}
+{"id": "23882291", "reasons": ["history_leakage:artery; coronary; dissection"]}
+{"id": "23862004", "reasons": ["history_leakage:Abdominal"]}
+{"id": "23870399", "reasons": ["history_leakage:ovarian"]}
+{"id": "23870815", "reasons": ["history_leakage:Common; Common variable immunodeficiency; immunodeficiency; variable"]}
+{"id": "23797001", "reasons": ["history_leakage:Hairy cell leukemia; leukemia"]}
+{"id": "23944304", "reasons": ["history_leakage:prostate"]}
+{"id": "23841733", "reasons": ["history_leakage:melanoma; Metastatic; Metastatic melanoma"]}
+{"id": "23733759", "reasons": ["history_too_short:195"]}
+{"id": "23857970", "reasons": ["history_leakage:respiratory"]}
+{"id": "24024842", "reasons": ["history_leakage:Cardiac; fibrillation; ST-segment; Ventricular; Ventricular fibrillation"]}
+{"id": "24104373", "reasons": ["history_leakage:Aortic; Aortic stenosis; stenosis"]}
+{"id": "24147210", "reasons": ["history_leakage:Methadone"]}
+{"id": "24255655", "reasons": ["history_leakage:pulmonary"]}
+{"id": "24088096", "reasons": ["history_leakage:splenectomy"]}
+{"id": "24395843", "reasons": ["history_leakage:Tuberculosis"]}
+{"id": "24449239", "reasons": ["history_leakage:breast; breast cancer; ductal; Infiltrating; Infiltrating ductal adenocarcinoma"]}
+{"id": "24428472", "reasons": ["history_leakage:inguinal"]}
+{"id": "24449236", "reasons": ["history_leakage:kidney"]}
+{"id": "24486189", "reasons": ["history_leakage:Haemochromatosis"]}
+{"id": "24470001", "reasons": ["history_leakage:Merkel; Merkel cell carcinoma; Metastatic; Metastatic Merkel cell carcinoma"]}
+{"id": "24431920", "reasons": ["history_leakage:gravis; Myasthenia; Myasthenia gravis"]}
+{"id": "24493727", "reasons": ["history_leakage:cardiac; Multiple; myeloma"]}
+{"id": "24567432", "reasons": ["history_leakage:Cystic; rearrangement"]}
+{"id": "24550415", "reasons": ["history_leakage:Melanoma"]}
+{"id": "24476450", "reasons": ["history_leakage:Immune; Immune reconstitution inflammatory syndrome; leukoencephalopathy; multifocal; Progressive; Progressive multifocal leukoencephalopathy"]}
+{"id": "24516035", "reasons": ["history_leakage:myelofibrosis"]}
+{"id": "24764570", "reasons": ["history_leakage:abdominal"]}
+{"id": "24752054", "reasons": ["history_too_short:171"]}
+{"id": "24789276", "reasons": ["history_leakage:hearing"]}
+{"id": "24752059", "reasons": ["history_leakage:myeloid"]}
+{"id": "24814091", "reasons": ["history_leakage:Clostridium; difficile"]}
+{"id": "24567434", "reasons": ["history_leakage:Glioblastoma; Glioblastoma multiforme; multiforme; Pleural"]}
+{"id": "24893091", "reasons": ["history_leakage:Splenic"]}
+{"id": "24642766", "reasons": ["history_leakage:pulmonary"]}
+{"id": "25006723", "reasons": ["history_leakage:Granulomatosis; Granulomatosis with polyangiitis; polyangiitis"]}
+{"id": "24869740", "reasons": ["history_leakage:fibrosis; Pulmonary; Pulmonary fibrosis"]}
+{"id": "24982452", "reasons": ["history_leakage:Hairy cell leukemia; leukemia"]}
+{"id": "25024084", "reasons": ["history_leakage:leukemia; myeloid"]}
+{"id": "25409375", "reasons": ["history_leakage:Parotid"]}
+{"id": "25135825", "reasons": ["history_leakage:Chronic lymphocytic leukemia; leukemia; lymphocytic; Postoperative; renal cell carcinoma"]}
+{"id": "25852914", "reasons": ["history_leakage:hypotension"]}
+{"id": "26069743", "reasons": ["history_leakage:hemolytic; mutation"]}
+{"id": "26487584", "reasons": ["history_leakage:breast; CDH1 R63* mutations"]}
+{"id": "26487970", "reasons": ["history_leakage:thyroid"]}
+{"id": "26668343", "reasons": ["history_leakage:Germ cell tumor; Yolk sac tumor"]}
+{"id": "26069838", "reasons": ["history_leakage:Hyponatremia"]}
+{"id": "26248854", "reasons": ["history_leakage:adrenal"]}
+{"id": "26700118", "reasons": ["history_leakage:Hepatitis"]}
+{"id": "26357507", "reasons": ["history_too_short:181"]}
+{"id": "26739165", "reasons": ["history_leakage:osteoarthritis"]}
+{"id": "26811347", "reasons": ["history_too_short:68", "history_leakage:Brain metastases; metastases"]}
+{"id": "26932979", "reasons": ["history_leakage:septic"]}
+{"id": "27295959", "reasons": ["history_leakage:Anterior"]}
+{"id": "27175122", "reasons": ["history_leakage:Crohn's disease"]}
+{"id": "26862926", "reasons": ["history_leakage:microcephaly"]}
+{"id": "27247513", "reasons": ["history_leakage:Endocrine; Hypoglycemia"]}
+{"id": "27427454", "reasons": ["history_leakage:Sickle; Sickle \u03b2-thalassaemia; thalassaemia"]}
+{"id": "27181090", "reasons": ["history_leakage:diabetes"]}
+{"id": "27166389", "reasons": ["history_leakage:glomerular; haematuria"]}
+{"id": "27745878", "reasons": ["history_leakage:mastocytosis"]}
+{"id": "27758785", "reasons": ["history_leakage:deformity"]}
+{"id": "27245170", "reasons": ["history_leakage:Allogeneic; haematopoietic; Pulmonary"]}
+{"id": "27485461", "reasons": ["history_leakage:Complete; Early onset preeclampsia; HELLP syndrome; preeclampsia"]}
+{"id": "27834279", "reasons": ["history_too_short:197"]}
+{"id": "27864214", "reasons": ["history_leakage:Peripheral"]}
+{"id": "27806242", "reasons": ["history_leakage:flexor; Infectious; Infectious flexor tenosynovitis; tenosynovitis"]}
+{"id": "27154278", "reasons": ["history_leakage:arteriosus; ductus; Patent; Patent ductus arteriosus"]}
+{"id": "27834267", "reasons": ["history_too_short:135"]}
+{"id": "27687312", "reasons": ["history_leakage:Germline; germline BRCA2 mutation; mutation"]}
+{"id": "27624380", "reasons": ["history_too_short:165"]}
+{"id": "27825509", "reasons": ["history_leakage:pressure; pulmonary"]}
+{"id": "28099829", "reasons": ["history_leakage:failure"]}
+{"id": "28428189", "reasons": ["history_too_short:151"]}
+{"id": "28478970", "reasons": ["history_leakage:Blueberry; Blueberry muffin rash; muffin"]}
+{"id": "28379799", "reasons": ["history_too_short:150", "history_leakage:artery; Coronary; Coronary artery disease"]}
+{"id": "28177871", "reasons": ["history_leakage:Mesenteric"]}
+{"id": "28642817", "reasons": ["history_leakage:Adenocarcinoma of the lung; antinuclear"]}
+{"id": "28669644", "reasons": ["history_leakage:Generalized"]}
+{"id": "28522610", "reasons": ["history_leakage:artery; Coronary"]}
+{"id": "28729374", "reasons": ["history_leakage:metacarpal"]}
+{"id": "28751479", "reasons": ["history_leakage:hernia"]}
+{"id": "28663278", "reasons": ["history_too_short:156"]}
+{"id": "28882845", "reasons": ["history_leakage:pancreatitis"]}
+{"id": "28975284", "reasons": ["history_leakage:Cocaine"]}
+{"id": "29051212", "reasons": ["history_leakage:deficiency"]}
+{"id": "28875622", "reasons": ["history_leakage:pulmonary"]}
+{"id": "29122852", "reasons": ["history_leakage:Posterior"]}
+{"id": "29171813", "reasons": ["history_leakage:opioid; overdose"]}
+{"id": "29031846", "reasons": ["history_leakage:Xanthoma"]}
+{"id": "29330935", "reasons": ["history_leakage:transplant"]}
+{"id": "29545357", "reasons": ["history_too_short:192"]}
+{"id": "29880694", "reasons": ["history_leakage:ventricular"]}
+{"id": "29497514", "reasons": ["history_leakage:Anti-factor; Monoclonal"]}
+{"id": "29567767", "reasons": ["history_leakage:patella"]}
+{"id": "29916385", "reasons": ["history_leakage:atrial"]}
+{"id": "29192001", "reasons": ["history_leakage:Hand, foot, and mouth disease; mouth disease"]}
+{"id": "30021595", "reasons": ["history_leakage:Kikuchi-Fujimoto; Kikuchi-Fujimoto disease"]}
+{"id": "29744825", "reasons": ["history_leakage:Birt-Hogg-Dub; Birt-Hogg-Dub\u00e9 syndrome"]}
+{"id": "29903774", "reasons": ["history_leakage:Ocular"]}
+{"id": "30264706", "reasons": ["history_leakage:granular; Rheumatoid; T-cell"]}
+{"id": "31089509", "reasons": ["history_leakage:diabetes"]}
+{"id": "31057489", "reasons": ["history_leakage:thyroid"]}
+{"id": "30567601", "reasons": ["history_leakage:girdle"]}
+{"id": "31519155", "reasons": ["history_leakage:aneurysm; artery; Cerebral"]}
+{"id": "31172726", "reasons": ["history_leakage:Familial"]}
+{"id": "31191551", "reasons": ["history_leakage:CD4 lymphopenia; Lymphopenia"]}
+{"id": "30409207", "reasons": ["history_leakage:Pulmonary"]}
+{"id": "31936233", "reasons": ["history_leakage:thyroid"]}
+{"id": "31681172", "reasons": ["history_leakage:Pituitary"]}
+{"id": "32457846", "reasons": ["history_too_short:162"]}
+{"id": "32733453", "reasons": ["history_leakage:Autoimmune; Hashimoto"]}
+{"id": "33049924", "reasons": ["history_leakage:Rectal; SARS-CoV-; SARS-CoV-2 infection"]}
+{"id": "32962122", "reasons": ["history_too_short:192"]}
+{"id": "33063535", "reasons": ["history_leakage:Diffuse"]}
+{"id": "33406332", "reasons": ["history_leakage:Connective; Connective tissue disease; tissue"]}
+{"id": "33826823", "reasons": ["history_leakage:pressure"]}
+{"id": "33864749", "reasons": ["history_leakage:severe thrombocytopenia; Thrombocytopenia"]}
+{"id": "33916211", "reasons": ["history_leakage:angioedema"]}
+{"id": "33246985", "reasons": ["history_leakage:Down syndrome"]}
+{"id": "case-11221", "reasons": ["history_too_short:110"]}
+{"id": "case-15195", "reasons": ["history_too_short:78"]}
+{"id": "case-15241", "reasons": ["history_too_short:81"]}
+{"id": "case-13556", "reasons": ["history_too_short:83"]}
+{"id": "case-13534", "reasons": ["history_leakage:axillary"]}
+{"id": "case-14933", "reasons": ["history_too_short:149"]}
+{"id": "case-15759", "reasons": ["history_leakage:intestinal"]}
+{"id": "case-18330", "reasons": ["history_too_short:75"]}
+{"id": "case-18299", "reasons": ["history_leakage:Brucella"]}
+{"id": "case-17746", "reasons": ["history_too_short:105"]}
+{"id": "case-4797", "reasons": ["history_too_short:127"]}
+{"id": "case-6224", "reasons": ["history_too_short:147"]}
+{"id": "case-2824", "reasons": ["history_too_short:41"]}
+{"id": "case-9383", "reasons": ["history_too_short:98"]}
+{"id": "case0-11465", "reasons": ["history_too_short:80"]}
+{"id": "case-2172", "reasons": ["history_too_short:198"]}
+{"id": "case0-15195", "reasons": ["history_too_short:78"]}
+{"id": "case-5707", "reasons": ["history_too_short:181"]}
+{"id": "case0-9740", "reasons": ["history_too_short:92"]}
+{"id": "case1-13818", "reasons": ["history_too_short:72"]}
+{"id": "case1-1625", "reasons": ["history_too_short:143"]}
+{"id": "case-9545", "reasons": ["history_leakage:Autoimmune; Autoimmune hepatitis; hepatitis"]}
+{"id": "case1-18425", "reasons": ["history_leakage:hypertension; pulmonary"]}
+{"id": "case1-6799", "reasons": ["history_too_short:77"]}
+{"id": "case1-17053", "reasons": ["history_too_short:154"]}
+{"id": "case0-7744", "reasons": ["history_too_short:58"]}
+{"id": "o0000016", "reasons": ["history_too_short:118"]}
+{"id": "o0000001", "reasons": ["history_too_short:103"]}
+{"id": "o0000014", "reasons": ["history_too_short:72"]}
+{"id": "o0000011", "reasons": ["history_too_short:51", "history_leakage:Multiple"]}
+{"id": "o0000015", "reasons": ["history_too_short:52"]}
+{"id": "case1-7605", "reasons": ["history_too_short:132"]}
+{"id": "case1-9618", "reasons": ["history_too_short:118", "history_leakage:breast"]}
+{"id": "o0000032", "reasons": ["history_too_short:56"]}
+{"id": "o0000049", "reasons": ["history_too_short:74"]}
+{"id": "case0-629", "reasons": ["history_too_short:73"]}
+{"id": "o0000036", "reasons": ["history_too_short:66"]}
+{"id": "o0000030", "reasons": ["history_too_short:29"]}
+{"id": "o0000037", "reasons": ["history_too_short:64"]}
+{"id": "o0000034", "reasons": ["history_too_short:62"]}
+{"id": "case1-5664", "reasons": ["history_too_short:15"]}
+{"id": "case1-6598", "reasons": ["history_too_short:64"]}
+{"id": "case1-9377", "reasons": ["history_leakage:hypothyroidism"]}
+{"id": "23460712", "reasons": ["history_leakage:endometriosis"]}
+{"id": "28116334", "reasons": ["history_leakage:Measles"]}
+{"id": "26354489", "reasons": ["history_leakage:Achalasia; Achalasia cardia; adrenal; Alacrimia; cardia; insufficiency"]}
+{"id": "N-10000072", "reasons": ["history_leakage:pleomorphic"]}
+{"id": "28740483", "reasons": ["history_leakage:deficiency; growth; Growth hormone deficiency; hormone; Partial; Partial growth hormone deficiency"]}
+{"id": "N-10000099", "reasons": ["history_leakage:Transient"]}
+{"id": "N-10000117", "reasons": ["history_leakage:Breast; Breast cancer"]}
+{"id": "N-10000023", "reasons": ["history_leakage:Vitamin"]}
+{"id": "N-10000073", "reasons": ["history_leakage:Beh\u00e7et's disease"]}
+{"id": "N-10000123", "reasons": ["history_leakage:related"]}
+{"id": "N-10000140", "reasons": ["history_leakage:spinal"]}
+{"id": "N-10000153", "reasons": ["history_leakage:Cardiac"]}
+{"id": "N-10000128", "reasons": ["history_leakage:episodes; stroke-like; Stroke-like episodes"]}
+{"id": "15953879", "reasons": ["history_leakage:Primary Sj\u00f6gren's syndrome; Reactive"]}
