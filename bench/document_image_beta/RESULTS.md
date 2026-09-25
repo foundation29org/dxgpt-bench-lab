@@ -205,6 +205,46 @@ consistentes con aquel experimento. Ningún texto superó 1.000 caracteres, por
 lo que el resumen sigue cubierto por pruebas de integración, no por estas nueve
 entradas.
 
+## V2: descarte de imágenes no médicas
+
+Ejecución: 25 de septiembre de 2026, `gpt-5.6-terra`, política `v2` (V1 +
+clase `not_medical`, que se descarta con confianza ≥ 0,90 y sin texto clínico
+ni visual médico). Motivo: un logo subido solo llegaba a Terra y el producto
+mostraba "Insufficient information for diagnosis" como si fuera un
+diagnóstico.
+
+| Conjunto | Imágenes | Descartadas |
+|---|---:|---:|
+| Manifest de este benchmark (documentales, médicas, mixtas) | 45 | 0 |
+| MedReaMM pilot250, todas las imágenes | 667 | 1 |
+| No médicas reales (logos y gráficas del cliente, fondos de Windows) | 64 | 59 (92%) |
+
+La única imagen MedReaMM descartada (`case0-17343/02.jpg`) es un panel en
+negro: solo tiene la letra "a" y no aparece nada ni forzando el contraste. El
+descarte es correcto; la otra imagen del caso va a visión. Las rutas del
+manifest de 45 no cambian respecto a V1, y no hubo errores del clasificador.
+
+Las cinco no médicas conservadas son cuatro gráficas de nuestras propias
+evaluaciones de modelos médicos (`contains_medical_visual`) y un render
+abstracto (`unknown`, 0,68). Siguen yendo a visión, como antes de V2.
+
+Reproducir:
+
+```powershell
+py "bench\document_image_beta\not_medical_gate.py" build
+py "bench\document_image_beta\run_classifier.py" --policy v2 --deployment gpt-5.6-terra --workers 6 `
+  --manifest "bench\document_image_beta\generated\medreamm_pilot250_images_manifest.yaml" `
+  --output "bench\document_image_beta\outputs\classification-v2-medreamm250.jsonl"
+py "bench\document_image_beta\not_medical_gate.py" report `
+  --medical "bench\document_image_beta\outputs\classification-v2-terra.jsonl" `
+            "bench\document_image_beta\outputs\classification-v2-medreamm250.jsonl" `
+  --not-medical "bench\document_image_beta\outputs\classification-v2-not-medical.jsonl"
+```
+
+Límite: no hay fotos clínicas "normales" sin lesión visible (cara, mano,
+boca) fuera de MedReaMM. El prompt las excluye de forma explícita, pero
+conviene probarlas en el smoke test.
+
 ## Decisión
 
 La ruta V1 para imágenes exclusivamente documentales queda validada: OCR sin

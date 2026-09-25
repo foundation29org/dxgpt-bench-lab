@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · multimodal · 9 sep 2026</div>
+  <div class="hero-badge">Borrador · multimodal · 24 sep 2026</div>
   <h1>MedReaMM · flujo beta</h1>
   <p>Misma cohorte de 100, juez <code>strict_equivalence</code>. T sin imagen está aquí
      porque es el mismo flujo de producto (no es all_256).
@@ -26,8 +26,10 @@
   <div class="section">
     <div class="section-title">Ranking T+I · n=100 · historia + imágenes del mismo caso</div>
     <div class="callout callout-warn">
-      Orden: R@1, luego cobertura. Astra encabeza la tabla pero <strong>no va a producto</strong>
-      (latencia/coste; vs Terra p n.s.). gpt5 es el default con imagen hoy.
+      Orden: R@1, luego cobertura. Terra n=100 sin frase (24 sep). Astra y gpt5 T+I
+      aún llevan la frase. En n=250, Terra sin frase baja a 58,8 / 76,4: el tramo
+      extra es más difícil, no un empeoramiento del modelo. Con vs sin frase en
+      esos 250: p=0,51 R@1, p=0,57 cobertura.
     </div>
     <div class="table-scroll">
     <table>
@@ -59,23 +61,23 @@
           <td>88%</td>
           <td>1,205</td>
           <td>55,1 s</td>
-          <td>vs Terra cobertura p=0,42 · R@1 p=0,11</td>
+          <td>Aún con frase. vs Terra-con-frase p n.s.</td>
         </tr>
         <tr class="winner">
           <td><span class="rank-silver">2</span></td>
           <td><strong>gpt-5.6-terra</strong></td>
           <td>
             <div class="bar-container">
-              <div class="bar-track"><div class="bar-fill bar-blue" style="width:88%"></div></div>
-              <span class="bar-label">67%</span>
+              <div class="bar-track"><div class="bar-fill bar-blue" style="width:86%"></div></div>
+              <span class="bar-label">65%</span>
             </div>
           </td>
-          <td>82%</td>
-          <td>84%</td>
-          <td>84%</td>
-          <td>1,310</td>
-          <td>24,3 s</td>
-          <td>Override eval · vs gpt5 cobertura p≈0,45</td>
+          <td>74%</td>
+          <td>79%</td>
+          <td>79%</td>
+          <td>1,367</td>
+          <td>29,4 s</td>
+          <td>Sin frase · vs gpt5 cobertura p=1,0</td>
         </tr>
         <tr>
           <td><span class="rank-bronze">3</span></td>
@@ -198,7 +200,7 @@
       </tbody>
     </table>
     </div>
-    <p class="note">Terra T→T+I: +19 pp cobertura, p=0,00055. Astra T→T+I: +21 pp, p=0,00001. gpt5 T→T+I: +16 pp, p=0,00154. Los tres usan la imagen.</p>
+    <p class="note">Terra T→T+I sin frase: +14 pp cobertura, p=0,012. Astra T→T+I (con frase): +21 pp, p=0,00001. gpt5 T→T+I (con frase): +16 pp, p=0,00154. Los tres usan la imagen.</p>
   </div>
 
   <div class="section">
@@ -217,10 +219,46 @@
       </thead>
       <tbody>
         <tr>
-          <td>I (solo imagen)</td>
+          <td>T+I n=250 sin frase</td>
+          <td>gpt-5.6-terra</td>
+          <td>58,8%</td><td>72,0%</td><td>76,4%</td><td>76,4%</td>
+          <td>24 sep. 100 anidados = 65 / 75 / 80 / 80. Dato amplio de producto</td>
+        </tr>
+        <tr>
+          <td>T+I n=250 con frase</td>
+          <td>gpt-5.6-terra</td>
+          <td>60,8%</td><td>73,6%</td><td>77,6%</td><td>78,0%</td>
+          <td>24 sep, emparejado. vs sin frase p=0,51 R@1 · p=0,57 cobertura. Configuración de producto con historia</td>
+        </tr>
+        <tr>
+          <td>T+I n=100 con frase</td>
+          <td>gpt-5.6-terra</td>
+          <td>67%</td><td>82%</td><td>84%</td><td>84%</td>
+          <td>8 sep. Otra sesión; no usar para decidir la frase</td>
+        </tr>
+        <tr>
+          <td>I sin frase</td>
+          <td>gpt-5.6-terra</td>
+          <td>35%</td><td>42%</td><td>46%</td><td>46%</td>
+          <td>24 sep. Producto: sin frase si no hay historia. vs con frase +8 R@1 (p=0,096)</td>
+        </tr>
+        <tr>
+          <td>I sin frase</td>
+          <td>gpt5</td>
+          <td>35%</td><td>46%</td><td>51%</td><td>51%</td>
+          <td>24 sep. vs I con frase 28 ago: 32 / 42 / 49 / 50</td>
+        </tr>
+        <tr>
+          <td>I con frase</td>
+          <td>gpt-5.6-terra</td>
+          <td>27%</td><td>40%</td><td>42%</td><td>42%</td>
+          <td>24 sep, emparejado. Como único texto empeora; producto no la añade sin historia</td>
+        </tr>
+        <tr>
+          <td>I con frase</td>
           <td>gpt5</td>
           <td>32%</td><td>42%</td><td>49%</td><td>50%</td>
-          <td>Hay señal visual, no sustituye a la historia</td>
+          <td>28 ago. Hay señal visual, no sustituye a la historia</td>
         </tr>
         <tr>
           <td>T+shuffled-I</td>
@@ -244,6 +282,6 @@
     </table>
   </div>
 </div>
-<footer>Borrador interno · track multimodal · 2026-09-09</footer>
+<footer>Borrador interno · track multimodal · 2026-09-24</footer>
 </body>
 </html>

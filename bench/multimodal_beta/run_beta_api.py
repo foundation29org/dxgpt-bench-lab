@@ -243,6 +243,7 @@ class BetaApiClient:
         self.lang = str(request_config.get("lang") or "en")
         self.timezone = str(request_config.get("timezone") or "UTC")
         self.model = str(request_config.get("model") or "").strip()
+        self.force_diagnosis = bool(request_config.get("force_diagnosis"))
         self.connect_timeout = float(api.get("connect_timeout_seconds") or 15)
         self.request_timeout = float(api.get("request_timeout_seconds") or 180)
         self.result_timeout = float(api.get("result_timeout_seconds") or 600)
@@ -336,6 +337,8 @@ class BetaApiClient:
                 ]
                 if self.model:
                     fields.append(("model", self.model))
+                if self.force_diagnosis:
+                    fields.append(("forceDiagnosis", "true"))
                 for path in case["documents"]:
                     fields.append(
                         (
@@ -531,6 +534,11 @@ def parse_args() -> argparse.Namespace:
         help="Skip successful case IDs already present in the output JSONL.",
     )
     parser.add_argument(
+        "--force-diagnosis",
+        action="store_true",
+        help="Skip the intent modal and diagnose even with empty text (needed for condition I).",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Validate case files and limits without calling DxGPT.",
@@ -577,6 +585,8 @@ def main() -> int:
             )
         return 0
 
+    if args.force_diagnosis:
+        config.setdefault("request", {})["force_diagnosis"] = True
     client = BetaApiClient(config)
     output_path = (
         args.output.resolve()
