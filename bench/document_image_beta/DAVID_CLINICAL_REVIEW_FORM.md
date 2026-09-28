@@ -151,7 +151,7 @@ Para el diagnóstico escribe una opción:
 
 ### B1 — Déficit de hierro
 
-![Informe de déficit de hierro](generated/assets/iron-deficiency-pattern/scan.png)
+![Informe de déficit de hierro](review_assets/iron-deficiency-pattern/scan.png)
 
 Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
@@ -166,7 +166,7 @@ Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
 ### B2 — Cetoacidosis diabética
 
-![Informe de cetoacidosis](generated/assets/diabetic-ketoacidosis-pattern/scan.png)
+![Informe de cetoacidosis](review_assets/diabetic-ketoacidosis-pattern/scan.png)
 
 Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
@@ -181,7 +181,7 @@ Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
 ### B3 — Hipotiroidismo primario
 
-![Informe tiroideo](generated/assets/primary-hypothyroid-pattern/scan.png)
+![Informe tiroideo](review_assets/primary-hypothyroid-pattern/scan.png)
 
 Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
@@ -196,7 +196,7 @@ Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
 ### B4 — Neumonía adquirida en la comunidad
 
-![Informe respiratorio](generated/assets/community-pneumonia-pattern/scan.png)
+![Informe respiratorio](review_assets/community-pneumonia-pattern/scan.png)
 
 Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
@@ -212,7 +212,7 @@ Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
 ### B5 — Déficit de vitamina B12
 
-![Informe de vitamina B12](generated/assets/vitamin-b12-pattern/scan.png)
+![Informe de vitamina B12](review_assets/vitamin-b12-pattern/scan.png)
 
 Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
@@ -228,7 +228,7 @@ Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
 ### B6 — Enfermedad celíaca
 
-![Informe de celiaquía](generated/assets/celiac-pattern/scan.png)
+![Informe de celiaquía](review_assets/celiac-pattern/scan.png)
 
 Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 
@@ -243,7 +243,7 @@ Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 
 ### B7 — Nefritis lúpica
 
-![Informe renal](generated/assets/glomerulonephritis-pattern/scan.png)
+![Informe renal](review_assets/glomerulonephritis-pattern/scan.png)
 
 Contexto: edema, artralgia y erupción fotosensible. No existe biopsia renal
 en el caso.
@@ -261,7 +261,7 @@ en el caso.
 
 ### B8 — Embolia pulmonar
 
-![Informe cardiopulmonar](generated/assets/pulmonary-embolism-pattern/scan.png)
+![Informe cardiopulmonar](review_assets/pulmonary-embolism-pattern/scan.png)
 
 Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
@@ -276,7 +276,7 @@ Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
 ### B9 — Insuficiencia cardiaca aguda descompensada
 
-![Informe cardiológico](generated/assets/heart-failure-pattern/scan.png)
+![Informe cardiológico](review_assets/heart-failure-pattern/scan.png)
 
 Contexto: ortopnea, edema bilateral de tobillos y ganancia rápida de peso.
 
@@ -294,7 +294,7 @@ Contexto: ortopnea, edema bilateral de tobillos y ganancia rápida de peso.
 
 ### B10 — Lesión renal aguda con hiperpotasemia resuelta
 
-![Paneles metabólicos fechados](generated/assets/dated-potassium-contradiction/scan.png)
+![Paneles metabólicos fechados](review_assets/dated-potassium-contradiction/scan.png)
 
 Contexto: oliguria después de gastroenteritis. Recibió fluidoterapia
 intravenosa. No se proporciona creatinina basal.

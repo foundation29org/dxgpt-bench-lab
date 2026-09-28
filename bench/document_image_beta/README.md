@@ -57,7 +57,9 @@ instrucciones, imágenes y campos en lenguaje natural. El revisor devuelve ese
 mismo Markdown rellenado y no edita directamente el gold ni la preauditoría.
 
 Los binarios generados viven en `generated/` y no se versionan. Las
-definiciones, semillas y scripts sí se versionan.
+definiciones, semillas y scripts sí se versionan. Los diez `scan.png` que
+muestra el formulario de revisión se copian a `review_assets/` para que
+GitHub pueda renderizarlos.
 
 ## Preparación
 
