@@ -183,14 +183,14 @@ Para el diagnóstico escribe una opción:
 
 Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
-- Hemoglobina 8,4 g/dL: **CORRECTO**
-- MCV 68 fL: **CORRECTO**
-- Ferritina 6 ng/mL: **CORRECTO**
-- No existe sangrado manifiesto declarado: **CORRECTO**
-- Diagnóstico esperado — anemia ferropénica: **RESPALDADO**
-- ¿Qué nombres alternativos aceptarías como la misma entidad?: anemia ferropénica; iron-deficiency anemia; anemia ferropénica microcítica
-- Justificación o corrección necesaria: Anemia con MCV bajo y ferritina muy baja encaja con ferropenia. El contexto sin sangrado manifiesto no cambia el gold.
-- Confianza — alta / media / baja: **alta**
+- Hemoglobina 8,4 g/dL: **RESPUESTA**
+- MCV 68 fL: **RESPUESTA**
+- Ferritina 6 ng/mL: **RESPUESTA**
+- No existe sangrado manifiesto declarado: **RESPUESTA**
+- Diagnóstico esperado — anemia ferropénica: **RESPUESTA**
+- ¿Qué nombres alternativos aceptarías como la misma entidad?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -200,14 +200,14 @@ Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
 Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
-- Glucosa 420 mg/dL: **CORRECTO**
-- pH arterial 7,18: **CORRECTO**
-- Bicarbonato 11 mmol/L: **CORRECTO**
-- Cetonas sanguíneas positivas: **CORRECTO**
-- Diagnóstico esperado — cetoacidosis diabética: **RESPALDADO**
-- ¿Qué nombres alternativos aceptarías?: DKA; cetoacidosis diabética aguda
-- Justificación o corrección necesaria: Hiperglucemia + acidemia + bicarbonato bajo + cetonas positivas es el patrón de CAD. No hace falta cambiar el gold.
-- Confianza — alta / media / baja: **alta**
+- Glucosa 420 mg/dL: **RESPUESTA**
+- pH arterial 7,18: **RESPUESTA**
+- Bicarbonato 11 mmol/L: **RESPUESTA**
+- Cetonas sanguíneas positivas: **RESPUESTA**
+- Diagnóstico esperado — cetoacidosis diabética: **RESPUESTA**
+- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -217,14 +217,14 @@ Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
 Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
-- TSH 18,6 mIU/L: **CORRECTO**
-- T4 libre 0,6 ng/dL: **CORRECTO**
-- Anticuerpos anti-TPO positivos: **CORRECTO**
-- Ausencia de fiebre: **CORRECTO**
-- Diagnóstico esperado — hipotiroidismo primario: **RESPALDADO**
-- ¿Qué nombres alternativos aceptarías?: hipotiroidismo primario autoinmune; hipotiroidismo de Hashimoto
-- Justificación o corrección necesaria: TSH alta con T4 libre baja es hipotiroidismo primario. Anti-TPO positivo apunta a causa autoinmune, que es más específica pero sigue siendo la misma entidad.
-- Confianza — alta / media / baja: **alta**
+- TSH 18,6 mIU/L: **RESPUESTA**
+- T4 libre 0,6 ng/dL: **RESPUESTA**
+- Anticuerpos anti-TPO positivos: **RESPUESTA**
+- Ausencia de fiebre: **RESPUESTA**
+- Diagnóstico esperado — hipotiroidismo primario: **RESPUESTA**
+- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -234,15 +234,15 @@ Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
 Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
-- Fiebre de 38,7 °C: **CORRECTO**
-- Saturación de oxígeno del 91%: **CORRECTO**
-- Opacidad de espacio aéreo en lóbulo inferior derecho: **CORRECTO**
-- Alergia a penicilina: **CORRECTO**
-- Diagnóstico esperado — neumonía adquirida en la comunidad: **RESPALDADO**
-- ¿Aceptarías “neumonía bacteriana adquirida en la comunidad”?: **sí**
-- ¿Aceptarías “neumonía del lóbulo inferior derecho”?: **sí**, si se entiende como NAC de ese lóbulo, no como otra enfermedad
-- Justificación o corrección necesaria: Clínica aguda + opacidad focal nueva respaldan NAC. Una formulación más específica (bacteriana o LID) conserva la misma entidad. La alergia a penicilina es un dato de tratamiento, no cambia el gold.
-- Confianza — alta / media / baja: **alta**
+- Fiebre de 38,7 °C: **RESPUESTA**
+- Saturación de oxígeno del 91%: **RESPUESTA**
+- Opacidad de espacio aéreo en lóbulo inferior derecho: **RESPUESTA**
+- Alergia a penicilina: **RESPUESTA**
+- Diagnóstico esperado — neumonía adquirida en la comunidad: **RESPUESTA**
+- ¿Aceptarías “neumonía bacteriana adquirida en la comunidad”?: **RESPUESTA**
+- ¿Aceptarías “neumonía del lóbulo inferior derecho”?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -252,15 +252,15 @@ Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
 Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
-- MCV 112 fL: **CORRECTO**
-- Vitamina B12 118 pg/mL: **CORRECTO**
-- Folato normal: **CORRECTO**
-- Anticuerpo contra factor intrínseco positivo: **CORRECTO**
-- Diagnóstico esperado — déficit de vitamina B12: **RESPALDADO**
-- ¿Aceptarías “déficit de cobalamina”?: **sí**
-- ¿Aceptarías “anemia perniciosa con déficit de B12”?: **sí**, porque el anticuerpo anti-factor intrínseco apunta a esa causa; sigue siendo déficit de B12
-- Justificación o corrección necesaria: B12 baja, macrocitosis y folato normal respaldan el gold. El anti-FI hace más específica la causa, no cambia la enfermedad madre.
-- Confianza — alta / media / baja: **alta**
+- MCV 112 fL: **RESPUESTA**
+- Vitamina B12 118 pg/mL: **RESPUESTA**
+- Folato normal: **RESPUESTA**
+- Anticuerpo contra factor intrínseco positivo: **RESPUESTA**
+- Diagnóstico esperado — déficit de vitamina B12: **RESPUESTA**
+- ¿Aceptarías “déficit de cobalamina”?: **RESPUESTA**
+- ¿Aceptarías “anemia perniciosa con déficit de B12”?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -270,14 +270,14 @@ Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
 Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 
-- Transglutaminasa tisular IgA 86 U/mL: **CORRECTO**
-- IgA total normal: **CORRECTO**
-- Atrofia vellositaria: **CORRECTO**
-- Hiperplasia de criptas: **CORRECTO**
-- Diagnóstico esperado — enfermedad celíaca: **RESPALDADO**
-- ¿Qué nombres alternativos aceptarías?: coeliac disease; enteropatía sensible al gluten
-- Justificación o corrección necesaria: Serología IgA-tTG alta con IgA total normal más histología duodenal compatible es suficiente para mantener el gold.
-- Confianza — alta / media / baja: **alta**
+- Transglutaminasa tisular IgA 86 U/mL: **RESPUESTA**
+- IgA total normal: **RESPUESTA**
+- Atrofia vellositaria: **RESPUESTA**
+- Hiperplasia de criptas: **RESPUESTA**
+- Diagnóstico esperado — enfermedad celíaca: **RESPUESTA**
+- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -288,16 +288,16 @@ Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 Contexto: edema, artralgia y erupción fotosensible. No existe biopsia renal
 en el caso.
 
-- Proteína urinaria 2,8 g/día: **CORRECTO**
-- Eritrocitos dismórficos presentes: **CORRECTO**
-- C3 48 mg/dL: **CORRECTO**
-- Anti-dsDNA 156 IU/mL: **CORRECTO**
-- Diagnóstico esperado — nefritis lúpica: **RESPALDADO**
-- ¿Aceptarías “nefritis por lupus eritematoso sistémico”?: **sí**
+- Proteína urinaria 2,8 g/día: **RESPUESTA**
+- Eritrocitos dismórficos presentes: **RESPUESTA**
+- C3 48 mg/dL: **RESPUESTA**
+- Anti-dsDNA 156 IU/mL: **RESPUESTA**
+- Diagnóstico esperado — nefritis lúpica: **RESPUESTA**
+- ¿Aceptarías “nefritis por lupus eritematoso sistémico”?: **RESPUESTA**
 - ¿La ausencia de biopsia obliga a cambiar el gold o solamente impide asignar
-una clase histológica?: **solo impide asignar clase histológica**; no obliga a cambiar el gold si el patrón clínico-serológico es de nefritis lúpica
-- Justificación o corrección necesaria: Proteinuria, hematuria dismórfica, C3 bajo, anti-dsDNA alto y clínica de LES respaldan nefritis lúpica. Sin biopsia no se puede poner clase I–VI.
-- Confianza — alta / media / baja: **media**
+una clase histológica?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -307,14 +307,14 @@ una clase histológica?: **solo impide asignar clase histológica**; no obliga a
 
 Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
-- Frecuencia cardiaca 118 lpm: **CORRECTO**
-- Saturación de oxígeno del 89%: **CORRECTO**
-- Dímero D 3,2 mg/L FEU: **CORRECTO**
-- Defecto de llenado segmentario en angiografía CT: **CORRECTO**
-- Diagnóstico esperado — embolia pulmonar: **RESPALDADO**
-- ¿Qué nombres alternativos aceptarías?: embolia pulmonar aguda; TEP; postoperative pulmonary embolism
-- Justificación o corrección necesaria: Clínica aguda postquirúrgica más defecto de llenado en angio-TC es suficiente. El dímero D alto apoya, no basta solo.
-- Confianza — alta / media / baja: **alta**
+- Frecuencia cardiaca 118 lpm: **RESPUESTA**
+- Saturación de oxígeno del 89%: **RESPUESTA**
+- Dímero D 3,2 mg/L FEU: **RESPUESTA**
+- Defecto de llenado segmentario en angiografía CT: **RESPUESTA**
+- Diagnóstico esperado — embolia pulmonar: **RESPUESTA**
+- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -324,17 +324,17 @@ Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
 Contexto: ortopnea, edema bilateral de tobillos y ganancia rápida de peso.
 
-- BNP 1450 pg/mL: **CORRECTO**
-- Fracción de eyección ventricular izquierda del 30%: **CORRECTO**
-- Opacidades intersticiales bilaterales: **CORRECTO**
-- Troponina no elevada: **CORRECTO**
+- BNP 1450 pg/mL: **RESPUESTA**
+- Fracción de eyección ventricular izquierda del 30%: **RESPUESTA**
+- Opacidades intersticiales bilaterales: **RESPUESTA**
+- Troponina no elevada: **RESPUESTA**
 - Diagnóstico esperado — insuficiencia cardiaca aguda descompensada:
-**RESPALDADO**
-- ¿Aceptarías “insuficiencia cardiaca sistólica aguda”?: **sí** (FEVI 30%, misma entidad más específica)
+**RESPUESTA**
+- ¿Aceptarías “insuficiencia cardiaca sistólica aguda”?: **RESPUESTA**
 - ¿Consideras “edema pulmonar cardiogénico” equivalente al gold completo o
-solamente una posible manifestación?: **solo una posible manifestación**, no el gold completo
-- Justificación o corrección necesaria: Ortopnea, edemas, ganancia de peso, BNP alto y FEVI reducida respaldan IC aguda descompensada. El edema pulmonar cardiogénico describe un hallazgo, no sustituye al diagnóstico completo.
-- Confianza — alta / media / baja: **alta**
+solamente una posible manifestación?: **RESPUESTA**
+- Justificación o corrección necesaria: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 
 
@@ -345,19 +345,19 @@ solamente una posible manifestación?: **solo una posible manifestación**, no e
 Contexto: oliguria después de gastroenteritis. Recibió fluidoterapia
 intravenosa. No se proporciona creatinina basal.
 
-- Fecha inicial 2026-06-19: **CORRECTO**
-- Potasio inicial 5,8 mmol/L: **CORRECTO**
-- Fecha de control 2026-06-21: **CORRECTO**
-- Potasio de control 4,1 mmol/L: **CORRECTO**
-- No se realizó diálisis: **CORRECTO**
+- Fecha inicial 2026-06-19: **RESPUESTA**
+- Potasio inicial 5,8 mmol/L: **RESPUESTA**
+- Fecha de control 2026-06-21: **RESPUESTA**
+- Potasio de control 4,1 mmol/L: **RESPUESTA**
+- No se realizó diálisis: **RESPUESTA**
 - Diagnóstico esperado — lesión renal aguda con hiperpotasemia resuelta:
-**RESPALDADO**
+**RESPUESTA**
 - ¿La falta de creatinina basal impide diagnosticar lesión renal aguda o solo
-reduce la certeza?: **solo reduce la certeza**; oliguria tras gastroenteritis y creatinina que baja con suero siguen siendo compatibles con IRA
+reduce la certeza?: **RESPUESTA**
 - ¿Queda resuelta únicamente la hiperpotasemia o también la lesión renal?:
-**queda resuelta con claridad la hiperpotasemia**; la lesión renal mejora, pero no se puede afirmar que esté resuelta del todo sin basal
-- Justificación o gold alternativo: Aceptable. Alternativa más prudente: IRA prerrenal con hiperpotasemia corregida. No exigir diálisis ni resolución completa de la IRA.
-- Confianza — alta / media / baja: **media**
+**RESPUESTA**
+- Justificación o gold alternativo: **RESPUESTA**
+- Confianza — alta / media / baja: **RESPUESTA**
 
 ---
 
@@ -372,9 +372,9 @@ reduce la certeza?: **solo reduce la certeza**; oliguria tras gastroenteritis y 
 Los escaneos de cetoacidosis, celiaquía e insuficiencia cardiaca recortan
 parte del margen izquierdo, aunque los hechos evaluados siguen visibles.
 
-- ¿Pueden mantenerse como pruebas de documentos imperfectos?: **sí**
-- ¿Deben añadirse versiones sin recorte antes de producción?: **sí**
-- Motivo: Un recorte de margen sirve para probar OCR real, pero no debe ser el único control de producción. Los hechos evaluados siguen visibles, así que no invalida el caso.
+- ¿Pueden mantenerse como pruebas de documentos imperfectos?: **RESPUESTA**
+- ¿Deben añadirse versiones sin recorte antes de producción?: **RESPUESTA**
+- Motivo: **RESPUESTA**
 
 
 
@@ -384,9 +384,9 @@ Las imágenes médicas de los tres casos mixtos son dibujos sintéticos. Sirven
 para comprobar que el sistema conserva el visual, pero no para medir capacidad
 de interpretación radiológica.
 
-- ¿Está de acuerdo con esa limitación?: **sí**
-- ¿Exigiría imágenes mixtas reales antes de producción?: **sí**
-- Motivo: Un dibujo sintético sirve para routing (¿se conserva el visual?), no para decir que el modelo lee bien una radiografía o un TAC reales.
+- ¿Está de acuerdo con esa limitación?: **RESPUESTA**
+- ¿Exigiría imágenes mixtas reales antes de producción?: **RESPUESTA**
+- Motivo: **RESPUESTA**
 
 
 
@@ -396,9 +396,9 @@ Un juez automático rechazó una vez “neumonía bacteriana adquirida en la
 comunidad, lóbulo inferior derecho” frente a “neumonía adquirida en la
 comunidad”, pero la aceptó al repetir exactamente la evaluación.
 
-- ¿Representan la misma entidad diagnóstica en este caso?: **sí**
-- ¿Los desacuerdos inestables deben pasar a revisión humana?: **sí**
-- Motivo: “NAC bacteriana del lóbulo inferior derecho” es más específica, pero sigue siendo NAC. Si el juez dice no y luego sí con el mismo input, esa cifra no se puede publicar como decisión clínica estable.
+- ¿Representan la misma entidad diagnóstica en este caso?: **RESPUESTA**
+- ¿Los desacuerdos inestables deben pasar a revisión humana?: **RESPUESTA**
+- Motivo: **RESPUESTA**
 
 
 
@@ -407,9 +407,9 @@ comunidad”, pero la aceptó al repetir exactamente la evaluación.
 Los diez casos son deliberadamente claros y no representan toda la
 incertidumbre de la práctica clínica.
 
-- ¿Pueden validar la conservación de texto y el routing?: **sí**
-- ¿Son suficientes para afirmar precisión clínica general?: **no**
-- ¿Qué controles difíciles añadirías?: golds dobles o fenotípicos; diagnósticos competidores; imágenes mixtas reales; casos sin biopsia o sin creatinina basal; y al menos un informe recortado frente a uno limpio del mismo caso.
+- ¿Pueden validar la conservación de texto y el routing?: **RESPUESTA**
+- ¿Son suficientes para afirmar precisión clínica general?: **RESPUESTA**
+- ¿Qué controles difíciles añadirías?: **RESPUESTA**
 
 ---
 
@@ -424,9 +424,9 @@ Elige una opción:
 enumerados.
 - `CONSULTAR MÉDICO`: quedan decisiones clínicas que requieren adjudicación.
 - `RECHAZAR`: existen problemas que invalidan este conjunto.
-- Decisión: **APROBAR CON CAMBIOS**
-- Cambios obligatorios antes de usar el benchmark: 1) Resolver A5 (`N-10000022`): no está claro si el texto chino es leyenda o bloque clínico. 2) Añadir versiones sin recorte de CAD, celiaquía e IC. 3) No usar los paneles médicos dibujados como prueba de interpretación radiológica. 4) Pasar a revisión humana los matches inestables del juez (como la NAC más específica).
-- Cuestiones que requieren médico: A5 (texto chino); clase histológica de nefritis lúpica (no se puede asignar sin biopsia); afirmar “IRA resuelta” sin creatinina basal.
-- Comentario final: La Parte A está revisada sobre las imágenes reales. Las Partes B y C se rellenan sobre el contenido diseñado de los casos sintéticos (`cases.yaml`); los PNG de `generated/` no estaban en el repo. Los diez golds sintéticos se pueden usar para texto y routing, no como precisión clínica general.
-- Firma o nombre del revisor: **David**
+- Decisión: **RESPUESTA**
+- Cambios obligatorios antes de usar el benchmark: **RESPUESTA**
+- Cuestiones que requieren médico: **RESPUESTA**
+- Comentario final: **RESPUESTA**
+- Firma o nombre del revisor: **RESPUESTA**
 
