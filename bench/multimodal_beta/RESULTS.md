@@ -23,6 +23,7 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-09-24 | MedReaMM pilot100 | T+I sin frase | gpt56terra | strict | 100 | 65% | 74% | 79% | 79% | 1,367 | Provisional | [Informe](results/2026-09-24-medreamm-pilot100-t-plus-i-gpt56terra-nophase.md) |
 | 2026-09-24 | MedReaMM pilot250 | T+I sin frase | gpt56terra | strict | 250 | 58,8% | 72,0% | 76,4% | 76,4% | 1,424 | Provisional | [Informe](results/2026-09-24-medreamm-pilot250-t-plus-i-gpt56terra-nophase.md) |
 | 2026-09-24 | MedReaMM pilot250 | T+I con frase | gpt56terra | strict | 250 | 60,8% | 73,6% | 77,6% | 78,0% | 1,415 | Provisional | [Informe](results/2026-09-24-medreamm-pilot250-t-plus-i-gpt56terra-phrase.md) |
+| 2026-09-29 | MedReaMM pilot250 | T+I frase neutra | gpt56terra | strict | 250 | 58,4% | 72,0% | 76,0% | 76,0% | 1,437 | Provisional | [Informe](results/2026-09-29-medreamm-pilot250-t-plus-i-gpt56terra-neutral.md) |
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt56terra | strict | 100 | 67% | 82% | 84% | 84% | 1,310 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt56terra.md) |
 | 2026-09-08 | MedReaMM pilot100 | T | gpt56terra | strict | 100 | 50% | 60% | 65% | 65% | 1,477 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-gpt56terra.md) |
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | strict | 100 | 76% | 87% | 88% | 88% | 1,205 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt6astra.md) |
@@ -42,6 +43,7 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-09-24 | MedReaMM pilot100 | T+I sin frase | gpt56terra | 100/100; 2 listas vacías | 32/100 | 29,4 s | Completa |
 | 2026-09-24 | MedReaMM pilot250 | T+I sin frase | gpt56terra | 250/250; 3 listas vacías | 77/250 | 30,0 s | Completa |
 | 2026-09-24 | MedReaMM pilot250 | T+I con frase | gpt56terra | 250/250; 3 listas vacías | 77/250 | 30,0 s | Completa |
+| 2026-09-29 | MedReaMM pilot250 | T+I frase neutra | gpt56terra | 250/250; 3 listas vacías | 77/250 | 32,7 s | Completa |
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt56terra | 100/100 | 32/100 | 24,3 s | Completa |
 | 2026-09-08 | MedReaMM pilot100 | T | gpt56terra | 100/100; 1 lista vacía | 32/100 | 20,1 s | Completa |
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | 100/100 | 32/100 | 55,1 s | Completa |
@@ -69,6 +71,9 @@ mismas respuestas del modelo. Solo cambia la política del juez.
   En n=250 del mismo día, sin frase: 76,4% / 58,8%. Con frase: 78,0% /
   60,8%. McNemar n=250 `p=0,57` cobertura y `p=0,51` R@1. En los 100
   anidados, 80% = 80% y 65% vs 66% (`p=1,0`). La frase no cambia T+I.
+  La frase neutra del 29 sep (n=250) queda en 76,0% / 58,4%, indistinguible
+  de sin frase (`p=1,0`) y por detrás de la frase anterior sin significación
+  (`p=0,46` cobertura, `p=0,43` R@1). Se mantiene la frase anterior.
   El tramo extra de 150 es más difícil que el piloto 100; 58,8% no
   sustituye al 65% como si fuera el mismo examen.
 - Terra **usa la imagen** también sin frase: T 65% / R@1 50% vs T+I 79% /
