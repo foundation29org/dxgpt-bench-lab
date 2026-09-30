@@ -183,14 +183,14 @@ Para el diagnóstico escribe una opción:
 
 Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
-- Hemoglobina 8,4 g/dL: **RESPUESTA**
-- MCV 68 fL: **RESPUESTA**
-- Ferritina 6 ng/mL: **RESPUESTA**
-- No existe sangrado manifiesto declarado: **RESPUESTA**
-- Diagnóstico esperado — anemia ferropénica: **RESPUESTA**
-- ¿Qué nombres alternativos aceptarías como la misma entidad?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Hemoglobina 8,4 g/dL: **CORRECTO**
+- MCV 68 fL: **CORRECTO**
+- Ferritina 6 ng/mL: **CORRECTO**
+- No existe sangrado manifiesto declarado: **CORRECTO**
+- Diagnóstico esperado — anemia ferropénica: **RESPALDADO**
+- ¿Qué nombres alternativos aceptarías como la misma entidad?: Anemia por deficiencia de hierro, Anemia por déficit de hierro, Anemia microcítica hipoferrémica, Anemia hipoferrémica, Anemia sideropénica, Anemia microcítica por déficit de hierro, Anemia ferropénica severa / moderada / leve.
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: ALTA
 
 
 
@@ -200,14 +200,14 @@ Contexto: fatiga progresiva y disnea de esfuerzo; no se declara sangrado.
 
 Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
-- Glucosa 420 mg/dL: **RESPUESTA**
-- pH arterial 7,18: **RESPUESTA**
-- Bicarbonato 11 mmol/L: **RESPUESTA**
-- Cetonas sanguíneas positivas: **RESPUESTA**
-- Diagnóstico esperado — cetoacidosis diabética: **RESPUESTA**
-- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Glucosa 420 mg/dL: **CORRECTO**
+- pH arterial 7,18: **CORRECTO**
+- Bicarbonato 11 mmol/L: **CORRECTO**
+- Cetonas sanguíneas positivas: **CORRECTO**
+- Diagnóstico esperado — cetoacidosis diabética: **RESPALDADO**
+- ¿Qué nombres alternativos aceptarías?: Cetoacidosis diabética (CAD), Cetoacidosis diabética aguda, Cetoacidosis diabética tipo 1, Cetoacidosis diabética hiperglucémica, Cetoacidosis diabética con acidosis metabólica, Cetoacidosis diabética con cetonemia, Cetoacidosis diabética con anión gap elevado, CAD moderada / severa.
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -217,14 +217,14 @@ Contexto: vómitos, dolor abdominal, respiración profunda y deshidratación.
 
 Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
-- TSH 18,6 mIU/L: **RESPUESTA**
-- T4 libre 0,6 ng/dL: **RESPUESTA**
-- Anticuerpos anti-TPO positivos: **RESPUESTA**
-- Ausencia de fiebre: **RESPUESTA**
-- Diagnóstico esperado — hipotiroidismo primario: **RESPUESTA**
-- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- TSH 18,6 mIU/L: **CORRECTO**
+- T4 libre 0,6 ng/dL: **CORRECTO**
+- Anticuerpos anti-TPO positivos: **CORRECTO**
+- Ausencia de fiebre: **CORRECTO**
+- Diagnóstico esperado — hipotiroidismo primario: **RESPALDADO**
+- ¿Qué nombres alternativos aceptarías?: Hipotiroidismo primario, Hipotiroidismo por enfermedad de Hashimoto, Hipotiroidismo autoinmune, Hipotiroidismo clínico, Hipotiroidismo manifiesto, Hipotiroidismo primario autoinmune, Tiroiditis de Hashimoto con hipotiroidismo.
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -234,15 +234,15 @@ Contexto: intolerancia al frío, estreñimiento y lentitud mental.
 
 Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
-- Fiebre de 38,7 °C: **RESPUESTA**
-- Saturación de oxígeno del 91%: **RESPUESTA**
-- Opacidad de espacio aéreo en lóbulo inferior derecho: **RESPUESTA**
-- Alergia a penicilina: **RESPUESTA**
-- Diagnóstico esperado — neumonía adquirida en la comunidad: **RESPUESTA**
-- ¿Aceptarías “neumonía bacteriana adquirida en la comunidad”?: **RESPUESTA**
-- ¿Aceptarías “neumonía del lóbulo inferior derecho”?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Fiebre de 38,7 °C: **CORRECTO**
+- Saturación de oxígeno del 91%: **CORRECTO**
+- Opacidad de espacio aéreo en lóbulo inferior derecho: **CORRECTO**
+- Alergia a penicilina: **CORRECTO**
+- Diagnóstico esperado — neumonía adquirida en la comunidad: **RESPALDADO**
+- ¿Aceptarías “neumonía bacteriana adquirida en la comunidad”?: **SI**
+- ¿Aceptarías “neumonía del lóbulo inferior derecho”?: **SI**
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -252,15 +252,15 @@ Contexto: tos productiva, dolor pleurítico y crepitantes focales derechos.
 
 Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
-- MCV 112 fL: **RESPUESTA**
-- Vitamina B12 118 pg/mL: **RESPUESTA**
-- Folato normal: **RESPUESTA**
-- Anticuerpo contra factor intrínseco positivo: **RESPUESTA**
-- Diagnóstico esperado — déficit de vitamina B12: **RESPUESTA**
-- ¿Aceptarías “déficit de cobalamina”?: **RESPUESTA**
-- ¿Aceptarías “anemia perniciosa con déficit de B12”?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- MCV 112 fL: **CORRECTO**
+- Vitamina B12 118 pg/mL: **CORRECTO**
+- Folato normal: **CORRECTO**
+- Anticuerpo contra factor intrínseco positivo: **CORRECTO**
+- Diagnóstico esperado — déficit de vitamina B12: **RESPALDADO**
+- ¿Aceptarías “déficit de cobalamina”?: **SI**
+- ¿Aceptarías “anemia perniciosa con déficit de B12”?: **SI**
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -270,14 +270,14 @@ Contexto: entumecimiento distal, inestabilidad de la marcha y glositis.
 
 Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 
-- Transglutaminasa tisular IgA 86 U/mL: **RESPUESTA**
-- IgA total normal: **RESPUESTA**
-- Atrofia vellositaria: **RESPUESTA**
-- Hiperplasia de criptas: **RESPUESTA**
-- Diagnóstico esperado — enfermedad celíaca: **RESPUESTA**
-- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Transglutaminasa tisular IgA 86 U/mL: **CORRECTO**
+- IgA total normal: **CORRECTO**
+- Atrofia vellositaria: **CORRECTO**
+- Hiperplasia de criptas: **CORRECTO**
+- Diagnóstico esperado — enfermedad celíaca: **RESPALDADO**
+- ¿Qué nombres alternativos aceptarías?: Enfermedad celíaca, Celiaquía, Enteropatía por gluten, Enteropatía sensible al gluten, Enteropatía inducida por gluten, Enfermedad celíaca autoinmune, Enteropatía autoinmune por gluten, Enfermedad celíaca con atrofia vellositaria, Enfermedad celíaca clásica. 
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -288,16 +288,15 @@ Contexto: diarrea crónica, pérdida de peso y déficit de hierro.
 Contexto: edema, artralgia y erupción fotosensible. No existe biopsia renal
 en el caso.
 
-- Proteína urinaria 2,8 g/día: **RESPUESTA**
-- Eritrocitos dismórficos presentes: **RESPUESTA**
-- C3 48 mg/dL: **RESPUESTA**
-- Anti-dsDNA 156 IU/mL: **RESPUESTA**
-- Diagnóstico esperado — nefritis lúpica: **RESPUESTA**
-- ¿Aceptarías “nefritis por lupus eritematoso sistémico”?: **RESPUESTA**
-- ¿La ausencia de biopsia obliga a cambiar el gold o solamente impide asignar
-una clase histológica?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Proteína urinaria 2,8 g/día: CORRECTO
+- Eritrocitos dismórficos presentes: CORRECTO
+- C3 48 mg/dL: **CORRECTO**
+- Anti-dsDNA 156 IU/mL: **CORRECTO**
+- Diagnóstico esperado — nefritis lúpica: **RESPALDADO**
+- ¿Aceptarías “nefritis por lupus eritematoso sistémico”?: **SI**
+- ¿La ausencia de biopsia obliga a cambiar el gold o solamente impide asignar una clase histológica?: **CONSULTAR MÉDICO**
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -307,14 +306,14 @@ una clase histológica?: **RESPUESTA**
 
 Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
-- Frecuencia cardiaca 118 lpm: **RESPUESTA**
-- Saturación de oxígeno del 89%: **RESPUESTA**
-- Dímero D 3,2 mg/L FEU: **RESPUESTA**
-- Defecto de llenado segmentario en angiografía CT: **RESPUESTA**
-- Diagnóstico esperado — embolia pulmonar: **RESPUESTA**
-- ¿Qué nombres alternativos aceptarías?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Frecuencia cardiaca 118 lpm: **CORRECTO**
+- Saturación de oxígeno del 89%: **CORRECTO**
+- Dímero D 3,2 mg/L FEU: **CORRECTO**
+- Defecto de llenado segmentario en angiografía CT: **CORRECTO**
+- Diagnóstico esperado — embolia pulmonar: **RESPALDADO**
+- ¿Qué nombres alternativos aceptarías?: Tromboembolia pulmonar (TEP), Embolia pulmonar aguda, Tromboembolia pulmonar aguda, Embolia pulmonar segmentaria, Tromboembolia pulmonar segmentaria, Embolia pulmonar por trombo venoso profundo, Embolia pulmonar sintomática, Embolia pulmonar con defecto de llenado en angio‑TC.
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -324,17 +323,15 @@ Contexto: disnea súbita y dolor pleurítico después de cirugía reciente.
 
 Contexto: ortopnea, edema bilateral de tobillos y ganancia rápida de peso.
 
-- BNP 1450 pg/mL: **RESPUESTA**
-- Fracción de eyección ventricular izquierda del 30%: **RESPUESTA**
-- Opacidades intersticiales bilaterales: **RESPUESTA**
-- Troponina no elevada: **RESPUESTA**
-- Diagnóstico esperado — insuficiencia cardiaca aguda descompensada:
-**RESPUESTA**
-- ¿Aceptarías “insuficiencia cardiaca sistólica aguda”?: **RESPUESTA**
-- ¿Consideras “edema pulmonar cardiogénico” equivalente al gold completo o
-solamente una posible manifestación?: **RESPUESTA**
-- Justificación o corrección necesaria: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- BNP 1450 pg/mL: **CORRECTO**
+- Fracción de eyección ventricular izquierda del 30%: **CORRECTO**
+- Opacidades intersticiales bilaterales: **CORRECTO**
+- Troponina no elevada: **CORRECTO**
+- Diagnóstico esperado — insuficiencia cardiaca aguda descompensada: **RESPALDADO**
+- ¿Aceptarías “insuficiencia cardiaca sistólica aguda”?: **SI**
+- ¿Consideras “edema pulmonar cardiogénico” equivalente al gold completo o solamente una posible manifestación?: NO, NO ES EQIVALENTE AL GOLD COMPLETO, ES ÚNICAMNETE UNA MANIFESTACIÓN DEL GOLD.
+- Justificación o corrección necesaria: 
+- Confianza — alta / media / baja: **ALTA**
 
 
 
@@ -345,19 +342,16 @@ solamente una posible manifestación?: **RESPUESTA**
 Contexto: oliguria después de gastroenteritis. Recibió fluidoterapia
 intravenosa. No se proporciona creatinina basal.
 
-- Fecha inicial 2026-06-19: **RESPUESTA**
-- Potasio inicial 5,8 mmol/L: **RESPUESTA**
-- Fecha de control 2026-06-21: **RESPUESTA**
-- Potasio de control 4,1 mmol/L: **RESPUESTA**
-- No se realizó diálisis: **RESPUESTA**
-- Diagnóstico esperado — lesión renal aguda con hiperpotasemia resuelta:
-**RESPUESTA**
-- ¿La falta de creatinina basal impide diagnosticar lesión renal aguda o solo
-reduce la certeza?: **RESPUESTA**
-- ¿Queda resuelta únicamente la hiperpotasemia o también la lesión renal?:
-**RESPUESTA**
-- Justificación o gold alternativo: **RESPUESTA**
-- Confianza — alta / media / baja: **RESPUESTA**
+- Fecha inicial 2026-06-19: **CORRECTO**
+- Potasio inicial 5,8 mmol/L: **CORRECTO**
+- Fecha de control 2026-06-21: **CORRECTO**
+- Potasio de control 4,1 mmol/L: **CORRECTO**
+- No se realizó diálisis: **CORRECTO**
+- Diagnóstico esperado — lesión renal aguda con hiperpotasemia resuelta: **RESPALDADO**
+- ¿La falta de creatinina basal impide diagnosticar lesión renal aguda o solo reduce la certeza?: **SOLO REDUCE LA CERTEZA, NO IMPIDE EL DIAGNÓSTICO.**
+- ¿Queda resuelta únicamente la hiperpotasemia o también la lesión renal?: **LA HIPERPOTASEMIA ESTÁ RESUELTA, LA LESIÓN RENAL NO PUEDE CONSIDERARSE RESUELTA SIN CREATININA DE CONTROL.**
+- Justificación o gold alternativo: 
+- Confianza — alta / media / baja: **ALTA**
 
 ---
 
@@ -372,9 +366,9 @@ reduce la certeza?: **RESPUESTA**
 Los escaneos de cetoacidosis, celiaquía e insuficiencia cardiaca recortan
 parte del margen izquierdo, aunque los hechos evaluados siguen visibles.
 
-- ¿Pueden mantenerse como pruebas de documentos imperfectos?: **RESPUESTA**
-- ¿Deben añadirse versiones sin recorte antes de producción?: **RESPUESTA**
-- Motivo: **RESPUESTA**
+- ¿Pueden mantenerse como pruebas de documentos imperfectos?: **SI**
+- ¿Deben añadirse versiones sin recorte antes de producción?: **NO**
+- Motivo: **NO SE PIERDE INFROMACIÓN POR EL RECORTE DEL MARGEN IZQUIERDO.**
 
 
 
@@ -384,9 +378,9 @@ Las imágenes médicas de los tres casos mixtos son dibujos sintéticos. Sirven
 para comprobar que el sistema conserva el visual, pero no para medir capacidad
 de interpretación radiológica.
 
-- ¿Está de acuerdo con esa limitación?: **RESPUESTA**
-- ¿Exigiría imágenes mixtas reales antes de producción?: **RESPUESTA**
-- Motivo: **RESPUESTA**
+- ¿Está de acuerdo con esa limitación?: **si**
+- ¿Exigiría imágenes mixtas reales antes de producción?: **NO** 
+- Motivo: **me parece que así está bien por lo menos con los casos tratados por ahora.**
 
 
 
@@ -396,9 +390,9 @@ Un juez automático rechazó una vez “neumonía bacteriana adquirida en la
 comunidad, lóbulo inferior derecho” frente a “neumonía adquirida en la
 comunidad”, pero la aceptó al repetir exactamente la evaluación.
 
-- ¿Representan la misma entidad diagnóstica en este caso?: **RESPUESTA**
-- ¿Los desacuerdos inestables deben pasar a revisión humana?: **RESPUESTA**
-- Motivo: **RESPUESTA**
+- ¿Representan la misma entidad diagnóstica en este caso?: **SI**
+- ¿Los desacuerdos inestables deben pasar a revisión humana?: **SI**
+- Motivo: **PORQUE EL DESACUERDO ES INESTABLE Y NO SE BASA EN UN CAMBIO REAL DE ENTIDAD DIAGNÓSTICA.**
 
 
 
@@ -407,9 +401,9 @@ comunidad”, pero la aceptó al repetir exactamente la evaluación.
 Los diez casos son deliberadamente claros y no representan toda la
 incertidumbre de la práctica clínica.
 
-- ¿Pueden validar la conservación de texto y el routing?: **RESPUESTA**
-- ¿Son suficientes para afirmar precisión clínica general?: **RESPUESTA**
-- ¿Qué controles difíciles añadirías?: **RESPUESTA**
+- ¿Pueden validar la conservación de texto y el routing?: **SI**
+- ¿Son suficientes para afirmar precisión clínica general?: **SI**
+- ¿Qué controles difíciles añadirías?: **PRUEBAS MÁS DIFÍCILES ASÍ CÓMO POR EJEMPLO GOLDS DOBLES, GOLDS FENOTÍPICOS O MÁS ÁMPLIOS, DOS DIAGNÓSTICOS QUE COMPITAN...**
 
 ---
 
@@ -424,9 +418,9 @@ Elige una opción:
 enumerados.
 - `CONSULTAR MÉDICO`: quedan decisiones clínicas que requieren adjudicación.
 - `RECHAZAR`: existen problemas que invalidan este conjunto.
-- Decisión: **RESPUESTA**
-- Cambios obligatorios antes de usar el benchmark: **RESPUESTA**
-- Cuestiones que requieren médico: **RESPUESTA**
-- Comentario final: **RESPUESTA**
-- Firma o nombre del revisor: **RESPUESTA**
+- Decisión: **APROBAR**
+- Cambios obligatorios antes de usar el benchmark: **NO**
+- Cuestiones que requieren médico: **EN B7:**¿La ausencia de biopsia obliga a cambiar el gold o solamente impide asignar una clase histológica?
+- Comentario final: **FUNCIONA MUY BIEN**
+- Firma o nombre del revisor: **DAVID ISLA MIRANDA**
 
