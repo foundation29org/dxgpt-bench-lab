@@ -262,3 +262,101 @@ haya cerrado las reglas de corrección.
 Cuando esto esté cerrado, ingeniería mueve **una** palanca, re-scorea
 las mismas listas DDX, y enseña el delta. No se apilan tres cambios
 el mismo día.
+
+---
+
+## 9. Respuestas de Julián (borrador)
+
+**Cambio central:** el juez deja de ser binario y puntúa **2/1/0**. La
+nota pública strict cuenta solo grado 2. Todo lo demás se deriva de
+esto.
+
+- **2 = misma entidad:** sinónimo, abreviatura, variante, o subtipo
+  contenido en el gold.
+- **1 = relacionado, no igual:** más amplio, omite un calificador que
+  define la entidad, subtipo/fenotipo hermano, complicación, causa,
+  precursor o disyuntiva («A o B»).
+- **0 = otra enfermedad.**
+
+### Métricas del alumno
+
+- **Sí.** Titular **R@1** (= P@1). Secundaria **R@5** en vez de
+  «cobertura», que depende de la longitud de la lista. Si se mantiene,
+  llamarla «recall de lista (n=…)».
+- Ranking **R@1 → R@5**, con IC 95% y McNemar pareado entre modelos.
+  Sin diferencia significativa = empate. Con N=100, diferencias < ~8
+  puntos no son concluyentes.
+
+### Juez: binario vs grado
+
+- **Sí a 2/1/0**, con el grado 1 definido por la tabla de abajo, no
+  como «relacionado» genérico.
+- Publicar **strict (grado 2)** como titular y **laxo (≥1)** como
+  columna secundaria etiquetada.
+
+### Capas que el LLM no ve
+
+Cada capa asigna un grado en vez de un match directo:
+
+| Capa | Propuesta |
+|---|---|
+| SNOMED / ICD exacto | grado 2 |
+| ICD hijo (predicción más específica) | grado 2 |
+| ICD padre (predicción más amplia) | grado 1 → no cuenta en strict |
+| ICD hermano | grado 1 → apagado en strict |
+| BERT ≥ 0,90 automático | mantener solo tras auditar ~30 casos; si no, al juez |
+| BERT ≥ 0,80 pisando al LLM | eliminar; decide el juez |
+
+### Modelo del juez
+
+- **Sí**, `gemini-2.5-pro` temporal, documentado como continuidad.
+- 33 casos no bastan para elegir juez (IC ±12 pts). Tras readjudicar:
+  ampliar a ~100–150 casos (incluyendo no dudosos para medir FP),
+  doble anotación parcial para medir kappa humano (techo del juez),
+  reportar VPP, recall, kappa y estabilidad (3 repeticiones). Criterio
+  decisivo: si cambiar de juez **no altera el orden** de los modelos
+  diagnósticos, elegir el más barato.
+
+### Prompt
+
+- Reescribir el strict con la escala. Un solo prompt.
+- Regla general: la predicción cuenta si **contiene** el gold sin
+  cambiarlo.
+
+| Relación predicción → gold | Grado | Caso |
+|---|---|---|
+| Sinónimo / abreviatura / variante | 2 | — |
+| Subtipo contenido en el gold | 2 | `27709474` mantener P1 |
+| Gold + extensión/lateralidad añadida | 2 | `28620010` aceptar P2 |
+| Omite calificador definitorio | 1 | `26819809` rechazar |
+| Subtipo / fenotipo hermano | 1 | `27656661` rechazar |
+| Disyuntiva «A o B» | 1 | `25336332` rechazar |
+| Complicación / causa / precursor | 1 | `27068836` rechazar |
+| Otra enfermedad | 0 | — |
+| Gold demasiado amplio o no enfermedad | excluir | `21424749`, `24910386` |
+
+Resto de §6.1: `22563559` aceptar P1 (gold y artículo dicen LLA-T);
+`24054536` gold ambiguo salvo que David resuelva su contradicción;
+`19721837` mantener P1 y corregir la justificación.
+
+Borrador de prompt:
+
+```
+Grade each option against the reference diagnosis:
+2 = same entity: synonym, abbreviation, spelling variant, or a subtype that
+    is fully contained in the reference; also the reference plus added
+    extent/laterality that does not change the entity.
+1 = related but not the same: broader category, omits a defining qualifier
+    (e.g. malignant), sibling subtype/phenotype, complication, cause,
+    precursor, or a disjunction ("A or B") that includes the reference.
+0 = different disease.
+Return the lowest position with grade 2, else the lowest with grade 1, else 0.
+```
+
+### Orden de palancas (una a la vez, mismo DDX, enseñar delta)
+
+1. Apagar ICD hermano/padre en strict.
+2. Quitar BERT ≥ 0,80 pisando al juez.
+3. Prompt 2/1/0.
+4. Readjudicación con David.
+5. Elegir juez.
