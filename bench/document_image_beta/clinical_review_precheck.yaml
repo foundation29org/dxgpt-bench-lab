@@ -1,15 +1,26 @@
 review:
   date: 2026-09-22
   reviewer_type: AI-assisted technical and clinical precheck
-  status: complete_pending_independent_human_signoff
+  status: human_signed_with_caveats
   scope:
     medreamm_assets: 12
     synthetic_cases: 10
     expected_facts: 41
   limitations:
-    - This is not an independent human clinical review.
     - Diagnostic support was assessed from the benchmark content, not from a full patient record.
-    - Final acceptance or rejection must be recorded by the biomedical reviewer.
+    - The pilot validates routing and fact preservation, not general clinical accuracy.
+    - David's C4 claim that the ten cases prove general clinical accuracy is rejected.
+    - David's long synonym lists are not adopted when they invent case facts.
+  human_signoff:
+    reviewer: David Isla Miranda
+    date: 2026-09-30
+    form: DAVID_CLINICAL_REVIEW_FORM.md
+    decision: APROBAR
+    notes:
+      - Confirmed 11/12 MedReaMM labels, 10/10 golds and 41/41 facts.
+      - Could not classify N-10000022 Chinese caption; mixed label retained.
+      - Left B7 lupus nephritis biopsy question open for a physician.
+      - Deferred unclipped scans and real mixed images to the production gate.
 
 summary:
   medreamm_labels_confirmed: 11
@@ -18,6 +29,11 @@ summary:
   expected_facts_verified: 41
   blocking_findings: 0
   human_attention_findings: 4
+  human_open_items:
+    - N-10000022 remains mixed without Chinese-language confirmation
+    - B7 biopsy question left for physician
+    - Unclipped and real mixed controls deferred to production gate
+    - Rejected C4 claim of general clinical accuracy
 
 medreamm_assets:
   - case_id: '24174966'
@@ -25,25 +41,29 @@ medreamm_assets:
     recommendation: medical_image
     decision: confirm
     evidence: Cardiac MRI and echocardiography panels with arrows; no standalone document text.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '25995698'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Ultrasound image with measurement scale and visual annotations only.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '23553973'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Axial abdominal CT with arrows; no document content.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '27656661'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Fundus photographs and OCT maps/plots; labels and measurements are part of the medical visual.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: N-10000022
     image_index: 0
     recommendation: mixed
@@ -53,49 +73,58 @@ medreamm_assets:
       expected_route: ocr_plus_image
       gpt56terra: ocr_plus_image
       gpt54mini: ocr_plus_image
-    human_signoff: pending
+    human_signoff: unresolved_language_barrier
+    human_category: cannot_decide
+    human_note: David could not read Chinese; recognized the caption as clinically relevant. Mixed label retained.
   - case_id: '27380346'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Clinical dermatology photographs without standalone document text.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '28126713'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Sagittal head and neck CT with clinically meaningful anatomy.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '23449674'
     image_index: 0
     recommendation: document_image
     decision: confirm
     evidence: Laboratory result table with values, units and reference ranges; no medical visual.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: document_image
   - case_id: case-19003
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Annotated ultrasound; rib labels are visual annotations, not document prose.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '20052363'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Contrast colon radiograph with arrows; no standalone document text.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
   - case_id: '30687305'
     image_index: 0
     recommendation: document_image
     decision: confirm
     evidence: Multi-column laboratory table; no clinical image, waveform or plot.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: document_image
   - case_id: '27074070'
     image_index: 0
     recommendation: medical_image
     decision: confirm
     evidence: Abdominal radiograph; no substantial standalone text.
-    human_signoff: pending
+    human_signoff: confirmed
+    human_category: medical_image
 
 synthetic_cases:
   - case_id: iron-deficiency-pattern
@@ -106,7 +135,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Iron-deficiency anaemia
       - Microcytic iron-deficiency anemia
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: diabetic-ketoacidosis-pattern
     gold: Diabetic ketoacidosis
     support: strong
@@ -115,7 +144,7 @@ synthetic_cases:
     acceptable_equivalents:
       - DKA
       - Acute diabetic ketoacidosis
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: primary-hypothyroid-pattern
     gold: Primary hypothyroidism
     support: strong
@@ -124,7 +153,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Primary autoimmune hypothyroidism
       - Hashimoto hypothyroidism
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: community-pneumonia-pattern
     gold: Community-acquired pneumonia
     support: strong
@@ -133,7 +162,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Community-acquired bacterial pneumonia
       - Right lower lobe community-acquired pneumonia
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: vitamin-b12-pattern
     gold: Vitamin B12 deficiency
     support: strong
@@ -142,7 +171,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Cobalamin deficiency
       - Pernicious anemia with vitamin B12 deficiency
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: celiac-pattern
     gold: Celiac disease
     support: strong
@@ -151,7 +180,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Coeliac disease
       - Gluten-sensitive enteropathy
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: glomerulonephritis-pattern
     gold: Lupus nephritis
     support: strong_pattern_without_histologic_class
@@ -161,7 +190,8 @@ synthetic_cases:
     acceptable_equivalents:
       - SLE nephritis
       - Systemic lupus erythematosus nephritis
-    human_signoff: pending
+    human_signoff: confirmed_with_open_biopsy_question
+    human_note: David marked CONSULTAR MÉDICO on whether missing biopsy changes the gold or only blocks histologic class.
   - case_id: pulmonary-embolism-pattern
     gold: Pulmonary embolism
     support: strong
@@ -170,7 +200,7 @@ synthetic_cases:
     acceptable_equivalents:
       - Acute pulmonary embolism
       - Postoperative pulmonary embolism
-    human_signoff: pending
+    human_signoff: confirmed
   - case_id: heart-failure-pattern
     gold: Acute decompensated heart failure
     support: strong
@@ -180,7 +210,8 @@ synthetic_cases:
     acceptable_equivalents:
       - Acute decompensated HFrEF
       - Acute systolic heart failure
-    human_signoff: pending
+    human_signoff: confirmed
+    human_note: Confirmed cardiogenic pulmonary edema is a manifestation, not full gold equivalent.
   - case_id: dated-potassium-contradiction
     gold: Acute kidney injury with resolved hyperkalemia
     support: adequate_with_baseline_caveat
@@ -190,7 +221,8 @@ synthetic_cases:
     acceptable_equivalents:
       - Prerenal acute kidney injury with resolved hyperkalemia
       - Acute kidney injury with corrected hyperkalemia
-    human_signoff: pending
+    human_signoff: confirmed
+    human_note: Confirmed only hyperkalemia is resolved; kidney injury resolution needs follow-up creatinine.
 
 dataset_findings:
   - severity: medium
@@ -200,7 +232,9 @@ dataset_findings:
       - celiac-pattern
       - heart-failure-pattern
     impact: Expected facts remain visible, but the artifact is less representative of a clean scan.
-    recommendation: Keep for robustness testing, but add unclipped controls before using the set as a production gate.
+    recommendation: Keep for robustness testing; unclipped controls deferred to the production gate.
+    human_disposition: deferred_to_production_gate
+    human_note: David said clipped margins may stay and unclipped versions are not required now.
   - severity: medium
     finding: Synthetic medical panels are schematic rather than diagnostically realistic.
     affected_cases:
@@ -208,12 +242,18 @@ dataset_findings:
       - pulmonary-embolism-pattern
       - heart-failure-pattern
     impact: They validate routing and text preservation, not true medical-image interpretation.
-    recommendation: Add real difficult mixed-image controls with appropriate rights and clinical review.
+    recommendation: Add real difficult mixed-image controls with appropriate rights and clinical review before production gate.
+    human_disposition: deferred_to_production_gate
+    human_note: David agreed they are fine for current routing cases; real mixed images deferred.
   - severity: medium
     finding: The strict LLM judge changed one obvious pneumonia equivalence from reject to accept on identical labeled input.
     impact: Single strict runs are not fully stable for unresolved semantic matches.
     recommendation: Persist judge traces and require adjudication or consensus for unstable cases.
+    human_disposition: accepted
+    human_note: David confirmed unstable disagreements must go to human review.
   - severity: low
     finding: The ten synthetic cases are intentionally diagnosis-obvious.
     impact: High scores should not be presented as general clinical accuracy.
     recommendation: Add ambiguous and competing-diagnosis controls after human review.
+    human_disposition: claim_rejected
+    human_note: David answered that the ten cases suffice for general clinical accuracy; that claim is rejected. His suggested harder controls are kept as future work.
