@@ -52,9 +52,10 @@ La primera revisión queda en `medreamm_labels.yaml` y requiere una segunda
 revisión antes de usar el resultado como evidencia clínica definitiva.
 
 El formulario autosuficiente para esa segunda revisión está en
-[`DAVID_CLINICAL_REVIEW_FORM.md`](DAVID_CLINICAL_REVIEW_FORM.md). Incluye las
-instrucciones, imágenes y campos en lenguaje natural. El revisor devuelve ese
-mismo Markdown rellenado y no edita directamente el gold ni la preauditoría.
+[`DAVID_CLINICAL_REVIEW_FORM.md`](DAVID_CLINICAL_REVIEW_FORM.md). David lo
+firmó el 30 de septiembre de 2026 con decisión `APROBAR`. El detalle de
+coincidencias, salvedades y desacuerdos aceptados o rechazados está en
+`clinical_review_precheck.yaml` y en [RESULTS.md](RESULTS.md).
 
 Los binarios generados viven en `generated/` y no se versionan. Las
 definiciones, semillas y scripts sí se versionan. Los diez `scan.png` que
@@ -183,17 +184,16 @@ py "bench\document_image_beta\evaluate.py" `
   --output "path\to\evaluation.md"
 ```
 
-## Qué falta antes de producción
+## Estado del piloto
 
 El piloto de Terra y las 50 entradas end-to-end ya se ejecutaron. Los
-resultados están en [RESULTS.md](RESULTS.md).
+resultados están en [RESULTS.md](RESULTS.md). David firmó la revisión
+independiente: el piloto queda cerrado como **gate de routing y
+conservación de hechos**, no como prueba de precisión clínica general.
 
-1. Obtener la firma independiente del biomédico sobre
-   `clinical_review_precheck.yaml`: la preauditoría confirmó 11/12 etiquetas,
-   propuso una corrección y verificó 10/10 casos y 41/41 hechos.
-2. Resolver las cautelas clínicas y visuales que el biomédico rechace.
-3. Ampliar los controles médicos difíciles y reales.
+Ampliar controles (sin recorte, mixtas reales, golds difíciles) o
+resolver la biopsia de B7 es opcional y solo tiene sentido si se quiere
+un gate clínico más fuerte. No bloquea el routing ya desplegado.
 
 La ruta mixta `OCR + imagen original`, su fallback a visión y la regresión
-end-to-end de nueve entradas ya están completados. Esta evidencia todavía no
-autoriza por sí sola un rollout de producción.
+end-to-end de nueve entradas están completados.

@@ -259,5 +259,25 @@ el resumen actual cuando supera 1.000 caracteres.
 
 La preauditoría técnica-clínica de 12 etiquetas MedReaMM, 10 casos y 41 hechos
 está en `clinical_review_precheck.yaml`: confirmó 11 etiquetas, corrigió una y
-no encontró bloqueos. Antes del rollout siguen haciendo falta la firma
-independiente del biomédico y más controles médicos difíciles.
+no encontró bloqueos. David firmó la revisión independiente el 30 de
+septiembre de 2026 con decisión `APROBAR`
+([formulario](DAVID_CLINICAL_REVIEW_FORM.md)):
+
+- confirma 11/12 etiquetas MedReaMM, 10/10 golds y 41/41 hechos;
+- no clasifica `N-10000022` por el chino, pero reconoce el pie como
+  clínico relevante; se mantiene la etiqueta mixta y la ruta
+  `OCR + imagen`;
+- deja abierta la biopsia de nefritis lúpica (B7);
+- confirma que el edema pulmonar cardiogénico no equivale al gold de
+  insuficiencia cardiaca y que en B10 solo queda resuelta la hiperpotasemia;
+- confirma que los desacuerdos inestables del juez deben pasar a revisión
+  humana;
+- su afirmación de que los 10 casos bastan para precisión clínica general
+  no se acepta; tampoco se amplían los alias del gold con equivalentes que
+  inventan datos;
+- los controles sin recorte y las imágenes mixtas reales quedan aplazados
+  al gate de producción.
+
+El piloto queda validado para routing y conservación de hechos. No autoriza
+por sí solo un rollout de producción ni una afirmación de precisión clínica
+general.

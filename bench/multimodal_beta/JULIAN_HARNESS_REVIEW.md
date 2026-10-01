@@ -360,3 +360,30 @@ Return the lowest position with grade 2, else the lowest with grade 1, else 0.
 3. Prompt 2/1/0.
 4. Readjudicación con David.
 5. Elegir juez.
+
+---
+
+## 10. Contexto que no estaba en este documento (2026-10-01)
+
+Antes de decidir nada sobre el §9, conviene tener tres datos que no figuraban
+arriba. El plan paso a paso está en [`docs/ROADMAP.md`](../../docs/ROADMAP.md).
+
+**1. Los 35 casos no son todo lo que hemos probado.** Eran los dudosos de la
+prueba de 100. Después probamos 256 casos: 133 llegaron al juez y se compararon
+cinco jueces. David revisó a ciegas los 13 en los que Pro y Flash no coincidían
+(Pro 8, Flash 3) y seguimos con Pro. Lo que falta: no se ha mirado qué pasa
+cuando los jueces coinciden, y solo se probó con las listas de Terra. Informe:
+[2026-09-16-judge-benchmark-all256-terra.md](results/2026-09-16-judge-benchmark-all256-terra.md).
+
+**2. Hoy no existe el «casi» en las capas de códigos.** Si el diagnóstico es
+padre, hermano o hijo según ICD, cuenta como acierto y el juez ni lo ve. Para
+que el «casi» funcione, padre y hermano tendrían que dejar de contar como
+acierto. Para priorizar: en la última prueba de 250 casos con imágenes, de 190
+aciertos solo 3 vienen de padre o hermano, 32 de BERT y 36 del juez. En los 256
+de texto habría que mirarlo.
+
+**3. No siempre salen cinco diagnósticos.** A veces el modelo da tres o cuatro.
+Por eso, en nuestros informes, «R@5» y «cobertura» son el mismo número (por
+ejemplo 76,0 % las dos en esa prueba de 250). Llamarla R@5 no aporta nada;
+mejor decir «acierto en cualquier posición de la lista», avisando de que la
+lista a veces tiene menos de cinco.
