@@ -100,7 +100,7 @@ Si aceptó Pn y esa propuesta **no** es el gold: `falso_positivo`.
 - Golds que no sirven (`demasiado_amplio` / `demasiado_especifico` / `no_es_entidad_diagnostica` / `rol_incorrecto`):
 - 24054536 (`demasiado_amplio`) y 24910386 (`gold_ambiguo` / `no_es_entidad_diagnostica`, cerrado 2026-09-14: no es FN)
 - Casos `segunda_opinion`:
-- 
+-
 
 Sinónimos o diagnósticos secundarios que también deberían aceptarse:
 
@@ -115,4 +115,4 @@ La opción 1 (Critical proximal common carotid artery stenosis/occlusion with sc
 - Tras esta tira, ¿el 80/100 se puede publicar? `si` / `no` / `condicionado`
 - Si
 - Condiciones:
-- 
+-

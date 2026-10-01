@@ -366,7 +366,9 @@ Return the lowest position with grade 2, else the lowest with grade 1, else 0.
 ## 10. Contexto que no estaba en este documento (2026-10-01)
 
 Antes de decidir nada sobre el §9, conviene tener tres datos que no figuraban
-arriba. El plan paso a paso está en [`docs/ROADMAP.md`](../../docs/ROADMAP.md).
+arriba. Con tu §9 y estos datos hemos escrito un plan en
+[`docs/ROADMAP.md`](../../docs/ROADMAP.md). Es nuestra lectura, no una decisión:
+un cambio cada vez, sobre las mismas listas ya generadas.
 
 **1. Los 35 casos no son todo lo que hemos probado.** Eran los dudosos de la
 prueba de 100. Después probamos 256 casos: 133 llegaron al juez y se compararon
@@ -387,3 +389,18 @@ Por eso, en nuestros informes, «R@5» y «cobertura» son el mismo número (por
 ejemplo 76,0 % las dos en esa prueba de 250). Llamarla R@5 no aporta nada;
 mejor decir «acierto en cualquier posición de la lista», avisando de que la
 lista a veces tiene menos de cinco.
+
+### Preguntas
+
+- [ ] ¿El alcance es solo el juez (acierto / casi / fallo), o también las capas
+  de códigos y BERT?
+- [ ] En 250 casos con imágenes, de 190 aciertos solo 3 vienen de padre o
+  hermano, frente a 32 de BERT y 36 del juez. ¿Seguimos empezando por padre y
+  hermano, o por BERT?
+- [ ] Si el diagnóstico es un hijo ICD del correcto, ¿cuenta como acierto o lo
+  decide el juez?
+- [ ] Como a veces salen 3 o 4 diagnósticos, ¿aceptas llamar a R@5 «acierto en
+  cualquier posición de la lista»?
+- [ ] Para validar el juez, ¿vale reutilizar los 133 casos ya probados, más una
+  muestra de casos en los que los jueces coinciden, en vez de un estudio nuevo
+  de 100–150?
