@@ -1,0 +1,3 @@
+# Raw responses and judge outputs of each run
+outputs/*
+!outputs/.gitkeep
