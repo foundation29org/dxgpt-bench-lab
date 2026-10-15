@@ -1,0 +1,205 @@
+# Hand-written probe, NOT a validated benchmark.
+#   classic   14 vignettes with the typical features of a geographically restricted disease.
+#   vague     the same diseases with the discriminating features removed.
+#   controls  5 common diseases, to see whether the country distorts them.
+# No vignette mentions travel or country: the only thing that changes between
+# arms is the country sent with the request.
+#
+# expected: case-insensitive regex over the diagnosis names.
+# countries: where the disease is common; they become the extra arms.
+
+classic:
+  - id: malaria
+    countries: [NG]
+    expected: 'malaria|plasmodium'
+    text: >-
+      Female, 34. Three days of high fever with shaking chills, heavy sweating after each
+      fever spike, headache, muscle and joint pain, fatigue, nausea and vomiting.
+  - id: dengue
+    countries: [IN, PH]
+    expected: 'dengue'
+    text: >-
+      Male, 27. Five days of high fever, severe headache with pain behind the eyes, muscle
+      and joint pain, and a new red rash on the trunk. Mild bleeding from the gums today.
+  - id: tuberculosis
+    countries: [IN]
+    expected: 'tubercul'
+    text: >-
+      Male, 41. Cough for 6 weeks, now with blood-streaked sputum, night sweats, low-grade
+      fever and 8 kg weight loss. Never smoked.
+  - id: typhoid
+    countries: [PK]
+    expected: 'typhoid|enteric fever|salmonella'
+    text: >-
+      Female, 19. Ten days of gradually rising fever, headache, abdominal pain and
+      constipation, now with a faint rash on the abdomen and a relatively slow pulse.
+  - id: leptospirosis
+    countries: [PH]
+    expected: 'leptospir|weil'
+    text: >-
+      Male, 38. Sudden fever, severe calf muscle pain, red eyes and headache for 4 days,
+      now with yellowing of the skin and reduced urine output.
+  - id: visceral-leishmaniasis
+    countries: [IN]
+    expected: 'leishman|kala'
+    text: >-
+      Male, 12. Five months of irregular fever, progressive abdominal swelling, weight loss
+      and fatigue. Examination shows a very large spleen and pallor; blood tests show low
+      counts of all cell lines.
+  - id: chagas
+    countries: [BR]
+    expected: 'chagas|trypanosom'
+    text: >-
+      Male, 52. Progressive shortness of breath and ankle swelling over a year, with
+      palpitations and one fainting episode. Echocardiography shows a dilated heart with
+      reduced ejection fraction and an apical aneurysm of the left ventricle. No coronary
+      disease on angiography.
+  - id: neurocysticercosis
+    countries: [MX, IN]
+    expected: 'cysticerc|taenia'
+    text: >-
+      Male, 29. First generalized seizure after two months of headaches. MRI shows several
+      small cystic brain lesions, each with a dot inside.
+  - id: schistosomiasis
+    countries: [NG]
+    expected: 'schistosom|bilharzi'
+    text: >-
+      Male, 14. Blood in the urine at the end of urination for two months, mild lower
+      abdominal pain, no fever. Urinalysis shows red cells and no bacteria.
+  - id: scrub-typhus
+    countries: [IN]
+    expected: 'scrub typhus|orientia|tsutsugamushi'
+    text: >-
+      Female, 45. Seven days of fever, headache and dry cough. A painless black crusted
+      lesion with a red ring is found on the thigh, with mild generalized lymph node
+      enlargement and low platelets.
+  - id: sickle-cell
+    countries: [NG]
+    expected: 'sickle'
+    text: >-
+      Child, 6. Recurrent episodes of severe bone and abdominal pain since infancy, pallor,
+      mild jaundice, and swollen painful hands and feet as a toddler.
+  - id: rheumatic-heart
+    countries: [IN, NG]
+    expected: 'rheumatic'
+    text: >-
+      Female, 17. Increasing breathlessness on exertion and palpitations for three months.
+      A diastolic murmur is heard at the apex. Recurrent sore throats and joint pains in
+      childhood.
+  - id: cholera
+    countries: [BD]
+    expected: 'cholera|vibrio'
+    text: >-
+      Male, 30. Sudden profuse watery diarrhea looking like rice water, vomiting, intense
+      thirst and muscle cramps over 12 hours.
+  - id: melioidosis
+    countries: [TH]
+    expected: 'melioid|burkholderia'
+    text: >-
+      Male, 55. Poorly controlled diabetes, works in rice fields. Ten days of fever and
+      cough, now with several skin and soft-tissue abscesses and a chest X-ray showing
+      patchy nodular opacities.
+
+vague:
+  - id: malaria-vague
+    countries: [NG]
+    expected: 'malaria|plasmodium'
+    text: >-
+      Fever with intense chills, heavy sweating after the fever episodes, headache, muscle
+      and joint pain, fatigue, nausea and vomiting.
+  - id: dengue-vague
+    countries: [IN, PH]
+    expected: 'dengue'
+    text: >-
+      Male, 27. Four days of fever, headache, muscle and joint pain and fatigue. Mild nausea.
+  - id: tuberculosis-vague
+    countries: [IN]
+    expected: 'tubercul'
+    text: >-
+      Male, 41. Persistent cough for five weeks, tiredness, low-grade fever and some weight loss.
+  - id: typhoid-vague
+    countries: [PK]
+    expected: 'typhoid|enteric fever|salmonella'
+    text: >-
+      Female, 19. Ten days of fever with headache, abdominal discomfort and tiredness.
+  - id: leptospirosis-vague
+    countries: [PH]
+    expected: 'leptospir|weil'
+    text: >-
+      Male, 38. Four days of fever, headache and muscle pain. Feels very unwell.
+  - id: visceral-leishmaniasis-vague
+    countries: [IN]
+    expected: 'leishman|kala'
+    text: >-
+      Male, 12. Fever on and off for months, tiredness and weight loss. His belly looks bigger.
+  - id: chagas-vague
+    countries: [BR]
+    expected: 'chagas|trypanosom'
+    text: >-
+      Male, 52. Gradually worsening breathlessness, ankle swelling and palpitations over a year.
+  - id: neurocysticercosis-vague
+    countries: [MX, IN]
+    expected: 'cysticerc|taenia'
+    text: >-
+      Male, 29. First seizure after two months of headaches. MRI shows multiple small brain lesions.
+  - id: schistosomiasis-vague
+    countries: [NG]
+    expected: 'schistosom|bilharzi'
+    text: >-
+      Male, 14. Blood in the urine for two months. No fever and no pain when urinating.
+  - id: scrub-typhus-vague
+    countries: [IN]
+    expected: 'scrub typhus|orientia|tsutsugamushi'
+    text: >-
+      Female, 45. Seven days of fever, headache and cough. Platelet count is low.
+  - id: sickle-cell-vague
+    countries: [NG]
+    expected: 'sickle'
+    text: >-
+      Child, 6. Recurrent episodes of severe bone and abdominal pain, and mild anemia.
+  - id: rheumatic-heart-vague
+    countries: [IN, NG]
+    expected: 'rheumatic'
+    text: >-
+      Female, 17. Increasing breathlessness on exertion and palpitations for three months.
+  - id: cholera-vague
+    countries: [BD]
+    expected: 'cholera|vibrio'
+    text: >-
+      Male, 30. Watery diarrhea and vomiting for 12 hours with muscle cramps.
+  - id: melioidosis-vague
+    countries: [TH]
+    expected: 'melioid|burkholderia'
+    text: >-
+      Male, 55. Diabetic. Ten days of fever and cough, now with skin abscesses.
+
+controls:
+  - id: viral-uri
+    countries: [NG, IN]
+    expected: 'influenza|common cold|viral|upper respiratory|covid|pharyngitis'
+    text: >-
+      Female, 29. Fever, cough, sore throat, runny nose and mild body aches for three days.
+  - id: migraine
+    countries: [NG, IN]
+    expected: 'migraine'
+    text: >-
+      Female, 28. Throbbing one-sided headache with nausea and sensitivity to light lasting
+      12 hours; similar episodes every month since age 20.
+  - id: myocardial-infarction
+    countries: [NG, IN]
+    expected: 'myocardial infarction|acute coronary|heart attack'
+    text: >-
+      Male, 56. Crushing chest pain radiating to the left arm for 40 minutes with sweating.
+      Smoker with high blood pressure.
+  - id: cystitis
+    countries: [NG, IN]
+    expected: 'urinary tract infection|cystitis'
+    text: >-
+      Female, 33. Burning and frequent urination with lower abdominal pain for two days.
+      No fever.
+  - id: strep-pharyngitis
+    countries: [NG, IN]
+    expected: 'strep|tonsillitis|pharyngitis|mononucleosis'
+    text: >-
+      Male, 24. Fever and severe sore throat with white patches on the tonsils and tender
+      neck lymph nodes. No cough.
