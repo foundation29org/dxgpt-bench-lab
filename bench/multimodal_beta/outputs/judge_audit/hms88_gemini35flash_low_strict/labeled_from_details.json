@@ -1,0 +1,6340 @@
+[
+  {
+    "id": "HMS_000",
+    "case_id": "HMS_000",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Hypermobile Ehlers-Danlos Syndrome (hEDS)": {
+        "normalized_text": "Hypermobile Ehlers-Danlos Syndrome (hEDS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q79.62"
+          ],
+          "snomed": [
+            "30652003"
+          ],
+          "omim": [
+            "130020"
+          ],
+          "orpha": [
+            "285"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis": {
+        "normalized_text": "Rheumatoid Arthritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Psoriatic Arthritis": {
+        "normalized_text": "Psoriatic Arthritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "L40.5",
+            "L40.50"
+          ],
+          "snomed": [
+            "156370009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_001",
+    "case_id": "HMS_001",
+    "gdx_details": {
+      "Cryoglobulinemic vasculitis": {
+        "name": "Cryoglobulinemic vasculitis",
+        "normalized_text": "Cryoglobulinemic vasculitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "123550"
+          ],
+          "orpha": [
+            "91138"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mixed Cryoglobulinemia Syndrome": {
+        "normalized_text": "Mixed Cryoglobulinemia Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Hyper-IgM Syndrome": {
+        "normalized_text": "Hyper-IgM Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "82286005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Waldenström Macroglobulinemia": {
+        "normalized_text": "Waldenström Macroglobulinemia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "C88.0",
+            "M9761/3"
+          ],
+          "snomed": [
+            "35562000"
+          ],
+          "omim": [],
+          "orpha": [
+            "33226"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_002",
+    "case_id": "HMS_002",
+    "gdx_details": {
+      "Behcet Syndrome": {
+        "name": "Behcet Syndrome",
+        "normalized_text": "Behcet Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_003",
+    "case_id": "HMS_003",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis": {
+        "normalized_text": "Microscopic Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      },
+      "Anti-Glomerular Basement Membrane Disease": {
+        "normalized_text": "Anti-Glomerular Basement Membrane Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.0"
+          ],
+          "snomed": [
+            "788613004"
+          ],
+          "omim": [
+            "233450"
+          ],
+          "orpha": [
+            "375"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_004",
+    "case_id": "HMS_004",
+    "gdx_details": {
+      "Pediatric systemic lupus erythematosus": {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Pediatric systemic lupus erythematosus",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "152700",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      },
+      "Macrophage Activation Syndrome (MAS)": {
+        "normalized_text": "Macrophage Activation Syndrome (MAS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "430478003"
+          ],
+          "omim": [],
+          "orpha": [
+            "158061"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_005",
+    "case_id": "HMS_005",
+    "gdx_details": {
+      "Pediatric systemic lupus erythematosus": {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Pediatric systemic lupus erythematosus",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "144700",
+            "152700",
+            "300854",
+            "605074",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE) with secondary Antiphospholipid Syndrome (APS)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with secondary Antiphospholipid Syndrome (APS)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9",
+            "E31.0"
+          ],
+          "snomed": [
+            "55464009",
+            "239895006",
+            "41864002"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536",
+            "282196"
+          ]
+        }
+      },
+      "Primary Antiphospholipid Syndrome (APS)": {
+        "normalized_text": "Primary Antiphospholipid Syndrome (APS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E31.0"
+          ],
+          "snomed": [
+            "239892009",
+            "41864002"
+          ],
+          "omim": [],
+          "orpha": [
+            "282196"
+          ]
+        }
+      },
+      "Renal Cell Carcinoma (RCC) with Paraneoplastic Syndrome": {
+        "normalized_text": "Renal Cell Carcinoma (RCC) with Paraneoplastic Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M8312/3"
+          ],
+          "snomed": [
+            "702391001",
+            "49783001"
+          ],
+          "omim": [],
+          "orpha": [
+            "217071"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_006",
+    "case_id": "HMS_006",
+    "gdx_details": {
+      "Sjogren Syndrome": {
+        "name": "Sjogren Syndrome",
+        "normalized_text": "Sjogren Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "HNF1B-associated Kidney Disease": {
+        "normalized_text": "HNF1B-associated Kidney Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Eosinophilic Granulomatosis with Polyangiitis (EGPA)": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis (EGPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Sjögren's Syndrome with Extraglandular Manifestations": {
+        "normalized_text": "Sjögren's Syndrome with Extraglandular Manifestations",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_007",
+    "case_id": "HMS_007",
+    "gdx_details": {
+      "Giant cell arteritis": {
+        "name": "Giant cell arteritis",
+        "normalized_text": "Giant cell arteritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "187360"
+          ],
+          "orpha": [
+            "397"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Giant Cell Arteritis": {
+        "normalized_text": "Giant Cell Arteritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "400130008"
+          ],
+          "omim": [
+            "187360"
+          ],
+          "orpha": [
+            "397"
+          ]
+        }
+      },
+      "Pheochromocytoma": {
+        "normalized_text": "Pheochromocytoma",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M8700/0"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Infective Endocarditis": {
+        "normalized_text": "Infective Endocarditis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "233850007"
+          ],
+          "omim": [],
+          "orpha": [
+            "570762"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_008",
+    "case_id": "HMS_008",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300",
+            "183840"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Ankylosing Spondylitis": {
+        "normalized_text": "Ankylosing Spondylitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M45"
+          ],
+          "snomed": [
+            "9631008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Tubulointerstitial Nephritis and Uveitis (TINU) Syndrome": {
+        "normalized_text": "Tubulointerstitial Nephritis and Uveitis (TINU) Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "418839003",
+            "64572001"
+          ],
+          "omim": [
+            "607665"
+          ],
+          "orpha": [
+            "91500"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_009",
+    "case_id": "HMS_009",
+    "gdx_details": {
+      "Takayasu arteritis": {
+        "name": "Takayasu arteritis",
+        "normalized_text": "Takayasu arteritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Eosinophilic Granulomatosis with Polyangiitis (EGPA)": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis (EGPA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Hypereosinophilic Syndrome (HES)": {
+        "normalized_text": "Hypereosinophilic Syndrome (HES)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D72.119"
+          ],
+          "snomed": [
+            "1156250009"
+          ],
+          "omim": [],
+          "orpha": [
+            "168956"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_010",
+    "case_id": "HMS_010",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis (MPA)": {
+        "normalized_text": "Microscopic Polyangiitis (MPA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_011",
+    "case_id": "HMS_011",
+    "gdx_details": {
+      "Reactive arthritis": {
+        "name": "Reactive arthritis",
+        "normalized_text": "Reactive arthritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "270150"
+          ],
+          "orpha": [
+            "29207",
+            "85408",
+            "85414",
+            "85435"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Rheumatoid Arthritis": {
+        "normalized_text": "Rheumatoid Arthritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_012",
+    "case_id": "HMS_012",
+    "gdx_details": {
+      "Focal Segmental Glomerulosclerosis 1": {
+        "name": "Focal Segmental Glomerulosclerosis 1",
+        "normalized_text": "Focal Segmental Glomerulosclerosis 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "603278",
+            "603965",
+            "607832",
+            "612551",
+            "613237",
+            "614131",
+            "616002",
+            "616032",
+            "616220"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "IgA Nephropathy (Berger's disease)": {
+        "normalized_text": "IgA Nephropathy (Berger's disease)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "236407003"
+          ],
+          "omim": [],
+          "orpha": [
+            "34145"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (Lupus Nephritis)": {
+        "normalized_text": "Systemic Lupus Erythematosus (Lupus Nephritis)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009",
+            "68815009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Cushing's Syndrome": {
+        "normalized_text": "Cushing's Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E24.9"
+          ],
+          "snomed": [
+            "47270006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_013",
+    "case_id": "HMS_013",
+    "gdx_details": {
+      "Behcet Syndrome": {
+        "name": "Behcet Syndrome",
+        "normalized_text": "Behcet Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Behçet's Disease": {
+        "normalized_text": "Behçet's Disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_014",
+    "case_id": "HMS_014",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis (MPA)": {
+        "normalized_text": "Microscopic Polyangiitis (MPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      },
+      "Anti-Glomerular Basement Membrane (Anti-GBM) Disease": {
+        "normalized_text": "Anti-Glomerular Basement Membrane (Anti-GBM) Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_015",
+    "case_id": "HMS_015",
+    "gdx_details": {
+      "Sarcoidosis": {
+        "name": "Sarcoidosis",
+        "normalized_text": "Sarcoidosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181000",
+            "612387"
+          ],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Autosomal Dominant Polycystic Kidney Disease (ADPKD)": {
+        "normalized_text": "Autosomal Dominant Polycystic Kidney Disease (ADPKD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q61.2"
+          ],
+          "snomed": [
+            "765330003"
+          ],
+          "omim": [
+            "173900"
+          ],
+          "orpha": [
+            "730"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_016",
+    "case_id": "HMS_016",
+    "gdx_details": {
+      "ORPHA:761": {
+        "name": "ORPHA:761",
+        "normalized_text": "ORPHA:761",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "761"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mixed Cryoglobulinemia": {
+        "normalized_text": "Mixed Cryoglobulinemia",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.1"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_017",
+    "case_id": "HMS_017",
+    "gdx_details": {
+      "Hypophosphatasia, Adult": {
+        "name": "Hypophosphatasia, Adult",
+        "normalized_text": "Hypophosphatasia, Adult",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "146300"
+          ],
+          "orpha": [
+            "436"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Hypophosphatasia": {
+        "normalized_text": "Hypophosphatasia",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E83.39"
+          ],
+          "snomed": [
+            "190859005"
+          ],
+          "omim": [],
+          "orpha": [
+            "436"
+          ]
+        }
+      },
+      "Osteogenesis Imperfecta": {
+        "normalized_text": "Osteogenesis Imperfecta",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q78.0"
+          ],
+          "snomed": [
+            "78314001"
+          ],
+          "omim": [
+            "120150"
+          ],
+          "orpha": [
+            "666"
+          ]
+        }
+      },
+      "Celiac Disease": {
+        "normalized_text": "Celiac Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "K90.0"
+          ],
+          "snomed": [
+            "396331005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_018",
+    "case_id": "HMS_018",
+    "gdx_details": {
+      "Sarcoidosis": {
+        "name": "Sarcoidosis",
+        "normalized_text": "Sarcoidosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181000",
+            "612387"
+          ],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_019",
+    "case_id": "HMS_019",
+    "gdx_details": {
+      "IgG4-related retroperitoneal fibrosis": {
+        "name": "IgG4-related retroperitoneal fibrosis",
+        "normalized_text": "IgG4-related retroperitoneal fibrosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "228800"
+          ],
+          "orpha": [
+            "49041"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related disease": {
+        "normalized_text": "IgG4-related disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Granulomatosis with polyangiitis": {
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_020",
+    "case_id": "HMS_020",
+    "gdx_details": {
+      "CINCA syndrome": {
+        "name": "CINCA syndrome",
+        "normalized_text": "CINCA syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "120100",
+            "191900",
+            "607115",
+            "611762",
+            "614468",
+            "616115"
+          ],
+          "orpha": [
+            "1451",
+            "47045",
+            "575"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      },
+      "Graves' Disease (Thyrotoxicosis)": {
+        "normalized_text": "Graves' Disease (Thyrotoxicosis)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E05.0",
+            "E05.9"
+          ],
+          "snomed": [
+            "353295004",
+            "90739004"
+          ],
+          "omim": [
+            "275000"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_021",
+    "case_id": "HMS_021",
+    "gdx_details": {
+      "Sarcoidosis": {
+        "name": "Sarcoidosis",
+        "normalized_text": "Sarcoidosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181000",
+            "612387"
+          ],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Eosinophilic Granulomatosis with Polyangiitis": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Disseminated Tuberculosis": {
+        "normalized_text": "Disseminated Tuberculosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "A19.2"
+          ],
+          "snomed": [
+            "186276006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_022",
+    "case_id": "HMS_022",
+    "gdx_details": {
+      "Behcet Syndrome": {
+        "name": "Behcet Syndrome",
+        "normalized_text": "Behcet Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Behçet's Disease (Neuro-Behçet's)": {
+        "normalized_text": "Behçet's Disease (Neuro-Behçet's)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_023",
+    "case_id": "HMS_023",
+    "gdx_details": {
+      "Antisynthetase syndrome": {
+        "name": "Antisynthetase syndrome",
+        "normalized_text": "Antisynthetase syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Dermatomyositis": {
+        "normalized_text": "Dermatomyositis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M33.9",
+            "M33.90"
+          ],
+          "snomed": [
+            "396230008"
+          ],
+          "omim": [],
+          "orpha": [
+            "221"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      },
+      "Polymyositis": {
+        "normalized_text": "Polymyositis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M33.2"
+          ],
+          "snomed": [
+            "31384009"
+          ],
+          "omim": [],
+          "orpha": [
+            "732"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_024",
+    "case_id": "HMS_024",
+    "gdx_details": {
+      "Kimura disease": {
+        "name": "Kimura disease",
+        "normalized_text": "Kimura disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "482"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Eosinophilic Granulomatosis with Polyangiitis (Churg-Strauss Syndrome)": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis (Churg-Strauss Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Hyper-IgE Syndrome (Job's Syndrome)": {
+        "normalized_text": "Hyper-IgE Syndrome (Job's Syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D82.4"
+          ],
+          "snomed": [
+            "50926003"
+          ],
+          "omim": [
+            "147060"
+          ],
+          "orpha": [
+            "331223"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_025",
+    "case_id": "HMS_025",
+    "gdx_details": {
+      "Eosinophilic granulomatosis with polyangiitis": {
+        "name": "Eosinophilic granulomatosis with polyangiitis",
+        "normalized_text": "Eosinophilic granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Eosinophilic Granulomatosis with Polyangiitis (EGPA)": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis (EGPA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Allergic Bronchopulmonary Aspergillosis (ABPA)": {
+        "normalized_text": "Allergic Bronchopulmonary Aspergillosis (ABPA)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "B44.81"
+          ],
+          "snomed": [
+            "37981002"
+          ],
+          "omim": [],
+          "orpha": [
+            "1164"
+          ]
+        }
+      },
+      "Idiopathic Hypereosinophilic Syndrome (HES)": {
+        "normalized_text": "Idiopathic Hypereosinophilic Syndrome (HES)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "423294001"
+          ],
+          "omim": [
+            "607685"
+          ],
+          "orpha": [
+            "3260"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_026",
+    "case_id": "HMS_026",
+    "gdx_details": {
+      "Antisynthetase syndrome": {
+        "name": "Antisynthetase syndrome",
+        "normalized_text": "Antisynthetase syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis (RA)": {
+        "normalized_text": "Rheumatoid Arthritis (RA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_027",
+    "case_id": "HMS_027",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_028",
+    "case_id": "HMS_028",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300",
+            "183840"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Ankylosing Spondylitis": {
+        "normalized_text": "Ankylosing Spondylitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M45"
+          ],
+          "snomed": [
+            "9631008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis with Interstitial Lung Disease": {
+        "normalized_text": "Rheumatoid Arthritis with Interstitial Lung Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99",
+            "J84.9"
+          ],
+          "snomed": [
+            "69896004",
+            "233703007"
+          ],
+          "omim": [],
+          "orpha": [
+            "182095"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_029",
+    "case_id": "HMS_029",
+    "gdx_details": {
+      "SAPHO syndrome": {
+        "name": "SAPHO syndrome",
+        "normalized_text": "SAPHO syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "SAPHO Syndrome": {
+        "normalized_text": "SAPHO Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "60684003"
+          ],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      },
+      "Chronic Recurrent Multifocal Osteomyelitis (CRMO)": {
+        "normalized_text": "Chronic Recurrent Multifocal Osteomyelitis (CRMO)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M86.3",
+            "M86.39",
+            "M86.30"
+          ],
+          "snomed": [],
+          "omim": [
+            "259680"
+          ],
+          "orpha": []
+        }
+      },
+      "Garré's Sclerosing Osteomyelitis": {
+        "normalized_text": "Garré's Sclerosing Osteomyelitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "75886002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_030",
+    "case_id": "HMS_030",
+    "gdx_details": {
+      "Vasculitis, Autoinflammation, Immunodeficiency, And Hematologic Defects Syndrome": {
+        "name": "Vasculitis, Autoinflammation, Immunodeficiency, And Hematologic Defects Syndrome",
+        "normalized_text": "Vasculitis, Autoinflammation, Immunodeficiency, And Hematologic Defects Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615688"
+          ],
+          "orpha": [
+            "767"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Cryoglobulinemic Vasculitis": {
+        "normalized_text": "Cryoglobulinemic Vasculitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.1"
+          ],
+          "snomed": [
+            "190815001"
+          ],
+          "omim": [],
+          "orpha": [
+            "91138"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis": {
+        "normalized_text": "Microscopic Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_031",
+    "case_id": "HMS_031",
+    "gdx_details": {
+      "Antisynthetase syndrome": {
+        "name": "Antisynthetase syndrome",
+        "normalized_text": "Antisynthetase syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Antisynthetase Syndrome": {
+        "normalized_text": "Antisynthetase Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "445187004"
+          ],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE) with Myositis and Interstitial Lung Disease": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with Myositis and Interstitial Lung Disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9",
+            "M60.9",
+            "M60",
+            "J84.9"
+          ],
+          "snomed": [
+            "55464009",
+            "26889001",
+            "233703007"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536",
+            "182095"
+          ]
+        }
+      },
+      "Idiopathic Inflammatory Myopathy (Polymyositis) with Interstitial Lung Disease": {
+        "normalized_text": "Idiopathic Inflammatory Myopathy (Polymyositis) with Interstitial Lung Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M33.2",
+            "J84.9"
+          ],
+          "snomed": [
+            "702380008",
+            "31384009",
+            "233703007"
+          ],
+          "omim": [],
+          "orpha": [
+            "98482",
+            "732",
+            "182095"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_032",
+    "case_id": "HMS_032",
+    "gdx_details": {
+      "IgG4-related retroperitoneal fibrosis": {
+        "name": "IgG4-related retroperitoneal fibrosis",
+        "normalized_text": "IgG4-related retroperitoneal fibrosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "49041"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related retroperitoneal fibrosis": {
+        "normalized_text": "IgG4-related retroperitoneal fibrosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "260642009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Idiopathic Retroperitoneal Fibrosis (Ormond's disease)": {
+        "normalized_text": "Idiopathic Retroperitoneal Fibrosis (Ormond's disease)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "K68.2"
+          ],
+          "snomed": [
+            "197808006",
+            "49120005"
+          ],
+          "omim": [],
+          "orpha": [
+            "49041"
+          ]
+        }
+      },
+      "Multicentric Castleman Disease": {
+        "normalized_text": "Multicentric Castleman Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1156805003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_033",
+    "case_id": "HMS_033",
+    "gdx_details": {
+      "Polymyositis": {
+        "name": "Polymyositis",
+        "normalized_text": "Polymyositis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "732"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related disease": {
+        "normalized_text": "IgG4-related disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Polyarteritis nodosa": {
+        "normalized_text": "Polyarteritis nodosa",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M30.0"
+          ],
+          "snomed": [
+            "155441006"
+          ],
+          "omim": [],
+          "orpha": [
+            "767"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_034",
+    "case_id": "HMS_034",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300",
+            "183840"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Psoriatic Arthritis": {
+        "normalized_text": "Psoriatic Arthritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "L40.5",
+            "L40.50"
+          ],
+          "snomed": [
+            "156370009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Rheumatoid Arthritis": {
+        "normalized_text": "Rheumatoid Arthritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_035",
+    "case_id": "HMS_035",
+    "gdx_details": {
+      "Reactive arthritis": {
+        "name": "Reactive arthritis",
+        "normalized_text": "Reactive arthritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "134610",
+            "249100"
+          ],
+          "orpha": [
+            "29207",
+            "342",
+            "85408",
+            "85414",
+            "85435"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related disease": {
+        "normalized_text": "IgG4-related disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Acromegaly": {
+        "normalized_text": "Acromegaly",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "74107003"
+          ],
+          "omim": [],
+          "orpha": [
+            "963"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis": {
+        "normalized_text": "Rheumatoid Arthritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_036",
+    "case_id": "HMS_036",
+    "gdx_details": {
+      "Behcet Syndrome": {
+        "name": "Behcet Syndrome",
+        "normalized_text": "Behcet Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "109650",
+            "134610",
+            "249100"
+          ],
+          "orpha": [
+            "117",
+            "342"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Behçet's Disease": {
+        "normalized_text": "Behçet's Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_037",
+    "case_id": "HMS_037",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with polyangiitis": {
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Microscopic polyangiitis": {
+        "normalized_text": "Microscopic polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      },
+      "Polyarteritis nodosa": {
+        "normalized_text": "Polyarteritis nodosa",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.0"
+          ],
+          "snomed": [
+            "155441006"
+          ],
+          "omim": [],
+          "orpha": [
+            "767"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_038",
+    "case_id": "HMS_038",
+    "gdx_details": {
+      "Mixed connective tissue disease": {
+        "name": "Mixed connective tissue disease",
+        "normalized_text": "Mixed connective tissue disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "152700",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "809",
+            "93552"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE) with Lupus Nephritis": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with Lupus Nephritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009",
+            "68815009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sjögren's Syndrome with Extraglandular Manifestations": {
+        "normalized_text": "Sjögren's Syndrome with Extraglandular Manifestations",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_039",
+    "case_id": "HMS_039",
+    "gdx_details": {
+      "IgG4-related retroperitoneal fibrosis": {
+        "name": "IgG4-related retroperitoneal fibrosis",
+        "normalized_text": "IgG4-related retroperitoneal fibrosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "228800"
+          ],
+          "orpha": [
+            "49041"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related disease (IgG4-RD)": {
+        "normalized_text": "IgG4-related disease (IgG4-RD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_040",
+    "case_id": "HMS_040",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Relapsing Polychondritis": {
+        "normalized_text": "Relapsing Polychondritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M94.1"
+          ],
+          "snomed": [
+            "72275000"
+          ],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      },
+      "Primary Ciliary Dyskinesia": {
+        "normalized_text": "Primary Ciliary Dyskinesia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "86204009"
+          ],
+          "omim": [
+            "244400"
+          ],
+          "orpha": [
+            "244"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_041",
+    "case_id": "HMS_041",
+    "gdx_details": {
+      "Hypophosphatasia, Adult": {
+        "name": "Hypophosphatasia, Adult",
+        "normalized_text": "Hypophosphatasia, Adult",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "146300"
+          ],
+          "orpha": [
+            "436"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Hypophosphatasia (Adult form)": {
+        "normalized_text": "Hypophosphatasia (Adult form)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E83.39"
+          ],
+          "snomed": [
+            "190859005",
+            "133936004"
+          ],
+          "omim": [],
+          "orpha": [
+            "436"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Osteogenesis Imperfecta (Type I)": {
+        "normalized_text": "Osteogenesis Imperfecta (Type I)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q78.0"
+          ],
+          "snomed": [
+            "78314001"
+          ],
+          "omim": [
+            "120150"
+          ],
+          "orpha": [
+            "666"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_042",
+    "case_id": "HMS_042",
+    "gdx_details": {
+      "CREST syndrome": {
+        "name": "CREST syndrome",
+        "normalized_text": "CREST syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181750"
+          ],
+          "orpha": [
+            "90290"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Systemic Sclerosis (Scleroderma)": {
+        "normalized_text": "Systemic Sclerosis (Scleroderma)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M34.0"
+          ],
+          "snomed": [
+            "89155008",
+            "267874003"
+          ],
+          "omim": [],
+          "orpha": [
+            "90291",
+            "801"
+          ]
+        }
+      },
+      "HNF1B-associated Kidney Disease": {
+        "normalized_text": "HNF1B-associated Kidney Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_043",
+    "case_id": "HMS_043",
+    "gdx_details": {
+      "Antisynthetase syndrome": {
+        "name": "Antisynthetase syndrome",
+        "normalized_text": "Antisynthetase syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_044",
+    "case_id": "HMS_044",
+    "gdx_details": {
+      "CINCA syndrome": {
+        "name": "CINCA syndrome",
+        "normalized_text": "CINCA syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "120100",
+            "142680",
+            "191900",
+            "607115",
+            "611762",
+            "614468",
+            "616115"
+          ],
+          "orpha": [
+            "1451",
+            "32960",
+            "47045",
+            "575"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Muckle-Wells Syndrome": {
+        "normalized_text": "Muckle-Wells Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M04.2"
+          ],
+          "snomed": [
+            "15123008"
+          ],
+          "omim": [
+            "191900"
+          ],
+          "orpha": [
+            "575"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Adult-Onset Still's Disease": {
+        "normalized_text": "Adult-Onset Still's Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.1",
+            "M06.19"
+          ],
+          "snomed": [
+            "239920006"
+          ],
+          "omim": [],
+          "orpha": [
+            "829"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_045",
+    "case_id": "HMS_045",
+    "gdx_details": {
+      "Buerger disease": {
+        "name": "Buerger disease",
+        "normalized_text": "Buerger disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "211480",
+            "615688"
+          ],
+          "orpha": [
+            "36258",
+            "767"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Deficiency of Adenosine Deaminase 2 (DADA2)": {
+        "normalized_text": "Deficiency of Adenosine Deaminase 2 (DADA2)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D81.32"
+          ],
+          "snomed": [
+            "987840791000119102"
+          ],
+          "omim": [
+            "615688"
+          ],
+          "orpha": []
+        }
+      },
+      "HIV/AIDS with Secondary Hypercoagulability": {
+        "normalized_text": "HIV/AIDS with Secondary Hypercoagulability",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Systemic Lupus Erythematosus with Antiphospholipid Syndrome": {
+        "normalized_text": "Systemic Lupus Erythematosus with Antiphospholipid Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_046",
+    "case_id": "HMS_046",
+    "gdx_details": {
+      "Takayasu arteritis": {
+        "name": "Takayasu arteritis",
+        "normalized_text": "Takayasu arteritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Takayasu Arteritis": {
+        "normalized_text": "Takayasu Arteritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.4"
+          ],
+          "snomed": [
+            "359789008"
+          ],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      },
+      "Giant Cell Arteritis": {
+        "normalized_text": "Giant Cell Arteritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "400130008"
+          ],
+          "omim": [
+            "187360"
+          ],
+          "orpha": [
+            "397"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_047",
+    "case_id": "HMS_047",
+    "gdx_details": {
+      "Relapsing polychondritis": {
+        "name": "Relapsing polychondritis",
+        "normalized_text": "Relapsing polychondritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Relapsing Polychondritis": {
+        "normalized_text": "Relapsing Polychondritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M94.1"
+          ],
+          "snomed": [
+            "72275000"
+          ],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_048",
+    "case_id": "HMS_048",
+    "gdx_details": {
+      "Antiphospholipid Syndrome, Familial": {
+        "name": "Antiphospholipid Syndrome, Familial",
+        "normalized_text": "Antiphospholipid Syndrome, Familial",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "107320"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Neuromyelitis Optica Spectrum Disorder (NMOSD)": {
+        "normalized_text": "Neuromyelitis Optica Spectrum Disorder (NMOSD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "G36.0"
+          ],
+          "snomed": [
+            "25044007"
+          ],
+          "omim": [],
+          "orpha": [
+            "71211"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE) with Neuropsychiatric Involvement": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with Neuropsychiatric Involvement",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Multiple Sclerosis (MS)": {
+        "normalized_text": "Multiple Sclerosis (MS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "NVS005",
+            "G35"
+          ],
+          "snomed": [
+            "24700007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Neuro-Behçet's Disease": {
+        "normalized_text": "Neuro-Behçet's Disease",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "25087005",
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_049",
+    "case_id": "HMS_049",
+    "gdx_details": {
+      "Diffuse cutaneous systemic sclerosis": {
+        "name": "Diffuse cutaneous systemic sclerosis",
+        "normalized_text": "Diffuse cutaneous systemic sclerosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181750"
+          ],
+          "orpha": [
+            "220393",
+            "220402",
+            "90290",
+            "90291"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Systemic Sclerosis (Scleroderma)": {
+        "normalized_text": "Systemic Sclerosis (Scleroderma)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M34.0"
+          ],
+          "snomed": [
+            "89155008",
+            "267874003"
+          ],
+          "omim": [],
+          "orpha": [
+            "90291",
+            "801"
+          ]
+        }
+      },
+      "Lupus Nephritis-induced Chronic Kidney Disease": {
+        "normalized_text": "Lupus Nephritis-induced Chronic Kidney Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_050",
+    "case_id": "HMS_050",
+    "gdx_details": {
+      "Cryoglobulinemic vasculitis": {
+        "name": "Cryoglobulinemic vasculitis",
+        "normalized_text": "Cryoglobulinemic vasculitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "123550"
+          ],
+          "orpha": [
+            "91138"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mixed Cryoglobulinemia Syndrome": {
+        "normalized_text": "Mixed Cryoglobulinemia Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Monoclonal Gammopathy of Renal Significance (MGRS)": {
+        "normalized_text": "Monoclonal Gammopathy of Renal Significance (MGRS)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_051",
+    "case_id": "HMS_051",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Eosinophilic Granulomatosis with Polyangiitis": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_052",
+    "case_id": "HMS_052",
+    "gdx_details": {
+      "IgG4-related retroperitoneal fibrosis": {
+        "name": "IgG4-related retroperitoneal fibrosis",
+        "normalized_text": "IgG4-related retroperitoneal fibrosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "228800"
+          ],
+          "orpha": [
+            "49041"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-related disease": {
+        "normalized_text": "IgG4-related disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Autoimmune Thyroiditis (Hashimoto's Thyroiditis)": {
+        "normalized_text": "Autoimmune Thyroiditis (Hashimoto's Thyroiditis)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E06.3"
+          ],
+          "snomed": [
+            "66944004",
+            "21983002"
+          ],
+          "omim": [
+            "140300"
+          ],
+          "orpha": []
+        }
+      },
+      "ANCA-associated Vasculitis": {
+        "normalized_text": "ANCA-associated Vasculitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "I77.82"
+          ],
+          "snomed": [
+            "722191003"
+          ],
+          "omim": [],
+          "orpha": [
+            "156152"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_053",
+    "case_id": "HMS_053",
+    "gdx_details": {
+      "Cryoglobulinemic vasculitis": {
+        "name": "Cryoglobulinemic vasculitis",
+        "normalized_text": "Cryoglobulinemic vasculitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "123550"
+          ],
+          "orpha": [
+            "91138"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mixed Cryoglobulinemia Syndrome": {
+        "normalized_text": "Mixed Cryoglobulinemia Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Rheumatoid Vasculitis": {
+        "normalized_text": "Rheumatoid Vasculitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M05.2"
+          ],
+          "snomed": [
+            "400054000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Polyarteritis Nodosa": {
+        "normalized_text": "Polyarteritis Nodosa",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.0"
+          ],
+          "snomed": [
+            "155441006"
+          ],
+          "omim": [],
+          "orpha": [
+            "767"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_054",
+    "case_id": "HMS_054",
+    "gdx_details": {
+      "Cryoglobulinemic vasculitis": {
+        "name": "Cryoglobulinemic vasculitis",
+        "normalized_text": "Cryoglobulinemic vasculitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "123550"
+          ],
+          "orpha": [
+            "91138"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mixed Cryoglobulinemia Vasculitis": {
+        "normalized_text": "Mixed Cryoglobulinemia Vasculitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.1",
+            "CIR037"
+          ],
+          "snomed": [
+            "31996006"
+          ],
+          "omim": [],
+          "orpha": [
+            "52759"
+          ]
+        }
+      },
+      "Autoimmune Hepatitis / Primary Biliary Cholangitis Overlap Syndrome": {
+        "normalized_text": "Autoimmune Hepatitis / Primary Biliary Cholangitis Overlap Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "K75.4"
+          ],
+          "snomed": [
+            "408335007"
+          ],
+          "omim": [],
+          "orpha": [
+            "2137"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_055",
+    "case_id": "HMS_055",
+    "gdx_details": {
+      "Tumor necrosis factor receptor 1 associated periodic syndrome": {
+        "name": "Tumor necrosis factor receptor 1 associated periodic syndrome",
+        "normalized_text": "Tumor necrosis factor receptor 1 associated periodic syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "142680"
+          ],
+          "orpha": [
+            "32960"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Familial Mediterranean Fever (FMF)": {
+        "normalized_text": "Familial Mediterranean Fever (FMF)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M04.1"
+          ],
+          "snomed": [
+            "12579009"
+          ],
+          "omim": [
+            "249100"
+          ],
+          "orpha": [
+            "342"
+          ]
+        }
+      },
+      "Behçet's Disease": {
+        "normalized_text": "Behçet's Disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "Whipple's Disease": {
+        "normalized_text": "Whipple's Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "K90.81"
+          ],
+          "snomed": [
+            "41545003"
+          ],
+          "omim": [],
+          "orpha": [
+            "3452"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_056",
+    "case_id": "HMS_056",
+    "gdx_details": {
+      "Familial Mediterranean Fever, Autosomal Dominant": {
+        "name": "Familial Mediterranean Fever, Autosomal Dominant",
+        "normalized_text": "Familial Mediterranean Fever, Autosomal Dominant",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "134610",
+            "249100"
+          ],
+          "orpha": [
+            "342"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Adult-Onset Still's Disease (AOSD)": {
+        "normalized_text": "Adult-Onset Still's Disease (AOSD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M06.1",
+            "M06.19"
+          ],
+          "snomed": [
+            "239920006"
+          ],
+          "omim": [],
+          "orpha": [
+            "829"
+          ]
+        }
+      },
+      "Hodgkin Lymphoma": {
+        "normalized_text": "Hodgkin Lymphoma",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "NEO057",
+            "C81.9",
+            "M9650/3",
+            "C81"
+          ],
+          "snomed": [
+            "118605002"
+          ],
+          "omim": [],
+          "orpha": [
+            "98293"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_057",
+    "case_id": "HMS_057",
+    "gdx_details": {
+      "Antisynthetase syndrome": {
+        "name": "Antisynthetase syndrome",
+        "normalized_text": "Antisynthetase syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "81"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgG4-Related Disease (IgG4-RD)": {
+        "normalized_text": "IgG4-Related Disease (IgG4-RD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis (RA)": {
+        "normalized_text": "Rheumatoid Arthritis (RA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_058",
+    "case_id": "HMS_058",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis": {
+        "normalized_text": "Microscopic Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus": {
+        "normalized_text": "Systemic Lupus Erythematosus",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_059",
+    "case_id": "HMS_059",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300",
+            "109650",
+            "183840"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Behçet's Disease": {
+        "normalized_text": "Behçet's Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "IgG4-Related Disease": {
+        "normalized_text": "IgG4-Related Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_060",
+    "case_id": "HMS_060",
+    "gdx_details": {
+      "Takayasu arteritis": {
+        "name": "Takayasu arteritis",
+        "normalized_text": "Takayasu arteritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "IgG4-Related Disease (IgG4-RD)": {
+        "normalized_text": "IgG4-Related Disease (IgG4-RD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Polyarteritis Nodosa (PAN)": {
+        "normalized_text": "Polyarteritis Nodosa (PAN)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.0"
+          ],
+          "snomed": [
+            "155441006"
+          ],
+          "omim": [],
+          "orpha": [
+            "767"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_061",
+    "case_id": "HMS_061",
+    "gdx_details": {
+      "Primary sclerosing cholangitis": {
+        "name": "Primary sclerosing cholangitis",
+        "normalized_text": "Primary sclerosing cholangitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "171",
+            "732"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Sclerosis-Myositis Overlap Syndrome": {
+        "normalized_text": "Systemic Sclerosis-Myositis Overlap Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Immune-Mediated Necrotizing Myopathy (IMNM)": {
+        "normalized_text": "Immune-Mediated Necrotizing Myopathy (IMNM)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "715863001"
+          ],
+          "omim": [],
+          "orpha": [
+            "206569"
+          ]
+        }
+      },
+      "Primary Biliary Cholangitis (PBC) with Myositis Overlap": {
+        "normalized_text": "Primary Biliary Cholangitis (PBC) with Myositis Overlap",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "K74.3",
+            "M60.9",
+            "M60"
+          ],
+          "snomed": [
+            "31712002",
+            "26889001"
+          ],
+          "omim": [],
+          "orpha": [
+            "186"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_062",
+    "case_id": "HMS_062",
+    "gdx_details": {
+      "Spondyloarthropathy, Susceptibility To, 1": {
+        "name": "Spondyloarthropathy, Susceptibility To, 1",
+        "normalized_text": "Spondyloarthropathy, Susceptibility To, 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "106300",
+            "183840"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Hereditary ATTR Amyloidosis": {
+        "normalized_text": "Hereditary ATTR Amyloidosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Fabry Disease": {
+        "normalized_text": "Fabry Disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E75.21"
+          ],
+          "snomed": [
+            "16652001"
+          ],
+          "omim": [
+            "301500"
+          ],
+          "orpha": [
+            "324"
+          ]
+        }
+      },
+      "Hereditary Hemochromatosis": {
+        "normalized_text": "Hereditary Hemochromatosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E83.110"
+          ],
+          "snomed": [
+            "35400008"
+          ],
+          "omim": [
+            "235200"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_063",
+    "case_id": "HMS_063",
+    "gdx_details": {
+      "CINCA syndrome": {
+        "name": "CINCA syndrome",
+        "normalized_text": "CINCA syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "120100",
+            "191900",
+            "607115",
+            "611762",
+            "614468",
+            "616115"
+          ],
+          "orpha": [
+            "1451",
+            "47045",
+            "575"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      },
+      "Disseminated Tuberculosis": {
+        "normalized_text": "Disseminated Tuberculosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "A19.2"
+          ],
+          "snomed": [
+            "186276006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Takayasu Arteritis": {
+        "normalized_text": "Takayasu Arteritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.4"
+          ],
+          "snomed": [
+            "359789008"
+          ],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_064",
+    "case_id": "HMS_064",
+    "gdx_details": {
+      "Fabry Disease": {
+        "name": "Fabry Disease",
+        "normalized_text": "Fabry Disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "301500"
+          ],
+          "orpha": [
+            "324"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Schimke Immuno-osseous Dysplasia (SIOD)": {
+        "normalized_text": "Schimke Immuno-osseous Dysplasia (SIOD)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "723995003"
+          ],
+          "omim": [
+            "242900"
+          ],
+          "orpha": [
+            "1830"
+          ]
+        }
+      },
+      "Renal Coloboma Syndrome (PAX2-related disorder)": {
+        "normalized_text": "Renal Coloboma Syndrome (PAX2-related disorder)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "446449009"
+          ],
+          "omim": [
+            "120330"
+          ],
+          "orpha": [
+            "1475"
+          ]
+        }
+      },
+      "Galloway-Mowat Syndrome": {
+        "normalized_text": "Galloway-Mowat Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721297008"
+          ],
+          "omim": [
+            "251300"
+          ],
+          "orpha": [
+            "2065"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_065",
+    "case_id": "HMS_065",
+    "gdx_details": {
+      "Thrombotic thrombocytopenic purpura": {
+        "name": "Thrombotic thrombocytopenic purpura",
+        "normalized_text": "Thrombotic thrombocytopenic purpura",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "274150"
+          ],
+          "orpha": [
+            "54057"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Thrombotic Thrombocytopenic Purpura (TTP)": {
+        "normalized_text": "Thrombotic Thrombocytopenic Purpura (TTP)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.19"
+          ],
+          "snomed": [
+            "78129009"
+          ],
+          "omim": [],
+          "orpha": [
+            "54057"
+          ]
+        }
+      },
+      "Hemolytic Uremic Syndrome (HUS)": {
+        "normalized_text": "Hemolytic Uremic Syndrome (HUS)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D59.3"
+          ],
+          "snomed": [
+            "111407006"
+          ],
+          "omim": [],
+          "orpha": [
+            "544458"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_066",
+    "case_id": "HMS_066",
+    "gdx_details": {
+      "Tubulointerstitial Nephritis With Uveitis": {
+        "name": "Tubulointerstitial Nephritis With Uveitis",
+        "normalized_text": "Tubulointerstitial Nephritis With Uveitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "607665"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {
+      "Infective Endocarditis": {
+        "normalized_text": "Infective Endocarditis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "233850007"
+          ],
+          "omim": [],
+          "orpha": [
+            "570762"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_067",
+    "case_id": "HMS_067",
+    "gdx_details": {
+      "Primary erythromelalgia": {
+        "name": "Primary erythromelalgia",
+        "normalized_text": "Primary erythromelalgia",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "133020"
+          ],
+          "orpha": [
+            "90026"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Mitochondrial Neurogastrointestinal Encephalomyopathy (MNGIE)": {
+        "normalized_text": "Mitochondrial Neurogastrointestinal Encephalomyopathy (MNGIE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "718214007"
+          ],
+          "omim": [
+            "590060"
+          ],
+          "orpha": [
+            "298"
+          ]
+        }
+      },
+      "Abetalipoproteinemia": {
+        "normalized_text": "Abetalipoproteinemia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "E78.6"
+          ],
+          "snomed": [
+            "190787008"
+          ],
+          "omim": [],
+          "orpha": [
+            "14"
+          ]
+        }
+      },
+      "Celiac Disease": {
+        "normalized_text": "Celiac Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "K90.0"
+          ],
+          "snomed": [
+            "396331005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_068",
+    "case_id": "HMS_068",
+    "gdx_details": {
+      "Diffuse cutaneous systemic sclerosis": {
+        "name": "Diffuse cutaneous systemic sclerosis",
+        "normalized_text": "Diffuse cutaneous systemic sclerosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181750"
+          ],
+          "orpha": [
+            "220393",
+            "220402",
+            "732",
+            "801",
+            "90289",
+            "90290",
+            "90291"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Acromegaly": {
+        "normalized_text": "Acromegaly",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "74107003"
+          ],
+          "omim": [],
+          "orpha": [
+            "963"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis (GPA)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (GPA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_069",
+    "case_id": "HMS_069",
+    "gdx_details": {
+      "Sarcoidosis": {
+        "name": "Sarcoidosis",
+        "normalized_text": "Sarcoidosis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "181000",
+            "612387"
+          ],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Tubulointerstitial Nephritis and Uveitis (TINU) Syndrome": {
+        "normalized_text": "Tubulointerstitial Nephritis and Uveitis (TINU) Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "418839003",
+            "64572001"
+          ],
+          "omim": [
+            "607665"
+          ],
+          "orpha": [
+            "91500"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_070",
+    "case_id": "HMS_070",
+    "gdx_details": {
+      "SAPHO syndrome": {
+        "name": "SAPHO syndrome",
+        "normalized_text": "SAPHO syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Behçet's Disease": {
+        "normalized_text": "Behçet's Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.2"
+          ],
+          "snomed": [
+            "310701003"
+          ],
+          "omim": [
+            "109650"
+          ],
+          "orpha": [
+            "117"
+          ]
+        }
+      },
+      "SAPHO Syndrome": {
+        "normalized_text": "SAPHO Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "60684003"
+          ],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_071",
+    "case_id": "HMS_071",
+    "gdx_details": {
+      "Autosomal dominant otospondylomegaepiphyseal dysplasia": {
+        "name": "Autosomal dominant otospondylomegaepiphyseal dysplasia",
+        "normalized_text": "Autosomal dominant otospondylomegaepiphyseal dysplasia",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "108300",
+            "184840",
+            "604841",
+            "614134",
+            "614284"
+          ],
+          "orpha": [
+            "166100",
+            "250984",
+            "828",
+            "90653",
+            "90654"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Marfan Syndrome": {
+        "normalized_text": "Marfan Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q87.4",
+            "Q87.40"
+          ],
+          "snomed": [
+            "19346006"
+          ],
+          "omim": [
+            "154700"
+          ],
+          "orpha": [
+            "558"
+          ]
+        }
+      },
+      "Ehlers-Danlos Syndrome": {
+        "normalized_text": "Ehlers-Danlos Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q79.6",
+            "Q79.60"
+          ],
+          "snomed": [
+            "398114001"
+          ],
+          "omim": [],
+          "orpha": [
+            "98249"
+          ]
+        }
+      },
+      "Loeys-Dietz Syndrome": {
+        "normalized_text": "Loeys-Dietz Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "446263001"
+          ],
+          "omim": [],
+          "orpha": [
+            "60030"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_072",
+    "case_id": "HMS_072",
+    "gdx_details": {
+      "Pediatric systemic lupus erythematosus": {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Pediatric systemic lupus erythematosus",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "152700",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (Lupus Nephritis)": {
+        "normalized_text": "Systemic Lupus Erythematosus (Lupus Nephritis)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009",
+            "68815009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      },
+      "Membranoproliferative Glomerulonephritis (MPGN)": {
+        "normalized_text": "Membranoproliferative Glomerulonephritis (MPGN)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "80321008"
+          ],
+          "omim": [],
+          "orpha": [
+            "54370"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_073",
+    "case_id": "HMS_073",
+    "gdx_details": {
+      "Sjogren Syndrome": {
+        "name": "Sjogren Syndrome",
+        "normalized_text": "Sjogren Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    "ddx_details": {}
+  },
+  {
+    "id": "HMS_074",
+    "case_id": "HMS_074",
+    "gdx_details": {
+      "Familial Mediterranean Fever, Autosomal Dominant": {
+        "name": "Familial Mediterranean Fever, Autosomal Dominant",
+        "normalized_text": "Familial Mediterranean Fever, Autosomal Dominant",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "134610",
+            "249100"
+          ],
+          "orpha": [
+            "342"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Disseminated Tuberculosis": {
+        "normalized_text": "Disseminated Tuberculosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "A19.2"
+          ],
+          "snomed": [
+            "186276006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Hodgkin Lymphoma": {
+        "normalized_text": "Hodgkin Lymphoma",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "NEO057",
+            "C81.9",
+            "M9650/3",
+            "C81"
+          ],
+          "snomed": [
+            "118605002"
+          ],
+          "omim": [],
+          "orpha": [
+            "98293"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_075",
+    "case_id": "HMS_075",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Eosinophilic Granulomatosis with Polyangiitis": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "Autosomal Dominant Polycystic Kidney Disease": {
+        "normalized_text": "Autosomal Dominant Polycystic Kidney Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q61.2"
+          ],
+          "snomed": [
+            "765330003"
+          ],
+          "omim": [
+            "173900"
+          ],
+          "orpha": [
+            "730"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_076",
+    "case_id": "HMS_076",
+    "gdx_details": {
+      "Felty syndrome": {
+        "name": "Felty syndrome",
+        "normalized_text": "Felty syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "134750"
+          ],
+          "orpha": [
+            "47612"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Sjögren's Syndrome with Distal Renal Tubular Acidosis (dRTA)": {
+        "normalized_text": "Sjögren's Syndrome with Distal Renal Tubular Acidosis (dRTA)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003",
+            "236461000"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": [
+            "93608"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE) with Secondary Antiphospholipid Syndrome": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with Secondary Antiphospholipid Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009",
+            "239895006"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Felty's Syndrome": {
+        "normalized_text": "Felty's Syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M05.0",
+            "M05.09",
+            "M05.00"
+          ],
+          "snomed": [
+            "57160007"
+          ],
+          "omim": [
+            "134750"
+          ],
+          "orpha": [
+            "47612"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_077",
+    "case_id": "HMS_077",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis (Wegener's)": {
+        "normalized_text": "Granulomatosis with Polyangiitis (Wegener's)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Microscopic Polyangiitis": {
+        "normalized_text": "Microscopic Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M31.7"
+          ],
+          "snomed": [
+            "1144805008"
+          ],
+          "omim": [],
+          "orpha": [
+            "727"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_078",
+    "case_id": "HMS_078",
+    "gdx_details": {
+      "Relapsing polychondritis": {
+        "name": "Relapsing polychondritis",
+        "normalized_text": "Relapsing polychondritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Relapsing Polychondritis": {
+        "normalized_text": "Relapsing Polychondritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M94.1"
+          ],
+          "snomed": [
+            "72275000"
+          ],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      },
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Eosinophilic Granulomatosis with Polyangiitis": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_079",
+    "case_id": "HMS_079",
+    "gdx_details": {
+      "SAPHO syndrome": {
+        "name": "SAPHO syndrome",
+        "normalized_text": "SAPHO syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "SAPHO Syndrome": {
+        "normalized_text": "SAPHO Syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "60684003"
+          ],
+          "omim": [],
+          "orpha": [
+            "793"
+          ]
+        }
+      },
+      "Chronic Recurrent Multifocal Osteomyelitis (CRMO)": {
+        "normalized_text": "Chronic Recurrent Multifocal Osteomyelitis (CRMO)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M86.3",
+            "M86.39",
+            "M86.30"
+          ],
+          "snomed": [],
+          "omim": [
+            "259680"
+          ],
+          "orpha": []
+        }
+      },
+      "Infectious Sternoclavicular Osteomyelitis": {
+        "normalized_text": "Infectious Sternoclavicular Osteomyelitis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_080",
+    "case_id": "HMS_080",
+    "gdx_details": {
+      "ORPHA:761": {
+        "name": "ORPHA:761",
+        "normalized_text": "ORPHA:761",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "761"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Hepatitis C-associated Mixed Cryoglobulinemia": {
+        "normalized_text": "Hepatitis C-associated Mixed Cryoglobulinemia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Infective Endocarditis": {
+        "normalized_text": "Infective Endocarditis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "233850007"
+          ],
+          "omim": [],
+          "orpha": [
+            "570762"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_081",
+    "case_id": "HMS_081",
+    "gdx_details": {
+      "Pediatric systemic lupus erythematosus": {
+        "name": "Pediatric systemic lupus erythematosus",
+        "normalized_text": "Pediatric systemic lupus erythematosus",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "152700",
+            "270150",
+            "606579",
+            "609939",
+            "614420"
+          ],
+          "orpha": [
+            "93552"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Sjögren's Syndrome": {
+        "normalized_text": "Sjögren's Syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.0"
+          ],
+          "snomed": [
+            "83901003"
+          ],
+          "omim": [
+            "270150"
+          ],
+          "orpha": []
+        }
+      },
+      "Autoimmune Hemolytic Anemia (AIHA) secondary to Autoimmune Disease": {
+        "normalized_text": "Autoimmune Hemolytic Anemia (AIHA) secondary to Autoimmune Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30-M36"
+          ],
+          "snomed": [
+            "413603009",
+            "85828009"
+          ],
+          "omim": [],
+          "orpha": [
+            "98375"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_082",
+    "case_id": "HMS_082",
+    "gdx_details": {
+      "Eosinophilic granulomatosis with polyangiitis": {
+        "name": "Eosinophilic granulomatosis with polyangiitis",
+        "normalized_text": "Eosinophilic granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Eosinophilic Granulomatosis with Polyangiitis (EGPA / Churg-Strauss Syndrome)": {
+        "normalized_text": "Eosinophilic Granulomatosis with Polyangiitis (EGPA / Churg-Strauss Syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      },
+      "IgG4-Related Disease (IgG4-RD)": {
+        "normalized_text": "IgG4-Related Disease (IgG4-RD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "D89.84"
+          ],
+          "snomed": [
+            "10743271000119103"
+          ],
+          "omim": [],
+          "orpha": [
+            "596448"
+          ]
+        }
+      },
+      "Hyper-IgE Syndrome (Job's Syndrome)": {
+        "normalized_text": "Hyper-IgE Syndrome (Job's Syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D82.4"
+          ],
+          "snomed": [
+            "50926003"
+          ],
+          "omim": [
+            "147060"
+          ],
+          "orpha": [
+            "331223"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_083",
+    "case_id": "HMS_083",
+    "gdx_details": {
+      "Takayasu arteritis": {
+        "name": "Takayasu arteritis",
+        "normalized_text": "Takayasu arteritis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Takayasu Arteritis": {
+        "normalized_text": "Takayasu Arteritis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.4"
+          ],
+          "snomed": [
+            "359789008"
+          ],
+          "omim": [
+            "207600"
+          ],
+          "orpha": [
+            "3287"
+          ]
+        }
+      },
+      "Giant Cell Arteritis": {
+        "normalized_text": "Giant Cell Arteritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "400130008"
+          ],
+          "omim": [
+            "187360"
+          ],
+          "orpha": [
+            "397"
+          ]
+        }
+      },
+      "Kawasaki Disease": {
+        "normalized_text": "Kawasaki Disease",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M30.3"
+          ],
+          "snomed": [
+            "75053002"
+          ],
+          "omim": [
+            "611775"
+          ],
+          "orpha": [
+            "2331"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_084",
+    "case_id": "HMS_084",
+    "gdx_details": {
+      "Granulomatosis with polyangiitis": {
+        "name": "Granulomatosis with polyangiitis",
+        "normalized_text": "Granulomatosis with polyangiitis",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Granulomatosis with Polyangiitis": {
+        "normalized_text": "Granulomatosis with Polyangiitis",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M31.3"
+          ],
+          "snomed": [
+            "195353004"
+          ],
+          "omim": [
+            "608710"
+          ],
+          "orpha": [
+            "900"
+          ]
+        }
+      },
+      "Relapsing Polychondritis": {
+        "normalized_text": "Relapsing Polychondritis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M94.1"
+          ],
+          "snomed": [
+            "72275000"
+          ],
+          "omim": [],
+          "orpha": [
+            "728"
+          ]
+        }
+      },
+      "Sarcoidosis": {
+        "normalized_text": "Sarcoidosis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D86.9"
+          ],
+          "snomed": [
+            "31541009"
+          ],
+          "omim": [],
+          "orpha": [
+            "797"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_085",
+    "case_id": "HMS_085",
+    "gdx_details": {
+      "Fabry Disease": {
+        "name": "Fabry Disease",
+        "normalized_text": "Fabry Disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "301500"
+          ],
+          "orpha": [
+            "324"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Fabry Disease": {
+        "normalized_text": "Fabry Disease",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E75.21"
+          ],
+          "snomed": [
+            "16652001"
+          ],
+          "omim": [
+            "301500"
+          ],
+          "orpha": [
+            "324"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis": {
+        "normalized_text": "Rheumatoid Arthritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_086",
+    "case_id": "HMS_086",
+    "gdx_details": {
+      "Whipple disease": {
+        "name": "Whipple disease",
+        "normalized_text": "Whipple disease",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "3452"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "Systemic Lupus Erythematosus (SLE)": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      },
+      "Mixed Connective Tissue Disease (MCTD)": {
+        "normalized_text": "Mixed Connective Tissue Disease (MCTD)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M35.1"
+          ],
+          "snomed": [
+            "398049005"
+          ],
+          "omim": [],
+          "orpha": [
+            "809"
+          ]
+        }
+      },
+      "Rheumatoid Arthritis (RA)": {
+        "normalized_text": "Rheumatoid Arthritis (RA)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M06.9",
+            "M06.99"
+          ],
+          "snomed": [
+            "69896004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "HMS_087",
+    "case_id": "HMS_087",
+    "gdx_details": {
+      "ORPHA:761": {
+        "name": "ORPHA:761",
+        "normalized_text": "ORPHA:761",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "761"
+          ]
+        }
+      }
+    },
+    "ddx_details": {
+      "IgA Vasculitis (Henoch-Schönlein Purpura)": {
+        "normalized_text": "IgA Vasculitis (Henoch-Schönlein Purpura)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "CIR037",
+            "D69.0"
+          ],
+          "snomed": [
+            "31996006",
+            "191306005"
+          ],
+          "omim": [],
+          "orpha": [
+            "52759",
+            "761"
+          ]
+        }
+      },
+      "Polyarteritis Nodosa (PAN)": {
+        "normalized_text": "Polyarteritis Nodosa (PAN)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "M30.0"
+          ],
+          "snomed": [
+            "155441006"
+          ],
+          "omim": [],
+          "orpha": [
+            "767"
+          ]
+        }
+      },
+      "Systemic Lupus Erythematosus (SLE) with Lupus Nephritis": {
+        "normalized_text": "Systemic Lupus Erythematosus (SLE) with Lupus Nephritis",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "M32.9"
+          ],
+          "snomed": [
+            "55464009",
+            "68815009"
+          ],
+          "omim": [
+            "152700"
+          ],
+          "orpha": [
+            "536"
+          ]
+        }
+      }
+    }
+  }
+]

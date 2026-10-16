@@ -1,0 +1,120 @@
+{
+  "configuration": {
+    "experiment_name": "judge-audit-strict-gemini-2.5-flash-low",
+    "experiment_description": "Strict re-score of gemini-2.5-flash-low from existing evaluation_details. No new inference or MedLabeler.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/all_256_clean.json",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 256,
+    "matched_cases": 190,
+    "unmatched_cases": 66,
+    "top_counts": {
+      "P1": 145,
+      "P3": 12,
+      "P2": 29,
+      "P4": 4
+    },
+    "resolution_method_counts": {
+      "snomed_match": 119,
+      "icd10_exact": 18,
+      "icd10_child": 0,
+      "icd10_parent": 2,
+      "icd10_sibling": 22,
+      "bert_autoconfirm": 7,
+      "bert_match": 2,
+      "llm_judgment": 20
+    },
+    "average_position": 1.342,
+    "final_score_percentage": 74.22
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 7,
+      "matched_cases": 7,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P3": 1,
+        "P1": 5,
+        "P2": 1
+      },
+      "average_position": 1.429,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 2,
+      "matched_cases": 2,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 2
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_EXACT": {
+      "total_cases": 18,
+      "matched_cases": 18,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P2": 4,
+        "P1": 11,
+        "P3": 2,
+        "P4": 1
+      },
+      "average_position": 1.611,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_PARENT": {
+      "total_cases": 2,
+      "matched_cases": 2,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 2
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_SIBLING": {
+      "total_cases": 22,
+      "matched_cases": 22,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 9,
+        "P2": 11,
+        "P3": 1,
+        "P4": 1
+      },
+      "average_position": 1.727,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 20,
+      "matched_cases": 20,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 16,
+        "P3": 4
+      },
+      "average_position": 1.4,
+      "final_score_percentage": 100.0
+    },
+    "SNOMED_MATCH": {
+      "total_cases": 119,
+      "matched_cases": 119,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 100,
+        "P2": 13,
+        "P4": 2,
+        "P3": 4
+      },
+      "average_position": 1.227,
+      "final_score_percentage": 100.0
+    }
+  }
+}

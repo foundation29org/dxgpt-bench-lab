@@ -1,0 +1,76 @@
+{
+  "configuration": {
+    "experiment_name": "judge-audit-strict-mygene2_hpo-gpt-5.6-terra-low",
+    "experiment_description": "Strict re-score of mygene2_hpo-gpt-5.6-terra-low from existing evaluation_details. No new inference or MedLabeler.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/mygene2_hpo.json",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 146,
+    "matched_cases": 85,
+    "unmatched_cases": 61,
+    "top_counts": {
+      "P1": 56,
+      "P4": 7,
+      "P3": 5,
+      "P2": 13,
+      "P5": 4
+    },
+    "resolution_method_counts": {
+      "snomed_match": 0,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 9,
+      "bert_match": 7,
+      "llm_judgment": 69
+    },
+    "average_position": 1.706,
+    "final_score_percentage": 58.22
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 9,
+      "matched_cases": 9,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 8,
+        "P2": 1
+      },
+      "average_position": 1.111,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 7,
+      "matched_cases": 7,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P3": 1,
+        "P1": 5,
+        "P2": 1
+      },
+      "average_position": 1.429,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 69,
+      "matched_cases": 69,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 43,
+        "P4": 7,
+        "P3": 4,
+        "P2": 11,
+        "P5": 4
+      },
+      "average_position": 1.812,
+      "final_score_percentage": 100.0
+    }
+  }
+}

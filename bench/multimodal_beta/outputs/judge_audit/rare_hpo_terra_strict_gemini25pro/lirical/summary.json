@@ -1,0 +1,82 @@
+{
+  "configuration": {
+    "experiment_name": "judge-audit-strict-lirical_hpo-gpt-5.6-terra-low",
+    "experiment_description": "Strict re-score of lirical_hpo-gpt-5.6-terra-low from existing evaluation_details. No new inference or MedLabeler.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/lirical_hpo.json",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 370,
+    "matched_cases": 173,
+    "unmatched_cases": 197,
+    "top_counts": {
+      "P1": 105,
+      "P2": 21,
+      "P4": 14,
+      "P6": 1,
+      "P3": 24,
+      "P5": 8
+    },
+    "resolution_method_counts": {
+      "snomed_match": 0,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 43,
+      "bert_match": 12,
+      "llm_judgment": 118
+    },
+    "average_position": 1.855,
+    "final_score_percentage": 46.76
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 43,
+      "matched_cases": 43,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 30,
+        "P3": 5,
+        "P2": 4,
+        "P5": 2,
+        "P4": 2
+      },
+      "average_position": 1.651,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 12,
+      "matched_cases": 12,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 4,
+        "P2": 3,
+        "P5": 2,
+        "P3": 3
+      },
+      "average_position": 2.417,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 118,
+      "matched_cases": 118,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 71,
+        "P2": 14,
+        "P4": 12,
+        "P6": 1,
+        "P3": 16,
+        "P5": 4
+      },
+      "average_position": 1.873,
+      "final_score_percentage": 100.0
+    }
+  }
+}

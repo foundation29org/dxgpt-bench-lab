@@ -1,0 +1,26 @@
+EXPERIMENT_NAME: judge-audit-strict-hms88 gpt-5.4-mini low run 20260417175146
+EXPERIMENT_DESCRIPTION: Strict re-score of hms88 gpt-5.4-mini low run 20260417175146
+  from existing evaluation_details. No new inference or MedLabeler.
+DXGPT_EMULATOR:
+  MODEL: hms88 gpt-5.4-mini low run 20260417175146
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  PARAMS:
+    reasoning_effort: low
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    thinking_level: low
+    max_tokens: 10000
+    temperature: 0.1
+  PARALLEL_WORKERS: 4
+MULTIMODAL_BETA:
+  GOLD_SCOPE: primary
+  GOLD_ONTOLOGY: source_run
+  NORMALIZATION: reused_from_evaluation_details
+  LLM_MATCH_MODE: strict_equivalence
+  SOURCE_EVALUATION_DETAILS: C:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main\output\hms_hpo\juanjo_classic_v2\gpt_5_4_mini_low\20260417175146\evaluation_details.txt
+DATASET_PATH: bench/datasets/all_256_clean.json

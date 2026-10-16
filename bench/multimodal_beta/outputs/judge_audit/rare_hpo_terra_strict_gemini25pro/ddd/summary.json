@@ -1,0 +1,83 @@
+{
+  "configuration": {
+    "experiment_name": "judge-audit-strict-ddd_hpo-gpt-5.6-terra-low",
+    "experiment_description": "Strict re-score of ddd_hpo-gpt-5.6-terra-low from existing evaluation_details. No new inference or MedLabeler.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/ddd_hpo.json",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 1749,
+    "matched_cases": 712,
+    "unmatched_cases": 1037,
+    "top_counts": {
+      "P1": 478,
+      "P4": 32,
+      "P3": 65,
+      "P6": 1,
+      "P2": 121,
+      "P5": 15
+    },
+    "resolution_method_counts": {
+      "snomed_match": 0,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 249,
+      "bert_match": 266,
+      "llm_judgment": 197
+    },
+    "average_position": 1.579,
+    "final_score_percentage": 40.71
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 249,
+      "matched_cases": 249,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 164,
+        "P3": 29,
+        "P6": 1,
+        "P4": 13,
+        "P5": 3,
+        "P2": 39
+      },
+      "average_position": 1.614,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 266,
+      "matched_cases": 266,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 192,
+        "P2": 43,
+        "P3": 17,
+        "P4": 11,
+        "P5": 3
+      },
+      "average_position": 1.459,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 197,
+      "matched_cases": 197,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P4": 8,
+        "P3": 19,
+        "P1": 122,
+        "P2": 39,
+        "P5": 9
+      },
+      "average_position": 1.695,
+      "final_score_percentage": 100.0
+    }
+  }
+}

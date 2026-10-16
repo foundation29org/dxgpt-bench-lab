@@ -3,7 +3,6 @@
 datasets/raw/*
 !datasets/raw/.gitkeep
 
-# Local credentials and per-run responses
+# Local credentials
 config.yaml
-outputs/*
-!outputs/.gitkeep
+!outputs/**/config.yaml

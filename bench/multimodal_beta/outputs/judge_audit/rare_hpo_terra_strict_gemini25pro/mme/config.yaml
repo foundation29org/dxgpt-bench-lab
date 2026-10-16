@@ -1,0 +1,30 @@
+EXPERIMENT_NAME: judge-audit-strict-mme_hpo-gpt-5.6-terra-low
+EXPERIMENT_DESCRIPTION: Strict re-score of mme_hpo-gpt-5.6-terra-low from existing
+  evaluation_details. No new inference or MedLabeler.
+DXGPT_EMULATOR:
+  MODEL: mme_hpo-gpt-5.6-terra-low
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  PARAMS:
+    reasoning_effort: low
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    thinking_level: low
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_RETRY_DELAY_SECONDS: 2
+  PARALLEL_WORKERS: 8
+MULTIMODAL_BETA:
+  GOLD_SCOPE: primary
+  GOLD_ONTOLOGY: source_run
+  NORMALIZATION: reused_from_evaluation_details
+  BERT_SCORES: reused_from_source_evaluation_trace
+  LLM_MATCH_MODE: strict_equivalence
+  SOURCE_EVALUATION_DETAILS: C:\repos\DxGPT\eval\bench\pipelines\pipeline_v4 - fork\main\output\mme_hpo\juanjo_classic_v2\gpt_5_6_terra_low\20260714162759\evaluation_details.txt
+  SOURCE_CASE_COUNT: 40
+DATASET_PATH: bench/datasets/mme_hpo.json
