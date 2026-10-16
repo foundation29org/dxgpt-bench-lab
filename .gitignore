@@ -22,6 +22,7 @@ _PRMT_REF/
 !bench/pipelines/**/candidate_output_schema*.json
 !bench/pipelines/**/semantic_evaluation_batch_schema*.json
 !bench/pipelines/**/severity_assignment_batch_schema*.json
+!bench/multimodal_beta/outputs/**/*.json
 # bench/datasets/ and bench/pipelines/**/output/ remain excluded (contain case data)
 *.csv
 *.log

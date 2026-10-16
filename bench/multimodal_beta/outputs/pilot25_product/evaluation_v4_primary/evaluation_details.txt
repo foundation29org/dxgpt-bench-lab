@@ -1,0 +1,5638 @@
+{
+  "case_id": "24174966",
+  "gdx_details": [
+    {
+      "name": "Primary cardiac angiofibroma",
+      "details": {
+        "name": "Primary cardiac angiofibroma",
+        "normalized_text": "Primary cardiac angiofibroma",
+        "role": "primary",
+        "icd11": "2E81.0Z",
+        "icd11_title": "Angiofibroma of unspecified site",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Cardiac cavernous hemangioma (left ventricular)",
+      "details": {
+        "normalized_text": "Cardiac cavernous hemangioma (left ventricular)",
+        "position": 1,
+        "description": "A rare benign vascular tumor composed of dilated blood-filled vascular channels that can arise in the myocardium or endocardium; often incidentally found and may show peripheral nodular enhancement with progressive fill-in on contrast imaging.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "87878005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Left ventricular thrombus",
+      "details": {
+        "normalized_text": "Left ventricular thrombus",
+        "position": 2,
+        "description": "An intraventricular blood clot, typically forming in regions of akinetic or dyskinetic myocardium after myocardial infarction or in severe cardiomyopathy; generally avascular and non-enhancing on contrast imaging.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "309519009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cardiac fibroma",
+      "details": {
+        "normalized_text": "Cardiac fibroma",
+        "position": 3,
+        "description": "A benign fibrous tumor of the myocardium composed of dense collagen; most common in children but can occur in adults; often intramural in the left ventricle with intense late gadolinium enhancement due to fibrosis.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Ventricular myxoma",
+      "details": {
+        "normalized_text": "Ventricular myxoma",
+        "position": 4,
+        "description": "A benign neoplasm of mesenchymal origin typically arising in the atria but rarely in the ventricles; can be pedunculated and mobile and may cause emboli or obstructive symptoms.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Papillary fibroelastoma",
+      "details": {
+        "normalized_text": "Papillary fibroelastoma",
+        "position": 5,
+        "description": "A small benign valvular tumor with frond-like projections composed of fibrous and elastic tissue; most commonly found on cardiac valves and associated with embolic events.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "725909004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cardiac lipoma",
+      "details": {
+        "normalized_text": "Cardiac lipoma",
+        "position": 6,
+        "description": "A benign tumor of mature adipose tissue that may occur in the myocardium or epicardium; typically shows high T1 signal with fat suppression on MRI and is often asymptomatic.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Primary cardiac angiofibroma": {
+          "name": "Primary cardiac angiofibroma",
+          "normalized_text": "Primary cardiac angiofibroma",
+          "role": "primary",
+          "icd11": "2E81.0Z",
+          "icd11_title": "Angiofibroma of unspecified site",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cardiac cavernous hemangioma (left ventricular)": {
+          "normalized_text": "Cardiac cavernous hemangioma (left ventricular)",
+          "position": 1,
+          "description": "A rare benign vascular tumor composed of dilated blood-filled vascular channels that can arise in the myocardium or endocardium; often incidentally found and may show peripheral nodular enhancement with progressive fill-in on contrast imaging.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "87878005"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Primary cardiac angiofibroma": {
+            "name": "Primary cardiac angiofibroma",
+            "normalized_text": "Primary cardiac angiofibroma",
+            "role": "primary",
+            "icd11": "2E81.0Z",
+            "icd11_title": "Angiofibroma of unspecified site",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.760 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6210404634475708
+            },
+            {
+              "position": 2,
+              "score": 0.44934824109077454
+            },
+            {
+              "position": 3,
+              "score": 0.7598622441291809
+            },
+            {
+              "position": 4,
+              "score": 0.6431688666343689
+            },
+            {
+              "position": 5,
+              "score": 0.5810006260871887
+            },
+            {
+              "position": 6,
+              "score": 0.7289857864379883
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.7598622441291809
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "25995698",
+  "gdx_details": [
+    {
+      "name": "Extralobar pulmonary sequestration",
+      "details": {
+        "name": "Extralobar pulmonary sequestration",
+        "normalized_text": "Extralobar pulmonary sequestration",
+        "role": "primary",
+        "icd11": "LA75.6",
+        "icd11_title": "Extralobar sequestration of lung",
+        "medical_codes": {
+          "icd10": [
+            "Q33.2"
+          ],
+          "snomed": [
+            "18620009"
+          ],
+          "omim": [],
+          "orpha": [
+            "3161"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Extralobar pulmonary sequestration (left basal)",
+      "details": {
+        "normalized_text": "Extralobar pulmonary sequestration (left basal)",
+        "position": 1,
+        "description": "A congenital mass of nonfunctioning lung tissue with its own pleura and systemic arterial supply, usually located near the left posterior basal hemithorax; it can become infected or inflamed and present with pleuritic pain and respiratory symptoms.",
+        "medical_codes": {
+          "icd10": [
+            "Q33.2"
+          ],
+          "snomed": [
+            "18620009"
+          ],
+          "omim": [],
+          "orpha": [
+            "3161"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Left lower lobe pneumonia with pleuritis/parapneumonic irritation",
+      "details": {
+        "normalized_text": "Left lower lobe pneumonia with pleuritis/parapneumonic irritation",
+        "position": 2,
+        "description": "Infection of the left lower lobe can irritate the adjacent pleura and diaphragm, producing pleuritic pain felt in the left upper quadrant along with fever and cough.",
+        "medical_codes": {
+          "icd10": [
+            "R09.1"
+          ],
+          "snomed": [
+            "301000005",
+            "196075003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Splenic abscess",
+      "details": {
+        "normalized_text": "Splenic abscess",
+        "position": 3,
+        "description": "A focal infectious collection within the spleen, often arising from bacteremia or contiguous spread; typically manifests with fever and left upper quadrant pain.",
+        "medical_codes": {
+          "icd10": [
+            "D73.3"
+          ],
+          "snomed": [
+            "82053000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Splenic infarction",
+      "details": {
+        "normalized_text": "Splenic infarction",
+        "position": 4,
+        "description": "Ischemic necrosis of splenic tissue due to vascular occlusion (e.g., hypercoagulable state, emboli, sickle cell disease), causing acute left upper quadrant pain and inflammatory markers.",
+        "medical_codes": {
+          "icd10": [
+            "D73.5"
+          ],
+          "snomed": [
+            "22996003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Subphrenic abscess (left)",
+      "details": {
+        "normalized_text": "Subphrenic abscess (left)",
+        "position": 5,
+        "description": "A collection of pus beneath the left hemidiaphragm that can cause diaphragmatic and pleural irritation, presenting as pleuritic left upper quadrant pain and fever.",
+        "medical_codes": {
+          "icd10": [
+            "K65.1"
+          ],
+          "snomed": [
+            "52478002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "18620009",
+      "matched_gdx": {
+        "Extralobar pulmonary sequestration": {
+          "name": "Extralobar pulmonary sequestration",
+          "normalized_text": "Extralobar pulmonary sequestration",
+          "role": "primary",
+          "icd11": "LA75.6",
+          "icd11_title": "Extralobar sequestration of lung",
+          "medical_codes": {
+            "icd10": [
+              "Q33.2"
+            ],
+            "snomed": [
+              "18620009"
+            ],
+            "omim": [],
+            "orpha": [
+              "3161"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Extralobar pulmonary sequestration (left basal)": {
+          "normalized_text": "Extralobar pulmonary sequestration (left basal)",
+          "position": 1,
+          "description": "A congenital mass of nonfunctioning lung tissue with its own pleura and systemic arterial supply, usually located near the left posterior basal hemithorax; it can become infected or inflamed and present with pleuritic pain and respiratory symptoms.",
+          "medical_codes": {
+            "icd10": [
+              "Q33.2"
+            ],
+            "snomed": [
+              "18620009"
+            ],
+            "omim": [],
+            "orpha": [
+              "3161"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Extralobar pulmonary sequestration": {
+            "name": "Extralobar pulmonary sequestration",
+            "normalized_text": "Extralobar pulmonary sequestration",
+            "role": "primary",
+            "icd11": "LA75.6",
+            "icd11_title": "Extralobar sequestration of lung",
+            "medical_codes": {
+              "icd10": [
+                "Q33.2"
+              ],
+              "snomed": [
+                "18620009"
+              ],
+              "omim": [],
+              "orpha": [
+                "3161"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 18620009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "23553973",
+  "gdx_details": [
+    {
+      "name": "Amoebic liver abscess",
+      "details": {
+        "name": "Amoebic liver abscess",
+        "normalized_text": "Amoebic liver abscess",
+        "role": "primary",
+        "icd11": "1A36.10",
+        "icd11_title": "Amoebic liver abscess",
+        "medical_codes": {
+          "icd10": [
+            "A06.4"
+          ],
+          "snomed": [
+            "75119003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Melioidosis (Burkholderia pseudomallei) with hepatosplenic abscesses",
+      "details": {
+        "normalized_text": "Melioidosis (Burkholderia pseudomallei) with hepatosplenic abscesses",
+        "position": 1,
+        "description": "An endemic Gram-negative infection in tropical northern Australia and Southeast Asia that can cause acute febrile illness with pneumonia or disseminated disease featuring multiple liver and splenic abscesses; bacteremia may be transient and cultures can be negative early.",
+        "medical_codes": {
+          "icd10": [
+            "A24.4",
+            "A24.9"
+          ],
+          "snomed": [
+            "428111003",
+            "116399000"
+          ],
+          "omim": [],
+          "orpha": [
+            "31202"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Amoebic liver abscess (Entamoeba histolytica)",
+      "details": {
+        "normalized_text": "Amoebic liver abscess (Entamoeba histolytica)",
+        "position": 2,
+        "description": "Parasitic infection acquired in endemic regions that can cause solitary or multiple liver abscesses with fever and right or left upper quadrant/pleuritic pain; diarrhea may precede or accompany the illness.",
+        "medical_codes": {
+          "icd10": [
+            "A06.4"
+          ],
+          "snomed": [
+            "75119003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pyogenic splenic abscess (bacterial)",
+      "details": {
+        "normalized_text": "Pyogenic splenic abscess (bacterial)",
+        "position": 3,
+        "description": "A focal infection of the spleen, often secondary to transient bacteremia or endovascular infection, presenting with fever, left upper quadrant/pleuritic pain, and elevated inflammatory markers; may show hypodense splenic lesions on CT.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Q fever (Coxiella burnetii) with hepatosplenic involvement",
+      "details": {
+        "normalized_text": "Q fever (Coxiella burnetii) with hepatosplenic involvement",
+        "position": 4,
+        "description": "A zoonosis prevalent in Australia causing acute febrile illness that can involve pneumonia or hepatitis; may present with systemic symptoms and hepatosplenic lesions or granulomas.",
+        "medical_codes": {
+          "icd10": [
+            "SYM002",
+            "R50.9"
+          ],
+          "snomed": [
+            "386661006",
+            "22533000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hepatic hydatid cyst (Echinococcus) with secondary irritation",
+      "details": {
+        "normalized_text": "Hepatic hydatid cyst (Echinococcus) with secondary irritation",
+        "position": 5,
+        "description": "A parasitic cestode infection causing slowly enlarging hepatic cysts; can present with abdominal or pleuritic pain if near the diaphragm; secondary bacterial infection can cause fever and inflammatory response.",
+        "medical_codes": {
+          "icd10": [
+            "B67.8",
+            "B67",
+            "B67.90"
+          ],
+          "snomed": [
+            "26103000",
+            "74942003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P2",
+      "method": "SNOMED_MATCH",
+      "value": "75119003",
+      "matched_gdx": {
+        "Amoebic liver abscess": {
+          "name": "Amoebic liver abscess",
+          "normalized_text": "Amoebic liver abscess",
+          "role": "primary",
+          "icd11": "1A36.10",
+          "icd11_title": "Amoebic liver abscess",
+          "medical_codes": {
+            "icd10": [
+              "A06.4"
+            ],
+            "snomed": [
+              "75119003"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Amoebic liver abscess (Entamoeba histolytica)": {
+          "normalized_text": "Amoebic liver abscess (Entamoeba histolytica)",
+          "position": 2,
+          "description": "Parasitic infection acquired in endemic regions that can cause solitary or multiple liver abscesses with fever and right or left upper quadrant/pleuritic pain; diarrhea may precede or accompany the illness.",
+          "medical_codes": {
+            "icd10": [
+              "A06.4"
+            ],
+            "snomed": [
+              "75119003"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Amoebic liver abscess": {
+            "name": "Amoebic liver abscess",
+            "normalized_text": "Amoebic liver abscess",
+            "role": "primary",
+            "icd11": "1A36.10",
+            "icd11_title": "Amoebic liver abscess",
+            "medical_codes": {
+              "icd10": [
+                "A06.4"
+              ],
+              "snomed": [
+                "75119003"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P2 (code: 75119003)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "27656661",
+  "gdx_details": [
+    {
+      "name": "Multiple sclerosis-like disorder",
+      "details": {
+        "name": "Multiple sclerosis-like disorder",
+        "normalized_text": "Multiple sclerosis-like disorder",
+        "role": "primary",
+        "icd11": "8A44.1",
+        "icd11_title": "Multiple sclerosis-like disorder",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "169500"
+          ],
+          "orpha": [
+            "99027"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Primary progressive multiple sclerosis (PPMS)",
+      "details": {
+        "normalized_text": "Primary progressive multiple sclerosis (PPMS)",
+        "position": 1,
+        "description": "A chronic demyelinating disease characterized by gradual neurologic decline from onset, often with progressive spastic paraparesis and bladder dysfunction; oligoclonal bands are common in CSF.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "428700003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hereditary spastic paraplegia (complicated form with optic atrophy)",
+      "details": {
+        "normalized_text": "Hereditary spastic paraplegia (complicated form with optic atrophy)",
+        "position": 2,
+        "description": "A group of genetic disorders causing length-dependent degeneration of corticospinal tracts leading to progressive spastic paraparesis; complicated forms may include optic atrophy and sensory symptoms.",
+        "medical_codes": {
+          "icd10": [
+            "G11.4",
+            "H47.2",
+            "H47.20"
+          ],
+          "snomed": [
+            "39912006",
+            "76976005"
+          ],
+          "omim": [],
+          "orpha": [
+            "685"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dominant optic atrophy (OPA1) with neurologic “DOA-plus” features",
+      "details": {
+        "normalized_text": "Dominant optic atrophy (OPA1) with neurologic “DOA-plus” features",
+        "position": 3,
+        "description": "A mitochondrial optic neuropathy presenting with insidious bilateral visual loss and dyschromatopsia; some patients develop additional neurologic features such as peripheral neuropathy, ataxia, and spasticity.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "717336005"
+          ],
+          "omim": [
+            "165500"
+          ],
+          "orpha": [
+            "98673"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Primary lateral sclerosis (PLS)",
+      "details": {
+        "normalized_text": "Primary lateral sclerosis (PLS)",
+        "position": 4,
+        "description": "A neurodegenerative disorder with progressive upper motor neuron dysfunction leading to spasticity and gait impairment without lower motor neuron involvement.",
+        "medical_codes": {
+          "icd10": [
+            "G12.23"
+          ],
+          "snomed": [
+            "81211007"
+          ],
+          "omim": [],
+          "orpha": [
+            "35689"
+          ]
+        }
+      }
+    },
+    {
+      "name": "MOG antibody-associated disease (MOGAD)",
+      "details": {
+        "normalized_text": "MOG antibody-associated disease (MOGAD)",
+        "position": 5,
+        "description": "An inflammatory demyelinating disorder often causing optic neuritis and myelitis; AQP4 is negative; course can be relapsing with variable severity.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1237194006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Adrenomyeloneuropathy in a heterozygous female carrier",
+      "details": {
+        "normalized_text": "Adrenomyeloneuropathy in a heterozygous female carrier",
+        "position": 6,
+        "description": "A peroxisomal disorder (X-linked adrenoleukodystrophy) in which female carriers can develop progressive spastic paraparesis and bladder dysfunction later in life; vision is usually not prominently affected.",
+        "medical_codes": {
+          "icd10": [
+            "E71.522"
+          ],
+          "snomed": [
+            "1269423000",
+            "224526002"
+          ],
+          "omim": [
+            "300100"
+          ],
+          "orpha": [
+            "139399"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P5",
+      "method": "LLM_JUDGMENT",
+      "value": "5",
+      "matched_gdx": {
+        "Multiple sclerosis-like disorder": {
+          "name": "Multiple sclerosis-like disorder",
+          "normalized_text": "Multiple sclerosis-like disorder",
+          "role": "primary",
+          "icd11": "8A44.1",
+          "icd11_title": "Multiple sclerosis-like disorder",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [
+              "169500"
+            ],
+            "orpha": [
+              "99027"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "MOG antibody-associated disease (MOGAD)": {
+          "normalized_text": "MOG antibody-associated disease (MOGAD)",
+          "position": 5,
+          "description": "An inflammatory demyelinating disorder often causing optic neuritis and myelitis; AQP4 is negative; course can be relapsing with variable severity.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "1237194006"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Multiple sclerosis-like disorder": {
+            "name": "Multiple sclerosis-like disorder",
+            "normalized_text": "Multiple sclerosis-like disorder",
+            "role": "primary",
+            "icd11": "8A44.1",
+            "icd11_title": "Multiple sclerosis-like disorder",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [
+                "169500"
+              ],
+              "orpha": [
+                "99027"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P5. BERT score 0.714 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.7142530083656311
+            },
+            {
+              "position": 2,
+              "score": 0.47684070467948914
+            },
+            {
+              "position": 3,
+              "score": 0.3665764331817627
+            },
+            {
+              "position": 4,
+              "score": 0.6408292651176453
+            },
+            {
+              "position": 5,
+              "score": 0.5637965202331543
+            },
+            {
+              "position": 6,
+              "score": 0.3124925494194031
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.7142530083656311
+          },
+          "llm_judgment": {
+            "position": 5
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "N-10000022",
+  "gdx_details": [
+    {
+      "name": "Wilson's disease",
+      "details": {
+        "name": "Wilson's disease",
+        "normalized_text": "Wilson's disease",
+        "role": "primary",
+        "icd11": "5C64.00",
+        "icd11_title": "Wilson disease",
+        "medical_codes": {
+          "icd10": [
+            "E83.01"
+          ],
+          "snomed": [
+            "88518009"
+          ],
+          "omim": [
+            "277900"
+          ],
+          "orpha": [
+            "905"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Wilson disease (hepatolenticular degeneration)",
+      "details": {
+        "normalized_text": "Wilson disease (hepatolenticular degeneration)",
+        "position": 1,
+        "description": "Autosomal recessive disorder caused by ATP7B mutations leading to impaired hepatic copper excretion and copper accumulation in the liver, brain (basal ganglia), and cornea.",
+        "medical_codes": {
+          "icd10": [
+            "E83.01"
+          ],
+          "snomed": [
+            "88518009"
+          ],
+          "omim": [
+            "277900"
+          ],
+          "orpha": [
+            "905"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Drug-induced liver injury (DILI) with cholestatic pattern due to herbal medications",
+      "details": {
+        "normalized_text": "Drug-induced liver injury (DILI) with cholestatic pattern due to herbal medications",
+        "position": 2,
+        "description": "Idiosyncratic or intrinsic liver toxicity from herbal/traditional medicines can cause cholestatic hepatitis with pruritus and jaundice.",
+        "medical_codes": {
+          "icd10": [
+            "K83.1"
+          ],
+          "snomed": [
+            "427399008",
+            "33688009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Autoimmune hepatitis (AIH)",
+      "details": {
+        "normalized_text": "Autoimmune hepatitis (AIH)",
+        "position": 3,
+        "description": "Immune-mediated chronic hepatitis, often in adolescent/young women, which can present with jaundice and progress to liver failure if untreated.",
+        "medical_codes": {
+          "icd10": [
+            "K75.4"
+          ],
+          "snomed": [
+            "408335007"
+          ],
+          "omim": [],
+          "orpha": [
+            "2137"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Progressive familial intrahepatic cholestasis (PFIC)",
+      "details": {
+        "normalized_text": "Progressive familial intrahepatic cholestasis (PFIC)",
+        "position": 4,
+        "description": "Inherited defects in bile formation leading to chronic cholestasis, intense pruritus, and jaundice in childhood/adolescence.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "74162007"
+          ],
+          "omim": [],
+          "orpha": [
+            "172"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Primary sclerosing cholangitis (PSC)",
+      "details": {
+        "normalized_text": "Primary sclerosing cholangitis (PSC)",
+        "position": 5,
+        "description": "Chronic cholestatic disease characterized by inflammatory fibrosis of intrahepatic and extrahepatic bile ducts; can present with pruritus and jaundice in adolescents, often associated with inflammatory bowel disease.",
+        "medical_codes": {
+          "icd10": [
+            "K83.01"
+          ],
+          "snomed": [
+            "197441003"
+          ],
+          "omim": [
+            "613806"
+          ],
+          "orpha": [
+            "171"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "88518009",
+      "matched_gdx": {
+        "Wilson's disease": {
+          "name": "Wilson's disease",
+          "normalized_text": "Wilson's disease",
+          "role": "primary",
+          "icd11": "5C64.00",
+          "icd11_title": "Wilson disease",
+          "medical_codes": {
+            "icd10": [
+              "E83.01"
+            ],
+            "snomed": [
+              "88518009"
+            ],
+            "omim": [
+              "277900"
+            ],
+            "orpha": [
+              "905"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Wilson disease (hepatolenticular degeneration)": {
+          "normalized_text": "Wilson disease (hepatolenticular degeneration)",
+          "position": 1,
+          "description": "Autosomal recessive disorder caused by ATP7B mutations leading to impaired hepatic copper excretion and copper accumulation in the liver, brain (basal ganglia), and cornea.",
+          "medical_codes": {
+            "icd10": [
+              "E83.01"
+            ],
+            "snomed": [
+              "88518009"
+            ],
+            "omim": [
+              "277900"
+            ],
+            "orpha": [
+              "905"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Wilson's disease": {
+            "name": "Wilson's disease",
+            "normalized_text": "Wilson's disease",
+            "role": "primary",
+            "icd11": "5C64.00",
+            "icd11_title": "Wilson disease",
+            "medical_codes": {
+              "icd10": [
+                "E83.01"
+              ],
+              "snomed": [
+                "88518009"
+              ],
+              "omim": [
+                "277900"
+              ],
+              "orpha": [
+                "905"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 88518009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "27380346",
+  "gdx_details": [
+    {
+      "name": "Erythema nodosum",
+      "details": {
+        "name": "Erythema nodosum",
+        "normalized_text": "Erythema nodosum",
+        "role": "primary",
+        "icd11": "EB31",
+        "icd11_title": "Erythema nodosum",
+        "medical_codes": {
+          "icd10": [
+            "L52"
+          ],
+          "snomed": [
+            "32861005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Azathioprine hypersensitivity (serum sickness–like reaction)",
+      "details": {
+        "normalized_text": "Azathioprine hypersensitivity (serum sickness–like reaction)",
+        "position": 1,
+        "description": "An idiosyncratic, non–dose-dependent hypersensitivity reaction occurring 1–3 weeks after starting azathioprine, characterized by fever, rash, arthralgias/myalgias, and systemic inflammation; may mimic infection or inflammatory arthritis.",
+        "medical_codes": {
+          "icd10": [
+            "T78.4",
+            "T78.40"
+          ],
+          "snomed": [
+            "372574004",
+            "421961002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Sweet’s syndrome (acute febrile neutrophilic dermatosis), drug-induced",
+      "details": {
+        "normalized_text": "Sweet’s syndrome (acute febrile neutrophilic dermatosis), drug-induced",
+        "position": 2,
+        "description": "A neutrophilic dermatosis presenting with abrupt-onset fever, tender erythematous plaques/nodules, neutrophilia, and arthralgias; can be triggered by medications, including immunomodulators.",
+        "medical_codes": {
+          "icd10": [
+            "L98.2"
+          ],
+          "snomed": [
+            "84625002"
+          ],
+          "omim": [
+            "608068"
+          ],
+          "orpha": [
+            "3243"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Erythema nodosum",
+      "details": {
+        "normalized_text": "Erythema nodosum",
+        "position": 3,
+        "description": "A panniculitis causing tender erythematous subcutaneous nodules, classically on the shins, associated with systemic symptoms and arthralgia; can be triggered by drugs, infections, or systemic disease.",
+        "medical_codes": {
+          "icd10": [
+            "L52"
+          ],
+          "snomed": [
+            "32861005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Leukocytoclastic vasculitis (hypersensitivity vasculitis), drug-induced",
+      "details": {
+        "normalized_text": "Leukocytoclastic vasculitis (hypersensitivity vasculitis), drug-induced",
+        "position": 4,
+        "description": "Small-vessel immune complex–mediated vasculitis triggered by medications, presenting with palpable purpura and possible systemic symptoms such as arthralgias and fever.",
+        "medical_codes": {
+          "icd10": [
+            "M31.0"
+          ],
+          "snomed": [
+            "60555002"
+          ],
+          "omim": [],
+          "orpha": [
+            "889"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Septic arthritis (polyarticular), immunosuppression-associated",
+      "details": {
+        "normalized_text": "Septic arthritis (polyarticular), immunosuppression-associated",
+        "position": 5,
+        "description": "Bacterial infection of joints causing fever, acute joint pain and swelling; can be polyarticular in older or immunocompromised patients.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "48245008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Crystal arthropathy (gout or CPPD)",
+      "details": {
+        "normalized_text": "Crystal arthropathy (gout or CPPD)",
+        "position": 6,
+        "description": "Inflammatory arthritis due to deposition of monosodium urate or calcium pyrophosphate, classically causing acute mono- or oligoarthritis with systemic inflammation.",
+        "medical_codes": {
+          "icd10": [
+            "M11.9",
+            "M11.99",
+            "MUS033",
+            "M10.9",
+            "M10.99"
+          ],
+          "snomed": [
+            "18834007",
+            "90560007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "SNOMED_MATCH",
+      "value": "32861005",
+      "matched_gdx": {
+        "Erythema nodosum": {
+          "name": "Erythema nodosum",
+          "normalized_text": "Erythema nodosum",
+          "role": "primary",
+          "icd11": "EB31",
+          "icd11_title": "Erythema nodosum",
+          "medical_codes": {
+            "icd10": [
+              "L52"
+            ],
+            "snomed": [
+              "32861005"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Erythema nodosum": {
+          "normalized_text": "Erythema nodosum",
+          "position": 3,
+          "description": "A panniculitis causing tender erythematous subcutaneous nodules, classically on the shins, associated with systemic symptoms and arthralgia; can be triggered by drugs, infections, or systemic disease.",
+          "medical_codes": {
+            "icd10": [
+              "L52"
+            ],
+            "snomed": [
+              "32861005"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Erythema nodosum": {
+            "name": "Erythema nodosum",
+            "normalized_text": "Erythema nodosum",
+            "role": "primary",
+            "icd11": "EB31",
+            "icd11_title": "Erythema nodosum",
+            "medical_codes": {
+              "icd10": [
+                "L52"
+              ],
+              "snomed": [
+                "32861005"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P3 (code: 32861005)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "28126713",
+  "gdx_details": [
+    {
+      "name": "Retropharyngeal hematoma",
+      "details": {
+        "name": "Retropharyngeal hematoma",
+        "normalized_text": "Retropharyngeal hematoma",
+        "role": "primary",
+        "icd11": "NA20.2&XJ1C6&XA93V5",
+        "icd11_title": "retropharyngeal haematoma",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Retropharyngeal hematoma",
+      "details": {
+        "normalized_text": "Retropharyngeal hematoma",
+        "position": 1,
+        "description": "A collection of blood in the retropharyngeal space, often due to blunt neck trauma, that can expand and cause posterior pharyngeal wall bulging and airway compromise.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Laryngeal cartilage fracture (e.g., thyroid or cricoid cartilage)",
+      "details": {
+        "normalized_text": "Laryngeal cartilage fracture (e.g., thyroid or cricoid cartilage)",
+        "position": 2,
+        "description": "Fracture of the laryngeal framework after blunt anterior neck trauma, which can cause dysphonia, dysphagia, airway edema, and potential airway obstruction.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "295723007",
+            "69748006",
+            "8600008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thyroid gland hematoma",
+      "details": {
+        "normalized_text": "Thyroid gland hematoma",
+        "position": 3,
+        "description": "Bleeding within or around the thyroid gland following blunt neck trauma, which can expand rapidly and compress the trachea and pharynx, causing dysphonia and dysphagia.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "262773008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cervical esophageal or hypopharyngeal perforation",
+      "details": {
+        "normalized_text": "Cervical esophageal or hypopharyngeal perforation",
+        "position": 4,
+        "description": "A tear of the cervical esophagus or hypopharynx from blunt trauma leading to mediastinal/neck soft tissue swelling, potential retropharyngeal air/hematoma, dysphagia, and risk of infection.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "60075002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cricoarytenoid joint dislocation/subluxation",
+      "details": {
+        "normalized_text": "Cricoarytenoid joint dislocation/subluxation",
+        "position": 5,
+        "description": "Disruption of the cricoarytenoid joint leading to vocal fold immobility and hoarseness, typically from blunt laryngeal trauma or instrumentation.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "263031003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9999999403953552",
+      "matched_gdx": {
+        "Retropharyngeal hematoma": {
+          "name": "Retropharyngeal hematoma",
+          "normalized_text": "Retropharyngeal hematoma",
+          "role": "primary",
+          "icd11": "NA20.2&XJ1C6&XA93V5",
+          "icd11_title": "retropharyngeal haematoma",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Retropharyngeal hematoma": {
+          "normalized_text": "Retropharyngeal hematoma",
+          "position": 1,
+          "description": "A collection of blood in the retropharyngeal space, often due to blunt neck trauma, that can expand and cause posterior pharyngeal wall bulging and airway compromise.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Retropharyngeal hematoma": {
+            "name": "Retropharyngeal hematoma",
+            "normalized_text": "Retropharyngeal hematoma",
+            "role": "primary",
+            "icd11": "NA20.2&XJ1C6&XA93V5",
+            "icd11_title": "retropharyngeal haematoma",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 1.000 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9999999403953552
+            },
+            {
+              "position": 2,
+              "score": 0.2977377772331238
+            },
+            {
+              "position": 3,
+              "score": 0.6018723845481873
+            },
+            {
+              "position": 4,
+              "score": 0.4400979280471802
+            },
+            {
+              "position": 5,
+              "score": 0.42199939489364624
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9999999403953552
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "23449674",
+  "gdx_details": [
+    {
+      "name": "Insulinoma",
+      "details": {
+        "name": "Insulinoma",
+        "normalized_text": "Insulinoma",
+        "role": "primary",
+        "icd11": "2C10.1",
+        "icd11_title": "Insulinoma",
+        "medical_codes": {
+          "icd10": [
+            "M8151/0"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "97279"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Insulinoma (pancreatic beta-cell neuroendocrine tumor)",
+      "details": {
+        "normalized_text": "Insulinoma (pancreatic beta-cell neuroendocrine tumor)",
+        "position": 1,
+        "description": "A functional pancreatic neuroendocrine tumor that autonomously secretes insulin, causing recurrent fasting hypoglycemia (Whipple’s triad). Typically small, hypervascular pancreatic lesions with inappropriately elevated insulin and C-peptide and suppressed ketones during hypoglycemia.",
+        "medical_codes": {
+          "icd10": [
+            "M8151/0"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "97279"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple Endocrine Neoplasia type 1 (MEN1) with insulinoma",
+      "details": {
+        "normalized_text": "Multiple Endocrine Neoplasia type 1 (MEN1) with insulinoma",
+        "position": 2,
+        "description": "An autosomal dominant syndrome characterized by tumors of the parathyroid, pancreatic islet cells (e.g., insulinoma), and pituitary (often prolactinomas). Patients can present with fasting hypoglycemia from an insulinoma and may have elevated prolactin.",
+        "medical_codes": {
+          "icd10": [
+            "E31.21",
+            "M8151/0"
+          ],
+          "snomed": [
+            "30664006"
+          ],
+          "omim": [
+            "131100"
+          ],
+          "orpha": [
+            "652",
+            "97279"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sulfonylurea-induced hypoglycemia (factitious or accidental exposure)",
+      "details": {
+        "normalized_text": "Sulfonylurea-induced hypoglycemia (factitious or accidental exposure)",
+        "position": 3,
+        "description": "Hypoglycemia due to ingestion of insulin secretagogues (e.g., sulfonylureas), leading to elevated endogenous insulin and C-peptide with suppressed ketogenesis. Often requires a positive sulfonylurea screen to confirm.",
+        "medical_codes": {
+          "icd10": [
+            "E16.2"
+          ],
+          "snomed": [
+            "372711004",
+            "302866003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Noninsulinoma pancreatogenous hypoglycemia syndrome (NIPHS/nesidioblastosis)",
+      "details": {
+        "normalized_text": "Noninsulinoma pancreatogenous hypoglycemia syndrome (NIPHS/nesidioblastosis)",
+        "position": 4,
+        "description": "Adult-onset diffuse beta-cell hyperfunction (often post-bariatric surgery) causing endogenous hyperinsulinemic hypoglycemia; imaging may be negative or show diffuse changes rather than a single tumor.",
+        "medical_codes": {
+          "icd10": [
+            "E16.9"
+          ],
+          "snomed": [
+            "717044000",
+            "42681006"
+          ],
+          "omim": [],
+          "orpha": [
+            "276608"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Insulin autoimmune syndrome (Hirata disease)",
+      "details": {
+        "normalized_text": "Insulin autoimmune syndrome (Hirata disease)",
+        "position": 5,
+        "description": "Autoantibodies to insulin cause episodes of hypoglycemia with high measured insulin; often triggered by certain drugs or occurs in specific populations; pancreatic imaging is usually normal.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "408539000"
+          ],
+          "omim": [],
+          "orpha": [
+            "411593"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "ICD10_EXACT",
+      "value": "M8151/0",
+      "matched_gdx": {
+        "Insulinoma": {
+          "name": "Insulinoma",
+          "normalized_text": "Insulinoma",
+          "role": "primary",
+          "icd11": "2C10.1",
+          "icd11_title": "Insulinoma",
+          "medical_codes": {
+            "icd10": [
+              "M8151/0"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "97279"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Insulinoma (pancreatic beta-cell neuroendocrine tumor)": {
+          "normalized_text": "Insulinoma (pancreatic beta-cell neuroendocrine tumor)",
+          "position": 1,
+          "description": "A functional pancreatic neuroendocrine tumor that autonomously secretes insulin, causing recurrent fasting hypoglycemia (Whipple’s triad). Typically small, hypervascular pancreatic lesions with inappropriately elevated insulin and C-peptide and suppressed ketones during hypoglycemia.",
+          "medical_codes": {
+            "icd10": [
+              "M8151/0"
+            ],
+            "snomed": [],
+            "omim": [],
+            "orpha": [
+              "97279"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Insulinoma": {
+            "name": "Insulinoma",
+            "normalized_text": "Insulinoma",
+            "role": "primary",
+            "icd11": "2C10.1",
+            "icd11_title": "Insulinoma",
+            "medical_codes": {
+              "icd10": [
+                "M8151/0"
+              ],
+              "snomed": [],
+              "omim": [],
+              "orpha": [
+                "97279"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found ICD10_EXACT match with DDX at P1 (code: M8151/0)"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "ICD-10 match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "case-19003",
+  "gdx_details": [
+    {
+      "name": "Slipping rib syndrome",
+      "details": {
+        "name": "Slipping rib syndrome",
+        "normalized_text": "Slipping rib syndrome",
+        "role": "primary",
+        "icd11": "FB82.Y",
+        "icd11_title": "slipping rib syndrome",
+        "medical_codes": {
+          "icd10": [
+            "M94.0"
+          ],
+          "snomed": [
+            "30128009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Slipping rib syndrome (interchondral instability of the 8th–10th ribs)",
+      "details": {
+        "normalized_text": "Slipping rib syndrome (interchondral instability of the 8th–10th ribs)",
+        "position": 1,
+        "description": "Hypermobile costal cartilage at the anterior ends of the false ribs causes subluxation/overriding of one rib on another, irritating intercostal nerves and producing activity‑related, sharp pain at the costal margin. Dynamic ultrasound can demonstrate the abnormal rib motion.",
+        "medical_codes": {
+          "icd10": [
+            "M94.0"
+          ],
+          "snomed": [
+            "30128009",
+            "422653006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Costochondritis (non-Tietze)",
+      "details": {
+        "normalized_text": "Costochondritis (non-Tietze)",
+        "position": 2,
+        "description": "Inflammation of the costochondral or chondrosternal junctions causing anterior chest wall pain, typically reproducible with palpation and worsened by activity or certain movements; usually without swelling (unlike Tietze).",
+        "medical_codes": {
+          "icd10": [
+            "M94.0"
+          ],
+          "snomed": [
+            "64109004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Rib stress fracture (8th–9th rib region)",
+      "details": {
+        "normalized_text": "Rib stress fracture (8th–9th rib region)",
+        "position": 3,
+        "description": "Repetitive loading from vigorous training can produce a microfracture of the rib cortex with exertional pain that may progress to pain at rest if untreated.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "422653006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Intercostal muscle strain",
+      "details": {
+        "normalized_text": "Intercostal muscle strain",
+        "position": 4,
+        "description": "Overuse or acute overload of the intercostal muscles causes localized chest wall pain, typically sharp and provoked by trunk movements, deep breathing, or coughing.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "41821000119108"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Xiphoidalgia (xiphodynia)",
+      "details": {
+        "normalized_text": "Xiphoidalgia (xiphodynia)",
+        "position": 5,
+        "description": "Pain arising from irritation or inflammation of the xiphoid process and its attachments, often provoked by trunk flexion, lifting, or certain exercises.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "89874002",
+            "89638008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thoracic radiculopathy (lower thoracic nerve root irritation)",
+      "details": {
+        "normalized_text": "Thoracic radiculopathy (lower thoracic nerve root irritation)",
+        "position": 6,
+        "description": "Compression or irritation of a lower thoracic nerve root from disc pathology or entrapment can cause band-like, sharp pain along the thoracic wall.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "42452002",
+            "51185008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "30128009",
+      "matched_gdx": {
+        "Slipping rib syndrome": {
+          "name": "Slipping rib syndrome",
+          "normalized_text": "Slipping rib syndrome",
+          "role": "primary",
+          "icd11": "FB82.Y",
+          "icd11_title": "slipping rib syndrome",
+          "medical_codes": {
+            "icd10": [
+              "M94.0"
+            ],
+            "snomed": [
+              "30128009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Slipping rib syndrome (interchondral instability of the 8th–10th ribs)": {
+          "normalized_text": "Slipping rib syndrome (interchondral instability of the 8th–10th ribs)",
+          "position": 1,
+          "description": "Hypermobile costal cartilage at the anterior ends of the false ribs causes subluxation/overriding of one rib on another, irritating intercostal nerves and producing activity‑related, sharp pain at the costal margin. Dynamic ultrasound can demonstrate the abnormal rib motion.",
+          "medical_codes": {
+            "icd10": [
+              "M94.0"
+            ],
+            "snomed": [
+              "30128009",
+              "422653006"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Slipping rib syndrome": {
+            "name": "Slipping rib syndrome",
+            "normalized_text": "Slipping rib syndrome",
+            "role": "primary",
+            "icd11": "FB82.Y",
+            "icd11_title": "slipping rib syndrome",
+            "medical_codes": {
+              "icd10": [
+                "M94.0"
+              ],
+              "snomed": [
+                "30128009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 30128009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "20052363",
+  "gdx_details": [
+    {
+      "name": "Lymphangiomatosis of the colon",
+      "details": {
+        "name": "Lymphangiomatosis of the colon",
+        "normalized_text": "Lymphangiomatosis of the colon",
+        "role": "primary",
+        "icd11": "2E81.10",
+        "icd11_title": "diffuse lymphangiomatosis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "86970009",
+            "71854001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Colonic lymphangiomatosis (multiple colonic lymphangiomas)",
+      "details": {
+        "normalized_text": "Colonic lymphangiomatosis (multiple colonic lymphangiomas)",
+        "position": 1,
+        "description": "A benign malformation of dilated lymphatic channels in the colonic submucosa/subserosa that can present as multiple smooth submucosal polypoid lesions; EUS shows multiloculated anechoic cysts and pathology shows cystic spaces lined by lymphatic endothelium (D2-40 positive).",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pneumatosis cystoides intestinalis",
+      "details": {
+        "normalized_text": "Pneumatosis cystoides intestinalis",
+        "position": 2,
+        "description": "Gas-filled cysts within the intestinal wall, often submucosal/subserosal, which can appear as multiple polypoid blebs endoscopically; radiography may show intramural gas. Can be idiopathic and asymptomatic.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "17465007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Colitis cystica profunda",
+      "details": {
+        "normalized_text": "Colitis cystica profunda",
+        "position": 3,
+        "description": "A benign condition characterized by mucin-filled cysts in the submucosa due to mucosal herniation/prolapse; typically involves rectum or distal colon and can mimic neoplasia.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "40663003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Colonic lipomatosis (multiple submucosal lipomas)",
+      "details": {
+        "normalized_text": "Colonic lipomatosis (multiple submucosal lipomas)",
+        "position": 4,
+        "description": "Benign proliferation of mature adipose tissue in the colonic submucosa; can be multiple and cause smooth submucosal bulges and filling defects on contrast studies.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Mucosal prolapse syndrome/solitary rectal ulcer syndrome spectrum (polypoid variant)",
+      "details": {
+        "normalized_text": "Mucosal prolapse syndrome/solitary rectal ulcer syndrome spectrum (polypoid variant)",
+        "position": 5,
+        "description": "Disorder of mucosal prolapse leading to polypoid lesions with fibromuscular hyperplasia; may present with polypoid masses in the rectosigmoid and can be mistaken for neoplasms.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "716685003"
+          ],
+          "omim": [],
+          "orpha": [
+            "209964"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "BERT_MATCH",
+      "value": "0.897018551826477",
+      "matched_gdx": {
+        "Lymphangiomatosis of the colon": {
+          "name": "Lymphangiomatosis of the colon",
+          "normalized_text": "Lymphangiomatosis of the colon",
+          "role": "primary",
+          "icd11": "2E81.10",
+          "icd11_title": "diffuse lymphangiomatosis",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "86970009",
+              "71854001"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Colonic lymphangiomatosis (multiple colonic lymphangiomas)": {
+          "normalized_text": "Colonic lymphangiomatosis (multiple colonic lymphangiomas)",
+          "position": 1,
+          "description": "A benign malformation of dilated lymphatic channels in the colonic submucosa/subserosa that can present as multiple smooth submucosal polypoid lesions; EUS shows multiloculated anechoic cysts and pathology shows cystic spaces lined by lymphatic endothelium (D2-40 positive).",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Lymphangiomatosis of the colon": {
+            "name": "Lymphangiomatosis of the colon",
+            "normalized_text": "Lymphangiomatosis of the colon",
+            "role": "primary",
+            "icd11": "2E81.10",
+            "icd11_title": "diffuse lymphangiomatosis",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "86970009",
+                "71854001"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['86970009', '71854001'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P1 (score: 0.897) was better than LLM's choice P1 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.897018551826477
+            },
+            {
+              "position": 2,
+              "score": 0.5185168981552124
+            },
+            {
+              "position": 3,
+              "score": 0.5942494869232178
+            },
+            {
+              "position": 4,
+              "score": 0.7218151092529297
+            },
+            {
+              "position": 5,
+              "score": 0.36296147108078003
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.897018551826477
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "30687305",
+  "gdx_details": [
+    {
+      "name": "Refractory cytopenias with multilineage dysplasia",
+      "details": {
+        "name": "Refractory cytopenias with multilineage dysplasia",
+        "normalized_text": "Refractory cytopenias with multilineage dysplasia",
+        "role": "primary",
+        "icd11": "2A34",
+        "icd11_title": "Refractory cytopenia with multi-lineage dysplasia",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Myeloid/lymphoid neoplasm with eosinophilia (e.g., PDGFRA/PDGFRB/FGFR1 rearrangement) or chronic eosinophilic leukemia",
+      "details": {
+        "normalized_text": "Myeloid/lymphoid neoplasm with eosinophilia (e.g., PDGFRA/PDGFRB/FGFR1 rearrangement) or chronic eosinophilic leukemia",
+        "position": 1,
+        "description": "A clonal myeloid disorder characterized by persistent eosinophilia, bone-marrow eosinophilic proliferation and cytogenetic abnormalities; eosinophils infiltrate organs including lungs, causing cough, wheeze and infiltrates; often steroid-refractory.",
+        "medical_codes": {
+          "icd10": [
+            "D72.1"
+          ],
+          "snomed": [
+            "255391005",
+            "414628006",
+            "188733003"
+          ],
+          "omim": [
+            "173490",
+            "173410",
+            "136350"
+          ],
+          "orpha": [
+            "168940"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Idiopathic hypereosinophilic syndrome (HES)",
+      "details": {
+        "normalized_text": "Idiopathic hypereosinophilic syndrome (HES)",
+        "position": 2,
+        "description": "A disorder of persistent, unexplained eosinophilia (>1.5 ×10^9/L for >1 month) with evidence of organ damage; lungs are commonly affected with cough, wheeze, and infiltrates.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "423294001"
+          ],
+          "omim": [
+            "607685"
+          ],
+          "orpha": [
+            "3260"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Chronic eosinophilic pneumonia",
+      "details": {
+        "normalized_text": "Chronic eosinophilic pneumonia",
+        "position": 3,
+        "description": "An eosinophilic lung disease with subacute cough, wheeze, dyspnea and peripheral blood or BAL eosinophilia; imaging often shows peripheral consolidations and ground-glass (‘photographic negative of pulmonary edema’); typically steroid-responsive.",
+        "medical_codes": {
+          "icd10": [
+            "J82.81"
+          ],
+          "snomed": [
+            "233692000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Eosinophilic granulomatosis with polyangiitis (EGPA, Churg–Strauss)",
+      "details": {
+        "normalized_text": "Eosinophilic granulomatosis with polyangiitis (EGPA, Churg–Strauss)",
+        "position": 4,
+        "description": "A small-vessel eosinophilic vasculitis characterized by asthma, eosinophilia, and pulmonary infiltrates with systemic features such as sinusitis, neuropathy, and skin lesions; ANCA may be negative.",
+        "medical_codes": {
+          "icd10": [
+            "M30.1"
+          ],
+          "snomed": [
+            "82275008"
+          ],
+          "omim": [],
+          "orpha": [
+            "183"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Drug-induced eosinophilic pneumonia",
+      "details": {
+        "normalized_text": "Drug-induced eosinophilic pneumonia",
+        "position": 5,
+        "description": "Pulmonary eosinophilia triggered by medications (e.g., antibiotics, NSAIDs, daptomycin), presenting with cough, dyspnea, hypoxemia and infiltrates; improves with drug withdrawal and steroids.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Refractory cytopenias with multilineage dysplasia": {
+          "name": "Refractory cytopenias with multilineage dysplasia",
+          "normalized_text": "Refractory cytopenias with multilineage dysplasia",
+          "role": "primary",
+          "icd11": "2A34",
+          "icd11_title": "Refractory cytopenia with multi-lineage dysplasia",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Myeloid/lymphoid neoplasm with eosinophilia (e.g., PDGFRA/PDGFRB/FGFR1 rearrangement) or chronic eosinophilic leukemia": {
+          "normalized_text": "Myeloid/lymphoid neoplasm with eosinophilia (e.g., PDGFRA/PDGFRB/FGFR1 rearrangement) or chronic eosinophilic leukemia",
+          "position": 1,
+          "description": "A clonal myeloid disorder characterized by persistent eosinophilia, bone-marrow eosinophilic proliferation and cytogenetic abnormalities; eosinophils infiltrate organs including lungs, causing cough, wheeze and infiltrates; often steroid-refractory.",
+          "medical_codes": {
+            "icd10": [
+              "D72.1"
+            ],
+            "snomed": [
+              "255391005",
+              "414628006",
+              "188733003"
+            ],
+            "omim": [
+              "173490",
+              "173410",
+              "136350"
+            ],
+            "orpha": [
+              "168940"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Refractory cytopenias with multilineage dysplasia": {
+            "name": "Refractory cytopenias with multilineage dysplasia",
+            "normalized_text": "Refractory cytopenias with multilineage dysplasia",
+            "role": "primary",
+            "icd11": "2A34",
+            "icd11_title": "Refractory cytopenia with multi-lineage dysplasia",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.499 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4992520809173584
+            },
+            {
+              "position": 2,
+              "score": 0.4011896252632141
+            },
+            {
+              "position": 3,
+              "score": 0.37015581130981445
+            },
+            {
+              "position": 4,
+              "score": 0.32685336470603943
+            },
+            {
+              "position": 5,
+              "score": 0.3105486333370209
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.4992520809173584
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "27074070",
+  "gdx_details": [
+    {
+      "name": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+      "details": {
+        "name": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+        "normalized_text": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+        "role": "primary",
+        "icd11": "2B30.12",
+        "icd11_title": "Mixed cellularity classical Hodgkin lymphoma",
+        "medical_codes": {
+          "icd10": [
+            "C81.7"
+          ],
+          "snomed": [
+            "762690000"
+          ],
+          "omim": [],
+          "orpha": [
+            "391"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Burkitt lymphoma (abdominal)",
+      "details": {
+        "normalized_text": "Burkitt lymphoma (abdominal)",
+        "position": 1,
+        "description": "An aggressive B‑cell non‑Hodgkin lymphoma that often arises in the ileocecal region in children; frequently presents with abdominal pain, fevers, weight loss, anemia, and can show FDG‑avid masses and liver involvement.",
+        "medical_codes": {
+          "icd10": [
+            "C83.7",
+            "M9687/3",
+            "C83.70"
+          ],
+          "snomed": [
+            "77381001",
+            "818983003"
+          ],
+          "omim": [
+            "113970"
+          ],
+          "orpha": [
+            "543"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crohn’s disease (ileocolic inflammatory bowel disease)",
+      "details": {
+        "normalized_text": "Crohn’s disease (ileocolic inflammatory bowel disease)",
+        "position": 2,
+        "description": "A chronic, transmural inflammatory bowel disease that commonly involves the terminal ileum and proximal colon, causing abdominal pain, diarrhea, weight loss, anemia, and growth delay in children.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Intestinal (abdominal) tuberculosis",
+      "details": {
+        "normalized_text": "Intestinal (abdominal) tuberculosis",
+        "position": 3,
+        "description": "Mycobacterial infection involving the ileocecal region with caseating granulomas, mesenteric adenitis, and possible hepatic lesions; presents with fever, weight loss, abdominal pain, and anemia.",
+        "medical_codes": {
+          "icd10": [
+            "INF001",
+            "A15-A19.9",
+            "A15-A19"
+          ],
+          "snomed": [
+            "818983003",
+            "56717001"
+          ],
+          "omim": [],
+          "orpha": [
+            "3389"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Yersinia enterocolitica/pseudotuberculosis infection (terminal ileitis with mesenteric adenitis)",
+      "details": {
+        "normalized_text": "Yersinia enterocolitica/pseudotuberculosis infection (terminal ileitis with mesenteric adenitis)",
+        "position": 4,
+        "description": "Enteric bacterial infection that mimics appendicitis or Crohn’s disease; targets terminal ileum and mesenteric nodes, causing fever, abdominal pain, diarrhea, and sometimes hematochezia.",
+        "medical_codes": {
+          "icd10": [
+            "K50.0",
+            "I88.0"
+          ],
+          "snomed": [
+            "65255000",
+            "235709008",
+            "44897000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Entamoeba histolytica infection (amebic colitis with possible liver abscess)",
+      "details": {
+        "normalized_text": "Entamoeba histolytica infection (amebic colitis with possible liver abscess)",
+        "position": 5,
+        "description": "Protozoal infection causing dysenteric colitis and, via portal spread, hepatic abscesses; presents with abdominal pain, fever, and blood in stools after travel to endemic areas.",
+        "medical_codes": {
+          "icd10": [
+            "A06",
+            "K75.0"
+          ],
+          "snomed": [
+            "388759003",
+            "235747003",
+            "27916005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Mixed-cellularity subtype of classic Hodgkin's lymphoma": {
+          "name": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+          "normalized_text": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+          "role": "primary",
+          "icd11": "2B30.12",
+          "icd11_title": "Mixed cellularity classical Hodgkin lymphoma",
+          "medical_codes": {
+            "icd10": [
+              "C81.7"
+            ],
+            "snomed": [
+              "762690000"
+            ],
+            "omim": [],
+            "orpha": [
+              "391"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Burkitt lymphoma (abdominal)": {
+          "normalized_text": "Burkitt lymphoma (abdominal)",
+          "position": 1,
+          "description": "An aggressive B‑cell non‑Hodgkin lymphoma that often arises in the ileocecal region in children; frequently presents with abdominal pain, fevers, weight loss, anemia, and can show FDG‑avid masses and liver involvement.",
+          "medical_codes": {
+            "icd10": [
+              "C83.7",
+              "M9687/3",
+              "C83.70"
+            ],
+            "snomed": [
+              "77381001",
+              "818983003"
+            ],
+            "omim": [
+              "113970"
+            ],
+            "orpha": [
+              "543"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Mixed-cellularity subtype of classic Hodgkin's lymphoma": {
+            "name": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+            "normalized_text": "Mixed-cellularity subtype of classic Hodgkin's lymphoma",
+            "role": "primary",
+            "icd11": "2B30.12",
+            "icd11_title": "Mixed cellularity classical Hodgkin lymphoma",
+            "medical_codes": {
+              "icd10": [
+                "C81.7"
+              ],
+              "snomed": [
+                "762690000"
+              ],
+              "omim": [],
+              "orpha": [
+                "391"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['762690000'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['C81.7']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.309 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.30888688564300537
+            },
+            {
+              "position": 2,
+              "score": 0.24309587478637695
+            },
+            {
+              "position": 3,
+              "score": 0.14891697466373444
+            },
+            {
+              "position": 4,
+              "score": 0.23362943530082703
+            },
+            {
+              "position": 5,
+              "score": 0.27059048414230347
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.30888688564300537
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "N-10000064",
+  "gdx_details": [
+    {
+      "name": "Plasmodium falciparum malaria",
+      "details": {
+        "name": "Plasmodium falciparum malaria",
+        "normalized_text": "Plasmodium falciparum malaria",
+        "role": "primary",
+        "icd11": "1F40.Z",
+        "icd11_title": "Malaria due to Plasmodium falciparum",
+        "medical_codes": {
+          "icd10": [
+            "B50.9"
+          ],
+          "snomed": [
+            "62676009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Severe Plasmodium falciparum malaria",
+      "details": {
+        "normalized_text": "Severe Plasmodium falciparum malaria",
+        "position": 1,
+        "description": "A mosquito-borne parasitic infection common in East Africa; P. falciparum can cause severe disease with hemolysis, thrombocytopenia, acute kidney injury, and hepatic dysfunction.",
+        "medical_codes": {
+          "icd10": [
+            "B50.9"
+          ],
+          "snomed": [
+            "62676009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Dengue fever",
+      "details": {
+        "normalized_text": "Dengue fever",
+        "position": 2,
+        "description": "A mosquito-borne flaviviral illness present in East Africa, characterized by acute febrile illness with severe headache, myalgias, leukopenia/lymphopenia, hemoconcentration, and thrombocytopenia.",
+        "medical_codes": {
+          "icd10": [
+            "A90"
+          ],
+          "snomed": [
+            "38362002"
+          ],
+          "omim": [],
+          "orpha": [
+            "99828"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leptospirosis (Weil disease)",
+      "details": {
+        "normalized_text": "Leptospirosis (Weil disease)",
+        "position": 3,
+        "description": "A zoonotic spirochetal infection acquired from water contaminated by animal urine; severe disease can cause jaundice, renal failure, and myalgias.",
+        "medical_codes": {
+          "icd10": [
+            "A27.9",
+            "A27.0"
+          ],
+          "snomed": [
+            "77377001",
+            "398067003"
+          ],
+          "omim": [],
+          "orpha": [
+            "509"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Enteric fever (typhoid/paratyphoid)",
+      "details": {
+        "normalized_text": "Enteric fever (typhoid/paratyphoid)",
+        "position": 4,
+        "description": "Systemic infection due to Salmonella enterica serovars Typhi/Paratyphi acquired via contaminated food or water, causing prolonged fever and gastrointestinal symptoms.",
+        "medical_codes": {
+          "icd10": [
+            "A01.0",
+            "A01.00",
+            "A01.4"
+          ],
+          "snomed": [
+            "4834000",
+            "85904008"
+          ],
+          "omim": [],
+          "orpha": [
+            "99745",
+            "443227"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Acute viral hepatitis (A or E)",
+      "details": {
+        "normalized_text": "Acute viral hepatitis (A or E)",
+        "position": 5,
+        "description": "Fecal–oral transmitted hepatitis causing acute hepatitis with jaundice, anorexia, and gastrointestinal symptoms; common in travelers.",
+        "medical_codes": {
+          "icd10": [
+            "B17.9"
+          ],
+          "snomed": [
+            "57412004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Babesiosis",
+      "details": {
+        "normalized_text": "Babesiosis",
+        "position": 6,
+        "description": "Tick-borne intraerythrocytic parasitic infection that can cause hemolytic anemia, thrombocytopenia, and dark urine; endemic in parts of the northeastern US.",
+        "medical_codes": {
+          "icd10": [
+            "B60.0"
+          ],
+          "snomed": [
+            "21061004"
+          ],
+          "omim": [],
+          "orpha": [
+            "108"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "62676009",
+      "matched_gdx": {
+        "Plasmodium falciparum malaria": {
+          "name": "Plasmodium falciparum malaria",
+          "normalized_text": "Plasmodium falciparum malaria",
+          "role": "primary",
+          "icd11": "1F40.Z",
+          "icd11_title": "Malaria due to Plasmodium falciparum",
+          "medical_codes": {
+            "icd10": [
+              "B50.9"
+            ],
+            "snomed": [
+              "62676009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Severe Plasmodium falciparum malaria": {
+          "normalized_text": "Severe Plasmodium falciparum malaria",
+          "position": 1,
+          "description": "A mosquito-borne parasitic infection common in East Africa; P. falciparum can cause severe disease with hemolysis, thrombocytopenia, acute kidney injury, and hepatic dysfunction.",
+          "medical_codes": {
+            "icd10": [
+              "B50.9"
+            ],
+            "snomed": [
+              "62676009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Plasmodium falciparum malaria": {
+            "name": "Plasmodium falciparum malaria",
+            "normalized_text": "Plasmodium falciparum malaria",
+            "role": "primary",
+            "icd11": "1F40.Z",
+            "icd11_title": "Malaria due to Plasmodium falciparum",
+            "medical_codes": {
+              "icd10": [
+                "B50.9"
+              ],
+              "snomed": [
+                "62676009"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 62676009)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "27068836",
+  "gdx_details": [
+    {
+      "name": "Full-thickness oesophageal segment destruction",
+      "details": {
+        "name": "Full-thickness oesophageal segment destruction",
+        "normalized_text": "Full-thickness oesophageal segment destruction",
+        "role": "primary",
+        "icd11": "DA2Z",
+        "icd11_title": "disorder of oesophagus",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Pharyngoesophageal perforation/fistula from cervical spine hardware erosion",
+      "details": {
+        "normalized_text": "Pharyngoesophageal perforation/fistula from cervical spine hardware erosion",
+        "position": 1,
+        "description": "A late complication of anterior cervical spine instrumentation where hardware erodes into the posterior pharynx or cervical esophagus, creating a perforation or fistula that seeds the prevertebral space, mediastinum, and paraspinal tissues.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "428794004",
+            "421060004",
+            "15498001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Infection of cervical spine instrumentation with prevertebral/paraspinal abscess",
+      "details": {
+        "normalized_text": "Infection of cervical spine instrumentation with prevertebral/paraspinal abscess",
+        "position": 2,
+        "description": "Bacterial infection involving anterior cervical fusion hardware leading to prevertebral soft tissue infection and contiguous spread to form extensive paraspinal abscesses.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "203217000",
+            "11980001000004100"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Esophageal perforation with mediastinitis and paraspinal abscess (non-hardware related)",
+      "details": {
+        "normalized_text": "Esophageal perforation with mediastinitis and paraspinal abscess (non-hardware related)",
+        "position": 3,
+        "description": "Full-thickness esophageal wall breach (spontaneous, iatrogenic, or traumatic) causing contamination of the mediastinum and extension into paraspinal spaces.",
+        "medical_codes": {
+          "icd10": [
+            "K22.3",
+            "J98.51"
+          ],
+          "snomed": [
+            "23387001",
+            "373409004",
+            "11980001000004100"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Descending necrotizing mediastinitis from an oropharyngeal source",
+      "details": {
+        "normalized_text": "Descending necrotizing mediastinitis from an oropharyngeal source",
+        "position": 4,
+        "description": "A severe infection originating from the oropharynx or cervical spaces that tracks along fascial planes into the mediastinum, sometimes extending to paraspinal regions.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "75294000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Vertebral osteomyelitis/discitis with contiguous paraspinal abscess",
+      "details": {
+        "normalized_text": "Vertebral osteomyelitis/discitis with contiguous paraspinal abscess",
+        "position": 5,
+        "description": "Infection of vertebral bodies and intervertebral discs leading to inflammatory destruction and formation of adjacent paraspinal abscesses.",
+        "medical_codes": {
+          "icd10": [
+            "M46.2",
+            "M46.29",
+            "M46.20",
+            "M46.4"
+          ],
+          "snomed": [
+            "203241002",
+            "2304001",
+            "11980001000004100"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Tuberculous spondylitis (Pott disease) with paraspinal abscess",
+      "details": {
+        "normalized_text": "Tuberculous spondylitis (Pott disease) with paraspinal abscess",
+        "position": 6,
+        "description": "Mycobacterium tuberculosis infection of the spine causing vertebral destruction and large paraspinal 'cold' abscesses that can span multiple levels.",
+        "medical_codes": {
+          "icd10": [
+            "M49.0",
+            "A18.01"
+          ],
+          "snomed": [
+            "35984006",
+            "11980001000004100"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "LLM_JUDGMENT",
+      "value": "3",
+      "matched_gdx": {
+        "Full-thickness oesophageal segment destruction": {
+          "name": "Full-thickness oesophageal segment destruction",
+          "normalized_text": "Full-thickness oesophageal segment destruction",
+          "role": "primary",
+          "icd11": "DA2Z",
+          "icd11_title": "disorder of oesophagus",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Esophageal perforation with mediastinitis and paraspinal abscess (non-hardware related)": {
+          "normalized_text": "Esophageal perforation with mediastinitis and paraspinal abscess (non-hardware related)",
+          "position": 3,
+          "description": "Full-thickness esophageal wall breach (spontaneous, iatrogenic, or traumatic) causing contamination of the mediastinum and extension into paraspinal spaces.",
+          "medical_codes": {
+            "icd10": [
+              "K22.3",
+              "J98.51"
+            ],
+            "snomed": [
+              "23387001",
+              "373409004",
+              "11980001000004100"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Full-thickness oesophageal segment destruction": {
+            "name": "Full-thickness oesophageal segment destruction",
+            "normalized_text": "Full-thickness oesophageal segment destruction",
+            "role": "primary",
+            "icd11": "DA2Z",
+            "icd11_title": "disorder of oesophagus",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P3. BERT score 0.473 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.35459989309310913
+            },
+            {
+              "position": 2,
+              "score": 0.3148183226585388
+            },
+            {
+              "position": 3,
+              "score": 0.47263309359550476
+            },
+            {
+              "position": 4,
+              "score": 0.3436688184738159
+            },
+            {
+              "position": 5,
+              "score": 0.31373757123947144
+            },
+            {
+              "position": 6,
+              "score": 0.250562846660614
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.47263309359550476
+          },
+          "llm_judgment": {
+            "position": 3
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "case-18872",
+  "gdx_details": [
+    {
+      "name": "Boerhaave syndrome",
+      "details": {
+        "name": "Boerhaave syndrome",
+        "normalized_text": "Boerhaave syndrome",
+        "role": "primary",
+        "icd11": "DA20.30",
+        "icd11_title": "Boerhaave syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "19995004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Boerhaave syndrome (spontaneous esophageal perforation)",
+      "details": {
+        "normalized_text": "Boerhaave syndrome (spontaneous esophageal perforation)",
+        "position": 1,
+        "description": "Full-thickness rupture of the esophagus, most often after forceful vomiting, leading to mediastinal air and contamination of the pleural space, classically left-sided.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "19995004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Spontaneous pneumomediastinum due to barotrauma from vomiting",
+      "details": {
+        "normalized_text": "Spontaneous pneumomediastinum due to barotrauma from vomiting",
+        "position": 2,
+        "description": "Alveolar rupture with air dissecting into the mediastinum, often precipitated by Valsalva-like events such as vomiting or retching.",
+        "medical_codes": {
+          "icd10": [
+            "J98.2",
+            "T70.29",
+            "R11.10"
+          ],
+          "snomed": [
+            "16838000",
+            "406445001",
+            "422400008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute aortic dissection",
+      "details": {
+        "normalized_text": "Acute aortic dissection",
+        "position": 3,
+        "description": "Tear of the aortic intima leading to separation of the aortic wall layers, classically presenting with sudden severe chest pain radiating to the back.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute pancreatitis",
+      "details": {
+        "normalized_text": "Acute pancreatitis",
+        "position": 4,
+        "description": "Acute inflammation of the pancreas often due to gallstones or alcohol, causing epigastric pain radiating to the back with nausea/vomiting.",
+        "medical_codes": {
+          "icd10": [
+            "K85"
+          ],
+          "snomed": [
+            "197456007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Acute coronary syndrome (myocardial infarction/unstable angina)",
+      "details": {
+        "normalized_text": "Acute coronary syndrome (myocardial infarction/unstable angina)",
+        "position": 5,
+        "description": "Ischemia of the myocardium due to plaque rupture and thrombosis, presenting with chest pain and autonomic symptoms.",
+        "medical_codes": {
+          "icd10": [
+            "I21",
+            "I20.0"
+          ],
+          "snomed": [
+            "394659003",
+            "22298006",
+            "25106000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Secondary hydropneumothorax (e.g., ruptured bleb or other pleural pathology)",
+      "details": {
+        "normalized_text": "Secondary hydropneumothorax (e.g., ruptured bleb or other pleural pathology)",
+        "position": 6,
+        "description": "Air and fluid within the pleural space causing pleuritic chest pain and dyspnea; may result from underlying lung disease or trauma.",
+        "medical_codes": {
+          "icd10": [
+            "J94.8"
+          ],
+          "snomed": [
+            "65933003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "19995004",
+      "matched_gdx": {
+        "Boerhaave syndrome": {
+          "name": "Boerhaave syndrome",
+          "normalized_text": "Boerhaave syndrome",
+          "role": "primary",
+          "icd11": "DA20.30",
+          "icd11_title": "Boerhaave syndrome",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "19995004"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Boerhaave syndrome (spontaneous esophageal perforation)": {
+          "normalized_text": "Boerhaave syndrome (spontaneous esophageal perforation)",
+          "position": 1,
+          "description": "Full-thickness rupture of the esophagus, most often after forceful vomiting, leading to mediastinal air and contamination of the pleural space, classically left-sided.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "19995004"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Boerhaave syndrome": {
+            "name": "Boerhaave syndrome",
+            "normalized_text": "Boerhaave syndrome",
+            "role": "primary",
+            "icd11": "DA20.30",
+            "icd11_title": "Boerhaave syndrome",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "19995004"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 19995004)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "N-10000120",
+  "gdx_details": [
+    {
+      "name": "Functional seizures",
+      "details": {
+        "name": "Functional seizures",
+        "normalized_text": "Functional seizures",
+        "role": "primary",
+        "icd11": "8A68.Z",
+        "icd11_title": "Seizure NOS",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "191714002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Psychogenic nonepileptic seizures (PNES)",
+      "details": {
+        "normalized_text": "Psychogenic nonepileptic seizures (PNES)",
+        "position": 1,
+        "description": "Paroxysmal events resembling epileptic seizures but arising from functional/psychological mechanisms rather than abnormal cortical electrical discharges; frequently associated with trauma, PTSD, anxiety, and depression.",
+        "medical_codes": {
+          "icd10": [
+            "F44.5"
+          ],
+          "snomed": [
+            "191714002"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Generalized tonic–clonic seizures (primary generalized epilepsy)",
+      "details": {
+        "normalized_text": "Generalized tonic–clonic seizures (primary generalized epilepsy)",
+        "position": 2,
+        "description": "Epilepsy characterized by generalized onset seizures with loss of consciousness, diffuse tonic–clonic activity, and postictal confusion; often shows generalized spike-and-wave or polyspike-and-wave on EEG.",
+        "medical_codes": {
+          "icd10": [
+            "G40.3"
+          ],
+          "snomed": [
+            "36803009"
+          ],
+          "omim": [
+            "600669"
+          ],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Focal epilepsy with focal to bilateral tonic–clonic seizures (possible occipital onset)",
+      "details": {
+        "normalized_text": "Focal epilepsy with focal to bilateral tonic–clonic seizures (possible occipital onset)",
+        "position": 3,
+        "description": "Epileptic seizures originating from a focal cortical region (e.g., occipital lobe) that may secondarily generalize; occipital onset often presents with visual symptoms or occipital headaches.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "230381009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Alcohol-related seizures (intoxication/withdrawal-associated)",
+      "details": {
+        "normalized_text": "Alcohol-related seizures (intoxication/withdrawal-associated)",
+        "position": 4,
+        "description": "Generalized tonic–clonic seizures occurring in the context of acute alcohol intoxication or, more commonly, withdrawal; alcohol lowers seizure threshold and can precipitate seizures in susceptible individuals.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "361268000",
+            "1149322001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Convulsive syncope",
+      "details": {
+        "normalized_text": "Convulsive syncope",
+        "position": 5,
+        "description": "Transient loss of consciousness due to cerebral hypoperfusion, which may be accompanied by brief myoclonic or tonic movements; often preceded by autonomic symptoms such as palpitations and nausea.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "438113009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "191714002",
+      "matched_gdx": {
+        "Functional seizures": {
+          "name": "Functional seizures",
+          "normalized_text": "Functional seizures",
+          "role": "primary",
+          "icd11": "8A68.Z",
+          "icd11_title": "Seizure NOS",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "191714002"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Psychogenic nonepileptic seizures (PNES)": {
+          "normalized_text": "Psychogenic nonepileptic seizures (PNES)",
+          "position": 1,
+          "description": "Paroxysmal events resembling epileptic seizures but arising from functional/psychological mechanisms rather than abnormal cortical electrical discharges; frequently associated with trauma, PTSD, anxiety, and depression.",
+          "medical_codes": {
+            "icd10": [
+              "F44.5"
+            ],
+            "snomed": [
+              "191714002"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Functional seizures": {
+            "name": "Functional seizures",
+            "normalized_text": "Functional seizures",
+            "role": "primary",
+            "icd11": "8A68.Z",
+            "icd11_title": "Seizure NOS",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "191714002"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 191714002)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "25016996",
+  "gdx_details": [
+    {
+      "name": "Obturator hernia",
+      "details": {
+        "name": "Obturator hernia",
+        "normalized_text": "Obturator hernia",
+        "role": "primary",
+        "icd11": "DD50.1",
+        "icd11_title": "Obturator hernia",
+        "medical_codes": {
+          "icd10": [
+            "K45"
+          ],
+          "snomed": [
+            "60627008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Obturator hernia with incarcerated small bowel",
+      "details": {
+        "normalized_text": "Obturator hernia with incarcerated small bowel",
+        "position": 1,
+        "description": "A rare pelvic hernia through the obturator canal, most common in elderly, thin, multiparous women, often causing small-bowel obstruction and medial thigh/knee pain from obturator nerve irritation (Howship–Romberg sign).",
+        "medical_codes": {
+          "icd10": [
+            "K45"
+          ],
+          "snomed": [
+            "60627008",
+            "113276009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Incarcerated femoral hernia",
+      "details": {
+        "normalized_text": "Incarcerated femoral hernia",
+        "position": 2,
+        "description": "Herniation below the inguinal ligament through the femoral canal, common in elderly, thin, multiparous women and a frequent cause of small-bowel obstruction when incarcerated.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Gallstone ileus",
+      "details": {
+        "normalized_text": "Gallstone ileus",
+        "position": 3,
+        "description": "Mechanical small-bowel obstruction from a gallstone that enters the gut via a cholecystoenteric fistula, typically in elderly women.",
+        "medical_codes": {
+          "icd10": [
+            "K56.3"
+          ],
+          "snomed": [
+            "37976006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Adhesive small-bowel obstruction (congenital band or idiopathic)",
+      "details": {
+        "normalized_text": "Adhesive small-bowel obstruction (congenital band or idiopathic)",
+        "position": 4,
+        "description": "Small-bowel obstruction due to fibrous bands/adhesions; while most often post-surgical, it can rarely occur from congenital bands or idiopathic adhesions.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Internal hernia (e.g., paraduodenal or pelvic internal hernia)",
+      "details": {
+        "normalized_text": "Internal hernia (e.g., paraduodenal or pelvic internal hernia)",
+        "position": 5,
+        "description": "Protrusion of bowel through a peritoneal or mesenteric defect within the abdomen/pelvis, causing intermittent or acute small-bowel obstruction without external hernia signs.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "264118000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "60627008",
+      "matched_gdx": {
+        "Obturator hernia": {
+          "name": "Obturator hernia",
+          "normalized_text": "Obturator hernia",
+          "role": "primary",
+          "icd11": "DD50.1",
+          "icd11_title": "Obturator hernia",
+          "medical_codes": {
+            "icd10": [
+              "K45"
+            ],
+            "snomed": [
+              "60627008"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Obturator hernia with incarcerated small bowel": {
+          "normalized_text": "Obturator hernia with incarcerated small bowel",
+          "position": 1,
+          "description": "A rare pelvic hernia through the obturator canal, most common in elderly, thin, multiparous women, often causing small-bowel obstruction and medial thigh/knee pain from obturator nerve irritation (Howship–Romberg sign).",
+          "medical_codes": {
+            "icd10": [
+              "K45"
+            ],
+            "snomed": [
+              "60627008",
+              "113276009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Obturator hernia": {
+            "name": "Obturator hernia",
+            "normalized_text": "Obturator hernia",
+            "role": "primary",
+            "icd11": "DD50.1",
+            "icd11_title": "Obturator hernia",
+            "medical_codes": {
+              "icd10": [
+                "K45"
+              ],
+              "snomed": [
+                "60627008"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 60627008)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "22065912",
+  "gdx_details": [
+    {
+      "name": "Susac syndrome",
+      "details": {
+        "name": "Susac syndrome",
+        "normalized_text": "Susac syndrome",
+        "role": "primary",
+        "icd11": "8A45.2Y",
+        "icd11_title": "Susac syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702575003"
+          ],
+          "omim": [],
+          "orpha": [
+            "838"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Susac syndrome (retino-cochleo-cerebral vasculopathy)",
+      "details": {
+        "normalized_text": "Susac syndrome (retino-cochleo-cerebral vasculopathy)",
+        "position": 1,
+        "description": "A rare autoimmune endotheliopathy causing microinfarctions of the brain (classically corpus callosum), retina (branch retinal artery occlusions), and cochlea, typically affecting young women.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702575003"
+          ],
+          "omim": [],
+          "orpha": [
+            "838"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple sclerosis",
+      "details": {
+        "normalized_text": "Multiple sclerosis",
+        "position": 2,
+        "description": "A chronic demyelinating disease of the central nervous system with relapsing or progressive neurologic deficits; optic neuritis is common.",
+        "medical_codes": {
+          "icd10": [
+            "NVS005",
+            "G35"
+          ],
+          "snomed": [
+            "24700007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Primary angiitis of the central nervous system (PACNS)",
+      "details": {
+        "normalized_text": "Primary angiitis of the central nervous system (PACNS)",
+        "position": 3,
+        "description": "An idiopathic vasculitis confined to the CNS causing headaches, strokes, and multifocal neurologic deficits.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "699814001"
+          ],
+          "omim": [],
+          "orpha": [
+            "140989"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Antiphospholipid antibody syndrome (APS)",
+      "details": {
+        "normalized_text": "Antiphospholipid antibody syndrome (APS)",
+        "position": 4,
+        "description": "A hypercoagulable autoimmune disorder causing arterial and venous thromboses, which can include retinal artery occlusion and ischemic strokes.",
+        "medical_codes": {
+          "icd10": [
+            "D68.61"
+          ],
+          "snomed": [
+            "26843008"
+          ],
+          "omim": [],
+          "orpha": [
+            "80"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cogan syndrome",
+      "details": {
+        "normalized_text": "Cogan syndrome",
+        "position": 5,
+        "description": "An autoimmune vasculitis characterized by inflammatory eye disease (classically interstitial keratitis) and audiovestibular dysfunction resembling Ménière disease.",
+        "medical_codes": {
+          "icd10": [
+            "H16.32"
+          ],
+          "snomed": [
+            "405810005"
+          ],
+          "omim": [],
+          "orpha": [
+            "1467"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Migraine-associated retinal vasospasm (retinal migraine)",
+      "details": {
+        "normalized_text": "Migraine-associated retinal vasospasm (retinal migraine)",
+        "position": 6,
+        "description": "Transient monocular visual disturbances from retinal arterial vasospasm sometimes linked to migraine; usually reversible and not associated with CNS lesions.",
+        "medical_codes": {
+          "icd10": [
+            "G43.1"
+          ],
+          "snomed": [
+            "79267007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "702575003",
+      "matched_gdx": {
+        "Susac syndrome": {
+          "name": "Susac syndrome",
+          "normalized_text": "Susac syndrome",
+          "role": "primary",
+          "icd11": "8A45.2Y",
+          "icd11_title": "Susac syndrome",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "702575003"
+            ],
+            "omim": [],
+            "orpha": [
+              "838"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Susac syndrome (retino-cochleo-cerebral vasculopathy)": {
+          "normalized_text": "Susac syndrome (retino-cochleo-cerebral vasculopathy)",
+          "position": 1,
+          "description": "A rare autoimmune endotheliopathy causing microinfarctions of the brain (classically corpus callosum), retina (branch retinal artery occlusions), and cochlea, typically affecting young women.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "702575003"
+            ],
+            "omim": [],
+            "orpha": [
+              "838"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Susac syndrome": {
+            "name": "Susac syndrome",
+            "normalized_text": "Susac syndrome",
+            "role": "primary",
+            "icd11": "8A45.2Y",
+            "icd11_title": "Susac syndrome",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "702575003"
+              ],
+              "omim": [],
+              "orpha": [
+                "838"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 702575003)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "21424749",
+  "gdx_details": [
+    {
+      "name": "Mitochondrial disease",
+      "details": {
+        "name": "Mitochondrial disease",
+        "normalized_text": "Mitochondrial disease",
+        "role": "primary",
+        "icd11": "5C53.Y",
+        "icd11_title": "mitochondrial disease NOS",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "240096000"
+          ],
+          "omim": [],
+          "orpha": [
+            "68380"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Maternally inherited mitochondrial myopathy with ataxia (mtDNA-related)",
+      "details": {
+        "normalized_text": "Maternally inherited mitochondrial myopathy with ataxia (mtDNA-related)",
+        "position": 1,
+        "description": "A mitochondrial disorder due to pathogenic mtDNA variants, often maternally inherited, that can cause axial myopathy (camptocormia), cerebellar ataxia, sensorineural hearing loss, cardiac arrhythmias, and elevated CK with myopathic EMG; muscle biopsy may show mitochondrial abnormalities.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Inclusion body myositis (IBM)",
+      "details": {
+        "normalized_text": "Inclusion body myositis (IBM)",
+        "position": 2,
+        "description": "A late-onset inflammatory myopathy characterized by slowly progressive weakness, often affecting finger flexors, quadriceps, and sometimes axial muscles; CK may be mildly elevated and EMG shows myopathy.",
+        "medical_codes": {
+          "icd10": [
+            "G72.41"
+          ],
+          "snomed": [
+            "72315009"
+          ],
+          "omim": [
+            "147421"
+          ],
+          "orpha": [
+            "611"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Late-onset Pompe disease (acid maltase deficiency)",
+      "details": {
+        "normalized_text": "Late-onset Pompe disease (acid maltase deficiency)",
+        "position": 3,
+        "description": "A glycogen storage disease due to lysosomal acid alpha-glucosidase deficiency causing proximal and axial muscle weakness, including paraspinal muscles, with elevated CK and myopathic EMG; respiratory involvement is common.",
+        "medical_codes": {
+          "icd10": [
+            "E74.02"
+          ],
+          "snomed": [
+            "274864009",
+            "124462004"
+          ],
+          "omim": [
+            "232300"
+          ],
+          "orpha": [
+            "365"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple system atrophy, cerebellar type (MSA-C)",
+      "details": {
+        "normalized_text": "Multiple system atrophy, cerebellar type (MSA-C)",
+        "position": 4,
+        "description": "A sporadic, progressive neurodegenerative disorder characterized by cerebellar ataxia, parkinsonism, and autonomic failure; camptocormia can occur due to axial dystonia.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "227510"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Autosomal dominant spinocerebellar ataxia with hearing loss (e.g., SCA36)",
+      "details": {
+        "normalized_text": "Autosomal dominant spinocerebellar ataxia with hearing loss (e.g., SCA36)",
+        "position": 5,
+        "description": "A hereditary ataxia characterized by adult-onset progressive cerebellar ataxia with variable sensorineural hearing loss; brain MRI often shows cerebellar atrophy.",
+        "medical_codes": {
+          "icd10": [
+            "EAR004"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "99"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "Mitochondrial disease": {
+          "name": "Mitochondrial disease",
+          "normalized_text": "Mitochondrial disease",
+          "role": "primary",
+          "icd11": "5C53.Y",
+          "icd11_title": "mitochondrial disease NOS",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "240096000"
+            ],
+            "omim": [],
+            "orpha": [
+              "68380"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Maternally inherited mitochondrial myopathy with ataxia (mtDNA-related)": {
+          "normalized_text": "Maternally inherited mitochondrial myopathy with ataxia (mtDNA-related)",
+          "position": 1,
+          "description": "A mitochondrial disorder due to pathogenic mtDNA variants, often maternally inherited, that can cause axial myopathy (camptocormia), cerebellar ataxia, sensorineural hearing loss, cardiac arrhythmias, and elevated CK with myopathic EMG; muscle biopsy may show mitochondrial abnormalities.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Mitochondrial disease": {
+            "name": "Mitochondrial disease",
+            "normalized_text": "Mitochondrial disease",
+            "role": "primary",
+            "icd11": "5C53.Y",
+            "icd11_title": "mitochondrial disease NOS",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "240096000"
+              ],
+              "omim": [],
+              "orpha": [
+                "68380"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['240096000'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.644 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6443706750869751
+            },
+            {
+              "position": 2,
+              "score": 0.43101590871810913
+            },
+            {
+              "position": 3,
+              "score": 0.37263721227645874
+            },
+            {
+              "position": 4,
+              "score": 0.4147419333457947
+            },
+            {
+              "position": 5,
+              "score": 0.37193048000335693
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6443706750869751
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "22389885",
+  "gdx_details": [
+    {
+      "name": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+      "details": {
+        "name": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+        "normalized_text": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+        "role": "primary",
+        "icd11": "2A86.1",
+        "icd11_title": "B-cell lymphoma unclassifiable with features intermediate between Burkitt lymphoma and diffuse large B-cell lymphoma",
+        "medical_codes": {
+          "icd10": [
+            "C83.3",
+            "M9680/3",
+            "C83.7",
+            "M9687/3",
+            "C83.70"
+          ],
+          "snomed": [
+            "109979007",
+            "109969005",
+            "77381001"
+          ],
+          "omim": [
+            "113970"
+          ],
+          "orpha": [
+            "171915",
+            "544",
+            "543"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Burkitt lymphoma (mature B‑cell type)",
+      "details": {
+        "normalized_text": "Burkitt lymphoma (mature B‑cell type)",
+        "position": 1,
+        "description": "An aggressive pediatric non‑Hodgkin lymphoma of mature B cells, classically driven by MYC translocation and characterized by surface immunoglobulin, strong CD19/CD20, CD10 positivity, and TdT/CD34 negativity; often presents with extranodal masses and lymphadenopathy.",
+        "medical_codes": {
+          "icd10": [
+            "C83.7",
+            "M9687/3",
+            "C83.70"
+          ],
+          "snomed": [
+            "77381001"
+          ],
+          "omim": [
+            "113970"
+          ],
+          "orpha": [
+            "543"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pediatric‑type diffuse large B‑cell lymphoma (DLBCL)",
+      "details": {
+        "normalized_text": "Pediatric‑type diffuse large B‑cell lymphoma (DLBCL)",
+        "position": 2,
+        "description": "A high‑grade mature B‑cell lymphoma of childhood that presents with nodal or extranodal masses; cells express mature B‑cell markers and surface immunoglobulin and are negative for TdT.",
+        "medical_codes": {
+          "icd10": [
+            "C83.3",
+            "M9680/3"
+          ],
+          "snomed": [
+            "109969005"
+          ],
+          "omim": [],
+          "orpha": [
+            "544"
+          ]
+        }
+      }
+    },
+    {
+      "name": "B‑lymphoblastic leukemia/lymphoma (B‑ALL/LBL)",
+      "details": {
+        "normalized_text": "B‑lymphoblastic leukemia/lymphoma (B‑ALL/LBL)",
+        "position": 3,
+        "description": "A neoplasm of precursor B‑cells that typically presents in young children with bone pain, anemia, and lymphadenopathy; blasts usually express TdT and CD34 and lack surface immunoglobulin.",
+        "medical_codes": {
+          "icd10": [
+            "M9590/3",
+            "C85.9",
+            "C83.5",
+            "M9685/3"
+          ],
+          "snomed": [
+            "118600007",
+            "128806000"
+          ],
+          "omim": [],
+          "orpha": [
+            "223735"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Myeloid sarcoma (granulocytic sarcoma)",
+      "details": {
+        "normalized_text": "Myeloid sarcoma (granulocytic sarcoma)",
+        "position": 4,
+        "description": "An extramedullary tumor of myeloid blasts that can present as a painful soft‑tissue mass; often associated with or precedes acute myeloid leukemia and typically expresses myeloid markers and myeloperoxidase.",
+        "medical_codes": {
+          "icd10": [
+            "C92.3",
+            "M9930/3"
+          ],
+          "snomed": [
+            "94719007",
+            "35287006"
+          ],
+          "omim": [],
+          "orpha": [
+            "86850"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rhabdomyosarcoma",
+      "details": {
+        "normalized_text": "Rhabdomyosarcoma",
+        "position": 5,
+        "description": "A malignant skeletal muscle tumor of childhood that commonly presents as a painful enlarging soft‑tissue mass and may involve regional lymph nodes.",
+        "medical_codes": {
+          "icd10": [
+            "M8900/3"
+          ],
+          "snomed": [
+            "302847003"
+          ],
+          "omim": [],
+          "orpha": [
+            "780"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "77381001",
+      "matched_gdx": {
+        "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma": {
+          "name": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+          "normalized_text": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+          "role": "primary",
+          "icd11": "2A86.1",
+          "icd11_title": "B-cell lymphoma unclassifiable with features intermediate between Burkitt lymphoma and diffuse large B-cell lymphoma",
+          "medical_codes": {
+            "icd10": [
+              "C83.3",
+              "M9680/3",
+              "C83.7",
+              "M9687/3",
+              "C83.70"
+            ],
+            "snomed": [
+              "109979007",
+              "109969005",
+              "77381001"
+            ],
+            "omim": [
+              "113970"
+            ],
+            "orpha": [
+              "171915",
+              "544",
+              "543"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Burkitt lymphoma (mature B‑cell type)": {
+          "normalized_text": "Burkitt lymphoma (mature B‑cell type)",
+          "position": 1,
+          "description": "An aggressive pediatric non‑Hodgkin lymphoma of mature B cells, classically driven by MYC translocation and characterized by surface immunoglobulin, strong CD19/CD20, CD10 positivity, and TdT/CD34 negativity; often presents with extranodal masses and lymphadenopathy.",
+          "medical_codes": {
+            "icd10": [
+              "C83.7",
+              "M9687/3",
+              "C83.70"
+            ],
+            "snomed": [
+              "77381001"
+            ],
+            "omim": [
+              "113970"
+            ],
+            "orpha": [
+              "543"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma": {
+            "name": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+            "normalized_text": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and Burkitt lymphoma",
+            "role": "primary",
+            "icd11": "2A86.1",
+            "icd11_title": "B-cell lymphoma unclassifiable with features intermediate between Burkitt lymphoma and diffuse large B-cell lymphoma",
+            "medical_codes": {
+              "icd10": [
+                "C83.3",
+                "M9680/3",
+                "C83.7",
+                "M9687/3",
+                "C83.70"
+              ],
+              "snomed": [
+                "109979007",
+                "109969005",
+                "77381001"
+              ],
+              "omim": [
+                "113970"
+              ],
+              "orpha": [
+                "171915",
+                "544",
+                "543"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 77381001)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "case-18953",
+  "gdx_details": [
+    {
+      "name": "Liver pyogenic abscess",
+      "details": {
+        "name": "Liver pyogenic abscess",
+        "normalized_text": "Liver pyogenic abscess",
+        "role": "primary",
+        "icd11": "DB90.0&XN74M",
+        "icd11_title": "Pyogenic liver abscess",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "48036004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Acute schistosomiasis (Katayama fever) due to Schistosoma mansoni",
+      "details": {
+        "normalized_text": "Acute schistosomiasis (Katayama fever) due to Schistosoma mansoni",
+        "position": 1,
+        "description": "Systemic hypersensitivity reaction occurring weeks to months after Schistosoma infection; characterized by fever, diarrhea, eosinophilia, and hepatosplenic involvement. Imaging can show periportal edema and hepatic granulomas.",
+        "medical_codes": {
+          "icd10": [
+            "B65.1"
+          ],
+          "snomed": [
+            "1163086007",
+            "268058007",
+            "750009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hepatosplenic schistosomiasis (chronic intestinal S. mansoni with hepatic involvement)",
+      "details": {
+        "normalized_text": "Hepatosplenic schistosomiasis (chronic intestinal S. mansoni with hepatic involvement)",
+        "position": 2,
+        "description": "Chronic deposition of S. mansoni eggs in the intestinal and portal systems leading to periportal fibrosis (Symmers fibrosis), portal hypertension, and heterogeneous hepatic lesions; may present with abdominal pain and diarrhea.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "240789006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Amoebic liver abscess (Entamoeba histolytica)",
+      "details": {
+        "normalized_text": "Amoebic liver abscess (Entamoeba histolytica)",
+        "position": 3,
+        "description": "Hepatic abscess caused by invasive amoebiasis; classically presents with fever, right upper quadrant pain, and antecedent or concurrent diarrhoea; ultrasound/CT shows hypoechoic or low-attenuation liver lesions.",
+        "medical_codes": {
+          "icd10": [
+            "A06.4"
+          ],
+          "snomed": [
+            "75119003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pyogenic liver abscess",
+      "details": {
+        "normalized_text": "Pyogenic liver abscess",
+        "position": 4,
+        "description": "Bacterial infection of the liver parenchyma leading to one or more abscess cavities; presents with prolonged fever, right upper quadrant pain, and systemic symptoms; CT/US show hypoattenuating lesions.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "48036004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hepatic tuberculosis (tuberculous granulomas/microabscesses)",
+      "details": {
+        "normalized_text": "Hepatic tuberculosis (tuberculous granulomas/microabscesses)",
+        "position": 5,
+        "description": "Disseminated or abdominal tuberculosis involving the liver, producing granulomas or microabscesses; presents with prolonged fever, abdominal pain, weight loss; imaging can show multiple small hypodense hepatic nodules.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "186273003",
+            "48033007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P4",
+      "method": "SNOMED_MATCH",
+      "value": "48036004",
+      "matched_gdx": {
+        "Liver pyogenic abscess": {
+          "name": "Liver pyogenic abscess",
+          "normalized_text": "Liver pyogenic abscess",
+          "role": "primary",
+          "icd11": "DB90.0&XN74M",
+          "icd11_title": "Pyogenic liver abscess",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "48036004"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Pyogenic liver abscess": {
+          "normalized_text": "Pyogenic liver abscess",
+          "position": 4,
+          "description": "Bacterial infection of the liver parenchyma leading to one or more abscess cavities; presents with prolonged fever, right upper quadrant pain, and systemic symptoms; CT/US show hypoattenuating lesions.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "48036004"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Liver pyogenic abscess": {
+            "name": "Liver pyogenic abscess",
+            "normalized_text": "Liver pyogenic abscess",
+            "role": "primary",
+            "icd11": "DB90.0&XN74M",
+            "icd11_title": "Pyogenic liver abscess",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [
+                "48036004"
+              ],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P4 (code: 48036004)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "23281978",
+  "gdx_details": [
+    {
+      "name": "ST-segment elevation myocardial infarction",
+      "details": {
+        "name": "ST-segment elevation myocardial infarction",
+        "normalized_text": "ST-segment elevation myocardial infarction",
+        "role": "primary",
+        "icd11": "BA41.0",
+        "icd11_title": "Acute ST segment elevation myocardial infarction",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Acute anterior ST-elevation myocardial infarction (LAD occlusion)",
+      "details": {
+        "normalized_text": "Acute anterior ST-elevation myocardial infarction (LAD occlusion)",
+        "position": 1,
+        "description": "Acute transmural ischemia from occlusion of the left anterior descending coronary artery, producing ST-segment elevation and hyperacute T-waves in anterior leads with elevated cardiac biomarkers.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "59438005",
+            "26036001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Vasospastic (Prinzmetal) angina",
+      "details": {
+        "normalized_text": "Vasospastic (Prinzmetal) angina",
+        "position": 2,
+        "description": "Transient coronary artery spasm causing episodic myocardial ischemia at rest, often with transient ST-segment elevations and symptoms that can occur at night or early morning.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Gastroesophageal reflux disease (GERD) with esophagitis",
+      "details": {
+        "normalized_text": "Gastroesophageal reflux disease (GERD) with esophagitis",
+        "position": 3,
+        "description": "Reflux of gastric contents causing esophageal irritation and substernal burning, often worse after meals or lying down and responsive to acid suppression.",
+        "medical_codes": {
+          "icd10": [
+            "K21",
+            "K21.9",
+            "K20",
+            "K20.9"
+          ],
+          "snomed": [
+            "235595009",
+            "16761005"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Esophageal spasm",
+      "details": {
+        "normalized_text": "Esophageal spasm",
+        "position": 4,
+        "description": "Intermittent uncoordinated esophageal contractions causing nonexertional chest pain that can mimic angina and may occur at rest or nocturnally.",
+        "medical_codes": {
+          "icd10": [
+            "K22.4"
+          ],
+          "snomed": [
+            "79962008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Polycythemia vera (PV)",
+      "details": {
+        "normalized_text": "Polycythemia vera (PV)",
+        "position": 5,
+        "description": "A myeloproliferative neoplasm characterized by erythrocytosis with frequent leukocytosis and thrombocytosis, pruritus after hot showers, and risk of arterial and venous thromboses including myocardial infarction.",
+        "medical_codes": {
+          "icd10": [
+            "D45"
+          ],
+          "snomed": [
+            "128841001"
+          ],
+          "omim": [
+            "263300"
+          ],
+          "orpha": [
+            "729"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Essential thrombocythemia (ET)",
+      "details": {
+        "normalized_text": "Essential thrombocythemia (ET)",
+        "position": 6,
+        "description": "A myeloproliferative neoplasm characterized by persistent thrombocytosis leading to increased risk of arterial and venous thrombosis and microvascular symptoms; may have elevated WBC but usually normal hemoglobin.",
+        "medical_codes": {
+          "icd10": [
+            "D47.3",
+            "M9962/1"
+          ],
+          "snomed": [
+            "109994006"
+          ],
+          "omim": [],
+          "orpha": [
+            "3318"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "LLM_JUDGMENT",
+      "value": "1",
+      "matched_gdx": {
+        "ST-segment elevation myocardial infarction": {
+          "name": "ST-segment elevation myocardial infarction",
+          "normalized_text": "ST-segment elevation myocardial infarction",
+          "role": "primary",
+          "icd11": "BA41.0",
+          "icd11_title": "Acute ST segment elevation myocardial infarction",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      },
+      "matched_ddx": {
+        "Acute anterior ST-elevation myocardial infarction (LAD occlusion)": {
+          "normalized_text": "Acute anterior ST-elevation myocardial infarction (LAD occlusion)",
+          "position": 1,
+          "description": "Acute transmural ischemia from occlusion of the left anterior descending coronary artery, producing ST-segment elevation and hyperacute T-waves in anterior leads with elevated cardiac biomarkers.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "59438005",
+              "26036001"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "ST-segment elevation myocardial infarction": {
+            "name": "ST-segment elevation myocardial infarction",
+            "normalized_text": "ST-segment elevation myocardial infarction",
+            "role": "primary",
+            "icd11": "BA41.0",
+            "icd11_title": "Acute ST segment elevation myocardial infarction",
+            "medical_codes": {
+              "icd10": [],
+              "snomed": [],
+              "omim": [],
+              "orpha": []
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no SNOMED codes"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "GDX has no ICD-10 codes"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "LLM selected P1. BERT score 0.670 below acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6702127456665039
+            },
+            {
+              "position": 2,
+              "score": 0.37812918424606323
+            },
+            {
+              "position": 3,
+              "score": 0.34301283955574036
+            },
+            {
+              "position": 4,
+              "score": 0.31452828645706177
+            },
+            {
+              "position": 5,
+              "score": 0.26728731393814087
+            },
+            {
+              "position": 6,
+              "score": 0.4092714786529541
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.6702127456665039
+          },
+          "llm_judgment": {
+            "position": 1
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "N-10000083",
+  "gdx_details": [
+    {
+      "name": "Intralobar bronchopulmonary sequestration",
+      "details": {
+        "name": "Intralobar bronchopulmonary sequestration",
+        "normalized_text": "Intralobar bronchopulmonary sequestration",
+        "role": "primary",
+        "icd11": "LA75.6",
+        "icd11_title": "Intralobar sequestration of lung",
+        "medical_codes": {
+          "icd10": [
+            "Q33.2"
+          ],
+          "snomed": [
+            "18620009"
+          ],
+          "omim": [],
+          "orpha": [
+            "3161"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Meconium aspiration syndrome (MAS)",
+      "details": {
+        "normalized_text": "Meconium aspiration syndrome (MAS)",
+        "position": 1,
+        "description": "Airway obstruction and chemical pneumonitis from aspirated meconium leading to respiratory distress and air-trapping/air-leak in term/post-term infants.",
+        "medical_codes": {
+          "icd10": [
+            "P24.0",
+            "P24.01"
+          ],
+          "snomed": [
+            "206292002"
+          ],
+          "omim": [],
+          "orpha": [
+            "70588"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Neonatal pneumothorax (possible tension pneumothorax)",
+      "details": {
+        "normalized_text": "Neonatal pneumothorax (possible tension pneumothorax)",
+        "position": 2,
+        "description": "Accumulation of air in the pleural space, often secondary to positive-pressure ventilation or air-trapping, which can cause respiratory compromise and hemodynamic instability.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "233645004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Pulmonary interstitial emphysema (PIE)",
+      "details": {
+        "normalized_text": "Pulmonary interstitial emphysema (PIE)",
+        "position": 3,
+        "description": "Air dissecting into the perivascular and interstitial tissues of the lung due to barotrauma or air-trapping in ventilated neonates, predisposing to air-leak syndromes.",
+        "medical_codes": {
+          "icd10": [
+            "J98.2"
+          ],
+          "snomed": [
+            "11211003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Congenital pulmonary airway malformation (CPAM)",
+      "details": {
+        "normalized_text": "Congenital pulmonary airway malformation (CPAM)",
+        "position": 4,
+        "description": "Developmental cystic lesion of the lung causing mass effect, recurrent infection, or postnatal respiratory distress; can present with large air-filled cysts on imaging.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111318005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2444"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pulmonary sequestration (systemic arterial supply to nonfunctioning lung)",
+      "details": {
+        "normalized_text": "Pulmonary sequestration (systemic arterial supply to nonfunctioning lung)",
+        "position": 5,
+        "description": "Congenital lung tissue without normal bronchial connection supplied by a systemic artery (often from the aorta); may appear as a mass/cyst and can be a hybrid with CPAM.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "39607008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Hypoxic-ischemic encephalopathy (HIE)",
+      "details": {
+        "normalized_text": "Hypoxic-ischemic encephalopathy (HIE)",
+        "position": 6,
+        "description": "Brain injury from perinatal asphyxia; therapeutic hypothermia is instituted to reduce neurologic injury.",
+        "medical_codes": {
+          "icd10": [
+            "P91.60"
+          ],
+          "snomed": [
+            "703300001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Persistent pulmonary hypertension of the newborn (PPHN)",
+      "details": {
+        "normalized_text": "Persistent pulmonary hypertension of the newborn (PPHN)",
+        "position": 7,
+        "description": "Failure of normal pulmonary vasodilation after birth leading to right-to-left shunting and hypoxemia; commonly associated with MAS and perinatal asphyxia.",
+        "medical_codes": {
+          "icd10": [
+            "P29.3"
+          ],
+          "snomed": [
+            "233815004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P5",
+      "method": "BERT_MATCH",
+      "value": "0.8352780342102051",
+      "matched_gdx": {
+        "Intralobar bronchopulmonary sequestration": {
+          "name": "Intralobar bronchopulmonary sequestration",
+          "normalized_text": "Intralobar bronchopulmonary sequestration",
+          "role": "primary",
+          "icd11": "LA75.6",
+          "icd11_title": "Intralobar sequestration of lung",
+          "medical_codes": {
+            "icd10": [
+              "Q33.2"
+            ],
+            "snomed": [
+              "18620009"
+            ],
+            "omim": [],
+            "orpha": [
+              "3161"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Pulmonary sequestration (systemic arterial supply to nonfunctioning lung)": {
+          "normalized_text": "Pulmonary sequestration (systemic arterial supply to nonfunctioning lung)",
+          "position": 5,
+          "description": "Congenital lung tissue without normal bronchial connection supplied by a systemic artery (often from the aorta); may appear as a mass/cyst and can be a hybrid with CPAM.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "39607008"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Intralobar bronchopulmonary sequestration": {
+            "name": "Intralobar bronchopulmonary sequestration",
+            "normalized_text": "Intralobar bronchopulmonary sequestration",
+            "role": "primary",
+            "icd11": "LA75.6",
+            "icd11_title": "Intralobar sequestration of lung",
+            "medical_codes": {
+              "icd10": [
+                "Q33.2"
+              ],
+              "snomed": [
+                "18620009"
+              ],
+              "omim": [],
+              "orpha": [
+                "3161"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['18620009'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['Q33.2']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT result at P5 (score: 0.835) was better than LLM's choice P5 and score was >= acceptance threshold 0.8.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4468798041343689
+            },
+            {
+              "position": 2,
+              "score": 0.3969368636608124
+            },
+            {
+              "position": 3,
+              "score": 0.5218299627304077
+            },
+            {
+              "position": 4,
+              "score": 0.5242916941642761
+            },
+            {
+              "position": 5,
+              "score": 0.8352780342102051
+            },
+            {
+              "position": 6,
+              "score": 0.38678622245788574
+            },
+            {
+              "position": 7,
+              "score": 0.5050334930419922
+            }
+          ],
+          "bert_best": {
+            "position": 5,
+            "score": 0.8352780342102051
+          },
+          "llm_judgment": {
+            "position": 5
+          }
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "29423197",
+  "gdx_details": [
+    {
+      "name": "Cocaine-induced thrombotic microangiopathy",
+      "details": {
+        "name": "Cocaine-induced thrombotic microangiopathy",
+        "normalized_text": "Cocaine-induced thrombotic microangiopathy",
+        "role": "primary",
+        "icd11": "3B65",
+        "icd11_title": "Thrombotic microangiopathy, not elsewhere classified",
+        "medical_codes": {
+          "icd10": [
+            "M31.1"
+          ],
+          "snomed": [
+            "126729006"
+          ],
+          "omim": [],
+          "orpha": [
+            "93573"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Complement-mediated atypical hemolytic uremic syndrome (aHUS)",
+      "details": {
+        "normalized_text": "Complement-mediated atypical hemolytic uremic syndrome (aHUS)",
+        "position": 1,
+        "description": "A thrombotic microangiopathy caused by dysregulation of the alternative complement pathway, often presenting with acute kidney injury, microangiopathic hemolytic anemia, and variably low C3 with normal C4; may have familial predisposition and be triggered by infections or drugs.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "789660001"
+          ],
+          "omim": [],
+          "orpha": [
+            "2134"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Malignant hypertension–associated thrombotic microangiopathy",
+      "details": {
+        "normalized_text": "Malignant hypertension–associated thrombotic microangiopathy",
+        "position": 2,
+        "description": "A severe form of hypertension causing endothelial injury and arteriolar hyperplastic changes with thrombotic microangiopathy, leading to acute kidney injury and sometimes hemolysis.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Cocaine-associated thrombotic microangiopathy/vasculopathy",
+      "details": {
+        "normalized_text": "Cocaine-associated thrombotic microangiopathy/vasculopathy",
+        "position": 3,
+        "description": "Cocaine can induce severe vasospasm, malignant hypertension, and endothelial injury leading to thrombotic microangiopathy and acute kidney injury.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "27550009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "C3 glomerulopathy (C3 glomerulonephritis/dense deposit disease)",
+      "details": {
+        "normalized_text": "C3 glomerulopathy (C3 glomerulonephritis/dense deposit disease)",
+        "position": 4,
+        "description": "A complement-mediated glomerulopathy characterized by predominant C3 deposition due to alternative pathway dysregulation, often presenting with hematuria, proteinuria, and low C3 with normal C4.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "722760002"
+          ],
+          "omim": [],
+          "orpha": [
+            "329918",
+            "329931",
+            "93571"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hepatitis C–associated membranoproliferative glomerulonephritis/cryoglobulinemic GN",
+      "details": {
+        "normalized_text": "Hepatitis C–associated membranoproliferative glomerulonephritis/cryoglobulinemic GN",
+        "position": 5,
+        "description": "Immune complex–mediated glomerulonephritis associated with chronic HCV infection, often presenting with proteinuria, hematuria, and hypocomplementemia (typically low C4).",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "236505008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Thrombotic thrombocytopenic purpura (TTP)",
+      "details": {
+        "normalized_text": "Thrombotic thrombocytopenic purpura (TTP)",
+        "position": 6,
+        "description": "A severe ADAMTS13-deficient thrombotic microangiopathy characterized by microangiopathic hemolytic anemia, thrombocytopenia, neurologic symptoms, fever, and variable renal involvement.",
+        "medical_codes": {
+          "icd10": [
+            "M31.19"
+          ],
+          "snomed": [
+            "78129009"
+          ],
+          "omim": [],
+          "orpha": [
+            "54057"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P3",
+      "method": "BERT_AUTOCONFIRM",
+      "value": "0.9618818163871765",
+      "matched_gdx": {
+        "Cocaine-induced thrombotic microangiopathy": {
+          "name": "Cocaine-induced thrombotic microangiopathy",
+          "normalized_text": "Cocaine-induced thrombotic microangiopathy",
+          "role": "primary",
+          "icd11": "3B65",
+          "icd11_title": "Thrombotic microangiopathy, not elsewhere classified",
+          "medical_codes": {
+            "icd10": [
+              "M31.1"
+            ],
+            "snomed": [
+              "126729006"
+            ],
+            "omim": [],
+            "orpha": [
+              "93573"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Cocaine-associated thrombotic microangiopathy/vasculopathy": {
+          "normalized_text": "Cocaine-associated thrombotic microangiopathy/vasculopathy",
+          "position": 3,
+          "description": "Cocaine can induce severe vasospasm, malignant hypertension, and endothelial injury leading to thrombotic microangiopathy and acute kidney injury.",
+          "medical_codes": {
+            "icd10": [],
+            "snomed": [
+              "27550009"
+            ],
+            "omim": [],
+            "orpha": []
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Cocaine-induced thrombotic microangiopathy": {
+            "name": "Cocaine-induced thrombotic microangiopathy",
+            "normalized_text": "Cocaine-induced thrombotic microangiopathy",
+            "role": "primary",
+            "icd11": "3B65",
+            "icd11_title": "Thrombotic microangiopathy, not elsewhere classified",
+            "medical_codes": {
+              "icd10": [
+                "M31.1"
+              ],
+              "snomed": [
+                "126729006"
+              ],
+              "omim": [],
+              "orpha": [
+                "93573"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "FAILED",
+          "details": "FAILED: No SNOMED code from GDX list ['126729006'] found in any DDX"
+        },
+        "icd10_check": {
+          "status": "FAILED",
+          "details": "FAILED: No ICD-10 relationship match found for GDX codes ['M31.1']"
+        },
+        "semantic_check": {
+          "status": "SUCCESS",
+          "details": "BERT score 0.962 >= autoconfirm threshold 0.9. LLM call skipped.",
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.46278029680252075
+            },
+            {
+              "position": 2,
+              "score": 0.7365388870239258
+            },
+            {
+              "position": 3,
+              "score": 0.9618818163871765
+            },
+            {
+              "position": 4,
+              "score": 0.30586767196655273
+            },
+            {
+              "position": 5,
+              "score": 0.4438759684562683
+            },
+            {
+              "position": 6,
+              "score": 0.5344530344009399
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.9618818163871765
+          },
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}
+---
+{
+  "case_id": "29674473",
+  "gdx_details": [
+    {
+      "name": "Neuromyelitis optica spectrum disorder",
+      "details": {
+        "name": "Neuromyelitis optica spectrum disorder",
+        "normalized_text": "Neuromyelitis optica spectrum disorder",
+        "role": "primary",
+        "icd11": "8E4A.0",
+        "icd11_title": "Neuromyelitis optica spectrum disorder",
+        "medical_codes": {
+          "icd10": [
+            "G36.0"
+          ],
+          "snomed": [
+            "25044007"
+          ],
+          "omim": [],
+          "orpha": [
+            "71211"
+          ]
+        }
+      }
+    }
+  ],
+  "ddx_details": [
+    {
+      "name": "Neuromyelitis optica spectrum disorder (NMOSD) with area postrema syndrome",
+      "details": {
+        "normalized_text": "Neuromyelitis optica spectrum disorder (NMOSD) with area postrema syndrome",
+        "position": 1,
+        "description": "Autoimmune astrocytopathy mediated by AQP4-IgG, often involving the optic nerves, spinal cord, and brainstem. Lesions in the dorsal medulla/area postrema cause intractable nausea, vomiting, and hiccups; additional brainstem and long-tract signs can appear.",
+        "medical_codes": {
+          "icd10": [
+            "G36.0"
+          ],
+          "snomed": [
+            "25044007"
+          ],
+          "omim": [],
+          "orpha": [
+            "71211"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Multiple sclerosis with dorsal medullary/brainstem plaque",
+      "details": {
+        "normalized_text": "Multiple sclerosis with dorsal medullary/brainstem plaque",
+        "position": 2,
+        "description": "Immune-mediated demyelinating disease of the CNS causing multifocal lesions; brainstem involvement can produce nystagmus, dysphagia, and long-tract signs. Rarely presents predominantly with area postrema symptoms.",
+        "medical_codes": {
+          "icd10": [
+            "NVS005",
+            "G35"
+          ],
+          "snomed": [
+            "24700007"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Dorsal medullary (area postrema) glioma or other intrinsic brainstem tumor",
+      "details": {
+        "normalized_text": "Dorsal medullary (area postrema) glioma or other intrinsic brainstem tumor",
+        "position": 3,
+        "description": "Primary brainstem neoplasm (e.g., low-grade glioma) involving the dorsal medulla can cause progressive nausea/vomiting from area postrema irritation and evolving cranial nerve and long-tract signs as the lesion enlarges.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "26519002",
+            "393564001"
+          ],
+          "omim": [],
+          "orpha": [
+            "182067"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lateral medullary (Wallenberg) syndrome due to posterior inferior cerebellar artery (PICA) infarct",
+      "details": {
+        "normalized_text": "Lateral medullary (Wallenberg) syndrome due to posterior inferior cerebellar artery (PICA) infarct",
+        "position": 4,
+        "description": "Ischemic stroke of the lateral medulla causing dysphagia, hoarseness, vertigo/nystagmus, hiccups, and autonomic dysfunction; can produce intractable vomiting from area postrema involvement.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "261089000",
+            "51114001",
+            "45242005",
+            "55641003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Bickerstaff brainstem encephalitis (BBE)",
+      "details": {
+        "normalized_text": "Bickerstaff brainstem encephalitis (BBE)",
+        "position": 5,
+        "description": "Post-infectious autoimmune encephalitis characterized by ophthalmoplegia, ataxia, and altered consciousness; often associated with anti-GQ1b antibodies and can involve the medulla/pons.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "427086003"
+          ],
+          "omim": [],
+          "orpha": [
+            "79138"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wernicke encephalopathy due to thiamine deficiency",
+      "details": {
+        "normalized_text": "Wernicke encephalopathy due to thiamine deficiency",
+        "position": 6,
+        "description": "Acute neuropsychiatric syndrome from thiamine deficiency, classically presenting with ophthalmoplegia/nystagmus, ataxia, and confusion; may follow prolonged vomiting and malnutrition.",
+        "medical_codes": {
+          "icd10": [
+            "E51.2",
+            "E51.9"
+          ],
+          "snomed": [
+            "21007002",
+            "399357009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    },
+    {
+      "name": "Chiari I malformation with medullary compression",
+      "details": {
+        "normalized_text": "Chiari I malformation with medullary compression",
+        "position": 7,
+        "description": "Caudal herniation of cerebellar tonsils through the foramen magnum can compress the medulla, causing nystagmus, dysphagia, respiratory issues, and sometimes vomiting.",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253185002"
+          ],
+          "omim": [],
+          "orpha": [
+            "268882"
+          ]
+        }
+      }
+    }
+  ],
+  "eval_details": {
+    "best_match_found": true,
+    "final_resolution": {
+      "position": "P1",
+      "method": "SNOMED_MATCH",
+      "value": "25044007",
+      "matched_gdx": {
+        "Neuromyelitis optica spectrum disorder": {
+          "name": "Neuromyelitis optica spectrum disorder",
+          "normalized_text": "Neuromyelitis optica spectrum disorder",
+          "role": "primary",
+          "icd11": "8E4A.0",
+          "icd11_title": "Neuromyelitis optica spectrum disorder",
+          "medical_codes": {
+            "icd10": [
+              "G36.0"
+            ],
+            "snomed": [
+              "25044007"
+            ],
+            "omim": [],
+            "orpha": [
+              "71211"
+            ]
+          }
+        }
+      },
+      "matched_ddx": {
+        "Neuromyelitis optica spectrum disorder (NMOSD) with area postrema syndrome": {
+          "normalized_text": "Neuromyelitis optica spectrum disorder (NMOSD) with area postrema syndrome",
+          "position": 1,
+          "description": "Autoimmune astrocytopathy mediated by AQP4-IgG, often involving the optic nerves, spinal cord, and brainstem. Lesions in the dorsal medulla/area postrema cause intractable nausea, vomiting, and hiccups; additional brainstem and long-tract signs can appear.",
+          "medical_codes": {
+            "icd10": [
+              "G36.0"
+            ],
+            "snomed": [
+              "25044007"
+            ],
+            "omim": [],
+            "orpha": [
+              "71211"
+            ]
+          }
+        }
+      }
+    },
+    "evaluation_trace": [
+      {
+        "gdx_evaluated": {
+          "Neuromyelitis optica spectrum disorder": {
+            "name": "Neuromyelitis optica spectrum disorder",
+            "normalized_text": "Neuromyelitis optica spectrum disorder",
+            "role": "primary",
+            "icd11": "8E4A.0",
+            "icd11_title": "Neuromyelitis optica spectrum disorder",
+            "medical_codes": {
+              "icd10": [
+                "G36.0"
+              ],
+              "snomed": [
+                "25044007"
+              ],
+              "omim": [],
+              "orpha": [
+                "71211"
+              ]
+            }
+          }
+        },
+        "snomed_check": {
+          "status": "SUCCESS",
+          "details": "SUCCESS: Found match with DDX at P1 (code: 25044007)"
+        },
+        "icd10_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first"
+        },
+        "semantic_check": {
+          "status": "SKIPPED",
+          "details": "SNOMED match found first",
+          "bert_scores": [],
+          "bert_best": null,
+          "llm_judgment": null
+        }
+      }
+    ]
+  }
+}

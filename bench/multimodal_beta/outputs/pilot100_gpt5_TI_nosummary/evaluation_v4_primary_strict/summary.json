@@ -1,0 +1,80 @@
+{
+  "configuration": {
+    "experiment_name": "medreamm-pilot32-dxgpt-beta-product",
+    "experiment_description": "DxGPT beta end-to-end MedReaMM 32-case cohort evaluated with Pipeline V4.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "unknown",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 32,
+    "matched_cases": 27,
+    "unmatched_cases": 5,
+    "top_counts": {
+      "P4": 3,
+      "P1": 22,
+      "P2": 2
+    },
+    "resolution_method_counts": {
+      "snomed_match": 17,
+      "icd10_exact": 1,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 0,
+      "bert_match": 3,
+      "llm_judgment": 6
+    },
+    "average_position": 1.407,
+    "final_score_percentage": 84.38
+  },
+  "by_method": {
+    "BERT_MATCH": {
+      "total_cases": 3,
+      "matched_cases": 3,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 3
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_EXACT": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 1
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 6,
+      "matched_cases": 6,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 5,
+        "P4": 1
+      },
+      "average_position": 1.5,
+      "final_score_percentage": 100.0
+    },
+    "SNOMED_MATCH": {
+      "total_cases": 17,
+      "matched_cases": 17,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P4": 2,
+        "P1": 13,
+        "P2": 2
+      },
+      "average_position": 1.471,
+      "final_score_percentage": 100.0
+    }
+  }
+}

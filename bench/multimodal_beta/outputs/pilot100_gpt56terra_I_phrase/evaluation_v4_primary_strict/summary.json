@@ -1,0 +1,104 @@
+{
+  "configuration": {
+    "experiment_name": "pilot100_gpt56terra_I_phrase",
+    "experiment_description": "MedReaMM I-only gpt56terra with image phrase",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "unknown",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 100,
+    "matched_cases": 42,
+    "unmatched_cases": 58,
+    "top_counts": {
+      "P3": 3,
+      "P1": 27,
+      "P2": 10,
+      "P4": 2
+    },
+    "resolution_method_counts": {
+      "snomed_match": 23,
+      "icd10_exact": 1,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 2,
+      "bert_autoconfirm": 6,
+      "bert_match": 1,
+      "llm_judgment": 9
+    },
+    "average_position": 1.524,
+    "final_score_percentage": 42.0
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 6,
+      "matched_cases": 6,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 4,
+        "P3": 2
+      },
+      "average_position": 1.667,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P2": 1
+      },
+      "average_position": 2,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_EXACT": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 1
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_SIBLING": {
+      "total_cases": 2,
+      "matched_cases": 2,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P2": 1,
+        "P1": 1
+      },
+      "average_position": 1.5,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 9,
+      "matched_cases": 9,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P3": 1,
+        "P2": 4,
+        "P1": 4
+      },
+      "average_position": 1.667,
+      "final_score_percentage": 100.0
+    },
+    "SNOMED_MATCH": {
+      "total_cases": 23,
+      "matched_cases": 23,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 17,
+        "P2": 4,
+        "P4": 2
+      },
+      "average_position": 1.435,
+      "final_score_percentage": 100.0
+    }
+  }
+}

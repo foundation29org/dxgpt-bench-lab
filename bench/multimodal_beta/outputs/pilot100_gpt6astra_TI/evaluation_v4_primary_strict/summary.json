@@ -1,0 +1,104 @@
+{
+  "configuration": {
+    "experiment_name": "medreamm-pilot100-dxgpt-beta-product",
+    "experiment_description": "DxGPT beta end-to-end MedReaMM 100-case cohort evaluated with Pipeline V4.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "unknown",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 100,
+    "matched_cases": 88,
+    "unmatched_cases": 12,
+    "top_counts": {
+      "P2": 7,
+      "P1": 76,
+      "P3": 4,
+      "P4": 1
+    },
+    "resolution_method_counts": {
+      "snomed_match": 58,
+      "icd10_exact": 1,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 1,
+      "bert_autoconfirm": 7,
+      "bert_match": 7,
+      "llm_judgment": 14
+    },
+    "average_position": 1.205,
+    "final_score_percentage": 88.0
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 7,
+      "matched_cases": 7,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 4,
+        "P3": 1,
+        "P2": 2
+      },
+      "average_position": 1.571,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 7,
+      "matched_cases": 7,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 7
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_EXACT": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 1
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "ICD10_SIBLING": {
+      "total_cases": 1,
+      "matched_cases": 1,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 1
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 14,
+      "matched_cases": 14,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 12,
+        "P2": 2
+      },
+      "average_position": 1.143,
+      "final_score_percentage": 100.0
+    },
+    "SNOMED_MATCH": {
+      "total_cases": 58,
+      "matched_cases": 58,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P2": 3,
+        "P1": 51,
+        "P3": 3,
+        "P4": 1
+      },
+      "average_position": 1.207,
+      "final_score_percentage": 100.0
+    }
+  }
+}

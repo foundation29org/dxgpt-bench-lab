@@ -1,0 +1,4164 @@
+[
+  {
+    "id": "MME_000",
+    "case_id": "MME_000",
+    "gdx_details": {
+      "Mandibulofacial dysostosis-microcephaly syndrome": {
+        "name": "Mandibulofacial dysostosis-microcephaly syndrome",
+        "normalized_text": "Mandibulofacial dysostosis-microcephaly syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "610536"
+          ],
+          "orpha": [
+            "79113"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.7536925077438354
+            },
+            {
+              "position": 2,
+              "score": 0.6240442991256714
+            },
+            {
+              "position": 3,
+              "score": 0.4903257489204407
+            },
+            {
+              "position": 4,
+              "score": 0.6342308521270752
+            },
+            {
+              "position": 5,
+              "score": 0.5657486319541931
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.7536925077438354
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Mandibulofacial dysostosis, Guion-Almeida type (EFTUD2-related disorder)": {
+        "normalized_text": "Mandibulofacial dysostosis, Guion-Almeida type (EFTUD2-related disorder)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      },
+      "Treacher Collins syndrome": {
+        "normalized_text": "Treacher Collins syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      },
+      "CHARGE syndrome": {
+        "normalized_text": "CHARGE syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "47535005"
+          ],
+          "omim": [
+            "214800"
+          ],
+          "orpha": [
+            "138"
+          ]
+        }
+      },
+      "Burn-McKeown syndrome (TXNL4A-related craniofacial disorder)": {
+        "normalized_text": "Burn-McKeown syndrome (TXNL4A-related craniofacial disorder)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720640005"
+          ],
+          "omim": [
+            "608572"
+          ],
+          "orpha": [
+            "1200"
+          ]
+        }
+      },
+      "Oculo-auriculo-vertebral spectrum (Goldenhar syndrome)": {
+        "normalized_text": "Oculo-auriculo-vertebral spectrum (Goldenhar syndrome)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "Q87.0"
+          ],
+          "snomed": [
+            "205418005"
+          ],
+          "omim": [
+            "164210"
+          ],
+          "orpha": [
+            "141132"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_001",
+    "case_id": "MME_001",
+    "gdx_details": {
+      "Microcephaly-Capillary Malformation Syndrome": {
+        "name": "Microcephaly-Capillary Malformation Syndrome",
+        "normalized_text": "Microcephaly-Capillary Malformation Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "614261"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "STAMBP-related microcephaly-capillary malformation syndrome (MIC-CAP syndrome)": {
+        "normalized_text": "STAMBP-related microcephaly-capillary malformation syndrome (MIC-CAP syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "703369003"
+          ],
+          "omim": [
+            "614261"
+          ],
+          "orpha": [
+            "294016"
+          ]
+        }
+      },
+      "PNKP-related microcephaly, seizures, and developmental delay syndrome (MCSZ)": {
+        "normalized_text": "PNKP-related microcephaly, seizures, and developmental delay syndrome (MCSZ)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "91175000"
+          ],
+          "omim": [
+            "613402"
+          ],
+          "orpha": []
+        }
+      },
+      "WDR62-related primary microcephaly": {
+        "normalized_text": "WDR62-related primary microcephaly",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q02"
+          ],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "199642"
+          ]
+        }
+      },
+      "WWOX-related developmental and epileptic encephalopathy": {
+        "normalized_text": "WWOX-related developmental and epileptic encephalopathy",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "723125008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Adams-Oliver syndrome": {
+        "normalized_text": "Adams-Oliver syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "34748004"
+          ],
+          "omim": [],
+          "orpha": [
+            "974"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_002",
+    "case_id": "MME_002",
+    "gdx_details": {
+      "Perrault Syndrome 1": {
+        "name": "Perrault Syndrome 1",
+        "normalized_text": "Perrault Syndrome 1",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "233400"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "PHARC syndrome (ABHD12-related neurodegeneration)": {
+        "normalized_text": "PHARC syndrome (ABHD12-related neurodegeneration)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "723452007"
+          ],
+          "omim": [],
+          "orpha": [
+            "171848"
+          ]
+        }
+      },
+      "Refsum disease (adult-onset phytanic acid storage disease)": {
+        "normalized_text": "Refsum disease (adult-onset phytanic acid storage disease)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "G60.1"
+          ],
+          "snomed": [
+            "25362006"
+          ],
+          "omim": [
+            "266500"
+          ],
+          "orpha": [
+            "773"
+          ]
+        }
+      },
+      "PNPLA6-associated neurodegeneration": {
+        "normalized_text": "PNPLA6-associated neurodegeneration",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Mitochondrial neuropathy, ataxia, and retinitis pigmentosa syndrome (NARP)": {
+        "normalized_text": "Mitochondrial neuropathy, ataxia, and retinitis pigmentosa syndrome (NARP)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "85102008",
+            "723999009"
+          ],
+          "omim": [
+            "602152"
+          ],
+          "orpha": [
+            "140976"
+          ]
+        }
+      },
+      "CAPOS syndrome (ATP1A3-related disorder)": {
+        "normalized_text": "CAPOS syndrome (ATP1A3-related disorder)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720634003"
+          ],
+          "omim": [
+            "601338"
+          ],
+          "orpha": [
+            "1171"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_003",
+    "case_id": "MME_003",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Tubulinopathy (for example TUBA1A-, TUBB2B-, or TUBB3-related brain malformation)": {
+        "normalized_text": "Tubulinopathy (for example TUBA1A-, TUBB2B-, or TUBB3-related brain malformation)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q04.9"
+          ],
+          "snomed": [
+            "272151006",
+            "57148006"
+          ],
+          "omim": [
+            "602529",
+            "612850",
+            "602661"
+          ],
+          "orpha": [
+            "199633"
+          ]
+        }
+      },
+      "Walker-Warburg syndrome": {
+        "normalized_text": "Walker-Warburg syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      },
+      "Septo-optic dysplasia": {
+        "normalized_text": "Septo-optic dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q04.4"
+          ],
+          "snomed": [
+            "7611002"
+          ],
+          "omim": [],
+          "orpha": [
+            "3157"
+          ]
+        }
+      },
+      "Joubert syndrome and related disorders": {
+        "normalized_text": "Joubert syndrome and related disorders",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "COL4A1-related brain small-vessel disease": {
+        "normalized_text": "COL4A1-related brain small-vessel disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "272151006"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_004",
+    "case_id": "MME_004",
+    "gdx_details": {
+      "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome": {
+        "name": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+        "normalized_text": "Cataract-growth hormone deficiency-sensory neuropathy-sensorineural hearing loss-skeletal dysplasia syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "616007"
+          ],
+          "orpha": [
+            "436174"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6569621562957764
+            },
+            {
+              "position": 2,
+              "score": 0.5721122026443481
+            },
+            {
+              "position": 3,
+              "score": 0.6575020551681519
+            },
+            {
+              "position": 4,
+              "score": 0.6258265972137451
+            },
+            {
+              "position": 5,
+              "score": 0.4875655770301819
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.6575020551681519
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Congenital cataracts, facial dysmorphism, and neuropathy syndrome (CCFDN)": {
+        "normalized_text": "Congenital cataracts, facial dysmorphism, and neuropathy syndrome (CCFDN)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702433001"
+          ],
+          "omim": [
+            "604168"
+          ],
+          "orpha": [
+            "48431"
+          ]
+        }
+      },
+      "Marinesco-Sjögren syndrome": {
+        "normalized_text": "Marinesco-Sjögren syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "80734006"
+          ],
+          "omim": [
+            "248800"
+          ],
+          "orpha": [
+            "559"
+          ]
+        }
+      },
+      "Cerebro-oculo-facio-skeletal syndrome (COFS syndrome)": {
+        "normalized_text": "Cerebro-oculo-facio-skeletal syndrome (COFS syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "41283003"
+          ],
+          "omim": [],
+          "orpha": [
+            "1466"
+          ]
+        }
+      },
+      "CODAS syndrome": {
+        "normalized_text": "CODAS syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "717772000"
+          ],
+          "omim": [
+            "600373"
+          ],
+          "orpha": [
+            "1458"
+          ]
+        }
+      },
+      "Kabuki syndrome": {
+        "normalized_text": "Kabuki syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_005",
+    "case_id": "MME_005",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.9999999403953552
+            },
+            {
+              "position": 3,
+              "score": 0.48903173208236694
+            },
+            {
+              "position": 4,
+              "score": 0.40760231018066406
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.9999999403953552
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Joubert syndrome": {
+        "normalized_text": "Joubert syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "Poretti-Boltshauser syndrome": {
+        "normalized_text": "Poretti-Boltshauser syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763344007"
+          ],
+          "omim": [
+            "615960"
+          ],
+          "orpha": [
+            "370022"
+          ]
+        }
+      },
+      "COACH syndrome": {
+        "normalized_text": "COACH syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002"
+          ],
+          "omim": [
+            "216360"
+          ],
+          "orpha": [
+            "1454"
+          ]
+        }
+      },
+      "Dandy-Walker spectrum malformation": {
+        "normalized_text": "Dandy-Walker spectrum malformation",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_006",
+    "case_id": "MME_006",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Poretti-Boltshauser syndrome": {
+        "normalized_text": "Poretti-Boltshauser syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763344007"
+          ],
+          "omim": [
+            "615960"
+          ],
+          "orpha": [
+            "370022"
+          ]
+        }
+      },
+      "Joubert syndrome": {
+        "normalized_text": "Joubert syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "Walker-Warburg syndrome": {
+        "normalized_text": "Walker-Warburg syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "111504002"
+          ],
+          "omim": [
+            "236670"
+          ],
+          "orpha": [
+            "899"
+          ]
+        }
+      },
+      "Ocular albinism": {
+        "normalized_text": "Ocular albinism",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E70.319"
+          ],
+          "snomed": [
+            "26399002"
+          ],
+          "omim": [],
+          "orpha": [
+            "284804"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_007",
+    "case_id": "MME_007",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.9999999403953552
+            },
+            {
+              "position": 3,
+              "score": 0.4971233606338501
+            },
+            {
+              "position": 4,
+              "score": 0.48903173208236694
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.9999999403953552
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Joubert syndrome": {
+        "normalized_text": "Joubert syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "Poretti-Boltshauser syndrome": {
+        "normalized_text": "Poretti-Boltshauser syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763344007"
+          ],
+          "omim": [
+            "615960"
+          ],
+          "orpha": [
+            "370022"
+          ]
+        }
+      },
+      "Joubert syndrome with retinal dystrophy (retino-cerebellorenal ciliopathy)": {
+        "normalized_text": "Joubert syndrome with retinal dystrophy (retino-cerebellorenal ciliopathy)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003",
+            "314407005"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475",
+            "71862"
+          ]
+        }
+      },
+      "COACH syndrome": {
+        "normalized_text": "COACH syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002"
+          ],
+          "omim": [
+            "216360"
+          ],
+          "orpha": [
+            "1454"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_008",
+    "case_id": "MME_008",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 2,
+              "score": 0.48903173208236694
+            },
+            {
+              "position": 3,
+              "score": 0.9999999403953552
+            },
+            {
+              "position": 4,
+              "score": 0.605878472328186
+            },
+            {
+              "position": 5,
+              "score": 0.539141058921814
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.9999999403953552
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Joubert syndrome": {
+        "normalized_text": "Joubert syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "COACH syndrome": {
+        "normalized_text": "COACH syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002"
+          ],
+          "omim": [
+            "216360"
+          ],
+          "orpha": [
+            "1454"
+          ]
+        }
+      },
+      "Poretti-Boltshauser syndrome": {
+        "normalized_text": "Poretti-Boltshauser syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763344007"
+          ],
+          "omim": [
+            "615960"
+          ],
+          "orpha": [
+            "370022"
+          ]
+        }
+      },
+      "Gillespie syndrome": {
+        "normalized_text": "Gillespie syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253176002"
+          ],
+          "omim": [
+            "206700"
+          ],
+          "orpha": [
+            "1065"
+          ]
+        }
+      },
+      "Donnai-Barrow syndrome": {
+        "normalized_text": "Donnai-Barrow syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702418009"
+          ],
+          "omim": [
+            "222448"
+          ],
+          "orpha": [
+            "2143"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_009",
+    "case_id": "MME_009",
+    "gdx_details": {
+      "Poretti-Boltshauser Syndrome": {
+        "name": "Poretti-Boltshauser Syndrome",
+        "normalized_text": "Poretti-Boltshauser Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615960"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.9999999403953552
+            },
+            {
+              "position": 2,
+              "score": 0.5581815242767334
+            },
+            {
+              "position": 3,
+              "score": 0.41659432649612427
+            },
+            {
+              "position": 4,
+              "score": 0.46220457553863525
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.9999999403953552
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Poretti-Boltshauser syndrome": {
+        "normalized_text": "Poretti-Boltshauser syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763344007"
+          ],
+          "omim": [
+            "615960"
+          ],
+          "orpha": [
+            "370022"
+          ]
+        }
+      },
+      "Joubert syndrome": {
+        "normalized_text": "Joubert syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475"
+          ]
+        }
+      },
+      "LAMA1-related cerebellar dysplasia with retinal abnormalities": {
+        "normalized_text": "LAMA1-related cerebellar dysplasia with retinal abnormalities",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Senior-Loken syndrome / nephronophthisis-related ciliopathy": {
+        "normalized_text": "Senior-Loken syndrome / nephronophthisis-related ciliopathy",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "236531005"
+          ],
+          "omim": [
+            "266900"
+          ],
+          "orpha": [
+            "3156"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_010",
+    "case_id": "MME_010",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      },
+      "Stickler syndrome": {
+        "normalized_text": "Stickler syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      },
+      "Treacher Collins syndrome": {
+        "normalized_text": "Treacher Collins syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_011",
+    "case_id": "MME_011",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Cerebro-facio-thoracic dysplasia": {
+        "normalized_text": "Cerebro-facio-thoracic dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720635002"
+          ],
+          "omim": [
+            "213980"
+          ],
+          "orpha": [
+            "1394"
+          ]
+        }
+      },
+      "TARP syndrome": {
+        "normalized_text": "TARP syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "725911008"
+          ],
+          "omim": [
+            "311900"
+          ],
+          "orpha": [
+            "2886"
+          ]
+        }
+      },
+      "Kabuki syndrome": {
+        "normalized_text": "Kabuki syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_012",
+    "case_id": "MME_012",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Toriello-Carey syndrome": {
+        "normalized_text": "Toriello-Carey syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "722477003"
+          ],
+          "omim": [
+            "217980"
+          ],
+          "orpha": [
+            "3338"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      },
+      "Campomelic dysplasia": {
+        "normalized_text": "Campomelic dysplasia",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_013",
+    "case_id": "MME_013",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4785659909248352
+            },
+            {
+              "position": 2,
+              "score": 0.48277103900909424
+            },
+            {
+              "position": 3,
+              "score": 0.5456600189208984
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5456600189208984
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Multiple pterygium syndrome (Escobar syndrome)": {
+        "normalized_text": "Multiple pterygium syndrome (Escobar syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "205819008",
+            "80773006"
+          ],
+          "omim": [
+            "265000"
+          ],
+          "orpha": [
+            "294060",
+            "2990"
+          ]
+        }
+      },
+      "Lethal multiple pterygium syndrome": {
+        "normalized_text": "Lethal multiple pterygium syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "60192008"
+          ],
+          "omim": [
+            "253290"
+          ],
+          "orpha": [
+            "33108"
+          ]
+        }
+      },
+      "CHARGE syndrome": {
+        "normalized_text": "CHARGE syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "47535005"
+          ],
+          "omim": [
+            "214800"
+          ],
+          "orpha": [
+            "138"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_014",
+    "case_id": "MME_014",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Stickler syndrome": {
+        "normalized_text": "Stickler syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      },
+      "Treacher Collins syndrome": {
+        "normalized_text": "Treacher Collins syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      },
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Campomelic dysplasia": {
+        "normalized_text": "Campomelic dysplasia",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_015",
+    "case_id": "MME_015",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8406749963760376
+            },
+            {
+              "position": 2,
+              "score": 0.4335309863090515
+            },
+            {
+              "position": 3,
+              "score": 0.5528960227966309
+            },
+            {
+              "position": 4,
+              "score": 0.5189494490623474
+            },
+            {
+              "position": 5,
+              "score": 0.5616217255592346
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8406749963760376
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Stickler syndrome": {
+        "normalized_text": "Stickler syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      },
+      "SOX9-related campomelic dysplasia": {
+        "normalized_text": "SOX9-related campomelic dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Kabuki syndrome": {
+        "normalized_text": "Kabuki syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_016",
+    "case_id": "MME_016",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.8406749963760376
+            },
+            {
+              "position": 2,
+              "score": 0.5145113468170166
+            },
+            {
+              "position": 3,
+              "score": 0.5376670360565186
+            },
+            {
+              "position": 4,
+              "score": 0.42622247338294983
+            },
+            {
+              "position": 5,
+              "score": 0.44608360528945923
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.8406749963760376
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Campomelic dysplasia": {
+        "normalized_text": "Campomelic dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      },
+      "Feingold syndrome": {
+        "normalized_text": "Feingold syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702431004"
+          ],
+          "omim": [
+            "164280"
+          ],
+          "orpha": [
+            "1305"
+          ]
+        }
+      },
+      "VACTERL association with hydrocephalus or related syndromic VACTERL disorder": {
+        "normalized_text": "VACTERL association with hydrocephalus or related syndromic VACTERL disorder",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "276950"
+          ],
+          "orpha": []
+        }
+      },
+      "Au-Kline syndrome": {
+        "normalized_text": "Au-Kline syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1222710008"
+          ],
+          "omim": [],
+          "orpha": [
+            "453499"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_017",
+    "case_id": "MME_017",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0000001192092896
+            },
+            {
+              "position": 2,
+              "score": 0.5821908712387085
+            },
+            {
+              "position": 3,
+              "score": 0.5616217255592346
+            },
+            {
+              "position": 4,
+              "score": 0.3694615066051483
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0000001192092896
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Spondylocostal dysostosis": {
+        "normalized_text": "Spondylocostal dysostosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      },
+      "VACTERL association": {
+        "normalized_text": "VACTERL association",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_018",
+    "case_id": "MME_018",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Spondylocostal dysostosis": {
+        "normalized_text": "Spondylocostal dysostosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      },
+      "Cerebro-facio-thoracic dysplasia": {
+        "normalized_text": "Cerebro-facio-thoracic dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720635002"
+          ],
+          "omim": [
+            "213980"
+          ],
+          "orpha": [
+            "1394"
+          ]
+        }
+      },
+      "Campomelic dysplasia": {
+        "normalized_text": "Campomelic dysplasia",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "114290"
+          ],
+          "orpha": [
+            "140"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_019",
+    "case_id": "MME_019",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Stickler syndrome": {
+        "normalized_text": "Stickler syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "78675000"
+          ],
+          "omim": [],
+          "orpha": [
+            "828"
+          ]
+        }
+      },
+      "Treacher Collins syndrome": {
+        "normalized_text": "Treacher Collins syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      },
+      "22q11.2 deletion syndrome": {
+        "normalized_text": "22q11.2 deletion syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q93.81"
+          ],
+          "snomed": [],
+          "omim": [
+            "192430"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_020",
+    "case_id": "MME_020",
+    "gdx_details": {
+      "Cerebrocostomandibular syndrome": {
+        "name": "Cerebrocostomandibular syndrome",
+        "normalized_text": "Cerebrocostomandibular syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Cerebro-costo-mandibular syndrome": {
+        "normalized_text": "Cerebro-costo-mandibular syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "51780007"
+          ],
+          "omim": [
+            "117650"
+          ],
+          "orpha": [
+            "1393"
+          ]
+        }
+      },
+      "Spondylocostal dysostosis": {
+        "normalized_text": "Spondylocostal dysostosis",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "61367005"
+          ],
+          "omim": [],
+          "orpha": [
+            "2311"
+          ]
+        }
+      },
+      "Mandibulofacial dysostosis, Guion-Almeida type": {
+        "normalized_text": "Mandibulofacial dysostosis, Guion-Almeida type",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "Q75.4"
+          ],
+          "snomed": [
+            "82203000"
+          ],
+          "omim": [],
+          "orpha": [
+            "861"
+          ]
+        }
+      },
+      "Otopalatodigital syndrome": {
+        "normalized_text": "Otopalatodigital syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_021",
+    "case_id": "MME_021",
+    "gdx_details": {
+      "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development": {
+        "name": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+        "normalized_text": "Epilepsy, Focal, With Speech Disorder And With Or Without Impaired Intellectual Development",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "245570"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "KAT6B-related disorder (Genitopatellar syndrome / Say-Barber-Biesecker-Young-Simpson syndrome)": {
+        "normalized_text": "KAT6B-related disorder (Genitopatellar syndrome / Say-Barber-Biesecker-Young-Simpson syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702367005",
+            "699298009"
+          ],
+          "omim": [
+            "606170",
+            "603736"
+          ],
+          "orpha": [
+            "597749",
+            "85201",
+            "3047"
+          ]
+        }
+      },
+      "Bohring-Opitz syndrome": {
+        "normalized_text": "Bohring-Opitz syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720565000"
+          ],
+          "omim": [
+            "605039"
+          ],
+          "orpha": [
+            "97297"
+          ]
+        }
+      },
+      "Kabuki syndrome": {
+        "normalized_text": "Kabuki syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      },
+      "Coffin-Siris syndrome": {
+        "normalized_text": "Coffin-Siris syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "10007009"
+          ],
+          "omim": [
+            "135900"
+          ],
+          "orpha": [
+            "1465"
+          ]
+        }
+      },
+      "Bosley-Salih-Alorainy syndrome (horizontal gaze palsy with progressive scoliosis spectrum)": {
+        "normalized_text": "Bosley-Salih-Alorainy syndrome (horizontal gaze palsy with progressive scoliosis spectrum)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720567008",
+            "232115006"
+          ],
+          "omim": [
+            "601536"
+          ],
+          "orpha": [
+            "69737"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_022",
+    "case_id": "MME_022",
+    "gdx_details": {
+      "Spondylometaphyseal dysplasia, Sedaghatian type": {
+        "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "250220"
+          ],
+          "orpha": [
+            "93317"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Atelosteogenesis type II (SLC26A2-related skeletal dysplasia)": {
+        "normalized_text": "Atelosteogenesis type II (SLC26A2-related skeletal dysplasia)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254055004"
+          ],
+          "omim": [
+            "256050"
+          ],
+          "orpha": [
+            "56304"
+          ]
+        }
+      },
+      "Thanatophoric dysplasia": {
+        "normalized_text": "Thanatophoric dysplasia",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q77.1"
+          ],
+          "snomed": [
+            "29352008"
+          ],
+          "omim": [],
+          "orpha": [
+            "2655"
+          ]
+        }
+      },
+      "Metatropic dysplasia": {
+        "normalized_text": "Metatropic dysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "22764001"
+          ],
+          "omim": [
+            "156530"
+          ],
+          "orpha": [
+            "2635"
+          ]
+        }
+      },
+      "Spondyloepimetaphyseal dysplasia with congenital joint dislocations (SEMD)": {
+        "normalized_text": "Spondyloepimetaphyseal dysplasia with congenital joint dislocations (SEMD)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254062008",
+            "890410005"
+          ],
+          "omim": [],
+          "orpha": [
+            "294951"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_023",
+    "case_id": "MME_023",
+    "gdx_details": {
+      "Spondylometaphyseal dysplasia, Sedaghatian type": {
+        "name": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "normalized_text": "Spondylometaphyseal dysplasia, Sedaghatian type",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "250220"
+          ],
+          "orpha": [
+            "93317"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4218853712081909
+            },
+            {
+              "position": 2,
+              "score": 0.730800211429596
+            },
+            {
+              "position": 3,
+              "score": 0.6843044757843018
+            },
+            {
+              "position": 4,
+              "score": 0.5780832171440125
+            },
+            {
+              "position": 5,
+              "score": 0.42867469787597656
+            }
+          ],
+          "bert_best": {
+            "position": 2,
+            "score": 0.730800211429596
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Dyggve-Melchior-Clausen syndrome": {
+        "normalized_text": "Dyggve-Melchior-Clausen syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "82699004"
+          ],
+          "omim": [
+            "223800"
+          ],
+          "orpha": [
+            "239"
+          ]
+        }
+      },
+      "Spondyloepimetaphyseal dysplasia with neurodevelopmental abnormalities due to MBTPS1-related disease": {
+        "normalized_text": "Spondyloepimetaphyseal dysplasia with neurodevelopmental abnormalities due to MBTPS1-related disease",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254062008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Spondyloenchondrodysplasia": {
+        "normalized_text": "Spondyloenchondrodysplasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254079002"
+          ],
+          "omim": [],
+          "orpha": [
+            "1855"
+          ]
+        }
+      },
+      "Desbuquois dysplasia": {
+        "normalized_text": "Desbuquois dysplasia",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "254099008"
+          ],
+          "omim": [
+            "251450"
+          ],
+          "orpha": [
+            "1425"
+          ]
+        }
+      },
+      "Muscular dystrophy-dystroglycanopathy with brain and eye anomalies": {
+        "normalized_text": "Muscular dystrophy-dystroglycanopathy with brain and eye anomalies",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "G71.0"
+          ],
+          "snomed": [
+            "73297009",
+            "12738006",
+            "11131000119108"
+          ],
+          "omim": [],
+          "orpha": [
+            "98473",
+            "371024"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_024",
+    "case_id": "MME_024",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "NGLY1 deficiency (NGLY1-congenital disorder of deglycosylation)": {
+        "normalized_text": "NGLY1 deficiency (NGLY1-congenital disorder of deglycosylation)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273",
+            "610661"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "Triple A syndrome (Allgrove syndrome)": {
+        "normalized_text": "Triple A syndrome (Allgrove syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      },
+      "NBAS deficiency (infantile liver failure syndrome 2 / SOPH syndrome spectrum)": {
+        "normalized_text": "NBAS deficiency (infantile liver failure syndrome 2 / SOPH syndrome spectrum)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "616483",
+            "614800"
+          ],
+          "orpha": [
+            "391677"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_025",
+    "case_id": "MME_025",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "GMPPA-congenital disorder of glycosylation (GMPPA-CDG; alacrima-intellectual disability syndrome)": {
+        "normalized_text": "GMPPA-congenital disorder of glycosylation (GMPPA-CDG; alacrima-intellectual disability syndrome)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253215004"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "NGLY1 deficiency": {
+        "normalized_text": "NGLY1 deficiency",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "Familial dysautonomia (hereditary sensory and autonomic neuropathy type III)": {
+        "normalized_text": "Familial dysautonomia (hereditary sensory and autonomic neuropathy type III)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "G90.1"
+          ],
+          "snomed": [
+            "29159009"
+          ],
+          "omim": [
+            "223900"
+          ],
+          "orpha": [
+            "1764"
+          ]
+        }
+      },
+      "Triple A syndrome (Allgrove syndrome)": {
+        "normalized_text": "Triple A syndrome (Allgrove syndrome)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "45414006"
+          ],
+          "omim": [
+            "231550"
+          ],
+          "orpha": [
+            "869"
+          ]
+        }
+      },
+      "Mitochondrial disease with peripheral neuropathy and hepatopathy": {
+        "normalized_text": "Mitochondrial disease with peripheral neuropathy and hepatopathy",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [
+            "K76.9"
+          ],
+          "snomed": [
+            "240096000",
+            "235856003"
+          ],
+          "omim": [],
+          "orpha": [
+            "68380"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_026",
+    "case_id": "MME_026",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "NGLY1 deficiency (NGLY1-related congenital disorder of deglycosylation)": {
+        "normalized_text": "NGLY1 deficiency (NGLY1-related congenital disorder of deglycosylation)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "MPV17-related mitochondrial DNA depletion syndrome (hepatocerebral mitochondrial DNA depletion syndrome)": {
+        "normalized_text": "MPV17-related mitochondrial DNA depletion syndrome (hepatocerebral mitochondrial DNA depletion syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698",
+            "254871"
+          ]
+        }
+      },
+      "VPS33B-related arthrogryposis-renal dysfunction-cholestasis syndrome (ARC syndrome)": {
+        "normalized_text": "VPS33B-related arthrogryposis-renal dysfunction-cholestasis syndrome (ARC syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "720513002"
+          ],
+          "omim": [
+            "208085"
+          ],
+          "orpha": [
+            "2697"
+          ]
+        }
+      },
+      "Congenital disorder of glycosylation with hepatocerebral involvement": {
+        "normalized_text": "Congenital disorder of glycosylation with hepatocerebral involvement",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009"
+          ],
+          "omim": [],
+          "orpha": [
+            "137"
+          ]
+        }
+      },
+      "Mitochondrial neurogastrointestinal and hepatocerebral disease": {
+        "normalized_text": "Mitochondrial neurogastrointestinal and hepatocerebral disease",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_027",
+    "case_id": "MME_027",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "NGLY1 deficiency": {
+        "normalized_text": "NGLY1 deficiency",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "PNKP-related microcephaly, seizures, and developmental delay syndrome": {
+        "normalized_text": "PNKP-related microcephaly, seizures, and developmental delay syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "91175000"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Ataxia-telangiectasia": {
+        "normalized_text": "Ataxia-telangiectasia",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "68504005"
+          ],
+          "omim": [
+            "208900"
+          ],
+          "orpha": [
+            "100"
+          ]
+        }
+      },
+      "Martsolf syndrome": {
+        "normalized_text": "Martsolf syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "722380003"
+          ],
+          "omim": [
+            "212720"
+          ],
+          "orpha": [
+            "1387"
+          ]
+        }
+      },
+      "Mitochondrial DNA depletion syndrome, hepatocerebral type": {
+        "normalized_text": "Mitochondrial DNA depletion syndrome, hepatocerebral type",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_028",
+    "case_id": "MME_028",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "COACH syndrome (Joubert syndrome with congenital hepatic fibrosis)": {
+        "normalized_text": "COACH syndrome (Joubert syndrome with congenital hepatic fibrosis)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721847002",
+            "253175003",
+            "79607001"
+          ],
+          "omim": [
+            "216360",
+            "213300"
+          ],
+          "orpha": [
+            "1454",
+            "475",
+            "485426"
+          ]
+        }
+      },
+      "Zellweger spectrum disorder": {
+        "normalized_text": "Zellweger spectrum disorder",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "MPV17-related mitochondrial DNA depletion syndrome (hepatocerebral type)": {
+        "normalized_text": "MPV17-related mitochondrial DNA depletion syndrome (hepatocerebral type)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698"
+          ]
+        }
+      },
+      "COG6-congenital disorder of glycosylation": {
+        "normalized_text": "COG6-congenital disorder of glycosylation",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009"
+          ],
+          "omim": [],
+          "orpha": [
+            "137"
+          ]
+        }
+      },
+      "Neonatal sclerosing cholangitis with ichthyosis syndrome": {
+        "normalized_text": "Neonatal sclerosing cholangitis with ichthyosis syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "617394"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_029",
+    "case_id": "MME_029",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "KAT6B-related Say-Barber-Biesecker-Young-Simpson syndrome": {
+        "normalized_text": "KAT6B-related Say-Barber-Biesecker-Young-Simpson syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "699298009"
+          ],
+          "omim": [
+            "605880",
+            "603736"
+          ],
+          "orpha": [
+            "3047"
+          ]
+        }
+      },
+      "Kabuki syndrome": {
+        "normalized_text": "Kabuki syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "313426007"
+          ],
+          "omim": [
+            "147920"
+          ],
+          "orpha": [
+            "2322"
+          ]
+        }
+      },
+      "Au-Kline syndrome": {
+        "normalized_text": "Au-Kline syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1222710008"
+          ],
+          "omim": [],
+          "orpha": [
+            "453499"
+          ]
+        }
+      },
+      "Cohen syndrome": {
+        "normalized_text": "Cohen syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "56604005"
+          ],
+          "omim": [
+            "216550"
+          ],
+          "orpha": [
+            "193"
+          ]
+        }
+      },
+      "Joubert syndrome or Joubert syndrome-related disorder": {
+        "normalized_text": "Joubert syndrome or Joubert syndrome-related disorder",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "253175003"
+          ],
+          "omim": [
+            "213300"
+          ],
+          "orpha": [
+            "475",
+            "140874"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_030",
+    "case_id": "MME_030",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.48133161664009094
+            },
+            {
+              "position": 2,
+              "score": 0.47378334403038025
+            },
+            {
+              "position": 3,
+              "score": 0.608980119228363
+            },
+            {
+              "position": 4,
+              "score": 0.5391519069671631
+            },
+            {
+              "position": 5,
+              "score": 0.4048183858394623
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.608980119228363
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "NGLY1 deficiency (congenital disorder of deglycosylation)": {
+        "normalized_text": "NGLY1 deficiency (congenital disorder of deglycosylation)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "UNC80-related IHPRF syndrome": {
+        "normalized_text": "UNC80-related IHPRF syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "763722004"
+          ],
+          "omim": [],
+          "orpha": [
+            "371364"
+          ]
+        }
+      },
+      "Galloway-Mowat syndrome": {
+        "normalized_text": "Galloway-Mowat syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "721297008"
+          ],
+          "omim": [
+            "251300"
+          ],
+          "orpha": [
+            "2065"
+          ]
+        }
+      },
+      "Cohen syndrome": {
+        "normalized_text": "Cohen syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "56604005"
+          ],
+          "omim": [
+            "216550"
+          ],
+          "orpha": [
+            "193"
+          ]
+        }
+      },
+      "Congenital disorder of glycosylation due to PGM1 or other glycosylation-pathway defects": {
+        "normalized_text": "Congenital disorder of glycosylation due to PGM1 or other glycosylation-pathway defects",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009"
+          ],
+          "omim": [
+            "171900"
+          ],
+          "orpha": [
+            "137"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_031",
+    "case_id": "MME_031",
+    "gdx_details": {
+      "Autosomal recessive primary microcephaly": {
+        "name": "Autosomal recessive primary microcephaly",
+        "normalized_text": "Autosomal recessive primary microcephaly",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "604317"
+          ],
+          "orpha": [
+            "2512"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.5527785420417786
+            },
+            {
+              "position": 2,
+              "score": 0.42871329188346863
+            },
+            {
+              "position": 3,
+              "score": 0.4219203293323517
+            },
+            {
+              "position": 4,
+              "score": 0.36006373167037964
+            },
+            {
+              "position": 5,
+              "score": 0.4764469563961029
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 0.5527785420417786
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "MBD5-associated neurodevelopmental disorder": {
+        "normalized_text": "MBD5-associated neurodevelopmental disorder",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "MBD014",
+            "F89"
+          ],
+          "snomed": [
+            "700364009"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Smith-Magenis syndrome": {
+        "normalized_text": "Smith-Magenis syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q93.88"
+          ],
+          "snomed": [
+            "401315004"
+          ],
+          "omim": [
+            "182290"
+          ],
+          "orpha": [
+            "819"
+          ]
+        }
+      },
+      "Kleefstra syndrome": {
+        "normalized_text": "Kleefstra syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "724207001"
+          ],
+          "omim": [],
+          "orpha": [
+            "261494"
+          ]
+        }
+      },
+      "Cornelia de Lange syndrome": {
+        "normalized_text": "Cornelia de Lange syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q87.19"
+          ],
+          "snomed": [
+            "40354009"
+          ],
+          "omim": [
+            "122470"
+          ],
+          "orpha": [
+            "199"
+          ]
+        }
+      },
+      "PNKP-related developmental and epileptic encephalopathy": {
+        "normalized_text": "PNKP-related developmental and epileptic encephalopathy",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "723125008"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_032",
+    "case_id": "MME_032",
+    "gdx_details": {
+      "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome": {
+        "name": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+        "normalized_text": "Cerebellar ataxia-areflexia-pes cavus-optic atrophy-sensorineural hearing loss syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "601338"
+          ],
+          "orpha": [
+            "1171"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Behr syndrome (OPA1-related mitochondrial optic neuropathy)": {
+        "normalized_text": "Behr syndrome (OPA1-related mitochondrial optic neuropathy)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "210000"
+          ],
+          "orpha": [
+            "1239"
+          ]
+        }
+      },
+      "Wolfram syndrome": {
+        "normalized_text": "Wolfram syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "70694009"
+          ],
+          "omim": [
+            "222300"
+          ],
+          "orpha": [
+            "3463"
+          ]
+        }
+      },
+      "Riboflavin transporter deficiency (Brown-Vialetto-Van Laere syndrome)": {
+        "normalized_text": "Riboflavin transporter deficiency (Brown-Vialetto-Van Laere syndrome)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "699866005"
+          ],
+          "omim": [],
+          "orpha": [
+            "97229"
+          ]
+        }
+      },
+      "Mitochondrial encephalomyopathy due to AIFM1-related disorder": {
+        "normalized_text": "Mitochondrial encephalomyopathy due to AIFM1-related disorder",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "447292006"
+          ],
+          "omim": [
+            "516020"
+          ],
+          "orpha": []
+        }
+      },
+      "NARP syndrome (neuropathy, ataxia, and retinitis pigmentosa)": {
+        "normalized_text": "NARP syndrome (neuropathy, ataxia, and retinitis pigmentosa)",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237984008"
+          ],
+          "omim": [
+            "551500"
+          ],
+          "orpha": [
+            "644"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_033",
+    "case_id": "MME_033",
+    "gdx_details": {
+      "Shprintzen-Goldberg syndrome": {
+        "name": "Shprintzen-Goldberg syndrome",
+        "normalized_text": "Shprintzen-Goldberg syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "182212"
+          ],
+          "orpha": [
+            "2462"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 1.0
+            },
+            {
+              "position": 2,
+              "score": 0.5199120044708252
+            },
+            {
+              "position": 3,
+              "score": 0.5187389850616455
+            },
+            {
+              "position": 4,
+              "score": 0.5927466154098511
+            }
+          ],
+          "bert_best": {
+            "position": 1,
+            "score": 1.0
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Shprintzen-Goldberg syndrome": {
+        "normalized_text": "Shprintzen-Goldberg syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "719069008"
+          ],
+          "omim": [
+            "182212"
+          ],
+          "orpha": [
+            "2462"
+          ]
+        }
+      },
+      "Loeys-Dietz syndrome": {
+        "normalized_text": "Loeys-Dietz syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "446263001"
+          ],
+          "omim": [],
+          "orpha": [
+            "60030"
+          ]
+        }
+      },
+      "Craniofrontonasal syndrome": {
+        "normalized_text": "Craniofrontonasal syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "715421009"
+          ],
+          "omim": [
+            "304110"
+          ],
+          "orpha": [
+            "1520"
+          ]
+        }
+      },
+      "KAT6B-related disorder (Genitopatellar syndrome or Say-Barber-Biesecker-Young-Simpson syndrome spectrum)": {
+        "normalized_text": "KAT6B-related disorder (Genitopatellar syndrome or Say-Barber-Biesecker-Young-Simpson syndrome spectrum)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "702367005",
+            "699298009"
+          ],
+          "omim": [
+            "606170",
+            "603736"
+          ],
+          "orpha": [
+            "597749",
+            "85201",
+            "3047"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_034",
+    "case_id": "MME_034",
+    "gdx_details": {
+      "Methylmalonate Semialdehyde Dehydrogenase Deficiency": {
+        "name": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+        "normalized_text": "Methylmalonate Semialdehyde Dehydrogenase Deficiency",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "614105"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.6367186903953552
+            },
+            {
+              "position": 2,
+              "score": 0.5860838890075684
+            },
+            {
+              "position": 3,
+              "score": 0.7415713667869568
+            },
+            {
+              "position": 4,
+              "score": 0.5583410263061523
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.7415713667869568
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Methylmalonic acidemia with homocystinuria, cobalamin C type (cblC disorder, MMACHC-related)": {
+        "normalized_text": "Methylmalonic acidemia with homocystinuria, cobalamin C type (cblC disorder, MMACHC-related)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "26"
+          ]
+        }
+      },
+      "Methylmalonic acidemia with homocystinuria, cobalamin X type (cblX disorder, HCFC1-related)": {
+        "normalized_text": "Methylmalonic acidemia with homocystinuria, cobalamin X type (cblX disorder, HCFC1-related)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "26"
+          ]
+        }
+      },
+      "Isolated methylmalonic acidemia due to methylmalonyl-CoA mutase deficiency (mut0/mut− MMA, MMUT-related)": {
+        "normalized_text": "Isolated methylmalonic acidemia due to methylmalonyl-CoA mutase deficiency (mut0/mut− MMA, MMUT-related)",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E71.120"
+          ],
+          "snomed": [
+            "42393006",
+            "124680001"
+          ],
+          "omim": [
+            "604467",
+            "609058"
+          ],
+          "orpha": [
+            "27"
+          ]
+        }
+      },
+      "Methylmalonic aciduria and homocystinuria, cobalamin J type (cblJ disorder, ABCD4-related)": {
+        "normalized_text": "Methylmalonic aciduria and homocystinuria, cobalamin J type (cblJ disorder, ABCD4-related)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E72.11"
+          ],
+          "snomed": [
+            "11282001"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_035",
+    "case_id": "MME_035",
+    "gdx_details": {
+      "SHORT syndrome": {
+        "name": "SHORT syndrome",
+        "normalized_text": "SHORT syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "269880"
+          ],
+          "orpha": [
+            "3163"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "SHORT syndrome": {
+        "normalized_text": "SHORT syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "269880"
+          ],
+          "orpha": [
+            "3163"
+          ]
+        }
+      },
+      "Axenfeld-Rieger syndrome": {
+        "normalized_text": "Axenfeld-Rieger syndrome",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q13.81"
+          ],
+          "snomed": [
+            "417604002"
+          ],
+          "omim": [],
+          "orpha": [
+            "782"
+          ]
+        }
+      },
+      "Mandibuloacral dysplasia with lipodystrophy": {
+        "normalized_text": "Mandibuloacral dysplasia with lipodystrophy",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "E88.1"
+          ],
+          "snomed": [
+            "109419009",
+            "71325002"
+          ],
+          "omim": [],
+          "orpha": [
+            "2457"
+          ]
+        }
+      },
+      "Hutchinson-Gilford progeria syndrome": {
+        "normalized_text": "Hutchinson-Gilford progeria syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "E34.8"
+          ],
+          "snomed": [
+            "238870004"
+          ],
+          "omim": [
+            "176670"
+          ],
+          "orpha": [
+            "740"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_036",
+    "case_id": "MME_036",
+    "gdx_details": {
+      "Beaulieu-Boycott-Innes Syndrome": {
+        "name": "Beaulieu-Boycott-Innes Syndrome",
+        "normalized_text": "Beaulieu-Boycott-Innes Syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "613680"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "RERE-related neurodevelopmental disorder": {
+        "normalized_text": "RERE-related neurodevelopmental disorder",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      },
+      "Verheij syndrome (PUF60-related disorder)": {
+        "normalized_text": "Verheij syndrome (PUF60-related disorder)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1229895008"
+          ],
+          "omim": [
+            "615583"
+          ],
+          "orpha": [
+            "508488"
+          ]
+        }
+      },
+      "Coffin-Siris syndrome": {
+        "normalized_text": "Coffin-Siris syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "10007009"
+          ],
+          "omim": [
+            "135900"
+          ],
+          "orpha": [
+            "1465"
+          ]
+        }
+      },
+      "KBG syndrome": {
+        "normalized_text": "KBG syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "711156009"
+          ],
+          "omim": [
+            "148050"
+          ],
+          "orpha": [
+            "2332"
+          ]
+        }
+      },
+      "Au-Kline syndrome": {
+        "normalized_text": "Au-Kline syndrome",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "1222710008"
+          ],
+          "omim": [],
+          "orpha": [
+            "453499"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_037",
+    "case_id": "MME_037",
+    "gdx_details": {
+      "Neutropenia, Severe Congenital, 4, Autosomal Recessive": {
+        "name": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+        "normalized_text": "Neutropenia, Severe Congenital, 4, Autosomal Recessive",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "612541"
+          ],
+          "orpha": []
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [],
+          "bert_best": null
+        }
+      }
+    },
+    "ddx_details": {
+      "Chediak-Higashi syndrome": {
+        "normalized_text": "Chediak-Higashi syndrome",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "E70.330"
+          ],
+          "snomed": [
+            "111396008"
+          ],
+          "omim": [
+            "214500"
+          ],
+          "orpha": [
+            "167"
+          ]
+        }
+      },
+      "Hermansky-Pudlak syndrome type 2": {
+        "normalized_text": "Hermansky-Pudlak syndrome type 2",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": [
+            "664500"
+          ]
+        }
+      },
+      "Wiskott-Aldrich syndrome": {
+        "normalized_text": "Wiskott-Aldrich syndrome",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [
+            "D82.0"
+          ],
+          "snomed": [
+            "36070007"
+          ],
+          "omim": [
+            "301000"
+          ],
+          "orpha": [
+            "906"
+          ]
+        }
+      },
+      "GATA2 deficiency": {
+        "normalized_text": "GATA2 deficiency",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "778024005"
+          ],
+          "omim": [
+            "614172"
+          ],
+          "orpha": []
+        }
+      },
+      "STK4 deficiency": {
+        "normalized_text": "STK4 deficiency",
+        "position": 5,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "614868"
+          ],
+          "orpha": []
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_038",
+    "case_id": "MME_038",
+    "gdx_details": {
+      "Combined immunodeficiency-enteropathy spectrum": {
+        "name": "Combined immunodeficiency-enteropathy spectrum",
+        "normalized_text": "Combined immunodeficiency-enteropathy spectrum",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "243150"
+          ],
+          "orpha": [
+            "436252"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4068668484687805
+            },
+            {
+              "position": 2,
+              "score": 0.4051554203033447
+            },
+            {
+              "position": 3,
+              "score": 0.28498712182044983
+            },
+            {
+              "position": 4,
+              "score": 0.4237509071826935
+            }
+          ],
+          "bert_best": {
+            "position": 4,
+            "score": 0.4237509071826935
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "Omphalocele with intestinal atresia": {
+        "normalized_text": "Omphalocele with intestinal atresia",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [
+            "Q79.2",
+            "Q41.1"
+          ],
+          "snomed": [
+            "18735004"
+          ],
+          "omim": [],
+          "orpha": [
+            "660"
+          ]
+        }
+      },
+      "Trisomy 18 (Edwards syndrome)": {
+        "normalized_text": "Trisomy 18 (Edwards syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [
+            "Q91.3"
+          ],
+          "snomed": [
+            "51500006"
+          ],
+          "omim": [
+            "300484"
+          ],
+          "orpha": [
+            "3380"
+          ]
+        }
+      },
+      "Pentalogy of Cantrell": {
+        "normalized_text": "Pentalogy of Cantrell",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "281587000"
+          ],
+          "omim": [
+            "313850"
+          ],
+          "orpha": [
+            "1335"
+          ]
+        }
+      },
+      "Beckwith-Wiedemann syndrome": {
+        "normalized_text": "Beckwith-Wiedemann syndrome",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "Q87.3"
+          ],
+          "snomed": [
+            "81780002"
+          ],
+          "omim": [
+            "130650"
+          ],
+          "orpha": [
+            "116"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "MME_039",
+    "case_id": "MME_039",
+    "gdx_details": {
+      "Alacrimia-choreoathetosis-liver dysfunction syndrome": {
+        "name": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "normalized_text": "Alacrimia-choreoathetosis-liver dysfunction syndrome",
+        "severity": "S0",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [
+            "615273"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        },
+        "_source_bert_evaluation": {
+          "bert_scores": [
+            {
+              "position": 1,
+              "score": 0.4652559161186218
+            },
+            {
+              "position": 2,
+              "score": 0.48910990357398987
+            },
+            {
+              "position": 3,
+              "score": 0.5824193954467773
+            },
+            {
+              "position": 4,
+              "score": 0.5682989358901978
+            }
+          ],
+          "bert_best": {
+            "position": 3,
+            "score": 0.5824193954467773
+          }
+        }
+      }
+    },
+    "ddx_details": {
+      "NGLY1 deficiency (NGLY1-congenital disorder of deglycosylation)": {
+        "normalized_text": "NGLY1 deficiency (NGLY1-congenital disorder of deglycosylation)",
+        "position": 1,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "768846004"
+          ],
+          "omim": [
+            "615273",
+            "610661"
+          ],
+          "orpha": [
+            "404454"
+          ]
+        }
+      },
+      "Mitochondrial DNA depletion syndrome due to MPV17 deficiency (hepatocerebral mitochondrial DNA depletion syndrome)": {
+        "normalized_text": "Mitochondrial DNA depletion syndrome due to MPV17 deficiency (hepatocerebral mitochondrial DNA depletion syndrome)",
+        "position": 2,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "237995002"
+          ],
+          "omim": [],
+          "orpha": [
+            "35698",
+            "254871"
+          ]
+        }
+      },
+      "Congenital disorder of glycosylation with liver and neurologic involvement": {
+        "normalized_text": "Congenital disorder of glycosylation with liver and neurologic involvement",
+        "position": 3,
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [
+            "238049009",
+            "10200004",
+            "1199008"
+          ],
+          "omim": [],
+          "orpha": [
+            "137"
+          ]
+        }
+      },
+      "Neurodevelopmental disorder with liver disease due to mitochondrial dysfunction (including POLG-related disease)": {
+        "normalized_text": "Neurodevelopmental disorder with liver disease due to mitochondrial dysfunction (including POLG-related disease)",
+        "position": 4,
+        "medical_codes": {
+          "icd10": [
+            "MBD014",
+            "F89",
+            "K76.9"
+          ],
+          "snomed": [
+            "700364009",
+            "235856003"
+          ],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    }
+  }
+]

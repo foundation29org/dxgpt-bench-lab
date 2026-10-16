@@ -1,0 +1,71 @@
+{
+  "configuration": {
+    "experiment_name": "judge-audit-strict-hms88 gemini-3-pro-preview low run 20260420160939",
+    "experiment_description": "Strict re-score of hms88 gemini-3-pro-preview low run 20260420160939 from existing evaluation_details. No new inference or MedLabeler.",
+    "bert_acceptance_threshold": 0.8,
+    "bert_autoconfirm_threshold": 0.9,
+    "enable_icd10_parent_search": true,
+    "enable_icd10_sibling_search": true,
+    "judge_model": "gemini-2.5-pro",
+    "dataset_path": "bench/datasets/all_256_clean.json",
+    "timestamp": "unknown"
+  },
+  "global": {
+    "total_cases": 88,
+    "matched_cases": 46,
+    "unmatched_cases": 42,
+    "top_counts": {
+      "P3": 2,
+      "P1": 41,
+      "P2": 3
+    },
+    "resolution_method_counts": {
+      "snomed_match": 0,
+      "icd10_exact": 0,
+      "icd10_child": 0,
+      "icd10_parent": 0,
+      "icd10_sibling": 0,
+      "bert_autoconfirm": 34,
+      "bert_match": 5,
+      "llm_judgment": 7
+    },
+    "average_position": 1.152,
+    "final_score_percentage": 52.27
+  },
+  "by_method": {
+    "BERT_AUTOCONFIRM": {
+      "total_cases": 34,
+      "matched_cases": 34,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 32,
+        "P3": 1,
+        "P2": 1
+      },
+      "average_position": 1.088,
+      "final_score_percentage": 100.0
+    },
+    "BERT_MATCH": {
+      "total_cases": 5,
+      "matched_cases": 5,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P1": 5
+      },
+      "average_position": 1,
+      "final_score_percentage": 100.0
+    },
+    "LLM_JUDGMENT": {
+      "total_cases": 7,
+      "matched_cases": 7,
+      "unmatched_cases": 0,
+      "top_counts": {
+        "P3": 1,
+        "P1": 4,
+        "P2": 2
+      },
+      "average_position": 1.571,
+      "final_score_percentage": 100.0
+    }
+  }
+}

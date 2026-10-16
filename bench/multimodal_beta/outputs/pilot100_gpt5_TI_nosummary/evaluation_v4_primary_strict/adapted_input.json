@@ -1,0 +1,2464 @@
+[
+  {
+    "id": "27380346",
+    "case": "A 66-year-old man presented with a 2-day history of fevers, lethargy, polyarticular arthralgias, and a painful rash. His medical history included hypertension, poorly controlled type 2 diabetes, hypercholesterolemia, and biopsy-proven autoimmune hepatitis. He had started azathioprine 75 mg 10 days prior after normal thiopurine methyltransferase activity was confirmed. Other medications included aspirin, metformin, verapamil, and pravastatin. On examination, he had a temperature of 38°C, and bilaterally tender knees with a patellar tap. Laboratory findings showed WBC 10,500/μL (neutrophils 9900/μL [94%]), CRP 76 mg/L, ESR 69 mm/h, slightly elevated rheumatoid factor at 16 IU/mL, negative anti-CCP antibody, negative tests for double-stranded DNA, extractable nuclear antibodies, and anti-ASO. Renal function was normal, with no abnormalities in urinalysis. Chest radiograph was normal. Synovial fluid analysis showed noninflammatory picture with leukocyte count of 700 cells/L, with no bacteria or crystals seen.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Erythema nodosum",
+        "normalized_text": "Erythema nodosum",
+        "role": "primary",
+        "icd11": "EB31",
+        "icd11_title": "Erythema nodosum",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Azathioprine hypersensitivity (serum sickness–like reaction)": {
+        "normalized_text": "Azathioprine hypersensitivity (serum sickness–like reaction)",
+        "position": 1,
+        "description": "An idiosyncratic, immune-mediated reaction typically occurring 1–2 weeks after starting azathioprine, characterized by fever, malaise, arthralgias/arthritis, and a painful rash; can mimic infection or vasculitis and resolves with drug cessation."
+      },
+      "Serum sickness–like reaction (drug-induced, non-azathioprine specific)": {
+        "normalized_text": "Serum sickness–like reaction (drug-induced, non-azathioprine specific)",
+        "position": 2,
+        "description": "Immune complex–like reaction usually 1–3 weeks after exposure to a new medication, presenting with fever, arthralgia/arthritis, and rash; often lacks true hypocomplementemia of classic serum sickness."
+      },
+      "Sweet syndrome (acute febrile neutrophilic dermatosis)": {
+        "normalized_text": "Sweet syndrome (acute febrile neutrophilic dermatosis)",
+        "position": 3,
+        "description": "A neutrophilic dermatosis characterized by abrupt onset of fever, neutrophilia, tender erythematous plaques or nodules, and arthralgias; may be triggered by infections, malignancy, or drugs."
+      },
+      "Erythema nodosum (drug- or systemic-triggered)": {
+        "normalized_text": "Erythema nodosum (drug- or systemic-triggered)",
+        "position": 4,
+        "description": "A panniculitis causing tender erythematous nodules on the shins with systemic symptoms (fever, malaise) and arthralgias; can be triggered by infections, inflammatory diseases, or medications."
+      },
+      "Septic arthritis (polyarticular, e.g., due to bacteremia)": {
+        "normalized_text": "Septic arthritis (polyarticular, e.g., due to bacteremia)",
+        "position": 5,
+        "description": "Infection of the joint space, typically causing acute monoarthritis with fever and markedly inflammatory synovial fluid; polyarticular involvement can occur in older adults or immunocompromised patients."
+      },
+      "Crystal-induced arthritis (gout or calcium pyrophosphate deposition)": {
+        "normalized_text": "Crystal-induced arthritis (gout or calcium pyrophosphate deposition)",
+        "position": 6,
+        "description": "Acute inflammatory arthritis due to deposition of monosodium urate or CPPD crystals, commonly affecting knees; typically presents with abrupt mono- or oligoarthritis with inflammatory synovial fluid and identifiable crystals."
+      },
+      "Parvovirus B19 infection (adult arthropathy)": {
+        "normalized_text": "Parvovirus B19 infection (adult arthropathy)",
+        "position": 7,
+        "description": "Viral infection that in adults often presents with acute symmetric polyarthralgia/arthritis and rash; may mimic rheumatoid arthritis and is usually self-limited."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1100,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "27380346",
+      "year": 2016,
+      "classification": "Dermatologic and mucosal diseases",
+      "modalities": [
+        "clinical"
+      ],
+      "image_count": 1,
+      "history_chars": 1020,
+      "total_file_bytes": 128144,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23449674",
+    "case": "A 37-year-old man presented with weakness, irritability, poor concentration. Over the previous three months, he experienced craving for sweets, episodes of weakness sometimes associated with foggy sensorium, feeling cold, clammy, and fatigued during episodes. His wife noticed strange behavior and memory loss for long periods. He gained 30 lb (13 kg) during this time from drinking large amounts of cola for symptom relief. Symptoms recurred when he had not eaten for several hours, particularly at night and in the early morning. Several days prior, he presented to another hospital with similar symptoms. His medical history was unremarkable except for umbilical hernia repair and back surgery 10 years earlier. He took no prescription or over-the-counter drugs, did not smoke, drank beer socially, and denied illicit drug use. Family history was positive for diabetes but he had not been diagnosed with diabetes. On examination, his blood pressure was 124/76 mm Hg, pulse 94 beats/min, respiratory rate 18 breaths/min. He was confused, cold, and clammy. Examination of neurological system, skin, joints, cardiovascular, respiratory, and abdominal systems was unremarkable. Complete blood count, electrolytes, urea, creatinine, and liver panel were normal. Glycated hemoglobin was 5% (31 mmol/mol). Short synacthen test ruled out adrenal insufficiency. Serum parathyroid hormone was 4.6 pmol/L (normal range 1.6-7.2) and serum calcium was normal. Serum prolactin was 21.81 μg/L (reference range 2.60-18.10). Follicle stimulating hormone, luteinizing hormone, and thyroid stimulating hormone concentrations were all in the reference range. Magnetic resonance cholangiopancreatography showed a 1.8 × 1.3 cm hypervascular slightly exophytic lesion arising anteriorly between the head and neck of the pancreas.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Insulinoma",
+        "normalized_text": "Insulinoma",
+        "role": "primary",
+        "icd11": "2C10.1",
+        "icd11_title": "Insulinoma",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Insulinoma (pancreatic β-cell tumor)": {
+        "normalized_text": "Insulinoma (pancreatic β-cell tumor)",
+        "position": 1,
+        "description": "A neuroendocrine tumor of pancreatic β-cells that secretes insulin autonomously, causing recurrent fasting hypoglycemia (Whipple’s triad)."
+      },
+      "Sulfonylurea-induced hypoglycemia": {
+        "normalized_text": "Sulfonylurea-induced hypoglycemia",
+        "position": 2,
+        "description": "Hypoglycemia due to ingestion of insulin secretagogues (e.g., sulfonylureas), which stimulate endogenous insulin release, leading to elevated insulin and C-peptide during hypoglycemia."
+      },
+      "Insulin autoimmune syndrome (Hirata disease)": {
+        "normalized_text": "Insulin autoimmune syndrome (Hirata disease)",
+        "position": 3,
+        "description": "Autoantibodies to insulin (and sometimes insulin receptor) cause episodic hyperinsulinemic hypoglycemia, often without a pancreatic tumor; episodes can be spontaneous and sometimes postprandial."
+      },
+      "Noninsulinoma pancreatogenous hypoglycemia syndrome (NIPHS/nesidioblastosis)": {
+        "normalized_text": "Noninsulinoma pancreatogenous hypoglycemia syndrome (NIPHS/nesidioblastosis)",
+        "position": 4,
+        "description": "Diffuse β-cell hyperfunction (nesidioblastosis) causing endogenous hyperinsulinemic hypoglycemia, more often postprandial and frequently reported after bariatric surgery."
+      },
+      "Factitious hypoglycemia due to exogenous insulin administration": {
+        "normalized_text": "Factitious hypoglycemia due to exogenous insulin administration",
+        "position": 5,
+        "description": "Surreptitious use of insulin leading to hypoglycemia; typically shows high insulin with suppressed C-peptide and low ketones."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1889,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23449674",
+      "year": 2013,
+      "classification": "Endocrine and metabolic disorders",
+      "modalities": [
+        "lab"
+      ],
+      "image_count": 1,
+      "history_chars": 1809,
+      "total_file_bytes": 47271,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000120",
+    "case": "A 27-year-old man presented with convulsions that had been occurring for 2 years. The patient had been in his usual state of health until 2 years before admission, when shaking of the trunk, arms, and legs occurred, lasting approximately 4-5 minutes and preceded by sharp pain in the back of the head radiating to the neck, blurred vision, palpitations, nausea, and difficulty concentrating. Four months before admission, while drinking alcohol at a party, his body suddenly became stiff and he fell backward, with shaking of the trunk, arms, and legs for 5-8 minutes with urinary incontinence. Three months before admission, he reported convulsions occurring approximately once per week despite treatment with levetiracetam. One month before admission, colleagues found him on the floor with shaking and clenching movements lasting approximately 2 minutes. On examination, he was awake and alert but did not speak, with stiff body appearance and intermittent nonrhythmic tremulous movements of the trunk, arms, and legs. He had extensive scarring from burns on the face, trunk, back, arms, and legs. The patient had a history of febrile seizure in childhood, several concussions, asthma, major depressive disorder, chronic PTSD, and panic disorder with agoraphobia. His father died of heart disease and his mother had schizoaffective disorder and post-traumatic epilepsy. Blood levels of glucose, electrolytes, liver function, and kidney function were normal. Blood lactate level was 2.4 mmol/L (reference range 0.5-2.2) and creatine kinase level was 489 U/L (reference range 60-400).\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Functional seizures",
+        "normalized_text": "Functional seizures",
+        "role": "primary",
+        "icd11": "8A68.Z",
+        "icd11_title": "Seizure NOS",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Psychogenic nonepileptic seizures (PNES)": {
+        "normalized_text": "Psychogenic nonepileptic seizures (PNES)",
+        "position": 1,
+        "description": "Paroxysmal events resembling epileptic seizures but arising from psychological factors rather than abnormal cortical electrical activity; often associated with PTSD, anxiety, and depression."
+      },
+      "Generalized tonic–clonic seizures (primary generalized epilepsy)": {
+        "normalized_text": "Generalized tonic–clonic seizures (primary generalized epilepsy)",
+        "position": 2,
+        "description": "Epilepsy syndrome characterized by generalized onset tonic stiffening followed by clonic jerking and postictal confusion; frequently provoked by sleep deprivation or alcohol."
+      },
+      "Occipital lobe epilepsy with secondary generalization": {
+        "normalized_text": "Occipital lobe epilepsy with secondary generalization",
+        "position": 3,
+        "description": "Focal epilepsy arising from the occipital cortex, often presenting with visual auras (blurred vision, visual distortions) and headaches; may secondarily generalize to tonic–clonic seizures."
+      },
+      "Temporal lobe epilepsy with autonomic/affective aura": {
+        "normalized_text": "Temporal lobe epilepsy with autonomic/affective aura",
+        "position": 4,
+        "description": "Focal seizures from temporal networks presenting with autonomic symptoms (palpitations, nausea), affective symptoms (fear, panic), and impaired awareness; can secondarily generalize."
+      },
+      "Post-traumatic epilepsy": {
+        "normalized_text": "Post-traumatic epilepsy",
+        "position": 5,
+        "description": "Epilepsy developing after repeated head injuries or concussions due to structural or network changes; may manifest as focal or generalized seizures."
+      },
+      "Convulsive syncope due to cardiac arrhythmia": {
+        "normalized_text": "Convulsive syncope due to cardiac arrhythmia",
+        "position": 6,
+        "description": "Transient loss of consciousness from decreased cerebral perfusion with brief myoclonic or convulsive movements; often preceded by palpitations and may be triggered by alcohol."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1665,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000120",
+      "year": 2023,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "electrophysiology"
+      ],
+      "image_count": 1,
+      "history_chars": 1585,
+      "total_file_bytes": 269849,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "22065912",
+    "case": "A 23-year-old Korean female presented to the emergency clinic with visual disturbance and visual field defect in her left eye that developed 1 day prior. She had been experiencing recurrent visual field defects in both eyes and headache for 6 months, which became aggravated 1 month before presentation. Two days later, she developed sudden hearing loss in her left ear. Three weeks after initial presentation, she complained of visual field defect in her right eye, and two days later was admitted for tinnitus and severe headache with arm numbness. She denied having diabetes, hypertension, connective tissue disease, tuberculosis, hematologic disease, cardiovascular disease, oral contraceptive use, or pregnancy. On initial examination, pupils were reactive to light without relative afferent papillary defect. Corrected visual acuity was 20/20 in right eye and 20/25 in left eye. IOP was 18 mmHg in both eyes. Slit lamp examination showed no abnormal findings in anterior segment of both eyes. Laboratory tests including lupus anticoagulant, anticardiolipin antibody, erythrocyte sedimentation rate, and C-reactive protein were all normal. Cerebrospinal fluid analysis showed a slight increase in protein concentration (74.4 mg/dL) without evidence of oligoclonal bands. There were no specific hematologic or rheumatologic abnormalities.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Susac syndrome",
+        "normalized_text": "Susac syndrome",
+        "role": "primary",
+        "icd11": "8A45.2Y",
+        "icd11_title": "Susac syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Susac syndrome (retino-cochleo-cerebral vasculopathy)": {
+        "normalized_text": "Susac syndrome (retino-cochleo-cerebral vasculopathy)",
+        "position": 1,
+        "description": "A rare autoimmune endotheliopathy causing microinfarctions of the retina (branch retinal artery occlusions), cochlea (sensorineural hearing loss), and brain (typically corpus callosum lesions). Classically affects young women and may present with elements of the triad at different times."
+      },
+      "Multiple sclerosis": {
+        "normalized_text": "Multiple sclerosis",
+        "position": 2,
+        "description": "Chronic demyelinating disease of the central nervous system producing relapsing neurologic deficits; commonly in young women and often involves optic neuritis and characteristic brain/spinal cord lesions."
+      },
+      "Cogan syndrome": {
+        "normalized_text": "Cogan syndrome",
+        "position": 3,
+        "description": "Autoimmune vasculitis characterized by interstitial keratitis and audiovestibular dysfunction (Ménière-like) that can be associated with systemic vasculitis and neurologic complications."
+      },
+      "Primary angiitis of the central nervous system (PACNS)": {
+        "normalized_text": "Primary angiitis of the central nervous system (PACNS)",
+        "position": 4,
+        "description": "Idiopathic vasculitis confined to the CNS causing headaches, focal neurologic deficits, and multifocal brain ischemia; CSF often shows mild protein elevation."
+      },
+      "Antiphospholipid syndrome–related thromboembolism": {
+        "normalized_text": "Antiphospholipid syndrome–related thromboembolism",
+        "position": 5,
+        "description": "Autoimmune prothrombotic disorder leading to arterial and venous thromboses; can cause retinal artery occlusions and ischemic brain lesions, often in young women."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1422,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "22065912",
+      "year": 2011,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "angiography",
+        "electrophysiology",
+        "mri",
+        "ophthalmic imaging"
+      ],
+      "image_count": 4,
+      "history_chars": 1342,
+      "total_file_bytes": 266008,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "21424749",
+    "case": "A 73-year-old woman presented with a 10-year history of severe paraspinal muscle atrophy and cerebellar ataxia. Her symptoms began at age 63 with a slight stooping posture and progressing to gait instability requiring a walking stick by age 68, and difficulty climbing stairs by age 70. She had moderate weakness of neck flexion, mild weakness of proximal limb muscles, poor balance with tandem gait without limb ataxia, and scored 25 points on the Mini-Mental State Examination. Laboratory findings showed elevated serum creatine kinase at 290 IU/l (normal 45-163), normal resting blood and CSF lactate levels, slightly low thyroid-stimulating hormone at 0.47 μIU/ml (normal 0.5-5.0), elevated antithyroglobulin antibody at 7.0 U/ml (normal <0.3), elevated antithyroid peroxidase antibody at 46.5 U/ml (normal <0.3), elevated rheumatoid factor at 152.3 IU/ml (normal <15.0), and mildly elevated antinuclear antibody (titer 1:80). Needle electromyography of biceps brachii and rectus femoris muscles showed mild myopathic features. Pure-tone audiometry indicated sensorineural and high-frequency hearing loss, and Holter monitoring revealed high-frequency premature contractions.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Mitochondrial disease",
+        "normalized_text": "Mitochondrial disease",
+        "role": "primary",
+        "icd11": "5C53.Y",
+        "icd11_title": "mitochondrial disease NOS",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Mitochondrial encephalomyopathy (MERRF-spectrum, mtDNA tRNA-Lys variants)": {
+        "normalized_text": "Mitochondrial encephalomyopathy (MERRF-spectrum, mtDNA tRNA-Lys variants)",
+        "position": 1,
+        "description": "A multisystem mitochondrial disorder often due to mtDNA tRNA-Lys mutations (e.g., A8344G), characterized by ragged-red fibers and variable combinations of myopathy, cerebellar ataxia, sensorineural hearing loss, seizures, and cardiomyopathy; can present in late adulthood with axial myopathy/camptocormia."
+      },
+      "Late-onset Pompe disease (acid maltase deficiency)": {
+        "normalized_text": "Late-onset Pompe disease (acid maltase deficiency)",
+        "position": 2,
+        "description": "An autosomal recessive lysosomal storage disorder due to GAA deficiency causing glycogen accumulation, leading to limb-girdle and axial weakness (including paraspinal muscles) with elevated CK and possible respiratory involvement; onset can be in adulthood."
+      },
+      "Inclusion body myositis (IBM)": {
+        "normalized_text": "Inclusion body myositis (IBM)",
+        "position": 3,
+        "description": "A common inflammatory myopathy in older adults characterized by slowly progressive weakness, especially of finger flexors and quadriceps, with modest CK elevation and chronic myopathic changes; axial weakness and camptocormia may occur."
+      },
+      "Myofibrillar myopathy (e.g., desminopathy or FLNC-related)": {
+        "normalized_text": "Myofibrillar myopathy (e.g., desminopathy or FLNC-related)",
+        "position": 4,
+        "description": "A group of inherited myopathies with disintegration of myofibrils and protein aggregates leading to limb-girdle and axial weakness; often associated with cardiac conduction abnormalities and sometimes hearing impairment; usually autosomal dominant."
+      },
+      "LMNA-related muscular dystrophy/axial myopathy (laminopathy)": {
+        "normalized_text": "LMNA-related muscular dystrophy/axial myopathy (laminopathy)",
+        "position": 5,
+        "description": "Autosomal dominant disorders due to LMNA mutations causing axial and limb-girdle weakness, early neck flexor weakness, and significant cardiac conduction disease/arrhythmias; onset can be in adulthood."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1259,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "21424749",
+      "year": 2011,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "clinical",
+        "ct",
+        "genetic",
+        "lab",
+        "mri",
+        "pathology"
+      ],
+      "image_count": 5,
+      "history_chars": 1179,
+      "total_file_bytes": 505289,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23281978",
+    "case": "A 44-year-old man presented to the emergency department with severe, substernal, burning chest pain radiating to the left arm that had awakened him from sleep 1 hour earlier, accompanied by nausea and nonbilious, nonbloody vomiting. For the past month, he had experienced similar but less intense intermittent chest pain not related to exertion, lasting hours to days, with temporary relief from antacids and omeprazole. He reported no dyspnea, lower-extremity edema, immobility, fever, cough, or trauma. His medical history was unremarkable, and he had not seen a physician for years. He was employed as a physician, denied tobacco, alcohol, or illicit drug use, and had no family history of premature coronary artery disease. Physical examination showed he was afebrile with blood pressure 133/83 mmHg, heart rate 61 beats per minute, oxygen saturation 97% on ambient air, and appeared in considerable distress while clutching his chest. He was thin with midline trachea, regular cardiac rhythm without extra heart sounds, no jugular venous distention or lower-extremity edema, normal breath sounds bilaterally, and nontender chest on palpation. The abdomen was soft and nontender with normal bowel sounds, no organomegaly or lymphadenopathy, and unremarkable skin examination. Laboratory studies revealed troponin level of 0.08 ng/mL (normal <0.10), white cell count of 22,000/mm³ with 74% neutrophils and 18% band forms, platelet count of 771,000/mm³, hemoglobin of 17.5 g/dL, normal coagulation studies, and fasting glucose of 192 mg/dL. The patient recalled being told about a high platelet count of approximately 600,000/mm³ when donating platelets 12 years earlier, but this was not investigated. He reported intermittent generalized pruritus after hot showers but denied bleeding, thrombotic events, burning pain in hands or feet, headache, dizziness, or other neurologic symptoms.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "ST-segment elevation myocardial infarction",
+        "normalized_text": "ST-segment elevation myocardial infarction",
+        "role": "primary",
+        "icd11": "BA41.0",
+        "icd11_title": "Acute ST segment elevation myocardial infarction",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Acute ST-elevation myocardial infarction (anterior STEMI)": {
+        "normalized_text": "Acute ST-elevation myocardial infarction (anterior STEMI)",
+        "position": 1,
+        "description": "Acute transmural myocardial ischemia due to coronary artery occlusion, typically presenting with severe chest pain and ST-segment elevation in anterior leads when the left anterior descending artery is involved."
+      },
+      "Unstable angina (non–ST-elevation acute coronary syndrome)": {
+        "normalized_text": "Unstable angina (non–ST-elevation acute coronary syndrome)",
+        "position": 2,
+        "description": "Acute coronary syndrome characterized by myocardial ischemia without biomarker elevation, often due to plaque rupture and subtotal thrombosis causing recurrent rest pain and dynamic ischemic ECG changes."
+      },
+      "Vasospastic (Prinzmetal) angina": {
+        "normalized_text": "Vasospastic (Prinzmetal) angina",
+        "position": 3,
+        "description": "Transient coronary artery spasm causing episodic rest angina with transient ST elevation and spontaneous resolution; often occurs at night or early morning and in patients without classic atherosclerotic risk factors."
+      },
+      "Gastroesophageal reflux disease (GERD) with esophagitis": {
+        "normalized_text": "Gastroesophageal reflux disease (GERD) with esophagitis",
+        "position": 4,
+        "description": "Acid reflux causing esophageal mucosal irritation, leading to substernal burning pain that can mimic cardiac chest pain and may be relieved by antacids or proton pump inhibitors."
+      },
+      "Esophageal spasm": {
+        "normalized_text": "Esophageal spasm",
+        "position": 5,
+        "description": "Intermittent, uncoordinated esophageal contractions causing chest pain that can mimic angina and may respond to nitrates or antacids."
+      },
+      "Polycythemia vera (JAK2-positive myeloproliferative neoplasm)": {
+        "normalized_text": "Polycythemia vera (JAK2-positive myeloproliferative neoplasm)",
+        "position": 6,
+        "description": "A clonal myeloproliferative disorder characterized by erythrocytosis with associated leukocytosis and thrombocytosis, causing hyperviscosity, aquagenic pruritus, and increased arterial/venous thrombosis risk (including coronary events)."
+      },
+      "Essential thrombocythemia (ET)": {
+        "normalized_text": "Essential thrombocythemia (ET)",
+        "position": 7,
+        "description": "A myeloproliferative neoplasm characterized predominantly by sustained thrombocytosis due to megakaryocytic proliferation, leading to microvascular symptoms and increased risk of arterial and venous thrombosis or bleeding."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1970,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23281978",
+      "year": 2013,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "electrophysiology"
+      ],
+      "image_count": 1,
+      "history_chars": 1890,
+      "total_file_bytes": 254019,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000083",
+    "case": "A newborn girl was admitted to the neonatal intensive care unit (NICU) because of cardiorespiratory arrest at delivery. The mother was a 19-year-old woman (gravida 1, para 1) with a history of hepatitis C virus infection. Pregnancy was complicated by urogenital Chlamydia trachomatis infection treated in the second trimester and gestational hypertension. Serial ultrasound surveys between 20 weeks 1 day and 39 weeks 6 days of gestation revealed dilatation of the urinary tract on the right side. At 40 weeks 0 days of gestation, spontaneous rupture of membranes occurred, and after 22 hours 39 minutes of labor, a cesarean section was performed due to nonreassuring fetal status. The amniotic fluid was stained with meconium. The newborn was delivered in breech position with birth weight 3575 g (62nd percentile), length 50 cm (42nd percentile), and head circumference 35.5 cm (72nd percentile). She had limp tone and no respiratory effort. After 16 minutes of resuscitation including intubation, cardiopulmonary resuscitation, epinephrine administration, and normal saline boluses, spontaneous circulation was restored. Apgar scores at 1, 5, 10, 15, and 20 minutes were 1, 0, 0, 1, and 3, respectively. On arrival in the NICU, the axillary temperature was 34.9°C, heart rate 141 beats per minute, and blood pressure 84/59 mm Hg. Oxygen saturation was 97% while receiving oxygen through mechanical ventilation. Therapeutic hypothermia was initiated.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Intralobar bronchopulmonary sequestration",
+        "normalized_text": "Intralobar bronchopulmonary sequestration",
+        "role": "primary",
+        "icd11": "LA75.6",
+        "icd11_title": "Intralobar sequestration of lung",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Pulmonary sequestration (systemic arterial supply to nonfunctional lung tissue)": {
+        "normalized_text": "Pulmonary sequestration (systemic arterial supply to nonfunctional lung tissue)",
+        "position": 1,
+        "description": "A congenital malformation in which a segment of lung lacks normal connection to the tracheobronchial tree and receives blood supply from the systemic circulation (often the aorta). It can present at birth with respiratory distress, pleural effusion, or air leak; imaging shows an anomalous systemic feeding artery."
+      },
+      "Congenital pulmonary airway malformation (CPAM)": {
+        "normalized_text": "Congenital pulmonary airway malformation (CPAM)",
+        "position": 2,
+        "description": "A developmental cystic lesion of the lung composed of abnormal bronchiolar tissue that can cause respiratory distress and air trapping at birth; radiographs/CT show cystic or solid intrapulmonary masses that may lead to air leaks."
+      },
+      "Meconium aspiration syndrome with air leak (pneumothorax)": {
+        "normalized_text": "Meconium aspiration syndrome with air leak (pneumothorax)",
+        "position": 3,
+        "description": "Aspiration of meconium-contaminated amniotic fluid causes airway obstruction, chemical pneumonitis, and air trapping; severe cases may develop pneumothorax and require intensive resuscitation."
+      },
+      "Congenital diaphragmatic hernia (CDH)": {
+        "normalized_text": "Congenital diaphragmatic hernia (CDH)",
+        "position": 4,
+        "description": "A defect in the diaphragm allows herniation of abdominal contents into the thorax, causing pulmonary hypoplasia and severe neonatal respiratory failure; imaging may show bowel/stomach in the chest."
+      },
+      "Neonatal bacterial pneumonia (early-onset sepsis)": {
+        "normalized_text": "Neonatal bacterial pneumonia (early-onset sepsis)",
+        "position": 5,
+        "description": "Infection acquired perinatally can cause respiratory failure at birth; radiographs may show focal or diffuse infiltrates, and infants can present with severe depression requiring ventilation."
+      },
+      "Persistent pulmonary hypertension of the newborn (PPHN)": {
+        "normalized_text": "Persistent pulmonary hypertension of the newborn (PPHN)",
+        "position": 6,
+        "description": "Failure of normal circulatory transition at birth with high pulmonary vascular resistance leading to right-to-left shunting and hypoxemia; often associated with perinatal asphyxia or meconium aspiration."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1532,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000083",
+      "year": 2024,
+      "classification": "Cardiovascular and respiratory disorders",
+      "modalities": [
+        "angiography",
+        "ct",
+        "ultrasound",
+        "x-ray"
+      ],
+      "image_count": 2,
+      "history_chars": 1452,
+      "total_file_bytes": 352172,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "29423197",
+    "case": "A 54-year-old man with a history of polysubstance abuse presented with altered mental status. His past medical history was notable for treatment-naïve hepatitis C infection. Family history was notable for a sister who was diagnosed with renal failure of obscure etiology requiring dialysis at the age of 45 years. On examination, the patient was found to be afebrile, drowsy and hypertensive (172/110 mmHg). Jugular veins were distended and there were crackles at the lung bases. Blood tests revealed creatinine 16.0 mg/dL, blood urea nitrogen 99 mg/dL, hemoglobin 11.3 g/dL, platelets 222,000/mm³, LDH 907 (84-246 IU/L) and haptoglobin 171 (30-200 mg/dL). Urinalysis showed proteinuria. A blood film revealed rare schistocytes. Random urine protein-to-creatinine ratio was 1.9. Urine toxicology revealed cocaine and its metabolites. Routine blood and urine cultures showed no growth. Serologic tests showed reduced complement C3 level of 71 (90-180 mg/dL) and normal C4 level of 32 (10-40 mg/dL). C3 hypocomplementemia persisted throughout hospitalization. There were no antibodies against HIV 1/2. Ultrasonography showed echogenic kidneys measuring 9.8 cm (right) and 10.3 cm (left).\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Cocaine-induced thrombotic microangiopathy",
+        "normalized_text": "Cocaine-induced thrombotic microangiopathy",
+        "role": "primary",
+        "icd11": "3B65",
+        "icd11_title": "Thrombotic microangiopathy, not elsewhere classified",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Malignant hypertension–associated thrombotic microangiopathy (TMA)": {
+        "normalized_text": "Malignant hypertension–associated thrombotic microangiopathy (TMA)",
+        "position": 1,
+        "description": "A hypertensive emergency causing arteriolar/endothelial injury with fibrinoid necrosis and onion-skin hyperplasia, leading to acute kidney injury and features of microangiopathy."
+      },
+      "Atypical hemolytic uremic syndrome (aHUS, complement-mediated TMA)": {
+        "normalized_text": "Atypical hemolytic uremic syndrome (aHUS, complement-mediated TMA)",
+        "position": 2,
+        "description": "A complement dysregulation disorder causing systemic or kidney-predominant thrombotic microangiopathy, often with low C3 and family history of renal failure."
+      },
+      "C3 glomerulopathy (C3 glomerulonephritis/dense deposit disease)": {
+        "normalized_text": "C3 glomerulopathy (C3 glomerulonephritis/dense deposit disease)",
+        "position": 3,
+        "description": "A disorder of alternative complement pathway regulation characterized by predominant C3 deposition in glomeruli, causing proteinuria, hematuria, and progressive renal impairment; often with persistently low C3."
+      },
+      "Hepatitis C–associated membranoproliferative glomerulonephritis (MPGN) ± mixed cryoglobulinemia": {
+        "normalized_text": "Hepatitis C–associated membranoproliferative glomerulonephritis (MPGN) ± mixed cryoglobulinemia",
+        "position": 4,
+        "description": "Immune complex–mediated glomerulonephritis associated with chronic HCV; often presents with proteinuria, hematuria, reduced complement levels, and progressive renal dysfunction."
+      },
+      "Cocaine-induced hypertensive crisis with renal-limited TMA": {
+        "normalized_text": "Cocaine-induced hypertensive crisis with renal-limited TMA",
+        "position": 5,
+        "description": "Cocaine can precipitate severe vasoconstriction and malignant hypertension, leading to endothelial injury and kidney-predominant thrombotic microangiopathy."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1265,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "29423197",
+      "year": 2018,
+      "classification": "Cardiovascular and respiratory disorders",
+      "modalities": [
+        "pathology"
+      ],
+      "image_count": 1,
+      "history_chars": 1185,
+      "total_file_bytes": 250471,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "29674473",
+    "case": "A previously healthy 44-year-old Chinese woman presented with a seven-week history of progressively worsening nausea and vomiting associated with 13 kg weight loss. She denied abdominal pain, distension, or diarrhea. Her symptoms had been initially treated as a functional gastrointestinal disorder with antidepressants (flupentixol, melitracen tablets, and olanzapine), prokinetics (domperidone), and anti-emetics (domperidone and ondansetron) for three weeks without response. Eight days after admission, she developed metabolic alkalosis, acute respiratory failure, and neurological deficits. On examination, she had paralysis of the right limbs, horizontal nystagmus, loss of pharyngeal reflex, loss of tendon reflex on the right side, and positive Babinski sign bilaterally. Laboratory studies showed normal liver, kidney, and thyroid function, normal basic autoimmune antibodies, normal fasting blood glucose and glycated hemoglobin. Serum AQP4-IgG antibodies were negative, but cerebrospinal fluid was positive for AQP4-IgG. Previous gastroscopy and abdominal CT scan showed no abnormalities.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Neuromyelitis optica spectrum disorder",
+        "normalized_text": "Neuromyelitis optica spectrum disorder",
+        "role": "primary",
+        "icd11": "8E4A.0",
+        "icd11_title": "Neuromyelitis optica spectrum disorder",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Neuromyelitis optica spectrum disorder (AQP4-IgG–mediated) with area postrema syndrome and brainstem involvement": {
+        "normalized_text": "Neuromyelitis optica spectrum disorder (AQP4-IgG–mediated) with area postrema syndrome and brainstem involvement",
+        "position": 1,
+        "description": "An astrocytopathy caused by autoantibodies against aquaporin-4 leading to demyelinating/inflammatory lesions, classically involving optic nerves, spinal cord, and brainstem. Area postrema lesions cause intractable nausea/vomiting; brainstem involvement can cause cranial nerve deficits and long-tract signs."
+      },
+      "Brainstem ischemic stroke (lateral medullary or pontomedullary infarct)": {
+        "normalized_text": "Brainstem ischemic stroke (lateral medullary or pontomedullary infarct)",
+        "position": 2,
+        "description": "Acute ischemia of the brainstem (often PICA/vertebral artery territory) can cause nausea, vomiting, nystagmus, cranial nerve deficits, and long-tract signs. Respiratory compromise may occur with medullary involvement."
+      },
+      "Multiple sclerosis with brainstem plaque": {
+        "normalized_text": "Multiple sclerosis with brainstem plaque",
+        "position": 3,
+        "description": "A chronic demyelinating disease of the CNS causing multifocal lesions; brainstem plaques can produce nystagmus, cranial nerve dysfunction, and long-tract signs."
+      },
+      "Myelin oligodendrocyte glycoprotein antibody–associated disease (MOGAD) with brainstem involvement": {
+        "normalized_text": "Myelin oligodendrocyte glycoprotein antibody–associated disease (MOGAD) with brainstem involvement",
+        "position": 4,
+        "description": "An inflammatory demyelinating disorder associated with anti-MOG antibodies; can involve brainstem and cause cranial nerve deficits and long-tract signs, sometimes mimicking NMOSD though area postrema syndrome is less common."
+      },
+      "Dorsal medullary tumor (e.g., low-grade glioma) involving the area postrema": {
+        "normalized_text": "Dorsal medullary tumor (e.g., low-grade glioma) involving the area postrema",
+        "position": 5,
+        "description": "Neoplasms of the dorsal medulla/area postrema can cause persistent nausea and vomiting due to involvement of the chemoreceptor trigger zone, along with cranial nerve and long-tract signs as the lesion enlarges."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1179,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "29674473",
+      "year": 2018,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "mri"
+      ],
+      "image_count": 2,
+      "history_chars": 1099,
+      "total_file_bytes": 20489,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "24918376",
+    "case": "A 32-year-old man presented with a 10-week history of skin rash and muscle weakness. Ten weeks before admission, he developed a violaceous rash involving the eyelids, elbows, metacarpophalangeal and proximal interphalangeal joints, and knees. One week later, intense generalized muscle pain and weakness developed, including difficulty walking, arising from a squat, and climbing stairs. Physical examination at another hospital revealed a heliotrope rash on the eyelids, periungual edema, erythematous papules on the fingertips, and moderate-to-severe weakness of the deltoids, triceps, hip flexors, hamstrings, and quadriceps bilaterally. Muscle bulk and tone, deep-tendon reflexes, and the sensory examination were normal. On examination at this hospital, he was alert, oriented, and afebrile with blood pressure 175/90 mmHg, pulse 128 beats per minute, respiratory rate 40 breaths per minute, and oxygen saturation 93% on 10 liters oxygen via nonrebreather mask. He had diminished breath sounds at both lung bases, hypoactive bowel sounds, erythematous papules on the extensor surfaces of fingers, elbows, and knees, heliotrope rash bilaterally, nontender periungual erythema, and pitting edema of arms and legs. Grip strength and strength of foot dorsiflexion and plantar flexion were 4-/5, and he was unable to lift his arms, legs, or head against gravity (2+/5). The patient had a history of meniscal repair 10 years earlier, worked in a service industry, did not smoke or use illicit drugs, and had a family history of hypertension in his father and hypothyroidism in two aunts.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Dermatomyositis",
+        "normalized_text": "Dermatomyositis",
+        "role": "primary",
+        "icd11": "4A41.0Z",
+        "icd11_title": "Dermatomyositis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Dermatomyositis (classic, with possible respiratory muscle/ILD involvement)": {
+        "normalized_text": "Dermatomyositis (classic, with possible respiratory muscle/ILD involvement)",
+        "position": 1,
+        "description": "An idiopathic inflammatory myopathy characterized by pathognomonic cutaneous eruptions (heliotrope rash and Gottron papules) and symmetric proximal muscle weakness; can involve lungs (interstitial lung disease) and, less commonly, heart."
+      },
+      "Anti-MDA5 dermatomyositis with rapidly progressive interstitial lung disease": {
+        "normalized_text": "Anti-MDA5 dermatomyositis with rapidly progressive interstitial lung disease",
+        "position": 2,
+        "description": "A subset of dermatomyositis associated with anti-MDA5 antibodies that often presents with characteristic rashes and rapidly progressive ILD; CK may be normal or mildly elevated and muscle weakness can be minimal or absent."
+      },
+      "Antisynthetase syndrome (e.g., anti–Jo-1-associated myositis-ILD)": {
+        "normalized_text": "Antisynthetase syndrome (e.g., anti–Jo-1-associated myositis-ILD)",
+        "position": 3,
+        "description": "An autoimmune syndrome featuring myositis, interstitial lung disease, fever, Raynaud phenomenon, arthritis, and hyperkeratotic \"mechanic’s hands\"; due to antibodies against aminoacyl-tRNA synthetases."
+      },
+      "Immune-mediated necrotizing myopathy (e.g., anti-SRP/anti-HMGCR)": {
+        "normalized_text": "Immune-mediated necrotizing myopathy (e.g., anti-SRP/anti-HMGCR)",
+        "position": 4,
+        "description": "A severe autoimmune myopathy characterized by acute or subacute proximal weakness and markedly elevated CK due to muscle fiber necrosis with minimal inflammation; can involve respiratory muscles and cause profound weakness."
+      },
+      "Viral myositis (e.g., influenza-associated)": {
+        "normalized_text": "Viral myositis (e.g., influenza-associated)",
+        "position": 5,
+        "description": "Acute muscle inflammation due to viral infection, often presenting with diffuse myalgia, weakness, and elevated CK; may follow a respiratory prodrome and occasionally cause respiratory failure or rhabdomyolysis."
+      },
+      "Adult-onset Still’s disease (AOSD)": {
+        "normalized_text": "Adult-onset Still’s disease (AOSD)",
+        "position": 6,
+        "description": "A systemic autoinflammatory disorder characterized by quotidian fevers, evanescent salmon-colored rash, arthritis, leukocytosis, and markedly elevated ferritin; can lead to macrophage activation syndrome."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1666,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "24918376",
+      "year": 2014,
+      "classification": "Dermatologic and mucosal diseases",
+      "modalities": [
+        "lab"
+      ],
+      "image_count": 2,
+      "history_chars": 1586,
+      "total_file_bytes": 334548,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "30766756",
+    "case": "A 7-year-old girl with no past medical history presented with interm pain for approximately 1 month that was not relieved with anti-inflammatory treatment. A subsequent abdominal computed tomography (CT) scan at a local hospital showed peritoneal effusion and retroperitoneal lymphadenopathy. Her serum AFP level was elevated at 1,210 ng/mL (normal range: <25 ng/mL). Ultrasonography examination showed multiple enlarged abdominal and retroperitoneal hypoechoic lymph nodes. The bilateral ovaries and fallopian tubes as well as the uterus, cervix, and vagina were unremarkable. Upon surgical resection, the jejunal mass measured 4 cm in the largest dimension and involved the full thickness of the jejunum. The cut surface of the tumor was grey-white in color. Histologically, the tumor cells showed multiple patterns including microcystic, reticular, macrocystic, papillary, solid, and tubule-glandular structures. The tumor cells had large, irregular, pleomorphic nuclei with vesicular chromatin and variably prominent nucleoli, with moderate to abundant cytoplasm that was clear, mixed clear, or eosinophilic. Mitotic figures were abundant (highest, 18-20/10 high power fields). Pathologically, the lymph nodes showed reactive hyperplasia, including two ileocecal lymph nodes and one small mesenteric lymph node.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Primary yolk sac tumor of intestine",
+        "normalized_text": "Primary yolk sac tumor of intestine",
+        "role": "primary",
+        "icd11": "2C73.Y&XH09W7",
+        "icd11_title": "Yolk sac tumour, unspecified site, female",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Primary yolk sac tumor (endodermal sinus tumor) of the jejunum": {
+        "normalized_text": "Primary yolk sac tumor (endodermal sinus tumor) of the jejunum",
+        "position": 1,
+        "description": "A malignant germ cell tumor that usually arises in gonads but can rarely occur extragonadally in the gastrointestinal tract. It characteristically produces alpha-fetoprotein (AFP) and shows diverse histologic patterns and SALL4/GPC3 positivity with OCT4 negativity."
+      },
+      "AFP-producing enteric adenocarcinoma with enteroblastic/hepatoid differentiation (small-intestinal origin)": {
+        "normalized_text": "AFP-producing enteric adenocarcinoma with enteroblastic/hepatoid differentiation (small-intestinal origin)",
+        "position": 2,
+        "description": "A rare adenocarcinoma that shows fetal enteroblastic or hepatoid differentiation and secretes AFP; typically SALL4, GPC3, and AFP positive and may express enteric markers such as CDX2/SATB2."
+      },
+      "Hepatoblastoma with secondary involvement/metastasis to bowel": {
+        "normalized_text": "Hepatoblastoma with secondary involvement/metastasis to bowel",
+        "position": 3,
+        "description": "The most common primary liver malignancy of childhood that produces AFP; metastasis typically to lungs, rarely to gastrointestinal tract."
+      },
+      "Extragonadal embryonal carcinoma (germ cell tumor)": {
+        "normalized_text": "Extragonadal embryonal carcinoma (germ cell tumor)",
+        "position": 4,
+        "description": "A malignant nongerminomatous germ cell tumor that can arise extragonadally, composed of primitive epithelial cells; often elevates beta-hCG and sometimes AFP."
+      },
+      "Primary intestinal lymphoma (e.g., Burkitt lymphoma) involving small bowel": {
+        "normalized_text": "Primary intestinal lymphoma (e.g., Burkitt lymphoma) involving small bowel",
+        "position": 5,
+        "description": "A high-grade B-cell lymphoma that commonly presents in children with abdominal masses and lymphadenopathy, often involving the ileocecal region or small intestine."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1395,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "30766756",
+      "year": 2018,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "ct",
+        "pathology",
+        "pet/spect/nuclear"
+      ],
+      "image_count": 3,
+      "history_chars": 1315,
+      "total_file_bytes": 258321,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "28355500",
+    "case": "A 6-month-old boy presented to the emergency department with gastrointestinal bleeding and abdominal pain. Two days prior, he began having intermittent episodes of abdominal pain that woke him from sleep, during which he would cry and pull his legs toward his chest. His abdomen felt rigid during these episodes. He had a history of infantile colic and gastroesophageal reflux previously treated with ranitidine. He was on low-lactose cow milk-based formula and had recently started pureed foods. The patient had three bowel movements with increasing amounts of reddish discoloration, culminating in a bowel movement that appeared to be almost entirely blood with a large clot. Initial vital signs showed temperature 36.5°C, pulse 178/min, blood pressure 95/52 mmHg, respiratory rate 24/min, and oxygen saturation 100%. Physical examination revealed diffuse abdominal tenderness, greater on the right side, with no masses or external anal fissures. Later examination showed pallor, with pulse 168/min and blood pressure 94/36 mmHg.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Meckel's diverticulum",
+        "normalized_text": "Meckel's diverticulum",
+        "role": "primary",
+        "icd11": "LB15.0",
+        "icd11_title": "Meckel diverticulum",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Meckel’s diverticulum with ectopic gastric mucosa (bleeding)": {
+        "normalized_text": "Meckel’s diverticulum with ectopic gastric mucosa (bleeding)",
+        "position": 1,
+        "description": "A congenital true diverticulum of the distal ileum; ectopic gastric mucosa can secrete acid causing ileal ulceration and painless or painful lower gastrointestinal bleeding in infants and children."
+      },
+      "Intussusception (ileocolic), possibly with Meckel’s as a lead point": {
+        "normalized_text": "Intussusception (ileocolic), possibly with Meckel’s as a lead point",
+        "position": 2,
+        "description": "Telescoping of a segment of bowel into another, causing intermittent obstruction and ischemia; in infants it presents with colicky pain, right-sided tenderness, and sometimes currant-jelly stools. A Meckel’s diverticulum can serve as a lead point."
+      },
+      "Infectious colitis (e.g., Shigella, Salmonella, Campylobacter)": {
+        "normalized_text": "Infectious colitis (e.g., Shigella, Salmonella, Campylobacter)",
+        "position": 3,
+        "description": "Bacterial infection of the colon causing inflammation that can lead to abdominal pain, fever, and hematochezia."
+      },
+      "Food protein–induced allergic proctocolitis (cow’s milk protein allergy)": {
+        "normalized_text": "Food protein–induced allergic proctocolitis (cow’s milk protein allergy)",
+        "position": 4,
+        "description": "Non–IgE-mediated colitis in infants, typically due to cow’s milk or soy protein, causing blood-streaked stools in otherwise well infants."
+      },
+      "Malrotation with intermittent midgut volvulus": {
+        "normalized_text": "Malrotation with intermittent midgut volvulus",
+        "position": 5,
+        "description": "Congenital abnormal rotation of the midgut predisposing to volvulus, which can cause intermittent abdominal pain, obstruction, ischemia, and bleeding."
+      },
+      "Enteric duplication cyst with ectopic gastric mucosa": {
+        "normalized_text": "Enteric duplication cyst with ectopic gastric mucosa",
+        "position": 6,
+        "description": "Congenital duplication of the gastrointestinal tract that may contain ectopic gastric tissue; bleeding occurs from acid-induced ulceration of adjacent mucosa."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1111,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "28355500",
+      "year": 2017,
+      "classification": "Gastrointestinal disorders",
+      "modalities": [
+        "lab",
+        "pet/spect/nuclear"
+      ],
+      "image_count": 2,
+      "history_chars": 1031,
+      "total_file_bytes": 413809,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23509306",
+    "case": "A previously healthy 27-year-old man presented with cough, hemoptysis, and low-grade fever that had persisted for a few days. He denied night sweats and unexplained weight loss. He had a notable history of left supraclavicular lymph node enlargement that had been spontaneously enlarging and shrinking since age 15. On physical examination, he appeared thin with height of 168 cm and weight of 48 kg. His vital signs were mostly normal except for low-grade fever of 37.6°C and mild hypoxemia with arterial oxygen saturation of 94% on ambient air. Physical examination revealed crackles in the left upper lung field and left supraclavicular lymphadenopathy measuring 2 cm in diameter, which was nontender, firm, nonfixed, circumscribed, and rubbery. Laboratory findings showed increased WBC count of 20,000/μL with neutrophilic predominance (88.5%), erythrocyte sedimentation rate of 66 mm/h, and C-reactive protein level of 10.5 mg/dL. Secretory interleukin-2 receptor was elevated at 4,140 U/μL. Blood and sputum cultures for bacteria, acid-fast organisms, and fungi were negative. Serum titers for antimyeloperoxidase antineutrophil cytoplasmic antibody, antiproteinase 3 antineutrophil cytoplasmic antibody, rheumatoid factor, HIV antibody, and tumor markers were all negative. Otologic evaluation showed no apparent evidence of vasculitis or other diseases. Transbronchial lung biopsy showed granulomatous inflammation but no pathogens accounting for destructive lung disease.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Nodular sclerosis classical Hodgkin lymphoma",
+        "normalized_text": "Nodular sclerosis classical Hodgkin lymphoma",
+        "role": "primary",
+        "icd11": "2B30.10",
+        "icd11_title": "Nodular sclerosis classical Hodgkin lymphoma",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Necrotizing sarcoid granulomatosis (NSG)": {
+        "normalized_text": "Necrotizing sarcoid granulomatosis (NSG)",
+        "position": 1,
+        "description": "A rare sarcoid-like granulomatous disease featuring necrotizing granulomas and granulomatous vasculitis, often presenting with pulmonary nodules/cavities and sometimes lymphadenopathy; infectious studies are negative."
+      },
+      "Granulomatosis with polyangiitis (GPA, Wegener’s)": {
+        "normalized_text": "Granulomatosis with polyangiitis (GPA, Wegener’s)",
+        "position": 2,
+        "description": "A necrotizing granulomatous small-vessel vasculitis involving the respiratory tract and kidneys; lungs may show cavitating nodules and hemoptysis."
+      },
+      "Pulmonary Langerhans cell histiocytosis (PLCH)": {
+        "normalized_text": "Pulmonary Langerhans cell histiocytosis (PLCH)",
+        "position": 3,
+        "description": "Smoking-related clonal Langerhans cell proliferation causing upper-lobe nodules and thin-walled cysts/cavities; may present with cough, hemoptysis, and pneumothorax."
+      },
+      "Pulmonary tuberculosis (post-primary, cavitary) or nontuberculous mycobacterial infection": {
+        "normalized_text": "Pulmonary tuberculosis (post-primary, cavitary) or nontuberculous mycobacterial infection",
+        "position": 4,
+        "description": "Mycobacterial infection causing upper-lobe cavitary disease with cough, hemoptysis, and low-grade fever."
+      },
+      "Lymphomatoid granulomatosis (EBV-driven B-cell lymphoproliferative disorder)": {
+        "normalized_text": "Lymphomatoid granulomatosis (EBV-driven B-cell lymphoproliferative disorder)",
+        "position": 5,
+        "description": "An angiocentric, angiodestructive, EBV-associated lymphoproliferative disease that primarily involves the lungs with necrotizing granulomatous lesions and cavitation; lymph nodes may be involved."
+      },
+      "Chronic cavitary pulmonary aspergillosis (or necrotizing aspergillus pneumonia)": {
+        "normalized_text": "Chronic cavitary pulmonary aspergillosis (or necrotizing aspergillus pneumonia)",
+        "position": 6,
+        "description": "Subacute to chronic Aspergillus infection causing cavitation and hemoptysis, typically in individuals with preexisting lung disease but can occur in immunocompetent hosts."
+      },
+      "Pulmonary nocardiosis (cavitary form)": {
+        "normalized_text": "Pulmonary nocardiosis (cavitary form)",
+        "position": 7,
+        "description": "Filamentous bacterial infection that can cause cavitary pneumonia with fever and hemoptysis; cultures may be difficult and negative early."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1560,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23509306",
+      "year": 2013,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "ct",
+        "pathology",
+        "x-ray"
+      ],
+      "image_count": 5,
+      "history_chars": 1480,
+      "total_file_bytes": 599915,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "24670171",
+    "case": "This case a 45-year-old man who presented with acute illness after dog bites. The patient was well until 2 p.m. the day before admission when he developed nausea, epigastric pain, and vomiting. Three days before presentation, he had been bitten on his hands and forearms while bathing his dog. He also had head trauma from a rusty nail a few days before presentation and dental extractions 1-2 weeks prior. His medical history included asthma, mild chronic obstructive pulmonary disease, anxiety, depression, chronic back pain, and alcohol abuse with recent consumption up to 18 beers daily (stopped 3 days before admission). Physical examination revealed an ill-appearing, anxious, diaphoretic man with temperature 35.6°C, blood pressure 154/102 mmHg, pulse 110 bpm, respiratory rate 28 breaths per minute, and oxygen saturation 100% on room air. Numerous lacerations with necrotic edges and scratch marks were present on his hands and forearms, with the largest mark on his right forearm (3-4 cm in length) having a surrounding border (5-7 cm in diameter) with a purplish tinge. Capillary refill occurred in 5 seconds.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Purpura fulminans",
+        "normalized_text": "Purpura fulminans",
+        "role": "primary",
+        "icd11": "3B20",
+        "icd11_title": "Purpura fulminans",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Capnocytophaga canimorsus sepsis with purpura fulminans/DIC": {
+        "normalized_text": "Capnocytophaga canimorsus sepsis with purpura fulminans/DIC",
+        "position": 1,
+        "description": "Severe sepsis caused by Capnocytophaga canimorsus, a gram‑negative fusiform rod in dog oral flora. It can follow dog bites and is notorious for rapidly progressive sepsis, disseminated intravascular coagulation, and purpura fulminans, especially in people with alcohol misuse or asplenia."
+      },
+      "Pasteurella multocida wound infection with bacteremia": {
+        "normalized_text": "Pasteurella multocida wound infection with bacteremia",
+        "position": 2,
+        "description": "Pasteurella multocida is a gram‑negative coccobacillus commonly transmitted by dog and cat bites, causing rapidly progressive cellulitis and sometimes bacteremia and sepsis."
+      },
+      "Necrotizing soft tissue infection (polymicrobial or Group A Streptococcus)": {
+        "normalized_text": "Necrotizing soft tissue infection (polymicrobial or Group A Streptococcus)",
+        "position": 3,
+        "description": "A rapidly progressive infection of fascia and subcutaneous tissues that can follow trauma or bites and lead to systemic toxicity. Often due to mixed aerobic/anaerobic flora or Streptococcus pyogenes."
+      },
+      "Clostridial myonecrosis (gas gangrene)": {
+        "normalized_text": "Clostridial myonecrosis (gas gangrene)",
+        "position": 4,
+        "description": "Life‑threatening infection due to Clostridium species that produces tissue necrosis, systemic toxicity, and shock, usually after traumatic inoculation."
+      },
+      "Tetanus": {
+        "normalized_text": "Tetanus",
+        "position": 5,
+        "description": "Neurologic disease caused by Clostridium tetani toxin after contaminated wounds; manifests with trismus, muscle rigidity, and spasms."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1200,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "24670171",
+      "year": 2014,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "clinical",
+        "lab",
+        "pathology",
+        "x-ray"
+      ],
+      "image_count": 5,
+      "history_chars": 1120,
+      "total_file_bytes": 812928,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000032",
+    "case": "A 29-year-old woman presented with a 7-week history of progressive pruritus throughout the body, nausea, bloating, and watery mustard-colored diarrhea that began after eating sushi. She had recently moved from New England to the southeastern United States. Initial treatment with methylprednisolone injection, hydroxyzine, and diphenoxylate-atropine at an urgent care clinic did not resolve symptoms. Three weeks later, jaundice developed along with right upper quadrant discomfort, decreased appetite, and amber-colored urine. Four weeks before presentation, laboratory tests showed alanine aminotransferase 327 U/L (reference 1-33), aspartate aminotransferase 104 U/L (reference 1-32), total bilirubin 5.8 mg/dL (reference 0.1-1.2), and CA 19-9 73 U/mL (reference 0-35). She had a history of anxiety and depression, took no medications, and had no drug allergies. Family history included colon cancer in maternal grandmother, maternal grandfather, and paternal grandmother; breast cancer in maternal and paternal aunts; and thyroid cancer in father. On examination, temperature was 36.9°C, blood pressure 155/82 mm Hg, pulse 94 beats per minute, respiratory rate 20 breaths per minute, and oxygen saturation 100% while breathing ambient air. She was thin and appeared jaundiced with scleral icterus and diffuse excoriations from scratching.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Pancreatic ductal adenocarcinoma",
+        "normalized_text": "Pancreatic ductal adenocarcinoma",
+        "role": "primary",
+        "icd11": "2C10.0",
+        "icd11_title": "Ductal adenocarcinoma of pancreas",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Choledocholithiasis with obstructive jaundice": {
+        "normalized_text": "Choledocholithiasis with obstructive jaundice",
+        "position": 1,
+        "description": "Gallstones in the common bile duct can obstruct bile flow, causing pruritus, jaundice, dark urine, RUQ pain, and cholestatic liver test abnormalities."
+      },
+      "Intraductal papillary neoplasm of the bile duct (IPNB) causing obstruction": {
+        "normalized_text": "Intraductal papillary neoplasm of the bile duct (IPNB) causing obstruction",
+        "position": 2,
+        "description": "A premalignant papillary epithelial tumor within the bile ducts that often produces mucin and leads to intermittent biliary obstruction, pruritus, jaundice, and mild CA 19-9 elevation."
+      },
+      "Cholangiocarcinoma (extrahepatic bile duct tumor)": {
+        "normalized_text": "Cholangiocarcinoma (extrahepatic bile duct tumor)",
+        "position": 3,
+        "description": "Malignant tumor of the bile ducts that typically presents with painless jaundice, pruritus, dark urine, and cholestatic liver tests; CA 19-9 can be elevated."
+      },
+      "IgG4-related sclerosing cholangitis": {
+        "normalized_text": "IgG4-related sclerosing cholangitis",
+        "position": 4,
+        "description": "Immune-mediated fibroinflammatory disease affecting the biliary tree, causing obstructive jaundice and cholestatic liver tests; often associated with autoimmune pancreatitis and responds to steroids."
+      },
+      "Primary sclerosing cholangitis (PSC)": {
+        "normalized_text": "Primary sclerosing cholangitis (PSC)",
+        "position": 5,
+        "description": "Chronic cholestatic liver disease characterized by progressive inflammation and fibrosis of intra- and extrahepatic bile ducts, leading to obstructive symptoms and pruritus."
+      },
+      "Acute viral hepatitis (particularly hepatitis A) with cholestatic phase": {
+        "normalized_text": "Acute viral hepatitis (particularly hepatitis A) with cholestatic phase",
+        "position": 6,
+        "description": "Foodborne hepatitis A can cause acute hepatocellular injury; some cases enter a cholestatic phase with intense pruritus and jaundice."
+      },
+      "Parasitic biliary infection (Clonorchis/Opisthorchis) after raw fish ingestion": {
+        "normalized_text": "Parasitic biliary infection (Clonorchis/Opisthorchis) after raw fish ingestion",
+        "position": 7,
+        "description": "Liver fluke infections acquired from raw fish can inhabit the biliary tree, causing cholestasis, pruritus, eosinophilia, RUQ pain, and sometimes biliary strictures."
+      },
+      "Drug-induced liver injury with cholestatic/hepatocellular pattern": {
+        "normalized_text": "Drug-induced liver injury with cholestatic/hepatocellular pattern",
+        "position": 8,
+        "description": "Idiosyncratic reactions to medications or supplements can produce hepatocellular injury followed by cholestatic jaundice and pruritus."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1422,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000032",
+      "year": 2022,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "ct",
+        "endoscopy",
+        "lab",
+        "mri",
+        "pathology",
+        "pet/spect/nuclear",
+        "ultrasound"
+      ],
+      "image_count": 5,
+      "history_chars": 1342,
+      "total_file_bytes": 1605740,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "26120461",
+    "case": "A 35-year-old woman presented with severe hypertension, oedema and renal failure. She had a medical history significant for a pregnancy 12 months earlier that was complicated by preeclampsia, requiring Caesarean delivery at 29 weeks gestation. Following delivery, she developed poorly controlled hypertension and proteinuria exceeding 1 g/day. Six months before this admission, she began experiencing fatigue, headaches, severe hypertension, and facial and pedal oedema. She denied fever, neurologic abnormalities, or diarrhoeal prodrome. Physical examination revealed a pale, hydrated woman with blood pressure of 151/103 mmHg. Laboratory investigations showed severe anemia (hemoglobin 4.65 mmol/L or 7.5 g/dL), significant renal dysfunction (urea 182 mg/dL, creatinine 65 mmol/L or 6.46 mg/dL), thrombocytopenia (platelets 46 × 10⁹/L), increased reticulocyte count, and schistocytes on peripheral blood smear. Urinalysis revealed proteinuria of 4.9 g/24h and 5-10 red blood cells per high-power field. Additional laboratory findings included elevated lactate dehydrogenase (1669 U/L), total bilirubin 14 mg/L, direct bilirubin 4.4 mg/L, low haptoglobin (<0.2 mg/dL), and negative Coombs test. Normal liver enzymes were noted. All immunologic tests, viral screening, and antiphospholipid antibodies were normal.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Atypical haemolytic uraemic syndrome",
+        "normalized_text": "Atypical haemolytic uraemic syndrome",
+        "role": "primary",
+        "icd11": "3A10.Y",
+        "icd11_title": "Atypical haemolytic uraemic syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Atypical hemolytic uremic syndrome (complement-mediated TMA)": {
+        "normalized_text": "Atypical hemolytic uremic syndrome (complement-mediated TMA)",
+        "position": 1,
+        "description": "A complement dysregulation–driven thrombotic microangiopathy (TMA) often triggered by pregnancy/postpartum, characterized by hemolytic anemia, thrombocytopenia, and predominant renal involvement with severe hypertension and proteinuria."
+      },
+      "Thrombotic thrombocytopenic purpura (TTP)": {
+        "normalized_text": "Thrombotic thrombocytopenic purpura (TTP)",
+        "position": 2,
+        "description": "A severe ADAMTS13 deficiency–mediated TMA causing widespread microvascular thrombosis, classically with hemolytic anemia, thrombocytopenia, and variable neurologic/renal involvement; can be triggered postpartum."
+      },
+      "Malignant hypertension–associated thrombotic microangiopathy": {
+        "normalized_text": "Malignant hypertension–associated thrombotic microangiopathy",
+        "position": 3,
+        "description": "Severe, sustained hypertension causing endothelial injury and secondary TMA with hemolysis, thrombocytopenia, and acute kidney injury; proteinuria and edema are common."
+      },
+      "Catastrophic antiphospholipid syndrome (CAPS)": {
+        "normalized_text": "Catastrophic antiphospholipid syndrome (CAPS)",
+        "position": 4,
+        "description": "A fulminant form of antiphospholipid syndrome with multiorgan microthrombosis leading to TMA, hemolysis, thrombocytopenia, renal failure, and skin necrosis; often triggered by pregnancy/postpartum."
+      },
+      "Disseminated intravascular coagulation (DIC) with skin necrosis": {
+        "normalized_text": "Disseminated intravascular coagulation (DIC) with skin necrosis",
+        "position": 5,
+        "description": "Systemic activation of coagulation leading to consumption of platelets and coagulation factors, microvascular thrombosis, hemolysis, and possible skin necrosis; usually secondary to sepsis, malignancy, or obstetric catastrophe."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1393,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "26120461",
+      "year": 2013,
+      "classification": "Endocrine and metabolic disorders",
+      "modalities": [
+        "clinical",
+        "pathology"
+      ],
+      "image_count": 2,
+      "history_chars": 1313,
+      "total_file_bytes": 322294,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "24733745",
+    "case": "A 60-year-old woman originally from Greece was admitted after burning herself while trying to warm her legs on an electric heater. She had rheumatoid arthritis treated with methotrexate and adalimumab. Four months prior to admission, she developed pain and stiffness in her metacarpophalangeal and interphalangeal joints, right ankle, and both knees. Six weeks before admission, she presented with severe arthralgia, temperature of 37.6°C, a net-like rash on her legs compatible with livedo reticularis, and purpuric lesions around the malleoli. Laboratory examinations at that time showed hemoglobin 109 g/L, leukocytes 2.9 × 10⁹/L, neutrophils 1.2 × 10⁹/L, platelets 170 × 10⁹/L, rheumatoid factor 183 IU/mL, hypergammaglobulinemia, antinuclear antibodies 1:640, complement C4 0.04 g/L, anti-double stranded DNA antibody 8.6 IU/mL, negative antibodies to extractable nuclear antigens, and a positive test for cryoglobulins. Serological tests for HIV, hepatitis B, and hepatitis C viruses were negative. On admission, fever (38.7°C) and pancytopenia (leukocytes 1.8 × 10⁹/L, neutrophils 0.5 × 10⁹/L, hemoglobin 90 g/L, platelets 126 × 10⁹/L) were noted. She had no hepatosplenomegaly or lymphadenopathy. A blood film was unremarkable. Cultures of blood, urine, and sputum; computed tomography of the chest, abdomen, and pelvis; a polymerase chain reaction assay of the peripheral blood for cytomegalovirus, and a tuberculin skin test were negative. History revealed she had traveled to Athens seven months earlier and had stayed with relatives who kept several dogs.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Visceral leishmaniasis",
+        "normalized_text": "Visceral leishmaniasis",
+        "role": "primary",
+        "icd11": "1F54.0",
+        "icd11_title": "Visceral leishmaniasis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Visceral leishmaniasis (kala-azar)": {
+        "normalized_text": "Visceral leishmaniasis (kala-azar)",
+        "position": 1,
+        "description": "A protozoan infection (often Leishmania infantum in the Mediterranean) transmitted by sandflies, with dogs as a common reservoir. It causes fever, marrow infiltration with amastigotes, pancytopenia, hypergammaglobulinemia, and can be associated with cryoglobulinemia and vasculitic skin lesions; risk is increased by TNF inhibitor therapy."
+      },
+      "Mixed cryoglobulinemic vasculitis (secondary)": {
+        "normalized_text": "Mixed cryoglobulinemic vasculitis (secondary)",
+        "position": 2,
+        "description": "An immune-complex small-vessel vasculitis caused by circulating cryoglobulins; often secondary to infections (classically HCV, but also leishmaniasis) or autoimmune disease. Characterized by palpable purpura, livedo reticularis, arthralgia, low complement (especially C4), RF positivity, and hypergammaglobulinemia."
+      },
+      "Felty syndrome (RA-associated neutropenia)": {
+        "normalized_text": "Felty syndrome (RA-associated neutropenia)",
+        "position": 3,
+        "description": "A triad of rheumatoid arthritis, neutropenia, and splenomegaly; associated with high RF and extra-articular manifestations and predisposition to infections."
+      },
+      "Anti–TNF-induced lupus-like syndrome (adalimumab-associated)": {
+        "normalized_text": "Anti–TNF-induced lupus-like syndrome (adalimumab-associated)",
+        "position": 4,
+        "description": "A drug-induced autoimmune syndrome from TNF-alpha inhibitors characterized by ANA positivity, anti–double-stranded DNA antibodies, arthralgias, fever, and rash; typically resolves with drug withdrawal."
+      },
+      "Methotrexate-induced bone marrow suppression": {
+        "normalized_text": "Methotrexate-induced bone marrow suppression",
+        "position": 5,
+        "description": "Toxic myelosuppression due to methotrexate leading to pancytopenia and infection risk; more likely with older age, renal impairment, interacting drugs, or folate deficiency."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1647,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "24733745",
+      "year": 2014,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "lab",
+        "pathology"
+      ],
+      "image_count": 2,
+      "history_chars": 1567,
+      "total_file_bytes": 148681,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "28591527",
+    "case": "A 14-year-old boy presented to the emergency department with acute fear of choking while swallowing that began 2 days before admission after choking on chicken during dinner. He became fearful of swallowing, vomited after trying to eat ice cream, and reduced his daily fluid intake to only 710 ml of water. Nine days earlier, his mother reported episodes of inspiratory stridor during sleep over the past few weeks. On the day of presentation, he consumed only small sips of water and slept most of the day. His birth history included delivery at full term with nuchal cord, birth weight 3.6 kg, and Apgar scores of 2, 6, and 9 at 1, 5, and 10 minutes respectively, requiring initial resuscitation. He had a history of infantile gastroesophageal reflux, milk-protein allergy, and received sensory-integration training during childhood. Immunizations were incomplete after age 2.5 years due to parental refusal. He had keratosis pilaris and eczema, took no medications, and had no known allergies. Family history included a younger brother with autism spectrum disorder, PANDAS, and vitamin D deficiency. Physical examination revealed an alert, anxious-appearing boy with persistent involuntary burping and evidence of drooling. Vital signs showed temperature 36.1°C, blood pressure 127/64 mmHg, pulse 67 bpm, respiratory rate 18 bpm, weight 54.1 kg (60th percentile), and height 160 cm (32nd percentile). He had dry oral mucosa, was Tanner stage 4, and had normal cranial nerve examination (II-XII), clear speech, normal gait, strength, sensation, and deep-tendon reflexes. On subsequent examination, he had hypertonic leg muscles and a mildly positive Chvostek's sign on the left side.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Pseudohypoparathyroidism type 1b",
+        "normalized_text": "Pseudohypoparathyroidism type 1b",
+        "role": "primary",
+        "icd11": "5A50.1",
+        "icd11_title": "Pseudohypoparathyroidism type 1B",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Pseudohypoparathyroidism (PHP) type 1B due to GNAS methylation defect": {
+        "normalized_text": "Pseudohypoparathyroidism (PHP) type 1B due to GNAS methylation defect",
+        "position": 1,
+        "description": "A disorder of end‑organ resistance to parathyroid hormone, most often from abnormal imprinting/methylation of the GNAS locus. It causes hypocalcemia, hyperphosphatemia, and elevated PTH, leading to neuromuscular irritability and sometimes laryngospasm."
+      },
+      "Primary hypoparathyroidism (autoimmune or postsurgical)": {
+        "normalized_text": "Primary hypoparathyroidism (autoimmune or postsurgical)",
+        "position": 2,
+        "description": "Deficiency of PTH secretion leads to hypocalcemia and hyperphosphatemia with low or inappropriately normal PTH, causing neuromuscular irritability and tetany."
+      },
+      "Vitamin D deficiency with secondary hyperparathyroidism": {
+        "normalized_text": "Vitamin D deficiency with secondary hyperparathyroidism",
+        "position": 3,
+        "description": "Insufficient vitamin D causes decreased calcium absorption, resulting in hypocalcemia and compensatory elevation of PTH; phosphate is usually low-to-normal due to PTH-mediated phosphaturia."
+      },
+      "Psychogenic dysphagia/phagophobia triggered by prior choking": {
+        "normalized_text": "Psychogenic dysphagia/phagophobia triggered by prior choking",
+        "position": 4,
+        "description": "An anxiety-related avoidance of swallowing after a choking event, leading to markedly reduced oral intake and weight or hydration issues without primary structural obstruction."
+      },
+      "Spasmodic croup or nocturnal laryngospasm": {
+        "normalized_text": "Spasmodic croup or nocturnal laryngospasm",
+        "position": 5,
+        "description": "Intermittent, often nighttime episodes of inspiratory stridor without fever, sometimes triggered by reflux or allergies, due to transient laryngeal narrowing/spasm."
+      },
+      "Esophageal foreign body/impaction or structural esophageal disease": {
+        "normalized_text": "Esophageal foreign body/impaction or structural esophageal disease",
+        "position": 6,
+        "description": "Acute or subacute obstruction from a retained bolus or esophageal structural disorder can cause choking, regurgitation, drooling, and avoidance of swallowing."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1766,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "28591527",
+      "year": 2017,
+      "classification": "Endocrine and metabolic disorders",
+      "modalities": [
+        "genetic",
+        "lab"
+      ],
+      "image_count": 2,
+      "history_chars": 1686,
+      "total_file_bytes": 264441,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000086",
+    "case": "A 57-year-old woman with resected stage IIIC cutaneous melanoma presented with fever. She had been in her usual state of health until 4 months before admission, when bleeding developed from a lesion on the right side of the scalp. Evaluation revealed ulcerated melanoma with positive margins. Three months before admission, wide local excision of the scalp lesion and neck lymph-node dissection were performed, revealing metastatic melanoma in 2 of 26 lymph nodes. Molecular profiling identified the BRAF V600E mutation. One month before admission, she began adjuvant therapy with dabrafenib and trametinib. One day after starting treatment, fever and nausea developed. Symptoms resolved after temporary discontinuation of therapy and antipyretics. Two weeks before admission, fever recurred. On presentation, she had a temperature of 40.2°C, blood pressure 85/53 mm Hg, pulse 108 beats per minute, and oxygen saturation 94% on ambient air. She was diaphoretic and appeared ill. Physical examination revealed mild tenderness in the right upper quadrant. No rash was present.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "BRAF inhibitor-related toxic effects",
+        "normalized_text": "BRAF inhibitor-related toxic effects",
+        "role": "primary",
+        "icd11": "NE60",
+        "icd11_title": "toxic effects of drugs NOS",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Dabrafenib–trametinib–associated pyrexia syndrome": {
+        "normalized_text": "Dabrafenib–trametinib–associated pyrexia syndrome",
+        "position": 1,
+        "description": "A common adverse effect of combined BRAF/MEK inhibition characterized by recurrent high fevers, chills, hypotension, and systemic inflammatory response; may include transaminitis and mild cytopenias and typically occurs soon after therapy initiation and on rechallenge."
+      },
+      "Secondary hemophagocytic lymphohistiocytosis (HLH)/macrophage activation syndrome": {
+        "normalized_text": "Secondary hemophagocytic lymphohistiocytosis (HLH)/macrophage activation syndrome",
+        "position": 2,
+        "description": "A life‑threatening hyperinflammatory syndrome triggered by drugs, malignancy, or infection, presenting with persistent fevers, cytopenias, coagulopathy, transaminitis, and multiorgan involvement; BRAF/MEK therapy or underlying melanoma can precipitate HLH."
+      },
+      "Acute cholangitis or acalculous cholecystitis": {
+        "normalized_text": "Acute cholangitis or acalculous cholecystitis",
+        "position": 3,
+        "description": "Biliary tract infection/inflammation that can cause fever, right upper quadrant pain, cholestatic liver enzyme elevation, and sepsis; may occur without gallstones in critically ill or drug‑treated patients."
+      },
+      "Infectious bronchiolitis/pneumonia (including aspiration or atypical organisms)": {
+        "normalized_text": "Infectious bronchiolitis/pneumonia (including aspiration or atypical organisms)",
+        "position": 4,
+        "description": "Lower respiratory tract infection presenting with fever and systemic inflammatory response; CT may show tree‑in‑bud nodules and mucus plugging, which are seen with infectious bronchiolitis or aspiration."
+      },
+      "Drug‑induced hepatitis from BRAF/MEK inhibitors": {
+        "normalized_text": "Drug‑induced hepatitis from BRAF/MEK inhibitors",
+        "position": 5,
+        "description": "Hepatic injury due to dabrafenib or trametinib, which can cause transaminitis and cholestasis and may present with fever as part of a drug reaction."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1154,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000086",
+      "year": 2024,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "ct",
+        "lab",
+        "pathology",
+        "ultrasound"
+      ],
+      "image_count": 3,
+      "history_chars": 1074,
+      "total_file_bytes": 1075604,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23800107",
+    "case": "A 13-year-old Caucasian boy of Italian ancestry presented with Addison's disease, dysphagia, muscle weakness, excessive fatigue, and recent onset gait ataxia. His parents were apparently healthy individuals from the same small village in southern Italy, with no recognized consanguinity. He was born after an uneventful 40-week gestation with normal birth parameters and had bilateral cryptorchidism, inguinal hernia, and hypospadias noted at birth. Early developmental milestones appeared normal initially, but global developmental delay became evident later, with mild mental retardation confirmed at age 9. He had a history of deficient tear production dating back to early infancy, with his mother noting he had always 'cried without tears.' At age 2, he developed recurrent vomiting, failure to thrive, and progressive skin pigmentation, initially misdiagnosed as gastroesophageal reflux. At age 4, he presented with recurrent episodes of hypotonia, hypoglycemia, and hypothermia, leading to diagnosis of Addison's disease. Physical examination revealed height 160 cm (0.42 SDS), weight 71 kg (3.55 SDS), pubertal stage II, severe hyperpigmentation and hyperkeratosis of elbows and knuckles, facial dysmorphism with malar hypoplasia and prognathism, dysarthria, nasal speech, saccadic eye movements with horizontal gaze nystagmus, bilaterally dilated pupils with poor light response, mild bilateral optic atrophy, distal muscle weakness and wasting in arms, milder pyramidal weakness in legs, unsteady gait, hyperactive deep tendon reflexes, and extensor plantar responses bilaterally. Laboratory studies showed markedly elevated plasma ACTH levels (1494 pg/ml; normal 5-46), normal serum electrolytes, aldosterone (184 pg/ml; normal 75-455), and plasma renin (16 pg/ml; normal 5-90), confirming isolated glucocorticoid deficiency. Very long chain fatty acids were normal. Bone mineral density was normal (Z score -0.6). Severe progressive dysphagia starting at age 11 prevented normal swallowing without liquids.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Triple A syndrome",
+        "normalized_text": "Triple A syndrome",
+        "role": "primary",
+        "icd11": "5A74.Y",
+        "icd11_title": "Triple A syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Triple A (Allgrove) syndrome (AAAS gene-related)": {
+        "normalized_text": "Triple A (Allgrove) syndrome (AAAS gene-related)",
+        "position": 1,
+        "description": "Autosomal recessive disorder characterized by the triad of alacrima, achalasia, and adrenal insufficiency (isolated glucocorticoid deficiency), often with autonomic and neurologic involvement (sometimes called 4A when autonomic features are prominent)."
+      },
+      "X-linked adrenoleukodystrophy/adrenomyeloneuropathy": {
+        "normalized_text": "X-linked adrenoleukodystrophy/adrenomyeloneuropathy",
+        "position": 2,
+        "description": "Peroxisomal disorder due to ABCD1 mutations causing impaired very long-chain fatty acid metabolism; presents with adrenal insufficiency and progressive myeloneuropathy or cerebral demyelination in boys/men."
+      },
+      "Familial glucocorticoid deficiency (ACTH resistance; MC2R/MRAP mutations)": {
+        "normalized_text": "Familial glucocorticoid deficiency (ACTH resistance; MC2R/MRAP mutations)",
+        "position": 3,
+        "description": "Autosomal recessive disorder with isolated glucocorticoid deficiency due to ACTH receptor pathway defects; mineralocorticoid function is preserved."
+      },
+      "Autoimmune Addison's disease (isolated primary adrenal insufficiency)": {
+        "normalized_text": "Autoimmune Addison's disease (isolated primary adrenal insufficiency)",
+        "position": 4,
+        "description": "Immune-mediated destruction of adrenal cortex causing glucocorticoid and often mineralocorticoid deficiency; uncommon as isolated disease in young children."
+      },
+      "Syringomyelia (possibly associated with Chiari I malformation)": {
+        "normalized_text": "Syringomyelia (possibly associated with Chiari I malformation)",
+        "position": 5,
+        "description": "Fluid-filled cavity within the spinal cord leading to segmental lower motor neuron weakness, sensory dissociation, and long tract signs; can cause progressive weakness and gait abnormalities."
+      },
+      "Familial dysautonomia (Hereditary sensory and autonomic neuropathy type III)": {
+        "normalized_text": "Familial dysautonomia (Hereditary sensory and autonomic neuropathy type III)",
+        "position": 6,
+        "description": "Autosomal recessive disorder (IKBKAP/ELP1 mutations) primarily in individuals of Ashkenazi Jewish ancestry; presents with alacrima, autonomic dysfunction, sensory neuropathy, GI dysmotility."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 2098,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23800107",
+      "year": 2013,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "genetic",
+        "mri"
+      ],
+      "image_count": 2,
+      "history_chars": 2018,
+      "total_file_bytes": 158552,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23733774",
+    "case": "A 55-year-old woman with a 13-year history of invasive ductal carcinoma of the right breast presented with stage IV breast cancer (estrogen receptor positive, progesterone receptor negative, human epidermal growth factor receptor 2/neu negative) metastatic to bone, lungs, and liver. She had undergone mastectomy and multiple systemic therapies, including stem-cell transplantation 8 years prior. Her most recent treatment prior to admission was anastrozole for 3 months, along with paracetamol for pain control. She presented with progressive generalized weakness and episodic confusion that rapidly progressed over several days to unresponsiveness. On the day of admission, she was found by her husband lying on the floor, was disoriented, had lower leg weakness, and was unable to understand basic instructions. Physical examination revealed she was awake but unresponsive and uncooperative, with no other focal neurologic findings initially. Vital signs showed normal blood pressure with mild tachycardia but no fever. Her past medical history was otherwise unremarkable, and she had a normal baseline brain MRI scan 2 weeks before presentation.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Posterior reversible encephalopathy syndrome",
+        "normalized_text": "Posterior reversible encephalopathy syndrome",
+        "role": "primary",
+        "icd11": "8B22.Y",
+        "icd11_title": "Posterior reversible encephalopathy",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Nonbacterial thrombotic endocarditis (NBTE) with embolic shower": {
+        "normalized_text": "Nonbacterial thrombotic endocarditis (NBTE) with embolic shower",
+        "position": 1,
+        "description": "Sterile fibrin-platelet vegetations on cardiac valves, often associated with advanced malignancy, can cause multiple systemic emboli including multifocal cortical ischemic strokes."
+      },
+      "Nonconvulsive status epilepticus (NCSE) with peri-ictal diffusion changes": {
+        "normalized_text": "Nonconvulsive status epilepticus (NCSE) with peri-ictal diffusion changes",
+        "position": 2,
+        "description": "Ongoing subclinical seizures can present with altered mental status and lead to transient cortical diffusion restriction and FLAIR hyperintensity; small petechial hemorrhages can occur."
+      },
+      "Embolic ischemic strokes from Trousseau syndrome (cancer-associated hypercoagulability)": {
+        "normalized_text": "Embolic ischemic strokes from Trousseau syndrome (cancer-associated hypercoagulability)",
+        "position": 3,
+        "description": "Hypercoagulable state in malignancy causing arterial thromboembolism and multiple acute infarcts in different vascular territories."
+      },
+      "Posterior reversible encephalopathy syndrome (PRES)": {
+        "normalized_text": "Posterior reversible encephalopathy syndrome (PRES)",
+        "position": 4,
+        "description": "Vasogenic edema due to autoregulatory failure, often in posterior circulation; can be associated with cytotoxic drugs, sepsis, or renal dysfunction; occasionally shows restricted diffusion and microhemorrhages."
+      },
+      "Hypoxic-ischemic encephalopathy (global hypoperfusion)": {
+        "normalized_text": "Hypoxic-ischemic encephalopathy (global hypoperfusion)",
+        "position": 5,
+        "description": "Global cerebral hypoxia/ischemia causes diffuse cortical diffusion restriction (cortical ribboning) and encephalopathy."
+      },
+      "Herpes simplex virus (HSV) encephalitis (atypical presentation)": {
+        "normalized_text": "Herpes simplex virus (HSV) encephalitis (atypical presentation)",
+        "position": 6,
+        "description": "Acute necrotizing encephalitis classically affecting medial temporal and limbic structures; can present with altered mental status and diffusion restriction."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1229,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23733774",
+      "year": 2013,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "mri"
+      ],
+      "image_count": 1,
+      "history_chars": 1149,
+      "total_file_bytes": 145373,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "21218047",
+    "case": "A 54-year-old woman with no significant past medical history presented with progressive 4-extremities weakness and sensory changes, followed by urinary difficulty over the course of 1 month. Physical examination revealed increased deep tendon reflexes, positive Babinski sign, and decreased motor power with MRC grade 2 strength on the right side and MRC grade 4 strength on the left side. Pinprick and temperature sensation was decreased from C4 level, dominantly on the left side, while vibration and proprioception were decreased, dominantly on the right side. Hoffman's and Tromner's signs were increased in both hands. Serological studies for systemic autoimmunity, including rheumatoid factor and antinuclear, anti-dsDNA, anti-SSA/SSB, and antiphospholipid antibodies, showed no abnormality. Cerebrospinal fluid analysis including biochemistry, IgG index and oligoclonal band was normal. Angiotensin converting enzyme was mildly elevated to 56 U/L (normal <52 U/L). Systemic evaluations showed no disease activity in other organs using brain MRI, chest and abdominal computed tomography, and nerve conduction study.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Spinal cord neurosarcoidosis",
+        "normalized_text": "Spinal cord neurosarcoidosis",
+        "role": "primary",
+        "icd11": "4B20.3",
+        "icd11_title": "Neurosarcoidosis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Spinal cord neurosarcoidosis (intramedullary sarcoid granuloma)": {
+        "normalized_text": "Spinal cord neurosarcoidosis (intramedullary sarcoid granuloma)",
+        "position": 1,
+        "description": "Granulomatous inflammation of the central nervous system due to sarcoidosis; can present as an intramedullary spinal cord lesion causing myelopathy, sometimes without obvious systemic involvement."
+      },
+      "Cervical spondylotic myelopathy": {
+        "normalized_text": "Cervical spondylotic myelopathy",
+        "position": 2,
+        "description": "Degenerative cervical spine disease causing spinal cord compression and chronic myelopathy, typically in middle-aged to older adults."
+      },
+      "Intramedullary spinal cord tumor (e.g., ependymoma or astrocytoma)": {
+        "normalized_text": "Intramedullary spinal cord tumor (e.g., ependymoma or astrocytoma)",
+        "position": 3,
+        "description": "Primary intramedullary neoplasms of the cervical cord can cause progressive myelopathy with dissociated sensory loss and upper motor neuron signs."
+      },
+      "Multiple sclerosis (spinal cord predominant relapse)": {
+        "normalized_text": "Multiple sclerosis (spinal cord predominant relapse)",
+        "position": 4,
+        "description": "Immune-mediated demyelinating disease of the CNS; cord lesions can produce myelopathy, often with asymmetric signs and urinary symptoms."
+      },
+      "Neuromyelitis optica spectrum disorder (AQP4-IgG disease)": {
+        "normalized_text": "Neuromyelitis optica spectrum disorder (AQP4-IgG disease)",
+        "position": 5,
+        "description": "Relapsing autoimmune astrocytopathy characterized by longitudinally extensive transverse myelitis and optic neuritis; can present with severe myelopathy and bladder dysfunction."
+      },
+      "Idiopathic acute transverse myelitis": {
+        "normalized_text": "Idiopathic acute transverse myelitis",
+        "position": 6,
+        "description": "Inflammatory myelopathy of unclear cause presenting subacutely with motor, sensory, and autonomic dysfunction below a spinal level."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1201,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "21218047",
+      "year": 2011,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "mri",
+        "pathology"
+      ],
+      "image_count": 4,
+      "history_chars": 1121,
+      "total_file_bytes": 391258,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000050",
+    "case": "A 33-year-old male worker presented with a 20-day history of cough and sputum production. The symptoms began after catching cold, with yellow-white sticky sputum in small amounts, without hemoptysis, fever, chills, chest pain, or dyspnea. He had been treated at a local clinic with intravenous therapy (details unknown) without improvement. Seven days prior to admission, his cough worsened, particularly at night causing sleep difficulty, sometimes accompanied by right-sided chest pain. He was previously healthy with no significant medical history, smoked about 10 cigarettes daily for over ten years, and had no alcohol consumption history. Physical examination revealed: T 36.2℃, P 112/min, R 19/min, BP 126/85mmHg. Chest examination showed symmetric thorax without deformity, equal respiratory movements, symmetric vocal fremitus, clear percussion notes bilaterally, coarse breath sounds in both lungs with a small amount of wet rales audible in the right lung, no dry rales or pleural friction rubs.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Cryptococcal pneumonia",
+        "normalized_text": "Cryptococcal pneumonia",
+        "role": "primary",
+        "icd11": "1F27.0",
+        "icd11_title": "cryptococcal pneumonia",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Lung abscess (cavitating bacterial infection)": {
+        "normalized_text": "Lung abscess (cavitating bacterial infection)",
+        "position": 1,
+        "description": "A localized area of suppurative necrosis within the lung parenchyma leading to a cavity, most often due to aspiration or bacterial infection (anaerobes, Staphylococcus aureus, Klebsiella, mixed flora)."
+      },
+      "Necrotizing pneumonia": {
+        "normalized_text": "Necrotizing pneumonia",
+        "position": 2,
+        "description": "A severe form of bacterial pneumonia characterized by parenchymal necrosis and multiple small cavities; commonly caused by Staphylococcus aureus (including MRSA), Streptococcus pneumoniae, Klebsiella, or anaerobes."
+      },
+      "Pulmonary tuberculosis (cavitary TB)": {
+        "normalized_text": "Pulmonary tuberculosis (cavitary TB)",
+        "position": 3,
+        "description": "Mycobacterial infection that can cause chronic cough and cavitary lesions, typically in upper lobes but may involve other regions; transmission is airborne."
+      },
+      "Bronchiectasis with acute infectious exacerbation (localized)": {
+        "normalized_text": "Bronchiectasis with acute infectious exacerbation (localized)",
+        "position": 4,
+        "description": "Permanent dilation of bronchi leading to impaired mucus clearance and recurrent infections; may present with focal disease and superimposed infection causing localized rales and cough."
+      },
+      "Community-acquired pneumonia (typical bacterial)": {
+        "normalized_text": "Community-acquired pneumonia (typical bacterial)",
+        "position": 5,
+        "description": "Acute infection of the lung parenchyma caused by organisms like Streptococcus pneumoniae; usually presents with cough, sputum, fever, and focal auscultatory findings."
+      },
+      "Pulmonary fungal infection (e.g., chronic cavitary aspergillosis)": {
+        "normalized_text": "Pulmonary fungal infection (e.g., chronic cavitary aspergillosis)",
+        "position": 6,
+        "description": "Fungal colonization or infection of pre-existing cavities or formation of cavitary lesions, often in individuals with structural lung disease; can cause chronic cough and localized symptoms."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1086,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000050",
+      "year": 2022,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "ct",
+        "pathology"
+      ],
+      "image_count": 2,
+      "history_chars": 1006,
+      "total_file_bytes": 380720,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "19795006",
+    "case": "A 66-year-old man was admitted because of dysphagia with repeated aspirations in March 2007. His illness began around 2000 with several episodes of falling while riding a motorcycle that were not associated with dizziness or faintness and were independent of specific situation or body position. In October 2003, he was evaluated for blurred vision, dislike of bright lights, and easy falls. He had undergone bilateral lens implantation in 2000 for bilateral cataracts and presbyopia but did not benefit from the surgery. His symptoms progressively worsened with imbalance and unsteadiness when walking. Pupils were irregularly shaped with sluggish bilateral direct light reflexes. Vertical ocular movements for willed gaze and following objects were slow and limited, though full ocular movements were elicited during passive head motions. Volitional horizontal gaze and pursuit were slow with bilateral adduction paresis, but convergence was normal. He was slow and made errors when performing distal rapid alternating movements and tended to topple backwards. There was no resting or action tremor initially. His condition continued to deteriorate with frequent falls requiring a cane, retracted head, slurred voice, inability to look down, and swallowing difficulties. By March 2007 admission, his eyes deviated up and lateral with absent vertical and medial eye movements. When attempting lateral gaze, only brisk quick lateral movements occurred on the same side with no medial movement of the opposite eye. He could not converge his eyes, had no Bell's phenomenon or optokinetic nystagmus, and caloric stimulations with warm and cold water did not evoke nystagmus bilaterally. Doll's eye maneuver evoked no eyeball movements. He had severe nuchal rigidity and retrocollis, could not sit independently, repeatedly fell backward without support, and had axial rigidity making distal movements appear ataxic. Reflexes were symmetrical and minimally brisk with bilateral flexor plantar responses and no resting tremor.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Progressive supranuclear palsy",
+        "normalized_text": "Progressive supranuclear palsy",
+        "role": "primary",
+        "icd11": "8A00.10",
+        "icd11_title": "Progressive supranuclear palsy",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Progressive Supranuclear Palsy (PSP, Richardson syndrome)": {
+        "normalized_text": "Progressive Supranuclear Palsy (PSP, Richardson syndrome)",
+        "position": 1,
+        "description": "A neurodegenerative tauopathy characterized by early postural instability with backward falls, vertical supranuclear gaze palsy (especially downgaze), axial rigidity, dysarthria, dysphagia, and poor response to dopaminergic therapy. MRI often shows selective midbrain atrophy (hummingbird/mickey mouse signs)."
+      },
+      "Multiple System Atrophy, parkinsonian type (MSA-P)": {
+        "normalized_text": "Multiple System Atrophy, parkinsonian type (MSA-P)",
+        "position": 2,
+        "description": "A rapidly progressive synucleinopathy with parkinsonism and/or cerebellar features plus prominent autonomic failure; may include axial rigidity and early dysphagia, but supranuclear vertical gaze palsy is not typical."
+      },
+      "Parkinson's disease (idiopathic)": {
+        "normalized_text": "Parkinson's disease (idiopathic)",
+        "position": 3,
+        "description": "A common neurodegenerative disorder with asymmetric resting tremor, bradykinesia, rigidity, and postural instability; ocular motility typically preserved except for hypometric saccades; good initial response to levodopa."
+      },
+      "Corticobasal Degeneration (CBD)/Corticobasal Syndrome": {
+        "normalized_text": "Corticobasal Degeneration (CBD)/Corticobasal Syndrome",
+        "position": 4,
+        "description": "A neurodegenerative tauopathy with asymmetric parkinsonism, limb apraxia, dystonia, cortical sensory loss, and sometimes ocular motor abnormalities; typically asymmetric and cortical signs are prominent."
+      },
+      "Chronic Progressive External Ophthalmoplegia (CPEO, mitochondrial)": {
+        "normalized_text": "Chronic Progressive External Ophthalmoplegia (CPEO, mitochondrial)",
+        "position": 5,
+        "description": "A mitochondrial myopathy characterized by slowly progressive bilateral ptosis and ophthalmoplegia with preserved pupillary responses; systemic involvement can include dysphagia, but central axial rigidity and early falls are not typical; VOR is usually preserved."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 2101,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "19795006",
+      "year": 2009,
+      "classification": "Neurological disorders",
+      "modalities": [
+        "clinical",
+        "mri"
+      ],
+      "image_count": 1,
+      "history_chars": 2021,
+      "total_file_bytes": 253767,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "24552323",
+    "case": "A 35-day-old male infant, born at 37.5 weeks gestation as a fraternal twin via cesarean section for breech presentation, presented with fever, vomiting, mottled skin, and severe anemia. The patient was previously healthy, consuming both breast milk and formula. His mother had uncomplicated prenatal care with negative screening tests for various infections. Two days before admission, he was well at a routine examination. The day before admission, his mother noted increased fussiness, pale and warm skin, and one episode of vomiting. On the morning of admission, tachycardia was noted with increased vomiting. At presentation, the patient was pale with mottled skin and showed signs of respiratory distress. Physical examination revealed a temperature of 39.1°C, blood pressure 101/69 mmHg, pulse 176 beats per minute, respiratory rate 68 breaths per minute with supraclavicular, intercostal, and subcostal retractions, and oxygen saturation 97% on 1 liter of oxygen via nasal cannula. He was pale, listless, and fussy with a holosystolic-flow murmur grade 2/6. The spleen was palpated 2-3 cm below the costal margin. His arms and legs were mottled and slightly cool. The family lived in a suburban, forested neighborhood where the mother frequently walked, and they had a pet dog. The mother had vacationed on an island off the coast of Massachusetts approximately 2.5 months before admission. Urinalysis showed dark red, cloudy urine with large amounts of blood, protein, and granular casts.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Congenital babesiosis",
+        "normalized_text": "Congenital babesiosis",
+        "role": "primary",
+        "icd11": "1F52",
+        "icd11_title": "Babesiosis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Congenital babesiosis (Babesia microti)": {
+        "normalized_text": "Congenital babesiosis (Babesia microti)",
+        "position": 1,
+        "description": "Intraerythrocytic protozoal infection transmitted transplacentally (or by ticks). In neonates it can cause hemolytic anemia, thrombocytopenia, fever, and splenomegaly; blood smear may show multiple ring forms and tetrads (Maltese cross)."
+      },
+      "Malaria (Plasmodium falciparum or vivax) infection": {
+        "normalized_text": "Malaria (Plasmodium falciparum or vivax) infection",
+        "position": 2,
+        "description": "Mosquito-borne intraerythrocytic parasitic infection causing cyclical fevers and hemolytic anemia; P. falciparum can show multiple delicate ring forms per RBC."
+      },
+      "Neonatal bacterial sepsis with disseminated intravascular coagulation (DIC)": {
+        "normalized_text": "Neonatal bacterial sepsis with disseminated intravascular coagulation (DIC)",
+        "position": 3,
+        "description": "Systemic bacterial infection in neonates that can lead to fever, hemodynamic instability, thrombocytopenia, hemolysis, and organ dysfunction due to DIC."
+      },
+      "Hemolytic disease of the fetus and newborn (alloimmune hemolysis)": {
+        "normalized_text": "Hemolytic disease of the fetus and newborn (alloimmune hemolysis)",
+        "position": 4,
+        "description": "Maternal IgG antibodies against fetal red cell antigens cause hemolysis in the neonate, leading to anemia, jaundice, and sometimes splenomegaly."
+      },
+      "Glucose-6-phosphate dehydrogenase (G6PD) deficiency with acute hemolysis": {
+        "normalized_text": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency with acute hemolysis",
+        "position": 5,
+        "description": "X-linked enzymopathy causing episodic intravascular hemolysis after oxidative stress (e.g., infection, certain drugs), leading to anemia, jaundice, and dark urine."
+      },
+      "Hemolytic uremic syndrome (atypical or infection-associated)": {
+        "normalized_text": "Hemolytic uremic syndrome (atypical or infection-associated)",
+        "position": 6,
+        "description": "Microangiopathic hemolytic anemia, thrombocytopenia, and renal injury; in infants atypical (complement-mediated) HUS can present without diarrhea."
+      },
+      "Congenital cytomegalovirus (CMV) infection with hematologic involvement": {
+        "normalized_text": "Congenital cytomegalovirus (CMV) infection with hematologic involvement",
+        "position": 7,
+        "description": "Transplacental CMV can cause thrombocytopenia, anemia, hepatosplenomegaly, and hepatitis in neonates."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1576,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "24552323",
+      "year": 2014,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "genetic",
+        "lab",
+        "pathology",
+        "x-ray"
+      ],
+      "image_count": 4,
+      "history_chars": 1496,
+      "total_file_bytes": 628651,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "N-10000042",
+    "case": "A 27-year-old man from El Salvador presented to the emergency department with leg weakness. He had been in his usual state of health until 3 days before presentation, when myalgias developed in his upper legs. On the morning of presentation, he could not lift his legs to move in bed or stand up, and had weakness in his arms. He had moved to Boston from El Salvador 5 months before presentation and had been experiencing difficulty sleeping, loose stools, weight loss of approximately 5 kg, and hand tremors for several months, which he attributed to stress. Four days before presentation, he began taking an herbal supplement (Nervitran) intended to reduce stress. On examination, he had temporal temperature 36.2°C, blood pressure 144/79 mm Hg, pulse 96 beats per minute, respiratory rate 18 breaths per minute, oxygen saturation 99% on ambient air, and BMI 21.6. He had conjunctival injection in both eyes, muscle strength 4/5 in upper extremities and 3/5 in lower extremities, 3+ patellar reflexes, and fine tremor in hands. Laboratory results showed severe hypokalemia (potassium 1.8 mmol/liter), elevated liver enzymes (AST 56 U/liter, ALT 65 U/liter), alkaline phosphatase 137 U/liter, total bilirubin 1.3 mg/dl, creatine kinase 382 U/liter, and aldolase 9.9 U/liter. Venous blood gases showed pH 7.29.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Thyrotoxic periodic paralysis",
+        "normalized_text": "Thyrotoxic periodic paralysis",
+        "role": "primary",
+        "icd11": "5A02.Y",
+        "icd11_title": "Thyrotoxic periodic paralysis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Thyrotoxic periodic paralysis (likely due to Graves disease)": {
+        "normalized_text": "Thyrotoxic periodic paralysis (likely due to Graves disease)",
+        "position": 1,
+        "description": "An acute, reversible hypokalemic paralysis caused by a thyrotoxic state (most often Graves disease) that drives potassium into cells via beta-adrenergic stimulation and Na+/K+ ATPase activation."
+      },
+      "Familial hypokalemic periodic paralysis": {
+        "normalized_text": "Familial hypokalemic periodic paralysis",
+        "position": 2,
+        "description": "A channelopathy (CACNA1S or SCN4A mutations) causing episodic hypokalemia with transient paralysis, often triggered by rest after exercise or high-carbohydrate meals."
+      },
+      "Primary hyperaldosteronism (Conn syndrome)": {
+        "normalized_text": "Primary hyperaldosteronism (Conn syndrome)",
+        "position": 3,
+        "description": "Excess aldosterone from an adrenal adenoma or hyperplasia causes renal potassium wasting, hypertension, and metabolic alkalosis; may present with muscle weakness."
+      },
+      "Thyrotoxicosis factitia (exogenous thyroid hormone from supplement)": {
+        "normalized_text": "Thyrotoxicosis factitia (exogenous thyroid hormone from supplement)",
+        "position": 4,
+        "description": "Ingestion of thyroid hormone leads to a hyperthyroid state without increased thyroid hormone synthesis; can cause weight loss, tremor, diarrhea, and rarely precipitate hypokalemic paralysis."
+      },
+      "Guillain–Barré syndrome (acute inflammatory demyelinating polyradiculoneuropathy)": {
+        "normalized_text": "Guillain–Barré syndrome (acute inflammatory demyelinating polyradiculoneuropathy)",
+        "position": 5,
+        "description": "An acute immune-mediated neuropathy causing progressive weakness and areflexia, often following infection; may involve autonomic dysfunction."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1390,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "N-10000042",
+      "year": 2024,
+      "classification": "Endocrine and metabolic disorders",
+      "modalities": [
+        "lab",
+        "pathology",
+        "ultrasound"
+      ],
+      "image_count": 3,
+      "history_chars": 1310,
+      "total_file_bytes": 633590,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "24516032",
+    "case": "A 78-year-old white woman was referred by her general practitioner for anemia with a high erythrocyte sedimentation rate. Her main complaints were lethargy and easy fatigue that had persisted for 2 months. Her past medical history included hypertension and high cholesterol, for which she was receiving perindopril and atorvastatin tablets. Clinical examination revealed normal cardiac, respiratory, and neurologic statuses, with no organomegaly or lymphadenopathy. Her Eastern Cooperative Oncology Group performance status was 1. Initial blood tests showed low hemoglobin (99 g/L; normal range 120-160 g/L), normal white cell and platelet counts, high erythrocyte sedimentation rate (120 mm per hour; normal range 5-20 mm per hour), mildly elevated creatinine level (110 mmol/L; normal range 50-100 mmol/L), and high calcium level (2.81 mmol/L; normal range 2.10-2.60 mmol/L). Lactate dehydrogenase was mildly elevated (333 U/L; normal range 125-243 U/L). Additional blood investigations revealed high levels of immunoglobulin G (IgG) kappa paraprotein quantified at 32 g/L, high β₂-microglobulin (6.3 mg/L; normal level <3.0 mg/L), high free kappa light chains of 1,400 mg/L (normal level <19 mg/L), and a high kappa/lambda ratio of 280. Bence-Jones protein (kappa) was detected in urine, and 24-hour urine protein excretion was within normal limits. Serum vitamin D, parathyroid hormone, and alkaline phosphatase levels were within normal ranges.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Multiple myeloma",
+        "normalized_text": "Multiple myeloma",
+        "role": "primary",
+        "icd11": "2A83.1",
+        "icd11_title": "multiple myeloma",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Multiple myeloma (IgG kappa)": {
+        "normalized_text": "Multiple myeloma (IgG kappa)",
+        "position": 1,
+        "description": "A malignant clonal plasma-cell disorder producing a monoclonal immunoglobulin with end-organ damage (CRAB: hyperCalcemia, Renal dysfunction, Anemia, Bone disease)."
+      },
+      "Paget disease of bone": {
+        "normalized_text": "Paget disease of bone",
+        "position": 2,
+        "description": "A chronic focal skeletal remodeling disorder causing enlarged, deformed, and often sclerotic bone with a mosaic lamellar pattern; commonly involves pelvis, spine, and femur."
+      },
+      "POEMS syndrome (osteosclerotic myeloma variant)": {
+        "normalized_text": "POEMS syndrome (osteosclerotic myeloma variant)",
+        "position": 3,
+        "description": "A paraneoplastic syndrome due to a plasma-cell disorder, characterized by Polyneuropathy, Organomegaly, Endocrinopathy, Monoclonal protein (usually lambda), and Skin changes; often with osteosclerotic lesions."
+      },
+      "Solitary plasmacytoma of bone": {
+        "normalized_text": "Solitary plasmacytoma of bone",
+        "position": 4,
+        "description": "A localized clonal plasma-cell tumor within bone without systemic myeloma features; may produce a small M-protein."
+      },
+      "Metastatic bone disease (e.g., osteoblastic metastases)": {
+        "normalized_text": "Metastatic bone disease (e.g., osteoblastic metastases)",
+        "position": 5,
+        "description": "Secondary bone involvement from a distant primary tumor; osteoblastic lesions can increase bone density and commonly affect the pelvis and spine."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1529,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "24516032",
+      "year": 2014,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "general imaging",
+        "pathology",
+        "x-ray"
+      ],
+      "image_count": 4,
+      "history_chars": 1449,
+      "total_file_bytes": 208550,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "27797319",
+    "case": "A 20-year-old male college student presented with bilateral breast enlargement of 3-year duration without nipple discharge. He reported occasional morning erections but had never been sexually active. Four years prior, he developed increased thirst, fluid consumption, and frequent urination (4-5 times daily, up to 3 times nightly), which had recently improved. He had blurred vision corrected with glasses, occasional post-exertion headaches, and decreased facial hair growth requiring shaving every 2 weeks instead of weekly. His medical history included generalized nocturnal tonic-clonic seizures and focal seizures in right leg between ages 6-13, treated with carbamazepine until age 14. He had recent constipation and chronic pilonidal cyst. Physical examination revealed a young-appearing male with minimal facial hair, blood pressure 98/62 mmHg, height 179 cm, weight 85 kg, BMI 26.5. Both breasts were enlarged without nipple retraction, masses, or discharge. Testicles were small (approximately 2.5 cm length). He had a small posterior anal fissure and small lump over coccyx with central punctum.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Germinoma",
+        "normalized_text": "Germinoma",
+        "role": "primary",
+        "icd11": "2A00.1Y",
+        "icd11_title": "germinoma of unspecified site",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Prolactin-secreting pituitary macroadenoma (prolactinoma)": {
+        "normalized_text": "Prolactin-secreting pituitary macroadenoma (prolactinoma)",
+        "position": 1,
+        "description": "A benign pituitary tumor that secretes prolactin, causing hypogonadotropic hypogonadism, galactorrhea in women, infertility, and mass effects such as visual field defects."
+      },
+      "Nonfunctioning pituitary macroadenoma with stalk effect and panhypopituitarism": {
+        "normalized_text": "Nonfunctioning pituitary macroadenoma with stalk effect and panhypopituitarism",
+        "position": 2,
+        "description": "A large pituitary adenoma that does not secrete hormones but compresses the pituitary and stalk, causing hypopituitarism and moderate hyperprolactinemia from disrupted dopaminergic inhibition."
+      },
+      "Craniopharyngioma (suprasellar)": {
+        "normalized_text": "Craniopharyngioma (suprasellar)",
+        "position": 3,
+        "description": "A benign epithelial tumor arising from Rathke’s pouch remnants in the sellar/suprasellar region that often causes visual field defects and panhypopituitarism; can involve the hypothalamus and pituitary stalk."
+      },
+      "Suprasellar germinoma (hypothalamic–pituitary)": {
+        "normalized_text": "Suprasellar germinoma (hypothalamic–pituitary)",
+        "position": 4,
+        "description": "A malignant germ cell tumor that commonly arises in the suprasellar region of adolescents/young adults, often presenting with diabetes insipidus and evolving hypopituitarism; serum markers may be negative or minimally elevated."
+      },
+      "Central diabetes insipidus due to hypothalamic/pituitary stalk lesion": {
+        "normalized_text": "Central diabetes insipidus due to hypothalamic/pituitary stalk lesion",
+        "position": 5,
+        "description": "Deficiency of vasopressin from hypothalamic or posterior pituitary damage, leading to polyuria, polydipsia, hypernatremia, and in incomplete cases, intermediate urine osmolality; often accompanies suprasellar masses."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1188,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "27797319",
+      "year": 2016,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "lab",
+        "mri",
+        "ophthalmic imaging"
+      ],
+      "image_count": 4,
+      "history_chars": 1108,
+      "total_file_bytes": 851973,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "23614590",
+    "case": "A 6-year-old girl presented with a 1-year history of intermittent bone and joint pain and recent onset of fever and abdominal distention. The patient had been well until 1 year before admission when she fell on her left hand and experienced migratory joint pain. Over the following year, she developed intermittent rib pain, right knee pain with limping, and left flank pain that radiated to her left leg. Six days before admission, she developed back pain, limping, and intermittent fever up to 39.8°C. The day before admission, she developed periorbital swelling, abdominal distention, and periumbilical discoloration. On examination, she was febrile (38.7°C), had bilateral periorbital discoloration, and a soft, nontender abdomen. She exhibited slight limping and flinching with external rotation of the right hip. Her height was 123.8 cm and weight 27.2 kg. Past medical history included gastroesophageal reflux as an infant and pollen allergy with allergic rhinitis. Family history was notable for paternal grandmother with rheumatoid arthritis and breast cancer, and no family history of childhood arthritis or other autoimmune conditions.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "B-cell lymphoblastic leukemia",
+        "normalized_text": "B-cell lymphoblastic leukemia",
+        "role": "primary",
+        "icd11": "2B33.3",
+        "icd11_title": "acute lymphoblastic leukaemia",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Neuroblastoma with metastatic disease": {
+        "normalized_text": "Neuroblastoma with metastatic disease",
+        "position": 1,
+        "description": "A malignant tumor of neural crest origin that typically arises in the adrenal medulla or sympathetic chain; common in young children and often presents with abdominal mass, bone pain, fever, and periorbital ecchymoses from orbital metastases."
+      },
+      "Acute lymphoblastic leukemia (B-ALL) with bone pain": {
+        "normalized_text": "Acute lymphoblastic leukemia (B-ALL) with bone pain",
+        "position": 2,
+        "description": "A malignancy of lymphoid precursors that often presents in children with bone pain, fevers, and systemic symptoms; extramedullary disease can cause abdominal findings and periocular edema."
+      },
+      "Langerhans cell histiocytosis (multisystem)": {
+        "normalized_text": "Langerhans cell histiocytosis (multisystem)",
+        "position": 3,
+        "description": "A clonal proliferation of Langerhans-type dendritic cells that can cause painful lytic bone lesions and involve skin, liver, spleen, and lymph nodes; may produce fever and elevated inflammatory markers."
+      },
+      "Chronic recurrent multifocal osteomyelitis (CRMO)": {
+        "normalized_text": "Chronic recurrent multifocal osteomyelitis (CRMO)",
+        "position": 4,
+        "description": "A sterile autoinflammatory disorder causing recurrent multifocal bone pain and swelling in children; often involves long bones, clavicle, spine, and presents with elevated inflammatory markers."
+      },
+      "Systemic juvenile idiopathic arthritis (sJIA)": {
+        "normalized_text": "Systemic juvenile idiopathic arthritis (sJIA)",
+        "position": 5,
+        "description": "An autoinflammatory arthritis of childhood characterized by quotidian fevers, evanescent rash, arthritis, and systemic inflammation that can include hepatosplenomegaly and elevated ferritin."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1226,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "23614590",
+      "year": 2013,
+      "classification": "Neoplastic diseases",
+      "modalities": [
+        "ct",
+        "lab",
+        "pathology",
+        "pet/spect/nuclear"
+      ],
+      "image_count": 4,
+      "history_chars": 1146,
+      "total_file_bytes": 1030336,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "26946926",
+    "case": "A 15-year-old female with only a history of an ovarian cyst presented initially with left arm pain, frontal headaches, and conjunctival hyperaemia, without fever or neurological deficits. Seven days later, she developed acute lower back pain, paraesthesia on the left side of her body, and left arm weakness. On admission, she showed slight left-sided weakness, proximal pain of left arm and leg (worse with movement), no fever, no signs of meningism, and Glasgow Coma Score of 15. Laboratory analysis revealed elevated leucocytes (11.5 × 10⁹/L) and polymorphonuclear leucocytes (9.2 × 10⁹/L). By day 2, she developed dysuria and urinary retention, worsening left-sided hemiparesis and pain, loss of temperature sensation below T2 dermatome on left and T4 on right, and bilateral Hoffman signs. Cerebrospinal fluid examination and electromyography were normal. PCR detected high concentrations of Zika virus in serum, urine, and cerebrospinal fluid. All other viral, bacterial and autoimmune tests were negative.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "Acute myelitis",
+        "normalized_text": "Acute myelitis",
+        "role": "primary",
+        "icd11": "1D02.Z",
+        "icd11_title": "acute myelitis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "Zika virus–associated myelitis": {
+        "normalized_text": "Zika virus–associated myelitis",
+        "position": 1,
+        "description": "Inflammation of the spinal cord triggered by acute Zika virus infection; can present with hemicord or longitudinally extensive lesions and autonomic dysfunction. CSF can be normal despite high viral load on PCR."
+      },
+      "Acute transverse myelitis (post-infectious/idiopathic)": {
+        "normalized_text": "Acute transverse myelitis (post-infectious/idiopathic)",
+        "position": 2,
+        "description": "Immune-mediated inflammation across one or more segments of the spinal cord, often following infection; causes motor, sensory, and autonomic dysfunction with a sensory level."
+      },
+      "Neuromyelitis optica spectrum disorder (NMOSD)": {
+        "normalized_text": "Neuromyelitis optica spectrum disorder (NMOSD)",
+        "position": 3,
+        "description": "A relapsing autoimmune astrocytopathy often causing longitudinally extensive transverse myelitis and severe bladder dysfunction; may occur in adolescents."
+      },
+      "Myelin oligodendrocyte glycoprotein antibody–associated disease (MOGAD) myelitis": {
+        "normalized_text": "Myelin oligodendrocyte glycoprotein antibody–associated disease (MOGAD) myelitis",
+        "position": 4,
+        "description": "An inflammatory demyelinating disorder often affecting children and adolescents; myelitis can be longitudinally extensive and follow infections."
+      },
+      "Anterior spinal artery infarction (spinal cord ischemia)": {
+        "normalized_text": "Anterior spinal artery infarction (spinal cord ischemia)",
+        "position": 5,
+        "description": "Ischemia of the anterior spinal cord causing acute motor deficits and loss of pain/temperature with relative sparing of dorsal column modalities; often sudden and severe."
+      },
+      "Multiple sclerosis presenting with partial myelitis": {
+        "normalized_text": "Multiple sclerosis presenting with partial myelitis",
+        "position": 6,
+        "description": "A demyelinating disease of the central nervous system that can first present in adolescence with a partial myelitis affecting one side more than the other."
+      },
+      "Spinal epidural compressive lesion (abscess/hematoma/tumor)": {
+        "normalized_text": "Spinal epidural compressive lesion (abscess/hematoma/tumor)",
+        "position": 7,
+        "description": "Extrinsic compression of the spinal cord causing back pain, focal weakness, sensory level, and sphincter dysfunction; emergent condition."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1092,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "26946926",
+      "year": 2016,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "mri"
+      ],
+      "image_count": 2,
+      "history_chars": 1012,
+      "total_file_bytes": 101898,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "28489991",
+    "case": "A 20-year-old man was seen at an outpatient clinic for pain and swelling of his left calf and a purpuric rash. He had a history of Crohn's disease diagnosed at age 10 which had required prolonged glucocorticoid treatment, with clinical improvement over the previous 3 years with weekly adalimumab therapy that accompanied a growth spurt. The patient had been well until 3 weeks prior to presentation when he developed sore throat, nonproductive cough, rhinorrhea, and chills. Two weeks before presentation, he traveled to the northwestern United States for backpacking and developed cramping left calf pain that worsened over 2 days with associated swelling that progressed from the calf to the foot, and an erythematous rash developed on the dorsum of both feet. He reported multiple previous self-limited episodes of similar upper respiratory symptoms over recent years. On examination, his vital signs showed temperature 36.2°C, blood pressure 118/70 mm Hg, pulse 70 beats per minute, respiratory rate 16 breaths per minute, and oxygen saturation 97% on room air. He appeared uncomfortable due to left leg pain. The nasal septum was intact. He had left ankle synovitis and normal peripheral pulses.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "IgA vasculitis",
+        "normalized_text": "IgA vasculitis",
+        "role": "primary",
+        "icd11": "4A44.92",
+        "icd11_title": "IgA vasculitis",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "IgA vasculitis (Henoch–Schönlein purpura)": {
+        "normalized_text": "IgA vasculitis (Henoch–Schönlein purpura)",
+        "position": 1,
+        "description": "Small-vessel immune complex vasculitis characterized by IgA deposition in postcapillary venules, classically following an upper respiratory infection, and presenting with palpable purpura, arthralgia/arthritis, and possible gastrointestinal and renal involvement."
+      },
+      "Leukocytoclastic (hypersensitivity) vasculitis, drug-induced (adalimumab-associated)": {
+        "normalized_text": "Leukocytoclastic (hypersensitivity) vasculitis, drug-induced (adalimumab-associated)",
+        "position": 2,
+        "description": "Immune complex–mediated small-vessel vasculitis often triggered by medications (including anti–TNF agents), infections, or systemic diseases, presenting with palpable purpura predominantly on the lower extremities and sometimes arthralgias."
+      },
+      "Granulomatosis with polyangiitis (ANCA-associated vasculitis)": {
+        "normalized_text": "Granulomatosis with polyangiitis (ANCA-associated vasculitis)",
+        "position": 3,
+        "description": "Necrotizing granulomatous vasculitis of small to medium vessels, typically involving the upper and lower respiratory tracts and kidneys; may present with sinus/nasal symptoms, pulmonary disease, and palpable purpura."
+      },
+      "Mixed cryoglobulinemic vasculitis": {
+        "normalized_text": "Mixed cryoglobulinemic vasculitis",
+        "position": 4,
+        "description": "Immune complex–mediated small-vessel vasculitis due to circulating cryoglobulins, commonly associated with chronic infections (e.g., hepatitis C) or autoimmune disease, presenting with palpable purpura, arthralgia, neuropathy, and possible renal involvement."
+      },
+      "Deep vein thrombosis (left lower extremity)": {
+        "normalized_text": "Deep vein thrombosis (left lower extremity)",
+        "position": 5,
+        "description": "Formation of a thrombus in the deep venous system, typically presenting with unilateral calf pain, swelling, and tenderness, sometimes following immobility, long travel, or inflammation; risk can be increased by inflammation and certain medications."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1281,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "28489991",
+      "year": 2017,
+      "classification": "Infectious and immunologic disorders",
+      "modalities": [
+        "clinical",
+        "pathology"
+      ],
+      "image_count": 4,
+      "history_chars": 1201,
+      "total_file_bytes": 884301,
+      "captions_included": false
+    }
+  },
+  {
+    "id": "28472977",
+    "case": "This is a two-year-four-month-old female, born by a primigravida at 39 weeks of gestation via Cesarean section due to placenta failure. She displayed features of intrauterine growth restriction (IUGR) with birth weight of 1850g (<3 percentile), height 44.5cm (<3 percentile), and head circumference 31cm (<3 percentile). Her Apgar score at 1 minute was 9. At age three months, she was treated for suspected hypoacusis, with ABR testing revealing bilateral severe sensorineural hearing loss, requiring hearing aid placement at 4 months. Throughout infancy, she demonstrated physical developmental delay with weight and height substantially below the 3rd percentile, but normal psychomotor development - sitting at 8 months, walking at 14 months, and talking at 13 months. MRI of the central nervous system showed no abnormalities. Molecular genetic testing revealed a novel heterozygous variant c.1956dupT (p.Lys653*) in exon 15 of PIK3R1, confirmed to be a de novo mutation not present in biological parents.\n\n\n\nPatient with medical imaging findings that require diagnostic interpretation",
+    "diagnoses": [
+      {
+        "name": "SHORT syndrome",
+        "normalized_text": "SHORT syndrome",
+        "role": "primary",
+        "icd11": "LD27.6Z",
+        "icd11_title": "SHORT syndrome",
+        "medical_codes": {
+          "icd10": [],
+          "snomed": [],
+          "omim": [],
+          "orpha": []
+        }
+      }
+    ],
+    "ddx_details": {
+      "SHORT syndrome (PIK3R1-related)": {
+        "normalized_text": "SHORT syndrome (PIK3R1-related)",
+        "position": 1,
+        "description": "A rare autosomal dominant disorder caused by pathogenic variants in PIK3R1 affecting the PI3K pathway. Acronym stands for Short stature, Hyperextensibility, Ocular depression, Rieger anomaly, and Teething delay. Often includes triangular face, frontal bossing, small chin, hypoplastic nasal alae, partial lipodystrophy with thin wrinkled skin and visible veins, delayed dentition/microdontia, normal intelligence, and risk of insulin resistance."
+      },
+      "Russell–Silver syndrome": {
+        "normalized_text": "Russell–Silver syndrome",
+        "position": 2,
+        "description": "A congenital growth disorder characterized by severe intrauterine and postnatal growth restriction, triangular face with frontal bossing, body asymmetry, and feeding difficulties; often due to epigenetic changes at 11p15 or maternal uniparental disomy of chromosome 7."
+      },
+      "Treacher Collins syndrome (mandibulofacial dysostosis)": {
+        "normalized_text": "Treacher Collins syndrome (mandibulofacial dysostosis)",
+        "position": 3,
+        "description": "A craniofacial development disorder due to TCOF1 or related gene mutations, causing malar and mandibular hypoplasia, external ear anomalies, and conductive (sometimes mixed) hearing loss; intelligence usually normal."
+      },
+      "Cockayne syndrome": {
+        "normalized_text": "Cockayne syndrome",
+        "position": 4,
+        "description": "A DNA repair disorder (ERCC6/ERCC8) featuring postnatal growth failure, microcephaly, progressive neurodevelopmental impairment, photosensitivity, hearing loss, and characteristic aged appearance."
+      },
+      "CHARGE syndrome": {
+        "normalized_text": "CHARGE syndrome",
+        "position": 5,
+        "description": "A multisystem disorder most commonly due to CHD7 variants, characterized by Coloboma, Heart defects, Atresia choanae, Retardation of growth/development, Genital anomalies, and Ear anomalies with hearing loss."
+      }
+    },
+    "beta_pipeline": {
+      "product_summary_min_chars": 1000,
+      "skip_summary": true,
+      "summarized": false,
+      "description_chars": 1088,
+      "requested_model": "gpt5",
+      "progress_steps": [
+        "translation",
+        "ai_processing",
+        "anonymization",
+        "finalizing"
+      ]
+    },
+    "beta_metadata": {
+      "source": "thomasweiX/MedReaMM",
+      "source_id": "28472977",
+      "year": 2017,
+      "classification": "Genetic and congenital disorders",
+      "modalities": [
+        "clinical"
+      ],
+      "image_count": 5,
+      "history_chars": 1008,
+      "total_file_bytes": 491178,
+      "captions_included": false
+    }
+  }
+]

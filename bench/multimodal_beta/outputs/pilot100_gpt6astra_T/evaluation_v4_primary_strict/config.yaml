@@ -1,0 +1,25 @@
+EXPERIMENT_NAME: medreamm-pilot100-dxgpt-beta-product
+EXPERIMENT_DESCRIPTION: DxGPT beta end-to-end MedReaMM 100-case cohort evaluated with
+  Pipeline V4.
+DXGPT_EMULATOR:
+  MODEL: gpt6astra
+  CANDIDATE_PROMPT_PATH: Server/assets/prompts.js
+  PARAMS:
+    reasoning_effort: low
+EVALUATOR:
+  BERT_ACCEPTANCE_THRESHOLD: 0.8
+  BERT_AUTOCONFIRM_THRESHOLD: 0.9
+  ENABLE_ICD10_PARENT_SEARCH: true
+  ENABLE_ICD10_SIBLING_SEARCH: true
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    thinking_level: low
+    max_tokens: 10000
+    temperature: 0.1
+  PARALLEL_WORKERS: 8
+MULTIMODAL_BETA:
+  GOLD_SCOPE: primary
+  GOLD_ONTOLOGY: ICD-11
+  NORMALIZATION: Azure Health Text Analytics
+  LLM_MATCH_MODE: strict_equivalence
+  SOURCE_RESPONSES: C:\repos\DxGPT\eval\bench\multimodal_beta\outputs\pilot100_gpt6astra_T\responses.jsonl
