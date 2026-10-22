@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · solo texto · 16 sep 2026</div>
+  <div class="hero-badge">Borrador · solo texto · 21 oct 2026</div>
   <h1>Texto narrativo y HPO</h1>
   <p>Pipeline V4, juez <code>strict_equivalence</code>. No incluye MedReaMM ni imágenes.
      No sustituye a <a href="benchmark-report.html" style="color:#dbeafe;">benchmark-report.html</a>.
@@ -40,150 +40,168 @@
       <tbody>
         <tr class="winner">
           <td>1</td>
+          <td><strong>gpt-6.1-sol low</strong></td>
+          <td>64,1%</td><td>76,6%</td><td>82,0%</td><td>82,8%</td><td>1,443</td><td>13,6</td>
+          <td>Mejor R@1 de la tabla · más lento que Terra · LLM 69→25</td>
+        </tr>
+        <tr>
+          <td>2</td>
           <td><strong>gpt-5.6-terra low</strong></td>
           <td>63,3%</td><td>80,1%</td><td>83,2%</td><td>83,2%</td><td>1,404</td><td>6,9</td>
           <td>Override eval</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td>3</td>
           <td>gpt-5.4 full</td>
           <td>62,9%</td><td>80,9%</td><td>85,5%</td><td>86,3%</td><td>1,502</td><td>~17</td>
           <td>Mejor cobertura · gana a mini · LLM 64→27</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>4</td>
           <td>grok-4.6 low</td>
           <td>62,9%</td><td>78,1%</td><td>81,6%</td><td>81,6%</td><td>1,373</td><td>17,0</td>
           <td>Mejor alternativa fuera de OpenAI/Google</td>
         </tr>
         <tr>
-          <td>4</td>
+          <td>5</td>
+          <td>gemini-4-argon low</td>
+          <td>62,9%</td><td>75,0%</td><td>80,9%</td><td>80,9%</td><td>1,473</td><td>14,8</td>
+          <td>Mejor Gemini del track · 1 lista vacía · LLM 65→19</td>
+        </tr>
+        <tr>
+          <td>6</td>
           <td>gpt-5.6-terra high</td>
           <td>62,5%</td><td>80,5%</td><td>84,4%</td><td>85,2%</td><td>1,477</td><td>~23</td>
           <td>Peor R@1 que low · más cobertura · LLM 71→35</td>
         </tr>
         <tr>
-          <td>5</td>
+          <td>7</td>
           <td>gpt-5.6-terra medium</td>
           <td>62,5%</td><td>79,3%</td><td>84,0%</td><td>84,4%</td><td>1,491</td><td>8,4</td>
           <td>Empate R@1 con high · peor cobertura · LLM 73→32</td>
         </tr>
         <tr>
-          <td>6</td>
+          <td>8</td>
           <td>gpt-5.6-terra xhigh</td>
           <td>62,5%</td><td>75,0%</td><td>78,9%</td><td>79,7%</td><td>1,431</td><td>28,9</td>
           <td>Peor cobertura Terra · LLM 75→29 · no usar</td>
         </tr>
         <tr>
-          <td>7</td>
+          <td>9</td>
           <td>gpt-6-astra low <span class="badge badge-muted">no producto</span></td>
           <td>62,1%</td><td>78,5%</td><td>82,0%</td><td>83,2%</td><td>1,460</td><td>~32,5</td>
           <td></td>
         </tr>
         <tr>
-          <td>8</td>
+          <td>10</td>
+          <td>gpt-6.1-sol medium</td>
+          <td>62,1%</td><td>75,0%</td><td>79,3%</td><td>80,5%</td><td>1,456</td><td>16,6</td>
+          <td>Peor que low en R@1 y cobertura · LLM 68→21 · no usar</td>
+        </tr>
+        <tr>
+          <td>11</td>
           <td>gemini-3.5-flash low</td>
           <td>62,1%</td><td>75,4%</td><td>75,4%</td><td>75,4%</td><td>1,223</td><td>6,1</td>
           <td>Candidato calidad/latencia · LLM 72→14 · cobertura Gemini</td>
         </tr>
         <tr>
-          <td>9</td>
+          <td>12</td>
           <td>gemini-3.1-pro-preview low</td>
           <td>61,3%</td><td>74,6%</td><td>75,0%</td><td>75,0%</td><td>1,240</td><td>9,3</td>
           <td>Líder legacy · LLM 75→17</td>
         </tr>
         <tr>
-          <td>10</td>
+          <td>13</td>
           <td>gpt-5.6-luna high</td>
           <td>60,9%</td><td>77,3%</td><td>82,0%</td><td>83,6%</td><td>1,575</td><td>~7,6</td>
           <td>Gana a luna low · empate R@1 con Sol · LLM 71→31</td>
         </tr>
         <tr>
-          <td>11</td>
+          <td>14</td>
           <td>gpt-5.6-sol medium</td>
           <td>60,9%</td><td>76,2%</td><td>81,2%</td><td>82,4%</td><td>1,540</td><td>12,7</td>
           <td>Gana a sol low</td>
         </tr>
         <tr>
-          <td>12</td>
+          <td>15</td>
           <td>gemini-3.8-flash low</td>
           <td>59,8%</td><td>73,8%</td><td>77,7%</td><td>77,7%</td><td>1,402</td><td>4,4</td>
           <td>No gana a 3.5-flash en R@1 · cobertura Gemini +2 pp · LLM 76→23</td>
         </tr>
         <tr>
-          <td>13</td>
+          <td>16</td>
           <td>gemini-3-pro-preview low</td>
           <td>59,8%</td><td>74,6%</td><td>75,0%</td><td>75,0%</td><td>1,281</td><td>~10</td>
           <td>Avanzado configurado · slug 404 en prod · LLM 74→16</td>
         </tr>
         <tr>
-          <td>14</td>
+          <td>17</td>
           <td>claude-opus-5 low</td>
           <td>59,4%</td><td>76,2%</td><td>82,8%</td><td>87,1%</td><td>1,803</td><td>22,7</td>
           <td>0 listas vacías · mayor cobertura de la tabla · peor R@1 que Grok/Terra</td>
         </tr>
         <tr>
-          <td>15</td>
+          <td>18</td>
           <td>gemini-2.5-pro low</td>
           <td>59,4%</td><td>74,2%</td><td>75,4%</td><td>75,4%</td><td>1,295</td><td>~28</td>
           <td>Avanzado real en prod (fallback) · juez = mismo modelo · LLM 87→23</td>
         </tr>
         <tr>
-          <td>16</td>
+          <td>19</td>
           <td>gemini-3-pro-preview medium</td>
           <td>59,4%</td><td>71,1%</td><td>73,0%</td><td>73,0%</td><td>1,289</td><td>~35</td>
           <td>Peor que low · LLM 81→17 · no usar</td>
         </tr>
         <tr>
-          <td>17</td>
+          <td>20</td>
           <td>gpt-5.6-sol low</td>
           <td>59,0%</td><td>73,8%</td><td>80,5%</td><td>80,9%</td><td>1,527</td><td>14,1</td>
           <td>Peor que medium · gana a mini · LLM 74→24</td>
         </tr>
         <tr>
-          <td>18</td>
+          <td>21</td>
           <td><strong>gpt-5.4-mini low</strong></td>
           <td>58,2%</td><td>77,3%</td><td>79,3%</td><td>79,7%</td><td>1,441</td><td>~5</td>
           <td>Default sin imagen</td>
         </tr>
         <tr>
-          <td>19</td>
+          <td>22</td>
           <td>gemini-3.1-flash-lite low</td>
           <td>57,8%</td><td>74,6%</td><td>78,1%</td><td>78,1%</td><td>1,445</td><td>2,8</td>
           <td>Candidato económico · no gana a mini · LLM 83→27</td>
         </tr>
         <tr>
-          <td>20</td>
+          <td>23</td>
           <td>gpt-4o low</td>
           <td>57,4%</td><td>69,9%</td><td>74,6%</td><td>75,0%</td><td>1,505</td><td>~8–10</td>
           <td></td>
         </tr>
         <tr>
-          <td>21</td>
+          <td>24</td>
           <td>gpt-5.6-luna low</td>
           <td>57,0%</td><td>73,8%</td><td>78,5%</td><td>79,7%</td><td>1,554</td><td>6,4</td>
           <td>No gana a mini · LLM 79→29</td>
         </tr>
         <tr>
-          <td>22</td>
+          <td>25</td>
           <td>o3-dxgpt high <span class="badge badge-muted">otro tenant</span></td>
           <td>56,6%</td><td>74,2%</td><td>80,5%</td><td>80,9%</td><td>1,614</td><td>15,9</td>
           <td>Referencia strict · no supera a Terra · LLM 76→23</td>
         </tr>
         <tr>
-          <td>23</td>
+          <td>26</td>
           <td>gpt-5.6-luna medium</td>
           <td>56,6%</td><td>74,2%</td><td>78,9%</td><td>79,7%</td><td>1,554</td><td>7,8</td>
           <td>Peor R@1 que low · LLM 80→31 · no usar</td>
         </tr>
         <tr>
-          <td>24</td>
+          <td>27</td>
           <td>gemini-2.5-flash low</td>
           <td>56,6%</td><td>72,7%</td><td>74,2%</td><td>74,2%</td><td>1,342</td><td>~21</td>
           <td>Suelo Gemini · LLM 82→20</td>
         </tr>
         <tr>
-          <td>25</td>
+          <td>28</td>
           <td>gpt-5.6-luna xhigh</td>
           <td>55,5%</td><td>69,5%</td><td>73,0%</td><td>75,0%</td><td>1,573</td><td>~10,4</td>
           <td>22 EMPTY a 12k · inválido · LLM 73→34 · no usar</td>
@@ -258,6 +276,6 @@
     </p>
   </div>
 </div>
-<footer>Borrador interno · track texto · 2026-09-17</footer>
+<footer>Borrador interno · track texto · 2026-10-21</footer>
 </body>
 </html>
