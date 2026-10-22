@@ -230,7 +230,11 @@ class GeminiLLM(BaseLLM):
         thinking_config = None
         if final_thinking_level is not None:
             model_name_lower = self.config.model_name.lower()
-            supports_thinking = 'gemini-3' in model_name_lower or 'gpt-3' in model_name_lower
+            supports_thinking = (
+                'gemini-3' in model_name_lower
+                or 'gemini-4' in model_name_lower
+                or 'gpt-3' in model_name_lower
+            )
             disables_25_flash = (
                 final_thinking_level.lower() == "off"
                 and "gemini-2.5-flash" in model_name_lower
