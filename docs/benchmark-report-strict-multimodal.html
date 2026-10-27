@@ -24,6 +24,108 @@
 <div class="container">
 
   <div class="section">
+    <div class="section-title">Análisis visual · MedReaMM strict (T vs. T+I y controles)</div>
+    <div class="callout callout-info">
+      Todos los puntos provienen de los <code>summary.json</code> y <code>responses.jsonl</code> de <code>bench/multimodal_beta/outputs/</code> (juez <code>strict_equivalence</code>).
+      Las líneas conectan el mismo modelo al pasar de <strong>solo historia (T)</strong> a <strong>historia + imagen del caso (T+I)</strong>.
+    </div>
+
+    <div class="viz-grid-2">
+      <!-- PANEL 1: PARETO / BRIEFCASE STYLE T -> T+I -->
+      <div class="viz-panel">
+        <div class="viz-panel-title">
+          <span>Salto visual y frontera Rendimiento vs. Latencia</span>
+          <div class="picker-wrap" id="mm-pareto-picker-wrap">
+            <button type="button" class="picker-btn" id="mm-pareto-picker-btn">
+              <span id="mm-pareto-picker-count">12 de 14 condiciones</span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="picker-menu" id="mm-pareto-picker-menu">
+              <input type="text" class="picker-search" id="mm-pareto-picker-search" placeholder="Filtrar modelo o condición...">
+              <div class="picker-actions">
+                <button type="button" class="picker-act" data-act="n100">Cohorte n=100</button>
+                <button type="button" class="picker-act" data-act="pairs">Pares T → T+I</button>
+                <button type="button" class="picker-act" data-act="all">Todos (+n=250)</button>
+                <button type="button" class="picker-act" data-act="none">Ninguno</button>
+              </div>
+              <div class="picker-list" id="mm-pareto-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="viz-panel-sub">
+          En los tres modelos multimodales, añadir la imagen real del caso desplaza la curva entre +14 y +22 pp hacia arriba. El control con imagen barajada (<code>T+shuffled-I</code>) se queda pegado a <code>T</code>.
+        </div>
+        <div class="viz-toolbar">
+          <div class="viz-tabs" id="mm-y-tabs">
+            <button type="button" class="viz-tab active" data-y="r1">Eje Y: R@1</button>
+            <button type="button" class="viz-tab" data-y="r3">Eje Y: R@3</button>
+            <button type="button" class="viz-tab" data-y="cov">Eje Y: Cobertura</button>
+          </div>
+        </div>
+        <div class="svg-wrap">
+          <svg id="mm-pareto-svg" class="svg-chart" viewBox="0 0 560 360"></svg>
+        </div>
+        <div class="viz-legend">
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#ffffff;border:2px solid #2563eb;border-radius:50%"></span>Solo Texto (T)</span>
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#2563eb;border-radius:50%"></span>Texto + Imagen (T+I)</span>
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#f59e0b;border-radius:50%"></span>Controles (Solo Imagen / Shuffled-I)</span>
+        </div>
+      </div>
+
+      <!-- PANEL 2: RADAR MULTIMODAL -->
+      <div class="viz-panel">
+        <div class="viz-panel-title">
+          <span>Perfil clínico multidimensional (6 ejes)</span>
+          <div class="picker-wrap" id="mm-radar-picker-wrap">
+            <button type="button" class="picker-btn" id="mm-radar-picker-btn">
+              <span id="mm-radar-picker-count">5 de 14 condiciones</span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="picker-menu" id="mm-radar-picker-menu">
+              <input type="text" class="picker-search" id="mm-radar-picker-search" placeholder="Filtrar modelo o condición...">
+              <div class="picker-actions">
+                <button type="button" class="picker-act" data-act="default">Clave (5)</button>
+                <button type="button" class="picker-act" data-act="ti">Solo T+I</button>
+                <button type="button" class="picker-act" data-act="all">Todos</button>
+                <button type="button" class="picker-act" data-act="none">Limpiar</button>
+              </div>
+              <div class="picker-list" id="mm-radar-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="viz-panel-sub">
+          Compara precisión en 1.ª posición, rescate en Top-3, cobertura, ordenación y velocidad de respuesta. Selecciona en el desplegable o en las etiquetas.
+        </div>
+        <div class="svg-wrap">
+          <svg id="mm-radar-svg" class="svg-chart" viewBox="0 0 460 330"></svg>
+        </div>
+        <div class="chip-list" id="mm-radar-chips"></div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: STACKED TOP-K BREAKDOWN -->
+    <div class="viz-panel" style="margin-top: 20px;">
+      <div class="viz-panel-title">
+        <span>Desglose de aciertos por posición · T+I, T y controles metodológicos</span>
+        <div class="viz-tabs" id="mm-stack-tabs">
+          <button type="button" class="viz-tab active" data-cohort="n100">Cohorte principal (n=100)</button>
+          <button type="button" class="viz-tab" data-cohort="all">Incluir controles n=250</button>
+        </div>
+      </div>
+      <div class="viz-panel-sub">
+        Descomposición exacta de dónde cae el diagnóstico verdadero: en 1.ª posición (P1), rescatado en P2–P3 o en P4–P5.
+      </div>
+      <div class="viz-legend" style="margin-bottom: 12px;">
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#10b981"></span>P1 (R@1 exacto)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#3b82f6"></span>P2–P3 (rescate en Top-3)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#f59e0b"></span>P4–P5 (rescate en Top-5)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#a855f7"></span>P6+</span>
+      </div>
+      <div id="mm-stack-container"></div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">Ranking T+I · n=100 · historia + imágenes del mismo caso</div>
     <div class="callout callout-warn">
       Orden: R@1, luego cobertura. Terra n=100 sin frase (24 sep). Astra y gpt5 T+I
@@ -283,5 +385,390 @@
   </div>
 </div>
 <footer>Borrador interno · track multimodal · 2026-09-24</footer>
+<div id="viz-tooltip" class="viz-tooltip"></div>
+<script>
+(function () {
+  var RUNS = [
+    { id: 'astra_ti', name: 'gpt-6-astra · T+I (n=100)', short: 'Astra T+I', family: 'astra', mode: 'TI', n: 100, r1: 76.0, r3: 87.0, r5: 88.0, cov: 88.0, avgPos: 1.205, sec: 55.1, p1: 76, p23: 11, p45: 1, p6p: 0, color: '#0f172a', radarDefault: true },
+    { id: 'terra_ti_phrase100', name: 'gpt-5.6-terra · T+I con frase (n=100)', short: 'Terra T+I (frase)', family: 'terra_p', mode: 'TI', n: 100, r1: 67.0, r3: 82.0, r5: 84.0, cov: 84.0, avgPos: 1.310, sec: 30.2, p1: 67, p23: 15, p45: 2, p6p: 0, color: '#1d4ed8', radarDefault: false },
+    { id: 'terra_ti', name: 'gpt-5.6-terra · T+I sin frase (n=100)', short: 'Terra T+I', family: 'terra', mode: 'TI', n: 100, r1: 65.0, r3: 74.0, r5: 79.0, cov: 79.0, avgPos: 1.367, sec: 29.4, p1: 65, p23: 9, p45: 5, p6p: 0, color: '#2563eb', radarDefault: true },
+    { id: 'gpt5_ti', name: 'gpt5 · T+I producto (n=100)', short: 'gpt5 T+I', family: 'gpt5', mode: 'TI', n: 100, r1: 61.0, r3: 74.0, r5: 78.0, cov: 80.0, avgPos: 1.462, sec: 40.2, p1: 61, p23: 13, p45: 4, p6p: 2, color: '#7c3aed', radarDefault: true },
+    { id: 'astra_t', name: 'gpt-6-astra · Solo Texto T (n=100)', short: 'Astra T', family: 'astra', mode: 'T', n: 100, r1: 54.0, r3: 66.0, r5: 67.0, cov: 67.0, avgPos: 1.313, sec: 47.3, p1: 54, p23: 12, p45: 1, p6p: 0, color: '#0f172a', radarDefault: false },
+    { id: 'terra_t', name: 'gpt-5.6-terra · Solo Texto T (n=100)', short: 'Terra T', family: 'terra', mode: 'T', n: 100, r1: 50.0, r3: 60.0, r5: 65.0, cov: 65.0, avgPos: 1.477, sec: 20.1, p1: 50, p23: 10, p45: 5, p6p: 0, color: '#2563eb', radarDefault: true },
+    { id: 'gpt5_shuf', name: 'gpt5 · Control T+shuffled-I (n=100)', short: 'gpt5 T+shuffled-I', family: 'gpt5_ctrl', mode: 'CTRL', n: 100, r1: 46.0, r3: 57.0, r5: 60.0, cov: 62.0, avgPos: 1.597, sec: 38.5, p1: 46, p23: 11, p45: 3, p6p: 2, color: '#f59e0b', radarDefault: false },
+    { id: 'gpt5_t', name: 'gpt5 · Solo Texto T (n=100)', short: 'gpt5 T', family: 'gpt5', mode: 'T', n: 100, r1: 43.0, r3: 58.0, r5: 63.0, cov: 64.0, avgPos: 1.641, sec: 35.6, p1: 43, p23: 15, p45: 5, p6p: 1, color: '#7c3aed', radarDefault: false },
+    { id: 'mini_t', name: 'gpt54mini · Solo Texto T (n=100)', short: 'gpt54mini T', family: 'mini', mode: 'T', n: 100, r1: 43.0, r3: 56.0, r5: 58.0, cov: 58.0, avgPos: 1.397, sec: 14.3, p1: 43, p23: 13, p45: 2, p6p: 0, color: '#ea580c', radarDefault: true },
+    { id: 'gpt5_i_noph', name: 'gpt5 · Solo Imagen I sin frase (n=100)', short: 'gpt5 I sin frase', family: 'ctrl_i', mode: 'CTRL', n: 100, r1: 35.0, r3: 46.0, r5: 51.0, cov: 51.0, avgPos: 1.725, sec: 26.0, p1: 35, p23: 11, p45: 5, p6p: 0, color: '#d97706', radarDefault: false },
+    { id: 'terra_i_noph', name: 'gpt-5.6-terra · Solo Imagen I sin frase (n=100)', short: 'Terra I sin frase', family: 'ctrl_i', mode: 'CTRL', n: 100, r1: 35.0, r3: 42.0, r5: 46.0, cov: 46.0, avgPos: 1.543, sec: 22.0, p1: 35, p23: 7, p45: 4, p6p: 0, color: '#059669', radarDefault: false },
+    { id: 'terra_i_ph', name: 'gpt-5.6-terra · Solo Imagen I con frase (n=100)', short: 'Terra I con frase', family: 'ctrl_i', mode: 'CTRL', n: 100, r1: 27.0, r3: 40.0, r5: 42.0, cov: 42.0, avgPos: 1.524, sec: 22.5, p1: 27, p23: 13, p45: 2, p6p: 0, color: '#94a3b8', radarDefault: false },
+    { id: 'terra_250_ph', name: 'gpt-5.6-terra · T+I con frase (n=250)', short: 'Terra T+I n=250 (frase)', family: 'n250', mode: 'N250', n: 250, r1: 60.8, r3: 73.6, r5: 77.6, cov: 78.0, avgPos: 1.415, sec: 29.8, p1: 152, p23: 32, p45: 10, p6p: 1, color: '#2563eb', radarDefault: false },
+    { id: 'terra_250_noph', name: 'gpt-5.6-terra · T+I sin frase (n=250)', short: 'Terra T+I n=250 (sin frase)', family: 'n250', mode: 'N250', n: 250, r1: 58.8, r3: 72.0, r5: 76.4, cov: 76.4, avgPos: 1.424, sec: 29.4, p1: 147, p23: 33, p45: 11, p6p: 0, color: '#3b82f6', radarDefault: false }
+  ];
+
+  var tooltip = document.getElementById('viz-tooltip');
+  function showTip(evt, html) {
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = '1';
+    var x = evt.clientX + 14, y = evt.clientY + 14;
+    if (x + 290 > window.innerWidth) x = evt.clientX - 295;
+    if (y + 130 > window.innerHeight) y = evt.clientY - 130;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  }
+  function hideTip() { tooltip.style.opacity = '0'; }
+
+  function setupPicker(opts) {
+    var btn = document.getElementById(opts.btnId);
+    var countEl = document.getElementById(opts.countId);
+    var menu = document.getElementById(opts.menuId);
+    var searchInput = document.getElementById(opts.searchId);
+    var listEl = document.getElementById(opts.listId);
+
+    function updateCount() {
+      var n = RUNS.filter(function (r) { return !!opts.selected[r.id]; }).length;
+      countEl.textContent = n + ' de ' + RUNS.length + ' condiciones';
+    }
+
+    function renderList() {
+      var q = (searchInput.value || '').toLowerCase().trim();
+      listEl.innerHTML = RUNS.filter(function (r) {
+        return !q || r.name.toLowerCase().indexOf(q) !== -1 || r.short.toLowerCase().indexOf(q) !== -1;
+      }).map(function (r) {
+        var checked = opts.selected[r.id] ? ' checked' : '';
+        return '<label class="picker-item" data-id="' + r.id + '">' +
+          '<input type="checkbox" value="' + r.id + '"' + checked + '>' +
+          '<span class="dot" style="background:' + r.color + '"></span>' +
+          '<span>' + r.short + '</span>' +
+          '<span class="sub">' + r.r1.toFixed(1).replace('.0', '').replace('.', ',') + '%</span>' +
+        '</label>';
+      }).join('');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = menu.classList.contains('open');
+      Array.prototype.forEach.call(document.querySelectorAll('.picker-menu.open'), function (el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) {
+        menu.classList.add('open');
+        renderList();
+        searchInput.focus();
+      }
+    });
+
+    menu.addEventListener('click', function (e) { e.stopPropagation(); });
+    searchInput.addEventListener('input', renderList);
+
+    listEl.addEventListener('change', function (e) {
+      var cb = e.target;
+      if (!cb || cb.type !== 'checkbox') return;
+      opts.selected[cb.value] = cb.checked;
+      updateCount();
+      opts.onChange();
+    });
+
+    menu.querySelector('.picker-actions').addEventListener('click', function (e) {
+      var actBtn = e.target.closest('.picker-act');
+      if (!actBtn) return;
+      opts.onPreset(actBtn.getAttribute('data-act'));
+      renderList();
+      updateCount();
+      opts.onChange();
+    });
+
+    updateCount();
+    renderList();
+    return { refresh: function () { updateCount(); renderList(); } };
+  }
+
+  document.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.picker-menu.open'), function (el) {
+      el.classList.remove('open');
+    });
+  });
+
+  var mmY = 'r1';
+  var mmParetoSelected = {};
+  RUNS.forEach(function (r) { if (r.n === 100) mmParetoSelected[r.id] = true; });
+
+  function renderMmPareto() {
+    var svg = document.getElementById('mm-pareto-svg');
+    var W = 560, H = 360, padL = 50, padR = 28, padT = 22, padB = 44;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var pts = RUNS.filter(function (r) { return !!mmParetoSelected[r.id]; });
+
+    if (pts.length === 0) {
+      svg.innerHTML = '<text x="280" y="180" text-anchor="middle" fill="#64748b" font-size="13">Selecciona al menos una condición en el desplegable superior</text>';
+      return;
+    }
+
+    var xMin = 10, xMax = 62;
+    var yMin = 22, yMax = 92;
+    function scaleX(v) { return padL + ((v - xMin) / (xMax - xMin)) * plotW; }
+    function scaleY(v) { return padT + plotH - ((v - yMin) / (yMax - yMin)) * plotH; }
+
+    var out = [];
+    // Optimal quadrant
+    out.push('<rect x="' + padL + '" y="' + padT + '" width="' + (plotW * 0.52) + '" height="' + (plotH * 0.52) + '" fill="#ecfdf5" opacity="0.85" rx="4"/>');
+    out.push('<text x="' + (padL + 8) + '" y="' + (padT + 15) + '" fill="#047857" font-size="10" font-weight="700">ZONA ÓPTIMA PRODUCTO (ALTO ACIERTO · MENOR ESPERA)</text>');
+
+    [30, 45, 60, 75, 90].forEach(function (yv) {
+      var py = scaleY(yv);
+      out.push('<line x1="' + padL + '" y1="' + py + '" x2="' + (W - padR) + '" y2="' + py + '" stroke="#e2e8f0" stroke-dasharray="3,3"/>');
+      out.push('<text x="' + (padL - 8) + '" y="' + (py + 4) + '" text-anchor="end" fill="#64748b" font-size="10.5">' + yv + '%</text>');
+    });
+    [15, 25, 35, 45, 55].forEach(function (xv) {
+      var px = scaleX(xv);
+      out.push('<line x1="' + px + '" y1="' + padT + '" x2="' + px + '" y2="' + (H - padB) + '" stroke="#f1f5f9"/>');
+      out.push('<text x="' + px + '" y="' + (H - padB + 16) + '" text-anchor="middle" fill="#64748b" font-size="10.5">' + xv + ' s</text>');
+    });
+
+    out.push('<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - padR) + '" y2="' + (H - padB) + '" stroke="#cbd5e1" stroke-width="1.5"/>');
+    out.push('<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (H - padB) + '" stroke="#cbd5e1" stroke-width="1.5"/>');
+    var yLbl = mmY === 'r1' ? 'Recall@1 strict (%)' : (mmY === 'r3' ? 'Recall@3 strict (%)' : 'Cobertura strict (%)');
+    out.push('<text x="' + (padL + plotW / 2) + '" y="' + (H - 8) + '" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">Tiempo medio extremo a extremo por caso (segundos)</text>');
+    out.push('<text transform="translate(14,' + (padT + plotH / 2) + ') rotate(-90)" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">' + yLbl + '</text>');
+
+    // Connect T -> T+I pairs when both are selected
+    [['terra_t', 'terra_ti'], ['astra_t', 'astra_ti'], ['gpt5_t', 'gpt5_ti']].forEach(function (pair) {
+      if (!mmParetoSelected[pair[0]] || !mmParetoSelected[pair[1]]) return;
+      var a = RUNS.find(function (r) { return r.id === pair[0]; });
+      var b = RUNS.find(function (r) { return r.id === pair[1]; });
+      var x1 = scaleX(a.sec), y1 = scaleY(a[mmY]);
+      var x2 = scaleX(b.sec), y2 = scaleY(b[mmY]);
+      out.push('<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + b.color + '" stroke-width="2.4"/>');
+      var gain = (b[mmY] - a[mmY]).toFixed(0);
+      out.push('<text x="' + ((x1 + x2) / 2 - 4).toFixed(1) + '" y="' + ((y1 + y2) / 2 - 6).toFixed(1) + '" fill="' + b.color + '" font-size="9.5" font-weight="700">+' + gain + ' pp</text>');
+    });
+
+    pts.forEach(function (r) {
+      var cx = scaleX(r.sec), cy = scaleY(r[mmY]);
+      var fill = r.mode === 'T' ? '#ffffff' : (r.mode === 'CTRL' ? '#f59e0b' : r.color);
+      var stroke = r.mode === 'CTRL' ? '#b45309' : r.color;
+      out.push('<circle class="mm-pt" data-id="' + r.id + '" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="6" fill="' + fill + '" stroke="' + stroke + '" stroke-width="2.2" style="cursor:pointer"/>');
+      var dx = 8, dy = 4, anchor = 'start';
+      if (cx > W - 120) { dx = -8; anchor = 'end'; }
+      if (r.id === 'terra_ti_phrase100') dy = -8;
+      if (r.id === 'terra_ti') dy = 13;
+      if (r.id === 'gpt5_t') dy = 13;
+      out.push('<text x="' + (cx + dx).toFixed(1) + '" y="' + (cy + dy).toFixed(1) + '" text-anchor="' + anchor + '" fill="#1e293b" font-size="10" font-weight="700">' + r.short + '</text>');
+    });
+
+    svg.innerHTML = out.join('');
+    Array.prototype.forEach.call(svg.querySelectorAll('.mm-pt'), function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = RUNS.find(function (x) { return x.id === el.getAttribute('data-id'); });
+        if (!r) return;
+        showTip(e,
+          '<strong>' + r.name + '</strong><br>' +
+          'R@1: <b>' + r.r1 + '%</b> · R@3: <b>' + r.r3 + '%</b> · Cobertura: <b>' + r.cov + '%</b><br>' +
+          'Pos. media: ' + r.avgPos.toFixed(3).replace('.', ',') + ' · Latencia: ' + r.sec.toFixed(1).replace('.', ',') + ' s/caso'
+        );
+      });
+      el.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  setupPicker({
+    btnId: 'mm-pareto-picker-btn',
+    countId: 'mm-pareto-picker-count',
+    menuId: 'mm-pareto-picker-menu',
+    searchId: 'mm-pareto-picker-search',
+    listId: 'mm-pareto-picker-list',
+    selected: mmParetoSelected,
+    onChange: renderMmPareto,
+    onPreset: function (act) {
+      var pairs = { terra_t: 1, terra_ti: 1, astra_t: 1, astra_ti: 1, gpt5_t: 1, gpt5_ti: 1 };
+      RUNS.forEach(function (r) {
+        if (act === 'all') mmParetoSelected[r.id] = true;
+        else if (act === 'none') mmParetoSelected[r.id] = false;
+        else if (act === 'n100') mmParetoSelected[r.id] = r.n === 100;
+        else if (act === 'pairs') mmParetoSelected[r.id] = !!pairs[r.id];
+      });
+    }
+  });
+
+  document.getElementById('mm-y-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.viz-tab');
+    if (!btn) return;
+    Array.prototype.forEach.call(this.querySelectorAll('.viz-tab'), function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    mmY = btn.getAttribute('data-y');
+    renderMmPareto();
+  });
+
+  // 2) MULTIMODAL RADAR
+  var mmSelected = {};
+  RUNS.forEach(function (r) { if (r.radarDefault) mmSelected[r.id] = true; });
+  var MM_AXES = [
+    { key: 'r1', label: 'R@1 (1.ª pos.)', min: 25, max: 80, invert: false },
+    { key: 'r3', label: 'R@3 (Top-3)', min: 35, max: 90, invert: false },
+    { key: 'cov', label: 'Cobertura', min: 40, max: 90, invert: false },
+    { key: 'avgPos', label: 'Ordenación (1/pos)', min: 1.18, max: 1.75, invert: true },
+    { key: 'sec', label: 'Velocidad (1/s)', min: 14, max: 58, invert: true },
+    { key: 'r5', label: 'R@5 (Top-5)', min: 40, max: 90, invert: false }
+  ];
+
+  function mmScore(run, ax) {
+    var norm = (run[ax.key] - ax.min) / (ax.max - ax.min);
+    if (ax.invert) norm = 1 - norm;
+    norm = Math.max(0.08, Math.min(1, norm));
+    return Math.round(norm * 100);
+  }
+
+  var mmHoveredId = null;
+
+  function renderMmRadar() {
+    var svg = document.getElementById('mm-radar-svg');
+    var cx = 230, cy = 165, R = 118;
+    var out = [];
+    [25, 50, 75, 100].forEach(function (lvl) {
+      var r = (R * lvl) / 100;
+      var pts = MM_AXES.map(function (_, i) {
+        var ang = -Math.PI / 2 + (i * 2 * Math.PI) / MM_AXES.length;
+        return (cx + r * Math.cos(ang)).toFixed(1) + ',' + (cy + r * Math.sin(ang)).toFixed(1);
+      }).join(' ');
+      out.push('<polygon points="' + pts + '" fill="none" stroke="#e2e8f0"/>');
+    });
+    MM_AXES.forEach(function (ax, i) {
+      var ang = -Math.PI / 2 + (i * 2 * Math.PI) / MM_AXES.length;
+      var x2 = cx + R * Math.cos(ang), y2 = cy + R * Math.sin(ang);
+      out.push('<line x1="' + cx + '" y1="' + cy + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#cbd5e1"/>');
+      var lx = cx + (R + 22) * Math.cos(ang), ly = cy + (R + 16) * Math.sin(ang);
+      var anchor = Math.abs(Math.cos(ang)) < 0.2 ? 'middle' : (Math.cos(ang) > 0 ? 'start' : 'end');
+      out.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + 4).toFixed(1) + '" text-anchor="' + anchor + '" fill="#334155" font-size="10.5" font-weight="700">' + ax.label + '</text>');
+    });
+    var activeRuns = RUNS.filter(function (r) { return !!mmSelected[r.id]; }).sort(function (a, b) {
+      if (a.id === mmHoveredId) return 1;
+      if (b.id === mmHoveredId) return -1;
+      return 0;
+    });
+    activeRuns.forEach(function (r) {
+      var isHov = r.id === mmHoveredId;
+      var isDim = mmHoveredId && !isHov;
+      var fillOp = isHov ? 0.30 : (isDim ? 0.03 : 0.12);
+      var strokeOp = isHov ? 1.0 : (isDim ? 0.18 : 0.90);
+      var strokeW = isHov ? 3.2 : (isDim ? 1.3 : 2.2);
+      var dotR = isHov ? 5.2 : (isDim ? 3.0 : 4.0);
+      var coords = MM_AXES.map(function (ax, i) {
+        var sc = mmScore(r, ax);
+        var rad = (R * sc) / 100;
+        var ang = -Math.PI / 2 + (i * 2 * Math.PI) / MM_AXES.length;
+        return [cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)];
+      });
+      var dash = r.mode === 'T' ? ' stroke-dasharray="4,3"' : '';
+      var poly = coords.map(function (c) { return c[0].toFixed(1) + ',' + c[1].toFixed(1); }).join(' ');
+      out.push('<polygon points="' + poly + '" fill="' + r.color + '" fill-opacity="' + fillOp + '" stroke="' + r.color + '" stroke-opacity="' + strokeOp + '" stroke-width="' + strokeW + '"' + dash + ' style="pointer-events:none"/>');
+      coords.forEach(function (c) {
+        out.push('<circle class="mm-radar-pt" data-id="' + r.id + '" cx="' + c[0].toFixed(1) + '" cy="' + c[1].toFixed(1) + '" r="' + dotR + '" fill="' + r.color + '" fill-opacity="' + strokeOp + '" stroke="#fff" stroke-width="1.2" style="cursor:pointer"/>');
+      });
+    });
+    svg.innerHTML = out.join('');
+    Array.prototype.forEach.call(svg.querySelectorAll('.mm-radar-pt'), function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = RUNS.find(function (x) { return x.id === el.getAttribute('data-id'); });
+        if (!r) return;
+        showTip(e, '<strong>' + r.name + '</strong><br>R@1: <b>' + r.r1 + '%</b> · R@3: <b>' + r.r3 + '%</b> · Cob: <b>' + r.cov + '%</b><br>Pos. media: ' + r.avgPos + ' · ' + r.sec + ' s/caso');
+      });
+      el.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  var mmRadarPicker;
+  function renderMmChips() {
+    var container = document.getElementById('mm-radar-chips');
+    var list = RUNS.filter(function (r) { return !!mmSelected[r.id]; });
+    container.innerHTML = list.map(function (r) {
+      return '<button type="button" class="model-chip active" data-id="' + r.id + '" title="Quitar del radar"><span class="dot" style="background:' + r.color + '"></span>' + r.short + ' ×</button>';
+    }).join('');
+    Array.prototype.forEach.call(container.querySelectorAll('.model-chip'), function (chip) {
+      chip.addEventListener('mouseenter', function () {
+        mmHoveredId = chip.getAttribute('data-id');
+        renderMmRadar();
+      });
+      chip.addEventListener('mouseleave', function () {
+        mmHoveredId = null;
+        renderMmRadar();
+      });
+    });
+    container.onclick = function (e) {
+      var btn = e.target.closest('.model-chip');
+      if (!btn) return;
+      var id = btn.getAttribute('data-id');
+      if (mmHoveredId === id) mmHoveredId = null;
+      mmSelected[id] = false;
+      renderMmChips();
+      if (mmRadarPicker) mmRadarPicker.refresh();
+      renderMmRadar();
+    };
+  }
+
+  mmRadarPicker = setupPicker({
+    btnId: 'mm-radar-picker-btn',
+    countId: 'mm-radar-picker-count',
+    menuId: 'mm-radar-picker-menu',
+    searchId: 'mm-radar-picker-search',
+    listId: 'mm-radar-picker-list',
+    selected: mmSelected,
+    onChange: function () { renderMmChips(); renderMmRadar(); },
+    onPreset: function (act) {
+      RUNS.forEach(function (r) {
+        if (act === 'all') mmSelected[r.id] = true;
+        else if (act === 'none') mmSelected[r.id] = false;
+        else if (act === 'default') mmSelected[r.id] = !!r.radarDefault;
+        else if (act === 'ti') mmSelected[r.id] = r.mode === 'TI' && r.n === 100;
+      });
+    }
+  });
+
+  var mmCohort = 'n100';
+  function renderMmStack() {
+    var rows = RUNS.filter(function (r) { return mmCohort === 'all' ? true : r.n === 100; });
+    var container = document.getElementById('mm-stack-container');
+    container.innerHTML = rows.map(function (r) {
+      var w1 = (r.p1 / r.n) * 100, w23 = (r.p23 / r.n) * 100, w45 = (r.p45 / r.n) * 100, w6 = (r.p6p / r.n) * 100;
+      return '<div class="stack-row" data-id="' + r.id + '">' +
+        '<div class="stack-label" title="' + r.name + '">' + r.short + ' <span style="color:#64748b;font-weight:400">(n=' + r.n + ')</span></div>' +
+        '<div class="stack-track">' +
+          '<div class="stack-seg" style="width:' + w1.toFixed(2) + '%;background:#10b981"></div>' +
+          '<div class="stack-seg" style="width:' + w23.toFixed(2) + '%;background:#3b82f6"></div>' +
+          '<div class="stack-seg" style="width:' + w45.toFixed(2) + '%;background:#f59e0b"></div>' +
+          '<div class="stack-seg" style="width:' + w6.toFixed(2) + '%;background:#a855f7"></div>' +
+        '</div>' +
+        '<div class="stack-val">' + r.r1.toFixed(1).replace('.0', '').replace('.', ',') + '% / ' + r.cov.toFixed(1).replace('.0', '').replace('.', ',') + '%</div>' +
+      '</div>';
+    }).join('');
+    Array.prototype.forEach.call(container.querySelectorAll('.stack-row'), function (row) {
+      row.addEventListener('mousemove', function (e) {
+        var r = RUNS.find(function (x) { return x.id === row.getAttribute('data-id'); });
+        if (!r) return;
+        showTip(e,
+          '<strong>' + r.name + '</strong><br>' +
+          'P1 (R@1): <b>' + r.p1 + '/' + r.n + ' (' + r.r1 + '%)</b><br>' +
+          'P2–P3: <b>+' + r.p23 + '</b> → R@3 = ' + r.r3 + '%<br>' +
+          'P4–P5: <b>+' + r.p45 + '</b> → R@5 = ' + r.r5 + '%<br>' +
+          'Cobertura: <b>' + r.cov + '%</b>'
+        );
+      });
+      el.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  document.getElementById('mm-stack-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.viz-tab');
+    if (!btn) return;
+    Array.prototype.forEach.call(this.querySelectorAll('.viz-tab'), function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    mmCohort = btn.getAttribute('data-cohort');
+    renderMmStack();
+  });
+
+  renderMmPareto();
+  renderMmChips();
+  renderMmRadar();
+  renderMmStack();
+})();
+</script>
 </body>
 </html>

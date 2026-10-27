@@ -404,3 +404,70 @@ lista a veces tiene menos de cinco.
 - [ ] Para validar el juez, ¿vale reutilizar los 133 casos ya probados, más una
   muestra de casos en los que los jueces coinciden, en vez de un estudio nuevo
   de 100–150?
+
+---
+
+## 11. Revisión de Julián y estado de las preguntas (2026-10-27)
+
+Julián envió por chat siete problemas sobre el §9 y el §10. Se han
+comprobado contra `evaluate_v4.py`, el `evaluator.py` de pipeline_v4 y
+los informes de `results/`.
+
+### Estado de las preguntas
+
+- **§8:** contestadas todas en el §9 (30-sep).
+- **§10:** siguen abiertas. Los siete problemas responden a algunas de
+  forma indirecta, pero falta contestarlas aquí.
+
+| Pregunta del §10 | Estado |
+|---|---|
+| Alcance: ¿solo el juez o también capas y BERT? | Implícita: también las capas (problemas 3 y 5) |
+| ¿Empezar por padre/hermano o por BERT? | Sin contestar con los datos nuevos; el §9 empezaba por padre/hermano |
+| Hijo ICD: ¿acierto directo o lo decide el juez? | Implícita: acierto, por la regla del problema 2 |
+| ¿Llamar a R@5 «acierto en cualquier posición»? | Contestada: no; mantener R@5 (problema 4) |
+| ¿Validar el juez con los 133 + casos en que coinciden? | Sin contestar; el §9 proponía un estudio nuevo de 100–150 |
+
+### Los siete problemas
+
+| # | Problema | Veredicto |
+|---|---|---|
+| 1 | El juez devuelve una posición y se pierde la nota | Cierto. Hoy `1,0,2,0,0` da error: el código rechaza respuestas que mezclan `0` con posiciones. |
+| 2 | «Contiene el gold» tiene dos lecturas | Cierto. La regla nueva («todo paciente con la propuesta tiene el gold») ordena bien la tabla del §9, pero ver el matiz de abajo. |
+| 3 | BERT decide menos de lo que parece | Cierto. En la prueba del 29-sep (frase neutra), de 32 aciertos BERT, 13 son ≥ 0,90 y 19 son «contrastados». En esos 19 el juez ya había dicho que sí: BERT ≥ 0,80 solo adelanta la posición. |
+| 4 | R@5 no es lo mismo que cobertura | Cierto: 194 frente a 195 en la prueba con frase, por un acierto en P6. Contradice el punto 3 del §10. |
+| 5 | Capas fijas en el código; parada en el hermano | Cierto. Umbrales y capas fijados en `evaluator_config()`; la cascada devuelve el primer acierto. |
+| 6 | Tabla del §6 rota | Cierto: 3 columnas en la cabecera y 4 en los guiones. |
+| 7 | «Pro 8, Flash 3» no suma 13 | Exagerado. Son aciertos de cada juez sobre 13 (8/13 y 3/13), no un reparto; solo confunde la redacción. Que el Flash adjudicado fuera sin thinking es cierto, pero menor. |
+
+### Matices
+
+- **Los problemas 1 y 2 no afectan a las cifras publicadas hoy.** Son
+  fallos del borrador del §9, que no está implementado. Hay que
+  resolverlos antes del paso 5 del ROADMAP. Lo que sí afecta hoy es
+  BERT ≥ 0,80, que puede adelantar a P1 una propuesta parecida y
+  inflar R@1/R@3, y los padres y hermanos ICD, que cuentan como acierto
+  sin pasar por el juez.
+- **La regla del problema 2 choca con la revisión de fallos de Terra en
+  raras de David** (T3, en la tarea de fine-tuning). En 4 de 30 fallos,
+  Terra da el síndrome (p. ej., MSUD) y el gold exige el subtipo (MSUD
+  tipo Ia) sin que la entrada tenga datos genéticos. David los da por
+  aciertos; la regla nueva les pondría un 1. Hace falta una excepción
+  para los subtipos que solo distinguen los datos genéticos, o bien
+  normalizar el gold. En DDD (1.749 casos, gold `<GEN>-related`) puede
+  pesar mucho.
+- **La cascada se queda con la primera capa que acierta, no con la mejor
+  posición.** Un SNOMED en P3 gana a un sinónimo sin código en P1, y eso
+  puede rebajar R@1. Conviene revisarlo junto con el problema 5.
+
+### Orden propuesto
+
+1. Corregir los problemas 6 y 7 en este documento.
+2. Hacer configurables las capas y los umbrales, y que la cascada siga
+   buscando cuando una capa dé un «casi» (problema 5).
+3. Re-puntuar las mismas listas cambiando una sola palanca cada vez:
+   hermano ICD, padre ICD, BERT ≥ 0,80 y, por último, BERT ≥ 0,90.
+4. Prompt que puntúa cada opción (problema 1), con la regla del problema
+   2 y la excepción de subtipos.
+5. Readjudicar con David los casos que cambien.
+
+Antes del paso 2, Julián contesta aquí las preguntas abiertas del §10.
