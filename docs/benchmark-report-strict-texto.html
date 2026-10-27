@@ -23,6 +23,114 @@
 </div>
 <div class="container">
   <div class="section">
+    <div class="section-title">Análisis visual · all_256_clean strict</div>
+    <div class="callout callout-info">
+      Datos medidos de <code>summary.json</code> (juez <code>strict_equivalence</code>) y telemetría real de <code>emulator.log</code>.
+      Los costes en $ usan únicamente las tarifas definidas en <code>Server/services/costUtils.js</code>; para el resto de modelos puedes conmutar el eje horizontal a <strong>Latencia (s/caso)</strong> o <strong>Tokens totales (256 casos)</strong>.
+    </div>
+
+    <div class="viz-grid-2">
+      <!-- PANEL 1: PARETO / BRIEFCASE STYLE -->
+      <div class="viz-panel">
+        <div class="viz-panel-title">
+          <span>Rendimiento vs. Eficiencia (curvas de esfuerzo)</span>
+          <div class="picker-wrap" id="pareto-picker-wrap">
+            <button type="button" class="picker-btn" id="pareto-picker-btn">
+              <span id="pareto-picker-count">28 de 28 modelos</span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="picker-menu" id="pareto-picker-menu">
+              <input type="text" class="picker-search" id="pareto-picker-search" placeholder="Filtrar modelo...">
+              <div class="picker-actions">
+                <button type="button" class="picker-act" data-act="all">Todos</button>
+                <button type="button" class="picker-act" data-act="top10">Top 10</button>
+                <button type="button" class="picker-act" data-act="efforts">Familias con esfuerzo</button>
+                <button type="button" class="picker-act" data-act="none">Ninguno</button>
+              </div>
+              <div class="picker-list" id="pareto-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="viz-panel-sub">
+          Las líneas conectan niveles de razonamiento (<code>low → medium → high → xhigh</code>). En diagnóstico diferencial subir esfuerzo encarece sin mejorar R@1.
+        </div>
+        <div class="viz-toolbar">
+          <div class="viz-tabs" id="pareto-x-tabs">
+            <button type="button" class="viz-tab active" data-x="latency">Eje X: Latencia (s/caso)</button>
+            <button type="button" class="viz-tab" data-x="tokens">Eje X: Tokens (256 casos)</button>
+            <button type="button" class="viz-tab" data-x="cost">Eje X: Coste $ (tarifa Server)</button>
+          </div>
+          <div class="viz-tabs" id="pareto-y-tabs">
+            <button type="button" class="viz-tab active" data-y="r1">R@1</button>
+            <button type="button" class="viz-tab" data-y="r3">R@3</button>
+            <button type="button" class="viz-tab" data-y="cov">Cobertura</button>
+          </div>
+        </div>
+        <div class="svg-wrap">
+          <svg id="pareto-svg" class="svg-chart" viewBox="0 0 560 370"></svg>
+        </div>
+        <div class="viz-legend">
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#dcfce7;border:1px solid #86efac"></span>Zona óptima (alta precisión, bajo coste/latencia)</span>
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#0f172a;height:3px"></span>Curva de esfuerzo de razonamiento</span>
+          <span class="viz-legend-item"><span class="viz-swatch" style="background:#16a34a;height:2px"></span>Frontera de Pareto</span>
+        </div>
+      </div>
+
+      <!-- PANEL 2: RADAR / PERSONALITY STYLE -->
+      <div class="viz-panel">
+        <div class="viz-panel-title">
+          <span>Perfil clínico multidimensional (percentil 1–100)</span>
+          <div class="picker-wrap" id="radar-picker-wrap">
+            <button type="button" class="picker-btn" id="radar-picker-btn">
+              <span id="radar-picker-count">5 de 28 modelos</span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="picker-menu" id="radar-picker-menu">
+              <input type="text" class="picker-search" id="radar-picker-search" placeholder="Filtrar modelo...">
+              <div class="picker-actions">
+                <button type="button" class="picker-act" data-act="default">Clave (5)</button>
+                <button type="button" class="picker-act" data-act="top5">Top 5 R@1</button>
+                <button type="button" class="picker-act" data-act="all">Todos</button>
+                <button type="button" class="picker-act" data-act="none">Limpiar</button>
+              </div>
+              <div class="picker-list" id="radar-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="viz-panel-sub">
+          Cada eje es el percentil del modelo entre los 28 evaluados en <code>all_256_clean</code> (hacia fuera = mejor en esa dimensión). Selecciona en el desplegable o en las etiquetas.
+        </div>
+        <div class="svg-wrap">
+          <svg id="radar-svg" class="svg-chart" viewBox="0 0 460 340"></svg>
+        </div>
+        <div class="chip-list" id="radar-chips"></div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: STACKED TOP-K BREAKDOWN -->
+    <div class="viz-panel" style="margin-top: 20px;">
+      <div class="viz-panel-title">
+        <span>Desglose de aciertos por posición · P1 vs. rescate en P2–P3 y P4–P5</span>
+        <div class="viz-tabs" id="stack-sort-tabs">
+          <button type="button" class="viz-tab active" data-sort="r1">Ordenar por R@1 (P1)</button>
+          <button type="button" class="viz-tab" data-sort="r3">Ordenar por R@3 (P1–P3)</button>
+          <button type="button" class="viz-tab" data-sort="cov">Ordenar por Cobertura</button>
+        </div>
+      </div>
+      <div class="viz-panel-sub">
+        Muestra por qué <strong>gpt-6.1-sol low</strong> lidera en P1 (64,1%), mientras <strong>gpt-5.6-terra low</strong> y <strong>gpt-5.4 full</strong> rescatan más diagnósticos en 2.ª y 3.ª posición (80,1% y 80,9% en Top-3).
+      </div>
+      <div class="viz-legend" style="margin-bottom: 12px;">
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#10b981"></span>P1 (R@1 exacto en 1.ª posición)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#3b82f6"></span>P2–P3 (rescate en Top-3)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#f59e0b"></span>P4–P5 (rescate en Top-5)</span>
+        <span class="viz-legend-item"><span class="viz-swatch" style="background:#a855f7"></span>P6+ (fuera de Top-5)</span>
+      </div>
+      <div id="stack-container"></div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">all_256_clean · n=256 · juanjo_classic_v2</div>
     <div class="callout callout-warn">
       Rank por R@1, luego cobertura. Posición media no rankea si la cobertura difiere.
@@ -277,5 +385,556 @@
   </div>
 </div>
 <footer>Borrador interno · track texto · 2026-10-21</footer>
+<div id="viz-tooltip" class="viz-tooltip"></div>
+<script>
+(function () {
+  var MODELS = [
+    { id: 'gpt61sol_low', name: 'gpt-6.1-sol low', short: 'Sol 6.1 low', family: 'sol61', effort: 1, r1: 64.1, r3: 76.6, r5: 82.0, cov: 82.8, avgPos: 1.443, sec: 13.6, tokens: 303896, cost: 2.187, p1: 164, p23: 32, p45: 14, p6p: 2, color: '#0f172a', radarDefault: true },
+    { id: 'terra_low', name: 'gpt-5.6-terra low', short: 'Terra low', family: 'terra', effort: 1, r1: 63.3, r3: 80.1, r5: 83.2, cov: 83.2, avgPos: 1.404, sec: 6.9, tokens: 307400, cost: 2.626, p1: 162, p23: 43, p45: 8, p6p: 0, color: '#2563eb', radarDefault: true },
+    { id: 'gpt54_full', name: 'gpt-5.4 full', short: 'GPT-5.4 full', family: 'gpt54', effort: 1, r1: 62.9, r3: 80.9, r5: 85.5, cov: 86.3, avgPos: 1.502, sec: 17.0, tokens: 363159, cost: null, p1: 161, p23: 46, p45: 12, p6p: 2, color: '#0284c7', radarDefault: false },
+    { id: 'grok46_low', name: 'grok-4.6 low', short: 'Grok 4.6 low', family: 'grok', effort: 1, r1: 62.9, r3: 78.1, r5: 81.6, cov: 81.6, avgPos: 1.373, sec: 17.0, tokens: 498727, cost: null, p1: 161, p23: 39, p45: 9, p6p: 0, color: '#7c3aed', radarDefault: false },
+    { id: 'argon_low', name: 'gemini-4-argon low', short: 'Gemini 4 Argon', family: 'argon', effort: 1, r1: 62.9, r3: 75.0, r5: 80.9, cov: 80.9, avgPos: 1.473, sec: 14.8, tokens: 358858, cost: null, p1: 161, p23: 31, p45: 15, p6p: 0, color: '#16a34a', radarDefault: true },
+    { id: 'terra_high', name: 'gpt-5.6-terra high', short: 'Terra high', family: 'terra', effort: 3, r1: 62.5, r3: 80.5, r5: 84.4, cov: 85.2, avgPos: 1.477, sec: 23.0, tokens: 533889, cost: 5.344, p1: 160, p23: 46, p45: 10, p6p: 2, color: '#3b82f6', radarDefault: false },
+    { id: 'terra_med', name: 'gpt-5.6-terra medium', short: 'Terra med', family: 'terra', effort: 2, r1: 62.5, r3: 79.3, r5: 84.0, cov: 84.4, avgPos: 1.491, sec: 8.4, tokens: 351626, cost: 3.157, p1: 160, p23: 43, p45: 12, p6p: 1, color: '#60a5fa', radarDefault: false },
+    { id: 'terra_xhigh', name: 'gpt-5.6-terra xhigh', short: 'Terra xhigh', family: 'terra', effort: 4, r1: 62.5, r3: 75.0, r5: 78.9, cov: 79.7, avgPos: 1.431, sec: 28.9, tokens: 835624, cost: 8.965, p1: 160, p23: 32, p45: 10, p6p: 2, color: '#93c5fd', radarDefault: false },
+    { id: 'astra_low', name: 'gpt-6-astra low', short: 'GPT-6 Astra', family: 'astra', effort: 1, r1: 62.1, r3: 78.5, r5: 82.0, cov: 83.2, avgPos: 1.460, sec: 32.5, tokens: 292681, cost: null, p1: 159, p23: 42, p45: 9, p6p: 3, color: '#475569', radarDefault: false },
+    { id: 'gpt61sol_med', name: 'gpt-6.1-sol medium', short: 'Sol 6.1 med', family: 'sol61', effort: 2, r1: 62.1, r3: 75.0, r5: 79.3, cov: 80.5, avgPos: 1.456, sec: 16.6, tokens: 332880, cost: 2.477, p1: 159, p23: 33, p45: 11, p6p: 3, color: '#334155', radarDefault: false },
+    { id: 'gem35flash', name: 'gemini-3.5-flash low', short: 'Gem 3.5 Flash', family: 'gem35', effort: 1, r1: 62.1, r3: 75.4, r5: 75.4, cov: 75.4, avgPos: 1.223, sec: 6.1, tokens: null, cost: null, p1: 159, p23: 34, p45: 0, p6p: 0, color: '#059669', radarDefault: false },
+    { id: 'gem31pro', name: 'gemini-3.1-pro-preview low', short: 'Gem 3.1 Pro', family: 'gem31', effort: 1, r1: 61.3, r3: 74.6, r5: 75.0, cov: 75.0, avgPos: 1.240, sec: 9.3, tokens: null, cost: null, p1: 157, p23: 34, p45: 1, p6p: 0, color: '#10b981', radarDefault: false },
+    { id: 'luna_high', name: 'gpt-5.6-luna high', short: 'Luna high', family: 'luna', effort: 3, r1: 60.9, r3: 77.3, r5: 82.0, cov: 83.6, avgPos: 1.575, sec: 7.6, tokens: 754107, cost: null, p1: 156, p23: 42, p45: 12, p6p: 4, color: '#f97316', radarDefault: false },
+    { id: 'sol56_med', name: 'gpt-5.6-sol medium', short: 'Sol 5.6 med', family: 'sol56', effort: 2, r1: 60.9, r3: 76.2, r5: 81.2, cov: 82.4, avgPos: 1.540, sec: 12.7, tokens: 385727, cost: 3.007, p1: 156, p23: 39, p45: 13, p6p: 3, color: '#d97706', radarDefault: false },
+    { id: 'gem38flash', name: 'gemini-3.8-flash low', short: 'Gem 3.8 Flash', family: 'gem38', effort: 1, r1: 59.8, r3: 73.8, r5: 77.7, cov: 77.7, avgPos: 1.402, sec: 4.4, tokens: null, cost: null, p1: 153, p23: 36, p45: 10, p6p: 0, color: '#14b8a6', radarDefault: false },
+    { id: 'gem3pro_low', name: 'gemini-3-pro-preview low', short: 'Gem 3 Pro low', family: 'gem3pro', effort: 1, r1: 59.8, r3: 74.6, r5: 75.0, cov: 75.0, avgPos: 1.281, sec: 10.0, tokens: null, cost: null, p1: 153, p23: 38, p45: 1, p6p: 0, color: '#0d9488', radarDefault: false },
+    { id: 'opus5_low', name: 'claude-opus-5 low', short: 'Claude Opus 5', family: 'claude', effort: 1, r1: 59.4, r3: 76.2, r5: 82.8, cov: 87.1, avgPos: 1.803, sec: 22.7, tokens: 719181, cost: null, p1: 152, p23: 43, p45: 17, p6p: 11, color: '#dc2626', radarDefault: true },
+    { id: 'gem25pro', name: 'gemini-2.5-pro low', short: 'Gem 2.5 Pro', family: 'gem25', effort: 1, r1: 59.4, r3: 74.2, r5: 75.4, cov: 75.4, avgPos: 1.295, sec: 28.0, tokens: null, cost: null, p1: 152, p23: 38, p45: 3, p6p: 0, color: '#64748b', radarDefault: false },
+    { id: 'gem3pro_med', name: 'gemini-3-pro-preview medium', short: 'Gem 3 Pro med', family: 'gem3pro', effort: 2, r1: 59.4, r3: 71.1, r5: 73.0, cov: 73.0, avgPos: 1.289, sec: 35.0, tokens: null, cost: null, p1: 152, p23: 30, p45: 5, p6p: 0, color: '#94a3b8', radarDefault: false },
+    { id: 'sol56_low', name: 'gpt-5.6-sol low', short: 'Sol 5.6 low', family: 'sol56', effort: 1, r1: 59.0, r3: 73.8, r5: 80.5, cov: 80.9, avgPos: 1.527, sec: 14.1, tokens: 345543, cost: 2.605, p1: 151, p23: 38, p45: 17, p6p: 1, color: '#f59e0b', radarDefault: false },
+    { id: 'gpt54mini', name: 'gpt-5.4-mini low', short: 'GPT-5.4-mini', family: 'mini', effort: 1, r1: 58.2, r3: 77.3, r5: 79.3, cov: 79.7, avgPos: 1.441, sec: 4.7, tokens: 317359, cost: 1.030, p1: 149, p23: 49, p45: 5, p6p: 1, color: '#ea580c', radarDefault: true },
+    { id: 'gem31lite', name: 'gemini-3.1-flash-lite low', short: 'Gem 3.1 Lite', family: 'gemlite', effort: 1, r1: 57.8, r3: 74.6, r5: 78.1, cov: 78.1, avgPos: 1.445, sec: 2.8, tokens: null, cost: null, p1: 148, p23: 43, p45: 9, p6p: 0, color: '#84cc16', radarDefault: false },
+    { id: 'gpt4o', name: 'gpt-4o low', short: 'GPT-4o', family: 'gpt4o', effort: 1, r1: 57.4, r3: 69.9, r5: 74.6, cov: 75.0, avgPos: 1.505, sec: 9.0, tokens: 275802, cost: 1.959, p1: 147, p23: 32, p45: 12, p6p: 1, color: '#64748b', radarDefault: false },
+    { id: 'luna_low', name: 'gpt-5.6-luna low', short: 'Luna low', family: 'luna', effort: 1, r1: 57.0, r3: 73.8, r5: 78.5, cov: 79.7, avgPos: 1.554, sec: 6.4, tokens: 342604, cost: null, p1: 146, p23: 43, p45: 12, p6p: 3, color: '#fb923c', radarDefault: false },
+    { id: 'o3_high', name: 'o3-dxgpt high', short: 'o3 high', family: 'o3', effort: 3, r1: 56.6, r3: 74.2, r5: 80.5, cov: 80.9, avgPos: 1.614, sec: 15.9, tokens: null, cost: null, p1: 145, p23: 45, p45: 16, p6p: 1, color: '#94a3b8', radarDefault: false },
+    { id: 'luna_med', name: 'gpt-5.6-luna medium', short: 'Luna med', family: 'luna', effort: 2, r1: 56.6, r3: 74.2, r5: 78.9, cov: 79.7, avgPos: 1.554, sec: 7.8, tokens: 401402, cost: null, p1: 145, p23: 45, p45: 12, p6p: 2, color: '#fdba74', radarDefault: false },
+    { id: 'gem25flash', name: 'gemini-2.5-flash low', short: 'Gem 2.5 Flash', family: 'gem25f', effort: 1, r1: 56.6, r3: 72.7, r5: 74.2, cov: 74.2, avgPos: 1.342, sec: 21.0, tokens: null, cost: null, p1: 145, p23: 41, p45: 4, p6p: 0, color: '#cbd5e1', radarDefault: false },
+    { id: 'luna_xhigh', name: 'gpt-5.6-luna xhigh', short: 'Luna xhigh', family: 'luna', effort: 4, r1: 55.5, r3: 69.5, r5: 73.0, cov: 75.0, avgPos: 1.573, sec: 10.4, tokens: 1407129, cost: null, p1: 142, p23: 36, p45: 9, p6p: 5, color: '#fed7aa', radarDefault: false }
+  ];
+
+  var tooltip = document.getElementById('viz-tooltip');
+  function showTip(evt, html) {
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = '1';
+    var x = evt.clientX + 14;
+    var y = evt.clientY + 14;
+    if (x + 290 > window.innerWidth) x = evt.clientX - 295;
+    if (y + 140 > window.innerHeight) y = evt.clientY - 140;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  }
+  function hideTip() { tooltip.style.opacity = '0'; }
+
+  // Generic multi-select dropdown builder
+  function setupPicker(opts) {
+    var wrap = document.getElementById(opts.wrapId);
+    var btn = document.getElementById(opts.btnId);
+    var countEl = document.getElementById(opts.countId);
+    var menu = document.getElementById(opts.menuId);
+    var searchInput = document.getElementById(opts.searchId);
+    var listEl = document.getElementById(opts.listId);
+
+    function updateCount() {
+      var n = MODELS.filter(function (m) { return !!opts.selected[m.id]; }).length;
+      countEl.textContent = n + ' de ' + MODELS.length + ' modelos';
+    }
+
+    function renderList() {
+      var q = (searchInput.value || '').toLowerCase().trim();
+      listEl.innerHTML = MODELS.filter(function (m) {
+        return !q || m.name.toLowerCase().indexOf(q) !== -1 || m.short.toLowerCase().indexOf(q) !== -1;
+      }).map(function (m) {
+        var checked = opts.selected[m.id] ? ' checked' : '';
+        return '<label class="picker-item" data-id="' + m.id + '">' +
+          '<input type="checkbox" value="' + m.id + '"' + checked + '>' +
+          '<span class="dot" style="background:' + m.color + '"></span>' +
+          '<span>' + m.name + '</span>' +
+          '<span class="sub">' + m.r1.toFixed(1).replace('.', ',') + '%</span>' +
+        '</label>';
+      }).join('');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = menu.classList.contains('open');
+      Array.prototype.forEach.call(document.querySelectorAll('.picker-menu.open'), function (el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) {
+        menu.classList.add('open');
+        renderList();
+        searchInput.focus();
+      }
+    });
+
+    menu.addEventListener('click', function (e) { e.stopPropagation(); });
+    searchInput.addEventListener('input', renderList);
+
+    listEl.addEventListener('change', function (e) {
+      var cb = e.target;
+      if (!cb || cb.type !== 'checkbox') return;
+      opts.selected[cb.value] = cb.checked;
+      updateCount();
+      opts.onChange();
+    });
+
+    menu.querySelector('.picker-actions').addEventListener('click', function (e) {
+      var actBtn = e.target.closest('.picker-act');
+      if (!actBtn) return;
+      var act = actBtn.getAttribute('data-act');
+      opts.onPreset(act);
+      renderList();
+      updateCount();
+      opts.onChange();
+    });
+
+    updateCount();
+    renderList();
+    return { refresh: function () { updateCount(); renderList(); } };
+  }
+
+  document.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.picker-menu.open'), function (el) {
+      el.classList.remove('open');
+    });
+  });
+
+  // 1) PARETO / BRIEFCASE CHART
+  var paretoX = 'latency';
+  var paretoY = 'r1';
+  var paretoSelected = {};
+  MODELS.forEach(function (m) { paretoSelected[m.id] = true; });
+
+  function renderPareto() {
+    var svg = document.getElementById('pareto-svg');
+    var W = 560, H = 370, padL = 52, padR = 26, padT = 22, padB = 44;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+
+    var pts = MODELS.filter(function (m) {
+      if (!paretoSelected[m.id]) return false;
+      if (paretoX === 'latency') return m.sec !== null;
+      if (paretoX === 'tokens') return m.tokens !== null;
+      if (paretoX === 'cost') return m.cost !== null;
+      return true;
+    });
+
+    if (pts.length === 0) {
+      svg.innerHTML = '<text x="280" y="185" text-anchor="middle" fill="#64748b" font-size="13">Selecciona al menos un modelo en el desplegable superior</text>';
+      return;
+    }
+
+    var xVals = pts.map(function (m) {
+      return paretoX === 'latency' ? m.sec : (paretoX === 'tokens' ? m.tokens / 1000 : m.cost);
+    });
+    var yVals = pts.map(function (m) { return m[paretoY]; });
+
+    var xMin = Math.min.apply(null, xVals);
+    var xMax = Math.max.apply(null, xVals);
+    if (xMin === xMax) { xMin *= 0.85; xMax *= 1.15; }
+    var yMin = Math.floor(Math.min.apply(null, yVals) - 1.5);
+    var yMax = Math.ceil(Math.max.apply(null, yVals) + 1.2);
+
+    var logMin = Math.log10(xMin * 0.88);
+    var logMax = Math.log10(xMax * 1.12);
+
+    function scaleX(v) {
+      return padL + ((Math.log10(v) - logMin) / (logMax - logMin)) * plotW;
+    }
+    function scaleY(v) {
+      return padT + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+    }
+
+    var out = [];
+    // Optimal top-left shaded box (like AA-Briefcase green quadrant)
+    var boxW = plotW * 0.48;
+    var boxH = plotH * 0.48;
+    out.push('<rect x="' + padL + '" y="' + padT + '" width="' + boxW + '" height="' + boxH + '" fill="#ecfdf5" opacity="0.85" rx="4"/>');
+    out.push('<text x="' + (padL + 8) + '" y="' + (padT + 15) + '" fill="#047857" font-size="10" font-weight="700">ZONA ÓPTIMA (ALTO RENDIMIENTO · BAJO COSTE/TIEMPO)</text>');
+
+    // Grid lines Y
+    var ySteps = 5;
+    for (var i = 0; i <= ySteps; i++) {
+      var yv = yMin + ((yMax - yMin) * i) / ySteps;
+      var py = scaleY(yv);
+      out.push('<line x1="' + padL + '" y1="' + py + '" x2="' + (W - padR) + '" y2="' + py + '" stroke="#e2e8f0" stroke-dasharray="3,3"/>');
+      out.push('<text x="' + (padL - 8) + '" y="' + (py + 4) + '" text-anchor="end" fill="#64748b" font-size="10.5">' + yv.toFixed(0) + '%</text>');
+    }
+
+    // Grid lines X (log ticks)
+    var xTicks = paretoX === 'latency'
+      ? [3, 5, 7, 10, 15, 20, 30]
+      : (paretoX === 'tokens' ? [280, 350, 500, 750, 1100, 1400] : [1.0, 1.5, 2.0, 3.0, 5.0, 9.0]);
+    xTicks.forEach(function (tv) {
+      if (tv < xMin * 0.85 || tv > xMax * 1.15) return;
+      var px = scaleX(tv);
+      out.push('<line x1="' + px + '" y1="' + padT + '" x2="' + px + '" y2="' + (H - padB) + '" stroke="#f1f5f9"/>');
+      var lbl = paretoX === 'latency' ? (tv + 's') : (paretoX === 'tokens' ? (tv + 'k') : ('$' + tv.toFixed(1)));
+      out.push('<text x="' + px + '" y="' + (H - padB + 16) + '" text-anchor="middle" fill="#64748b" font-size="10.5">' + lbl + '</text>');
+    });
+
+    // Axes
+    out.push('<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - padR) + '" y2="' + (H - padB) + '" stroke="#cbd5e1" stroke-width="1.5"/>');
+    out.push('<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (H - padB) + '" stroke="#cbd5e1" stroke-width="1.5"/>');
+
+    var xAxisTitle = paretoX === 'latency'
+      ? 'Latencia media por caso (segundos, escala log)'
+      : (paretoX === 'tokens' ? 'Tokens totales en los 256 casos (miles, escala log)' : 'Coste total de los 256 casos en USD (tarifa Server/services/costUtils.js)');
+    var yAxisTitle = paretoY === 'r1' ? 'Recall@1 strict (%)' : (paretoY === 'r3' ? 'Recall@3 strict (%)' : 'Cobertura strict (%)');
+    out.push('<text x="' + (padL + plotW / 2) + '" y="' + (H - 8) + '" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">' + xAxisTitle + '</text>');
+    out.push('<text transform="translate(14,' + (padT + plotH / 2) + ') rotate(-90)" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">' + yAxisTitle + '</text>');
+
+    // Connect reasoning effort trajectories within same family
+    var families = {};
+    pts.forEach(function (m) {
+      if (!families[m.family]) families[m.family] = [];
+      families[m.family].push(m);
+    });
+    Object.keys(families).forEach(function (fam) {
+      var arr = families[fam];
+      if (arr.length < 2) return;
+      arr.sort(function (a, b) { return a.effort - b.effort; });
+      var pathD = arr.map(function (m, idx) {
+        var xv = paretoX === 'latency' ? m.sec : (paretoX === 'tokens' ? m.tokens / 1000 : m.cost);
+        return (idx === 0 ? 'M' : 'L') + scaleX(xv).toFixed(1) + ',' + scaleY(m[paretoY]).toFixed(1);
+      }).join(' ');
+      out.push('<path d="' + pathD + '" fill="none" stroke="' + arr[0].color + '" stroke-width="2.2" opacity="0.75"/>');
+    });
+
+    // Pareto frontier (lower X and higher Y is better)
+    var sortedByX = pts.slice().sort(function (a, b) {
+      var xa = paretoX === 'latency' ? a.sec : (paretoX === 'tokens' ? a.tokens / 1000 : a.cost);
+      var xb = paretoX === 'latency' ? b.sec : (paretoX === 'tokens' ? b.tokens / 1000 : b.cost);
+      return xa - xb;
+    });
+    var frontier = [];
+    var bestY = -Infinity;
+    sortedByX.forEach(function (m) {
+      if (m[paretoY] > bestY) {
+        frontier.push(m);
+        bestY = m[paretoY];
+      }
+    });
+    if (frontier.length >= 2) {
+      var fPath = frontier.map(function (m, idx) {
+        var xv = paretoX === 'latency' ? m.sec : (paretoX === 'tokens' ? m.tokens / 1000 : m.cost);
+        return (idx === 0 ? 'M' : 'L') + scaleX(xv).toFixed(1) + ',' + scaleY(m[paretoY]).toFixed(1);
+      }).join(' ');
+      out.push('<path d="' + fPath + '" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,4"/>');
+    }
+
+    // Points + labels with collision avoidance
+    var highlightIds = { gpt61sol_low: 1, terra_low: 1, gpt54_full: 1, grok46_low: 1, argon_low: 1, gem35flash: 1, gpt54mini: 1, gem31lite: 1, opus5_low: 1, terra_xhigh: 1, gpt61sol_med: 1 };
+    var labelAll = pts.length <= 14;
+    var rawPts = pts.map(function (m) {
+      var xv = paretoX === 'latency' ? m.sec : (paretoX === 'tokens' ? m.tokens / 1000 : m.cost);
+      var showLbl = labelAll || !!highlightIds[m.id];
+      return { m: m, cx: scaleX(xv), cy: scaleY(m[paretoY]), r: showLbl ? 5.8 : 4.2, showLbl: showLbl, lx: 0, ly: 0, anchor: 'start', leader: false };
+    });
+
+    var occupied = rawPts.map(function (p) { return { x1: p.cx - p.r - 2, y1: p.cy - p.r - 2, x2: p.cx + p.r + 2, y2: p.cy + p.r + 2 }; });
+    var cands = [
+      { dx: 8, dy: 3, anchor: 'start' }, { dx: 8, dy: -8, anchor: 'start' }, { dx: 8, dy: 13, anchor: 'start' },
+      { dx: -8, dy: 3, anchor: 'end' }, { dx: -8, dy: -8, anchor: 'end' }, { dx: -8, dy: 13, anchor: 'end' },
+      { dx: 0, dy: -12, anchor: 'middle' }, { dx: 0, dy: 17, anchor: 'middle' },
+      { dx: 10, dy: -18, anchor: 'start' }, { dx: 10, dy: 22, anchor: 'start' },
+      { dx: -10, dy: -18, anchor: 'end' }, { dx: -10, dy: 22, anchor: 'end' },
+      { dx: 12, dy: -28, anchor: 'start' }, { dx: 12, dy: 31, anchor: 'start' },
+      { dx: -12, dy: -28, anchor: 'end' }, { dx: -12, dy: 31, anchor: 'end' }
+    ];
+    rawPts.filter(function (p) { return p.showLbl; }).sort(function (a, b) { return (b.cy - a.cy) || (a.cx - b.cx); }).forEach(function (p) {
+      var w = p.m.short.length * 5.7 + 6, h = 12, best = cands[0], bestScore = Infinity;
+      for (var i = 0; i < cands.length; i++) {
+        var c = cands[i], lx = p.cx + c.dx, ly = p.cy + c.dy;
+        var x1 = c.anchor === 'start' ? lx : (c.anchor === 'end' ? lx - w : lx - w / 2), x2 = x1 + w, y1 = ly - h + 2, y2 = ly + 2;
+        var pen = 0;
+        if (x1 < padL + 2 || x2 > W - padR - 2) pen += 4000;
+        if (y1 < padT + 2 || y2 > H - padB - 2) pen += 4000;
+        for (var j = 0; j < occupied.length; j++) {
+          var b = occupied[j];
+          var ox = Math.max(0, Math.min(x2, b.x2) - Math.max(x1, b.x1));
+          var oy = Math.max(0, Math.min(y2, b.y2) - Math.max(y1, b.y1));
+          if (ox > 0 && oy > 0) pen += ox * oy * 25 + 600;
+        }
+        pen += Math.hypot(c.dx, c.dy) * 0.6;
+        if (pen < bestScore) { bestScore = pen; best = c; if (pen < 15) break; }
+      }
+      p.lx = p.cx + best.dx; p.ly = p.cy + best.dy; p.anchor = best.anchor; p.leader = Math.hypot(best.dx, best.dy) > 13;
+      var bx1 = best.anchor === 'start' ? p.lx : (best.anchor === 'end' ? p.lx - w : p.lx - w / 2);
+      occupied.push({ x1: bx1 - 2, y1: p.ly - h, x2: bx1 + w + 2, y2: p.ly + 3 });
+    });
+
+    rawPts.forEach(function (p) {
+      if (p.showLbl && p.leader) {
+        out.push('<line x1="' + p.cx.toFixed(1) + '" y1="' + p.cy.toFixed(1) + '" x2="' + p.lx.toFixed(1) + '" y2="' + (p.ly - 3).toFixed(1) + '" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>');
+      }
+      out.push('<circle class="pareto-pt" data-id="' + p.m.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + p.cy.toFixed(1) + '" r="' + p.r + '" fill="' + p.m.color + '" stroke="#ffffff" stroke-width="1.6" style="cursor:pointer"/>');
+      if (p.showLbl) {
+        out.push('<text x="' + p.lx.toFixed(1) + '" y="' + p.ly.toFixed(1) + '" text-anchor="' + p.anchor + '" fill="#1e293b" font-size="10" font-weight="700" stroke="#ffffff" stroke-width="3" paint-order="stroke" stroke-linejoin="round">' + p.m.short + '</text>');
+      }
+    });
+
+    svg.innerHTML = out.join('');
+    Array.prototype.forEach.call(svg.querySelectorAll('.pareto-pt'), function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var m = MODELS.find(function (x) { return x.id === el.getAttribute('data-id'); });
+        if (!m) return;
+        var tokTxt = m.tokens ? (m.tokens.toLocaleString('es-ES') + ' tok') : 'no registrado en log';
+        var costTxt = m.cost ? ('$' + m.cost.toFixed(2)) : 'sin tarifa en costUtils.js';
+        showTip(e,
+          '<strong>' + m.name + '</strong><br>' +
+          'R@1: <b>' + m.r1.toFixed(1).replace('.', ',') + '%</b> · R@3: <b>' + m.r3.toFixed(1).replace('.', ',') + '%</b> · Cob: <b>' + m.cov.toFixed(1).replace('.', ',') + '%</b><br>' +
+          'Pos. media: ' + m.avgPos.toFixed(3).replace('.', ',') + ' · Latencia: ' + m.sec.toFixed(1).replace('.', ',') + ' s/caso<br>' +
+          'Tokens (256 casos): ' + tokTxt + '<br>Coste (256 casos): ' + costTxt
+        );
+      });
+      el.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  var paretoPicker = setupPicker({
+    wrapId: 'pareto-picker-wrap',
+    btnId: 'pareto-picker-btn',
+    countId: 'pareto-picker-count',
+    menuId: 'pareto-picker-menu',
+    searchId: 'pareto-picker-search',
+    listId: 'pareto-picker-list',
+    selected: paretoSelected,
+    onChange: renderPareto,
+    onPreset: function (act) {
+      var effortFams = { sol61: 1, terra: 1, luna: 1, sol56: 1, gem3pro: 1 };
+      MODELS.forEach(function (m, idx) {
+        if (act === 'all') paretoSelected[m.id] = true;
+        else if (act === 'none') paretoSelected[m.id] = false;
+        else if (act === 'top10') paretoSelected[m.id] = idx < 10;
+        else if (act === 'efforts') paretoSelected[m.id] = !!effortFams[m.family];
+      });
+    }
+  });
+
+  document.getElementById('pareto-x-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.viz-tab');
+    if (!btn) return;
+    Array.prototype.forEach.call(this.querySelectorAll('.viz-tab'), function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    paretoX = btn.getAttribute('data-x');
+    renderPareto();
+  });
+  document.getElementById('pareto-y-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.viz-tab');
+    if (!btn) return;
+    Array.prototype.forEach.call(this.querySelectorAll('.viz-tab'), function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    paretoY = btn.getAttribute('data-y');
+    renderPareto();
+  });
+
+  // 2) RADAR CHART (6 CLINICAL / OPERATIONAL AXES)
+  var radarSelected = {};
+  MODELS.forEach(function (m) { if (m.radarDefault) radarSelected[m.id] = true; });
+
+  var AXES = [
+    { key: 'r1', label: 'R@1 (1.ª pos.)', invert: false },
+    { key: 'r3', label: 'R@3 (Top-3)', invert: false },
+    { key: 'cov', label: 'Cobertura', invert: false },
+    { key: 'avgPos', label: 'Ordenación (1/pos)', invert: true },
+    { key: 'sec', label: 'Velocidad (1/s)', invert: true },
+    { key: 'r5', label: 'R@5 (Top-5)', invert: false }
+  ];
+
+  function percentileScore(model, axis) {
+    var vals = MODELS.map(function (m) { return m[axis.key]; }).filter(function (v) { return v !== null; });
+    var min = Math.min.apply(null, vals);
+    var max = Math.max.apply(null, vals);
+    if (max === min) return 50;
+    var norm = (model[axis.key] - min) / (max - min);
+    if (axis.invert) norm = 1 - norm;
+    return Math.round(15 + norm * 85);
+  }
+
+  var hoveredRadarId = null;
+
+  function renderRadar() {
+    var svg = document.getElementById('radar-svg');
+    var W = 460, H = 340, cx = 230, cy = 172, R = 122;
+    var out = [];
+
+    [25, 50, 75, 100].forEach(function (lvl) {
+      var r = (R * lvl) / 100;
+      var ringPts = AXES.map(function (_, i) {
+        var ang = -Math.PI / 2 + (i * 2 * Math.PI) / AXES.length;
+        return (cx + r * Math.cos(ang)).toFixed(1) + ',' + (cy + r * Math.sin(ang)).toFixed(1);
+      }).join(' ');
+      out.push('<polygon points="' + ringPts + '" fill="none" stroke="#e2e8f0" stroke-width="1"/>');
+      out.push('<text x="' + (cx + 4) + '" y="' + (cy - r + 10) + '" fill="#94a3b8" font-size="9">' + lvl + '</text>');
+    });
+
+    AXES.forEach(function (ax, i) {
+      var ang = -Math.PI / 2 + (i * 2 * Math.PI) / AXES.length;
+      var x2 = cx + R * Math.cos(ang);
+      var y2 = cy + R * Math.sin(ang);
+      out.push('<line x1="' + cx + '" y1="' + cy + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#cbd5e1" stroke-width="1"/>');
+      var lx = cx + (R + 24) * Math.cos(ang);
+      var ly = cy + (R + 18) * Math.sin(ang);
+      var anchor = Math.abs(Math.cos(ang)) < 0.2 ? 'middle' : (Math.cos(ang) > 0 ? 'start' : 'end');
+      out.push('<text x="' + lx.toFixed(1) + '" y="' + (ly + 4).toFixed(1) + '" text-anchor="' + anchor + '" fill="#334155" font-size="10.5" font-weight="700">' + ax.label + '</text>');
+    });
+
+    var activeModels = MODELS.filter(function (m) { return !!radarSelected[m.id]; }).sort(function (a, b) {
+      if (a.id === hoveredRadarId) return 1;
+      if (b.id === hoveredRadarId) return -1;
+      return 0;
+    });
+
+    activeModels.forEach(function (m) {
+      var isHov = m.id === hoveredRadarId;
+      var isDim = hoveredRadarId && !isHov;
+      var fillOp = isHov ? 0.30 : (isDim ? 0.03 : 0.13);
+      var strokeOp = isHov ? 1.0 : (isDim ? 0.18 : 0.90);
+      var strokeW = isHov ? 3.2 : (isDim ? 1.3 : 2.2);
+      var dotR = isHov ? 5.2 : (isDim ? 3.0 : 4.0);
+      var coords = AXES.map(function (ax, i) {
+        var p = percentileScore(m, ax);
+        var r = (R * p) / 100;
+        var ang = -Math.PI / 2 + (i * 2 * Math.PI) / AXES.length;
+        return [cx + r * Math.cos(ang), cy + r * Math.sin(ang), p, ax];
+      });
+      var poly = coords.map(function (c) { return c[0].toFixed(1) + ',' + c[1].toFixed(1); }).join(' ');
+      out.push('<polygon points="' + poly + '" fill="' + m.color + '" fill-opacity="' + fillOp + '" stroke="' + m.color + '" stroke-opacity="' + strokeOp + '" stroke-width="' + strokeW + '" style="pointer-events:none"/>');
+      coords.forEach(function (c) {
+        out.push('<circle class="radar-pt" data-id="' + m.id + '" cx="' + c[0].toFixed(1) + '" cy="' + c[1].toFixed(1) + '" r="' + dotR + '" fill="' + m.color + '" fill-opacity="' + strokeOp + '" stroke="#fff" stroke-width="1.2" style="cursor:pointer"/>');
+      });
+    });
+
+    svg.innerHTML = out.join('');
+    Array.prototype.forEach.call(svg.querySelectorAll('.radar-pt'), function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var id = el.getAttribute('data-id');
+        var m = MODELS.find(function (x) { return x.id === id; });
+        if (!m) return;
+        showTip(e,
+          '<strong>' + m.name + '</strong><br>' +
+          'R@1: <b>' + m.r1.toFixed(1).replace('.', ',') + '%</b> · R@3: <b>' + m.r3.toFixed(1).replace('.', ',') + '%</b><br>' +
+          'R@5: <b>' + m.r5.toFixed(1).replace('.', ',') + '%</b> · Cobertura: <b>' + m.cov.toFixed(1).replace('.', ',') + '%</b><br>' +
+          'Pos. media: ' + m.avgPos.toFixed(3).replace('.', ',') + ' · ' + m.sec.toFixed(1).replace('.', ',') + ' s/caso'
+        );
+      });
+      el.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  var radarPicker;
+  function renderRadarChips() {
+    var container = document.getElementById('radar-chips');
+    var activeList = MODELS.filter(function (m) { return !!radarSelected[m.id]; });
+    container.innerHTML = activeList.map(function (m) {
+      return '<button type="button" class="model-chip active" data-id="' + m.id + '" title="Quitar del radar">' +
+        '<span class="dot" style="background:' + m.color + '"></span>' + m.short + ' ×</button>';
+    }).join('');
+    Array.prototype.forEach.call(container.querySelectorAll('.model-chip'), function (chip) {
+      chip.addEventListener('mouseenter', function () {
+        hoveredRadarId = chip.getAttribute('data-id');
+        renderRadar();
+      });
+      chip.addEventListener('mouseleave', function () {
+        hoveredRadarId = null;
+        renderRadar();
+      });
+    });
+    container.onclick = function (e) {
+      var btn = e.target.closest('.model-chip');
+      if (!btn) return;
+      var id = btn.getAttribute('data-id');
+      if (hoveredRadarId === id) hoveredRadarId = null;
+      radarSelected[id] = false;
+      renderRadarChips();
+      if (radarPicker) radarPicker.refresh();
+      renderRadar();
+    };
+  }
+
+  radarPicker = setupPicker({
+    wrapId: 'radar-picker-wrap',
+    btnId: 'radar-picker-btn',
+    countId: 'radar-picker-count',
+    menuId: 'radar-picker-menu',
+    searchId: 'radar-picker-search',
+    listId: 'radar-picker-list',
+    selected: radarSelected,
+    onChange: function () { renderRadarChips(); renderRadar(); },
+    onPreset: function (act) {
+      MODELS.forEach(function (m, idx) {
+        if (act === 'all') radarSelected[m.id] = true;
+        else if (act === 'none') radarSelected[m.id] = false;
+        else if (act === 'default') radarSelected[m.id] = !!m.radarDefault;
+        else if (act === 'top5') radarSelected[m.id] = idx < 5;
+      });
+    }
+  });
+
+  // 3) STACKED POSITION BREAKDOWN
+  var stackSort = 'r1';
+  function renderStack() {
+    var rows = MODELS.slice().sort(function (a, b) {
+      if (stackSort === 'r1') return (b.r1 - a.r1) || (b.cov - a.cov);
+      if (stackSort === 'r3') return (b.r3 - a.r3) || (b.r1 - a.r1);
+      return (b.cov - a.cov) || (b.r1 - a.r1);
+    });
+    var container = document.getElementById('stack-container');
+    container.innerHTML = rows.map(function (m) {
+      var w1 = (m.p1 / 256) * 100;
+      var w23 = (m.p23 / 256) * 100;
+      var w45 = (m.p45 / 256) * 100;
+      var w6 = (m.p6p / 256) * 100;
+      var metricVal = stackSort === 'r1' ? m.r1 : (stackSort === 'r3' ? m.r3 : m.cov);
+      return '<div class="stack-row" data-id="' + m.id + '">' +
+        '<div class="stack-label" title="' + m.name + '">' + m.name + '</div>' +
+        '<div class="stack-track">' +
+          '<div class="stack-seg" style="width:' + w1.toFixed(2) + '%;background:#10b981"></div>' +
+          '<div class="stack-seg" style="width:' + w23.toFixed(2) + '%;background:#3b82f6"></div>' +
+          '<div class="stack-seg" style="width:' + w45.toFixed(2) + '%;background:#f59e0b"></div>' +
+          '<div class="stack-seg" style="width:' + w6.toFixed(2) + '%;background:#a855f7"></div>' +
+        '</div>' +
+        '<div class="stack-val">' + metricVal.toFixed(1).replace('.', ',') + '%</div>' +
+      '</div>';
+    }).join('');
+
+    Array.prototype.forEach.call(container.querySelectorAll('.stack-row'), function (row) {
+      row.addEventListener('mousemove', function (e) {
+        var m = MODELS.find(function (x) { return x.id === row.getAttribute('data-id'); });
+        if (!m) return;
+        showTip(e,
+          '<strong>' + m.name + '</strong> (n=256)<br>' +
+          'P1 (R@1): <b>' + m.p1 + ' casos (' + m.r1.toFixed(1).replace('.', ',') + '%)</b><br>' +
+          'P2–P3: <b>+' + m.p23 + ' casos</b> → R@3 = ' + m.r3.toFixed(1).replace('.', ',') + '%<br>' +
+          'P4–P5: <b>+' + m.p45 + ' casos</b> → R@5 = ' + m.r5.toFixed(1).replace('.', ',') + '%<br>' +
+          (m.p6p > 0 ? ('P6+: +' + m.p6p + ' casos → ') : '') + 'Cobertura total: <b>' + m.cov.toFixed(1).replace('.', ',') + '%</b>'
+        );
+      });
+      row.addEventListener('mouseleave', hideTip);
+    });
+  }
+
+  document.getElementById('stack-sort-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.viz-tab');
+    if (!btn) return;
+    Array.prototype.forEach.call(this.querySelectorAll('.viz-tab'), function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    stackSort = btn.getAttribute('data-sort');
+    renderStack();
+  });
+
+  renderPareto();
+  renderRadarChips();
+  renderRadar();
+  renderStack();
+})();
+</script>
 </body>
 </html>
