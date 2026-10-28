@@ -1,0 +1,117 @@
+# Metadata — narrative_v2 (generado por build_dataset.py)
+dataset: narrative_v2
+version: '0.1'
+created: '2026-10-28'
+status: PENDIENTE DE VALIDACION CLINICA
+summary:
+  total_cases: 300
+  composition:
+    live:
+      target: 150
+      accepted_pool: 186
+      excluded_nonspecific: 1
+      selected: 150
+      rare: 115
+      with_scored_secondary: 0
+      soft_leak_flags: 78
+    urg:
+      target: 60
+      accepted_pool: 170
+      excluded_nonspecific: 13
+      selected: 60
+      rare: 1
+      with_scored_secondary: 17
+      soft_leak_flags: 6
+    exam:
+      target: 60
+      accepted_pool: 135
+      excluded_nonspecific: 0
+      selected: 60
+      rare: 21
+      with_scored_secondary: 0
+      soft_leak_flags: 12
+    synth:
+      target: 30
+      accepted_pool: 54
+      excluded_nonspecific: 0
+      selected: 30
+      rare: 24
+      with_scored_secondary: 0
+      soft_leak_flags: 3
+  languages:
+    en: 240
+    es: 60
+  rare_disease_cases: 161
+  specialties:
+    Neurology: 25
+    Cardiology: 21
+    Dermatology: 20
+    Pediatrics: 18
+    Hematology: 17
+    Orthopedics: 13
+    Oncology: 12
+    Endocrinology: 11
+    Urology: 10
+    Infectious Disease: 9
+    Rheumatology: 9
+    Emergency Medicine: 9
+    Otolaryngology: 8
+    General Surgery: 8
+    Neurosurgery: 7
+    Pulmonology: 7
+    Gastroenterology: 7
+    Ophthalmology: 7
+    General Medicine: 7
+    Psychiatry: 6
+    Gynecology: 5
+    General Practice: 5
+    Infectious Diseases: 4
+    Nephrology: 4
+    Critical Care: 3
+    Surgical Oncology: 2
+    Pediatric Surgery: 2
+    Pediatric Cardiology: 2
+    Pediatric Oncology: 2
+    Genetics: 2
+    Primary Care: 2
+    Obstetrics: 2
+    Plastic Surgery: 2
+    Pediatric Endocrinology: 2
+    Hematology-Oncology: 2
+    Radiology: 2
+    Immunology: 2
+    Medical Genetics: 2
+    Thoracic surgery: 2
+    Internal Medicine: 2
+    Dentistry: 2
+    Thoracic Surgery: 1
+    Allergy: 1
+    Metabolism: 1
+    Rehabilitation Medicine: 1
+    Sleep Medicine: 1
+    Neuro-ophthalmology: 1
+    Oral Surgery: 1
+    Toxicology: 1
+    Pediatric Hematology: 1
+    Gynecologic Oncology: 1
+    Obstetrics, Gastroenterology: 1
+    Pediatric Gastroenterology: 1
+    General practice: 1
+    Vascular Medicine: 1
+    Traumatology: 1
+    Vascular Surgery: 1
+  live_entrez_dates:
+  - '2026-07-01'
+  - '2026-10-27'
+gold_format:
+  principal: diagnoses[0], role=principal, with accepted_names
+  secondary: role=secondary, only in urg (simultaneous diagnoses); counts as a hit
+    under rubric rule C3.2 A
+  other_conditions: 'metadata.other_conditions in live/exam/synth: comorbidities,
+    not scored'
+  normalized_text: not used
+  medical_codes: 'empty: the V5 judge decides every case'
+build:
+  scripts: data29/data-repos/narrative-v2/
+  curation_model: gemini-2.5-pro
+  seed: 29
