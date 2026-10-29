@@ -35,7 +35,9 @@ Cifras de referencia con Terra low:
    frente a 51,9 %, p = 0,03). Para re-puntuar con el gold de David:
    `REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`. gpt-6.1-terra en
    `all_256_clean` con V4 strict, para la serie histórica: R@1 62,5 %, R@5
-   77,3 % (`judge_audit/all256_gpt61terra_low_strict/`).
+   77,3 % (`judge_audit/all256_gpt61terra_low_strict/`). **Esfuerzo `medium`**
+   (29-oct, Terra 5.6 y gpt-6.1-sol): sin diferencia significativa con `low` en
+   ningún grupo, igual que en `all_256_clean`. Se mantiene `low`.
 2. ~~**Raras para V5**~~. Hecho el 28-oct en HPO v2
    ([README](../data29/data-repos/hpo-v2/README.md)): en 1.495 casos vale
    también el nombre de la enfermedad sin gen («Leber congenital amaurosis»
@@ -82,9 +84,21 @@ lista).
 7. **Publicar por bloque**, con `live + urg` como cifra principal (uso real,
    sin contaminación). `exam` queda como control comparable con la
    literatura; `synth` aporta poco porque es demasiado fácil.
-8. **PoC offline de la capa agéntica** sobre `live + urg`, con los criterios de
-   la auditoría de flujos (mejora de R@1 significativa en raras, sin perder
-   R@5, latencia y coste acotados).
+8. ~~**PoC offline de la capa agéntica**~~. Primera ronda hecha el 29-oct sobre
+   `narrative_v2` v0.1 ([bench/agentic_poc](../bench/agentic_poc/README.md)).
+   Sobre la lista de Terra 5.6, en casos reales, R@1 pasa de 51,9 % a:
+   57,1 % con autocrítica (p = 0,06), 58,1 % con fuentes HPO + PubMed
+   (p = 0,007) y **60,5 % con un panel Terra + Sol (p = 0,001; +10 puntos en
+   raras)**. Sol solo llega a 58,1 %. Solo el panel cumple el criterio de raras
+   de la auditoría; las herramientas no aportan más que la autocrítica y
+   empeoran `exam`. Coste del panel: unas 2 veces el actual, y ≈ 24 s, así que
+   tendría que ser una segunda fase asíncrona.
+   **Con Sol como base, la capa no aporta:** autocrítica +0,5 puntos, fuentes
+   −1,0, panel +2,4 (no significativo, solo en no raras); en raras ningún
+   brazo mejora a Sol solo (64,7 %). Lo que la capa añadía a Terra era subirla
+   al nivel de Sol: la palanca grande es el modelo. Pendiente: repetir para
+   medir la estabilidad y confirmarlo con `narrative_v2` v0.2. **La decisión
+   entre Sol solo y el panel Terra + Sol espera a esa confirmación.**
 9. **Renovar el bloque `live` cada trimestre** con `harvest_pmc.py` y fechas
    nuevas: los modelos acabarán entrenando con estos casos.
 10. **Track de «mimics»**, enfermedades raras que se presentan como algo

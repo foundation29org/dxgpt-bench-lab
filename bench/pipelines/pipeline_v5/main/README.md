@@ -217,6 +217,40 @@ Latencias con 8 llamadas en paralelo (4 en Opus) e incluyen la traducción de
 - **Sin señal de contaminación:** en los 21 casos `live` que gpt-6.1-terra
   pudo ver, no acierta más que en el resto.
 
+## Esfuerzo de razonamiento medium (29-oct-2026)
+
+¿Mejoran Terra y Sol razonando más? En `all_256_clean` (V4 strict) no
+mejoraban: Terra low 63,3 % de R@1, frente a 62,5 % en medium, high y xhigh;
+gpt-6.1-sol low 64,1 %, medium 62,1 %. Se repite en `narrative_v2`, donde los
+casos reales dejan más margen. Runs completos con
+`config_terra_medium_narrative_v2.yaml` y
+`config_gpt61sol_medium_narrative_v2.yaml`: mismo prompt, juez y
+`max_tokens` (12.000; ninguna respuesta cortada).
+
+R@1 estricta; McNemar exacto de medium frente a low sobre los mismos casos:
+
+| Grupo | Terra low | Terra medium | gana / pierde | p | Sol low | Sol medium | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Casos reales (`live`+`urg`, 210) | 51,9 % | 53,3 % | 9 / 6 | 0,61 | 58,1 % | 58,6 % | 11 / 10 | 1,0 |
+| Raras reales (116) | 53,4 % | 53,4 % | 5 / 5 | 1,0 | 64,7 % | 61,2 % | 4 / 8 | 0,39 |
+| No raras reales (94) | 50,0 % | 53,2 % | 4 / 1 | 0,38 | 50,0 % | 55,3 % | 7 / 2 | 0,18 |
+| `exam` (60) | 83,3 % | 81,7 % | 3 / 4 | 1,0 | 86,7 % | 85,0 % | 1 / 2 | 1,0 |
+| Total (300) | 61,3 % | 62,3 % | 13 / 10 | 0,68 | 67,0 % | 67,0 % | 12 / 12 | 1,0 |
+
+R@5 en casos reales: Terra 72,9 % → 74,3 %; Sol 74,8 % → 74,8 %.
+
+| | Coste por caso | Latencia (mediana) |
+|---|---:|---:|
+| Terra low → medium | 1,34 → 1,40 c$ | 8,2 → 8,8 s |
+| Sol low → medium | 1,04 → 1,17 c$ | 22,3 → 24,0 s |
+
+- **Ninguna diferencia significativa** en ningún grupo ni modelo. Los cambios
+  son de uno a cinco casos y en ambos sentidos.
+- **Sol medium no mejora a Sol low en raras** (61,2 % frente a 64,7 %, no
+  significativo); sube algo en no raras, también sin significación.
+- **Se mantiene `low`.** Con casos reales y sin contaminar se confirma lo que
+  ya se vio en `all_256_clean`: razonar más cuesta algo más y no acierta más.
+
 ## Prueba de juez más barato (29-oct-2026)
 
 Paso 6 del ROADMAP. Las listas de los seis modelos se han vuelto a puntuar con
@@ -264,30 +298,33 @@ R@1 estricta en casos reales (`live`+`urg`, 210):
 
 ## Pendiente
 
-Cosas que el run ha sacado a la luz y que necesitan decisión clínica (David):
+Decidido e implementado en `graded_v2` (reglas de la rúbrica que contestó
+Julián; detalle en el §12 de
+`bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md`):
 
-- **ICD-10 exacto también falla.** ICD-10 agrupa enfermedades distintas bajo
-  un mismo código: déficit de piruvato deshidrogenasa frente a déficit de
-  piruvato carboxilasa, miositis por cuerpos de inclusión frente a
-  polimiositis. Propuesta: que lo decida el juez y que solo SNOMED exacto
-  decida sin juez. En este run, R@5 bajaría unos 2 puntos.
-- **Gold compuestos** («X with Y», «X due to Y»): el juez da un 1 a «X» solo
-  («Cystic fibrosis» frente a «Cystic fibrosis with bronchiectasis») y SNOMED
-  da un 2. Hay que fijar la regla. Son la mayoría de
-  `code_judge_disagreements`.
-- **Casos con varios gold** (69 de 256). En los `R` son sinónimos y basta uno.
-  En los `T` son diagnósticos simultáneos, y David exige que una opción los
-  cubra todos (T795, T208). Falta un campo en el dataset que lo indique y la
-  regla correspondiente. Es la regla que más mueve la cifra. V4 y V5 aplican
-  la misma («basta uno»). Si se aplica a los `T` la de septiembre, R@1 pasa
-  de 69,1 % a 62,1 % y R@5 de 81,2 % a 72,3 %. Si basta con que todos
-  aparezcan en la lista, R@5 queda en 75,4 %.
-- **Gold amplios o que no son enfermedad** (24 marcados por el juez): con la
-  regla «más específico» se aciertan con cualquier enfermedad concreta de la
-  categoría («Ovarian tumor» → Sertoli-Leydig). Hay que limpiarlos o
-  excluirlos.
-- ~~**Raras (HPO):** aceptar el nombre de la enfermedad sin gen ni subtipo
-  molecular~~. Hecho en HPO v2 (`data29/data-repos/hpo-v2/README.md`). Con
-  Terra low, R@1 estricta del total HPO: 29,9 % con V4 strict, 27,2 % con V5 y
-  solo el gold con gen, 40,9 % con V5 y el gold con gen o sin gen.
-- **Validar la escala con David** sobre los casos que cambian entre V4 y V5.
+- ~~**ICD-10 exacto**~~: lo decide el juez; solo SNOMED exacto decide sin
+  juez (C1). ICD-10 agrupa enfermedades distintas bajo un código: déficit de
+  piruvato deshidrogenasa frente a déficit de piruvato carboxilasa.
+- ~~**Gold compuestos**~~ («X with Y», «finding due to X»): se aciertan con
+  «X» (C2).
+- ~~**Casos con varios gold**~~: basta con acertar uno, sean nombres
+  alternativos o diagnósticos simultáneos (C3). En `narrative_v2`, los
+  secundarios solo puntúan en `urg`; en el resto de bloques son
+  comorbilidades y no puntúan.
+- ~~**Gold amplios**~~: se mantienen y se aciertan con una forma más
+  específica (C4). En `narrative_v2` ya no hay gold inespecíficos («viral
+  illness», «… pain»), y los que no son enfermedad los revisa David en la
+  tarea 1.
+- ~~**Raras (HPO): nombre de la enfermedad sin gen**~~. Hecho en HPO v2
+  (`data29/data-repos/hpo-v2/README.md`). Con Terra low, R@1 estricta del
+  total HPO: 29,9 % con V4 strict, 27,2 % con V5 y solo el gold con gen,
+  40,9 % con V5 y el gold con gen o sin gen.
+
+Pendiente de David (`docs/tareas-david/`):
+
+- **Tarea 1:** validar el gold de `narrative_v2`. Con su resultado sale la
+  v0.2 y se re-puntúan los runs con `REFRESH_GOLD_FROM_DATASET`.
+- **Tarea 2:** validar la escala 2/1/0 y elegir juez (Gemini 2.5 Pro frente a
+  Gemini 3.8 Flash).
+- **Tarea 3:** revisar los nombres sin gen de raras y los 9 casos con HPO
+  insuficientes.

@@ -1,0 +1,32 @@
+DATASET_PATH: bench/datasets/mme_hpo_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-3.8-flash
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Mismas listas que el run con juez gemini-2.5-pro; solo cambia
+  el juez a gemini-3.8-flash (prueba de juez mas barato en raras).
+EXPERIMENT_NAME: mme_hpo_v2-juanjo_classic_v2-gpt_5_6_terra_low-v5-judge_gemini-3.8-flash
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+OUTPUT_TAG: judge_gemini-3.8-flash
+REFRESH_GOLD_FROM_DATASET: true
+REUSE_LABELED_DDX: bench/pipelines/pipeline_v4 - fork/main/output/mme_hpo/juanjo_classic_v2/gpt_5_6_terra_low/juanjo_classic_v2___gpt_5_6_terra_low___ddxs_from_labeler.json
+TIMESTAMP: '2026-10-29T17:42:11.483975'

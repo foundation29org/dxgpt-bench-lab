@@ -1,0 +1,31 @@
+DATASET_PATH: bench/datasets/narrative_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: PoC de la capa agéntica, brazo arm_b_panel, sobre las listas
+  de gpt-5.6-terra low (bench/agentic_poc). Mismo juez y evaluador que la línea base.
+EXPERIMENT_NAME: narrative_v2-agentic_poc-arm_b_panel
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+OUTPUT_TAG: arm_b_panel
+REUSE_LABELED_DDX: bench/agentic_poc/work/arm_b_panel.json
+TIMESTAMP: '2026-10-29T13:28:08.634132'
