@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · solo texto · 21 oct 2026</div>
+  <div class="hero-badge">Borrador · solo texto · 28 oct 2026</div>
   <h1>Texto narrativo y HPO</h1>
   <p>Pipeline V4, juez <code>strict_equivalence</code>. No incluye MedReaMM ni imágenes.
      No sustituye a <a href="benchmark-report.html" style="color:#dbeafe;">benchmark-report.html</a>.
@@ -36,7 +36,7 @@
           <span>Rendimiento vs. Eficiencia (curvas de esfuerzo)</span>
           <div class="picker-wrap" id="pareto-picker-wrap">
             <button type="button" class="picker-btn" id="pareto-picker-btn">
-              <span id="pareto-picker-count">28 de 28 modelos</span>
+              <span id="pareto-picker-count">29 de 29 modelos</span>
               <span class="caret">▾</span>
             </button>
             <div class="picker-menu" id="pareto-picker-menu">
@@ -82,7 +82,7 @@
           <span>Perfil clínico multidimensional (percentil 1–100)</span>
           <div class="picker-wrap" id="radar-picker-wrap">
             <button type="button" class="picker-btn" id="radar-picker-btn">
-              <span id="radar-picker-count">5 de 28 modelos</span>
+              <span id="radar-picker-count">5 de 29 modelos</span>
               <span class="caret">▾</span>
             </button>
             <div class="picker-menu" id="radar-picker-menu">
@@ -98,7 +98,7 @@
           </div>
         </div>
         <div class="viz-panel-sub">
-          Cada eje es el percentil del modelo entre los 28 evaluados en <code>all_256_clean</code> (hacia fuera = mejor en esa dimensión). Selecciona en el desplegable o en las etiquetas.
+          Cada eje es el percentil del modelo entre los 29 evaluados en <code>all_256_clean</code> (hacia fuera = mejor en esa dimensión). Selecciona en el desplegable o en las etiquetas.
         </div>
         <div class="svg-wrap">
           <svg id="radar-svg" class="svg-chart" viewBox="0 0 460 340"></svg>
@@ -196,120 +196,126 @@
         </tr>
         <tr>
           <td>9</td>
+          <td>gpt-6.1-terra low</td>
+          <td>62,5%</td><td>75,0%</td><td>77,3%</td><td>78,1%</td><td>1,370</td><td>4,0</td>
+          <td>Más rápido que Terra 5.6 y que sol · peor cobertura · 0 listas vacías · LLM 81→25</td>
+        </tr>
+        <tr>
+          <td>10</td>
           <td>gpt-6-astra low <span class="badge badge-muted">no producto</span></td>
           <td>62,1%</td><td>78,5%</td><td>82,0%</td><td>83,2%</td><td>1,460</td><td>~32,5</td>
           <td></td>
         </tr>
         <tr>
-          <td>10</td>
+          <td>11</td>
           <td>gpt-6.1-sol medium</td>
           <td>62,1%</td><td>75,0%</td><td>79,3%</td><td>80,5%</td><td>1,456</td><td>16,6</td>
           <td>Peor que low en R@1 y cobertura · LLM 68→21 · no usar</td>
         </tr>
         <tr>
-          <td>11</td>
+          <td>12</td>
           <td>gemini-3.5-flash low</td>
           <td>62,1%</td><td>75,4%</td><td>75,4%</td><td>75,4%</td><td>1,223</td><td>6,1</td>
           <td>Candidato calidad/latencia · LLM 72→14 · cobertura Gemini</td>
         </tr>
         <tr>
-          <td>12</td>
+          <td>13</td>
           <td>gemini-3.1-pro-preview low</td>
           <td>61,3%</td><td>74,6%</td><td>75,0%</td><td>75,0%</td><td>1,240</td><td>9,3</td>
           <td>Líder legacy · LLM 75→17</td>
         </tr>
         <tr>
-          <td>13</td>
+          <td>14</td>
           <td>gpt-5.6-luna high</td>
           <td>60,9%</td><td>77,3%</td><td>82,0%</td><td>83,6%</td><td>1,575</td><td>~7,6</td>
           <td>Gana a luna low · empate R@1 con Sol · LLM 71→31</td>
         </tr>
         <tr>
-          <td>14</td>
+          <td>15</td>
           <td>gpt-5.6-sol medium</td>
           <td>60,9%</td><td>76,2%</td><td>81,2%</td><td>82,4%</td><td>1,540</td><td>12,7</td>
           <td>Gana a sol low</td>
         </tr>
         <tr>
-          <td>15</td>
+          <td>16</td>
           <td>gemini-3.8-flash low</td>
           <td>59,8%</td><td>73,8%</td><td>77,7%</td><td>77,7%</td><td>1,402</td><td>4,4</td>
           <td>No gana a 3.5-flash en R@1 · cobertura Gemini +2 pp · LLM 76→23</td>
         </tr>
         <tr>
-          <td>16</td>
+          <td>17</td>
           <td>gemini-3-pro-preview low</td>
           <td>59,8%</td><td>74,6%</td><td>75,0%</td><td>75,0%</td><td>1,281</td><td>~10</td>
           <td>Avanzado configurado · slug 404 en prod · LLM 74→16</td>
         </tr>
         <tr>
-          <td>17</td>
+          <td>18</td>
           <td>claude-opus-5 low</td>
           <td>59,4%</td><td>76,2%</td><td>82,8%</td><td>87,1%</td><td>1,803</td><td>22,7</td>
           <td>0 listas vacías · mayor cobertura de la tabla · peor R@1 que Grok/Terra</td>
         </tr>
         <tr>
-          <td>18</td>
+          <td>19</td>
           <td>gemini-2.5-pro low</td>
           <td>59,4%</td><td>74,2%</td><td>75,4%</td><td>75,4%</td><td>1,295</td><td>~28</td>
           <td>Avanzado real en prod (fallback) · juez = mismo modelo · LLM 87→23</td>
         </tr>
         <tr>
-          <td>19</td>
+          <td>20</td>
           <td>gemini-3-pro-preview medium</td>
           <td>59,4%</td><td>71,1%</td><td>73,0%</td><td>73,0%</td><td>1,289</td><td>~35</td>
           <td>Peor que low · LLM 81→17 · no usar</td>
         </tr>
         <tr>
-          <td>20</td>
+          <td>21</td>
           <td>gpt-5.6-sol low</td>
           <td>59,0%</td><td>73,8%</td><td>80,5%</td><td>80,9%</td><td>1,527</td><td>14,1</td>
           <td>Peor que medium · gana a mini · LLM 74→24</td>
         </tr>
         <tr>
-          <td>21</td>
+          <td>22</td>
           <td><strong>gpt-5.4-mini low</strong></td>
           <td>58,2%</td><td>77,3%</td><td>79,3%</td><td>79,7%</td><td>1,441</td><td>~5</td>
           <td>Default sin imagen</td>
         </tr>
         <tr>
-          <td>22</td>
+          <td>23</td>
           <td>gemini-3.1-flash-lite low</td>
           <td>57,8%</td><td>74,6%</td><td>78,1%</td><td>78,1%</td><td>1,445</td><td>2,8</td>
           <td>Candidato económico · no gana a mini · LLM 83→27</td>
         </tr>
         <tr>
-          <td>23</td>
+          <td>24</td>
           <td>gpt-4o low</td>
           <td>57,4%</td><td>69,9%</td><td>74,6%</td><td>75,0%</td><td>1,505</td><td>~8–10</td>
           <td></td>
         </tr>
         <tr>
-          <td>24</td>
+          <td>25</td>
           <td>gpt-5.6-luna low</td>
           <td>57,0%</td><td>73,8%</td><td>78,5%</td><td>79,7%</td><td>1,554</td><td>6,4</td>
           <td>No gana a mini · LLM 79→29</td>
         </tr>
         <tr>
-          <td>25</td>
+          <td>26</td>
           <td>o3-dxgpt high <span class="badge badge-muted">otro tenant</span></td>
           <td>56,6%</td><td>74,2%</td><td>80,5%</td><td>80,9%</td><td>1,614</td><td>15,9</td>
           <td>Referencia strict · no supera a Terra · LLM 76→23</td>
         </tr>
         <tr>
-          <td>26</td>
+          <td>27</td>
           <td>gpt-5.6-luna medium</td>
           <td>56,6%</td><td>74,2%</td><td>78,9%</td><td>79,7%</td><td>1,554</td><td>7,8</td>
           <td>Peor R@1 que low · LLM 80→31 · no usar</td>
         </tr>
         <tr>
-          <td>27</td>
+          <td>28</td>
           <td>gemini-2.5-flash low</td>
           <td>56,6%</td><td>72,7%</td><td>74,2%</td><td>74,2%</td><td>1,342</td><td>~21</td>
           <td>Suelo Gemini · LLM 82→20</td>
         </tr>
         <tr>
-          <td>28</td>
+          <td>29</td>
           <td>gpt-5.6-luna xhigh</td>
           <td>55,5%</td><td>69,5%</td><td>73,0%</td><td>75,0%</td><td>1,573</td><td>~10,4</td>
           <td>22 EMPTY a 12k · inválido · LLM 73→34 · no usar</td>
@@ -384,7 +390,7 @@
     </p>
   </div>
 </div>
-<footer>Borrador interno · track texto · 2026-10-21</footer>
+<footer>Borrador interno · track texto · 2026-10-28</footer>
 <div id="viz-tooltip" class="viz-tooltip"></div>
 <script>
 (function () {
@@ -397,6 +403,7 @@
     { id: 'terra_high', name: 'gpt-5.6-terra high', short: 'Terra high', family: 'terra', effort: 3, r1: 62.5, r3: 80.5, r5: 84.4, cov: 85.2, avgPos: 1.477, sec: 23.0, tokens: 533889, cost: 5.344, p1: 160, p23: 46, p45: 10, p6p: 2, color: '#3b82f6', radarDefault: false },
     { id: 'terra_med', name: 'gpt-5.6-terra medium', short: 'Terra med', family: 'terra', effort: 2, r1: 62.5, r3: 79.3, r5: 84.0, cov: 84.4, avgPos: 1.491, sec: 8.4, tokens: 351626, cost: 3.157, p1: 160, p23: 43, p45: 12, p6p: 1, color: '#60a5fa', radarDefault: false },
     { id: 'terra_xhigh', name: 'gpt-5.6-terra xhigh', short: 'Terra xhigh', family: 'terra', effort: 4, r1: 62.5, r3: 75.0, r5: 78.9, cov: 79.7, avgPos: 1.431, sec: 28.9, tokens: 835624, cost: 8.965, p1: 160, p23: 32, p45: 10, p6p: 2, color: '#93c5fd', radarDefault: false },
+    { id: 'terra61_low', name: 'gpt-6.1-terra low', short: 'Terra 6.1 low', family: 'terra61', effort: 1, r1: 62.5, r3: 75.0, r5: 77.3, cov: 78.1, avgPos: 1.370, sec: 4.0, tokens: 235186, cost: null, p1: 160, p23: 32, p45: 6, p6p: 2, color: '#0f766e', radarDefault: false },
     { id: 'astra_low', name: 'gpt-6-astra low', short: 'GPT-6 Astra', family: 'astra', effort: 1, r1: 62.1, r3: 78.5, r5: 82.0, cov: 83.2, avgPos: 1.460, sec: 32.5, tokens: 292681, cost: null, p1: 159, p23: 42, p45: 9, p6p: 3, color: '#475569', radarDefault: false },
     { id: 'gpt61sol_med', name: 'gpt-6.1-sol medium', short: 'Sol 6.1 med', family: 'sol61', effort: 2, r1: 62.1, r3: 75.0, r5: 79.3, cov: 80.5, avgPos: 1.456, sec: 16.6, tokens: 332880, cost: 2.477, p1: 159, p23: 33, p45: 11, p6p: 3, color: '#334155', radarDefault: false },
     { id: 'gem35flash', name: 'gemini-3.5-flash low', short: 'Gem 3.5 Flash', family: 'gem35', effort: 1, r1: 62.1, r3: 75.4, r5: 75.4, cov: 75.4, avgPos: 1.223, sec: 6.1, tokens: null, cost: null, p1: 159, p23: 34, p45: 0, p6p: 0, color: '#059669', radarDefault: false },

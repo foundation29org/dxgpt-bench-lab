@@ -169,7 +169,7 @@ Estas cifras miden **acuerdo con las etiquetas iniciales de David**,
 no precisión clínica definitiva:
 
 | Juez | Acuerdo bruto con David | Cobertura 100 |
-|---|---:|---:|---|
+|---|---:|---:|
 | gemini-2.5-pro | 30/35 | 80 |
 | gemini-2.5-flash | 31/35 | 85 |
 | gpt-5.4-mini | 30/35 | 78 |
@@ -373,8 +373,9 @@ un cambio cada vez, sobre las mismas listas ya generadas.
 **1. Los 35 casos no son todo lo que hemos probado.** Eran los dudosos de la
 prueba de 100. Después probamos 256 casos: 133 llegaron al juez y se compararon
 cinco jueces. David revisó a ciegas los 13 en los que Pro y Flash no coincidían
-(Pro 8, Flash 3) y seguimos con Pro. Lo que falta: no se ha mirado qué pasa
-cuando los jueces coinciden, y solo se probó con las listas de Terra. Informe:
+(Pro acertó 8 de los 13 y Flash 3; en los otros 2 fallaron los dos, y ese
+Flash era sin thinking) y seguimos con Pro. Lo que falta: no se ha mirado qué
+pasa cuando los jueces coinciden, y solo se probó con las listas de Terra. Informe:
 [2026-09-16-judge-benchmark-all256-terra.md](results/2026-09-16-judge-benchmark-all256-terra.md).
 
 **2. Hoy no existe el «casi» en las capas de códigos.** Si el diagnóstico es
@@ -471,3 +472,90 @@ los informes de `results/`.
 5. Readjudicar con David los casos que cambien.
 
 Antes del paso 2, Julián contesta aquí las preguntas abiertas del §10.
+Contestadas el 27-oct: ver §12, que también recoge en qué quedó este orden.
+
+---
+
+## 12. Respuestas de Julián, decisiones y estado (2026-10-28)
+
+### Respuestas de Julián a los §8 y §10 (27-oct, de palabra)
+
+| Pregunta | Respuesta |
+|---|---|
+| §8 Métricas del alumno | Como están ahora |
+| §8 Juez: binario o grado | Grado. No tenía claro qué significa «solo grado 2 o las dos» |
+| §8 Capas que el LLM no ve | Mantener hermanos y padres ICD. Sobre BERT no puede decidir porque no sabe qué hace |
+| §8 Modelo del juez | No lo sabe; que se decida |
+| §8 Prompt | El texto strict se da por bueno; un solo prompt con la escala 2/1/0; los casos frontera, «que los decida el juez» |
+| §10 Alcance | Todo: juez, capas y BERT |
+| §10 ¿Padre/hermano o BERT primero? | BERT antes |
+| §10 Hijo ICD | No lo sabe; que se decida lo correcto |
+| §10 Llamar a R@5 «acierto en cualquier posición» | Sí, lo acepta |
+| §10 Validación del juez | Habrá que ampliar a más casos |
+
+Después contestó las cuatro reglas de la rúbrica que se habían preparado
+para David, y esas respuestas se adoptan:
+
+| Regla | Respuesta de Julián |
+|---|---|
+| C1. ICD-10 exacto | Que decida el juez; solo SNOMED exacto decide sin juez |
+| C2.1. «X con Y» frente a «X» | Misma enfermedad (2) si Y es complicación o manifestación de X |
+| C2.2. «Hallazgo debido a X» frente a «X» | Misma enfermedad (2) si X es la causa que nombra la referencia |
+| C3.1. Varios gold alternativos | Basta con acertar uno |
+| C3.2. Varios gold simultáneos | Basta con acertar uno, como hasta ahora |
+| C4. Referencias amplias | Se mantienen y aceptan formas más específicas |
+
+### Decisiones implementadas en Pipeline V5
+
+Evaluador nuevo en `bench/pipelines/pipeline_v5/main`, prompt `graded_v2`.
+Pipeline V4 no se ha tocado. Detalle y resultados en su `README.md`.
+
+| Tema | Decisión | Por qué |
+|---|---|---|
+| Escala | 2/1/0 por opción, en JSON | Problema 1 del §11 |
+| Nota pública | Estricta (solo 2). La laxa (2 o 1) se calcula, pero es de uso interno hasta validar la frontera entre 1 y 0 | Respuesta a «¿publicamos las dos?» |
+| SNOMED exacto | Decide sin juez | C1 |
+| ICD-10 exacto, hijo, padre y hermano | Los decide el juez; la relación se guarda como dato | C1. Además, en `all_256_clean` 13 de 24 aciertos por padre/hermano eran otra enfermedad (Boerhaave → Mallory-Weiss, CMV fetal → rubéola congénita); por eso no se mantienen, como pedía el §8 |
+| BERT | No decide nada | En `all_256_clean` no aporta aciertos que no dé el juez (en 14 de 16 coinciden). En raras falla con nombres casi iguales (L-2 frente a D-2 hidroxiglutárica, 0,976) |
+| Hijo ICD | Lo decide el juez | No aparece en ningún run; así no hay excepción |
+| Posición del acierto | La mejor entre SNOMED y juez | Problema 5 del §11 |
+| Texto del gold | El original del dataset, más sus `accepted_names` | El `normalized_text` del ETL se quedaba con la última entidad de Azure: «Cystic fibrosis with bronchiectasis» → «Bronchiectasis». En 194 de 355 gold difiere del original |
+| Modelo del juez | Gemini 2.5 Pro, sin cambios | Ganó la adjudicación ciega de septiembre; ≈ 4 $ por 256 casos |
+| Métricas | R@1 como titular; R@5 y cobertura («acierto en cualquier posición») por separado | Difieren cuando la lista tiene más de 5 opciones (problema 4) |
+
+Corrección al §11: BERT ≥ 0,80 no movió ninguna posición en `all_256_clean`
+ni en la prueba multimodal de 250 casos (sí en 9 casos de raras). No inflaba
+el R@1 publicado.
+
+### En qué quedó el orden del §11
+
+| Paso | Estado |
+|---|---|
+| 1. Corregir los problemas 6 y 7 | Hecho en este documento (tabla del §6 y redacción del §10) |
+| 2. Capas configurables y cascada | Sustituido: en V5 solo SNOMED decide sin juez y no hay cascada |
+| 3. Re-puntuar palanca a palanca | Hecho de una vez sobre las mismas listas; `comparison.md` atribuye cada cambio a la capa de V4 que lo decidía |
+| 4. Prompt por opción con la regla | Hecho (`graded_v2`). Falta la excepción de subtipos y genes para raras |
+| 5. Readjudicar con David | Pendiente. Se hará sobre `narrative_v2`, el dataset nuevo, no sobre `all_256_clean` |
+
+### Resultados con Terra low
+
+| Dataset | Evaluador | R@1 | R@5 |
+|---|---|---:|---:|
+| `all_256_clean` | V4 strict | 63,3 % | 83,2 % |
+| `all_256_clean` | V5 (`graded_v1`, gold original) | 69,1 % | 81,2 % |
+| `narrative_v2` v0.1, total | V5 (`graded_v2`) | 61,3 % | 78,3 % |
+| `narrative_v2`, casos reales (`live` y `urg`, 210) | V5 (`graded_v2`) | 51,9 % | 72,9 % |
+
+Al revisar el evaluador se vio que `all_256_clean` no mide bien el uso real
+(63 % de preguntas de examen, gold que no son enfermedades). Por eso se ha
+creado `narrative_v2`: ver `data29/data-repos/narrative-v2/README.md`.
+
+### Pendiente
+
+Los próximos pasos están en [`docs/ROADMAP.md`](../../docs/ROADMAP.md). Los
+de este documento son:
+
+- validar con David la escala 2/1/0 y la frontera entre 1 y 0, sobre casos
+  de `narrative_v2`, cuando su gold esté validado;
+- elegir el juez con esa validación;
+- en raras, añadir el gold clínico sin gen antes de evaluar HPO con V5.

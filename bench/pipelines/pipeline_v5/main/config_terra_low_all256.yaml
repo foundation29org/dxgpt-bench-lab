@@ -1,0 +1,44 @@
+# Pipeline V5 - re-evaluacion de gpt-5.6-terra low sobre all_256_clean
+# ====================================================================
+# Mismas listas DDX y codigos que el run de julio (20260710140614): solo
+# cambia el evaluador. Para un run nuevo de Terra, quitar REUSE_LABELED_DDX
+# y poner SHOULD_EMULATE y SHOULD_LABEL a true.
+
+EXPERIMENT_NAME: "all_256_clean-juanjo_classic_v2-gpt_5_6_terra_low-v5"
+EXPERIMENT_DESCRIPTION: "Pipeline V5 sobre las listas congeladas de Terra low (run 20260710140614). Solo SNOMED/ICD exactos deciden sin juez; el juez puntua 2/1/0 cada opcion en todos los casos."
+
+DATASET_PATH: "bench/datasets/all_256_clean.json"
+
+# Labeler output to re-evaluate (relative to the eval repo root)
+REUSE_LABELED_DDX: "bench/pipelines/pipeline_v4 - fork/main/output/all_256_clean/juanjo_classic_v2/gpt_5_6_terra_low_translated_en/juanjo_classic_v2___gpt_5_6_terra_low_translated_en___ddxs_from_labeler.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-5.6-terra"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+
+EVALUATOR:
+  # Same judge as the canonical strict runs; only the rubric changes.
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  PARALLEL_WORKERS: 8
+  # CASE_LIMIT: 5  # evaluate only the first N cases (smoke test)
+
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_LABEL: false
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

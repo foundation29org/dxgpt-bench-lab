@@ -11,6 +11,8 @@ ENV/
 
 # Confidential data
 data29/data-repos/raw
+# Clinical validation sheets hold full case texts (emergency cases, article excerpts)
+data29/data-repos/curated-datasets/**/validacion_clinica*.md
 
 # Project specific
 _PRMT_REF/

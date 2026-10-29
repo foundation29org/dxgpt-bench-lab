@@ -1,0 +1,330 @@
+# Pipeline V5
+
+Pipeline V5 cambia solo el **evaluador**. El emulador, el labeler y el formato
+de salida son los de Pipeline V4, que se queda intacto en
+`bench/pipelines/pipeline_v4 - fork/main`.
+
+Explicación completa del pipeline: [docs/pipeline/pipeline-v5.md](../../../../docs/pipeline/pipeline-v5.md).
+Informe con gráficas: [docs/benchmark-report-v5.html](../../../../docs/benchmark-report-v5.html),
+que se regenera con `py build_report.py` después de cada run o re-puntuación.
+
+Origen de los cambios: la revisión de la rúbrica del juez
+(`bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md`, §9–§11) y el plan del
+evaluador en `docs/ROADMAP.md`.
+
+## Qué cambia respecto a V4
+
+| | V4 strict | V5 |
+|---|---|---|
+| SNOMED exacto | acierto sin juez | acierto sin juez (igual) |
+| ICD-10 exacto | acierto sin juez | **no decide** desde `graded_v2` (regla C1): decide el juez |
+| ICD-10 hijo, padre, hermano | acierto sin juez | **no deciden**: se guardan como dato y decide el juez |
+| SapBERT ≥ 0,90 | acierto sin juez | **no se usa** |
+| SapBERT ≥ 0,80 | adelanta la posición del juez | **no se usa** |
+| Cuándo se llama al juez | solo si ninguna capa acierta | **en todos los casos** |
+| Texto del gold que lee el juez | `normalized_text` del labeler | **el gold tal como está en el dataset** |
+| Respuesta del juez | una posición (`0` = ninguna) | **una nota por opción**: 2 / 1 / 0, en JSON |
+| Posición del acierto | la de la primera capa que acierta | **la mejor** entre códigos exactos y juez |
+| Métricas | una lectura | **estricta** (solo 2) y **laxa** (2 o 1) |
+
+Notas del juez (`graded_v1`):
+
+- **2**: misma entidad. Sinónimos, abreviaturas y variantes. Una forma más
+  específica solo si todo paciente con la opción tiene el diagnóstico de
+  referencia (subtipo de la referencia, o la referencia con lateralidad o
+  extensión añadidas).
+- **1**: relacionado, no igual. Categoría más amplia, omite un calificador que
+  define la referencia («GIST» frente a «GIST maligno»), otro subtipo, gen o
+  fenotipo de la misma familia, causa, complicación, precursor o consecuencia,
+  o una disyuntiva «A o B».
+- **0**: otra enfermedad.
+
+Desde `graded_v2` (reglas de la rúbrica contestadas por Julián):
+
+- **C1:** solo SNOMED exacto decide sin juez.
+- **C2:** «X con Y» (Y es una complicación o manifestación) y «hallazgo debido
+  a X» se aciertan con «X».
+- **C3:** con varios gold, basta con acertar uno.
+- **C4:** las referencias amplias se aciertan con una forma más específica.
+- Si el gold trae `accepted_names`, el juez los recibe como «also known as».
+
+El juez también indica si la referencia es una enfermedad
+(`reference_is_disease`). No cambia la nota: sirve para limpiar el dataset.
+
+La cifra oficial es la **estricta**. La laxa es de uso interno mientras la
+frontera entre 1 y 0 no esté validada clínicamente.
+
+## Cómo ejecutar
+
+Igual que V4, desde esta carpeta:
+
+```powershell
+cd "C:\repos\DxGPT\eval\bench\pipelines\pipeline_v5\main"
+py main.py --config config_terra_low_all256.yaml
+```
+
+`REUSE_LABELED_DDX` copia la salida del labeler de un run anterior y evalúa
+esas mismas listas, sin llamar al emulador ni al labeler. Así la diferencia
+con V4 se debe solo al evaluador. Sin esa clave, V5 hace un run completo como
+V4.
+
+`REFRESH_GOLD_FROM_DATASET: true`, junto a `REUSE_LABELED_DDX`, cambia el
+gold de esas listas por el que tiene ahora `DATASET_PATH` y quita los casos
+que ya no están en el dataset. Sirve para re-puntuar cuando se corrige el gold
+(`narrative_v2` v0.2, HPO v2) sin generar listas nuevas.
+
+`EVALUATOR.CASE_LIMIT: N` evalúa solo los primeros N casos (prueba rápida).
+
+Si el juez falla tres veces en un caso (Gemini devuelve a veces 503 «high
+demand»), el caso sale en `cases_with_judge_errors` del `summary.json`.
+`py repair_judge_errors.py <carpeta del run>` vuelve a juzgar solo esos casos
+y reescribe `evaluation_details.txt`, `summary.json` y `judge_metrics.json`.
+
+## Salidas
+
+En `output/<dataset>/<prompt>/<modelo>/<timestamp>/`:
+
+- `evaluation_details.txt`: un bloque JSON por caso, separados por `---`.
+  `final_resolution` (estricta) y `lax_resolution` (laxa) siguen el formato de
+  V4. `graded_trace` guarda, por cada opción, el código exacto si lo hay, la
+  relación ICD-10, la nota del juez y la nota final.
+- `summary.json`: R@1, R@3, R@5, cobertura, posición media y MRR en las dos
+  lecturas. También incluye las listas de auditoría:
+  - `code_judge_disagreements`: código exacto, pero el juez no da un 2;
+  - `icd10_relation_judge_grades`: qué nota pone el juez a hijos, padres y
+    hermanos ICD;
+  - `reference_not_disease`: gold que el juez no considera una enfermedad.
+- `judge_metrics.json`: cada llamada al juez, con tokens, latencia y coste
+  estimado.
+
+Comparación con V4 sobre las mismas listas:
+
+```powershell
+py compare_runs.py --baseline "<v4>\evaluation_details.txt" --candidate "<v5>\evaluation_details.txt"
+```
+
+Escribe `comparison.md` junto al run de V5, con los casos que cambian
+agrupados por la capa de V4 que los decidía.
+
+Cifras por bloque de `narrative_v2` (y `live` sin los casos que el modelo pudo
+ver, según su fecha de corte):
+
+```powershell
+py score_blocks.py --dataset bench/datasets/narrative_v2.json --runs <run> <run> ... `
+  --live-dates ..\..\..\..\data29\data-repos\narrative-v2\work\live_dates.json
+```
+
+Con `--without-clinical` ignora los gold con `role: clinical` (en HPO v2, el
+nombre de la enfermedad sin gen), lo que da la nota solo con el gold con gen
+sobre las mismas llamadas al juez.
+
+## Primer run: Terra low en all_256_clean (27-oct-2026)
+
+Mismas listas DDX que el run `20260710140614`. Juez Gemini 2.5 Pro, prompt
+`graded_v1`, anterior a las reglas C1 y C2.
+
+| Evaluación | R@1 | R@3 | R@5 |
+|---|---:|---:|---:|
+| V4 strict (canónico) | 63,3 % | 80,1 % | 83,2 % |
+| V5, gold normalizado por Azure (`20261027194849`) | 69,9 % | 80,1 % | 82,0 % |
+| V5, gold del dataset sin normalizar (`20261027200004`) | **69,1 %** | 79,3 % | **81,2 %** |
+| V5 laxa, gold del dataset sin normalizar | 88,7 % | 94,5 % | 96,9 % |
+
+357 llamadas al juez, 0 respuestas inválidas, ≈ 4,2 $, p50 10 s, ≈ 10 min.
+Detalle caso a caso en `comparison.md` de cada run.
+
+- **R@1 sube unos 6 puntos.** V4 fijaba la posición con la primera capa que
+  acertaba. En Boerhaave, Terra lo tenía en P1 y V4 lo contaba en P3 por un
+  hermano ICD (Mallory-Weiss).
+- **R@5 baja 2 puntos.** Salen unos 12 aciertos de hermanos/padres ICD y BERT
+  que eran otra enfermedad: Mallory-Weiss por Boerhaave, MADD por déficit de
+  CPT I, rubéola congénita por CMV fetal. Entran otros por la regla «más
+  específico», varios con gold amplios.
+- **Hermanos y padres ICD:** de 75 opciones con esa relación, el juez solo da
+  un 2 a 12.
+- **BERT no aporta aciertos que no dé el juez.** De los 16 casos que V4
+  resolvía con BERT, el juez da un 2 a 14 y un 1 a 2. Sus fallos están en
+  raras, con nombres casi iguales (L-2 frente a D-2 hidroxiglutárica).
+- **La nota laxa (≈ 97 %) reproduce el 98 % del juez antiguo.**
+
+## Modelos de referencia sobre narrative_v2 (28-oct-2026)
+
+`narrative_v2` v0.1 (sin validación clínica), V5 `graded_v2`, juez Gemini 2.5
+Pro. Mismo prompt (`juanjo_classic_v2`) y esfuerzo `low` en todos. Runs
+completos (`config_<modelo>_low_narrative_v2.yaml`). Gemini 3 Pro ya no está
+en la API de Google (404): se usa gemini-3.1-pro-preview, su sucesor.
+
+R@1 estricta:
+
+| Modelo | Total | `live` | `urg` | `exam` | `synth` | `live`+`urg` | Raras | `live` sin ver |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | **67,0 %** | **60,0 %** | 53,3 % | 86,7 % | 90,0 % | **58,1 %** | **70,2 %** | 61,0 % (146) |
+| claude-opus-5 | 64,7 % | 53,3 % | **56,7 %** | **88,3 %** | 90,0 % | 54,3 % | 62,1 % | 55,2 % (143) |
+| gpt-5.6-terra (línea base) | 61,3 % | 52,0 % | 51,7 % | 83,3 % | 83,3 % | 51,9 % | 59,6 % | 52,0 % (150) |
+| gpt-6.1-terra | 59,3 % | 51,3 % | 46,7 % | 78,3 % | 86,7 % | 50,0 % | 62,1 % | 52,7 % (129) |
+| gemini-3.1-pro-preview | 57,0 % | 45,3 % | 46,7 % | 85,0 % | 80,0 % | 45,7 % | 55,9 % | 45,3 % (150) |
+| gpt-5.4-mini | 54,7 % | 41,3 % | 43,3 % | 83,3 % | 86,7 % | 41,9 % | 54,0 % | 41,3 % (150) |
+
+R@5 estricta:
+
+| Modelo | Total | `live` | `urg` | `exam` | `synth` | `live`+`urg` | Raras | `live` sin ver |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | **81,3 %** | **73,3 %** | **78,3 %** | **96,7 %** | 96,7 % | **74,8 %** | **78,9 %** | 73,3 % |
+| claude-opus-5 | 78,7 % | 71,3 % | 73,3 % | 95,0 % | 93,3 % | 71,9 % | 73,3 % | 72,7 % |
+| gpt-5.6-terra (línea base) | 78,3 % | 71,3 % | 76,7 % | 88,3 % | 96,7 % | 72,9 % | 73,9 % | 71,3 % |
+| gpt-6.1-terra | 73,7 % | 64,7 % | 70,0 % | 88,3 % | 96,7 % | 66,2 % | 71,4 % | 68,2 % |
+| gemini-3.1-pro-preview | 68,7 % | 57,3 % | 68,3 % | 90,0 % | 83,3 % | 60,5 % | 64,0 % | 57,3 % |
+| gpt-5.4-mini | 70,0 % | 56,7 % | 73,3 % | 88,3 % | 93,3 % | 61,4 % | 64,6 % | 56,7 % |
+
+«`live` sin ver»: casos publicados después del corte del modelo
+(`data29/data-repos/narrative-v2/model_cutoffs.yaml`), entre paréntesis.
+
+Diferencias con Terra 5.6 en casos reales (`live`+`urg`, 210 casos),
+McNemar exacto sobre los mismos casos:
+
+| Modelo | R@1: gana / pierde | p | R@5: gana / pierde | p |
+|---|---:|---:|---:|---:|
+| gpt-6.1-sol | 22 / 9 (+6,2 pp) | 0,03 | 14 / 10 (+1,9 pp) | 0,54 |
+| claude-opus-5 | 26 / 21 (+2,4 pp) | 0,56 | 15 / 17 (−1,0 pp) | 0,86 |
+| gpt-6.1-terra | 12 / 16 (−1,9 pp) | 0,57 | 6 / 20 (−6,7 pp) | 0,009 |
+| gemini-3.1-pro-preview | 11 / 24 (−6,2 pp) | 0,04 | 5 / 31 (−12,4 pp) | < 0,001 |
+| gpt-5.4-mini | 10 / 31 (−10,0 pp) | 0,001 | 7 / 31 (−11,4 pp) | < 0,001 |
+
+| Modelo | Opciones por caso (mediana) | Latencia por caso (mediana) | Coste del juez |
+|---|---:|---:|---:|
+| gpt-6.1-sol | 5 | 22 s | 4,3 $ |
+| claude-opus-5 | 10 | 27 s | 5,9 $ |
+| gpt-5.6-terra | 4 | 8 s | 4,1 $ |
+| gpt-6.1-terra | 5 | 4 s | 4,2 $ |
+| gemini-3.1-pro-preview | 3 | 10 s | 3,4 $ |
+| gpt-5.4-mini | 4 | 5 s | 4,2 $ |
+
+Latencias con 8 llamadas en paralelo (4 en Opus) e incluyen la traducción de
+`urg`. 0 casos con error del juez en los seis runs.
+
+- **gpt-6.1-sol es el único que mejora a Terra 5.6 en P1 de forma clara** en
+  casos reales (+6 puntos). En R@5 empatan.
+- **gpt-6.1-terra no mejora a Terra 5.6**: igual en P1, peor en R@5. Coincide
+  con `all_256_clean` V4 strict (62,5 % frente a 63,3 % en R@1; 77,3 % frente
+  a 83,2 % en R@5).
+- **Claude Opus 5** queda entre los dos, sin diferencia significativa con
+  Terra 5.6. Devuelve listas de unas 10 opciones: su cobertura (82 %) no es
+  comparable con la de los demás, R@1 y R@5 sí.
+- **Gemini 3.1 Pro** devuelve 3 o 4 opciones en el 99 % de los casos, y eso le
+  cuesta R@5. En `exam` está a la par de los demás.
+- **`exam` no separa a los modelos** (78–88 % en R@1) y `live` sí (41–60 %):
+  confirma que la cifra principal debe ser `live`+`urg`.
+- **Sin señal de contaminación:** en los 21 casos `live` que gpt-6.1-terra
+  pudo ver, no acierta más que en el resto.
+
+## Esfuerzo de razonamiento medium (29-oct-2026)
+
+¿Mejoran Terra y Sol razonando más? En `all_256_clean` (V4 strict) no
+mejoraban: Terra low 63,3 % de R@1, frente a 62,5 % en medium, high y xhigh;
+gpt-6.1-sol low 64,1 %, medium 62,1 %. Se repite en `narrative_v2`, donde los
+casos reales dejan más margen. Runs completos con
+`config_terra_medium_narrative_v2.yaml` y
+`config_gpt61sol_medium_narrative_v2.yaml`: mismo prompt, juez y
+`max_tokens` (12.000; ninguna respuesta cortada).
+
+R@1 estricta; McNemar exacto de medium frente a low sobre los mismos casos:
+
+| Grupo | Terra low | Terra medium | gana / pierde | p | Sol low | Sol medium | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Casos reales (`live`+`urg`, 210) | 51,9 % | 53,3 % | 9 / 6 | 0,61 | 58,1 % | 58,6 % | 11 / 10 | 1,0 |
+| Raras reales (116) | 53,4 % | 53,4 % | 5 / 5 | 1,0 | 64,7 % | 61,2 % | 4 / 8 | 0,39 |
+| No raras reales (94) | 50,0 % | 53,2 % | 4 / 1 | 0,38 | 50,0 % | 55,3 % | 7 / 2 | 0,18 |
+| `exam` (60) | 83,3 % | 81,7 % | 3 / 4 | 1,0 | 86,7 % | 85,0 % | 1 / 2 | 1,0 |
+| Total (300) | 61,3 % | 62,3 % | 13 / 10 | 0,68 | 67,0 % | 67,0 % | 12 / 12 | 1,0 |
+
+R@5 en casos reales: Terra 72,9 % → 74,3 %; Sol 74,8 % → 74,8 %.
+
+| | Coste por caso | Latencia (mediana) |
+|---|---:|---:|
+| Terra low → medium | 1,34 → 1,40 c$ | 8,2 → 8,8 s |
+| Sol low → medium | 1,04 → 1,17 c$ | 22,3 → 24,0 s |
+
+- **Ninguna diferencia significativa** en ningún grupo ni modelo. Los cambios
+  son de uno a cinco casos y en ambos sentidos.
+- **Sol medium no mejora a Sol low en raras** (61,2 % frente a 64,7 %, no
+  significativo); sube algo en no raras, también sin significación.
+- **Se mantiene `low`.** Con casos reales y sin contaminar se confirma lo que
+  ya se vio en `all_256_clean`: razonar más cuesta algo más y no acierta más.
+
+## Prueba de juez más barato (29-oct-2026)
+
+Paso 6 del ROADMAP. Las listas de los seis modelos se han vuelto a puntuar con
+Gemini 3.8 Flash y Gemini 2.5 Flash (`OUTPUT_TAG: judge_<modelo>`, en carpetas
+`<modelo>__judge_<juez>`), y Gemini 2.5 Pro se ha repetido sobre las listas de
+Terra 5.6 para medir cuánto varía el propio juez. Detalle completo:
+`output/narrative_v2/juanjo_classic_v2/judge_comparison.md`
+(`py compare_judges.py --judges gemini-3.8-flash gemini-2.5-flash`).
+
+R@1 estricta en casos reales (`live`+`urg`, 210):
+
+| Modelo | Gemini 2.5 Pro | Gemini 3.8 Flash | Gemini 2.5 Flash |
+|---|---:|---:|---:|
+| gpt-6.1-sol | 58,1 % | 60,5 % | 56,7 % |
+| claude-opus-5 | 54,3 % | 55,2 % | 56,2 % |
+| gpt-5.6-terra | 51,9 % | 55,2 % | 52,9 % |
+| gpt-6.1-terra | 50,0 % | 53,8 % | 50,0 % |
+| gemini-3.1-pro | 45,7 % | 46,2 % | 44,8 % |
+| gpt-5.4-mini | 41,9 % | 43,8 % | 42,9 % |
+
+| Juez | Mismo «2 o no» que Pro (por opción) | Kappa | Misma nota 2/1/0 | Coste, seis modelos | Mediana por llamada |
+|---|---:|---:|---:|---:|---:|
+| Gemini 2.5 Pro repetido (Terra) | 98,5 % | 0,96 | 94,3 % | 26,15 $ | 11,1 s |
+| Gemini 3.8 Flash | 98,0 % | 0,93 | 87,7 % | 0,83 $ | 2,0 s |
+| Gemini 2.5 Flash | 97,8 % | 0,92 | 86,8 % | 5,99 $ | 5,0 s |
+
+- **El orden de los modelos no cambia** en R@1 con ningún juez, ni en casos
+  reales ni en el total. En R@5 solo se cruzan Opus 5 y Terra 5.6, que con Pro
+  están a un punto o menos.
+- **En la frontera que usa la nota estricta («2 o no»), Gemini 3.8 Flash
+  discrepa de Pro casi lo mismo que Pro de sí mismo** (98,0 % frente a
+  98,5 %). Sus diferencias están sobre todo entre 1 y 0, que solo afecta a la
+  nota laxa.
+- **3.8 Flash da 1–4 puntos más de R@1** según el modelo. No se pueden mezclar
+  cifras de jueces distintos: si se cambia de juez, se re-puntúa todo (cuesta
+  menos de 1 $ por los seis modelos).
+- **En las 208 opciones en que discrepan sobre el 2, ninguno es claramente mejor.**
+  Flash acierta, por ejemplo, «Polymyxin-associated neurotoxicity» frente a
+  «Polymyxin B-induced neurotoxicity», que Pro deja en 1; Pro da un 2 dudoso a
+  «Aortic regurgitation… with aortic root dilatation» frente a «Aortic aneurysm».
+- **Gemini 3.8 Flash cuesta unas 30 veces menos y es 5 veces más rápido**
+  (precio de Google hasta el 31-dic-2026; el doble después). La decisión
+  depende de cuál se parece más al criterio de David (tarea 2 de
+  `docs/tareas-david/`).
+
+## Pendiente
+
+Decidido e implementado en `graded_v2` (reglas de la rúbrica que contestó
+Julián; detalle en el §12 de
+`bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md`):
+
+- ~~**ICD-10 exacto**~~: lo decide el juez; solo SNOMED exacto decide sin
+  juez (C1). ICD-10 agrupa enfermedades distintas bajo un código: déficit de
+  piruvato deshidrogenasa frente a déficit de piruvato carboxilasa.
+- ~~**Gold compuestos**~~ («X with Y», «finding due to X»): se aciertan con
+  «X» (C2).
+- ~~**Casos con varios gold**~~: basta con acertar uno, sean nombres
+  alternativos o diagnósticos simultáneos (C3). En `narrative_v2`, los
+  secundarios solo puntúan en `urg`; en el resto de bloques son
+  comorbilidades y no puntúan.
+- ~~**Gold amplios**~~: se mantienen y se aciertan con una forma más
+  específica (C4). En `narrative_v2` ya no hay gold inespecíficos («viral
+  illness», «… pain»), y los que no son enfermedad los revisa David en la
+  tarea 1.
+- ~~**Raras (HPO): nombre de la enfermedad sin gen**~~. Hecho en HPO v2
+  (`data29/data-repos/hpo-v2/README.md`). Con Terra low, R@1 estricta del
+  total HPO: 29,9 % con V4 strict, 27,2 % con V5 y solo el gold con gen,
+  40,9 % con V5 y el gold con gen o sin gen.
+
+Pendiente de David (`docs/tareas-david/`):
+
+- **Tarea 1:** validar el gold de `narrative_v2`. Con su resultado sale la
+  v0.2 y se re-puntúan los runs con `REFRESH_GOLD_FROM_DATASET`.
+- **Tarea 2:** validar la escala 2/1/0 y elegir juez (Gemini 2.5 Pro frente a
+  Gemini 3.8 Flash).
+- **Tarea 3:** revisar los nombres sin gen de raras y los 9 casos con HPO
+  insuficientes.

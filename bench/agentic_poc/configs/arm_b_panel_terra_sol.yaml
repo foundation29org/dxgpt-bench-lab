@@ -1,0 +1,32 @@
+EXPERIMENT_NAME: narrative_v2-agentic_poc-arm_b_panel_terra_sol
+EXPERIMENT_DESCRIPTION: PoC de la capa agéntica, brazo arm_b_panel_terra_sol, sobre
+  las listas de gpt-5.6-terra low (bench/agentic_poc). Mismo juez y evaluador que
+  la línea base.
+DATASET_PATH: bench/datasets/narrative_v2.json
+DXGPT_EMULATOR:
+  MODEL: gpt-5.6-terra
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: low
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+EVALUATOR:
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    thinking_level: low
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  PARALLEL_WORKERS: 8
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_LABEL: false
+  SHOULD_EVALUATE: true
+TIMESTAMP: null
+REUSE_LABELED_DDX: bench/agentic_poc/work/arm_b_panel_terra_sol.json
+OUTPUT_TAG: arm_b_panel_terra_sol
