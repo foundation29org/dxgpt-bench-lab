@@ -217,6 +217,51 @@ Latencias con 8 llamadas en paralelo (4 en Opus) e incluyen la traducción de
 - **Sin señal de contaminación:** en los 21 casos `live` que gpt-6.1-terra
   pudo ver, no acierta más que en el resto.
 
+## Prueba de juez más barato (29-oct-2026)
+
+Paso 6 del ROADMAP. Las listas de los seis modelos se han vuelto a puntuar con
+Gemini 3.8 Flash y Gemini 2.5 Flash (`OUTPUT_TAG: judge_<modelo>`, en carpetas
+`<modelo>__judge_<juez>`), y Gemini 2.5 Pro se ha repetido sobre las listas de
+Terra 5.6 para medir cuánto varía el propio juez. Detalle completo:
+`output/narrative_v2/juanjo_classic_v2/judge_comparison.md`
+(`py compare_judges.py --judges gemini-3.8-flash gemini-2.5-flash`).
+
+R@1 estricta en casos reales (`live`+`urg`, 210):
+
+| Modelo | Gemini 2.5 Pro | Gemini 3.8 Flash | Gemini 2.5 Flash |
+|---|---:|---:|---:|
+| gpt-6.1-sol | 58,1 % | 60,5 % | 56,7 % |
+| claude-opus-5 | 54,3 % | 55,2 % | 56,2 % |
+| gpt-5.6-terra | 51,9 % | 55,2 % | 52,9 % |
+| gpt-6.1-terra | 50,0 % | 53,8 % | 50,0 % |
+| gemini-3.1-pro | 45,7 % | 46,2 % | 44,8 % |
+| gpt-5.4-mini | 41,9 % | 43,8 % | 42,9 % |
+
+| Juez | Mismo «2 o no» que Pro (por opción) | Kappa | Misma nota 2/1/0 | Coste, seis modelos | Mediana por llamada |
+|---|---:|---:|---:|---:|---:|
+| Gemini 2.5 Pro repetido (Terra) | 98,5 % | 0,96 | 94,3 % | 26,15 $ | 11,1 s |
+| Gemini 3.8 Flash | 98,0 % | 0,93 | 87,7 % | 0,83 $ | 2,0 s |
+| Gemini 2.5 Flash | 97,8 % | 0,92 | 86,8 % | 5,99 $ | 5,0 s |
+
+- **El orden de los modelos no cambia** en R@1 con ningún juez, ni en casos
+  reales ni en el total. En R@5 solo se cruzan Opus 5 y Terra 5.6, que con Pro
+  están a un punto o menos.
+- **En la frontera que usa la nota estricta («2 o no»), Gemini 3.8 Flash
+  discrepa de Pro casi lo mismo que Pro de sí mismo** (98,0 % frente a
+  98,5 %). Sus diferencias están sobre todo entre 1 y 0, que solo afecta a la
+  nota laxa.
+- **3.8 Flash da 1–4 puntos más de R@1** según el modelo. No se pueden mezclar
+  cifras de jueces distintos: si se cambia de juez, se re-puntúa todo (cuesta
+  menos de 1 $ por los seis modelos).
+- **En las 208 opciones en que discrepan sobre el 2, ninguno es claramente mejor.**
+  Flash acierta, por ejemplo, «Polymyxin-associated neurotoxicity» frente a
+  «Polymyxin B-induced neurotoxicity», que Pro deja en 1; Pro da un 2 dudoso a
+  «Aortic regurgitation… with aortic root dilatation» frente a «Aortic aneurysm».
+- **Gemini 3.8 Flash cuesta unas 30 veces menos y es 5 veces más rápido**
+  (precio de Google hasta el 31-dic-2026; el doble después). La decisión
+  depende de cuál se parece más al criterio de David (tarea 2 de
+  `docs/tareas-david/`).
+
 ## Pendiente
 
 Cosas que el run ha sacado a la luz y que necesitan decisión clínica (David):

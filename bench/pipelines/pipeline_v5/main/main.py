@@ -140,12 +140,17 @@ def create_output_directory(config: Dict[str, Any]) -> str:
     # Get file names
     file_names = get_file_names(config)
     
-    # Create output directory path with dataset nesting
+    # Create output directory path with dataset nesting. OUTPUT_TAG keeps
+    # experiments on the same lists (another judge, for example) apart from
+    # the official runs of the model.
+    model_folder = file_names['model_name']
+    if config.get('OUTPUT_TAG'):
+        model_folder = f"{model_folder}__{clean_name_for_filename(config['OUTPUT_TAG'])}"
     output_dir = os.path.join(
         os.path.dirname(__file__), 'output',
         file_names['dataset_name'],
         file_names['prompt_name'],
-        file_names['model_name']
+        model_folder
     )
     
     os.makedirs(output_dir, exist_ok=True)

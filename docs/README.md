@@ -11,6 +11,7 @@ Mapa corto de donde vive cada tipo de informacion y que documentos son canonicos
 | `bench/pipelines/pipeline_v5/main/README.md` | Benchmark | Resultados de V5 (`narrative_v2`, raras HPO v2) y cambios respecto a V4 |
 | `docs/benchmark-report-v5.html` | Informe | Informe con graficas de V5; se regenera con `bench/pipelines/pipeline_v5/main/build_report.py` |
 | `docs/ROADMAP.md` | Roadmap | Fases, decisiones y trazabilidad |
+| `docs/tareas-david/` | Revision clinica | Una ficha por encargo a David: para que sirve, que hacer, material, como se devuelve |
 | `bench/pipelines/pipeline_v4 - fork/main/README.md` | Benchmark historico | Serie historica con Pipeline V4 (`all_256_clean`) |
 | `bench/pipelines/pipeline_v4 - fork/main/GUIA_EVALUACION.md` | Runbook V4 | Ejecucion, reanudacion y lectura de outputs de V4 |
 | `docs/benchmark-report-strict-texto.html` | Informe historico | V4 strict sobre `all_256_clean` y HPO |

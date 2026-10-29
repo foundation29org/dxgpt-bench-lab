@@ -50,6 +50,8 @@ VALID_GRADES = (GRADE_DIFFERENT, GRADE_RELATED, GRADE_SAME)
 # judge reports under bench/multimodal_beta/results.
 JUDGE_PRICES_PER_MILLION = {
     'gemini-2.5-pro': (1.25, 10.0),
+    'gemini-2.5-flash': (0.30, 2.50),
+    'gemini-3.8-flash': (0.75, 3.75),  # Google price until 31-dec-2026; doubles from 1-jan-2027
 }
 
 

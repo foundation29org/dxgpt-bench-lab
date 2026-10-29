@@ -27,6 +27,7 @@ from math import comb
 
 import yaml
 
+import compare_judges
 from score_blocks import load_details, strict_position
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -37,6 +38,8 @@ NARRATIVE_V2 = os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.json')
 NARRATIVE_TOOLS = os.path.join(EVAL_ROOT, 'data29', 'data-repos', 'narrative-v2')
 JUDGE_AUDIT = os.path.join(EVAL_ROOT, 'bench', 'multimodal_beta', 'outputs', 'judge_audit')
 BASELINE = 'terra56'
+# Cheaper judges re-scored on the same narrative_v2 lists (OUTPUT_TAG judge_<model>)
+JUDGE_CANDIDATES = ['gemini-3.8-flash', 'gemini-2.5-flash']
 
 # id, run folder, model as in model_cutoffs.yaml, label, colour (fixed per model)
 MODELS = [
@@ -204,6 +207,11 @@ def collect():
                 'withoutClinical': {'n': len(outside), 'v2': metrics([strict_position(v5[i], False) for i in outside])},
             }
         data['hpo'].append(row)
+    judges = compare_judges.compare(JUDGE_CANDIDATES)
+    if judges:
+        judges['colors'] = {name: color for (_, name), (*_, color) in zip(compare_judges.MODELS, MODELS)}
+    data['judges'] = judges
+
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
                         'judgeCalls': sum(r['judgeCalls'] for r in data['hpo']),
@@ -276,6 +284,78 @@ def hpo_table(data):
             f'<td>{pct(r["v4"]["r1"])}</td><td>{pct(r["v5orig"]["r1"])}</td><td>{open_}{pct(r["v5v2"]["r1"])}{close}</td>'
             f'<td>{pct(r["v4"]["r5"])}</td><td>{pct(r["v5orig"]["r5"])}</td><td>{open_}{pct(r["v5v2"]["r5"])}{close}</td></tr>')
     return '\n'.join(rows)
+
+
+def judges_section(data):
+    j = data.get('judges')
+    if not j:
+        return ''
+    names = {'gemini-2.5-pro': 'Gemini 2.5 Pro (actual)', 'gemini-3.8-flash': 'Gemini 3.8 Flash', 'gemini-2.5-flash': 'Gemini 2.5 Flash'}
+    taus = j['tau']['realcases_r1']
+    same_order = all(v == 1 for v in taus.values())
+    agreement_rows = '\n'.join(
+        f'<tr><td>{html.escape(a["judge"])}</td><td>{html.escape(a["scope"])}</td><td>{pct(a["sameP1"])}</td><td>{pct(a["same2"])}</td>'
+        f'<td>{num(a["kappa2"], 2)}</td><td>{pct(a["sameGrade"])}</td><td>{num(a["kappa"], 2)}</td></tr>' for a in j['agreement'])
+    cost_rows = '\n'.join(
+        f'<tr><td>{names.get(c["judge"], c["judge"])}</td><td>{c["calls"]}</td><td>{num(c["cost"], 2)} $</td><td>{num(c["p50"])} s</td><td>{c["errors"]}</td></tr>'
+        for c in j['cost'])
+    flash = next(a for a in j['agreement'] if a['judge'] == 'gemini-3.8-flash')
+    rerun = next((a for a in j['agreement'] if 'repetido' in a['judge']), None)
+    cost = {c['judge']: c for c in j['cost']}
+    return f'''
+  <div class="section">
+    <div class="section-title">Prueba de juez más barato · mismas listas, tres jueces</div>
+    <div class="callout callout-info">
+      Paso 6 del ROADMAP: si el orden de los modelos no cambia con un juez más barato, se puede usar el barato. Se han vuelto a
+      puntuar las listas de los seis modelos con Gemini 3.8 Flash y Gemini 2.5 Flash, sin generar listas nuevas. Para saber cuánto
+      varía el propio juez actual, Gemini 2.5 Pro se ha repetido sobre las listas de Terra 5.6.
+      <strong>{"El orden de los modelos en casos reales no cambia con ningún juez." if same_order else "El orden de los modelos cambia con algún juez."}</strong>
+      Gemini 3.8 Flash coincide con Pro en «¿es un 2 o no?» en el {pct(flash['same2'])} de las opciones{f", casi lo mismo que Pro consigo mismo ({pct(rerun['same2'])})" if rerun else ""},
+      y cuesta {num(cost['gemini-2.5-pro']['cost'] / max(cost['gemini-3.8-flash']['cost'], 0.01), 0)} veces menos. Falta lo decisivo: cuál de los dos se
+      parece más al criterio de David (<a href="tareas-david/02-escala-del-juez.md">tarea 2</a>).
+    </div>
+    <div class="viz-panel">
+      <div class="viz-panel-title"><span>Acierto en casos reales según el juez</span>
+        <div class="viz-tabs" id="judge-tabs">
+          <button type="button" class="viz-tab active" data-k="r1">R@1</button>
+          <button type="button" class="viz-tab" data-k="r5">R@5</button>
+        </div>
+      </div>
+      <div class="viz-panel-sub">Cada fila es un modelo; cada marca, la nota estricta que le da un juez sobre las mismas listas
+        (<code>live</code>+<code>urg</code>, 210 casos). Si las marcas de una fila están juntas, el juez no cambia la conclusión.</div>
+      <div class="svg-wrap"><svg id="judge-svg" class="svg-chart" viewBox="0 0 680 320" role="img" aria-label="Acierto de cada modelo según el juez"></svg></div>
+      <div class="viz-legend">
+        <span class="viz-legend-item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#1e293b"/></svg>Gemini 2.5 Pro (actual)</span>
+        <span class="viz-legend-item"><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" transform="rotate(45 6 6)" fill="#fff" stroke="#1e293b" stroke-width="2"/></svg>Gemini 3.8 Flash</span>
+        <span class="viz-legend-item"><svg width="12" height="12"><rect x="2" y="2" width="8" height="8" fill="#94a3b8"/></svg>Gemini 2.5 Flash</span>
+      </div>
+    </div>
+    <h3>Coincidencia con Gemini 2.5 Pro</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Juez</th><th>Sobre</th><th>Mismo acierto en P1 (por caso)</th><th>Mismo «2 o no» (por opción)</th><th>Kappa «2 o no»</th>
+        <th>Misma nota 2/1/0</th><th>Kappa 2/1/0</th></tr></thead>
+      <tbody>
+{agreement_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">La nota estricta solo usa la frontera «2 o no». Las diferencias de Flash están sobre todo entre 1 y 0, que solo afecta a la
+      nota laxa. Gemini 3.8 Flash da algo más de aciertos estrictos que Pro (1–4 puntos según el modelo): no se pueden mezclar cifras de
+      jueces distintos; si se cambia de juez, se re-puntúa todo.</p>
+    <h3>Coste y latencia del juez (seis modelos, 300 casos cada uno)</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Juez</th><th>Llamadas</th><th>Coste estimado</th><th>Mediana por llamada</th><th>Casos con error</th></tr></thead>
+      <tbody>
+{cost_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Precios de Google: Gemini 3.8 Flash 0,75 $ / 3,75 $ por millón de tokens hasta el 31-dic-2026 (el doble después).
+      Gemini 2.5 Flash razona sin límite por defecto y gasta más tokens que 3.8 Flash.</p>
+  </div>
+'''
 
 
 def all256_table():
@@ -523,6 +603,7 @@ def build_html(data):
       <code>live</code>. Una fecha de corte es lo que declara el proveedor; no descarta preprints.</p>
   </div>
 
+{judges_section(data)}
   <div class="section">
     <div class="section-title">Raras HPO v2 · Terra 5.6 low · 3.006 casos</div>
     <div class="callout callout-info">
@@ -900,6 +981,50 @@ CHART_JS = r'''
   }
   tabs('hpo-tabs', function (b) { hpoK = b.getAttribute('data-k'); renderHpo(); });
 
+  // 8) Same lists, three judges
+  var judgeK = 'r1';
+  function renderJudges() {
+    var J = DATA.judges;
+    var svg = document.getElementById('judge-svg');
+    if (!J || !svg) return;
+    var block = J.recall['realcases_' + judgeK];
+    var W = 680, padL = 170, padR = 30, padT = 20, row = 44, H = padT + row * J.models.length + 36;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var vals = [];
+    J.judges.forEach(function (j) { J.models.forEach(function (m) { vals.push(block.values[j][m]); }); });
+    var x0 = Math.floor((Math.min.apply(null, vals) - 3) / 5) * 5, x1 = Math.ceil((Math.max.apply(null, vals) + 3) / 5) * 5;
+    function sx(v) { return padL + (v - x0) / (x1 - x0) * (W - padL - padR); }
+    var MARK = {
+      'gemini-2.5-pro': function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="6.5" fill="#1e293b" stroke="#fff" stroke-width="2"/>'; },
+      'gemini-3.8-flash': function (x, y) { return '<rect x="' + (x - 5) + '" y="' + (y - 5) + '" width="10" height="10" transform="rotate(45 ' + x + ' ' + y + ')" fill="#fff" stroke="#1e293b" stroke-width="2"/>'; },
+      'gemini-2.5-flash': function (x, y) { return '<rect x="' + (x - 4.5) + '" y="' + (y - 4.5) + '" width="9" height="9" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>'; }
+    };
+    var out = [];
+    for (var t = x0; t <= x1; t += 5) {
+      out.push('<line x1="' + sx(t) + '" y1="' + (padT - 6) + '" x2="' + sx(t) + '" y2="' + (H - 30) + '" stroke="' + GRID + '"/>');
+      out.push(text(sx(t), H - 12, t + ' %', { anchor: 'middle', fill: MUTED, size: 10.5 }));
+    }
+    block.orders['gemini-2.5-pro'].forEach(function (m, i) {
+      var y = padT + i * row + row / 2;
+      var xs = J.judges.map(function (j) { return sx(block.values[j][m]); });
+      out.push('<line x1="' + Math.min.apply(null, xs) + '" y1="' + y + '" x2="' + Math.max.apply(null, xs) + '" y2="' + y + '" stroke="' + J.colors[m] + '" stroke-width="3" opacity="0.5"/>');
+      out.push('<circle cx="' + (padL - 150) + '" cy="' + y + '" r="5" fill="' + J.colors[m] + '"/>');
+      out.push(text(padL - 140, y + 4, esc(m), { weight: 600 }));
+      J.judges.slice().reverse().forEach(function (j) { if (MARK[j]) out.push(MARK[j](sx(block.values[j][m]), y)); });
+      out.push('<rect class="hit" data-m="' + esc(m) + '" x="0" y="' + (y - row / 2) + '" width="' + W + '" height="' + row + '" fill="transparent"/>');
+    });
+    svg.innerHTML = out.join('');
+    bindTips(svg, '.hit', function (el) {
+      var m = el.getAttribute('data-m');
+      return '<strong>' + esc(m) + '</strong> · casos reales, R@' + judgeK.slice(1) + ' estricta<br>' +
+        J.judges.map(function (j) { return esc(j) + ': <b>' + pc(block.values[j][m]) + '</b>'; }).join('<br>');
+    });
+  }
+  if (document.getElementById('judge-tabs')) {
+    tabs('judge-tabs', function (b) { judgeK = b.getAttribute('data-k'); renderJudges(); });
+  }
+
+  renderJudges();
   renderDumbbell();
   renderHeat();
   renderMc();

@@ -207,6 +207,7 @@ Ejemplos: `config_terra_low_all256.yaml` (mismas listas que V4) y
 | `compare_runs.py` | Casos que cambian entre un run V4 y uno V5 con las mismas listas, agrupados por la capa de V4 que los decidía |
 | `repair_judge_errors.py` | Vuelve a juzgar solo los casos en los que el juez falló tres veces (Gemini devuelve a veces 503) y reescribe las salidas del run |
 | `build_report.py` | Regenera `docs/benchmark-report-v5.html` con los últimos runs |
+| `compare_judges.py` | Compara jueces sobre las mismas listas de `narrative_v2`: cifras y orden de los modelos con cada juez, coincidencia con Gemini 2.5 Pro y coste |
 
 ### Claves de configuración
 
@@ -222,6 +223,7 @@ Ejemplos: `config_terra_low_all256.yaml` (mismas listas que V4) y
 | `EVALUATOR.PARALLEL_WORKERS` | Casos en paralelo al juzgar |
 | `EVALUATOR.CASE_LIMIT` | Solo los primeros N casos (prueba rápida) |
 | `REUSE_LABELED_DDX`, `REFRESH_GOLD_FROM_DATASET` | Re-puntuar listas de otro run, con el gold actual del dataset |
+| `OUTPUT_TAG` | Guarda el run en `<modelo>__<etiqueta>` en vez de en la carpeta del modelo. Para experimentos sobre las mismas listas (otro juez, por ejemplo) que no deben mezclarse con el run oficial, que es el que leen `build_report.py` y `score_blocks.py` |
 | `MAIN.SHOULD_EMULATE / SHOULD_LABEL / SHOULD_EVALUATE` | Qué etapas se ejecutan |
 
 ## Salidas
@@ -263,8 +265,9 @@ A eso se suma el coste de generar las listas con el modelo evaluado.
 - **El juez no es determinista del todo.** Repetir la evaluación puede mover
   unos pocos casos; no hay que leer diferencias de 1–2 casos como señal.
 - **El juez decide casi todo.** Si cambia el modelo del juez, cambian las
-  cifras. La elección del juez está pendiente (paso 6 del
-  [ROADMAP](../ROADMAP.md)).
+  cifras (Gemini 3.8 Flash da 1–4 puntos más de R@1 que Pro sobre las mismas
+  listas), aunque el orden de los modelos se mantiene. La elección del juez
+  está pendiente de las notas de David (paso 6 del [ROADMAP](../ROADMAP.md)).
 - **Los nombres sin gen de raras los propuso un LLM** y están pendientes de
   revisión clínica.
 - **Listas de longitud distinta.** Claude Opus 5 devuelve unas 10 opciones y

@@ -53,15 +53,29 @@ Cifras de referencia con Terra low:
    Opus 5 7 y gpt-6.1-sol 4. `score_blocks.py --live-dates` da la cifra sin
    ellos: varía 1–2 puntos y no da ventaja a quien pudo verlos.
 
-### Cuando David termine la validación de `narrative_v2`
+### Cuando David termine sus revisiones
 
-4. **`narrative_v2` v0.2:** aplicar sus correcciones y exclusiones, cubrir las
-   bajas con casos de reserva (la selección es estable por caso) y re-puntuar
-   los runs. Con eso, línea base oficial.
-5. **Validar la escala 2/1/0** con David sobre casos de `narrative_v2`,
+Las revisiones de David tienen cada una su ficha en
+[docs/tareas-david/](tareas-david/README.md): validación de `narrative_v2`
+(tarea 1, encargada), escala del juez (tarea 2, se prepara tras la 1) y
+nombres sin gen de raras más los 9 casos de la causa C de T3 (tarea 3, hoja
+lista).
+
+4. **`narrative_v2` v0.2** (tras la tarea 1): aplicar sus correcciones y
+   exclusiones, cubrir las bajas con casos de reserva (la selección es estable
+   por caso) y re-puntuar los runs. Con eso, línea base oficial.
+5. **Validar la escala 2/1/0** (tarea 2) sobre casos de `narrative_v2`,
    incluida la frontera entre 1 y 0, y decidir si la nota laxa se publica.
+   **Raras HPO v2** (tarea 3): aplicar sus correcciones a los nombres sin gen
+   y a la causa C, y re-puntuar.
 6. **Elegir el juez** con esa validación. Si el orden de los modelos no cambia
    con un juez más barato, usar el más barato; si cambia, mantener Gemini 2.5 Pro.
+   Primera mitad hecha el 29-oct sobre las listas de los seis modelos: con
+   Gemini 3.8 Flash y con Gemini 2.5 Flash el orden en R@1 no cambia, y 3.8
+   Flash coincide con Pro en «¿es un 2?» casi tanto como Pro consigo mismo
+   (98,0 % frente a 98,5 % de las opciones), por unas 30 veces menos coste.
+   Falta la segunda mitad: cuál se parece más a las notas de David (tarea 2).
+   Detalle en el [README de V5](../bench/pipelines/pipeline_v5/main/README.md).
 
 ### Después
 
