@@ -10,7 +10,8 @@ This is the main orchestrator that manages the entire pipeline execution:
 
 Emulator and labeler are the Pipeline V4 ones. REUSE_LABELED_DDX lets a run
 re-evaluate the DDX lists and codes of an earlier run, so only the evaluator
-changes between the two.
+changes between the two. With REFRESH_GOLD_FROM_DATASET the reused lists are
+scored against the gold currently in DATASET_PATH.
 
 Features:
 - State management and resumption
@@ -533,6 +534,51 @@ def reuse_labeled_ddx(source_path: str, output_dir: str, file_names: Dict[str, s
     print(f"📄 Reusing labeled DDX from: {source_path}")
     return True
 
+def refresh_gold_from_dataset(dataset_path: str, output_dir: str, file_names: Dict[str, str]) -> bool:
+    """
+    Replace the gold of the labeled DDX with the gold of DATASET_PATH
+
+    The DDX lists do not depend on the gold, so a corrected dataset can be
+    scored on the same lists. Cases that are no longer in the dataset
+    (excluded) are dropped.
+
+    Args:
+        dataset_path: Dataset JSON, relative to the eval repo root
+        output_dir: Output directory path
+        file_names: Dictionary with file names
+
+    Returns:
+        True if the labeled DDX now carry the dataset gold
+    """
+    dataset_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', dataset_path))
+    labeled_path = os.path.join(output_dir, file_names['labeler_file'])
+    if not check_file_exists(labeled_path):
+        print(f"❌ REFRESH_GOLD_FROM_DATASET needs labeled DDX at: {labeled_path}")
+        return False
+
+    with open(dataset_path, 'r', encoding='utf-8') as f:
+        dataset = {case['id']: case for case in json.load(f)}
+    with open(labeled_path, 'r', encoding='utf-8') as f:
+        labeled = json.load(f)
+
+    refreshed = []
+    for case in labeled:
+        source = dataset.get(case.get('id'))
+        if source is None:
+            continue
+        case.pop('gdx_details', None)
+        for key in ('diagnoses', 'secondary_diagnoses', 'metadata'):
+            if key in source:
+                case[key] = source[key]
+        refreshed.append(case)
+
+    with open(labeled_path, 'w', encoding='utf-8') as f:
+        json.dump(refreshed, f, indent=2, ensure_ascii=False)
+    print(f"📄 Gold refreshed from {dataset_path}: {len(refreshed)} cases kept, "
+          f"{len(labeled) - len(refreshed)} dropped (not in dataset), "
+          f"{len(dataset) - len(refreshed)} dataset cases without DDX")
+    return True
+
 def main():
     """Main pipeline orchestrator"""
     import argparse
@@ -593,6 +639,9 @@ def main():
     if config.get('REUSE_LABELED_DDX'):
         if not reuse_labeled_ddx(config['REUSE_LABELED_DDX'], output_dir, file_names):
             sys.exit(1)
+        if config.get('REFRESH_GOLD_FROM_DATASET'):
+            if not refresh_gold_from_dataset(config['DATASET_PATH'], output_dir, file_names):
+                sys.exit(1)
 
     # Validate pipeline state and determine next steps
     next_step, input_file = validate_pipeline_state(config, output_dir, file_names)

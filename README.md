@@ -24,16 +24,18 @@ summary.json + evaluation_details.txt + rankingV2.txt
 
 ## Current Status
 
-- Canonical narrative benchmark: `all_256_clean`
-- Best OpenAI option for normal production use: `gpt-5.4-mini low`
-- Best advanced option: `gemini-3-pro-preview low`
+- Narrative benchmark: moving from `all_256_clean` (historical) to
+  `narrative_v2` (300 cases, half of them case reports published Jul–Oct 2026),
+  pending clinical validation. See `data29/data-repos/narrative-v2/README.md`
+- Evaluator: Pipeline V5 (`bench/pipelines/pipeline_v5/main`), graded judge on
+  every case. Pipeline V4 is kept for the historical series
 - Gemini `thinking_level=medium` has been tested and is not recommended
 
 The canonical sources for live results are not this README, but:
 
-- `bench/pipelines/pipeline_v4 - fork/main/README.md`
-- `docs/ROADMAP.md`
-- `bench/pipelines/pipeline_v4 - fork/main/output/rankingV2.txt`
+- `docs/ROADMAP.md` (status and next steps)
+- `bench/pipelines/pipeline_v5/main/README.md`
+- `bench/pipelines/pipeline_v4 - fork/main/README.md` and `output/rankingV2.txt` (historical series)
 
 ## Canonical Documentation
 

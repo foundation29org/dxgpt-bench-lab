@@ -1,0 +1,40 @@
+# Pipeline V5 - gpt-5.4-mini low sobre narrative_v2
+# ===================================================
+# Modelo de referencia (ROADMAP, paso 1). Mismo prompt, parametros y juez que
+# la linea base de Terra (config_terra_low_narrative_v2.yaml). Las listas no
+# dependen del gold: cuando cambie el dataset, basta con re-puntuar con
+# REUSE_LABELED_DDX.
+
+EXPERIMENT_NAME: "narrative_v2-juanjo_classic_v2-gpt_5_4_mini_low-v5"
+EXPERIMENT_DESCRIPTION: "Modelo de referencia sobre narrative_v2 (v0.1, pendiente de validacion clinica) con gpt-5.4-mini low y evaluador V5 graded_v2."
+
+DATASET_PATH: "bench/datasets/narrative_v2.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-5.4-mini"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+
+EVALUATOR:
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  PARALLEL_WORKERS: 8
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

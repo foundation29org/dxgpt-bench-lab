@@ -175,6 +175,11 @@ Versión 0.1, todavía sin validación clínica.
   pneumocyte hyperplasia» y dos «Bronchial hyperreactivity». Se resolverán en
   la validación clínica.
 
+Los cinco modelos de referencia (gpt-6.1-sol, Claude Opus 5, gpt-6.1-terra,
+gemini-3.1-pro-preview y gpt-5.4-mini), por bloque, están en el
+[README de Pipeline V5](../../../bench/pipelines/pipeline_v5/main/README.md).
+En `live`+`urg`, R@1 va de 41,9 % (gpt-5.4-mini) a 58,1 % (gpt-6.1-sol).
+
 ## Validación clínica
 
 Antes de publicarse como línea base, David revisa cada caso de `live` y `urg`:
@@ -183,7 +188,33 @@ La hoja la genera `build_dataset.py`.
 
 ## Contaminación
 
-Las fechas de corte de los modelos evaluados no están documentadas en el repo.
-Cada caso `live` guarda su `entrez_date` (primera aparición en PubMed). Si un
-modelo tiene un corte posterior al 1-jul-2026, sus resultados en `live` deben
-filtrarse por fecha.
+Las fechas de corte de los modelos evaluados están en `model_cutoffs.yaml`,
+con la fuente de cada una (comprobadas el 28-oct-2026). Las fuentes dan el
+mes; se toma el último día del mes.
+
+`entrez_date` es la entrada en PubMed, pero casi todas las revistas publican
+el artículo online antes. `live_dates.py` consulta PubMed y guarda en
+`work/live_dates.json` la primera fecha pública de cada caso (publicación
+electrónica, entrada en PubMed o en PMC; no cuenta una fecha anterior a la
+aceptación, que es la del número de la revista). Un caso queda «sin ver» para
+un modelo si esa fecha es posterior a su corte.
+
+| Modelo | Corte | Fuente | `live` sin ver por `entrez_date` | `live` sin ver por primera publicación |
+|---|---|---|---:|---:|
+| gemini-3.1-pro-preview | ene-2025 | Ficha de Google DeepMind (remite a la de Gemini 3 Pro) | 150 | 150 |
+| gpt-5.4-mini | ago-2025 | Microsoft Learn, «Training Data (up to)» | 150 | 150 |
+| gpt-5.6-terra | feb-2026 | Microsoft Learn | 150 | 150 |
+| gpt-6.1-sol | abr-2026 | Microsoft Learn | 150 | 146 |
+| claude-opus-5 | may-2026 | Ficha de Anthropic | 150 | 143 |
+| gpt-6.1-terra | jun-2026 | Microsoft Learn | 150 | 129 |
+
+Ningún modelo tiene un corte posterior al 1-jul-2026, así que por
+`entrez_date` todo el bloque `live` es no visto. Por fecha de publicación,
+21 casos ya estaban online antes de fin de junio. Para gpt-6.1-terra,
+claude-opus-5 y gpt-6.1-sol hay que mirar también la cifra de `live` sin
+esos casos (`score_blocks.py --live-dates`). Una fecha de corte es lo que
+declara el proveedor: no descarta que el modelo haya visto un preprint o una
+versión anterior del caso.
+
+Para la renovación trimestral (paso 9 del ROADMAP), conviene seleccionar por
+fecha de primera publicación y no por `entrez_date`.

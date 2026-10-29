@@ -1,0 +1,45 @@
+# Fechas de corte de los modelos evaluados sobre narrative_v2
+# ============================================================
+# Para saber con qué modelos el bloque `live` (case reports con entrez_date
+# desde el 1-jul-2026) es de verdad no visto. Las fuentes dan el mes: se toma
+# el último día del mes como corte, que es la lectura prudente.
+#
+# Comprobado el 28-oct-2026. `live_dates.py` cruza estas fechas con las de
+# publicación de cada caso en PubMed.
+
+models:
+  gpt-5.4-mini:
+    cutoff: 2025-08
+    released: 2026-03-17
+    source: "Microsoft Learn, Foundry Models sold by Azure, tabla GPT-5.4, columna «Training Data (up to)»"
+    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+  gpt-5.6-terra:
+    cutoff: 2026-02
+    released: 2026-07-09
+    source: "Microsoft Learn, Foundry Models sold by Azure, tabla GPT-5.6, columna «Training Data (up to)»"
+    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+  gpt-6.1-sol:
+    cutoff: 2026-04
+    released: 2026-09-29
+    source: "Microsoft Learn, Foundry Models sold by Azure, tabla GPT-6.1, columna «Training Data (up to)»"
+    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+  gpt-6.1-terra:
+    cutoff: 2026-06
+    released: 2026-10-26
+    source: "Microsoft Learn, Foundry Models sold by Azure, tabla GPT-6.1, columna «Training Data (up to)»"
+    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+  claude-opus-5:
+    cutoff: 2026-05
+    released: 2026-07-24
+    source: "Anthropic, ficha de Claude Opus 5: «Reliable knowledge cutoff» y «Training data cutoff», los dos May 2026"
+    url: https://platform.claude.com/docs/en/models/opus-5/overview
+  gemini-3.1-pro-preview:
+    cutoff: 2025-01
+    released: 2026-02-19
+    source: "Google DeepMind: la ficha de Gemini 3.1 Pro remite a la de Gemini 3 Pro para los datos de entrenamiento, y esta dice «The knowledge cutoff date for Gemini 3 Pro was January 2025»"
+    url: https://deepmind.google/models/model-cards/gemini-3-1-pro/
+  gemini-3-pro-preview:
+    cutoff: 2025-01
+    released: 2025-11-18
+    source: "Google DeepMind, ficha de Gemini 3 Pro (PDF). Retirado de la API: devuelve 404 desde octubre de 2026"
+    url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
