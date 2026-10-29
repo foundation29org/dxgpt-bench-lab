@@ -32,6 +32,25 @@ En cada caso:
 | Diagnosticable | Con ese texto, un clínico podría incluir el diagnóstico en su diferencial |
 | Decisión | Mantener o excluir |
 
+### Cómo decidir
+
+- **Excluir si hay fuga**, aunque el resto esté bien: el caso ya no mide si
+  el modelo llega al diagnóstico. Basta con marcar «Fuga: sí», escribir qué la
+  delata y marcar «excluir»; no hace falta revisar los demás campos.
+  Excepción: si la fuga es una sola frase que se puede quitar sin perder el
+  caso (por ejemplo, el resultado de la biopsia al final), escribe «se arregla
+  quitando: …» y lo decidimos al aplicar tus cambios.
+- **Excluir si no es diagnosticable** con ese texto, o si el diagnóstico no es
+  una enfermedad y no se puede corregir a una.
+- **Mantener, corrigiendo,** si solo hay que cambiar el diagnóstico principal
+  o los nombres aceptados.
+- Las «pistas a revisar» no son fuga por sí solas: una zona anatómica o el
+  fármaco causante no dan el diagnóstico. Solo hay fuga si el texto lo nombra o
+  da una prueba que por sí sola lo establece.
+
+Los casos excluidos se sustituyen por casos de reserva, así que excluir no deja
+huecos.
+
 Conviene mirar con más cuidado:
 
 - los **4 gold que el juez marcó como «no es una enfermedad»**: `L-PMC13364497`
