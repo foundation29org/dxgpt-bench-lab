@@ -251,6 +251,44 @@ R@5 en casos reales: Terra 72,9 % → 74,3 %; Sol 74,8 % → 74,8 %.
 - **Se mantiene `low`.** Con casos reales y sin contaminar se confirma lo que
   ya se vio en `all_256_clean`: razonar más cuesta algo más y no acierta más.
 
+## Pedir exactamente 5 diagnósticos (30-oct-2026)
+
+El prompt (`juanjo_classic_v2.txt`), igual que el de producción
+(`Server/assets/prompts.js`), dice «generate N possible diagnoses» con la N
+sin sustituir, así que cada modelo decide cuántas opciones da. Terra da menos
+de 5 en la mitad de los casos, Gemini 3.1 Pro casi siempre 3 y Opus 5 siempre
+10, y eso afecta a R@5 y a la cobertura. Con el pipeline anterior, pedir 5
+restaba precisión. Se repite con `juanjo_classic_v2_n5.txt`, que solo cambia
+«N» por «5» (`config_<modelo>_low_n5_narrative_v2.yaml`). Mismos casos y
+juez. McNemar de «5» frente a «N»:
+
+| Grupo | Terra «N» | Terra «5» | gana / pierde | p | Sol «N» | Sol «5» | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| R@1 casos reales (210) | 51,9 % | 53,3 % | 10 / 7 | 0,63 | 58,1 % | 59,5 % | 11 / 8 | 0,65 |
+| R@1 raras reales (116) | 53,4 % | 53,4 % | 6 / 6 | 1,0 | 64,7 % | 63,8 % | 4 / 5 | 1,0 |
+| R@1 no raras reales (94) | 50,0 % | 53,2 % | 4 / 1 | 0,38 | 50,0 % | 54,3 % | 7 / 3 | 0,34 |
+| R@5 casos reales (210) | 72,9 % | 73,8 % | 7 / 5 | 0,77 | 74,8 % | 76,2 % | 6 / 3 | 0,51 |
+| R@1 total (300) | 61,3 % | 62,3 % | 14 / 11 | 0,69 | 67,0 % | 67,3 % | 12 / 11 | 1,0 |
+
+| | Opciones (mediana) | Con menos de 5 | Coste por caso | Latencia (mediana) |
+|---|---:|---:|---:|---:|
+| Terra «N» → «5» | 4 → 5 | 50 % → 0 % | 1,34 → 1,47 c$ | 8,2 → 9,4 s |
+| Sol «N» → «5» | 5 → 5 | 8 % → 0 % | 1,04 → 1,03 c$ | 22,3 → 16,4 s |
+
+- **Pedir 5 no resta precisión con ninguno de los dos.** Las diferencias son
+  de 1 a 4 casos, en los dos sentidos, y caben en lo que cambia un modelo al
+  repetir la misma ejecución.
+- **Todas las listas tienen 5 opciones**, así que R@5 y la cobertura pasan a
+  ser comparables entre modelos sin control de longitud.
+- La latencia de Sol depende de la carga del momento (las dos ejecuciones no
+  fueron a la vez); no conviene leer la bajada como efecto del prompt.
+- **Decidido el 30-oct-2026: producción pide 5.** Cambiado en los dos prompts
+  de diagnóstico de `Server/assets/prompts.js` (`withoutDiseases`: «generate 5
+  possible diagnoses»; `withDiseases`: «generate 5 more»), en la rama
+  `develop` de `Dx29_server_gpt`, sin commit ni despliegue todavía. Para que el
+  benchmark mida lo mismo que producción, las próximas ejecuciones oficiales
+  (el re-scoring con `narrative_v2` v0.2) usarán `juanjo_classic_v2_n5`.
+
 ## Prueba de juez más barato (29-oct-2026)
 
 Paso 6 del ROADMAP. Las listas de los seis modelos se han vuelto a puntuar con
@@ -342,10 +380,41 @@ puntúa) con `config_terra_low_narrative_v2_rerun2.yaml`, en la carpeta
 - Por eso una diferencia de 2 o 3 puntos entre dos runs no dice nada por sí
   sola, y menos en un bloque de 60 casos: hace falta el McNemar sobre los
   mismos casos.
-- **La ventaja de Sol se mantiene frente a la segunda ejecución:** 21 / 9 en
-  casos reales (p = 0,04; frente a la primera, 22 / 9 y p = 0,03) y 16 / 2 en
-  raras reales (p = 0,001).
 - Coste: 1,34 c$ por caso de generación y 4,30 $ de juez, igual que el primero.
+
+**Sol, también dos veces (30-oct):** `config_gpt61sol_low_narrative_v2_rerun2.yaml`.
+
+| Grupo | Sol run 1 | Sol run 2 | gana / pierde | p |
+|---|---:|---:|---:|---:|
+| Casos reales (210) | 58,1 % | 57,6 % | 11 / 12 | 1,0 |
+| Raras reales (116) | 64,7 % | 60,3 % | 3 / 8 | 0,23 |
+| No raras reales (94) | 50,0 % | 54,3 % | 8 / 4 | 0,39 |
+| `exam` (60) | 86,7 % | 85,0 % | 0 / 1 | 1,0 |
+| Total (300) | 67,0 % | 66,0 % | 11 / 14 | 0,69 |
+
+Sol frente a Terra en R@1 con cada pareja de ejecuciones (McNemar exacto):
+
+| Ejecuciones | Casos reales | p | Raras reales | p |
+|---|---:|---:|---:|---:|
+| Sol 1 / Terra 1 | 22 / 9 | 0,03 | 18 / 5 | 0,01 |
+| Sol 1 / Terra 2 | 21 / 9 | 0,04 | 16 / 2 | 0,001 |
+| Sol 2 / Terra 1 | 24 / 12 | 0,07 | 15 / 7 | 0,13 |
+| Sol 2 / Terra 2 | 23 / 12 | 0,09 | 14 / 5 | 0,06 |
+| **Las dos de cada uno** | **29 / 15** | **0,05** | **21 / 7** | **0,01** |
+
+«Las dos de cada uno»: en cada caso, aciertos de Sol (0, 1 o 2) menos
+aciertos de Terra, con una prueba de signos exacta sobre los casos en que esa
+resta no es cero. R@1 medio: casos reales 57,9 % frente a 52,1 %; raras
+reales 62,5 % frente a 53,0 %; no raras 52,1 % frente a 51,1 %.
+
+- **La ventaja de Sol en raras se confirma**, pero es de unos 9,5 puntos, no
+  los 11 de la primera ejecución. En no raras empatan.
+- **Con una sola ejecución, la significación depende de qué ejecución toque**:
+  en casos reales, p va de 0,03 a 0,09. Julián tenía razón con la n de 210.
+  Para decidir entre dos modelos cercanos en `narrative_v2` hacen falta dos
+  ejecuciones de cada uno, o más casos. Las 3.006 raras de HPO, donde la
+  ventaja de Sol es clara (p < 0,001 con los dos jueces), pesan más que
+  `narrative_v2` para esta decisión.
 
 ## Sol frente a Terra en raras (HPO v2, 29-oct-2026)
 

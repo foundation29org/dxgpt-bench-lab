@@ -1,6 +1,6 @@
 # DxGPT — roadmap operativo
 
-**Última actualización:** 29-oct-2026. El detalle anterior al 15-sep está en
+**Última actualización:** 30-oct-2026. El detalle anterior al 15-sep está en
 [ROADMAP_HISTORY.md](ROADMAP_HISTORY.md).
 
 ## Estado
@@ -38,11 +38,21 @@ Cifras de referencia con Terra low:
    77,3 % (`judge_audit/all256_gpt61terra_low_strict/`). **Esfuerzo `medium`**
    (29-oct, Terra 5.6 y gpt-6.1-sol): sin diferencia significativa con `low` en
    ningún grupo, igual que en `all_256_clean`. Se mantiene `low`.
-   **Variabilidad entre ejecuciones** (29-oct, Terra 5.6 repetido entero): la
-   cifra agregada se mueve un punto o menos, pero cambia el acierto en P1 de 1
-   de cada 10 casos, así que diferencias de 2–3 puntos sin McNemar no dicen
-   nada. La ventaja de Sol se mantiene frente a la segunda ejecución (21 / 9 en
-   casos reales, p = 0,04).
+   **Variabilidad entre ejecuciones** (29 y 30-oct, Terra 5.6 y Sol
+   repetidos enteros): en casos reales la cifra se mueve medio punto, pero
+   cambia el acierto en P1 de 1 de cada 10 casos, y en raras reales Sol pasa
+   de 64,7 % a 60,3 %. Con una sola ejecución de cada uno, la ventaja de Sol
+   en casos reales tiene p de 0,03 a 0,09 según la pareja. Con las dos
+   ejecuciones juntas, Sol supera a Terra en raras reales (62,5 % frente a
+   53,0 %, p = 0,01) y empatan en no raras. Regla para decidir entre modelos
+   cercanos en `narrative_v2`: dos ejecuciones de cada uno.
+   **Pedir exactamente 5 diagnósticos** (30-oct, Terra 5.6 y Sol) no resta
+   precisión: R@1 en casos reales 51,9 → 53,3 % y 58,1 → 59,5 %, sin
+   diferencias significativas en ningún grupo. Todas las listas tienen 5
+   opciones. **Decidido (30-oct): producción pide 5** en `withoutDiseases` y
+   `withDiseases` (cambiado en `develop` del servidor, pendiente de commit y
+   despliegue); las próximas ejecuciones oficiales del benchmark usarán el
+   mismo prompt (`juanjo_classic_v2_n5`).
 2. ~~**Raras para V5**~~. Hecho el 28-oct en HPO v2
    ([README](../data29/data-repos/hpo-v2/README.md)): en 1.495 casos vale
    también el nombre de la enfermedad sin gen («Leber congenital amaurosis»
@@ -126,8 +136,9 @@ lista).
    −1,0, panel +2,4 (no significativo, solo en no raras); en raras ningún
    brazo mejora a Sol solo (64,7 %). Lo que la capa añadía a Terra era subirla
    al nivel de Sol: la palanca grande es el modelo. Lo apoyan dos pruebas del
-   29-oct: Terra repetido mantiene su cifra y Sol le sigue ganando (paso 1), y
-   Sol también gana a Terra en las 3.006 raras de HPO v2 (paso 2). Pendiente:
+   29 y 30-oct: con dos ejecuciones de cada modelo, Sol gana a Terra en raras
+   reales (p = 0,01) y empatan en no raras (paso 1); y Sol también gana a
+   Terra en las 3.006 raras de HPO v2 (paso 2). Pendiente:
    confirmarlo con `narrative_v2` v0.2. **La decisión entre Sol solo y el
    panel Terra + Sol espera a esa confirmación.**
 9. **Renovar el bloque `live` cada trimestre** con `harvest_pmc.py` y fechas

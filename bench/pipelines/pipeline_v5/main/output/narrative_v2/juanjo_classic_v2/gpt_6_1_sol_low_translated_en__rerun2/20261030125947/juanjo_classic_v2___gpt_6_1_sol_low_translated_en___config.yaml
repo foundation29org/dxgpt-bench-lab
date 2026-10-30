@@ -1,0 +1,30 @@
+DATASET_PATH: bench/datasets/narrative_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-6.1-sol
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Segunda ejecucion de Sol low sobre narrative_v2 v0.1 para
+  medir la variabilidad entre ejecuciones.
+EXPERIMENT_NAME: narrative_v2-juanjo_classic_v2-gpt_6_1_sol_low-v5-rerun2
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+OUTPUT_TAG: rerun2
+TIMESTAMP: '2026-10-30T13:08:03.042442'

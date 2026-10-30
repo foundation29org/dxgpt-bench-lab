@@ -21,6 +21,7 @@ import collections
 import glob
 import html
 import json
+import math
 import os
 import re
 import statistics
@@ -86,7 +87,10 @@ EFFORT = [
 ]
 
 # Second run of the same model, config and cases (run-to-run variability): model id, run folder
-RERUN = ('terra56', 'gpt_5_6_terra_low_translated_en__rerun2')
+# Same model with the prompt that asks for exactly 5 diagnoses (production left «N» to the model until 30-oct-2026)
+N5_PROMPT = 'juanjo_classic_v2_n5'
+N5 = [('terra56', 'gpt_5_6_terra_low_translated_en'), ('sol61', 'gpt_6_1_sol_low_translated_en')]
+RERUNS = [('terra56', 'gpt_5_6_terra_low_translated_en__rerun2'), ('sol61', 'gpt_6_1_sol_low_translated_en__rerun2')]
 
 # gpt-6.1-sol on HPO v2, same prompt and parameters as Terra's July lists; Flash re-scoring tag
 HPO_FOLDERS = {'terra': 'gpt_5_6_terra_low', 'sol': 'gpt_6_1_sol_low'}
@@ -185,6 +189,20 @@ def paired(a, b, ids, k):
     losses = sum(1 for i in ids if hit(b, i) and not hit(a, i))
     return {'wins': wins, 'losses': losses, 'net': round(100 * (wins - losses) / len(ids), 1),
             'p': round(mcnemar_p(wins, losses), 3)}
+
+
+def pooled_sign_test(a_runs, b_runs, ids, k=1):
+    """Both runs of each model at once: per case, hits of A minus hits of B (each from 0 to the number of runs),
+    and an exact two-sided sign test on the cases where they differ."""
+    def hits(runs, i):
+        return sum(1 for p in runs if p[i] is not None and p[i] <= k)
+    diffs = [hits(a_runs, i) - hits(b_runs, i) for i in ids]
+    wins, losses = sum(1 for d in diffs if d > 0), sum(1 for d in diffs if d < 0)
+    n = wins + losses
+    p = min(1.0, 2 * sum(math.comb(n, j) for j in range(min(wins, losses) + 1)) / 2 ** n) if n else 1.0
+    return {'a': round(100 * sum(hits(a_runs, i) for i in ids) / (len(a_runs) * len(ids)), 1),
+            'b': round(100 * sum(hits(b_runs, i) for i in ids) / (len(b_runs) * len(ids)), 1),
+            'wins': wins, 'losses': losses, 'p': p}
 
 
 def finished_run(folder):
@@ -431,18 +449,50 @@ def collect():
                        for key, ids in split_ids.items()},
         })
 
-    # Same model run twice: how many cases flip by chance, next to the Sol gap
+    # Exactly 5 diagnoses against «N»: same model, cases and judge, only the prompt changes
+    data['n5'] = []
+    for mid, folder in N5:
+        path = os.path.join(OUTPUT_ROOT, 'narrative_v2', N5_PROMPT, folder)
+        run = finished_run(path)
+        if not run:
+            continue
+        details = load_details(os.path.join(run, 'evaluation_details.txt'))
+        five = {i: strict_position(c, False) for i, c in details.items()}
+        labeled = load_labeled(path)
+        lengths = [len(c.get('ddx_details', {})) for c in labeled]
+        base = by_id[mid]
+        data['n5'].append({
+            'name': base['model'], 'color': base['color'],
+            'n': {'options': base['options'], 'latency': base['latency'], 'cost': base['genCost'],
+                  'under5': round(100 * sum(1 for c in narrative_run(folder)[2] if len(c.get('ddx_details', {})) < 5) / 300)},
+            'five': {'options': statistics.median(lengths), 'cost': generation_cost(path, base['model']),
+                     'latency': round(statistics.median(c['emulator_time_seconds'] for c in labeled if c.get('emulator_time_seconds')), 1),
+                     'under5': round(100 * sum(1 for n in lengths if n < 5) / len(lengths))},
+            'groups': {key: {'n': len(ids), 'base': metrics([positions[mid][i] for i in ids]), 'five': metrics([five[i] for i in ids]),
+                             'r1': paired(five, positions[mid], ids, 1), 'r5': paired(five, positions[mid], ids, 5)}
+                       for key, ids in split_ids.items()},
+        })
+
+    # Same model run twice: how many cases flip by chance, and whether the Sol gap holds in every pairing of runs
     data['rerun'] = None
-    mid, folder = RERUN
-    if finished_run(os.path.join(NARRATIVE_DIR, folder)):
-        second = narrative_run(folder)[0]
-        first, sol = positions[mid], positions['sol61']
-        data['rerun'] = {'name': by_id[mid]['model'], 'groups': {key: {
+    runs = {}
+    for mid, folder in RERUNS:
+        if finished_run(os.path.join(NARRATIVE_DIR, folder)):
+            runs[mid] = [positions[mid], narrative_run(folder)[0]]
+    if runs:
+        data['rerun'] = {'models': [{'id': mid, 'name': by_id[mid]['model'], 'groups': {key: {
             'n': len(ids), 'first': metrics([first[i] for i in ids]), 'second': metrics([second[i] for i in ids]),
-            'sol': metrics([sol[i] for i in ids]),
             'change': paired(second, first, ids, 1), 'change5': paired(second, first, ids, 5),
-            'solFirst': paired(sol, first, ids, 1), 'solSecond': paired(sol, second, ids, 1),
-        } for key, ids in split_ids.items()}}
+        } for key, ids in split_ids.items()}} for mid, (first, second) in runs.items()], 'cross': []}
+        sol_runs = runs.get('sol61', [positions['sol61']])
+        terra_runs = runs.get(BASELINE, [positions[BASELINE]])
+        if len(sol_runs) == len(terra_runs) == 2:
+            data['rerun']['pooled'] = {key: pooled_sign_test(sol_runs, terra_runs, ids) for key, ids in split_ids.items()}
+        for si, sol in enumerate(sol_runs, 1):
+            for ti, terra in enumerate(terra_runs, 1):
+                data['rerun']['cross'].append({'sol': si, 'terra': ti, 'groups': {
+                    key: {'sol': metrics([sol[i] for i in ids])['r1'], 'terra': metrics([terra[i] for i in ids])['r1'],
+                          'test': paired(sol, terra, ids, 1)} for key, ids in split_ids.items()}})
 
     # Agentic PoC: each arm against the model whose list it revised. R@5 can rise
     # only because an arm returns more options, so the length control counts a
@@ -706,39 +756,75 @@ def rerun_section(data):
     r = data.get('rerun')
     if not r:
         return ''
+    models = r['models']
+    head = ''.join(f'<th>{m["name"]} 1.ª</th><th>2.ª</th><th>Cambian (gana / pierde)</th><th>p</th>' for m in models)
     rows = []
     for key, label, _ in REAL_SPLIT:
-        g = r['groups'][key]
-        rows.append(f'<tr><td>{label}</td><td>{g["n"]}</td><td>{pct(g["first"]["r1"])}</td><td>{pct(g["second"]["r1"])}</td>'
-                    f'<td>{g["change"]["wins"]} / {g["change"]["losses"]}</td><td>{p_value(g["change"]["p"])}</td>'
-                    f'<td>{pct(g["sol"]["r1"])}</td><td>{g["solFirst"]["wins"]} / {g["solFirst"]["losses"]}</td><td>{p_value(g["solFirst"]["p"])}</td>'
-                    f'<td>{g["solSecond"]["wins"]} / {g["solSecond"]["losses"]}</td><td>{p_value(g["solSecond"]["p"])}</td></tr>')
-    real = r['groups']['realcases']
-    flips = real['change']['wins'] + real['change']['losses']
-    sol_holds = real['solFirst']['p'] < 0.05 and real['solSecond']['p'] < 0.05
+        cells = ''.join(f'<td>{pct(g["first"]["r1"])}</td><td>{pct(g["second"]["r1"])}</td>'
+                        f'<td>{g["change"]["wins"]} / {g["change"]["losses"]}</td><td>{p_value(g["change"]["p"])}</td>'
+                        for g in (m['groups'][key] for m in models))
+        rows.append(f'<tr><td>{label}</td><td>{models[0]["groups"][key]["n"]}</td>{cells}</tr>')
+    cross_rows = '\n'.join(
+        f'<tr><td>Sol {c["sol"]}.ª frente a Terra {c["terra"]}.ª</td>' + ''.join(
+            f'<td>{pct(c["groups"][key]["sol"])} / {pct(c["groups"][key]["terra"])}</td>'
+            f'<td>{c["groups"][key]["test"]["wins"]} / {c["groups"][key]["test"]["losses"]}</td><td>{p_value(c["groups"][key]["test"]["p"])}</td>'
+            for key in ('realcases', 'realRare', 'realCommon')) + '</tr>' for c in r['cross'])
+    flips = {m['name']: m['groups']['realcases']['change']['wins'] + m['groups']['realcases']['change']['losses'] for m in models}
+    n = models[0]['groups']['realcases']['n']
+    moves = [abs(m['groups']['realcases']['second']['r1'] - m['groups']['realcases']['first']['r1']) for m in models]
+    rare_move = max(models, key=lambda m: abs(m['groups']['realRare']['second']['r1'] - m['groups']['realRare']['first']['r1']))
+    real_p = [c['groups']['realcases']['test']['p'] for c in r['cross']]
+    rare_p = [c['groups']['realRare']['test']['p'] for c in r['cross']]
+    holds = all(p < 0.05 for p in real_p)
+    names = ' y '.join(m['name'] for m in models)
+    pooled = r.get('pooled')
+    pooled_text = ''
+    if pooled:
+        cross_rows += '\n<tr class="winner"><td><strong>Las dos ejecuciones de cada modelo</strong></td>' + ''.join(
+            f'<td>{pct(pooled[key]["a"])} / {pct(pooled[key]["b"])}</td><td>{pooled[key]["wins"]} / {pooled[key]["losses"]}</td>'
+            f'<td>{p_value(pooled[key]["p"])}</td>' for key in ('realcases', 'realRare', 'realCommon')) + '</tr>'
+        rare, real, common = pooled['realRare'], pooled['realcases'], pooled['realCommon']
+        pooled_text = (f' <strong>Juntando las dos ejecuciones de cada modelo</strong>, Sol supera a Terra en raras reales '
+                       f'({pct(rare["a"])} frente a {pct(rare["b"])}, {p_text(rare["p"])}) y en el conjunto de casos reales '
+                       f'({pct(real["a"])} frente a {pct(real["b"])}, {p_text(real["p"])}); en no raras empatan '
+                       f'({pct(common["a"])} frente a {pct(common["b"])}). La ventaja en raras es de unos '
+                       f'{num(rare["a"] - rare["b"])} puntos, no los {num(models[-1]["groups"]["realRare"]["first"]["r1"] - models[0]["groups"]["realRare"]["first"]["r1"])} '
+                       f'de la 1.ª ejecución: con 210 casos, una sola ejecución no basta para decidir entre dos modelos cercanos.')
     return f'''
   <div class="section">
-    <div class="section-title">Variabilidad entre ejecuciones · {r["name"]} dos veces</div>
+    <div class="section-title">Variabilidad entre ejecuciones · {names}, dos veces cada uno</div>
     <div class="callout callout-info">
       Si se repite exactamente la misma ejecución (mismo modelo, prompt, casos y juez), las respuestas no salen idénticas. Para saber
-      cuánto pesa eso, {r["name"]} low se ha ejecutado una segunda vez sobre los 300 casos: genera, traduce, etiqueta y el juez puntúa de nuevo.
-      En casos reales, R@1 pasa de {pct(real["first"]["r1"])} a {pct(real["second"]["r1"])}. Cambian {flips} de {real["n"]} casos
-      (acierto en una ejecución y fallo en la otra), pero en las dos direcciones a la vez ({real["change"]["wins"]} y {real["change"]["losses"]}),
-      así que la cifra apenas se mueve. <strong>{"La ventaja de gpt-6.1-sol se mantiene frente a las dos ejecuciones" if sol_holds else "La ventaja de gpt-6.1-sol no se mantiene frente a las dos ejecuciones"}</strong>
-      ({p_text(real["solFirst"]["p"])} y {p_value(real["solSecond"]["p"])}): no es fruto de una ejecución con suerte.
+      cuánto pesa eso, {names} low se han ejecutado una segunda vez sobre los 300 casos: generan, traducen, etiquetan y el juez puntúa de nuevo.
+      En casos reales cambian {" y ".join(f"{v} ({k})" for k, v in flips.items())} de {n} casos (acierto en una ejecución y fallo en la
+      otra), en las dos direcciones, así que la cifra de casos reales se mueve como mucho {num(max(moves))} puntos. En grupos más pequeños
+      se mueve más: {rare_move["name"]} pasa de {pct(rare_move["groups"]["realRare"]["first"]["r1"])} a
+      {pct(rare_move["groups"]["realRare"]["second"]["r1"])} en raras reales (116 casos).
+      <strong>{"La ventaja de Sol sobre Terra se mantiene en todas las combinaciones de ejecuciones" if holds else "La ventaja de Sol sobre Terra no se mantiene en todas las combinaciones de ejecuciones"}</strong>
+      (casos reales, p entre {p_value(min(real_p))} y {p_value(max(real_p))}; raras reales, entre {p_value(min(rare_p))} y {p_value(max(rare_p))}).{pooled_text}
     </div>
     <div class="table-scroll">
     <table class="num">
-      <thead><tr><th>Grupo</th><th>Casos</th><th>R@1 1.ª ejecución</th><th>R@1 2.ª ejecución</th><th>Cambian (gana / pierde)</th><th>p</th>
-        <th>R@1 gpt-6.1-sol</th><th>Sol frente a la 1.ª</th><th>p</th><th>Sol frente a la 2.ª</th><th>p</th></tr></thead>
+      <thead><tr><th>Grupo</th><th>Casos</th>{head}</tr></thead>
       <tbody>
 {chr(10).join(rows)}
       </tbody>
     </table>
     </div>
+    <h3>Sol frente a Terra con cada pareja de ejecuciones (R@1)</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Ejecuciones</th><th>Casos reales: Sol / Terra</th><th>Gana / pierde</th><th>p</th>
+        <th>Raras reales</th><th>Gana / pierde</th><th>p</th><th>No raras reales</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{cross_rows}
+      </tbody>
+    </table>
+    </div>
     <p class="note">Cambian: casos que acierta la 2.ª ejecución y no la 1.ª, y al revés. Una diferencia entre dos modelos solo dice algo si
-      supera lo que varía un modelo consigo mismo. Aquí, unos {flips} casos de {real["n"]} cambian por azar y se compensan; la cifra de la tabla de
-      arriba sigue siendo la de la 1.ª ejecución.</p>
+      supera lo que varía un modelo consigo mismo. «Las dos ejecuciones»: en cada caso, aciertos de Sol (0, 1 o 2) menos aciertos de Terra;
+      gana y pierde cuentan los casos en que esa resta es positiva o negativa, con una prueba de signos exacta. Las cifras del resto del
+      informe son las de la 1.ª ejecución.</p>
   </div>
 '''
 
@@ -935,6 +1021,61 @@ def hpo_syn_section(data):
 '''
 
 
+def n5_section(data):
+    runs = data.get('n5')
+    if not runs:
+        return ''
+    head = ''.join(f'<th>{r["name"]}: «N»</th><th>«5»</th><th>Gana / pierde</th><th>p</th>' for r in runs)
+    rows = []
+    for k in ('r1', 'r5'):
+        for key, label, _ in REAL_SPLIT:
+            cells = ''.join(f'<td>{pct(g["base"][k])}</td><td>{pct(g["five"][k])}</td>'
+                            f'<td>{g[k]["wins"]} / {g[k]["losses"]}</td><td>{p_value(g[k]["p"])}</td>'
+                            for g in (r['groups'][key] for r in runs))
+            rows.append(f'<tr><td>R@{k[1]} · {label}</td><td>{runs[0]["groups"][key]["n"]}</td>{cells}</tr>')
+    cost_rows = '\n'.join(
+        f'<tr><td><span class="dot" style="background:{r["color"]}"></span> {r["name"]}</td><td>{label}</td><td>{num(v["options"])}</td>'
+        f'<td>{v["under5"]} %</td><td>{cents(v["cost"])}</td><td>{num(v["latency"])} s</td></tr>'
+        for r in runs for label, v in (('«N»', r['n']), ('«5»', r['five'])))
+    significant = [r['name'] for r in runs for key in ('realcases', 'realRare', 'realCommon', 'total') for k in ('r1', 'r5')
+                   if r['groups'][key][k]['p'] < 0.05]
+    real = {r['name']: r['groups']['realcases'] for r in runs}
+    return f'''
+  <div class="section">
+    <div class="section-title">Pedir exactamente 5 diagnósticos · {" y ".join(r["name"] for r in runs)}</div>
+    <div class="callout callout-info">
+      El prompt usado hasta ahora, igual que el de producción, dice «generate N possible diagnoses» y deja que el modelo decida cuántos da: Terra 5.6
+      da menos de 5 en la mitad de los casos, Gemini 3.1 Pro casi siempre 3 y Claude Opus 5 siempre 10, y eso afecta a R@5. Con el pipeline
+      anterior, pedir 5 restaba precisión. Aquí se repite con el mismo modelo, casos y juez, cambiando solo «N» por «5»
+      (<code>{N5_PROMPT}.txt</code>). En casos reales, R@1 pasa de {"; ".join(f"{pct(g['base']['r1'])} a {pct(g['five']['r1'])} ({k})" for k, g in real.items())}.
+      <strong>{"Ninguna diferencia es significativa: pedir 5 no resta precisión." if not significant else "Hay diferencias significativas en " + ", ".join(dict.fromkeys(significant)) + "."}</strong>
+      <br><strong>Decidido el 30-oct-2026: producción pide 5.</strong> Cambiado en los dos prompts de diagnóstico de
+      <code>Server/assets/prompts.js</code> (<code>withoutDiseases</code>, «generate 5 possible diagnoses», y <code>withDiseases</code>,
+      «generate 5 more»), en la rama <code>develop</code>, pendiente de desplegar. Para medir lo mismo que producción, las próximas
+      ejecuciones oficiales del benchmark usarán <code>{N5_PROMPT}</code>.
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Grupo</th><th>Casos</th>{head}</tr></thead>
+      <tbody>
+{chr(10).join(rows)}
+      </tbody>
+    </table>
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>Prompt</th><th>Opciones (mediana)</th><th>Casos con menos de 5</th><th>Coste por caso</th><th>Latencia (mediana)</th></tr></thead>
+      <tbody>
+{cost_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto de «5» frente a «N» sobre los mismos casos. Una variación de este tamaño entra en lo que cambia un modelo
+      al repetir la misma ejecución (ver «Variabilidad entre ejecuciones»).</p>
+  </div>
+'''
+
+
 def effort_section(data):
     effort = data.get('effort')
     if not effort:
@@ -1114,6 +1255,10 @@ def build_html(data):
             test = next(r for r in data['mcnemar'][f'{key}_r1']['rows'] if r['id'] == top['id'])
             sub = (f'{top["name"]}, R@1 ({n} casos). Terra 5.6: {pct(base["groups"][key]["r1"])}; '
                    f'{test["wins"]} / {test["losses"]} casos, {p_text(test["p"])}')
+            pooled = (data.get('rerun') or {}).get('pooled')
+            if pooled and top['id'] == 'sol61':
+                sub += (f'. Con dos ejecuciones de cada uno: {pct(pooled[key]["a"])} frente a {pct(pooled[key]["b"])}, '
+                        f'{p_text(pooled[key]["p"])}')
         return '\n'.join([f'      <div class="card"><div class="card-label">Mejor en {label.lower()}</div>',
                           f'        <div class="card-value">{pct(top["groups"][key]["r1"])}</div>',
                           f'        <div class="card-sub">{sub}</div></div>'])
@@ -1356,6 +1501,7 @@ def build_html(data):
   </div>
 
 {effort_section(data)}
+{n5_section(data)}
 {poc_section(data)}
 {judges_section(data)}
   <div class="section">
