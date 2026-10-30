@@ -114,6 +114,17 @@ py clinical_gold.py build     # escribe bench/datasets/<dataset>_v2.json y work/
 
 Los datasets y `work/` no se versionan (`*.json` en `.gitignore`).
 
+Prueba de sinónimos (30-oct-2026, todavía no es una versión):
+
+```powershell
+py gold_synonyms.py fetch   # API de Monarch, con caché en work/mondo_synonyms.json
+py gold_synonyms.py build   # escribe bench/datasets/<dataset>_v2_syn.json
+```
+
+Añade a `accepted_names` la etiqueta y los sinónimos exactos de MONDO de cada
+gold con código OMIM. Resultados en el README de Pipeline V5 («Prueba:
+sinónimos MONDO en el gold»).
+
 ## Cómo se evalúa
 
 Con Pipeline V5 sobre las mismas listas de Terra low de julio

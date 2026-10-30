@@ -81,6 +81,11 @@ lista).
    y a la causa C, y re-puntuar. Propuesta para la misma versión: pasar al
    juez los sinónimos del gold (MONDO u Orphanet, desde sus códigos OMIM y
    ORPHA), porque el juez solo ve nombres y falla con sinónimos poco usados.
+   Probado el 30-oct (`gold_synonyms.py`): con los sinónimos exactos de MONDO,
+   Pro corrige el caso de la artrogriposis tipo 5 y Pro y Flash coinciden en
+   el acierto en P1 en el 99 % de los casos (antes, el 97 %), con menos de
+   medio punto de diferencia en R@1. Sol sigue ganando a Terra con los dos
+   jueces.
 6. **Elegir el juez** con esa validación. Si el orden de los modelos no cambia
    con un juez más barato, usar el más barato; si cambia, mantener Gemini 2.5 Pro.
    Primera mitad hecha el 29-oct sobre las listas de los seis modelos: con
@@ -93,6 +98,9 @@ lista).
    en MyGene2, el que se equivoca es Pro: no reconoce que «Arthrogryposis with
    oculomotor limitation and electroretinal anomalies» es la «distal
    arthrogryposis type 5» y en cambio da por buena la «type 5D», que es otra.
+   Un juez de otra familia, Claude Opus 5.5 (30-oct), da el mismo orden y el
+   mismo «2 o no» que Flash (97,8 %), sin favorecer a Claude Opus 5: la
+   conclusión no depende de usar Gemini.
    Falta la segunda mitad: cuál se parece más a las notas de David (tarea 2).
    Detalle en el [README de V5](../bench/pipelines/pipeline_v5/main/README.md).
 

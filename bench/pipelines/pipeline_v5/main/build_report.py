@@ -41,7 +41,8 @@ NARRATIVE_TOOLS = os.path.join(EVAL_ROOT, 'data29', 'data-repos', 'narrative-v2'
 JUDGE_AUDIT = os.path.join(EVAL_ROOT, 'bench', 'multimodal_beta', 'outputs', 'judge_audit')
 BASELINE = 'terra56'
 # Cheaper judges re-scored on the same narrative_v2 lists (OUTPUT_TAG judge_<model>)
-JUDGE_CANDIDATES = ['gemini-3.8-flash', 'gemini-2.5-flash']
+# claude-opus-5-5: judge from another family (Anthropic), to check the dependence on Gemini
+JUDGE_CANDIDATES = ['gemini-3.8-flash', 'gemini-2.5-flash', 'claude-opus-5-5']
 
 # id, run folder, model as in model_cutoffs.yaml, label, colour (fixed per model)
 MODELS = [
@@ -622,7 +623,8 @@ def judges_section(data):
     j = data.get('judges')
     if not j:
         return ''
-    names = {'gemini-2.5-pro': 'Gemini 2.5 Pro (actual)', 'gemini-3.8-flash': 'Gemini 3.8 Flash', 'gemini-2.5-flash': 'Gemini 2.5 Flash'}
+    names = {'gemini-2.5-pro': 'Gemini 2.5 Pro (actual)', 'gemini-3.8-flash': 'Gemini 3.8 Flash', 'gemini-2.5-flash': 'Gemini 2.5 Flash',
+             'claude-opus-5-5': 'Claude Opus 5.5'}
     taus = j['tau']['realcases_r1']
     same_order = all(v == 1 for v in taus.values())
     agreement_rows = '\n'.join(
@@ -634,9 +636,13 @@ def judges_section(data):
     flash = next(a for a in j['agreement'] if a['judge'] == 'gemini-3.8-flash')
     rerun = next((a for a in j['agreement'] if 'repetido' in a['judge']), None)
     cost = {c['judge']: c for c in j['cost']}
+    claude = next((a for a in j['agreement'] if a['judge'] == 'claude-opus-5-5'), None)
+    claude_text = (f' <strong>Un juez de otra familia, Claude Opus 5.5, tampoco cambia el orden</strong> y coincide con Pro en «¿es un 2?» en el '
+                   f'{pct(claude["same2"])} de las opciones, igual que Flash: la conclusión no depende de usar un juez de Google. '
+                   f'No favorece a Claude Opus 5, que con él saca un punto menos que con Pro.' if claude else '')
     return f'''
   <div class="section">
-    <div class="section-title">Prueba de juez más barato · mismas listas, tres jueces</div>
+    <div class="section-title">Prueba de jueces · mismas listas, {len(j['judges'])} jueces</div>
     <div class="callout callout-info">
       Paso 6 del ROADMAP: si el orden de los modelos no cambia con un juez más barato, se puede usar el barato. Se han vuelto a
       puntuar las listas de los seis modelos con Gemini 3.8 Flash y Gemini 2.5 Flash, sin generar listas nuevas. Para saber cuánto
@@ -644,7 +650,7 @@ def judges_section(data):
       <strong>{"El orden de los modelos en casos reales no cambia con ningún juez." if same_order else "El orden de los modelos cambia con algún juez."}</strong>
       Gemini 3.8 Flash coincide con Pro en «¿es un 2 o no?» en el {pct(flash['same2'])} de las opciones{f", casi lo mismo que Pro consigo mismo ({pct(rerun['same2'])})" if rerun else ""},
       y cuesta {num(cost['gemini-2.5-pro']['cost'] / max(cost['gemini-3.8-flash']['cost'], 0.01), 0)} veces menos. Falta lo decisivo: cuál de los dos se
-      parece más al criterio de David (<a href="tareas-david/02-escala-del-juez.md">tarea 2</a>).
+      parece más al criterio de David (<a href="tareas-david/02-escala-del-juez.md">tarea 2</a>).{claude_text}
     </div>
     <div class="viz-panel">
       <div class="viz-panel-title"><span>Acierto en casos reales según el juez</span>
@@ -660,6 +666,7 @@ def judges_section(data):
         <span class="viz-legend-item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#1e293b"/></svg>Gemini 2.5 Pro (actual)</span>
         <span class="viz-legend-item"><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" transform="rotate(45 6 6)" fill="#fff" stroke="#1e293b" stroke-width="2"/></svg>Gemini 3.8 Flash</span>
         <span class="viz-legend-item"><svg width="12" height="12"><rect x="2" y="2" width="8" height="8" fill="#94a3b8"/></svg>Gemini 2.5 Flash</span>
+        <span class="viz-legend-item"><svg width="12" height="12"><path d="M6 1 L11 10 L1 10 Z" fill="#eb6834"/></svg>Claude Opus 5.5</span>
       </div>
     </div>
     <h3>Coincidencia con Gemini 2.5 Pro</h3>
@@ -685,7 +692,8 @@ def judges_section(data):
     </table>
     </div>
     <p class="note">Precios de Google: Gemini 3.8 Flash 0,75 $ / 3,75 $ por millón de tokens hasta el 31-dic-2026 (el doble después).
-      Gemini 2.5 Flash razona sin límite por defecto y gasta más tokens que 3.8 Flash.</p>
+      Gemini 2.5 Flash razona sin límite por defecto y gasta más tokens que 3.8 Flash. Claude Opus 5.5 con esfuerzo <code>low</code>,
+      4 $ / 20 $ por millón de tokens.</p>
   </div>
 '''
 
@@ -1729,7 +1737,7 @@ CHART_JS = r'''
   }
   tabs('hpo-tabs', function (b) { hpoK = b.getAttribute('data-k'); renderHpo(); });
 
-  // 8) Same lists, three judges
+  // 8) Same lists, several judges
   var judgeK = 'r1';
   function renderJudges() {
     var J = DATA.judges;
@@ -1745,7 +1753,8 @@ CHART_JS = r'''
     var MARK = {
       'gemini-2.5-pro': function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="6.5" fill="#1e293b" stroke="#fff" stroke-width="2"/>'; },
       'gemini-3.8-flash': function (x, y) { return '<rect x="' + (x - 5) + '" y="' + (y - 5) + '" width="10" height="10" transform="rotate(45 ' + x + ' ' + y + ')" fill="#fff" stroke="#1e293b" stroke-width="2"/>'; },
-      'gemini-2.5-flash': function (x, y) { return '<rect x="' + (x - 4.5) + '" y="' + (y - 4.5) + '" width="9" height="9" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>'; }
+      'gemini-2.5-flash': function (x, y) { return '<rect x="' + (x - 4.5) + '" y="' + (y - 4.5) + '" width="9" height="9" fill="#94a3b8" stroke="#fff" stroke-width="1.5"/>'; },
+      'claude-opus-5-5': function (x, y) { return '<path d="M' + x + ' ' + (y - 6) + ' L' + (x + 6) + ' ' + (y + 5) + ' L' + (x - 6) + ' ' + (y + 5) + ' Z" fill="#eb6834" stroke="#fff" stroke-width="1.5"/>'; }
     };
     var out = [];
     for (var t = x0; t <= x1; t += 5) {

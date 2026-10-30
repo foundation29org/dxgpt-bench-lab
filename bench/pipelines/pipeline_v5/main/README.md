@@ -296,6 +296,31 @@ R@1 estricta en casos reales (`live`+`urg`, 210):
   depende de cuál se parece más al criterio de David (tarea 2 de
   `docs/tareas-david/`).
 
+### Juez de otra familia: Claude Opus 5.5 (30-oct-2026)
+
+Para comprobar que la conclusión no depende de usar siempre Gemini, las
+mismas listas se han puntuado con Claude Opus 5.5 (esfuerzo `low`,
+`OUTPUT_TAG: judge_claude-opus-5-5`). `evaluator.py` trata los modelos Claude
+como jueces con esfuerzo, sin temperatura.
+
+| Modelo | R@1 casos reales, Pro | Claude Opus 5.5 |
+|---|---:|---:|
+| gpt-6.1-sol | 58,1 % | 59,0 % |
+| claude-opus-5 | 54,3 % | 53,3 % |
+| gpt-5.6-terra | 51,9 % | 51,4 % |
+| gpt-6.1-terra | 50,0 % | 51,0 % |
+| gemini-3.1-pro | 45,7 % | 46,2 % |
+| gpt-5.4-mini | 41,9 % | 42,9 % |
+
+- **Mismo orden que Pro en R@1** (casos reales y total) y mismo «2 o no» en el
+  97,8 % de las opciones (kappa 0,92), igual que Gemini 3.8 Flash. Es más
+  estricto que Pro entre 1 y 0, que solo afecta a la nota laxa.
+- **No favorece a Claude Opus 5**: le da un punto menos que Pro.
+- **Sol frente a Terra con este juez:** 21 / 5 en casos reales (p = 0,002) y
+  16 / 2 en raras reales (p = 0,001). Sol frente a Opus: 19 / 3 en raras reales
+  (p = 0,001), 7 / 11 en no raras (p = 0,48).
+- Coste: 11,97 $ los seis modelos, 2,8 s de mediana por llamada, 0 errores.
+
 ## Variabilidad entre ejecuciones (29-oct-2026)
 
 ¿Cuánto cambia el resultado si se repite el mismo run? Terra 5.6 low se ha
@@ -381,7 +406,50 @@ scratchpad como las de `narrative_v2`).
   Sol sí gana a Terra en MyGene2 (24 / 7, p = 0,003).
 - El juez solo ve nombres. **Pasarle los sinónimos del gold (MONDO u
   Orphanet, a partir de sus códigos OMIM y ORPHA)** evitaría este tipo de error
-  con cualquier juez.
+  con cualquier juez. Probado a continuación.
+
+### Prueba: sinónimos MONDO en el gold (30-oct-2026)
+
+`data29/data-repos/hpo-v2/gold_synonyms.py` añade a `accepted_names` de cada
+gold con código OMIM (en DDD, su id MONDO) la etiqueta y los sinónimos
+exactos de MONDO, sacados de la API de Monarch. No usa los sinónimos
+relacionados, amplios ni estrechos, ni los códigos Orphanet, que suelen ser
+grupos. El evaluador ya enseñaba `accepted_names` al juez («also known as»),
+así que el prompt no cambia. Cambia el gold en 2.805 de los 3.006 casos, con
+unos 4,6 nombres más por gold. Los datasets `<dataset>_hpo_v2_syn.json` son una
+prueba y no están versionados; el oficial sigue siendo HPO v2.
+
+Mismas listas de Terra y Sol, vueltas a puntuar con Flash (los 6 datasets,
+4,16 $) y con Pro (todos menos DDD, 1.260 casos, 44,63 $):
+
+| Juez | Listas | Casos | R@1 gold v2 | R@1 con sinónimos | gana / pierde | p |
+|---|---|---:|---:|---:|---:|---:|
+| Pro | Terra 5.6 | 1.260 | 37,6 % | 37,9 % | 14 / 10 | 0,54 |
+| Pro | gpt-6.1-sol | 1.260 | 42,1 % | 43,7 % | 25 / 6 | 0,001 |
+| Flash | Terra 5.6 | 3.006 | 40,5 % | 40,5 % | 23 / 25 | 0,89 |
+| Flash | gpt-6.1-sol | 3.006 | 46,6 % | 46,4 % | 15 / 23 | 0,26 |
+
+Pro frente a Flash sobre los mismos 1.260 casos:
+
+| Listas de | Mismo acierto P1, gold v2 | Con sinónimos | Mismo «2 o no», gold v2 | Con sinónimos | R@1 Pro / Flash, gold v2 | Con sinónimos |
+|---|---:|---:|---:|---:|---:|---:|
+| Terra 5.6 | 97,1 % | 99,2 % | 98,2 % | 99,2 % | 37,6 / 38,1 % | 37,9 / 38,3 % |
+| gpt-6.1-sol | 97,1 % | 98,9 % | 98,3 % | 99,1 % | 42,1 / 44,3 % | 43,7 / 44,0 % |
+
+- **Con los sinónimos, Pro corrige el error de la artrogriposis tipo 5:** da
+  un 2 a «type 5» en 33 de 37 opciones (antes, 6) y a «type 5D» en 5 de 24
+  (antes, 23). R@1 de Sol en MyGene2 pasa de 38,4 % a 51,4 %, lo mismo que con
+  Flash.
+- **Los dos jueces pasan a coincidir casi del todo:** el mismo acierto en P1
+  en el 99 % de los casos, y menos de medio punto de diferencia en R@1.
+- **Flash apenas cambia**: ya reconocía esos sinónimos. Los casos que pierde
+  son sobre todo 2 que no debía dar (una enfermedad de otro gen, como B3GAT3
+  por B3GALT6).
+- **Sol sigue ganando a Terra** con los dos jueces: 43,7 % frente a 37,9 % con
+  Pro (127 / 55) y 46,4 % frente a 40,5 % con Flash (292 / 114).
+- Propuesta: incorporar los sinónimos a la siguiente versión de raras, junto
+  con la revisión de David (tarea 3). Así, la elección de juez queda casi solo
+  en el coste.
 
 ## Pendiente
 

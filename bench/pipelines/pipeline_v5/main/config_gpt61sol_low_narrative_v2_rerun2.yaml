@@ -1,0 +1,40 @@
+# Pipeline V5 - gpt-6.1-sol low sobre narrative_v2, segunda ejecucion
+# ==============================================================
+# Igual que config_gpt61sol_low_narrative_v2.yaml (genera, traduce, etiqueta y
+# puntua de nuevo), en otra carpeta (OUTPUT_TAG), para medir cuanto cambia el
+# resultado de una ejecucion a otra del mismo modelo.
+
+EXPERIMENT_NAME: "narrative_v2-juanjo_classic_v2-gpt_6_1_sol_low-v5-rerun2"
+EXPERIMENT_DESCRIPTION: "Segunda ejecucion de Sol low sobre narrative_v2 v0.1 para medir la variabilidad entre ejecuciones."
+OUTPUT_TAG: "rerun2"
+
+DATASET_PATH: "bench/datasets/narrative_v2.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-6.1-sol"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+
+EVALUATOR:
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  PARALLEL_WORKERS: 8
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null
