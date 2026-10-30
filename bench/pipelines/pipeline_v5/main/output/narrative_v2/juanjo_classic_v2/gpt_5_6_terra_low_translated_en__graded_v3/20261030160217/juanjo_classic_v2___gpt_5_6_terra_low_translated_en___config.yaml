@@ -1,0 +1,33 @@
+DATASET_PATH: bench/datasets/narrative_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  JUDGE_GRADE_CACHE: bench/pipelines/pipeline_v5/main/output/narrative_v2/judge_grades__gemini-2.5-pro__graded_v3.json
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  JUDGE_PROMPT_VERSION: graded_v3
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Mismas listas que el run oficial; juez gemini-2.5-pro con
+  graded_v3 (punto 6 de Julian) y una sola nota por opcion repetida.
+EXPERIMENT_NAME: narrative_v2-juanjo_classic_v2-gpt_5_6_terra_low_translated_en-v5-graded_v3
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+OUTPUT_TAG: graded_v3
+REUSE_LABELED_DDX: bench/pipelines/pipeline_v5/main/output/narrative_v2/juanjo_classic_v2/gpt_5_6_terra_low_translated_en/juanjo_classic_v2___gpt_5_6_terra_low_translated_en___ddxs_from_labeler.json
+TIMESTAMP: '2026-10-30T16:10:49.342609'

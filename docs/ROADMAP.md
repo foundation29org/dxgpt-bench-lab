@@ -65,7 +65,16 @@ Cifras de referencia con Terra low:
    (29-oct, mismo prompt y juez): R@1 45,6 % frente a 40,9 % de Terra y R@5
    62,7 % frente a 55,3 % (280 / 137, p < 0,001), sin dar listas más largas.
    Gana en DDD, RAMEDIS, LIRICAL y MME; en MyGene2 y HMS no hay diferencia
-   significativa.
+   significativa. **Claude Opus 5 en HPO v2** (30-oct, LIRICAL, MyGene2, HMS
+   y MME, 644 casos): R@1 33,7 % frente a 45,5 % de Sol (106 / 30,
+   p < 0,001) y 41,0 % de Terra; también pierde contando las notas 1, y
+   cuesta 6,7 c$ por caso frente a 1,04 de Sol. En raras, Opus no aporta.
+   **sermas** (30-oct, producto solo de raras): con su prompt, Sol gana a
+   Terra en los mismos 644 casos (R@1 52,5 % frente a 44,6 %, 79 / 28,
+   p < 0,001; juez Flash), cuesta menos y su latencia cabe en App Service.
+   Recomendación: Sol, ya cambiado en `develop` de `sermas_gpt_server` sin
+   desplegar; falta comprobar el nombre del despliegue en los dos recursos
+   de Azure.
 3. ~~**Fechas de corte de los modelos evaluados**~~. Hecho el 28-oct
    (`data29/data-repos/narrative-v2/model_cutoffs.yaml`, con la fuente de cada
    una). Ningún modelo pasa de junio de 2026, así que por `entrez_date` todo
@@ -95,7 +104,24 @@ lista).
    Pro corrige el caso de la artrogriposis tipo 5 y Pro y Flash coinciden en
    el acierto en P1 en el 99 % de los casos (antes, el 97 %), con menos de
    medio punto de diferencia en R@1. Sol sigue ganando a Terra con los dos
-   jueces.
+   jueces. **Punto 6 de Julián** (30-oct): la rúbrica no dice qué nota lleva
+   una opción que nombra el gold y añade una causa o complicación, y el juez
+   la puntúa distinto según el orden de las palabras. Propuesta `graded_v3`:
+   2 si la opción afirma el diagnóstico de referencia, salvo disyuntivas y
+   otra enfermedad cuyo nombre lo contiene, y una sola nota por opción
+   repetida en todos los modelos. Medido el 30-oct en los seis modelos con
+   Pro (24 $): corrige el caso de Julián y deja a 0 las respuestas iguales con
+   notas distintas, pero sube el R@1 real de 1 a 5 puntos según el modelo y
+   no todo es la regla: también da 2 a disyuntivas y a diagnósticos que no son
+   el gold, y la nota única los copia en todos los modelos. **Decidido
+   (Julián, 30-oct): se adopta `graded_v3` y no se ajusta más con
+   contraejemplos**; criterio: misma entidad si está relacionada con el gold
+   y se trata de la misma forma. Es el juez por defecto; las cifras
+   publicadas cambian al volver a puntuar con v0.2. La tarea 2 de David
+   valida v3 con ese criterio, y la rúbrica solo cambia si sus discrepancias
+   con el juez siguen un patrón, no por casos sueltos. Medido también el ruido del juez: Pro
+   dos veces sobre las mismas listas cambia el acierto en P1 en 8 de 300
+   casos.
 6. **Elegir el juez** con esa validación. Si el orden de los modelos no cambia
    con un juez más barato, usar el más barato; si cambia, mantener Gemini 2.5 Pro.
    Primera mitad hecha el 29-oct sobre las listas de los seis modelos: con

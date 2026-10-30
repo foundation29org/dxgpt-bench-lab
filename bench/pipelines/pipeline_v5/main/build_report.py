@@ -102,6 +102,18 @@ JUDGE_EXAMPLE = ('mygene2_hpo', 'Arthrogryposis with oculomotor limitation and e
 # HPO v2 gold plus the MONDO exact synonyms of each OMIM code in accepted_names
 # (data29/data-repos/hpo-v2/gold_synonyms.py): same lists and judges, only the gold changes
 SYN_VERSION = 'v2_syn'
+# sermas (rare-disease DxGPT on App Service): DxGPT's prompt plus «specialized in rare diseases»,
+# on four HPO v2 datasets; both prompts graded by Gemini 3.8 Flash
+SERMAS_PROMPT = 'sermas_rare'
+# Same narrative_v2 lists graded with graded_v3 (Julián's point 6) and one grade per repeated option
+GRADED_V3_TAG = '__graded_v3'
+GRADED_V3_EXAMPLE = ('L-PMC13354413', 'terra56')
+# Claude Opus 5 on the four smaller HPO v2 datasets, same prompt and judge (Gemini 2.5 Pro) as Sol and Terra
+OPUS_HPO_FOLDER = 'claude_opus_5_low'
+OPUS_HPO = ['lirical_hpo', 'mygene2_hpo', 'hms_hpo', 'mme_hpo']
+OPUS_PRICE = (5.0, 25.0)
+SERMAS_HPO = ['mme_hpo', 'hms_hpo', 'mygene2_hpo', 'lirical_hpo']
+HPO_MODEL_IDS = {'terra': 'gpt-5.6-terra', 'sol': 'gpt-6.1-sol'}
 
 # HPO v2 cases (DDD comes from the public G2P panel) that show what "with gene" and
 # "without gene" mean: dataset, case id, why it counts or not
@@ -359,6 +371,174 @@ def hpo_syn():
     return result
 
 
+def lax_position(case):
+    """Best position with grade 1 or 2 for any gold: a near miss counts."""
+    best = strict_position(case, False)
+    for trace in case['eval_details'].get('graded_trace', []):
+        for option in trace['options']:
+            if option['grade'] in (1, 2):
+                best = option['position'] if best is None else min(best, option['position'])
+    return best
+
+
+def hpo_opus():
+    """Claude Opus 5 against Sol and Terra on the HPO v2 datasets Opus has finished, Gemini 2.5 Pro judge."""
+    folders = {**HPO_FOLDERS, 'opus': OPUS_HPO_FOLDER}
+    strict, lax = {m: {} for m in folders}, {m: {} for m in folders}
+    rows, lengths, tokens, judge_cost = [], [], [0, 0], 0.0
+    for key, label, _ in HPO:
+        if key not in OPUS_HPO:
+            continue
+        root = os.path.join(OUTPUT_ROOT, f'{key}_v2', 'juanjo_classic_v2')
+        runs = {m: finished_run(os.path.join(root, f)) for m, f in folders.items()}
+        if not all(runs.values()):
+            continue
+        details = {m: load_details(os.path.join(r, 'evaluation_details.txt')) for m, r in runs.items()}
+        ids = sorted(set.intersection(*(set(d) for d in details.values())))
+        keys = [f'{key}:{i}' for i in ids]
+        for m in folders:
+            strict[m].update({f'{key}:{i}': strict_position(details[m][i], False) for i in ids})
+            lax[m].update({f'{key}:{i}': lax_position(details[m][i]) for i in ids})
+        rows.append({'label': label, 'n': len(keys), **{m: metrics([strict[m][k] for k in keys]) for m in folders},
+                     'r1': paired(strict['sol'], strict['opus'], keys, 1)})
+        folder = os.path.join(root, OPUS_HPO_FOLDER)
+        lengths += [len(c.get('ddx_details', {})) for c in load_labeled(folder)]
+        with open(os.path.join(folder, 'emulator.log'), 'r', encoding='utf-8', errors='ignore') as f:
+            for a, b in re.findall(r'input=(\d+), output=(\d+)', f.read()):
+                tokens[0] += int(a)
+                tokens[1] += int(b)
+        with open(os.path.join(runs['opus'], 'summary.json'), 'r', encoding='utf-8') as f:
+            judge_cost += json.load(f)['judge']['estimated_cost_usd']
+    keys = list(strict['opus'])
+    if not keys:
+        return None
+    total = {'label': 'Total', 'n': len(keys), **{m: metrics([strict[m][k] for k in keys]) for m in folders},
+             'r1': paired(strict['sol'], strict['opus'], keys, 1), 'r5': paired(strict['sol'], strict['opus'], keys, 5),
+             'terraR1': paired(strict['terra'], strict['opus'], keys, 1)}
+    return {'rows': rows, 'total': total, 'options': statistics.median(lengths),
+            'lax': {m: metrics([lax[m][k] for k in keys])['r1'] for m in folders},
+            'laxTest': paired(lax['sol'], lax['opus'], keys, 1),
+            'cost': (tokens[0] * OPUS_PRICE[0] + tokens[1] * OPUS_PRICE[1]) / 1e6 / len(lengths), 'judgeCost': round(judge_cost, 2)}
+
+
+def option_key(case_id, gold, name):
+    return case_id, gold, re.sub(r'[\W_]+', ' ', name.lower()).strip()
+
+
+def graded_v3(dataset, tag=GRADED_V3_TAG):
+    """graded_v2 against graded_v3 on the same narrative_v2 lists, Gemini 2.5 Pro on both."""
+    runs = {}
+    for mid, folder, _, name, color in MODELS:
+        v3 = finished_run(os.path.join(NARRATIVE_DIR, folder + tag))
+        if v3:
+            runs[mid] = {'name': name, 'color': color,
+                         'v2': load_details(os.path.join(latest_run(os.path.join(NARRATIVE_DIR, folder)), 'evaluation_details.txt')),
+                         'v3': load_details(os.path.join(v3, 'evaluation_details.txt')), 'v3Run': v3}
+    if not runs:
+        return None
+    groups = {key: [i for i, c in dataset.items() if belongs(c)] for key, _, belongs in REAL_SPLIT}
+    result = {'models': [], 'n': len(runs)}
+    positions = {}
+    for mid, r in runs.items():
+        pos = {v: {i: position(c['eval_details']['final_resolution']) for i, c in r[v].items()} for v in ('v2', 'v3')}
+        positions[mid] = pos
+        result['models'].append({'id': mid, 'name': r['name'], 'color': r['color'],
+                                 'groups': {key: {'n': len(ids), 'v2': metrics([pos['v2'][i] for i in ids]), 'v3': metrics([pos['v3'][i] for i in ids]),
+                                                  'r1': paired(pos['v3'], pos['v2'], ids, 1)} for key, ids in groups.items()}})
+    result['order'] = {v: [m['name'] for m in sorted(result['models'], key=lambda m: -m['groups']['realcases'][v]['r1'])] for v in ('v2', 'v3')}
+    if {'sol61', 'terra56'} <= set(positions):
+        result['solTerra'] = {v: {key: paired(positions['sol61'][v], positions['terra56'][v], groups[key], 1) for key in ('realcases', 'realRare')}
+                              for v in ('v2', 'v3')}
+
+    # Identical options (same case, gold and text) across the models, and how each option's grade moved
+    seen = {v: {} for v in ('v2', 'v3')}
+    moves = {}
+    for r in runs.values():
+        for v in ('v2', 'v3'):
+            for case_id, case in r[v].items():
+                for trace in case['eval_details'].get('graded_trace', []):
+                    for option in trace['options']:
+                        if option['grade'] is not None and not option.get('code_match'):
+                            seen[v].setdefault(option_key(case_id, trace['gdx'], option['name']), set()).add(option['grade'])
+        for case_id, case in r['v2'].items():
+            after = {(t['gdx'], o['position']): o['grade'] for t in r['v3'].get(case_id, {}).get('eval_details', {}).get('graded_trace', [])
+                     for o in t['options']}
+            for trace in case['eval_details'].get('graded_trace', []):
+                for option in trace['options']:
+                    new = after.get((trace['gdx'], option['position']))
+                    if option['grade'] is not None and new is not None:
+                        moves[(option['grade'], new)] = moves.get((option['grade'], new), 0) + 1
+    # Cases that change their P1 hit, whether the P1 grade came from the cache and whether the option is a disjunction
+    p1 = {'gains': 0, 'losses': 0, 'reused': 0, 'disjunction': 0}
+    for r in runs.values():
+        for case_id, case in r['v2'].items():
+            before = position(case['eval_details']['final_resolution']) == 1
+            resolution = r['v3'][case_id]['eval_details']['final_resolution']
+            after = position(resolution) == 1
+            if after and not before:
+                p1['gains'] += 1
+                option = list(resolution['matched_ddx'])[0]
+                p1['disjunction'] += bool(re.search(r'/|\bor\b', option, re.I))
+                p1['reused'] += any(o['position'] == 1 and o['grade'] == 2 and o.get('grade_reused')
+                                    for t in r['v3'][case_id]['eval_details']['graded_trace'] for o in t['options'])
+            p1['losses'] += before and not after
+    result['p1'] = p1
+    result['consistency'] = {v: {'repeated': sum(1 for s in seen[v].values()), 'differ': sum(1 for s in seen[v].values() if len(s) > 1)}
+                             for v in ('v2', 'v3')}
+    result['moves'] = {f'{a}{b}': n for (a, b), n in moves.items()}
+    case_id, mid = GRADED_V3_EXAMPLE
+    if mid in runs and case_id in runs[mid]['v2']:
+        result['example'] = {v: [(o['name'], o['grade']) for t in runs[mid][v][case_id]['eval_details']['graded_trace'] for o in t['options']
+                                 if o['position'] == 1][0] for v in ('v2', 'v3')}
+    cost = {'v3': 0.0, 'calls': 0, 'reused': 0}
+    for r in runs.values():
+        with open(os.path.join(r['v3Run'], 'summary.json'), 'r', encoding='utf-8') as f:
+            judge = json.load(f)['judge']
+        cost['v3'] += judge['estimated_cost_usd'] or 0
+        cost['calls'] += judge['calls']
+        cost['reused'] += judge.get('reused_grades', 0)
+    result['cost'] = cost
+    return result
+
+
+def hpo_sermas():
+    """Sol and Terra with the sermas prompt against juanjo_classic_v2 on the same HPO v2 cases, Flash judge on both."""
+    prompts = ('juanjo_classic_v2', SERMAS_PROMPT)
+    pos = {(m, p): {} for m in HPO_FOLDERS for p in prompts}
+    labels, lists = [], {m: {'lengths': [], 'times': [], 'cost': 0.0} for m in HPO_FOLDERS}
+    for key, label, _ in HPO:
+        if key not in SERMAS_HPO:
+            continue
+        root = os.path.join(OUTPUT_ROOT, f'{key}_v2')
+        runs = {(m, p): finished_run(os.path.join(root, p, f + FLASH_TAG)) for m, f in HPO_FOLDERS.items() for p in prompts}
+        if not all(runs.values()):
+            continue
+        details = {k: load_details(os.path.join(r, 'evaluation_details.txt')) for k, r in runs.items()}
+        ids = sorted(set.intersection(*(set(d) for d in details.values())))
+        for k in runs:
+            pos[k].update({f'{key}:{i}': strict_position(details[k][i], False) for i in ids})
+        labels.append(label)
+        for m, f in HPO_FOLDERS.items():
+            path = os.path.join(root, SERMAS_PROMPT, f + FLASH_TAG)
+            labeled = load_labeled(path)
+            lists[m]['lengths'] += [len(c.get('ddx_details', {})) for c in labeled]
+            lists[m]['times'] += [c['emulator_time_seconds'] for c in labeled if c.get('emulator_time_seconds')]
+            lists[m]['cost'] += (generation_cost(path, HPO_MODEL_IDS[m]) or 0) * len(labeled)
+    keys = list(pos[('sol', SERMAS_PROMPT)])
+    if not keys:
+        return None
+    return {
+        'datasets': labels, 'n': len(keys),
+        'prompt': {m: {'classic': metrics([pos[(m, prompts[0])][k] for k in keys]), 'sermas': metrics([pos[(m, prompts[1])][k] for k in keys]),
+                       'r1': paired(pos[(m, prompts[1])], pos[(m, prompts[0])], keys, 1),
+                       'r5': paired(pos[(m, prompts[1])], pos[(m, prompts[0])], keys, 5)} for m in HPO_FOLDERS},
+        'solTerra': {p: {'r1': paired(pos[('sol', p)], pos[('terra', p)], keys, 1), 'r5': paired(pos[('sol', p)], pos[('terra', p)], keys, 5)}
+                     for p in prompts},
+        'lists': {m: {'options': statistics.median(v['lengths']), 'under5': round(100 * sum(1 for n in v['lengths'] if n < 5) / len(v['lengths'])),
+                      'latency': round(statistics.median(v['times']), 1), 'cost': v['cost'] / len(v['lengths'])} for m, v in lists.items()},
+    }
+
+
 def count_example(details, judge, counts):
     """Grade 2 out of all grades the judge gave to «type 5» and «type 5D» options for the example gold."""
     for case_id, case in details.items():
@@ -586,10 +766,13 @@ def collect():
                                  for ex_key, case_id, note in GENE_EXAMPLES if ex_key == key and case_id in v5]
     data['hpoSol'] = hpo_sol()
     data['hpoSyn'] = hpo_syn()
+    data['hpoOpus'] = hpo_opus()
+    data['hpoSermas'] = hpo_sermas()
     judges = compare_judges.compare(JUDGE_CANDIDATES)
     if judges:
         judges['colors'] = {name: color for (_, name), (*_, color) in zip(compare_judges.MODELS, MODELS)}
     data['judges'] = judges
+    data['gradedV3'] = graded_v3(dataset)
 
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
@@ -824,7 +1007,8 @@ def rerun_section(data):
     <p class="note">Cambian: casos que acierta la 2.ª ejecución y no la 1.ª, y al revés. Una diferencia entre dos modelos solo dice algo si
       supera lo que varía un modelo consigo mismo. «Las dos ejecuciones»: en cada caso, aciertos de Sol (0, 1 o 2) menos aciertos de Terra;
       gana y pierde cuentan los casos en que esa resta es positiva o negativa, con una prueba de signos exacta. Las cifras del resto del
-      informe son las de la 1.ª ejecución.</p>
+      informe son las de la 1.ª ejecución. El juez también varía: con las mismas listas de Terra, una segunda llamada a Gemini 2.5 Pro
+      cambia el 5,7 % de las notas y el acierto en P1 en 8 de 300 casos (R@1 61,3 % frente a 60,0 %).</p>
   </div>
 '''
 
@@ -1017,6 +1201,191 @@ def hpo_syn_section(data):
     <p class="note">Solo datasets puntuados por los dos jueces con los dos gold. Los sinónimos salen de
       <code>data29/data-repos/hpo-v2/gold_synonyms.py</code> (API de Monarch; solo sinónimos exactos, sin códigos Orphanet porque suelen
       ser grupos). Es una prueba: el dataset oficial sigue siendo HPO v2.</p>
+  </div>
+'''
+
+
+def graded_table(s, version):
+    keys = (('realcases', 'Casos reales'), ('realRare', 'Raras reales'), ('total', 'Total'))
+    head = ''.join(f'<th>{label}: v2</th><th>{version}</th><th>Gana / pierde</th>' for _, label in keys)
+    rows = '\n'.join(
+        f'<tr><td><span class="dot" style="background:{m["color"]}"></span> {m["name"]}</td>'
+        + ''.join(f'<td>{pct(m["groups"][k]["v2"]["r1"])}</td><td>{pct(m["groups"][k]["v3"]["r1"])}</td>'
+                  f'<td>{m["groups"][k]["r1"]["wins"]} / {m["groups"][k]["r1"]["losses"]}</td>' for k, _ in keys) + '</tr>'
+        for m in s['models'])
+    return f'''
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>R@1</th>{head}</tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>'''
+
+
+def graded_v3_section(data):
+    s = data.get('gradedV3')
+    if not s:
+        return ''
+    c, p1 = s['consistency'], s['p1']
+    share = lambda v: f'{c[v]["differ"]} de {thousands(c[v]["repeated"])} ({pct(100 * c[v]["differ"] / c[v]["repeated"])})'
+    moves = s['moves']
+    same_order = s['order']['v2'] == s['order']['v3']
+    order = ('El orden de los modelos en casos reales no cambia.' if same_order else
+             f'El orden en casos reales pasa de {", ".join(s["order"]["v2"])} a {", ".join(s["order"]["v3"])}.')
+    example = ''
+    if 'example' in s:
+        e = s['example']
+        example = (f' En su ejemplo, la P1 de Terra 5.6 («{e["v3"][0]}») pasa de {e["v2"][1]} a {e["v3"][1]}.')
+    sol_terra = ''
+    if 'solTerra' in s:
+        st = s['solTerra']
+        sol_terra = (f' Sol frente a Terra 5.6 en raras reales: {st["v2"]["realRare"]["wins"]} / {st["v2"]["realRare"]["losses"]} con v2 '
+                     f'y {st["v3"]["realRare"]["wins"]} / {st["v3"]["realRare"]["losses"]} con v3 ({p_text(st["v3"]["realRare"]["p"])}).')
+    return f'''
+  <div class="section">
+    <div class="section-title">Punto 6 de Julián · juez con <code>graded_v3</code> (adoptado)</div>
+    <div class="callout callout-info">
+      La rúbrica decía qué nota lleva «X con Y» frente a «X», pero no una respuesta que nombra el gold y añade una causa o una complicación,
+      y el juez la puntuaba distinto según el orden de las palabras. <code>graded_v3</code> da un 2 cuando la opción afirma el diagnóstico de
+      referencia aunque añada causa o complicación, salvo las disyuntivas («A o B») y otra enfermedad cuyo nombre lo contiene. Además, cada
+      opción repetida (mismo caso, gold y texto) se puntúa una sola vez y la nota se reutiliza en todos los modelos. Se vuelven a puntuar las
+      mismas listas de {s["n"]} modelos con el mismo juez, Gemini 2.5 Pro.{example}
+      {order} Las respuestas iguales con notas distintas pasan de {share("v2")} a {share("v3")}.{sol_terra}
+    </div>
+    <div class="callout callout-warn">
+      <strong>Decidido el 30-oct-2026 (Julián): se adopta <code>graded_v3</code> y la rúbrica deja de ajustarse con contraejemplos</strong>,
+      porque con cualquier dataset saldrá alguno. Criterio: la enfermedad que propone el modelo es la misma entidad si está relacionada con
+      el gold y se trata de la misma forma. Con v3, {p1["gains"]} casos pasan a acertar en P1 y {p1["losses"]} dejan de hacerlo; entre los que
+      suben hay respuestas que la regla escrita no buscaba pero que encajan en ese criterio, como «Stevens-Johnson / NET» para NET o
+      «herpangina» para faringoamigdalitis aguda. {p1["reused"]} de esas ganancias vienen de una nota reutilizada. Se probó una versión más
+      estricta (v3b: disyuntivas nunca 2 y cada opción puntuada dos veces) sobre las 178 opciones que cambiaban (3,57 $) y se descartó con
+      esta decisión. <code>graded_v3</code> es el juez por defecto desde ahora; las cifras de este informe siguen con v2 hasta volver a
+      puntuar con <code>narrative_v2</code> v0.2.
+    </div>
+{graded_table(s, 'v3')}
+    <p class="note">Gana / pierde: casos que acierta en P1 con v3 y no con v2, y al revés. Notas que cambian entre v2 y v3:
+      de 1 a 2, {thousands(moves.get("12", 0))}; de 2 a 1, {thousands(moves.get("21", 0))}; de 0 a 1, {thousands(moves.get("01", 0))};
+      de 1 a 0, {thousands(moves.get("10", 0))}. Parte es el ruido del juez y no la regla nueva. Juez v3: {s["cost"]["calls"]} llamadas,
+      {thousands(s["cost"]["reused"])} notas reutilizadas, ≈ {num(s["cost"]["v3"], 2)} $.</p>
+  </div>
+'''
+
+
+def hpo_opus_section(data):
+    s = data.get('hpoOpus')
+    if not s:
+        return ''
+    sol_cost = data.get('hpoSol', {}).get('cost')
+
+    def row(r, total=False):
+        o, c = ('<strong>', '</strong>') if total else ('', '')
+        return (f'<tr{" class=\"winner\"" if total else ""}><td>{o}{r["label"]}{c}</td><td>{thousands(r["n"])}</td>'
+                f'<td>{pct(r["terra"]["r1"])}</td><td>{o}{pct(r["sol"]["r1"])}{c}</td><td>{pct(r["opus"]["r1"])}</td>'
+                f'<td>{r["r1"]["wins"]} / {r["r1"]["losses"]}</td><td>{p_value(r["r1"]["p"])}</td>'
+                f'<td>{pct(r["terra"]["r5"])}</td><td>{o}{pct(r["sol"]["r5"])}{c}</td><td>{pct(r["opus"]["r5"])}</td></tr>')
+    t = s['total']
+    rows = '\n'.join([row(r) for r in s['rows']] + [row(t, True)])
+    cost_text = (f'Opus cuesta {cents(s["cost"])} por caso en generación, frente a {cents(sol_cost)} de Sol.' if sol_cost
+                 else f'Opus cuesta {cents(s["cost"])} por caso en generación.')
+    return f'''
+  <div class="section">
+    <div class="section-title">Raras HPO v2 · Claude Opus 5 frente a Sol y Terra</div>
+    <div class="callout callout-info">
+      En <code>narrative_v2</code> Claude Opus 5 es el mejor en casos reales no raros, pero en raras reales queda por detrás de Sol.
+      Para comprobarlo con más casos se pasa Opus 5 (esfuerzo <code>low</code>, mismo prompt y juez Gemini 2.5 Pro) por los cuatro datasets
+      pequeños de HPO v2. <strong>Opus queda por detrás de los dos</strong>: R@1 {pct(t["opus"]["r1"])} frente a {pct(t["sol"]["r1"])} de Sol
+      ({t["r1"]["wins"]} / {t["r1"]["losses"]}, {p_text(t["r1"]["p"])}) y {pct(t["terra"]["r1"])} de Terra
+      ({t["terraR1"]["losses"]} / {t["terraR1"]["wins"]} a favor de Terra, {p_text(t["terraR1"]["p"])}). En R@5 tampoco lo compensa,
+      aunque da {num(s["options"], 0)} opciones (mediana): {pct(t["opus"]["r5"])} frente a {pct(t["sol"]["r5"])}.
+      No es que nombre la enfermedad de forma menos precisa: contando también las notas 1 en P1, Opus llega al {pct(s["lax"]["opus"])}
+      y Sol al {pct(s["lax"]["sol"])} ({s["laxTest"]["wins"]} / {s["laxTest"]["losses"]}, {p_text(s["laxTest"]["p"])}).
+      {cost_text}
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Dataset</th><th>Casos</th><th>R@1 Terra</th><th>R@1 Sol</th><th>R@1 Opus</th><th>Sol frente a Opus</th><th>p</th>
+        <th>R@5 Terra</th><th>R@5 Sol</th><th>R@5 Opus</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto sobre los mismos casos, gold v2 (con gen o sin gen). DDD y RAMEDIS no se han pasado por Opus por coste
+      (unos 6,7 c$ por caso). Juez de las listas de Opus: {num(s["judgeCost"], 2)} $.</p>
+  </div>
+'''
+
+
+def hpo_sermas_section(data):
+    s = data.get('hpoSermas')
+    if not s:
+        return ''
+    labels = {'terra': 'Terra 5.6', 'sol': 'gpt-6.1-sol'}
+    prompt_rows = '\n'.join(
+        f'<tr><td>{labels[m]}</td><td>{pct(r["classic"]["r1"])}</td><td>{pct(r["sermas"]["r1"])}</td><td>{r["r1"]["wins"]} / {r["r1"]["losses"]}</td>'
+        f'<td>{p_value(r["r1"]["p"])}</td><td>{pct(r["classic"]["r5"])}</td><td>{pct(r["sermas"]["r5"])}</td><td>{r["r5"]["wins"]} / {r["r5"]["losses"]}</td>'
+        f'<td>{p_value(r["r5"]["p"])}</td></tr>' for m, r in s['prompt'].items())
+    names = {'classic': 'DxGPT (<code>juanjo_classic_v2</code>)', 'sermas': f'sermas (<code>{SERMAS_PROMPT}</code>)'}
+    versus = '\n'.join(
+        f'<tr><td>{names[kind]}</td><td>{pct(s["prompt"]["sol"][kind]["r1"])}</td><td>{pct(s["prompt"]["terra"][kind]["r1"])}</td>'
+        f'<td>{t["r1"]["wins"]} / {t["r1"]["losses"]}</td><td>{p_value(t["r1"]["p"])}</td>'
+        f'<td>{pct(s["prompt"]["sol"][kind]["r5"])}</td><td>{pct(s["prompt"]["terra"][kind]["r5"])}</td>'
+        f'<td>{t["r5"]["wins"]} / {t["r5"]["losses"]}</td><td>{p_value(t["r5"]["p"])}</td></tr>'
+        for kind, t in (('classic', s['solTerra']['juanjo_classic_v2']), ('sermas', s['solTerra'][SERMAS_PROMPT])))
+    list_rows = '\n'.join(
+        f'<tr><td>{labels[m]}</td><td>{num(v["options"])}</td><td>{v["under5"]} %</td><td>{num(v["latency"])} s</td><td>{cents(v["cost"])}</td></tr>'
+        for m, v in s['lists'].items())
+    sermas = s['solTerra'][SERMAS_PROMPT]['r1']
+    sol, terra = s['prompt']['sol']['sermas'], s['prompt']['terra']['sermas']
+    verdict = (f'Con el prompt de sermas, Sol acierta en primer lugar el {pct(sol["r1"])} de los casos y Terra el {pct(terra["r1"])} '
+               f'({sermas["wins"]} casos que solo acierta Sol frente a {sermas["losses"]} que solo acierta Terra, {p_text(sermas["p"])}).')
+    if sermas['p'] < 0.05 and sermas['wins'] > sermas['losses']:
+        lists = s['lists']
+        verdict += (f' <strong>Para sermas, Sol:</strong> gana con los dos prompts, cuesta menos por caso ({cents(lists["sol"]["cost"])} frente a '
+                    f'{cents(lists["terra"]["cost"])}) y sus {num(lists["sol"]["latency"])} s de mediana caben de sobra en App Service, que corta a los 230 s.')
+    datasets = s['datasets'][0] if len(s['datasets']) == 1 else ', '.join(s['datasets'][:-1]) + ' y ' + s['datasets'][-1]
+    return f'''
+  <div class="section">
+    <div class="section-title">Prompt de sermas (raras) · Sol frente a Terra</div>
+    <div class="callout callout-info">
+      sermas es la versión de DxGPT solo para enfermedades raras, desplegada en App Service. Su prompt es el de DxGPT con tres cambios:
+      «specialized in rare diseases», «rare disease diagnoses» y «description of the rare disease». Para elegir modelo se generan listas
+      nuevas de Sol y Terra con ese prompt en {datasets} ({thousands(s["n"])} casos de HPO v2), y se comparan con las
+      listas del prompt de DxGPT en los mismos casos. Los dos prompts los puntúa el mismo juez, Gemini 3.8 Flash. {verdict}
+    </div>
+    <h3>Sol frente a Terra con cada prompt</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Prompt</th><th>R@1 Sol</th><th>R@1 Terra</th><th>Gana / pierde</th><th>p</th>
+        <th>R@5 Sol</th><th>R@5 Terra</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{versus}
+      </tbody>
+    </table>
+    </div>
+    <h3>¿Cambia algo el prompt de raras?</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>R@1 DxGPT</th><th>R@1 sermas</th><th>Gana / pierde</th><th>p</th>
+        <th>R@5 DxGPT</th><th>R@5 sermas</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{prompt_rows}
+      </tbody>
+    </table>
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Listas con el prompt de sermas</th><th>Opciones (mediana)</th><th>Casos con menos de 5</th><th>Latencia (mediana)</th><th>Coste por caso</th></tr></thead>
+      <tbody>
+{list_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto sobre los mismos casos, gold v2 (con gen o sin gen). Las listas de Terra con el prompt de DxGPT son las de julio
+      y las de Sol las de octubre; las de sermas son de hoy. Parte de la diferencia entre prompts puede ser la variación normal entre ejecuciones
+      (ver «Variabilidad entre ejecuciones»).</p>
   </div>
 '''
 
@@ -1504,6 +1873,7 @@ def build_html(data):
 {n5_section(data)}
 {poc_section(data)}
 {judges_section(data)}
+{graded_v3_section(data)}
   <div class="section">
     <div class="section-title">Raras HPO v2 · Terra 5.6 low · 3.006 casos</div>
     <div class="callout callout-info">
@@ -1554,7 +1924,9 @@ def build_html(data):
   </div>
 
 {hpo_sol_section(data)}
+{hpo_opus_section(data)}
 {hpo_syn_section(data)}
+{hpo_sermas_section(data)}
   <div class="section">
     <div class="section-title">Serie histórica · all_256_clean</div>
     <div class="table-scroll">

@@ -17,10 +17,19 @@ Changes from Pipeline V4:
 - The judge reads the gold as written in the dataset, not the labeler's
   normalized text, plus its accepted_names when the dataset provides them.
 - "X with Y" and "finding due to X" references are matched by "X" (rubric C2).
+- graded_v3 (default since 30-oct-2026; EVALUATOR.JUDGE_PROMPT_VERSION: graded_v2
+  for the earlier runs) also gives 2 to an option that states the reference and
+  adds a cause or complication ("Y caused by X"), except disjunctions and another
+  disease whose name contains the reference. Julián's point 6: an option counts as
+  the same entity when it is related to the gold and treated the same way.
+- EVALUATOR.JUDGE_GRADE_CACHE grades each option text once per gold and judge and
+  reuses that grade across cases, runs and models, so identical answers always
+  get the same grade. Runs sharing a cache file should run one after another.
 """
 
 import json
 import os
+import re
 import sys
 import logging
 import time
@@ -40,7 +49,8 @@ from utils.icd10.taxonomy import ICD10Taxonomy
 
 # Constants
 LOG_FILE_NAME = 'evaluation'
-JUDGE_PROMPT_VERSION = 'graded_v2'
+JUDGE_PROMPT_VERSION = 'graded_v3'  # default; EVALUATOR.JUDGE_PROMPT_VERSION picks another
+JUDGE_PROMPT_VERSIONS = ('graded_v2', 'graded_v3')
 GRADE_SAME = 2
 GRADE_RELATED = 1
 GRADE_DIFFERENT = 0
@@ -91,13 +101,24 @@ class GradedEvaluator:
             token in judge_model_lower for token in ('o3', 'gpt-5', 'gpt5', 'grok', 'claude')
         )
 
+        self.prompt_version = self.evaluator_config.get('JUDGE_PROMPT_VERSION', JUDGE_PROMPT_VERSION)
+        if self.prompt_version not in JUDGE_PROMPT_VERSIONS:
+            raise ValueError(f"Unknown JUDGE_PROMPT_VERSION {self.prompt_version}; use one of {JUDGE_PROMPT_VERSIONS}")
+
         self.llm = get_llm(self.judge_model_name, logger=logger)
         self.icd10_taxonomy = ICD10Taxonomy()
         self.judge_call_metrics: List[Dict[str, Any]] = []
         self._judge_metrics_lock = threading.Lock()
 
+        cache_path = self.evaluator_config.get('JUDGE_GRADE_CACHE')
+        self.grade_cache_path = (cache_path if os.path.isabs(cache_path) else os.path.join(project_root, cache_path)) if cache_path else None
+        self.grade_cache = self._load_grade_cache(self.grade_cache_path) if cache_path else None
+        self._grade_cache_lock = threading.Lock()
+
         if self.logger:
-            self.logger.info(f"Judge model: {self.judge_model_name} (prompt {JUDGE_PROMPT_VERSION})")
+            self.logger.info(f"Judge model: {self.judge_model_name} (prompt {self.prompt_version})")
+            if self.grade_cache is not None:
+                self.logger.info(f"Grade cache: {self.grade_cache_path} ({len(self.grade_cache['grades'])} grades)")
 
     def warmup_dependencies(self) -> None:
         """Load the ICD-10 taxonomy once before worker threads start."""
@@ -135,7 +156,7 @@ class GradedEvaluator:
             "best_match_found": strict is not None,
             "final_resolution": strict,
             "lax_resolution": lax,
-            "judge_prompt_version": JUDGE_PROMPT_VERSION,
+            "judge_prompt_version": self.prompt_version,
             "judge_error": "; ".join(judge_errors) if judge_errors else None,
             "graded_trace": graded_trace,
         }
@@ -176,16 +197,21 @@ class GradedEvaluator:
                 "icd10_relation": None if code_match else self._icd10_relation(gdx_info, ddx_info),
             })
 
-        if ddx_texts:
-            judge = self._grade_options(gdx_text, ddx_texts)
-        else:
+        if not ddx_texts:
             judge = {"grades": [], "reference_is_disease": None, "attempts": 0}
+        elif self.grade_cache is not None:
+            judge = self._grade_with_cache(gdx_text, ddx_texts)
+        else:
+            judge = self._grade_options(gdx_text, ddx_texts)
 
         judge_grades = judge.get("grades")
+        reused = judge.get("reused")
         for index, option in enumerate(options):
             judge_grade = judge_grades[index] if judge_grades is not None else None
             option["judge_grade"] = judge_grade
             option["grade"] = GRADE_SAME if option["code_match"] else judge_grade
+            if reused is not None:
+                option["grade_reused"] = reused[index]
 
         return {
             "gdx": gdx_name,
@@ -266,6 +292,13 @@ class GradedEvaluator:
     def _build_judge_prompt(self, gdx_text: str, ddx_texts: List[str]) -> str:
         ddx_options = "\n".join(f"{index}. {text}" for index, text in enumerate(ddx_texts, start=1))
         option_count = len(ddx_texts)
+        same_extra, consequence, contains = "", "", ""
+        if self.prompt_version == 'graded_v3':
+            # The option names the reference and adds a cause or complication: same entity (Julián's point 6)
+            same_extra = (' Also accept an option that states the patient has the reference diagnosis and adds a cause, complication,'
+                          ' manifestation or another finding ("X with Y", "X due to Y", "Y caused by X", "Y as a complication of X").')
+            consequence = " that does not state the reference itself"
+            contains = ' a different disease whose name contains the reference (for example "carcinoma ex pleomorphic adenoma" for "pleomorphic adenoma");'
         return f"""You are a medical expert grading a differential diagnosis against a reference diagnosis.
 
 Reference diagnosis: {gdx_text}
@@ -275,8 +308,8 @@ Differential diagnosis options:
 
 Grade every option with one of these values:
 
-2 = Same disease entity. Accept synonyms, abbreviations and spelling variants. Accept a more specific form only when every patient with the option necessarily has the reference diagnosis: a named subtype of the reference, or the reference with added laterality or extent. Also accept the underlying disease when the reference adds a complication or manifestation to it ("X with Y" is matched by "X") or names a finding caused by it ("finding due to X" is matched by "X").
-1 = Related but not the same entity: a broader category; an option that omits a qualifier that defines the reference (for example "GIST" for "malignant GIST"); a different subtype, variant, gene or phenotype within the same family; a cause, complication, precursor or consequence of the reference; or a disjunction such as "A or B" that includes the reference.
+2 = Same disease entity. Accept synonyms, abbreviations and spelling variants. Accept a more specific form only when every patient with the option necessarily has the reference diagnosis: a named subtype of the reference, or the reference with added laterality or extent. Also accept the underlying disease when the reference adds a complication or manifestation to it ("X with Y" is matched by "X") or names a finding caused by it ("finding due to X" is matched by "X").{same_extra}
+1 = Related but not the same entity: a broader category; an option that omits a qualifier that defines the reference (for example "GIST" for "malignant GIST"); a different subtype, variant, gene or phenotype within the same family; a cause, complication, precursor or consequence of the reference{consequence};{contains} or a disjunction such as "A or B" that includes the reference.
 0 = A different disease.
 
 Grade each option on its own; several options can share a grade. Do not give credit for a similar presentation, anatomical site, mechanism or treatment.
@@ -384,6 +417,75 @@ Respond with JSON only, without prose or code fences. The "grades" list must con
             "raw_response": response_text,
             "error": error_text,
         }
+
+    @staticmethod
+    def _grade_key(gdx_text: str, ddx_text: str) -> str:
+        """Cache key: the gold as the judge reads it, and the option without case or punctuation."""
+        option = re.sub(r'[\W_]+', ' ', ddx_text.lower()).strip()
+        return f"{gdx_text}\t{option}"
+
+    def _grade_with_cache(self, gdx_text: str, ddx_texts: List[str]) -> Dict:
+        """Grade only the options this gold has no grade for yet, and reuse the rest.
+        The first grade stored for a key wins, so identical options always share it."""
+        keys = [self._grade_key(gdx_text, text) for text in ddx_texts]
+        with self._grade_cache_lock:
+            reused = [key in self.grade_cache["grades"] for key in keys]
+        pending = list(dict.fromkeys(key for key, hit in zip(keys, reused) if not hit))
+
+        judge = {"reference_is_disease": None, "attempts": 0}
+        if pending:
+            judge = self._grade_options(gdx_text, [ddx_texts[keys.index(key)] for key in pending])
+            if judge.get("grades") is not None:
+                with self._grade_cache_lock:
+                    for key, grade in zip(pending, judge["grades"]):
+                        self.grade_cache["grades"].setdefault(key, grade)
+                    if judge.get("reference_is_disease") is not None:
+                        self.grade_cache["reference_is_disease"].setdefault(gdx_text, judge["reference_is_disease"])
+
+        with self._grade_cache_lock:
+            grades = [self.grade_cache["grades"].get(key) for key in keys]
+            reference_is_disease = self.grade_cache["reference_is_disease"].get(gdx_text, judge.get("reference_is_disease"))
+        return {**judge, "grades": grades, "reference_is_disease": reference_is_disease, "reused": reused,
+                "judged_options": len(pending)}
+
+    def _load_grade_cache(self, path: str) -> Dict:
+        cache = {"judge_model": self.judge_model_name, "prompt_version": self.prompt_version,
+                 "grades": {}, "reference_is_disease": {}}
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                stored = json.load(f)
+            if (stored.get("judge_model"), stored.get("prompt_version")) != (self.judge_model_name, self.prompt_version):
+                raise ValueError(f"Grade cache {path} is for {stored.get('judge_model')} / {stored.get('prompt_version')}, "
+                                 f"not {self.judge_model_name} / {self.prompt_version}")
+            cache["grades"].update(stored.get("grades", {}))
+            cache["reference_is_disease"].update(stored.get("reference_is_disease", {}))
+        return cache
+
+    def save_grade_cache(self) -> None:
+        """Merge this run's grades into the cache file; grades already in the file win."""
+        if self.grade_cache is None:
+            return
+        lock_path = self.grade_cache_path + '.lock'
+        for _ in range(240):
+            try:
+                os.close(os.open(lock_path, os.O_CREAT | os.O_EXCL))
+                break
+            except FileExistsError:
+                time.sleep(0.5)
+        else:
+            raise TimeoutError(f"Grade cache is locked: {lock_path}")
+        try:
+            merged = self._load_grade_cache(self.grade_cache_path)
+            for section in ("grades", "reference_is_disease"):
+                for key, value in self.grade_cache[section].items():
+                    merged[section].setdefault(key, value)
+            os.makedirs(os.path.dirname(self.grade_cache_path), exist_ok=True)
+            temp_path = self.grade_cache_path + '.tmp'
+            with open(temp_path, 'w', encoding='utf-8') as f:
+                json.dump(merged, f, indent=1, ensure_ascii=False, sort_keys=True)
+            os.replace(temp_path, self.grade_cache_path)
+        finally:
+            os.remove(lock_path)
 
 
 def setup_logging(output_dir: str) -> logging.Logger:
@@ -538,7 +640,8 @@ def generate_summary_json(results: List[EvaluationResult], output_path: str, con
             "experiment_description": config.get('EXPERIMENT_DESCRIPTION', 'unknown'),
             "judge_model": evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro'),
             "judge_params": evaluator_config.get('JUDGE_PARAMS', {}),
-            "judge_prompt_version": JUDGE_PROMPT_VERSION,
+            "judge_prompt_version": evaluator_config.get('JUDGE_PROMPT_VERSION', JUDGE_PROMPT_VERSION),
+            "judge_grade_cache": evaluator_config.get('JUDGE_GRADE_CACHE'),
             "automatic_layers": ["SNOMED_EXACT"],
             "dataset_path": config.get('DATASET_PATH', 'unknown'),
             "reused_labeled_ddx": config.get('REUSE_LABELED_DDX'),
@@ -569,7 +672,8 @@ def evaluate_dataset(input_path: str, output_dir: str, config: Dict[str, Any]) -
 
     logger.info("--- Starting Evaluation Pipeline V5 ---")
     logger.info("  Automatic layers: SNOMED_EXACT")
-    logger.info(f"  Judge: {evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro')} ({JUDGE_PROMPT_VERSION}) on every case")
+    logger.info(f"  Judge: {evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro')} "
+                f"({evaluator_config.get('JUDGE_PROMPT_VERSION', JUDGE_PROMPT_VERSION)}) on every case")
     logger.info(f"  Output directory: {output_dir}")
 
     logger.info("Loading input data...")
@@ -636,7 +740,11 @@ def evaluate_dataset(input_path: str, output_dir: str, config: Dict[str, Any]) -
     all_results = [r for r in ordered if r is not None]
 
     logger.info("\nGenerating outputs...")
+    evaluator.save_grade_cache()
     judge_totals = calculate_judge_totals(evaluator.judge_call_metrics, evaluator.judge_model_name)
+    if evaluator.grade_cache is not None:
+        judge_totals["reused_grades"] = sum(1 for r in all_results for t in r.eval_details.get("graded_trace", [])
+                                            for o in t["options"] if o.get("grade_reused"))
     generate_evaluation_details(all_results, output_details_path)
     generate_summary_json(all_results, output_summary_path, config, judge_totals)
     with open(output_judge_metrics_path, 'w', encoding='utf-8') as f:

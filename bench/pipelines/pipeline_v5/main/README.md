@@ -415,6 +415,78 @@ reales 62,5 % frente a 53,0 %; no raras 52,1 % frente a 51,1 %.
   ejecuciones de cada uno, o más casos. Las 3.006 raras de HPO, donde la
   ventaja de Sol es clara (p < 0,001 con los dos jueces), pesan más que
   `narrative_v2` para esta decisión.
+- **El juez también varía.** Con las mismas listas de Terra, una segunda
+  llamada a Gemini 2.5 Pro (`__judge_gemini_2_5_pro_rerun`) cambia el 5,7 %
+  de las 1.423 notas y el acierto en P1 en 8 de 300 casos: R@1 61,3 % frente
+  a 60,0 %. En las 12 ejecuciones con juez Pro, la misma opción para el mismo
+  caso y gold aparece 2.953 veces repetida, y en el 12,2 % recibe notas
+  distintas; casi todas son 1 frente a 0, que no tocan la cifra estricta, y 75
+  incluyen un 2.
+
+### Punto 6 de Julián: la respuesta que nombra el gold y algo más (30-oct-2026)
+
+La rúbrica dice qué hacer cuando la referencia es «X con Y» y la opción «X»
+(C2.1, nota 2), pero no el caso contrario: la opción nombra el gold y añade
+una causa o una complicación. Su ejemplo está en los datos, en
+`L-PMC13354413` (gold «Choledochoduodenal fistula»): Terra dice «Ascending
+cholangitis caused by a spontaneous choledochoduodenal fistula» y recibe un
+1; Sol dice «Choledochoduodenal fistula with food impaction causing acute
+suppurative cholangitis» y recibe un 2. Las dos nombran la fístula y la
+colangitis; cambia el orden. Y la misma opción puede recibir notas distintas:
+«Infected branchial cleft cyst» saca un 2 en una ejecución y un 1 en otra.
+
+- De las 1.391 opciones que contienen el nombre entero del gold y algo más,
+  el juez ya da un 2 al 95,3 %. Un 1 a 64; muchas con razón: disyuntivas
+  («Stevens-Johnson / TEN»), otra enfermedad que contiene el nombre
+  («Huntington's disease-like 2», «carcinoma ex pleomorphic adenoma»).
+- Contando solo las opciones que contienen el nombre exacto del gold, el R@1
+  cambiaría como mucho en 2 casos de 300 por modelo. **Esa estimación se
+  quedó corta**: ver la medición de abajo.
+
+`graded_v3` (en `evaluator.py`, `EVALUATOR.JUDGE_PROMPT_VERSION`; por defecto
+desde el 30-oct, y `graded_v2` para reproducir lo anterior): nota 2 cuando la opción afirma que el paciente tiene el
+diagnóstico de referencia, aunque añada una causa, una complicación u otro
+hallazgo («X con Y», «X por Y», «Y causada por X»); siguen en 1 las
+disyuntivas y otra enfermedad cuyo nombre contiene la referencia. Con
+`EVALUATOR.JUDGE_GRADE_CACHE`, cada opción repetida (mismo gold y texto) se
+puntúa una vez y la nota se reutiliza en todos los modelos
+(`output/narrative_v2/judge_grades__gemini-2.5-pro__graded_v3.json`).
+Medición del 30-oct: mismas listas de los seis modelos, juez Pro
+(`<modelo>__graded_v3`, 23,93 $, 2.517 notas reutilizadas):
+
+| R@1 | Reales v2 | Reales v3 | gana / pierde | Raras reales v2 | v3 | Total v2 | v3 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | 58,1 % | 62,9 % | 10 / 0 | 64,7 % | 66,4 % | 67,0 % | 70,3 % |
+| Claude Opus 5 | 54,3 % | 56,7 % | 6 / 1 | 54,3 % | 55,2 % | 64,7 % | 66,7 % |
+| Terra 5.6 | 51,9 % | 53,3 % | 4 / 1 | 53,4 % | 55,2 % | 61,3 % | 62,3 % |
+| gpt-6.1-terra | 50,0 % | 53,8 % | 8 / 0 | 56,0 % | 58,6 % | 59,3 % | 61,7 % |
+| Gemini 3.1 Pro | 45,7 % | 46,7 % | 2 / 0 | 48,3 % | 48,3 % | 57,0 % | 57,7 % |
+| gpt-5.4-mini | 41,9 % | 44,3 % | 5 / 0 | 42,2 % | 44,0 % | 54,7 % | 56,7 % |
+
+- **Corrige el caso de Julián**: la P1 de Terra en la fístula pasa de 1 a 2,
+  y también el pseudoquiste roto, el nanoftalmos o «faringitis con
+  adenopatía reactiva» para adenopatía cervical.
+- **Las respuestas iguales ya no puntúan distinto**: de 126 de 7.700 (1,6 %)
+  a 0.
+- **Sube más de lo que buscaba la regla escrita.** 37 casos pasan a acertar
+  en P1 y 3 dejan de hacerlo; entre los que suben hay disyuntivas
+  («Stevens-Johnson / NET», «colelitiasis / colecistitis») y respuestas
+  relacionadas que no nombran el gold («herpangina» para faringoamigdalitis
+  aguda). 9 de las ganancias vienen de una nota reutilizada.
+- El orden casi no cambia: solo se cruzan gpt-6.1-terra y Terra 5.6, que
+  están a medio punto. Sol frente a Terra 5.6 en raras reales: 16 / 3 con v3
+  (p = 0,004), antes 18 / 5.
+- **Decidido el 30-oct (Julián): se adopta `graded_v3` y se deja de ajustar
+  la rúbrica con contraejemplos**, porque con cualquier dataset saldrá alguno.
+  Criterio: la enfermedad que propone el modelo es la misma entidad si está
+  relacionada con el gold y se trata de la misma forma. Las ganancias de
+  arriba encajan en ese criterio. `graded_v3` es el juez por defecto; las
+  cifras publicadas siguen con v2 hasta volver a puntuar con `narrative_v2`
+  v0.2, con la caché de notas.
+- Antes de la decisión se probó una versión más estricta (v3b: disyuntivas
+  nunca 2, la opción tiene que nombrar el gold y cada opción nueva se puntúa
+  dos veces) sobre las 178 opciones que cruzaban la línea del 2 (3,57 $).
+  Se descartó con la decisión y no está en el código.
 
 ## Sol frente a Terra en raras (HPO v2, 29-oct-2026)
 
@@ -528,6 +600,75 @@ Pro frente a Flash sobre los mismos 1.260 casos:
 - Propuesta: incorporar los sinónimos a la siguiente versión de raras cuando
   David valide la muestra del bloque F de la tarea 3. Así, la elección de juez
   queda casi solo en el coste.
+
+## Claude Opus 5 en raras (HPO v2, 30-oct-2026)
+
+En `narrative_v2` Opus 5 es el mejor en casos reales no raros, pero en raras
+reales queda por detrás de Sol (19 / 3, p = 0,001). Para comprobarlo con más
+casos, run completo de Opus 5 low sobre los cuatro datasets pequeños de HPO v2
+(`config_claude_opus5_low_<dataset>_hpo_v2.yaml`), con el mismo prompt y juez
+(Gemini 2.5 Pro) que Sol y Terra. McNemar de Sol frente a Opus:
+
+| Dataset | Casos | R@1 Terra | R@1 Sol | R@1 Opus | Sol frente a Opus | p | R@5 Terra | R@5 Sol | R@5 Opus |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| LIRICAL | 370 | 41,6 % | 47,3 % | 38,4 % | 54 / 21 | < 0,001 | 58,1 % | 64,3 % | 54,9 % |
+| MyGene2 | 146 | 37,0 % | 38,4 % | 18,5 % | 34 / 5 | < 0,001 | 53,4 % | 65,8 % | 43,2 % |
+| HMS | 88 | 40,9 % | 39,8 % | 37,5 % | 6 / 4 | 0,75 | 58,0 % | 55,7 % | 58,0 % |
+| MME | 40 | 50,0 % | 67,5 % | 37,5 % | 12 / 0 | < 0,001 | 67,5 % | 75,0 % | 50,0 % |
+| **Total** | **644** | **41,0 %** | **45,5 %** | **33,7 %** | **106 / 30** | **< 0,001** | **57,6 %** | **64,1 %** | **52,3 %** |
+
+- **Opus queda por detrás de Sol y también de Terra** (82 / 35 a favor de
+  Terra, p < 0,001). En R@5 tampoco lo compensa, aunque da 10 opciones de
+  mediana.
+- **No es que nombre la enfermedad de forma menos precisa.** Contando también
+  las notas 1 en P1, Opus llega al 57,0 %, Terra al 63,4 % y Sol al 67,5 %
+  (Sol frente a Opus 123 / 55, p < 0,001). Los tres tienen unos 145 casos de
+  nota 1 en P1.
+- **MyGene2 es donde más pierde (18,5 %)**. Las listas son válidas, pero en
+  los casos de artrogriposis distal tipo 5 pone en P1 otras enfermedades
+  (Emery-Dreifuss, CFEOM y similares) en vez de esa.
+- **Coste:** 6,7 c$ por caso en generación (43,42 $ los 644), frente a
+  1,04 c$ de Sol. Juez Pro: 17,91 $. DDD y RAMEDIS no se han pasado por coste.
+- Para raras, Opus solo no aporta: Sol es mejor y seis veces más barato.
+
+## Prompt de sermas: Sol frente a Terra (30-oct-2026)
+
+sermas es la versión de DxGPT solo para raras, en App Service. Su prompt
+(`sermas/server/assets/prompts.js`) es el de DxGPT con «specialized in rare
+diseases», «rare disease diagnoses» y «description of the rare disease». Para
+elegir modelo: listas nuevas de Sol y Terra con ese prompt
+(`bench/candidate-prompts/sermas_rare.txt`) en LIRICAL, MyGene2, HMS y MME
+(644 casos de HPO v2), juez Gemini 3.8 Flash, que es el mismo con el que ya
+estaban puntuadas las listas del prompt de DxGPT
+(`output/<dataset>_hpo_v2/sermas_rare/<modelo>__judge_gemini_3_8_flash`).
+
+| Prompt | R@1 Sol | R@1 Terra | gana / pierde | p | R@5 Sol | R@5 Terra | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| DxGPT (`juanjo_classic_v2`) | 49,7 % | 42,2 % | 77 / 29 | < 0,001 | 66,0 % | 59,0 % | 78 / 33 | < 0,001 |
+| sermas (`sermas_rare`) | 52,5 % | 44,6 % | 79 / 28 | < 0,001 | 66,0 % | 61,0 % | 67 / 35 | 0,002 |
+
+| Modelo | R@1 DxGPT | R@1 sermas | gana / pierde | p | R@5 DxGPT | R@5 sermas | p |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Terra 5.6 | 42,2 % | 44,6 % | 52 / 37 | 0,14 | 59,0 % | 61,0 % | 0,23 |
+| gpt-6.1-sol | 49,7 % | 52,5 % | 38 / 20 | 0,03 | 66,0 % | 66,0 % | 1,0 |
+
+- **Sol gana a Terra con el prompt de sermas igual que con el de DxGPT**, en
+  R@1 y en R@5. Por dataset, en R@1: MyGene2 56,8 frente a 40,4 % (28 / 4,
+  p < 0,001), LIRICAL 50,8 frente a 45,9 % (37 / 19, p = 0,02); en HMS y
+  MME va por delante sin significación.
+- **El prompt de raras no resta.** Sube R@1 unos 2,5 puntos en los dos
+  modelos (en Sol, p = 0,03), pero las listas del prompt de DxGPT son de otra
+  ejecución (Terra de julio, Sol de octubre) y parte puede ser la variación
+  entre ejecuciones. R@5 no cambia.
+- **Listas con el prompt de sermas:** 5 opciones de mediana en los dos;
+  menos de 5 en el 3 % de los casos con Sol y el 9 % con Terra. Latencia
+  mediana 20,2 s con Sol y 11,3 s con Terra; coste 1,09 c$ por caso con Sol y
+  1,74 c$ con Terra.
+- **Para sermas, Sol.** App Service no corta a los 30 s como SWA (el límite
+  de Azure es de unos 230 s) y ni el servidor ni el cliente de sermas ponen
+  timeout. Antes de desplegar hay que comprobar que `f29webopenai` y
+  `dxgptswitzerland` tienen un despliegue llamado `gpt-6.1-sol`, porque antes
+  era `o3-sermas`.
 
 ## Pendiente
 

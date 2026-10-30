@@ -10,9 +10,13 @@ referencia y ponga una nota:
 
 | Nota | Significado |
 |---|---|
-| **2** | Misma enfermedad: sinónimo, abreviatura, o un subtipo de la referencia |
+| **2** | Misma enfermedad: sinónimo, abreviatura, un subtipo de la referencia, o una respuesta que nombra la referencia aunque añada una causa o una complicación |
 | **1** | Relacionada, pero no la misma: categoría más amplia, otro subtipo, causa, complicación… |
 | **0** | Otra enfermedad |
+
+Criterio de Julián (30-oct) para decidir qué es «la misma enfermedad»: lo es
+si está **relacionada con la referencia y se trata de la misma forma**. Hacen
+falta las dos cosas. Es el criterio con el que hay que poner las notas.
 
 La cifra que se publica solo cuenta los 2 (nota estricta). La que cuenta
 también los 1 (nota laxa) es mucho más alta: en `narrative_v2`, Terra 5.6
@@ -37,12 +41,17 @@ Con tus notas se decide:
    raras, donde las discrepancias venían de sinónimos poco usados, el
    problema se resuelve pasando al juez los sinónimos del gold (tarea 3,
    bloque F). Lo que queda por decidir está en `narrative_v2`.
+4. si la rúbrica se queda como está. Si tus discrepancias con el juez son
+   casos sueltos, no se toca: con cualquier dataset saldrá alguno. Si siguen
+   un patrón (por ejemplo, el juez da un 2 a otro subtipo que se trata
+   distinto), se cambia una sola vez a partir de tus notas.
 
 ## Qué habrá que hacer
 
 Poner tu propia nota (2, 1 o 0) a unas **100 parejas** «diagnóstico de
 referencia / diagnóstico propuesto» sacadas de los seis modelos evaluados en
-`narrative_v2`. **No verás la nota del juez**, para no condicionarte. La
+`narrative_v2`, con las notas del juez adoptado (`graded_v3`). **No verás la
+nota del juez**, para no condicionarte. La
 muestra llevará sobre todo los casos difíciles:
 
 - unas 35 parejas a las que el juez puso un 1 (la frontera que más mueve la cifra);
@@ -64,9 +73,14 @@ Reglas acordadas con Julián que conviene aplicar igual (§12 de
 [JULIAN_HARNESS_REVIEW.md](../../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md)):
 
 - «X con Y» (Y es una complicación o manifestación) se acierta con «X»;
+- al revés también: una respuesta que nombra la referencia y añade una causa
+  o una complicación se acierta («colangitis por una fístula
+  coledocoduodenal» para «fístula coledocoduodenal»);
 - una referencia amplia («Ovarian tumor») se acierta con una forma más
   específica de ella;
-- con varias referencias, basta con acertar una.
+- con varias referencias, basta con acertar una;
+- ante la duda, el criterio de Julián: relacionada y tratada de la misma
+  forma.
 
 Si alguna de estas reglas te parece clínicamente mal, dilo: es parte de la
 validación.
@@ -87,4 +101,5 @@ juez contigo en cada frontera.
 ## Hecho cuando
 
 Las ~100 parejas tienen nota, y las dudas están marcadas como CONSULTAR MÉDICO
-con una línea de explicación.
+con una línea de explicación. Si ves un patrón en lo que el juez puntúa
+distinto que tú, apúntalo en una frase: es lo que decide si la rúbrica cambia.
