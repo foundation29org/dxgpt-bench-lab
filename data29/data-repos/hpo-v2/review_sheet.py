@@ -11,7 +11,10 @@ clinical_gold.py, so that a clinician can check them:
   (not the ones that only reword the same name);
 - 10 cases where no name was added because it would be a generic trait;
 - 5 cases where no name was added because it is one of the HPO terms;
-- the 9 cases of T3 cause C (HPO terms not enough for the diagnosis).
+- the 9 cases of T3 cause C (HPO terms not enough for the diagnosis);
+- 10 options whose Gemini 2.5 Pro verdict («2 or not») changes when the gold
+  carries its MONDO exact synonyms (gold_synonyms.py), 6 that become a hit and
+  4 that stop being one, to check those synonyms before they go into the gold.
 
 The sample is stable (fixed seed). The sheet holds the HPO lists of the
 cases, so it is written under curated-datasets/ with a validacion_clinica*
@@ -37,6 +40,13 @@ GENETIC_MARK = re.compile(r"\d|\btype\b|\bcbl|-related|autosomal|x-linked|comple
 T3_CAUSE_C = ["RAMEDIS_024", "RAMEDIS_116", "RAMEDIS_248", "DDD_G2P00164", "DDD_G2P00512",
               "DDD_G2P01363", "DDD_G2P01703", "DDD_G2P02376", "DDD_G2P02382"]
 
+# Same Terra and Sol lists scored by Gemini 2.5 Pro against HPO v2 and against HPO v2 + MONDO synonyms
+PIPELINE_OUTPUT = EVAL_ROOT / "bench" / "pipelines" / "pipeline_v5" / "main" / "output"
+SYN_DATASETS = ["ramedis_hpo", "lirical_hpo", "mygene2_hpo", "hms_hpo", "mme_hpo"]
+SYN_LISTS = ["gpt_5_6_terra_low", "gpt_6_1_sol_low"]
+# The case that started the test: OMIM 108145 is distal arthrogryposis type 5
+SYN_ANCHOR = ("Arthrogryposis with oculomotor limitation and electroretinal anomalies", "distal arthrogryposis type 5")
+
 
 def load_cases():
     cases = {}
@@ -60,6 +70,51 @@ def load_decisions():
 def pick(rows, n, rng):
     rows = sorted(rows, key=lambda r: r["id"])
     return rng.sample(rows, min(n, len(rows)))
+
+
+def latest_details(folder):
+    runs = sorted(p for p in folder.glob("2*") if (p / "evaluation_details.txt").exists())
+    if not runs:
+        return {}
+    text = (runs[-1] / "evaluation_details.txt").read_text(encoding="utf-8")
+    return {str(c["case_id"]): c for c in (json.loads(b) for b in text.split("\n---\n") if b.strip())}
+
+
+def norm(text):
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
+
+def synonym_changes():
+    """Options whose «2 or not» verdict changes when the gold carries its MONDO synonyms, one per gold and option."""
+    changes = {}
+    for dataset in SYN_DATASETS:
+        for lists in SYN_LISTS:
+            before = latest_details(PIPELINE_OUTPUT / f"{dataset}_v2" / "juanjo_classic_v2" / lists)
+            after = latest_details(PIPELINE_OUTPUT / f"{dataset}_v2_syn" / "juanjo_classic_v2" / lists)
+            for case_id in sorted(set(before) & set(after)):
+                names = {g["name"]: g["details"].get("accepted_names") or [] for g in after[case_id]["gdx_details"]}
+                old = {g["name"]: g["details"].get("accepted_names") or [] for g in before[case_id]["gdx_details"]}
+                traces = zip(before[case_id]["eval_details"]["graded_trace"], after[case_id]["eval_details"]["graded_trace"])
+                for t_before, t_after in traces:
+                    for o_before, o_after in zip(t_before["options"], t_after["options"]):
+                        if (o_before["grade"] == 2) == (o_after["grade"] == 2):
+                            continue
+                        key = (norm(t_after["gdx"]), norm(o_after["name"]))
+                        added = list(dict.fromkeys(n for n in names.get(t_after["gdx"], []) if n not in old.get(t_after["gdx"], [])))
+                        if not added:  # same gold: the change is the judge's own variation, not the synonyms
+                            continue
+                        changes.setdefault(key, {"dataset": dataset, "id": case_id, "gold": t_after["gdx"],
+                                                 "synonyms": added, "option": o_after["name"],
+                                                 "hit": o_after["grade"] == 2})
+    return [changes[k] for k in sorted(changes)]
+
+
+def synonym_rows(rng):
+    rows = synonym_changes()
+    anchor = [r for r in rows if r["hit"] and r["gold"] == SYN_ANCHOR[0] and norm(r["option"]) == norm(SYN_ANCHOR[1])]
+    gained = [r for r in rows if r["hit"] and r not in anchor]
+    lost = [r for r in rows if not r["hit"]]
+    return anchor[:1] + rng.sample(gained, min(6 - len(anchor[:1]), len(gained))) + rng.sample(lost, min(4, len(lost)))
 
 
 def block(number, case, row, question, options):
@@ -132,6 +187,27 @@ def main():
             "Decisión: `[ ] mantener` `[ ] excluir` `[ ] mantener, pero contar aparte (no diagnosticable sin genética o metabolitos)` `[ ] CONSULTAR MÉDICO`",
             "",
         ]
+    lines += ["## F. Sinónimos de MONDO en el gold", "",
+              "El juez solo ve el nombre del gold. Para que reconozca sinónimos poco usados, se prueba a añadirle los sinónimos "
+              "exactos que da MONDO para su código OMIM. En estas parejas, añadir los sinónimos cambia si la respuesta cuenta "
+              "como acierto. No se dice en qué sentido, para no condicionarte.", ""]
+    for row in synonym_rows(random.Random(SEED)):
+        number += 1
+        case = cases[row["id"]]
+        lines += [
+            f"### {number}. {row['id']} ({row['dataset'].replace('_hpo', '').upper()})",
+            "",
+            f"- **Gold:** {row['gold']}",
+            f"- **Sinónimos de MONDO añadidos:** {'; '.join(row['synonyms']) or '—'}",
+            f"- **Diagnóstico del modelo:** {row['option']}",
+            f"- **Términos HPO del caso:** {case.get('case_en') or case['case']}",
+            "",
+            "¿El diagnóstico del modelo es la misma enfermedad que el gold? "
+            "`[ ] sí, la misma`  `[ ] relacionada, no la misma`  `[ ] otra enfermedad`  "
+            "`[ ] algún sinónimo de MONDO está mal:`  `[ ] CONSULTAR MÉDICO`",
+            "",
+        ]
+
     lines += ["## Criterio general", "",
               "Si de la causa C sale una regla (por ejemplo, «menos de N términos HPO y ninguno específico»), escríbela aquí "
               "y la aplicamos a todo el dataset, no solo a estos 9 casos:", "", "> ", ""]

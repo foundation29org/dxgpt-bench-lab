@@ -25,10 +25,18 @@ Con tus notas se decide:
 1. si el juez acierta lo bastante como para fiarse de la nota estricta;
 2. si la nota laxa se puede publicar o se queda como uso interno;
 3. qué juez usar (paso 6 del [ROADMAP](../ROADMAP.md)): si uno más barato da
-   notas tan parecidas a las tuyas como Gemini 2.5 Pro, se usa el barato. El
-   candidato es Gemini 3.8 Flash: con las mismas listas ordena igual a los
-   modelos, cuesta unas 30 veces menos, y discrepa de Pro en unas 200
-   opciones en las que ninguno de los dos es claramente mejor.
+   notas tan parecidas a las tuyas como Gemini 2.5 Pro, se usa el barato. Hay
+   tres candidatos, que con las mismas listas ordenan igual a los modelos y
+   coinciden con Pro en «¿es un 2?» en el 98 % de las opciones:
+   - Gemini 3.8 Flash, unas 30 veces más barato que Pro;
+   - Claude Opus 5.5, de otra familia (Anthropic), para no depender solo de
+     Gemini;
+   - Gemini 2.5 Flash, como referencia.
+
+   Discrepan en unas 200 opciones en las que ninguno es claramente mejor. En
+   raras, donde las discrepancias venían de sinónimos poco usados, el
+   problema se resuelve pasando al juez los sinónimos del gold (tarea 3,
+   bloque F). Lo que queda por decidir está en `narrative_v2`.
 
 ## Qué habrá que hacer
 
@@ -37,11 +45,17 @@ referencia / diagnóstico propuesto» sacadas de los seis modelos evaluados en
 `narrative_v2`. **No verás la nota del juez**, para no condicionarte. La
 muestra llevará sobre todo los casos difíciles:
 
-- unas 40 parejas a las que el juez puso un 1 (la frontera que más mueve la cifra);
-- unas 30 con un 2 que no viene de un código idéntico;
-- unas 30 con un 0, sobre todo las que comparten código ICD-10 con la referencia;
-- y, dentro de esas, las parejas en que Gemini 2.5 Pro y Gemini 3.8 Flash
-  ponen notas distintas, para ver cuál de los dos acierta.
+- unas 35 parejas a las que el juez puso un 1 (la frontera que más mueve la cifra);
+- unas 25 con un 2 que no viene de un código idéntico;
+- unas 25 con un 0, sobre todo las que comparten código ICD-10 con la referencia;
+- unas 15 «notas dobles»: listas en las que el juez da un 2 a más de una
+  opción para la misma referencia (pasa en el 10–17 % de las listas). No se
+  cuentan dos veces, pero el segundo 2 a veces es generoso, por ejemplo
+  «insuficiencia aórtica crónica por dilatación de la raíz» para «aneurisma
+  aórtico». Si uno de esos 2 dudosos queda el primero de la lista, infla la
+  nota;
+- y, dentro de esas, sobre todo las parejas en que Gemini 2.5 Pro, Gemini 3.8
+  Flash y Claude Opus 5.5 ponen notas distintas, para ver cuál acierta.
 
 Cada pareja irá con el caso (texto o resumen) por si hace falta contexto, pero
 la pregunta es solo si las dos son la misma enfermedad.
@@ -67,7 +81,7 @@ gold ya corregido. Irá en
 ## Cómo se devuelve
 
 La hoja rellena, por canal privado. Al repo vuelven solo las notas
-(identificador de la pareja y nota), y con ellas se mide cuánto coincide el
+(identificador de la pareja y nota), y con ellas se mide cuánto coincide cada
 juez contigo en cada frontera.
 
 ## Hecho cuando

@@ -8,7 +8,7 @@ cómo se devuelve y cuándo está hecha.
 |---|---|---|---|---|
 | 1 | [Validación clínica de `narrative_v2`](01-validacion-narrative-v2.md) | Encargada | — | ≈ 5 h |
 | 2 | [Validar la escala del juez (2/1/0)](02-escala-del-juez.md) | Pendiente de preparar | Tarea 1 | ≈ 2 h |
-| 3 | [Raras: nombres sin gen y casos con HPO insuficientes](03-nombres-sin-gen-raras.md) | Lista para empezar | — | ≈ 1 h 15 min |
+| 3 | [Raras: nombres sin gen, casos con HPO insuficientes y sinónimos del gold](03-nombres-sin-gen-raras.md) | Lista para empezar | — | ≈ 1 h 25 min |
 
 Las tareas 1 y 3 se pueden hacer en cualquier orden. La 2 se prepara cuando
 termine la 1, porque usa el gold ya corregido.

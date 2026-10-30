@@ -122,8 +122,12 @@ py gold_synonyms.py build   # escribe bench/datasets/<dataset>_v2_syn.json
 ```
 
 Añade a `accepted_names` la etiqueta y los sinónimos exactos de MONDO de cada
-gold con código OMIM. Resultados en el README de Pipeline V5 («Prueba:
-sinónimos MONDO en el gold»).
+gold con código OMIM. Solo lo hace si el nombre del gold comparte alguna
+palabra significativa con la entrada MONDO: el código del dataset puede estar
+mal («Reactive arthritis» con el OMIM del síndrome de Sjögren en HMS). Los
+gold que quedan fuera van a `work/synonyms_skipped.txt`. `review_sheet.py`
+saca 10 de esas parejas para la tarea 3 de David (bloque F). Resultados en el
+README de Pipeline V5 («Prueba: sinónimos MONDO en el gold»).
 
 ## Cómo se evalúa
 

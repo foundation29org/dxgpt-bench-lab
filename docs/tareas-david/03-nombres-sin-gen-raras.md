@@ -1,6 +1,6 @@
 # Tarea 3 · Raras: nombres sin gen y casos con HPO insuficientes
 
-**Estado:** lista para empezar · **Tiempo:** ≈ 1 h 15 min · **Depende de:** nada
+**Estado:** lista para empezar · **Tiempo:** ≈ 1 h 25 min · **Depende de:** nada
 
 ## Para qué sirve
 
@@ -38,10 +38,22 @@ Además, en T3 marcaste **9 casos cuyos síntomas no bastan para llegar al
 diagnóstico** (causa C). Siguen en el benchmark y falta decidir qué hacer con
 ellos.
 
+Por último, **sinónimos del gold** (añadido el 30-oct). El juez solo ve el
+nombre de la referencia, y a veces no reconoce un sinónimo poco usado. Por
+ejemplo, no daba por buena «distal arthrogryposis type 5» para «Arthrogryposis
+with oculomotor limitation and electroretinal anomalies», que es la misma
+enfermedad (OMIM 108145). Se ha probado a añadir a cada referencia los
+sinónimos exactos que da MONDO, una ontología curada, para su código OMIM. Con
+eso el juez corrige ese tipo de error, pero el sinónimo es tan bueno como el
+código del dataset: en HMS, «Reactive arthritis» lleva el código del síndrome
+de Sjögren. Antes de meter los sinónimos en el gold hace falta tu visto bueno
+sobre una muestra.
+
 ## Qué hay que hacer
 
-En la hoja, 59 casos con la lista de síntomas, la referencia con gen y el
-nombre sin gen propuesto. Una casilla por caso:
+En la hoja, 69 casos con la lista de síntomas, la referencia con gen y el
+nombre sin gen propuesto, o la referencia y sus sinónimos en el bloque F. Una
+casilla por caso:
 
 | Bloque | Casos | Pregunta |
 |---|---:|---|
@@ -50,6 +62,7 @@ nombre sin gen propuesto. Una casilla por caso:
 | C. No se añadió por ser un rasgo genérico | 10 | ¿Bien así, o sí es una enfermedad con entidad propia? |
 | D. No se añadió porque ya es un síntoma de la lista | 5 | ¿Bien así, o el caso debería salir del benchmark? |
 | E. Causa C de T3 | 9 | ¿Mantener, excluir, o mantener pero contar aparte como «no diagnosticable sin genética o metabolitos»? |
+| F. Sinónimos de MONDO | 10 | ¿El diagnóstico del modelo es la misma enfermedad que la referencia? ¿Algún sinónimo añadido está mal? Son parejas en las que añadir los sinónimos cambia si la respuesta cuenta como acierto; no se dice en qué sentido |
 
 Si de los casos E sale una regla general (por ejemplo, «menos de N síntomas y
 ninguno específico»), escríbela al final de la hoja: se aplicaría a todo el
@@ -73,4 +86,4 @@ bien), se reconstruye HPO v2 y se re-puntúan las listas de Terra.
 
 ## Hecho cuando
 
-Los 59 casos tienen una casilla marcada, y los 9 de la causa C tienen decisión.
+Los 69 casos tienen una casilla marcada, y los 9 de la causa C tienen decisión.

@@ -30,6 +30,7 @@ En cada caso:
 | Nombres aceptados | Sinónimos de exactamente la misma enfermedad. Quita categorías amplias y enfermedades relacionadas |
 | Fuga | Hay fuga si el texto nombra el diagnóstico o da un resultado que por sí solo lo establece (biopsia, mutación, enzima que lo define) |
 | Diagnosticable | Con ese texto, un clínico podría incluir el diagnóstico en su diferencial |
+| Rara | Si el diagnóstico principal es una enfermedad rara (en Orphanet o con prevalencia menor de 1 por 2.000). La hoja muestra «Rara: sí/no», que puso el LLM; corrígelo si está mal |
 | Decisión | Mantener o excluir |
 
 ### Cómo decidir
@@ -47,6 +48,11 @@ En cada caso:
 - Las «pistas a revisar» no son fuga por sí solas: una zona anatómica o el
   fármaco causante no dan el diagnóstico. Solo hay fuga si el texto lo nombra o
   da una prueba que por sí sola lo establece.
+- **Revisa también «Rara: sí/no».** Desde el 30-oct, la cifra principal del
+  benchmark se publica por separado para casos reales de enfermedades raras y
+  de no raras, así que esa etiqueta decide en qué cifra cuenta cada caso. Si tu
+  hoja no tiene casilla para ello, escribe «rara: cambiar a sí/no» junto a la
+  decisión.
 
 Los casos excluidos se sustituyen por casos de reserva, así que excluir no deja
 huecos.
@@ -90,4 +96,5 @@ casos de reserva; esos casos nuevos te llegarían en una tanda corta aparte.
 ## Hecho cuando
 
 Los 210 casos tienen marcada la decisión (mantener o excluir), y los que se
-mantienen tienen el diagnóstico principal y la fuga revisados.
+mantienen tienen el diagnóstico principal, la fuga y la etiqueta de rara
+revisados.

@@ -447,9 +447,18 @@ Pro frente a Flash sobre los mismos 1.260 casos:
   por B3GALT6).
 - **Sol sigue ganando a Terra** con los dos jueces: 43,7 % frente a 37,9 % con
   Pro (127 / 55) y 46,4 % frente a 40,5 % con Flash (292 / 114).
-- Propuesta: incorporar los sinónimos a la siguiente versión de raras, junto
-  con la revisión de David (tarea 3). Así, la elección de juez queda casi solo
-  en el coste.
+- **Límite: el sinónimo es tan bueno como el código del dataset.** En HMS,
+  «Reactive arthritis» lleva OMIM 270150 (síndrome de Sjögren), y «CREST
+  syndrome» lleva la esclerodermia familiar. Después de esta prueba,
+  `gold_synonyms.py` solo añade sinónimos si el nombre del gold comparte alguna
+  palabra significativa con la entrada MONDO, y nunca de un término obsoleto.
+  Así quedan fuera 117 gold, listados en `work/synonyms_skipped.txt`; casi
+  todos son de DDD, donde a menudo hay sinónimos legítimos con otras palabras
+  («deafness» frente a «hearing loss»). Los resultados de arriba son con la
+  versión anterior, que cambiaba 2.805 casos en vez de 2.688.
+- Propuesta: incorporar los sinónimos a la siguiente versión de raras cuando
+  David valide la muestra del bloque F de la tarea 3. Así, la elección de juez
+  queda casi solo en el coste.
 
 ## Pendiente
 

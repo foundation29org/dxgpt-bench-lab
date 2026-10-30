@@ -1,0 +1,117 @@
+ddd_hpo	DDD_G2P00012	FGFR3-related lacrimo-auriculo-dento-digital syndrome (LADD)	MONDO:0859577 MONDO:0859577	lacrimoauriculodentodigital syndrome 2
+ddd_hpo	DDD_G2P00044	LRP5-related osteopetrosis	OMIM:601884 MONDO:0044271	obsolete bone mineral density quantitative trait locus 1
+ddd_hpo	DDD_G2P00065	NSDHL-related CK syndrome	MONDO:0010441 MONDO:0010441	CK syndrome
+ddd_hpo	DDD_G2P00097	JAM3-related hemorrhagic destruction of the brain, subependymal calcification, and cataracts	MONDO:0013394 MONDO:0013394	porencephaly-microcephaly-bilateral congenital cataract syndrome
+ddd_hpo	DDD_G2P00123	HOXA1-related Bosley-Salih-Alorainy syndrome	OMIM:601536 MONDO:7770750	Athabaskan brainstem dysgenesis syndrome
+ddd_hpo	DDD_G2P00131	PSMB8-related Nakajo syndrome	OMIM:256040 MONDO:0054698	proteasome-associated autoinflammatory syndrome 1
+ddd_hpo	DDD_G2P00152	TBX1-related 22q11.2 deletion syndrome	OMIM:188400 MONDO:0008564	DiGeorge syndrome
+ddd_hpo	DDD_G2P00237	MYO7A-related deafness	MONDO:0010807 MONDO:0010807	autosomal recessive nonsyndromic hearing loss 2
+ddd_hpo	DDD_G2P00279	CDH23-related deafness	OMIM:601386 MONDO:0011067	autosomal recessive nonsyndromic hearing loss 12
+ddd_hpo	DDD_G2P00305	SYT1-related intellectual disability	OMIM:618218 MONDO:0033864	infantile hypotonia-oculomotor anomalies-hyperkinetic movements-developmental delay syndrome
+ddd_hpo	DDD_G2P00338	SOX11-related neurodevelopmental disorder	OMIM:615866 MONDO:0014376	intellectual developmental disorder with microcephaly and with or without ocular malformations or hypogonadotropic hypogonadism
+ddd_hpo	DDD_G2P00339	ATP13A2-related Parkinson disease	OMIM:606693 MONDO:0011706	Kufor-Rakeb syndrome
+ddd_hpo	DDD_G2P00391	WNT7A- related skeletal malformations syndrome	OMIM:228930 MONDO:0009232	Fuhrmann syndrome
+ddd_hpo	DDD_G2P00404	CIB2-related Usher syndrome	MONDO:0013935 MONDO:0013935	obsolete Usher syndrome type 1J
+ddd_hpo	DDD_G2P00409	GJB3-related deafness	OMIM:220290 MONDO:0009076	autosomal recessive nonsyndromic hearing loss 1A
+ddd_hpo	DDD_G2P00431	WNT3-related tetra-amelia syndrome	MONDO:0060764 MONDO:0060764	tetraamelia syndrome 1
+ddd_hpo	DDD_G2P00451	GCDH-related glutaricacidemia	OMIM:231670 MONDO:0009281	glutaryl-CoA dehydrogenase deficiency
+ddd_hpo	DDD_G2P00483	SURF1-related Leigh syndrome	MONDO:0700250 MONDO:0700250	mitochondrial complex IV deficiency, nuclear type 1
+ddd_hpo	DDD_G2P00681	ZC4H2-related arthrogryposis multiplex congenita and intellectual disability	OMIM:301041 MONDO:0026762	Wieacker-Wolff syndrome, female-restricted
+ddd_hpo	DDD_G2P00696	SLC12A5-related epilepsy of infancy with migrating focal seizures	MONDO:0100025 MONDO:0100025	obsolete epilepsy of infancy with migrating focal seizures
+ddd_hpo	DDD_G2P00748	ACBD6-related intellectual developmental disorder	OMIM:620785 MONDO:0968976	neurodevelopmental disorder with progressive movement abnormalities
+ddd_hpo	DDD_G2P00753	CD96-related C syndrome	MONDO:0008893 MONDO:0008893	C syndrome
+ddd_hpo	DDD_G2P00879	COL11A2-related deafness	OMIM:601868 MONDO:0011159	autosomal dominant nonsyndromic hearing loss 13
+ddd_hpo	DDD_G2P00886	FGF10-related lacrimo-auriculo-dento-digital syndrome (LADD)	MONDO:0859578 MONDO:0859578	lacrimoauriculodentodigital syndrome 3
+ddd_hpo	DDD_G2P00926	COL11A2-related deafness	MONDO:0012333 MONDO:0012333	autosomal recessive nonsyndromic hearing loss 53
+ddd_hpo	DDD_G2P00938	PRPS1-related deafness	MONDO:0010577 MONDO:0010577	hearing loss, X-linked 1
+ddd_hpo	DDD_G2P00986	SIX6-related microphthalmia, isolated, with cataract	OMIM:212550 MONDO:0008927	colobomatous optic disc-macular atrophy-chorioretinopathy syndrome
+ddd_hpo	DDD_G2P00998	GAD1-related cerebral palsy spastic quadriplegic	MONDO:0030856 MONDO:0030856	developmental and epileptic encephalopathy 89
+ddd_hpo	DDD_G2P01006	NSDHL-related congenital hemidysplasia with ichthyosiform erythroderma and limb defects	MONDO:0010621 MONDO:0010621	CHILD syndrome
+ddd_hpo	DDD_G2P01068	COX10-related Leigh syndrome	MONDO:0033635 MONDO:0033635	mitochondrial complex IV deficiency, nuclear type 3
+ddd_hpo	DDD_G2P01092	AKT3-related hemimegalencephaly	OMIM:603387 MONDO:0011313	megalencephaly-polymicrogyria-polydactyly-hydrocephalus syndrome 1
+ddd_hpo	DDD_G2P01098	SDHA-related Leigh syndrome	MONDO:0100294 MONDO:0100294	mitochondrial complex II deficiency, nuclear type 1
+ddd_hpo	DDD_G2P01246	TAB2-related nonsyndromic congenital heart disease	OMIM:612863 MONDO:0013025	chromosome 6q24-q25 deletion syndrome
+ddd_hpo	DDD_G2P01338	HDAC4-related brachydactyly-intellectual developmental disorder syndrome	MONDO:0859232 MONDO:0859232	neurodevelopmental disorder with central hypotonia and dysmorphic facies
+ddd_hpo	DDD_G2P01358	HCFC1-related intellectual developmental disorder	OMIM:309541 MONDO:0010657	methylmalonic acidemia with homocystinuria, type cblX
+ddd_hpo	DDD_G2P01375	KARS1-related deafness	MONDO:0013489 MONDO:0013489	autosomal recessive nonsyndromic hearing loss 89
+ddd_hpo	DDD_G2P01376	SOX5-related 12p12.5 intragenic deletions associated with intellectual disability	MONDO:0014778 MONDO:0014778	Lamb-Shaffer syndrome
+ddd_hpo	DDD_G2P01396	KCTD7-related progressive myoclonic epilepsy	MONDO:0016295 MONDO:0016295	neuronal ceroid lipofuscinosis
+ddd_hpo	DDD_G2P01518	PDHA1-related intellectual disabiltiy	OMIM:312170 MONDO:0010717	pyruvate dehydrogenase E1-alpha deficiency
+ddd_hpo	DDD_G2P01527	GM2A-related GM2-Gangliosidosis, type AB	MONDO:0010099 MONDO:0010099	Tay-Sachs disease AB variant
+ddd_hpo	DDD_G2P01648	HACE1-related disorder	OMIM:616756 MONDO:0014764	spastic paraplegia-severe developmental delay-epilepsy syndrome
+ddd_hpo	DDD_G2P01672	XYLT2-related spondyloocular syndrome	MONDO:0011604 MONDO:0011604	spondylo-ocular syndrome
+ddd_hpo	DDD_G2P01697	NDUFA10-related Leigh syndrome	MONDO:0032626 MONDO:0032626	mitochondrial complex I deficiency, nuclear type 22
+ddd_hpo	DDD_G2P01701	CNOT3-related neurodevelopmental disorder	OMIM:618672 MONDO:0032864	intellectual developmental disorder with speech delay, autism, and dysmorphic facies
+ddd_hpo	DDD_G2P01706	MSL3-related intellectual developmental disorder	MONDO:0026730 MONDO:0026730	Basilicata-Akhtar syndrome
+ddd_hpo	DDD_G2P01710	QRICH1-related syndrome	MONDO:0060707 MONDO:0060707	Ververi-Brady syndrome 1
+ddd_hpo	DDD_G2P01783	ARCN1-related microcephalic dwarfism	OMIM:617164 MONDO:0014948	short stature, rhizomelic, with microcephaly, micrognathia, and developmental delay
+ddd_hpo	DDD_G2P01853	MAF-related cataracts, congenital, with sensorineural deafness, down syndrome-like facial appearance, short stature, and mental retardation	OMIM:601088 MONDO:0010992	Ayme-Gripp syndrome
+ddd_hpo	DDD_G2P01863	SETD1A-related intellectual disability	OMIM:619056 MONDO:0033630	neurodevelopmental disorder with speech impairment and dysmorphic facies
+ddd_hpo	DDD_G2P01874	SON-related intellectual disability, congenital malformations, and failure to thrive	MONDO:0014936 MONDO:0014936	ZTTK syndrome
+ddd_hpo	DDD_G2P01875	HNRNPH2-related neurodevelopmental disorder	OMIM:300986 MONDO:0010512	intellectual disability, X-linked, syndromic, Bain type
+ddd_hpo	DDD_G2P01889	ASXL2-related developmental delay, macrocephaly, and dysmorphic features	OMIM:617190 MONDO:0014963	Shashi-Pena syndrome
+ddd_hpo	DDD_G2P01946	ACBD5-related deficiency	OMIM:618863 MONDO:0030026	retinal dystrophy with leukodystrophy
+ddd_hpo	DDD_G2P01972	RAB11B-related intellectual disability	OMIM:617807 MONDO:0060624	neurodevelopmental disorder with ataxic gait, absent speech, and decreased cortical white matter
+ddd_hpo	DDD_G2P01979	BLTP1-related brain atrophy, dandy walker and contractures	OMIM:617822 MONDO:0060631	Alkuraya-Kucinskas syndrome
+ddd_hpo	DDD_G2P02215	MRPS34-related Leigh syndrome with instability of the small mitoribosomal subunit	OMIM:617664 MONDO:0054654	combined oxidative phosphorylation deficiency 32
+ddd_hpo	DDD_G2P02223	LIAS-related neonatal-onset epilepsy, defective mitochondrial energy metabolism and glycine elevation	MONDO:0013762 MONDO:0013762	lipoic acid synthetase deficiency
+ddd_hpo	DDD_G2P02232	EED-related Weaver-like overgrowth syndrome	OMIM:617561 MONDO:0060510	Cohen-Gibson syndrome
+ddd_hpo	DDD_G2P02247	RPS23-related microcephaly, hearing loss, and dysmorphic features	MONDO:0044311 MONDO:0044311	brachycephaly, trichomegaly, and developmental delay
+ddd_hpo	DDD_G2P02365	CDK10-related severe growth retardation, spine malformations, and developmental delays	OMIM:617694 MONDO:0044324	Al Kaissi syndrome
+ddd_hpo	DDD_G2P02367	RAC1-related neurodevelopmental disorder	MONDO:0030913 MONDO:0030913	intellectual disability, autosomal dominant 48
+ddd_hpo	DDD_G2P02368	PACS2-related neurodevelopmental disorder	MONDO:0054845 MONDO:0054845	developmental and epileptic encephalopathy, 66
+ddd_hpo	DDD_G2P02374	NTRK2-related epilepsy and intellectual disability	MONDO:0033367 MONDO:0033367	developmental and epileptic encephalopathy, 58
+ddd_hpo	DDD_G2P02377	GABRB2-related epilepsy and intellectual disability	MONDO:0020631 MONDO:0020631	developmental and epileptic encephalopathy 92
+ddd_hpo	DDD_G2P02379	DHDDS-related epilepsy and intellectual disability	MONDO:0044326 MONDO:0044326	developmental delay and seizures with or without movement abnormalities
+ddd_hpo	DDD_G2P02385	GPAA1-related developmental delay, epilepsy, cerebellar atrophy, and osteopenia	OMIM:617810 MONDO:0060627	glycosylphosphatidylinositol biosynthesis defect 15
+ddd_hpo	DDD_G2P02442	KMT2C-related intellectual disability	OMIM:617768 MONDO:0054701	Kleefstra syndrome 2
+ddd_hpo	DDD_G2P02543	UFM1-related severe early-onset encephalopathy with progressive microcephaly	MONDO:0033486 MONDO:0033486	leukodystrophy, hypomyelinating, 14
+ddd_hpo	DDD_G2P02545	STAG2-related developmental delay with microcephaly and congenital anomalies	MONDO:0026722 MONDO:0026722	Mullegama-Klein-Martinez syndrome
+ddd_hpo	DDD_G2P02548	STAT2-related gain of function causing increased interferon signalling	MONDO:0030044 MONDO:0030044	pseudo-TORCH syndrome 3
+ddd_hpo	DDD_G2P02558	ERBB3-related Hirschprung disease with intestinal pseudo-obstruction	OMIM:243180 MONDO:8000011	visceral neuropathy, familial, 1, autosomal recessive
+ddd_hpo	DDD_G2P02562	DNMT3A-related microcephalic primordial dwarfism	OMIM:618724 MONDO:0032882	Heyn-Sproul-Jackson syndrome
+ddd_hpo	DDD_G2P02569	NUP188-related neurodegeneration, cataracts and facial dysmorphisms	MONDO:0032926 MONDO:0032926	sandestig-stefanova syndrome
+ddd_hpo	DDD_G2P02570	RAC3-related neurodevelopment disorder	MONDO:0032820 MONDO:0032820	neurodevelopmental disorder with structural brain anomalies and dysmorphic facies
+ddd_hpo	DDD_G2P02585	PHACTR1-related neurodevelopment disorder	MONDO:0032663 MONDO:0032663	developmental and epileptic encephalopathy, 70
+ddd_hpo	DDD_G2P02601	EXOSC9-related cerebellar atrophy with spinal motor neuronopathy	OMIM:618065 MONDO:0054844	pontocerebellar hypoplasia, type 1D
+ddd_hpo	DDD_G2P02617	FBXO11-related variable neurodevelopmental disorder	OMIM:618089 MONDO:0060760	intellectual developmental disorder with dysmorphic facies and behavioral abnormalities
+ddd_hpo	DDD_G2P02624	PAK1-related neurodevelopmental disorder	MONDO:0032568 MONDO:0032568	intellectual developmental disorder with macrocephaly, seizures, and speech delay
+ddd_hpo	DDD_G2P02643	SOX4-related neurodevelopmental disease associated with mild dysmorphism	MONDO:0032791 MONDO:0032791	Coffin-Siris syndrome 10
+ddd_hpo	DDD_G2P02648	SUZ12-related Weaver-like overgrowth syndrome	MONDO:0032916 MONDO:0032916	Imagawa-Matsumoto syndrome
+ddd_hpo	DDD_G2P02649	MED13-related neurodevelopmental disorder	MONDO:0032485 MONDO:0032485	intellectual developmental disorder 61
+ddd_hpo	DDD_G2P02650	NBEA-related neurodevelopment disorder with seizures	MONDO:0030930 MONDO:0030930	neurodevelopmental disorder with or without early-onset generalized epilepsy
+ddd_hpo	DDD_G2P02759	POU3F3-related intellectual disability	OMIM:618604 MONDO:0032830	snijders blok-fisher syndrome
+ddd_hpo	DDD_G2P02760	WDR37-related syndromic intellectual disability	MONDO:0032850 MONDO:0032850	neurooculocardiogenitourinary syndrome
+ddd_hpo	DDD_G2P02797	MYRF-related pulmonary artery and lung hypoplasia, agonadism, omphalocele, diaphragmatic defects, hypoplastic left heart, and scimitar syndrome	MONDO:0032653 MONDO:0032653	cardiac-urogenital syndrome
+ddd_hpo	DDD_G2P02805	DACT1-related multiple malformations of neural tube, ear, genitourinary and gastrointestinal systems	OMIM:617466 MONDO:0054582	Townes-Brocks syndrome 2
+ddd_hpo	DDD_G2P02858	HK1-related developmental disorder	MONDO:0032807 MONDO:0032807	neurodevelopmental disorder with visual defects and brain anomalies
+ddd_hpo	DDD_G2P02862	NSD2-related developmental disorder	MONDO:0859219 MONDO:0859219	Rauch-Steindl syndrome
+ddd_hpo	DDD_G2P02876	GNB2-related developmental disorder	OMIM:619503 MONDO:0859185	neurodevelopmental disorder with hypotonia and dysmorphic facies
+ddd_hpo	DDD_G2P02928	TET3-related DNA demethylation disorder	MONDO:0032922 MONDO:0032922	Beck-Fahrner syndrome
+ddd_hpo	DDD_G2P02959	SIAH1-related neurodevelopmental disorder	MONDO:0859144 MONDO:0859144	Buratti-Harel syndrome
+ddd_hpo	DDD_G2P02967	SOX6-related neurodevelopmental syndrome	MONDO:0033544 MONDO:0033544	Tolchin-Le Caignec syndrome
+ddd_hpo	DDD_G2P03005	TRMT10A-related intellectual developmental disorder	MONDO:0000208 MONDO:0000208	microcephaly, short stature, and impaired glucose metabolism 1
+ddd_hpo	DDD_G2P03020	TANC2-related neurodevelopmental and psychiatric disorders	MONDO:0030051 MONDO:0030051	intellectual developmental disorder with autistic features and language delay, with or without seizures
+ddd_hpo	DDD_G2P03021	CHD1-related neurodevelopment disorder	OMIM:617682 MONDO:0060568	Pilarowski-Bjornsson syndrome
+ddd_hpo	DDD_G2P03037	ZBTB7A-related developmental disorder	MONDO:0859231 MONDO:0859231	macrocephaly, neurodevelopmental delay, lymphoid hyperplasia, and persistent fetal hemoglobin
+ddd_hpo	DDD_G2P03112	NFE2L2-related leukoencephalopathy, immune deficiency and hypohomocysteinaemia	MONDO:0060591 MONDO:0060591	immunodeficiency, developmental delay, and hypohomocysteinemia
+hms_hpo	HMS_011	Reactive arthritis	OMIM:270150 MONDO:0010030	Sjogren syndrome
+hms_hpo	HMS_019	IgG4-related retroperitoneal fibrosis	OMIM:228800 MONDO:0009230	fibrosclerosis, multifocal
+hms_hpo	HMS_039	IgG4-related retroperitoneal fibrosis	OMIM:228800 MONDO:0009230	fibrosclerosis, multifocal
+hms_hpo	HMS_042	CREST syndrome	OMIM:181750 MONDO:0008418	scleroderma, familial progressive
+hms_hpo	HMS_049	Diffuse cutaneous systemic sclerosis	OMIM:181750 MONDO:0008418	scleroderma, familial progressive
+hms_hpo	HMS_052	IgG4-related retroperitoneal fibrosis	OMIM:228800 MONDO:0009230	fibrosclerosis, multifocal
+hms_hpo	HMS_068	Diffuse cutaneous systemic sclerosis	OMIM:181750 MONDO:0008418	scleroderma, familial progressive
+lirical_hpo	LIRICAL_117	Syndromic diarrhea	OMIM:222470 MONDO:0024541	trichohepatoenteric syndrome 1
+lirical_hpo	LIRICAL_276	Intellectual disability-seizures-abnormal gait-facial dysmorphism syndrome	OMIM:617616 MONDO:0054636	Skraban-Deardorff syndrome
+mme_hpo	MME_024	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_025	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_026	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_027	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_028	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_029	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_030	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mme_hpo	MME_039	Alacrimia-choreoathetosis-liver dysfunction syndrome	OMIM:615273 MONDO:0800044	congenital disorder of deglycosylation 1
+mygene2_hpo	mygene2_1291	Sheldon-Hall syndrome	OMIM:601680 MONDO:0020820	distal arthrogryposis type 2B1
+mygene2_hpo	mygene2_770	CFM1	OMIM:603855 MONDO:0011378	obsolete CFM1
+ramedis_hpo	RAMEDIS_151	X-linked hypophosphatemia	OMIM:307800 MONDO:0010619	X-linked dominant hypophosphatemic rickets

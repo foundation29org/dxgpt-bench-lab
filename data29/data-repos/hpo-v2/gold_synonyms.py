@@ -16,6 +16,12 @@ groups of several OMIM diseases. A synonym that is one of the HPO terms of the
 case is left out too, as in clinical_gold.py. The gene-free gold (role
 "clinical") has no code and does not change.
 
+The dataset code can be wrong: in HMS, «Reactive arthritis» carries OMIM
+270150, which is Sjögren syndrome. So synonyms are added only when the gold
+name shares at least one meaningful word with the MONDO entry, and never from
+an obsolete MONDO term. The golds left out are listed in
+work/synonyms_skipped.txt for review.
+
 Steps:
     py gold_synonyms.py fetch   # Monarch API, cached in work/mondo_synonyms.json
     py gold_synonyms.py build   # writes bench/datasets/<dataset>_v2_syn.json
@@ -23,6 +29,7 @@ Steps:
 
 import argparse
 import json
+import re
 import time
 import urllib.parse
 import urllib.request
@@ -32,7 +39,15 @@ from clinical_gold import DATASETS, DATASETS_DIR, HERE, input_terms, load, norm
 
 MONARCH = "https://api-v3.monarchinitiative.org/v3/api"
 CACHE_PATH = HERE / "work" / "mondo_synonyms.json"
+SKIPPED_PATH = HERE / "work" / "synonyms_skipped.txt"
 VERSION = "v2_syn"
+# Words that do not tell two diseases apart, ignored when matching the gold name with its MONDO entry
+GENERIC_WORDS = {"syndrome", "disease", "disorder", "type", "with", "and", "the", "due", "for", "related", "autosomal",
+                 "dominant", "recessive", "linked", "form", "familial", "congenital", "hereditary", "primary"}
+
+
+def words(text):
+    return {w for w in re.findall(r"[a-z0-9]+", text.lower()) if len(w) >= 3 and w not in GENERIC_WORDS}
 
 
 def gold_code(diag):
@@ -89,17 +104,26 @@ def fetch(args):
 
 def build(args):
     cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    skipped = []
     for name in DATASETS:
         cases = load(f"{name}_v2")
-        stats = dict(cases=len(cases), changed=0, golds_with_code=0, golds_changed=0, names_added=0, in_input=0)
+        stats = dict(cases=len(cases), changed=0, golds_with_code=0, golds_changed=0, names_added=0, in_input=0,
+                     no_match=0)
         for case in cases:
             changed = False
             terms = input_terms(case)
             for diag in case["diagnoses"]:
-                row = cache.get(gold_code(diag) or "")
+                code = gold_code(diag)
+                row = cache.get(code or "")
                 if not row or "error" in row:
                     continue
                 stats["golds_with_code"] += 1
+                gold_words = words(diag["name"]) | {w for n in diag.get("accepted_names") or [] for w in words(n)}
+                mondo_words = words(row["label"] or "") | {w for s in row["exact"] for w in words(s)}
+                if (row["label"] or "").startswith("obsolete") or not gold_words & mondo_words:
+                    stats["no_match"] += 1
+                    skipped.append(f"{name}\t{case['id']}\t{diag['name']}\t{code} {row['mondo']}\t{row['label']}")
+                    continue
                 known = {norm(diag["name"])} | {norm(n) for n in diag.get("accepted_names") or []}
                 added = []
                 for synonym in [row["label"]] + row["exact"]:
@@ -120,6 +144,8 @@ def build(args):
         path = DATASETS_DIR / f"{name}_{VERSION}.json"
         path.write_text(json.dumps(cases, indent=1, ensure_ascii=False), encoding="utf-8")
         print(f"{path.name}: {json.dumps(stats)}")
+    SKIPPED_PATH.write_text("\n".join(sorted(set(skipped))) + "\n", encoding="utf-8")
+    print(f"Golds without synonyms because the name does not match the MONDO entry: {SKIPPED_PATH}")
 
 
 def main():
