@@ -505,7 +505,7 @@ def hpo_sermas():
     """Sol and Terra with the sermas prompt against juanjo_classic_v2 on the same HPO v2 cases, Flash judge on both."""
     prompts = ('juanjo_classic_v2', SERMAS_PROMPT)
     pos = {(m, p): {} for m in HPO_FOLDERS for p in prompts}
-    labels, lists = [], {m: {'lengths': [], 'times': [], 'cost': 0.0} for m in HPO_FOLDERS}
+    labels, lists, ds_keys = [], {m: {'lengths': [], 'times': [], 'cost': 0.0} for m in HPO_FOLDERS}, {}
     for key, label, _ in HPO:
         if key not in SERMAS_HPO:
             continue
@@ -518,6 +518,7 @@ def hpo_sermas():
         for k in runs:
             pos[k].update({f'{key}:{i}': strict_position(details[k][i], False) for i in ids})
         labels.append(label)
+        ds_keys[label] = [f'{key}:{i}' for i in ids]
         for m, f in HPO_FOLDERS.items():
             path = os.path.join(root, SERMAS_PROMPT, f + FLASH_TAG)
             labeled = load_labeled(path)
@@ -534,6 +535,11 @@ def hpo_sermas():
                        'r5': paired(pos[(m, prompts[1])], pos[(m, prompts[0])], keys, 5)} for m in HPO_FOLDERS},
         'solTerra': {p: {'r1': paired(pos[('sol', p)], pos[('terra', p)], keys, 1), 'r5': paired(pos[('sol', p)], pos[('terra', p)], keys, 5)}
                      for p in prompts},
+        'rows': [{'label': label, 'n': len(ks),
+                  **{name: {m: metrics([pos[(m, p)][k] for k in ks]) for m in HPO_FOLDERS} for name, p in (('classic', prompts[0]), ('sermas', prompts[1]))},
+                  **{f'{name}R{k}': paired(pos[('sol', p)], pos[('terra', p)], ks, k) for name, p in (('classic', prompts[0]), ('sermas', prompts[1]))
+                     for k in (1, 5)}}
+                 for label, ks in list(ds_keys.items()) + [('Total', keys)]],
         'lists': {m: {'options': statistics.median(v['lengths']), 'under5': round(100 * sum(1 for n in v['lengths'] if n < 5) / len(v['lengths'])),
                       'latency': round(statistics.median(v['times']), 1), 'cost': v['cost'] / len(v['lengths'])} for m, v in lists.items()},
     }
@@ -1065,6 +1071,37 @@ def gene_explainer(data):
 '''
 
 
+def legend_dot(color, label, hollow=False):
+    mark = (f'<circle cx="6" cy="6" r="4.5" fill="#fff" stroke="{color}" stroke-width="2"/>' if hollow
+            else f'<circle cx="6" cy="6" r="5" fill="{color}"/>')
+    return f'<span class="viz-legend-item"><svg width="12" height="12">{mark}</svg>{label}</span>'
+
+
+def chart_panel(chart_id, title, sub, legend, tab_groups):
+    """A viz panel whose SVG the chart script fills in; tab_groups is a list of (id suffix, [(value, label)])."""
+    groups = ''.join(
+        f'<div class="viz-tabs" id="{chart_id}-{suffix}">'
+        + ''.join(f'<button type="button" class="viz-tab{" active" if i == 0 else ""}" data-k="{value}">{label}</button>'
+                  for i, (value, label) in enumerate(buttons)) + '</div>'
+        for suffix, buttons in tab_groups)
+    return f'''
+    <div class="viz-panel" style="margin:16px 0">
+      <div class="viz-panel-title"><span>{title}</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">{groups}</div>
+      </div>
+      <div class="viz-panel-sub">{sub}</div>
+      <div class="svg-wrap"><svg id="{chart_id}-svg" class="svg-chart" viewBox="0 0 680 240" role="img" aria-label="{title}"></svg></div>
+      <div class="viz-legend">{''.join(legend)}</div>
+    </div>'''
+
+
+METRIC_TABS = ('tabs', [('r1', 'R@1'), ('r5', 'R@5')])
+
+
+def model_color(data, mid):
+    return next(m['color'] for m in data['models'] if m['id'] == mid)
+
+
 def hpo_sol_section(data):
     s = data.get('hpoSol')
     if not s or not s['rows']:
@@ -1131,6 +1168,9 @@ def hpo_sol_section(data):
       {t["r1"]["losses"]} perdidos, {p_text(t["r1"]["p"])}); R@5 {pct(t["terra"]["r5"])} y {pct(t["sol"]["r5"])}.
       {"" if s["pending"] or not even else f"En {' y '.join(r['label'] for r in even)} ({' y '.join(str(r['n']) for r in even)} casos) la diferencia de R@1 está dentro del azar."}
     </div>
+{chart_panel('hposol', 'Terra 5.6 frente a gpt-6.1-sol, por dataset',
+             'Cada fila es un dataset de HPO v2 y la línea une los dos modelos. Juez Gemini 2.5 Pro, gold con gen o sin gen.',
+             [legend_dot(model_color(data, 'terra56'), 'Terra 5.6'), legend_dot(model_color(data, 'sol61'), 'gpt-6.1-sol')], [METRIC_TABS])}
     <div class="table-scroll">
     <table class="num">
       <thead><tr><th>Dataset</th><th>Casos</th><th>R@1 Terra</th><th>R@1 Sol</th><th>Sol gana / pierde</th><th>p</th>
@@ -1264,6 +1304,10 @@ def graded_v3_section(data):
       esta decisión. <code>graded_v3</code> es el juez por defecto desde ahora; las cifras de este informe siguen con v2 hasta volver a
       puntuar con <code>narrative_v2</code> v0.2.
     </div>
+{chart_panel('gradedv3', 'R@1 con el juez anterior y con <code>graded_v3</code>',
+             'Punto hueco: <code>graded_v2</code>; punto lleno: <code>graded_v3</code>. Mismas listas y mismo juez, Gemini 2.5 Pro.',
+             [legend_dot('#475569', 'graded_v2', True), legend_dot('#475569', 'graded_v3 (adoptado)')],
+             [('tabs', [('realcases', 'Casos reales'), ('realRare', 'Raras reales'), ('total', 'Total')])])}
 {graded_table(s, 'v3')}
     <p class="note">Gana / pierde: casos que acierta en P1 con v3 y no con v2, y al revés. Notas que cambian entre v2 y v3:
       de 1 a 2, {thousands(moves.get("12", 0))}; de 2 a 1, {thousands(moves.get("21", 0))}; de 0 a 1, {thousands(moves.get("01", 0))};
@@ -1303,6 +1347,10 @@ def hpo_opus_section(data):
       y Sol al {pct(s["lax"]["sol"])} ({s["laxTest"]["wins"]} / {s["laxTest"]["losses"]}, {p_text(s["laxTest"]["p"])}).
       {cost_text}
     </div>
+{chart_panel('hpoopus', 'Tres modelos en raras, por dataset',
+             'Cada fila es un dataset de HPO v2 y cada punto, un modelo. Mismo prompt y juez (Gemini 2.5 Pro).',
+             [legend_dot(model_color(data, 'terra56'), 'Terra 5.6'), legend_dot(model_color(data, 'sol61'), 'gpt-6.1-sol'),
+              legend_dot(model_color(data, 'opus5'), 'Claude Opus 5')], [METRIC_TABS])}
     <div class="table-scroll">
     <table class="num">
       <thead><tr><th>Dataset</th><th>Casos</th><th>R@1 Terra</th><th>R@1 Sol</th><th>R@1 Opus</th><th>Sol frente a Opus</th><th>p</th>
@@ -1355,6 +1403,10 @@ def hpo_sermas_section(data):
       nuevas de Sol y Terra con ese prompt en {datasets} ({thousands(s["n"])} casos de HPO v2), y se comparan con las
       listas del prompt de DxGPT en los mismos casos. Los dos prompts los puntúa el mismo juez, Gemini 3.8 Flash. {verdict}
     </div>
+{chart_panel('sermas', 'Sol frente a Terra, por dataset',
+             'Cada fila es un dataset y la línea une los dos modelos. Mismos casos y juez (Gemini 3.8 Flash) con los dos prompts.',
+             [legend_dot(model_color(data, 'terra56'), 'Terra 5.6'), legend_dot(model_color(data, 'sol61'), 'gpt-6.1-sol')],
+             [('ptabs', [('sermas', 'Prompt de sermas'), ('classic', 'Prompt de DxGPT')]), METRIC_TABS])}
     <h3>Sol frente a Terra con cada prompt</h3>
     <div class="table-scroll">
     <table class="num">
@@ -1423,6 +1475,9 @@ def n5_section(data):
       «generate 5 more»), en la rama <code>develop</code>, pendiente de desplegar. Para medir lo mismo que producción, las próximas
       ejecuciones oficiales del benchmark usarán <code>{N5_PROMPT}</code>.
     </div>
+{chart_panel('n5', '«N» frente a «5», mismo modelo y casos',
+             'Punto hueco: el prompt que deja «N» al modelo; punto lleno: el que pide 5. Si apenas se mueven, pedir 5 no resta precisión.',
+             [legend_dot('#475569', 'Prompt «N»', True), legend_dot('#475569', 'Prompt «5»')], [METRIC_TABS])}
     <div class="table-scroll">
     <table class="num">
       <thead><tr><th>Grupo</th><th>Casos</th>{head}</tr></thead>
@@ -2299,6 +2354,153 @@ CHART_JS = r'''
     tabs('judge-tabs', function (b) { judgeK = b.getAttribute('data-k'); renderJudges(); });
   }
 
+  // Dot rows for the newer sections: one row per item, one dot per value; hollow dots are the «before» value.
+  // Two-dot rows get a value label on each side; rows with more dots rely on the tooltip and the table below.
+  function renderDots(svgId, rows, tip) {
+    var svg = document.getElementById(svgId);
+    if (!svg || !rows.length) return;
+    var W = 680, padL = 200, padR = 58, padT = 22, row = 38, H = padT + row * rows.length + 30;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var vals = [];
+    rows.forEach(function (r) { r.points.forEach(function (p) { if (p.value != null) vals.push(p.value); }); });
+    var x0 = Math.max(0, Math.floor((Math.min.apply(null, vals) - 4) / 10) * 10);
+    var x1 = Math.min(100, Math.ceil((Math.max.apply(null, vals) + 4) / 10) * 10);
+    function sx(v) { return padL + (v - x0) / (x1 - x0) * (W - padL - padR); }
+    var out = [];
+    for (var t = x0; t <= x1; t += 10) {
+      out.push('<line x1="' + sx(t) + '" y1="' + (padT - 8) + '" x2="' + sx(t) + '" y2="' + (H - 26) + '" stroke="' + GRID + '"/>');
+      out.push(text(sx(t), H - 10, t + ' %', { anchor: 'middle', fill: MUTED, size: 10.5 }));
+    }
+    rows.forEach(function (r, i) {
+      var y = padT + i * row + row / 2;
+      if (r.total) out.push('<line x1="12" y1="' + (y - row / 2) + '" x2="' + (W - 12) + '" y2="' + (y - row / 2) + '" stroke="' + AXIS + '"/>');
+      out.push(text(padL - 16, y + 4, esc(r.label), { anchor: 'end', weight: r.total ? 700 : 600 }));
+      var pts = r.points.filter(function (p) { return p.value != null; });
+      var lo = Math.min.apply(null, pts.map(function (p) { return p.value; }));
+      var hi = Math.max.apply(null, pts.map(function (p) { return p.value; }));
+      out.push('<line x1="' + sx(lo) + '" y1="' + y + '" x2="' + sx(hi) + '" y2="' + y + '" stroke="' + (r.line || AXIS) + '" stroke-width="2" opacity="0.6"/>');
+      pts.forEach(function (p) {
+        out.push(p.hollow ? '<circle cx="' + sx(p.value) + '" cy="' + y + '" r="6" fill="#fff" stroke="' + p.color + '" stroke-width="2.5"/>'
+                          : '<circle cx="' + sx(p.value) + '" cy="' + y + '" r="6.5" fill="' + p.color + '" stroke="#fff" stroke-width="2"/>');
+      });
+      if (pts.length === 2) {
+        var a = pts[0].value <= pts[1].value ? pts[0] : pts[1], b = a === pts[0] ? pts[1] : pts[0];
+        out.push(text(sx(a.value) - 11, y + 4, pc(a.value), { anchor: 'end', size: 10.5, fill: a.hollow ? MUTED : INK, weight: a.hollow ? null : 700 }));
+        out.push(text(sx(b.value) + 11, y + 4, pc(b.value), { anchor: 'start', size: 10.5, fill: b.hollow ? MUTED : INK, weight: b.hollow ? null : 700 }));
+      }
+      out.push('<rect class="hit" data-i="' + i + '" x="0" y="' + (y - row / 2) + '" width="' + W + '" height="' + row + '" fill="transparent"/>');
+    });
+    svg.innerHTML = out.join('');
+    bindTips(svg, '.hit', function (el) { return tip(rows[+el.getAttribute('data-i')]); });
+  }
+  function kLabel(k) { return k === 'r1' ? 'R@1' : 'R@5'; }
+  function pTxt(t) { return t.wins + ' / ' + t.losses + ', p ' + (t.p < 0.001 ? '&lt; 0,001' : '= ' + t.p.toFixed(3).replace('.', ',')); }
+  function hpoRows(rows, total, models) {
+    return rows.concat(total ? [Object.assign({ total: true }, total)] : []);
+  }
+  var HPO_COLOR = { terra: byId.terra56.color, sol: byId.sol61.color, opus: byId.opus5.color };
+  var HPO_NAME = { terra: 'Terra 5.6', sol: 'gpt-6.1-sol', opus: 'Claude Opus 5' };
+
+  // Sol vs Terra on HPO v2, by dataset
+  var hpoSolK = 'r1';
+  function renderHpoSol() {
+    var s = DATA.hpoSol;
+    if (!s || !s.rows || !s.rows.length) return;
+    var rows = hpoRows(s.rows, s.total).map(function (r) {
+      return { label: r.label + ' · ' + r.n, total: r.total, src: r,
+               points: ['terra', 'sol'].map(function (m) { return { value: r[m][hpoSolK], color: HPO_COLOR[m] }; }) };
+    });
+    renderDots('hposol-svg', rows, function (row) {
+      var r = row.src;
+      return '<strong>' + esc(r.label) + '</strong> (' + r.n + ' casos)<br>' + kLabel(hpoSolK) + ' Terra 5.6: <b>' + pc(r.terra[hpoSolK]) +
+        '</b><br>' + kLabel(hpoSolK) + ' gpt-6.1-sol: <b>' + pc(r.sol[hpoSolK]) + '</b><br>Sol gana / pierde: ' + pTxt(r[hpoSolK]);
+    });
+  }
+  if (document.getElementById('hposol-tabs')) tabs('hposol-tabs', function (b) { hpoSolK = b.getAttribute('data-k'); renderHpoSol(); });
+
+  // Opus vs Sol vs Terra on four HPO v2 datasets
+  var hpoOpusK = 'r1';
+  function renderHpoOpus() {
+    var s = DATA.hpoOpus;
+    if (!s) return;
+    var rows = hpoRows(s.rows, s.total).map(function (r) {
+      return { label: r.label + ' · ' + r.n, total: r.total, src: r,
+               points: ['terra', 'sol', 'opus'].map(function (m) { return { value: r[m][hpoOpusK], color: HPO_COLOR[m] }; }) };
+    });
+    renderDots('hpoopus-svg', rows, function (row) {
+      var r = row.src;
+      return '<strong>' + esc(r.label) + '</strong> (' + r.n + ' casos)<br>' + ['terra', 'sol', 'opus'].map(function (m) {
+        return kLabel(hpoOpusK) + ' ' + HPO_NAME[m] + ': <b>' + pc(r[m][hpoOpusK]) + '</b>';
+      }).join('<br>') + (r[hpoOpusK] ? '<br>Sol frente a Opus: ' + pTxt(r[hpoOpusK]) : '');
+    });
+  }
+  if (document.getElementById('hpoopus-tabs')) tabs('hpoopus-tabs', function (b) { hpoOpusK = b.getAttribute('data-k'); renderHpoOpus(); });
+
+  // sermas prompt: Sol vs Terra by dataset, for either prompt
+  var sermasK = 'r1', sermasP = 'sermas';
+  function renderSermas() {
+    var s = DATA.hpoSermas;
+    if (!s || !s.rows) return;
+    var rows = s.rows.map(function (r) {
+      return { label: r.label + ' · ' + r.n, total: r.label === 'Total', src: r,
+               points: ['terra', 'sol'].map(function (m) { return { value: r[sermasP][m][sermasK], color: HPO_COLOR[m] }; }) };
+    });
+    renderDots('sermas-svg', rows, function (row) {
+      var r = row.src, t = r[sermasP + 'R' + sermasK.slice(1)];
+      return '<strong>' + esc(r.label) + '</strong> (' + r.n + ' casos) · prompt de ' + (sermasP === 'sermas' ? 'sermas' : 'DxGPT') + '<br>' +
+        kLabel(sermasK) + ' Terra 5.6: <b>' + pc(r[sermasP].terra[sermasK]) + '</b><br>' + kLabel(sermasK) + ' gpt-6.1-sol: <b>' +
+        pc(r[sermasP].sol[sermasK]) + '</b><br>Sol gana / pierde: ' + pTxt(t);
+    });
+  }
+  if (document.getElementById('sermas-tabs')) {
+    tabs('sermas-tabs', function (b) { sermasK = b.getAttribute('data-k'); renderSermas(); });
+    tabs('sermas-ptabs', function (b) { sermasP = b.getAttribute('data-k'); renderSermas(); });
+  }
+
+  // «N» vs «5»: before / after per model and group
+  var n5K = 'r1';
+  var N5_GROUPS = [['realcases', 'casos reales'], ['realRare', 'raras reales'], ['realCommon', 'no raras reales']];
+  function renderN5() {
+    if (!DATA.n5 || !DATA.n5.length) return;
+    var rows = [];
+    DATA.n5.forEach(function (m) {
+      N5_GROUPS.forEach(function (g) {
+        var x = m.groups[g[0]];
+        rows.push({ label: m.name.replace(' low', '') + ' · ' + g[1], line: m.color, src: x, model: m.name, group: g[1],
+                    points: [{ value: x.base[n5K], color: m.color, hollow: true }, { value: x.five[n5K], color: m.color }] });
+      });
+    });
+    renderDots('n5-svg', rows, function (row) {
+      var x = row.src;
+      return '<strong>' + esc(row.model) + '</strong> · ' + row.group + ' (' + x.n + ' casos)<br>' + kLabel(n5K) + ' con «N»: <b>' +
+        pc(x.base[n5K]) + '</b><br>' + kLabel(n5K) + ' con «5»: <b>' + pc(x.five[n5K]) + '</b><br>«5» gana / pierde: ' + pTxt(x[n5K]);
+    });
+  }
+  if (document.getElementById('n5-tabs')) tabs('n5-tabs', function (b) { n5K = b.getAttribute('data-k'); renderN5(); });
+
+  // graded_v2 vs graded_v3 per model
+  var gv3G = 'realcases';
+  function renderGradedV3() {
+    var s = DATA.gradedV3;
+    if (!s) return;
+    var rows = s.models.slice().sort(function (a, b) { return b.groups[gv3G].v3.r1 - a.groups[gv3G].v3.r1; }).map(function (m) {
+      var g = m.groups[gv3G];
+      return { label: m.name.replace(' low', ''), line: m.color, src: g, model: m.name,
+               points: [{ value: g.v2.r1, color: m.color, hollow: true }, { value: g.v3.r1, color: m.color }] };
+    });
+    renderDots('gradedv3-svg', rows, function (row) {
+      var g = row.src;
+      return '<strong>' + esc(row.model) + '</strong> (' + g.n + ' casos)<br>R@1 con graded_v2: <b>' + pc(g.v2.r1) + '</b><br>R@1 con graded_v3: <b>' +
+        pc(g.v3.r1) + '</b><br>v3 gana / pierde: ' + pTxt(g.r1);
+    });
+  }
+  if (document.getElementById('gradedv3-tabs')) tabs('gradedv3-tabs', function (b) { gv3G = b.getAttribute('data-k'); renderGradedV3(); });
+
+  renderHpoSol();
+  renderHpoOpus();
+  renderSermas();
+  renderN5();
+  renderGradedV3();
   renderJudges();
   renderDumbbell();
   renderHeat();
