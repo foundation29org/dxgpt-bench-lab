@@ -296,6 +296,93 @@ R@1 estricta en casos reales (`live`+`urg`, 210):
   depende de cuál se parece más al criterio de David (tarea 2 de
   `docs/tareas-david/`).
 
+## Variabilidad entre ejecuciones (29-oct-2026)
+
+¿Cuánto cambia el resultado si se repite el mismo run? Terra 5.6 low se ha
+vuelto a ejecutar entero sobre `narrative_v2` (genera, traduce, etiqueta y
+puntúa) con `config_terra_low_narrative_v2_rerun2.yaml`, en la carpeta
+`gpt_5_6_terra_low_translated_en__rerun2`.
+
+| Grupo | R@1 run 1 | R@1 run 2 | gana / pierde | p | R@5 run 1 | R@5 run 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| Casos reales (`live`+`urg`, 210) | 51,9 % | 52,4 % | 12 / 11 | 1,0 | 72,9 % | 72,9 % |
+| Raras reales (116) | 53,4 % | 52,6 % | 6 / 7 | 1,0 | 69,0 % | 69,8 % |
+| No raras reales (94) | 50,0 % | 52,1 % | 6 / 4 | 0,75 | 77,7 % | 76,6 % |
+| `exam` (60) | 83,3 % | 80,0 % | 1 / 3 | 0,63 | 88,3 % | 88,3 % |
+| Total (300) | 61,3 % | 61,0 % | 14 / 15 | 1,0 | 78,3 % | 78,0 % |
+
+- **La cifra agregada apenas se mueve** (un punto o menos en casos reales y en
+  el total), **pero por debajo cambia el acierto en P1 de 1 de cada 10 casos**
+  (29 de 300), en los dos sentidos.
+- Por eso una diferencia de 2 o 3 puntos entre dos runs no dice nada por sí
+  sola, y menos en un bloque de 60 casos: hace falta el McNemar sobre los
+  mismos casos.
+- **La ventaja de Sol se mantiene frente a la segunda ejecución:** 21 / 9 en
+  casos reales (p = 0,04; frente a la primera, 22 / 9 y p = 0,03) y 16 / 2 en
+  raras reales (p = 0,001).
+- Coste: 1,34 c$ por caso de generación y 4,30 $ de juez, igual que el primero.
+
+## Sol frente a Terra en raras (HPO v2, 29-oct-2026)
+
+Run completo de gpt-6.1-sol low sobre los seis datasets de HPO v2
+(`config_gpt61sol_low_<dataset>_hpo_v2.yaml`), con el mismo prompt,
+parámetros y juez (Gemini 2.5 Pro) que las listas de Terra de julio. R@1 y R@5
+estrictas con el gold con gen o sin gen; McNemar exacto sobre los mismos
+casos:
+
+| Dataset | Casos | R@1 Terra | R@1 Sol | gana / pierde | p | R@5 Terra | R@5 Sol | p R@5 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| DDD | 1.746 | 43,2 % | 48,1 % | 158 / 72 | < 0,001 | 53,7 % | 59,5 % | < 0,001 |
+| RAMEDIS | 616 | 34,1 % | 38,6 % | 59 / 31 | 0,004 | 57,5 % | 70,3 % | < 0,001 |
+| LIRICAL | 370 | 41,6 % | 47,3 % | 37 / 16 | 0,005 | 58,1 % | 64,3 % | 0,006 |
+| MyGene2 | 146 | 37,0 % | 38,4 % | 15 / 13 | 0,85 | 53,4 % | 65,8 % | 0,005 |
+| HMS | 88 | 40,9 % | 39,8 % | 3 / 4 | 1,0 | 58,0 % | 55,7 % | 0,63 |
+| MME | 40 | 50,0 % | 67,5 % | 8 / 1 | 0,04 | 67,5 % | 75,0 % | 0,45 |
+| **Total** | **3.006** | **40,9 %** | **45,6 %** | **280 / 137** | **< 0,001** | **55,3 %** | **62,7 %** | **< 0,001** |
+
+Solo con el gold con gen (`score_blocks.py --without-clinical`), R@1 del total
+pasa de 27,2 % a 32,4 % (287 / 129, p < 0,001).
+
+Control de longitud: Terra da 4 opciones de mediana en DDD y 5 en el resto;
+Sol, 5 en todos. Contando solo hasta las opciones que dio Terra en cada caso
+(máximo 5), R@5 del total pasa de 55,3 % a 61,3 % (312 / 132, p < 0,001). La
+ventaja de Sol en R@5 no viene de dar listas más largas.
+
+- **Sol mejora a Terra en raras de forma clara:** +4,7 puntos en R@1 y +7,4 en
+  R@5 sobre 3.006 casos. Gana en DDD, RAMEDIS, LIRICAL y MME; en MyGene2 y HMS
+  (146 y 88 casos) la diferencia de R@1 está dentro del azar.
+- Coincide con `narrative_v2`, donde la ventaja de Sol estaba en las raras
+  reales (64,7 % frente a 53,4 %).
+- Coste de Sol: 1,04 c$ por caso de generación (31,40 $ los 3.006 casos),
+  latencia mediana 20 s con 8 llamadas en paralelo; juez Pro 68,25 $.
+
+### Gemini 3.8 Flash como juez en raras
+
+Las listas de Terra y de Sol de los seis datasets se han vuelto a puntuar con
+Gemini 3.8 Flash (carpetas `<modelo>__judge_gemini_3_8_flash`, configs en el
+scratchpad como las de `narrative_v2`).
+
+| Listas de | Casos | Mismo acierto P1 | Mismo «2 o no» (por opción) | Kappa | R@1 con Pro | R@1 con Flash |
+|---|---:|---:|---:|---:|---:|---:|
+| Terra 5.6 | 3.006 | 97,1 % | 97,8 % | 0,91 | 40,9 % | 40,5 % |
+| gpt-6.1-sol | 3.006 | 96,9 % | 98,0 % | 0,92 | 45,6 % | 46,6 % |
+
+- **Con Flash, Sol sigue ganando a Terra:** 46,6 % frente a 40,5 % de R@1
+  (300 / 116, p < 0,001). Flash coincide con Pro en raras tanto como en
+  `narrative_v2` (98,0 %), y el juez cuesta unas 30 veces menos (2,0 $ frente a
+  68 $ por las listas de Sol).
+- **Donde más se separan, el que se equivoca es Pro.** En MyGene2, 24 casos
+  tienen como gold «Arthrogryposis with oculomotor limitation and
+  electroretinal anomalies» (OMIM 108145), que en MONDO es sinónimo de
+  «distal arthrogryposis type 5» (DA5, PIEZO2). Pro da un 2 a «type 5» en 6 de
+  37 opciones y a «type 5D», que es otra enfermedad (ECEL1, OMIM 615065), en
+  23 de 24. Flash da un 2 a «type 5» en 37 de 37 y a «type 5D» en 1 de 24. Por
+  eso R@1 de Sol en MyGene2 es 38,4 % con Pro y 52,7 % con Flash, y con Flash
+  Sol sí gana a Terra en MyGene2 (24 / 7, p = 0,003).
+- El juez solo ve nombres. **Pasarle los sinónimos del gold (MONDO u
+  Orphanet, a partir de sus códigos OMIM y ORPHA)** evitaría este tipo de error
+  con cualquier juez.
+
 ## Pendiente
 
 Decidido e implementado en `graded_v2` (reglas de la rúbrica que contestó

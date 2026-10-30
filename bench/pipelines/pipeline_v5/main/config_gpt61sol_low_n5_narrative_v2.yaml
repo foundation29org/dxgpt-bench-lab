@@ -1,0 +1,39 @@
+# Pipeline V5 - gpt-6.1-sol low sobre narrative_v2 pidiendo 5 diagnosticos
+# ==============================================================
+# Igual que config_gpt61sol_low_narrative_v2.yaml, pero el prompt pide exactamente
+# 5 diagnosticos (juanjo_classic_v2_n5.txt) en vez de dejar «N» al modelo, como
+# hace produccion. Comprueba si fijar la longitud cambia R@1 y R@5.
+
+EXPERIMENT_NAME: "narrative_v2-juanjo_classic_v2_n5-gpt61sol_low-v5"
+EXPERIMENT_DESCRIPTION: "gpt-6.1-sol low sobre narrative_v2 con el prompt que pide 5 diagnosticos."
+
+DATASET_PATH: "bench/datasets/narrative_v2.json"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-6.1-sol"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2_n5.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+
+EVALUATOR:
+  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  PARALLEL_WORKERS: 8
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

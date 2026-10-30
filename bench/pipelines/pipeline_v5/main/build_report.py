@@ -55,6 +55,8 @@ MODELS = [
 
 GROUPS = [
     ('total', 'Total', lambda c: True),
+    ('realRare', 'Raras, casos reales', lambda c: c['metadata']['block'] in ('live', 'urg') and c['metadata'].get('rare_disease') is True),
+    ('realCommon', 'No raras, casos reales', lambda c: c['metadata']['block'] in ('live', 'urg') and c['metadata'].get('rare_disease') is False),
     ('realcases', '<code>live</code>+<code>urg</code>', lambda c: c['metadata']['block'] in ('live', 'urg')),
     ('live', '<code>live</code>', lambda c: c['metadata']['block'] == 'live'),
     ('urg', '<code>urg</code>', lambda c: c['metadata']['block'] == 'urg'),
@@ -88,6 +90,13 @@ RERUN = ('terra56', 'gpt_5_6_terra_low_translated_en__rerun2')
 # gpt-6.1-sol on HPO v2, same prompt and parameters as Terra's July lists; Flash re-scoring tag
 HPO_FOLDERS = {'terra': 'gpt_5_6_terra_low', 'sol': 'gpt_6_1_sol_low'}
 FLASH_TAG = '__judge_gemini_3_8_flash'
+
+# MyGene2 gold where the two judges disagree the most: OMIM 108145 is distal arthrogryposis
+# type 5 (PIEZO2, same disease); type 5D is another disease (ECEL1, OMIM 615065)
+JUDGE_EXAMPLE = ('mygene2_hpo', 'Arthrogryposis with oculomotor limitation and electroretinal anomalies')
+# HPO v2 gold plus the MONDO exact synonyms of each OMIM code in accepted_names
+# (data29/data-repos/hpo-v2/gold_synonyms.py): same lists and judges, only the gold changes
+SYN_VERSION = 'v2_syn'
 
 # HPO v2 cases (DDD comes from the public G2P panel) that show what "with gene" and
 # "without gene" mean: dataset, case id, why it counts or not
@@ -229,6 +238,8 @@ def hpo_sol():
     limit, cost, judge_cost, times = {}, 0.0, 0.0, []
     flash_parts = {'terra': [], 'sol': []}
     flash_pos = {(m, j): {} for m in HPO_FOLDERS for j in ('pro', 'flash')}
+    example = {(j, kind): [0, 0] for j in ('pro', 'flash') for kind in ('da5', 'da5d')}
+    example['cases'] = set()
     for key, label, _ in HPO:
         folder = os.path.join(OUTPUT_ROOT, f'{key}_v2', 'juanjo_classic_v2')
         runs = {m: finished_run(os.path.join(folder, f)) for m, f in HPO_FOLDERS.items()}
@@ -241,6 +252,8 @@ def hpo_sol():
                 flash_parts[m].append(compare_judges.agreement(pro_details, flash_details, common))
                 for judge, details in (('pro', pro_details), ('flash', flash_details)):
                     flash_pos[(m, judge)].update({f'{key}:{i}': strict_position(details[i], False) for i in common})
+                    if key == JUDGE_EXAMPLE[0]:
+                        count_example(details, judge, example)
         if not runs['sol']:
             result['pending'].append(label)
             continue
@@ -271,7 +284,75 @@ def hpo_sol():
             result['judges'].append({'model': m, **compare_judges.summarize(parts),
                                      'proR1': metrics([flash_pos[(m, 'pro')][k] for k in keys])['r1'],
                                      'flashR1': metrics([flash_pos[(m, 'flash')][k] for k in keys])['r1']})
+    keys = [k for k in flash_pos[('sol', 'flash')] if k in flash_pos[('terra', 'flash')]]
+    if keys:
+        result['flash'] = {'n': len(keys), 'r1': paired(flash_pos[('sol', 'flash')], flash_pos[('terra', 'flash')], keys, 1),
+                           **{m: metrics([flash_pos[(m, 'flash')][k] for k in keys]) for m in HPO_FOLDERS}}
+        mygene = [k for k in keys if k.startswith(JUDGE_EXAMPLE[0] + ':')]
+        cases = example.pop('cases')
+        result['example'] = {'grades': {f'{j}_{kind}': v for (j, kind), v in example.items()}, 'cases': len(cases),
+                             'solR1': {j: metrics([flash_pos[('sol', j)][k] for k in mygene])['r1'] for j in ('pro', 'flash')}}
     return result
+
+
+def hpo_syn():
+    """Same HPO lists and judges, gold v2 against gold v2 plus MONDO exact synonyms (HPO v2_syn)."""
+    result = {'rows': [], 'agreement': [], 'example': {}}
+    positions = {}
+    for judge, tag in (('pro', ''), ('flash', FLASH_TAG)):
+        for m, f in HPO_FOLDERS.items():
+            before, after, labels = {}, {}, []
+            for key, label, _ in HPO:
+                runs = [finished_run(os.path.join(OUTPUT_ROOT, f'{key}_{version}', 'juanjo_classic_v2', f + tag))
+                        for version in ('v2', SYN_VERSION)]
+                if not all(runs):
+                    continue
+                details = [load_details(os.path.join(run, 'evaluation_details.txt')) for run in runs]
+                for i in details[0]:
+                    if i in details[1]:
+                        before[f'{key}:{i}'] = strict_position(details[0][i], False)
+                        after[f'{key}:{i}'] = strict_position(details[1][i], False)
+                labels.append(label)
+                if key == JUDGE_EXAMPLE[0] and judge == 'pro':
+                    for name, d in zip(('v2', 'syn'), details):
+                        counts = result['example'].setdefault(name, {(name, kind): [0, 0] for kind in ('da5', 'da5d')} | {'cases': set()})
+                        count_example(d, name, counts)
+            positions[(judge, m)] = (before, after)
+            if before:
+                keys = list(before)
+                result['rows'].append({'judge': judge, 'model': m, 'datasets': labels, 'n': len(keys),
+                                       'before': metrics([before[k] for k in keys]), 'after': metrics([after[k] for k in keys]),
+                                       'test': paired(after, before, keys, 1)})
+    for m in HPO_FOLDERS:
+        if (('pro', m) not in positions) or (('flash', m) not in positions):
+            continue
+        keys = [k for k in positions[('pro', m)][0] if k in positions[('flash', m)][0]]
+        if not keys:
+            continue
+        row = {'model': m, 'n': len(keys)}
+        for index, version in enumerate(('v2', 'syn')):
+            pro, flash = positions[('pro', m)][index], positions[('flash', m)][index]
+            row[version] = {'sameP1': round(100 * sum(1 for k in keys if (pro[k] == 1) == (flash[k] == 1)) / len(keys), 1),
+                            'pro': metrics([pro[k] for k in keys])['r1'], 'flash': metrics([flash[k] for k in keys])['r1']}
+        result['agreement'].append(row)
+    result['example'] = {version: {kind: counts[(version, kind)] for kind in ('da5', 'da5d')}
+                         for version, counts in result['example'].items()}
+    return result
+
+
+def count_example(details, judge, counts):
+    """Grade 2 out of all grades the judge gave to «type 5» and «type 5D» options for the example gold."""
+    for case_id, case in details.items():
+        for trace in case['eval_details'].get('graded_trace', []):
+            if trace['gdx'] != JUDGE_EXAMPLE[1]:
+                continue
+            counts['cases'].add(case_id)
+            for option in trace['options']:
+                name = option['name'].lower()
+                kind = 'da5d' if re.search(r'type 5d|\b5d\b', name) else 'da5' if re.search(r'type 5\b|\bda5\b', name) else None
+                if kind and option['grade'] is not None:
+                    counts[(judge, kind)][0] += option['grade'] == 2
+                    counts[(judge, kind)][1] += 1
 
 
 def sol_row(label, keys, every, limit, lengths, ids):
@@ -322,7 +403,7 @@ def collect():
             'cutoff': str(cutoffs.get(model, {}).get('cutoff', '')), 'groups': groups,
         })
 
-    for subset in ('realcases', 'total'):
+    for subset in ('realRare', 'realCommon', 'realcases', 'total'):
         belongs = dict((k, f) for k, _, f in GROUPS)[subset]
         ids = [i for i, c in dataset.items() if belongs(c)]
         for k in (1, 5):
@@ -453,6 +534,7 @@ def collect():
         data['geneExamples'] += [{**hpo_example(v5[case_id]), 'note': note}
                                  for ex_key, case_id, note in GENE_EXAMPLES if ex_key == key and case_id in v5]
     data['hpoSol'] = hpo_sol()
+    data['hpoSyn'] = hpo_syn()
     judges = compare_judges.compare(JUDGE_CANDIDATES)
     if judges:
         judges['colors'] = {name: color for (_, name), (*_, color) in zip(compare_judges.MODELS, MODELS)}
@@ -480,6 +562,10 @@ def thousands(value):
 
 def p_value(p):
     return '&lt; 0,001' if p < 0.001 else num(p, 3 if p < 0.01 else 2)
+
+
+def p_text(p):
+    return 'p &lt; 0,001' if p < 0.001 else f'p = {p_value(p)}'
 
 
 def models_table(data):
@@ -631,7 +717,7 @@ def rerun_section(data):
       En casos reales, R@1 pasa de {pct(real["first"]["r1"])} a {pct(real["second"]["r1"])}. Cambian {flips} de {real["n"]} casos
       (acierto en una ejecución y fallo en la otra), pero en las dos direcciones a la vez ({real["change"]["wins"]} y {real["change"]["losses"]}),
       así que la cifra apenas se mueve. <strong>{"La ventaja de gpt-6.1-sol se mantiene frente a las dos ejecuciones" if sol_holds else "La ventaja de gpt-6.1-sol no se mantiene frente a las dos ejecuciones"}</strong>
-      (p = {p_value(real["solFirst"]["p"])} y {p_value(real["solSecond"]["p"])}): no es fruto de una ejecución con suerte.
+      ({p_text(real["solFirst"]["p"])} y {p_value(real["solSecond"]["p"])}): no es fruto de una ejecución con suerte.
     </div>
     <div class="table-scroll">
     <table class="num">
@@ -718,6 +804,26 @@ def hpo_sol_section(data):
     t = s['total']
     done = len(s['rows'])
     pending = (f' Faltan {", ".join(s["pending"])}: la tabla se completa al volver a generar el informe.' if s['pending'] else '')
+    progress = f'{done} de {len(HPO)} datasets terminados' if s['pending'] else f'Los {done} datasets'
+    even = [r for r in s['rows'] if r['r1']['p'] >= 0.05]
+    flash, example = s.get('flash'), s.get('example')
+    flash_text = (f'<p><strong>Con Gemini 3.8 Flash de juez la ventaja de Sol se mantiene:</strong> R@1 {pct(flash["terra"]["r1"])} con Terra y '
+                  f'{pct(flash["sol"]["r1"])} con Sol ({flash["r1"]["wins"]} / {flash["r1"]["losses"]}, {p_text(flash["r1"]["p"])}) '
+                  f'sobre {thousands(flash["n"])} casos.</p>' if flash else '')
+    if example:
+        g = example['grades']
+        share = lambda k: f'{g[k][0]} de {g[k][1]}'
+        flash_text += f'''
+    <div class="callout callout-warn">
+      <strong>Dónde se separan los jueces: un sinónimo que Pro no reconoce.</strong> En MyGene2, {example["cases"]} casos tienen como gold
+      «{html.escape(JUDGE_EXAMPLE[1])}» (OMIM 108145), que es la misma enfermedad que «distal arthrogryposis type 5» (DA5, gen PIEZO2;
+      sinónimo en MONDO). «Distal arthrogryposis type 5D» es otra enfermedad (gen ECEL1, OMIM 615065). Pro lo hace al revés: da un 2
+      a «type 5» en {share("pro_da5")} veces y a «type 5D» en {share("pro_da5d")}. Flash da un 2 a «type 5» en {share("flash_da5")} y a
+      «type 5D» en {share("flash_da5d")}. Sobre todo por este gold, R@1 de Sol en MyGene2 es {pct(example["solR1"]["pro"])} con Pro y
+      {pct(example["solR1"]["flash"])} con Flash. Ninguno de los dos jueces ve los códigos OMIM: pasarle al juez los sinónimos del gold
+      (MONDO u Orphanet) evitaría el problema con cualquiera de los dos.
+    </div>
+'''
     judge_rows = '\n'.join(
         f'<tr><td>{labels[j["model"]]}</td><td>{thousands(j["cases"])}</td><td>{pct(j["sameP1"])}</td><td>{pct(j["same2"])}</td>'
         f'<td>{num(j["kappa2"], 2)}</td><td>{pct(j["sameGrade"])}</td><td>{pct(j["proR1"])}</td><td>{pct(j["flashR1"])}</td></tr>'
@@ -735,16 +841,17 @@ def hpo_sol_section(data):
     </div>
     <p class="note">Mismas listas puntuadas por los dos jueces, gold con gen o sin gen. En <code>narrative_v2</code> Flash coincidía con Pro en
       «¿es un 2?» en el 98,0 % de las opciones; en raras, donde la frontera entre el nombre con gen y sin gen es más fina, es la cifra de arriba.</p>
-''' if s['judges'] else ''
+{flash_text}''' if s['judges'] else ''
     return f'''
   <div class="section">
     <div class="section-title">Raras HPO v2 · Terra 5.6 frente a gpt-6.1-sol</div>
     <div class="callout callout-info">
       En <code>narrative_v2</code>, gpt-6.1-sol acierta unos 11 puntos más que Terra en raras, pero sobre solo 116 casos. Aquí se comprueba
       con las listas HPO: Sol genera las suyas con el mismo prompt y parámetros que las de Terra de julio, y las puntúa el mismo juez
-      (Gemini 2.5 Pro). {done} de {len(HPO)} datasets terminados, {thousands(t["n"])} casos.{pending}
-      Hasta ahora, R@1 {pct(t["terra"]["r1"])} con Terra y <strong>{pct(t["sol"]["r1"])} con Sol</strong> ({t["r1"]["wins"]} casos ganados y
-      {t["r1"]["losses"]} perdidos, p = {p_value(t["r1"]["p"])}); R@5 {pct(t["terra"]["r5"])} y {pct(t["sol"]["r5"])}.
+      (Gemini 2.5 Pro). {progress}, {thousands(t["n"])} casos.{pending}
+      {"Hasta ahora, R" if s["pending"] else "R"}@1 {pct(t["terra"]["r1"])} con Terra y <strong>{pct(t["sol"]["r1"])} con Sol</strong> ({t["r1"]["wins"]} casos ganados y
+      {t["r1"]["losses"]} perdidos, {p_text(t["r1"]["p"])}); R@5 {pct(t["terra"]["r5"])} y {pct(t["sol"]["r5"])}.
+      {"" if s["pending"] or not even else f"En {' y '.join(r['label'] for r in even)} ({' y '.join(str(r['n']) for r in even)} casos) la diferencia de R@1 está dentro del azar."}
     </div>
     <div class="table-scroll">
     <table class="num">
@@ -761,6 +868,61 @@ def hpo_sol_section(data):
       que dio Terra en ese caso, para que Sol no gane por dar listas más largas. Sol: {cents(s["cost"])} de generación por caso y
       {num(s["latency"])} s de latencia mediana; juez {num(s["judgeCost"], 2)} $ en estos datasets.</p>
 {judges}
+  </div>
+'''
+
+
+def hpo_syn_section(data):
+    s = data.get('hpoSyn')
+    if not s or not s['rows']:
+        return ''
+    labels = {'terra': 'Terra 5.6', 'sol': 'gpt-6.1-sol'}
+    judges = {'pro': 'Gemini 2.5 Pro', 'flash': 'Gemini 3.8 Flash'}
+    rows = '\n'.join(
+        f'<tr><td>{judges[r["judge"]]}</td><td>{labels[r["model"]]}</td><td>{", ".join(r["datasets"])}</td><td>{thousands(r["n"])}</td>'
+        f'<td>{pct(r["before"]["r1"])}</td><td>{pct(r["after"]["r1"])}</td><td>{r["test"]["wins"]} / {r["test"]["losses"]}</td>'
+        f'<td>{p_value(r["test"]["p"])}</td><td>{pct(r["before"]["r5"])}</td><td>{pct(r["after"]["r5"])}</td></tr>' for r in s['rows'])
+    agreement = '\n'.join(
+        f'<tr><td>{labels[a["model"]]}</td><td>{thousands(a["n"])}</td><td>{pct(a["v2"]["sameP1"])}</td><td>{pct(a["syn"]["sameP1"])}</td>'
+        f'<td>{pct(a["v2"]["pro"])} / {pct(a["v2"]["flash"])}</td><td>{pct(a["syn"]["pro"])} / {pct(a["syn"]["flash"])}</td></tr>'
+        for a in s['agreement'])
+    example = ''
+    if {'v2', 'syn'} <= set(s['example']):
+        e = s['example']
+        share = lambda v, k: f'{e[v][k][0]} de {e[v][k][1]}'
+        example = (f'En el ejemplo de MyGene2, Pro da ahora un 2 a «type 5» en {share("syn", "da5")} opciones (antes {share("v2", "da5")}) y '
+                   f'a «type 5D», que es otra enfermedad, en {share("syn", "da5d")} (antes {share("v2", "da5d")}).')
+    return f'''
+  <div class="section">
+    <div class="section-title">Raras HPO v2 · prueba: sinónimos del gold para el juez</div>
+    <div class="callout callout-info">
+      El juez solo ve el nombre del gold. Si el dataset usa un nombre poco habitual, el juez puede no reconocer un sinónimo, como
+      pasaba con la artrogriposis distal tipo 5. Prueba: añadir al gold los sinónimos exactos que da MONDO (la ontología de
+      enfermedades de Monarch) para su código OMIM, y volver a puntuar las mismas listas con los mismos jueces. Solo cambia lo que se
+      da por bueno, y viene de una fuente curada, no de un LLM. {example}
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Juez</th><th>Listas de</th><th>Datasets</th><th>Casos</th><th>R@1 gold v2</th><th>R@1 con sinónimos</th>
+        <th>Gana / pierde</th><th>p</th><th>R@5 gold v2</th><th>R@5 con sinónimos</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <h3>¿Se acercan los dos jueces?</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Listas de</th><th>Casos</th><th>Mismo acierto en P1, gold v2</th><th>Con sinónimos</th>
+        <th>R@1 Pro / Flash, gold v2</th><th>Con sinónimos</th></tr></thead>
+      <tbody>
+{agreement}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Solo datasets puntuados por los dos jueces con los dos gold. Los sinónimos salen de
+      <code>data29/data-repos/hpo-v2/gold_synonyms.py</code> (API de Monarch; solo sinónimos exactos, sin códigos Orphanet porque suelen
+      ser grupos). Es una prueba: el dataset oficial sigue siendo HPO v2.</p>
   </div>
 '''
 
@@ -864,18 +1026,18 @@ def poc_section(data):
         lines.append(f'Sobre Terra, la segunda etapa sube R@1 en casos reales de {pct(terra["groups"]["realcases"]["r1"])} a '
                      f'{pct(min(r1))}–{pct(max(r1))}.')
         if panel:
-            lines.append(f'El panel Terra + Sol llega a {pct(panel["groups"]["realcases"]["r1"])} (p = {p_value(panel["vsBase"]["r1"]["p"])} '
+            lines.append(f'El panel Terra + Sol llega a {pct(panel["groups"]["realcases"]["r1"])} ({p_text(panel["vsBase"]["r1"]["p"])} '
                          f'frente a Terra) y sube las raras de {pct(terra["groups"]["realRare"]["r1"])} a {pct(panel["groups"]["realRare"]["r1"])}.')
     if sol:
         lines.append(f'Pero Sol solo ya da {pct(sol["groups"]["realcases"]["r1"])} ({pct(sol["groups"]["realRare"]["r1"])} en raras)'
                      + (f', y frente a Sol el panel gana {panel["vsSol"]["wins"]} casos y pierde {panel["vsSol"]["losses"]} '
-                        f'(p = {p_value(panel["vsSol"]["p"])}).' if panel else '.'))
+                        f'({p_text(panel["vsSol"]["p"])}).' if panel else '.'))
     if on_sol:
         better = [a for a in on_sol if a['vsBase']['r1']['p'] < 0.05 and a['vsBase']['r1']['net'] > 0]
         best = max(on_sol, key=lambda a: a['groups']['realcases']['r1'])
         lines.append(('<strong>Sobre Sol, ningún brazo mejora de forma significativa</strong>' if not better else
                       '<strong>Sobre Sol, algún brazo mejora de forma significativa</strong>')
-                     + f' (el mejor, {html.escape(best["label"])}, {pct(best["groups"]["realcases"]["r1"])}, p = {p_value(best["vsBase"]["r1"]["p"])}):'
+                     + f' (el mejor, {html.escape(best["label"])}, {pct(best["groups"]["realcases"]["r1"])}, {p_text(best["vsBase"]["r1"]["p"])}):'
                        ' lo que la capa añadía a Terra era subirla al nivel de Sol. La palanca grande es el modelo.')
     return f'''
   <div class="section">
@@ -930,7 +1092,23 @@ def build_html(data):
     ddd = data['hpo'][0]
     hpo_total = data['hpoTotal']
     unseen_min = min(data['cutoffs'], key=lambda c: c['unseenPublic'])
+    sol_total = (data.get('hpoSol') or {}).get('total')
+    sol_rare = (f'. gpt-6.1-sol: {pct(sol_total["sol"]["r1"])} sobre {thousands(sol_total["n"])} casos, {p_text(sol_total["r1"]["p"])}'
+                if sol_total else '')
     summary_r1 = data['mcnemar']['realcases_r1']['rows']
+
+    def stratum_card(key, label):
+        top = max(data['models'], key=lambda m: m['groups'][key]['r1'])
+        n = top['groups'][key]['n']
+        if top['id'] == BASELINE:
+            sub = f'{top["name"]}, R@1 ({n} casos)'
+        else:
+            test = next(r for r in data['mcnemar'][f'{key}_r1']['rows'] if r['id'] == top['id'])
+            sub = (f'{top["name"]}, R@1 ({n} casos). Terra 5.6: {pct(base["groups"][key]["r1"])}; '
+                   f'{test["wins"]} / {test["losses"]} casos, {p_text(test["p"])}')
+        return '\n'.join([f'      <div class="card"><div class="card-label">Mejor en {label.lower()}</div>',
+                          f'        <div class="card-value">{pct(top["groups"][key]["r1"])}</div>',
+                          f'        <div class="card-sub">{sub}</div></div>'])
     best_test = next(r for r in summary_r1 if r['id'] == best['id'])
     judge_cost = sum(m['judgeCost'] for m in data['models'])
     js_data = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
@@ -982,25 +1160,24 @@ def build_html(data):
   <div class="section">
     <div class="section-title">Resumen</div>
     <div class="cards">
-      <div class="card"><div class="card-label">Mejor en casos reales</div>
-        <div class="card-value">{pct(best['groups']['realcases']['r1'])}</div>
-        <div class="card-sub">{best['name']}, R@1 en <code>live</code>+<code>urg</code> (210 casos). {'+' if best_test['net'] > 0 else ''}{num(best_test['net'])} pp sobre Terra 5.6, p = {p_value(best_test['p'])}</div></div>
-      <div class="card"><div class="card-label">Línea base (Terra 5.6)</div>
-        <div class="card-value">{pct(base['groups']['realcases']['r1'])}</div>
-        <div class="card-sub">R@1 en casos reales; {pct(base['groups']['exam']['r1'])} en preguntas de examen</div></div>
+{stratum_card('realRare', 'Raras, casos reales')}
+{stratum_card('realCommon', 'No raras, casos reales')}
       <div class="card"><div class="card-label">Raras HPO v2, Terra 5.6</div>
         <div class="card-value">{pct(hpo_total['v5v2']['r1'])}</div>
-        <div class="card-sub">R@1 aceptando también el nombre sin gen; {pct(hpo_total['v4']['r1'])} con V4 strict sobre las mismas listas</div></div>
+        <div class="card-sub">R@1 aceptando también el nombre sin gen; {pct(hpo_total['v4']['r1'])} con V4 strict sobre las mismas listas{sol_rare}</div></div>
       <div class="card"><div class="card-label"><code>live</code> no visto</div>
         <div class="card-value">{unseen_min['unseenPublic']}–150</div>
         <div class="card-sub">casos publicados después del corte de cada modelo (el mínimo es {unseen_min['model']})</div></div>
     </div>
     <div class="callout callout-info">
-      Cifra principal: <strong>R@1 estricta en casos reales (<code>live</code>+<code>urg</code>)</strong>. <code>exam</code> apenas
-      separa a los modelos y <code>synth</code> es demasiado fácil. La nota estricta solo cuenta la misma enfermedad (nota 2 del
+      Cifra principal: <strong>R@1 estricta en casos reales (<code>live</code>+<code>urg</code>), por separado en raras y en no
+      raras</strong>: son poblaciones distintas y mezclarlas diluye las diferencias. La cifra conjunta de casos reales
+      ({pct(best['groups']['realcases']['r1'])} con {best['name']}, {pct(base['groups']['realcases']['r1'])} con Terra 5.6,
+      {p_text(best_test['p'])}) queda como secundaria. <code>exam</code> apenas separa a los modelos y <code>synth</code> es demasiado fácil. La nota estricta solo cuenta la misma enfermedad (nota 2 del
       juez); la laxa (2 o 1) es de uso interno. Todo es provisional hasta que David valide <code>narrative_v2</code>: las listas
-      no cambiarán, solo se re-puntúan. Más abajo, dos pruebas sobre los mismos casos: esfuerzo de razonamiento
-      <code>medium</code> y una capa agéntica offline sobre las listas de Terra y de Sol.
+      no cambiarán, solo se re-puntúan. Más abajo, otras pruebas: Terra repetido para medir cuánto varía una ejecución,
+      esfuerzo de razonamiento <code>medium</code>, una capa agéntica offline sobre las listas de Terra y de Sol, y Sol frente a
+      Terra en raras.
     </div>
   </div>
 
@@ -1061,7 +1238,9 @@ def build_html(data):
         <div class="viz-panel-title"><span>Diferencia con Terra 5.6, caso a caso</span></div>
         <div class="viz-toolbar">
           <div class="viz-tabs" id="mc-subset-tabs">
-            <button type="button" class="viz-tab active" data-s="realcases">Casos reales</button>
+            <button type="button" class="viz-tab active" data-s="realRare">Raras reales</button>
+            <button type="button" class="viz-tab" data-s="realCommon">No raras reales</button>
+            <button type="button" class="viz-tab" data-s="realcases">Reales, conjunto</button>
             <button type="button" class="viz-tab" data-s="total">Total</button>
           </div>
           <div class="viz-tabs" id="mc-k-tabs">
@@ -1093,6 +1272,8 @@ def build_html(data):
       <div class="viz-panel-title"><span>En qué posición acierta cada modelo</span>
         <div class="viz-tabs" id="stack-tabs">
           <button type="button" class="viz-tab active" data-g="realcases">Casos reales</button>
+          <button type="button" class="viz-tab" data-g="realRare">Raras reales</button>
+          <button type="button" class="viz-tab" data-g="realCommon">No raras reales</button>
           <button type="button" class="viz-tab" data-g="total">Total</button>
           <button type="button" class="viz-tab" data-g="live">live</button>
           <button type="button" class="viz-tab" data-g="urg">urg</button>
@@ -1219,6 +1400,7 @@ def build_html(data):
   </div>
 
 {hpo_sol_section(data)}
+{hpo_syn_section(data)}
   <div class="section">
     <div class="section-title">Serie histórica · all_256_clean</div>
     <div class="table-scroll">
@@ -1325,7 +1507,8 @@ CHART_JS = r'''
 
   // 2) Heat table by block
   var heatK = 'r1';
-  var HEAT_COLS = [['total', 'Total'], ['realcases', 'live+urg'], ['live', 'live'], ['urg', 'urg'], ['exam', 'exam'],
+  var HEAT_COLS = [['realRare', 'Raras reales'], ['realCommon', 'No raras reales'], ['realcases', 'live+urg'], ['total', 'Total'],
+                   ['live', 'live'], ['urg', 'urg'], ['exam', 'exam'],
                    ['synth', 'synth'], ['rare', 'Raras'], ['common', 'No raras'], ['liveUnseen', 'live sin ver']];
   var RAMP = ['#cde2fb', '#b7d3f6', '#9ec5f4', '#86b6ef', '#6da7ec', '#5598e7', '#3987e5', '#2a78d6', '#256abf', '#1c5cab', '#184f95'];
   function renderHeat() {
@@ -1351,7 +1534,7 @@ CHART_JS = r'''
   tabs('heat-tabs', function (b) { heatK = b.getAttribute('data-k'); renderHeat(); });
 
   // 3) Wins / losses vs Terra 5.6
-  var mcSubset = 'realcases', mcK = '1';
+  var mcSubset = 'realRare', mcK = '1';
   function renderMc() {
     var svg = document.getElementById('mc-svg');
     var block = DATA.mcnemar[mcSubset + '_r' + mcK];

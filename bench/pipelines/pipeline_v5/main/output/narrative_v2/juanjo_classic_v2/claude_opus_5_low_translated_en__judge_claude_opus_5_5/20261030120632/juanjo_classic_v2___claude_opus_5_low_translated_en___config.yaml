@@ -1,0 +1,31 @@
+DATASET_PATH: bench/datasets/narrative_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: claude-opus-5
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: true
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: claude-opus-5-5
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0.1
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Mismas listas que el run oficial con juez gemini-2.5-pro;
+  solo cambia el juez a claude-opus-5-5 (juez de otra familia).
+EXPERIMENT_NAME: narrative_v2-juanjo_classic_v2-claude_opus_5_low_translated_en-v5-judge_claude-opus-5-5
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+OUTPUT_TAG: judge_claude-opus-5-5
+REUSE_LABELED_DDX: bench/pipelines/pipeline_v5/main/output/narrative_v2/juanjo_classic_v2/claude_opus_5_low_translated_en/juanjo_classic_v2___claude_opus_5_low_translated_en___ddxs_from_labeler.json
+TIMESTAMP: '2026-10-30T12:08:45.551478'

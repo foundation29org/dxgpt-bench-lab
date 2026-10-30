@@ -57,7 +57,20 @@ Conviene mirar con más cuidado:
   (Type 2 pneumocyte hyperplasia), `L-PMC13540781` (Blindness), `U-T1241` y
   `U-T1073` (Bronchial hyperreactivity);
 - los **78 casos `live` con «pistas a revisar»**: palabras del diagnóstico que
-  aparecen en el texto, casi siempre anatomía o el fármaco causante.
+  aparecen en el texto, casi siempre anatomía o el fármaco causante;
+- los **32 casos que ninguno de los seis modelos pone entre sus 5 primeras
+  opciones**. En 29 algún modelo da una enfermedad relacionada, y casi siempre
+  el gold pide un detalle que solo da la biopsia o el laboratorio («Chondroid
+  meningioma» cuando los modelos dicen meningioma). Mira si el gold está a
+  demasiado nivel de detalle, si el texto se recortó de más o si el caso es
+  difícil de verdad: `L-PMC13316698`, `L-PMC13317807`, `L-PMC13331383`,
+  `L-PMC13332505`, `L-PMC13355527`, `L-PMC13387059`, `L-PMC13391426`,
+  `L-PMC13440813`, `L-PMC13448005`, `L-PMC13456877`, `L-PMC13461623`,
+  `L-PMC13477540`, `L-PMC13500259`, `L-PMC13510912`, `L-PMC13511275`,
+  `L-PMC13520939`, `L-PMC13543876`, `L-PMC13552804`, `L-PMC13586463`,
+  `L-PMC13588688`, `L-PMC13595072`, `L-PMC13599191`, `L-PMC13605063`,
+  `L-PMC13616667`, `L-PMC13647891`, `L-PMC13649838`, `L-PMC13653543`,
+  `L-PMC13691139`, `U-T1055`, `U-T1292`, `U-T740`, `U-T805`.
 
 Se puede hacer por partes: primero los `L-` y después los `U-`.
 

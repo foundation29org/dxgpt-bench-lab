@@ -29,4 +29,4 @@ MAIN:
 OUTPUT_TAG: judge_gemini-3.8-flash
 REFRESH_GOLD_FROM_DATASET: true
 REUSE_LABELED_DDX: bench/pipelines/pipeline_v5/main/output/lirical_hpo_v2/juanjo_classic_v2/gpt_6_1_sol_low/juanjo_classic_v2___gpt_6_1_sol_low___ddxs_from_labeler.json
-TIMESTAMP: '2026-10-29T18:05:25.852883'
+TIMESTAMP: '2026-10-29T20:57:26.418791'

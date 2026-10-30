@@ -1,0 +1,31 @@
+DATASET_PATH: bench/datasets/lirical_hpo_v2_syn.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 8
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Mismas listas que HPO v2; el gold lleva ademas los sinonimos
+  exactos de MONDO en accepted_names (prueba).
+EXPERIMENT_NAME: lirical_hpo_v2_syn-juanjo_classic_v2-gpt_5_6_terra_low-v5
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+REFRESH_GOLD_FROM_DATASET: true
+REUSE_LABELED_DDX: bench/pipelines/pipeline_v4 - fork/main/output/lirical_hpo/juanjo_classic_v2/gpt_5_6_terra_low/juanjo_classic_v2___gpt_5_6_terra_low___ddxs_from_labeler.json
+TIMESTAMP: '2026-10-30T11:26:18.867386'

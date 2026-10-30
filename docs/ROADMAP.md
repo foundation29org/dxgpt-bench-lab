@@ -1,6 +1,6 @@
 # DxGPT — roadmap operativo
 
-**Última actualización:** 28-oct-2026. El detalle anterior al 15-sep está en
+**Última actualización:** 29-oct-2026. El detalle anterior al 15-sep está en
 [ROADMAP_HISTORY.md](ROADMAP_HISTORY.md).
 
 ## Estado
@@ -38,6 +38,11 @@ Cifras de referencia con Terra low:
    77,3 % (`judge_audit/all256_gpt61terra_low_strict/`). **Esfuerzo `medium`**
    (29-oct, Terra 5.6 y gpt-6.1-sol): sin diferencia significativa con `low` en
    ningún grupo, igual que en `all_256_clean`. Se mantiene `low`.
+   **Variabilidad entre ejecuciones** (29-oct, Terra 5.6 repetido entero): la
+   cifra agregada se mueve un punto o menos, pero cambia el acierto en P1 de 1
+   de cada 10 casos, así que diferencias de 2–3 puntos sin McNemar no dicen
+   nada. La ventaja de Sol se mantiene frente a la segunda ejecución (21 / 9 en
+   casos reales, p = 0,04).
 2. ~~**Raras para V5**~~. Hecho el 28-oct en HPO v2
    ([README](../data29/data-repos/hpo-v2/README.md)): en 1.495 casos vale
    también el nombre de la enfermedad sin gen («Leber congenital amaurosis»
@@ -46,7 +51,11 @@ Cifras de referencia con Terra low:
    estricta del total: 29,9 % (V4 strict), 27,2 % (V5, gold con gen), 40,9 %
    (V5, gold con gen o sin gen). Pendiente: que David revise una muestra de
    los nombres sin gen (los propone el LLM) y decidir qué hacer con los 9
-   casos de HPO insuficientes de T3 (causa C).
+   casos de HPO insuficientes de T3 (causa C). **gpt-6.1-sol en HPO v2**
+   (29-oct, mismo prompt y juez): R@1 45,6 % frente a 40,9 % de Terra y R@5
+   62,7 % frente a 55,3 % (280 / 137, p < 0,001), sin dar listas más largas.
+   Gana en DDD, RAMEDIS, LIRICAL y MME; en MyGene2 y HMS no hay diferencia
+   significativa.
 3. ~~**Fechas de corte de los modelos evaluados**~~. Hecho el 28-oct
    (`data29/data-repos/narrative-v2/model_cutoffs.yaml`, con la fuente de cada
    una). Ningún modelo pasa de junio de 2026, así que por `entrez_date` todo
@@ -69,21 +78,33 @@ lista).
 5. **Validar la escala 2/1/0** (tarea 2) sobre casos de `narrative_v2`,
    incluida la frontera entre 1 y 0, y decidir si la nota laxa se publica.
    **Raras HPO v2** (tarea 3): aplicar sus correcciones a los nombres sin gen
-   y a la causa C, y re-puntuar.
+   y a la causa C, y re-puntuar. Propuesta para la misma versión: pasar al
+   juez los sinónimos del gold (MONDO u Orphanet, desde sus códigos OMIM y
+   ORPHA), porque el juez solo ve nombres y falla con sinónimos poco usados.
 6. **Elegir el juez** con esa validación. Si el orden de los modelos no cambia
    con un juez más barato, usar el más barato; si cambia, mantener Gemini 2.5 Pro.
    Primera mitad hecha el 29-oct sobre las listas de los seis modelos: con
    Gemini 3.8 Flash y con Gemini 2.5 Flash el orden en R@1 no cambia, y 3.8
    Flash coincide con Pro en «¿es un 2?» casi tanto como Pro consigo mismo
    (98,0 % frente a 98,5 % de las opciones), por unas 30 veces menos coste.
+   En raras (29-oct, listas de Terra y de Sol, 3.006 casos cada una) pasa lo
+   mismo: 97,8–98,0 % de opciones con el mismo «2 o no» y Sol sigue ganando a
+   Terra con Flash (46,6 % frente a 40,5 %, p < 0,001). Donde más se separan,
+   en MyGene2, el que se equivoca es Pro: no reconoce que «Arthrogryposis with
+   oculomotor limitation and electroretinal anomalies» es la «distal
+   arthrogryposis type 5» y en cambio da por buena la «type 5D», que es otra.
    Falta la segunda mitad: cuál se parece más a las notas de David (tarea 2).
    Detalle en el [README de V5](../bench/pipelines/pipeline_v5/main/README.md).
 
 ### Después
 
-7. **Publicar por bloque**, con `live + urg` como cifra principal (uso real,
-   sin contaminación). `exam` queda como control comparable con la
-   literatura; `synth` aporta poco porque es demasiado fácil.
+7. **Publicar por bloque.** Decidido el 30-oct: la cifra principal es R@1 en
+   casos reales (`live` + `urg`) **por separado en raras y en no raras**, y la
+   conjunta queda como secundaria. Son poblaciones distintas y mezclarlas
+   diluye las diferencias: la ventaja de Sol sobre Terra está toda en raras
+   (64,7 % frente a 53,4 %, p = 0,01) y en no raras empatan (50,0 %). Ya está
+   así en `benchmark-report-v5.html`. `exam` queda como control comparable
+   con la literatura; `synth` aporta poco porque es demasiado fácil.
 8. ~~**PoC offline de la capa agéntica**~~. Primera ronda hecha el 29-oct sobre
    `narrative_v2` v0.1 ([bench/agentic_poc](../bench/agentic_poc/README.md)).
    Sobre la lista de Terra 5.6, en casos reales, R@1 pasa de 51,9 % a:
@@ -96,9 +117,11 @@ lista).
    **Con Sol como base, la capa no aporta:** autocrítica +0,5 puntos, fuentes
    −1,0, panel +2,4 (no significativo, solo en no raras); en raras ningún
    brazo mejora a Sol solo (64,7 %). Lo que la capa añadía a Terra era subirla
-   al nivel de Sol: la palanca grande es el modelo. Pendiente: repetir para
-   medir la estabilidad y confirmarlo con `narrative_v2` v0.2. **La decisión
-   entre Sol solo y el panel Terra + Sol espera a esa confirmación.**
+   al nivel de Sol: la palanca grande es el modelo. Lo apoyan dos pruebas del
+   29-oct: Terra repetido mantiene su cifra y Sol le sigue ganando (paso 1), y
+   Sol también gana a Terra en las 3.006 raras de HPO v2 (paso 2). Pendiente:
+   confirmarlo con `narrative_v2` v0.2. **La decisión entre Sol solo y el
+   panel Terra + Sol espera a esa confirmación.**
 9. **Renovar el bloque `live` cada trimestre** con `harvest_pmc.py` y fechas
    nuevas: los modelos acabarán entrenando con estos casos.
 10. **Track de «mimics»**, enfermedades raras que se presentan como algo

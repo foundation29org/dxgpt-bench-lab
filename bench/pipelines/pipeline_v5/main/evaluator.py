@@ -52,6 +52,7 @@ JUDGE_PRICES_PER_MILLION = {
     'gemini-2.5-pro': (1.25, 10.0),
     'gemini-2.5-flash': (0.30, 2.50),
     'gemini-3.8-flash': (0.75, 3.75),  # Google price until 31-dec-2026; doubles from 1-jan-2027
+    'claude-opus-5-5': (4.0, 20.0),  # output includes thinking tokens
 }
 
 
@@ -85,8 +86,9 @@ class GradedEvaluator:
 
         judge_model_lower = self.judge_model_name.lower()
         self.is_judge_gemini = 'gemini' in judge_model_lower
+        # Claude 5 models take effort (not temperature); the wrapper drops what they do not accept
         self.is_judge_reasoning = any(
-            token in judge_model_lower for token in ('o3', 'gpt-5', 'gpt5', 'grok')
+            token in judge_model_lower for token in ('o3', 'gpt-5', 'gpt5', 'grok', 'claude')
         )
 
         self.llm = get_llm(self.judge_model_name, logger=logger)

@@ -1,0 +1,29 @@
+DATASET_PATH: bench/datasets/mme_hpo_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: claude-opus-5
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 6
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-2.5-pro
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: claude-opus-5 low sobre mme_hpo v2 con el evaluador V5, para
+  comparar con Sol y Terra en raras.
+EXPERIMENT_NAME: mme_hpo_v2-juanjo_classic_v2-claude_opus_5_low-v5
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: true
+TIMESTAMP: '2026-10-30T12:04:32.319450'
