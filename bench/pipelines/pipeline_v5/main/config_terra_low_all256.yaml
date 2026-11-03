@@ -27,7 +27,7 @@ DXGPT_EMULATOR:
 
 EVALUATOR:
   # Same judge as the canonical strict runs; only the rubric changes.
-  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_MODEL: "gemini-3.8-flash"
   JUDGE_PARAMS:
     thinking_level: "low"
     max_tokens: 10000

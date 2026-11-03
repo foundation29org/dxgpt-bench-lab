@@ -51,6 +51,8 @@ from utils.icd10.taxonomy import ICD10Taxonomy
 LOG_FILE_NAME = 'evaluation'
 JUDGE_PROMPT_VERSION = 'graded_v3'  # default; EVALUATOR.JUDGE_PROMPT_VERSION picks another
 JUDGE_PROMPT_VERSIONS = ('graded_v2', 'graded_v3')
+# Reference judge since 3-nov-2026: Google retires gemini-2.5-pro on 1-dec-2026 and redirects it to 3.8 Flash
+DEFAULT_JUDGE_MODEL = 'gemini-3.8-flash'
 GRADE_SAME = 2
 GRADE_RELATED = 1
 GRADE_DIFFERENT = 0
@@ -83,7 +85,7 @@ class GradedEvaluator:
         self.evaluator_config = config.get('EVALUATOR', {})
         self.logger = logger
 
-        self.judge_model_name = self.evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro')
+        self.judge_model_name = self.evaluator_config.get('JUDGE_MODEL', DEFAULT_JUDGE_MODEL)
         judge_params = self.evaluator_config.get('JUDGE_PARAMS', {})
         self.judge_reasoning_effort = judge_params.get('reasoning_effort', 'low')
         self.judge_thinking_level = judge_params.get('thinking_level', 'low')
@@ -638,7 +640,7 @@ def generate_summary_json(results: List[EvaluationResult], output_path: str, con
             "pipeline": "v5",
             "experiment_name": config.get('EXPERIMENT_NAME', 'unknown'),
             "experiment_description": config.get('EXPERIMENT_DESCRIPTION', 'unknown'),
-            "judge_model": evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro'),
+            "judge_model": evaluator_config.get('JUDGE_MODEL', DEFAULT_JUDGE_MODEL),
             "judge_params": evaluator_config.get('JUDGE_PARAMS', {}),
             "judge_prompt_version": evaluator_config.get('JUDGE_PROMPT_VERSION', JUDGE_PROMPT_VERSION),
             "judge_grade_cache": evaluator_config.get('JUDGE_GRADE_CACHE'),
@@ -672,7 +674,7 @@ def evaluate_dataset(input_path: str, output_dir: str, config: Dict[str, Any]) -
 
     logger.info("--- Starting Evaluation Pipeline V5 ---")
     logger.info("  Automatic layers: SNOMED_EXACT")
-    logger.info(f"  Judge: {evaluator_config.get('JUDGE_MODEL', 'gemini-2.5-pro')} "
+    logger.info(f"  Judge: {evaluator_config.get('JUDGE_MODEL', DEFAULT_JUDGE_MODEL)} "
                 f"({evaluator_config.get('JUDGE_PROMPT_VERSION', JUDGE_PROMPT_VERSION)}) on every case")
     logger.info(f"  Output directory: {output_dir}")
 

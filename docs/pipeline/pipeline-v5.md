@@ -49,7 +49,7 @@ dataset (casos + gold)
    │            (SNOMED, ICD-10, OMIM, ORPHA)
    ▼
 3. Evaluador ─ compara cada opción con cada gold: código SNOMED idéntico
-                o nota del juez (Gemini 2.5 Pro) → posición del acierto
+                o nota del juez (Gemini 3.8 Flash) → posición del acierto
 ```
 
 El emulador y el labeler son los de V4. Lo que cambia en V5 es el evaluador.
@@ -83,7 +83,7 @@ Para cada caso y para cada gold del caso:
    recibe un 2 sin preguntar al juez. Es la única capa automática (regla C1).
    La relación ICD-10 (mismo código, hijo, padre, hermano) se calcula y se
    guarda como dato, pero no puntúa.
-2. **Juez.** Gemini 2.5 Pro recibe el gold tal como está en el dataset (más sus
+2. **Juez.** Gemini 3.8 Flash (hasta el 3-nov-2026, Gemini 2.5 Pro, que Google retira el 1-dic) recibe el gold tal como está en el dataset (más sus
    `accepted_names`, como «also known as») y la lista entera, y devuelve una
    nota por opción en JSON. Si la respuesta no es válida o la llamada falla,
    reintenta hasta `JUDGE_MAX_ATTEMPTS` veces.
@@ -218,7 +218,9 @@ Ejemplos: `config_terra_low_all256.yaml` (mismas listas que V4) y
 | `DXGPT_EMULATOR.PARAMS` | `reasoning_effort` o `thinking_level`, `max_tokens`, `temperature` |
 | `DXGPT_EMULATOR.TRANSLATE_CASE.ENABLED` | Traduce el caso al inglés antes de enviarlo |
 | `DXGPT_EMULATOR.PARALLEL_WORKERS` | Casos en paralelo al generar |
-| `EVALUATOR.JUDGE_MODEL`, `JUDGE_PARAMS` | Juez y sus parámetros (hoy Gemini 2.5 Pro, `thinking_level: low`, temperatura 0,1) |
+| `EVALUATOR.JUDGE_MODEL`, `JUDGE_PARAMS` | Juez y sus parámetros (por defecto Gemini 3.8 Flash, `thinking_level: low`, temperatura 0,1). Desde el 1-dic-2026 `utils/llm` se niega a usar `gemini-2.5-pro`, porque Google lo contesta con Flash |
+| `EVALUATOR.JUDGE_PROMPT_VERSION` | Rúbrica del juez: `graded_v3` por defecto (punto 6 de Julián), `graded_v2` para reproducir los runs anteriores |
+| `EVALUATOR.JUDGE_GRADE_CACHE` | Fichero de notas compartidas: cada opción repetida (mismo gold y texto) se puntúa una vez y la nota se reutiliza en todos los modelos. Los runs que lo comparten van uno detrás de otro |
 | `EVALUATOR.JUDGE_MAX_ATTEMPTS`, `JUDGE_RETRY_DELAY_SECONDS` | Reintentos del juez |
 | `EVALUATOR.PARALLEL_WORKERS` | Casos en paralelo al juzgar |
 | `EVALUATOR.CASE_LIMIT` | Solo los primeros N casos (prueba rápida) |

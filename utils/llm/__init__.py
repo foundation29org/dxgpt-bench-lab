@@ -14,6 +14,8 @@ Uso típico:
     response = llm.generate("Hola, ¿cómo estás?")
 """
 
+import datetime
+
 # Import base class
 from .base import BaseLLM
 
@@ -80,10 +82,21 @@ except ImportError:
     ClaudeLLM = None
     ClaudeLLMConfig = None
 
+# Gemini models Google retires by redirecting them: from that date a request for the
+# old name is answered by another model, and results would carry the wrong name.
+RETIRED_GEMINI = {'gemini-2.5-pro': (datetime.date(2026, 12, 1), 'gemini-3.8-flash')}
+
+
 def get_llm(model_name: str, **kwargs) -> BaseLLM:
     """Try each LLM provider until one works."""
     model_lower = model_name.lower()
-    
+    retired = RETIRED_GEMINI.get(model_lower)
+    if retired and datetime.date.today() >= retired[0]:
+        raise RuntimeError(
+            f"{model_name} was retired on {retired[0]:%d-%b-%Y} and Google now answers it with {retired[1]}. "
+            f"Ask for {retired[1]} by name so the results say which model produced them."
+        )
+
     # Check if model is Grok (xAI)
     is_grok = 'grok' in model_lower
     if is_grok:

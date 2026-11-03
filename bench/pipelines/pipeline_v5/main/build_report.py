@@ -108,6 +108,8 @@ SERMAS_PROMPT = 'sermas_rare'
 # Same narrative_v2 lists graded with graded_v3 (Julián's point 6) and one grade per repeated option
 GRADED_V3_TAG = '__graded_v3'
 GRADED_V3_EXAMPLE = ('L-PMC13354413', 'terra56')
+# Same lists graded with graded_v3 by Gemini 3.8 Flash: the bridge before Google retires 2.5 Pro on 1-dec-2026
+FLASH_V3_TAG = '__judge_gemini_3_8_flash_graded_v3'
 # Claude Opus 5 on the four smaller HPO v2 datasets, same prompt and judge (Gemini 2.5 Pro) as Sol and Terra
 OPUS_HPO_FOLDER = 'claude_opus_5_low'
 OPUS_HPO = ['lirical_hpo', 'mygene2_hpo', 'hms_hpo', 'mme_hpo']
@@ -501,6 +503,36 @@ def graded_v3(dataset, tag=GRADED_V3_TAG):
     return result
 
 
+def judge_bridge(dataset):
+    """Gemini 2.5 Pro against Gemini 3.8 Flash on the same narrative_v2 lists, both with graded_v3."""
+    groups = {key: [i for i, c in dataset.items() if belongs(c)] for key, _, belongs in REAL_SPLIT}
+    models, parts, positions = [], [], {}
+    for mid, folder, _, name, color in MODELS:
+        pro, flash = (finished_run(os.path.join(NARRATIVE_DIR, folder + tag)) for tag in (GRADED_V3_TAG, FLASH_V3_TAG))
+        if not (pro and flash):
+            continue
+        details = {j: load_details(os.path.join(r, 'evaluation_details.txt')) for j, r in (('pro', pro), ('flash', flash))}
+        common = [i for i in details['pro'] if i in details['flash']]
+        parts.append(compare_judges.agreement(details['pro'], details['flash'], common))
+        pos = {j: {i: position(details[j][i]['eval_details']['final_resolution']) for i in common} for j in details}
+        positions[mid] = pos
+        with open(os.path.join(flash, 'summary.json'), 'r', encoding='utf-8') as f:
+            cost = json.load(f)['judge']['estimated_cost_usd'] or 0
+        models.append({'id': mid, 'name': name, 'color': color, 'cost': cost,
+                       'groups': {key: {'n': len(ids), 'pro': metrics([pos['pro'][i] for i in ids]),
+                                        'flash': metrics([pos['flash'][i] for i in ids]),
+                                        'r1': paired(pos['flash'], pos['pro'], ids, 1)} for key, ids in groups.items()}})
+    if not models:
+        return None
+    order = {j: [m['name'] for m in sorted(models, key=lambda m: -m['groups']['realcases'][j]['r1'])] for j in ('pro', 'flash')}
+    result = {'models': models, 'agreement': compare_judges.summarize(parts), 'order': order,
+              'tau': compare_judges.kendall_tau(order['pro'], order['flash']), 'cost': sum(m['cost'] for m in models)}
+    if {'sol61', 'terra56'} <= set(positions):
+        result['solTerra'] = {j: {key: paired(positions['sol61'][j], positions['terra56'][j], groups[key], 1) for key in ('realcases', 'realRare')}
+                              for j in ('pro', 'flash')}
+    return result
+
+
 def hpo_sermas():
     """Sol and Terra with the sermas prompt against juanjo_classic_v2 on the same HPO v2 cases, Flash judge on both."""
     prompts = ('juanjo_classic_v2', SERMAS_PROMPT)
@@ -605,6 +637,8 @@ def collect():
             'options': statistics.median(len(c.get('ddx_details', {})) for c in labeled),
             'judgeCalls': summary['judge']['calls'], 'judgeCost': summary['judge']['estimated_cost_usd'],
             'judgeErrors': len(summary['global']['cases_with_judge_errors']),
+            'judge': summary['configuration'].get('judge_model'),
+            'judgePrompt': summary['configuration'].get('judge_prompt_version', 'graded_v2'),
             'cutoff': str(cutoffs.get(model, {}).get('cutoff', '')), 'groups': groups,
         })
 
@@ -779,6 +813,7 @@ def collect():
         judges['colors'] = {name: color for (_, name), (*_, color) in zip(compare_judges.MODELS, MODELS)}
     data['judges'] = judges
     data['gradedV3'] = graded_v3(dataset)
+    data['judgeBridge'] = judge_bridge(dataset)
 
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
@@ -1264,6 +1299,35 @@ def graded_table(s, version):
     </div>'''
 
 
+def judge_bridge_block(data):
+    s = data.get('judgeBridge')
+    if not s:
+        return ''
+    a = s['agreement']
+    same_order = s['order']['pro'] == s['order']['flash']
+    order = ('ordena los modelos igual que Pro en casos reales' if same_order else
+             f'ordena los modelos en casos reales así: {", ".join(s["order"]["flash"])} (tau {num(s["tau"], 2)} con Pro)')
+    st = s.get('solTerra')
+    sol_terra = (f' Sol frente a Terra 5.6 con Flash: {st["flash"]["realcases"]["wins"]} / {st["flash"]["realcases"]["losses"]} en casos reales '
+                 f'({p_text(st["flash"]["realcases"]["p"])}) y {st["flash"]["realRare"]["wins"]} / {st["flash"]["realRare"]["losses"]} en raras reales '
+                 f'({p_text(st["flash"]["realRare"]["p"])}).') if st else ''
+    return f'''
+    <h3>Puente a Gemini 3.8 Flash, el juez de referencia desde el 3-nov</h3>
+    <div class="callout callout-info">
+      Google retira Gemini 2.5 Pro el 1-dic-2026: desde ese día las peticiones a <code>gemini-2.5-pro</code> se contestan con
+      Gemini 3.8 Flash. Flash pasa a ser el juez de referencia, y antes de esa fecha se puntúan con él las mismas listas de los
+      {len(s["models"])} modelos y con la misma rúbrica (<code>graded_v3</code>), para enlazar las dos series. Con las mismas listas, Flash
+      {order}; coincide con Pro en el acierto en P1 en el {pct(a["sameP1"])} de los casos y en «¿es un 2?» en el {pct(a["same2"])} de las
+      {thousands(a["options"])} opciones (kappa {num(a["kappa2"], 2)}).{sol_terra} Coste del juez Flash: ≈ {num(s["cost"], 2)} $ para los
+      {len(s["models"])} modelos. El evaluador se para si alguien pide <code>gemini-2.5-pro</code> desde el 1-dic, para que ningún resultado
+      lleve el nombre de un modelo que no lo ha puntuado.
+    </div>
+{chart_panel('bridge', 'R@1 con Gemini 2.5 Pro y con Gemini 3.8 Flash, los dos con <code>graded_v3</code>',
+             'Punto hueco: Gemini 2.5 Pro; punto lleno: Gemini 3.8 Flash. Mismas listas y misma rúbrica.',
+             [legend_dot('#475569', 'Gemini 2.5 Pro', True), legend_dot('#475569', 'Gemini 3.8 Flash')],
+             [('tabs', [('realcases', 'Casos reales'), ('realRare', 'Raras reales'), ('total', 'Total')])])}'''
+
+
 def graded_v3_section(data):
     s = data.get('gradedV3')
     if not s:
@@ -1309,6 +1373,7 @@ def graded_v3_section(data):
              [legend_dot('#475569', 'graded_v2', True), legend_dot('#475569', 'graded_v3 (adoptado)')],
              [('tabs', [('realcases', 'Casos reales'), ('realRare', 'Raras reales'), ('total', 'Total')])])}
 {graded_table(s, 'v3')}
+{judge_bridge_block(data)}
     <p class="note">Gana / pierde: casos que acierta en P1 con v3 y no con v2, y al revés. Notas que cambian entre v2 y v3:
       de 1 a 2, {thousands(moves.get("12", 0))}; de 2 a 1, {thousands(moves.get("21", 0))}; de 0 a 1, {thousands(moves.get("01", 0))};
       de 1 a 0, {thousands(moves.get("10", 0))}. Parte es el ruido del juez y no la regla nueva. Juez v3: {s["cost"]["calls"]} llamadas,
@@ -1659,6 +1724,19 @@ def all256_table():
 
 
 def build_html(data):
+    # Judge and prompt behind the main narrative figures: the report reads each model's latest run,
+    # so re-running one model with another judge would mix them
+    setups = sorted({(m['judge'], m['judgePrompt']) for m in data['models']})
+    judge_names = {'gemini-2.5-pro': 'Gemini 2.5 Pro', 'gemini-3.8-flash': 'Gemini 3.8 Flash', 'claude-opus-5-5': 'Claude Opus 5.5'}
+    judge_name = ' y '.join(dict.fromkeys(judge_names.get(j, j) for j, _ in setups))
+    judge_prompt = ' + '.join(dict.fromkeys(v for _, v in setups))
+    mixed_note = ''
+    if len(setups) > 1:
+        mixed_note = ('  <p><strong>Aviso: las cifras principales mezclan jueces.</strong> ' +
+                      ', '.join(f"{m['name']}: {judge_names.get(m['judge'], m['judge'])} con {m['judgePrompt']}" for m in data['models']) +
+                      '. Hay que volver a puntuar todos los modelos con el mismo juez.</p>')
+        print('WARNING: the main narrative runs mix judges or judge prompts:',
+              ', '.join(f"{m['id']} {m['judge']} {m['judgePrompt']}" for m in data['models']))
     models = {m['id']: m for m in data['models']}
     best = data['models'][0]
     base = models[BASELINE]
@@ -1720,10 +1798,11 @@ def build_html(data):
 </head>
 <body>
 <div class="hero">
-  <div class="hero-badge">Borrador · Pipeline V5 <code>graded_v2</code> · {stamp}</div>
+  <div class="hero-badge">Borrador · Pipeline V5 <code>{judge_prompt}</code> · {stamp}</div>
   <h1>Pipeline V5: narrativo y raras</h1>
   <p><code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5
-     y juez Gemini 2.5 Pro. La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
+     y juez {judge_name}. La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
+{mixed_note}
   <p class="hero-nav">
     <a href="benchmark-report-v5.html">V5 (este)</a> ·
     <a href="benchmark-report-strict-texto.html">Texto V4 strict</a> ·
@@ -2496,6 +2575,25 @@ CHART_JS = r'''
   }
   if (document.getElementById('gradedv3-tabs')) tabs('gradedv3-tabs', function (b) { gv3G = b.getAttribute('data-k'); renderGradedV3(); });
 
+  // Gemini 2.5 Pro vs Gemini 3.8 Flash, both with graded_v3
+  var bridgeG = 'realcases';
+  function renderBridge() {
+    var s = DATA.judgeBridge;
+    if (!s) return;
+    var rows = s.models.slice().sort(function (a, b) { return b.groups[bridgeG].flash.r1 - a.groups[bridgeG].flash.r1; }).map(function (m) {
+      var g = m.groups[bridgeG];
+      return { label: m.name.replace(' low', ''), line: m.color, src: g, model: m.name,
+               points: [{ value: g.pro.r1, color: m.color, hollow: true }, { value: g.flash.r1, color: m.color }] };
+    });
+    renderDots('bridge-svg', rows, function (row) {
+      var g = row.src;
+      return '<strong>' + esc(row.model) + '</strong> (' + g.n + ' casos)<br>R@1 con Gemini 2.5 Pro: <b>' + pc(g.pro.r1) +
+        '</b><br>R@1 con Gemini 3.8 Flash: <b>' + pc(g.flash.r1) + '</b><br>Flash gana / pierde: ' + pTxt(g.r1);
+    });
+  }
+  if (document.getElementById('bridge-tabs')) tabs('bridge-tabs', function (b) { bridgeG = b.getAttribute('data-k'); renderBridge(); });
+
+  renderBridge();
   renderHpoSol();
   renderHpoOpus();
   renderSermas();

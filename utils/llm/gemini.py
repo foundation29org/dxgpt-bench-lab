@@ -351,6 +351,8 @@ class GeminiLLM(BaseLLM):
                 "output_tokens": getattr(usage, "candidates_token_count", 0) or 0,
                 "reasoning_tokens": getattr(usage, "thoughts_token_count", 0) or 0,
                 "total_tokens": getattr(usage, "total_token_count", 0) or 0,
+                # The model Google actually answered with; differs from the one asked for after a redirect
+                "served_model": getattr(response, "model_version", None),
             }
             self._thread_local.last_usage = usage_record
 

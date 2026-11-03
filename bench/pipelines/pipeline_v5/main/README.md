@@ -698,7 +698,8 @@ Pendiente de David (`docs/tareas-david/`):
 
 - **Tarea 1:** validar el gold de `narrative_v2`. Con su resultado sale la
   v0.2 y se re-puntúan los runs con `REFRESH_GOLD_FROM_DATASET`.
-- **Tarea 2:** validar la escala 2/1/0 y elegir juez (Gemini 2.5 Pro frente a
-  Gemini 3.8 Flash).
+- **Tarea 2:** validar la escala 2/1/0 con `graded_v3` y elegir juez entre
+  Gemini 3.8 Flash (el de referencia desde el 3-nov, porque Google retira 2.5 Pro
+  el 1-dic) y Claude Opus 5.5.
 - **Tarea 3:** revisar los nombres sin gen de raras y los 9 casos con HPO
   insuficientes.

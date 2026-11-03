@@ -4,8 +4,8 @@
 
 ## Para qué sirve
 
-El evaluador actual (Pipeline V5) le pide a un LLM juez, Gemini 2.5 Pro, que
-compare cada diagnóstico de la lista del modelo con el diagnóstico de
+El evaluador actual (Pipeline V5) le pide a un LLM juez, Gemini 3.8 Flash
+(antes, Gemini 2.5 Pro), que compare cada diagnóstico de la lista del modelo con el diagnóstico de
 referencia y ponga una nota:
 
 | Nota | Significado |
@@ -28,14 +28,15 @@ Con tus notas se decide:
 
 1. si el juez acierta lo bastante como para fiarse de la nota estricta;
 2. si la nota laxa se puede publicar o se queda como uso interno;
-3. qué juez usar (paso 6 del [ROADMAP](../ROADMAP.md)): si uno más barato da
-   notas tan parecidas a las tuyas como Gemini 2.5 Pro, se usa el barato. Hay
-   tres candidatos, que con las mismas listas ordenan igual a los modelos y
-   coinciden con Pro en «¿es un 2?» en el 98 % de las opciones:
-   - Gemini 3.8 Flash, unas 30 veces más barato que Pro;
+3. qué juez usar (paso 6 del [ROADMAP](../ROADMAP.md)). Google retira
+   Gemini 2.5 Pro el 1-dic-2026 (las peticiones pasan a contestarse con
+   3.8 Flash), así que quedan dos candidatos, que con las mismas listas
+   ordenan igual a los modelos y coincidían con Pro en «¿es un 2?» en el 98 %
+   de las opciones:
+   - Gemini 3.8 Flash, el juez de referencia desde ahora, unas 30 veces más
+     barato que Pro;
    - Claude Opus 5.5, de otra familia (Anthropic), para no depender solo de
-     Gemini;
-   - Gemini 2.5 Flash, como referencia.
+     Gemini.
 
    Discrepan en unas 200 opciones en las que ninguno es claramente mejor. En
    raras, donde las discrepancias venían de sinónimos poco usados, el
@@ -63,8 +64,9 @@ muestra llevará sobre todo los casos difíciles:
   «insuficiencia aórtica crónica por dilatación de la raíz» para «aneurisma
   aórtico». Si uno de esos 2 dudosos queda el primero de la lista, infla la
   nota;
-- y, dentro de esas, sobre todo las parejas en que Gemini 2.5 Pro, Gemini 3.8
-  Flash y Claude Opus 5.5 ponen notas distintas, para ver cuál acierta.
+- y, dentro de esas, sobre todo las parejas en que Gemini 3.8 Flash, Claude
+  Opus 5.5 y el juez anterior (Gemini 2.5 Pro) ponen notas distintas, para
+  ver cuál acierta.
 
 Cada pareja irá con el caso (texto o resumen) por si hace falta contexto, pero
 la pregunta es solo si las dos son la misma enfermedad.

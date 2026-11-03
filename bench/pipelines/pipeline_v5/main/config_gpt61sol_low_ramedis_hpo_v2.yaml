@@ -24,7 +24,7 @@ DXGPT_EMULATOR:
   PARALLEL_WORKERS: 8
 
 EVALUATOR:
-  JUDGE_MODEL: "gemini-2.5-pro"
+  JUDGE_MODEL: "gemini-3.8-flash"
   JUDGE_PARAMS:
     thinking_level: "low"
     max_tokens: 10000
