@@ -1304,9 +1304,17 @@ def judge_bridge_block(data):
     if not s:
         return ''
     a = s['agreement']
-    same_order = s['order']['pro'] == s['order']['flash']
-    order = ('ordena los modelos igual que Pro en casos reales' if same_order else
-             f'ordena los modelos en casos reales así: {", ".join(s["order"]["flash"])} (tau {num(s["tau"], 2)} con Pro)')
+    pro_order, flash_order = s['order']['pro'], s['order']['flash']
+    moved = [i for i, (a, b) in enumerate(zip(pro_order, flash_order)) if a != b]
+    if not moved:
+        order = 'ordena los modelos igual que Pro en casos reales'
+    elif len(moved) == 2 and moved[1] == moved[0] + 1:
+        r1 = {m['name']: m['groups']['realcases']['pro']['r1'] for m in s['models']}
+        gap = abs(r1[pro_order[moved[0]]] - r1[pro_order[moved[1]]])
+        order = (f'ordena los modelos igual que Pro en casos reales salvo {pro_order[moved[0]]} y {pro_order[moved[1]]}, que se cruzan '
+                 f'(con Pro estaban a {num(gap)} puntos)')
+    else:
+        order = f'ordena los modelos en casos reales así: {", ".join(flash_order)} (tau {num(s["tau"], 2)} con Pro)'
     st = s.get('solTerra')
     sol_terra = (f' Sol frente a Terra 5.6 con Flash: {st["flash"]["realcases"]["wins"]} / {st["flash"]["realcases"]["losses"]} en casos reales '
                  f'({p_text(st["flash"]["realcases"]["p"])}) y {st["flash"]["realRare"]["wins"]} / {st["flash"]["realRare"]["losses"]} en raras reales '
@@ -1319,8 +1327,8 @@ def judge_bridge_block(data):
       {len(s["models"])} modelos y con la misma rúbrica (<code>graded_v3</code>), para enlazar las dos series. Con las mismas listas, Flash
       {order}; coincide con Pro en el acierto en P1 en el {pct(a["sameP1"])} de los casos y en «¿es un 2?» en el {pct(a["same2"])} de las
       {thousands(a["options"])} opciones (kappa {num(a["kappa2"], 2)}).{sol_terra} Coste del juez Flash: ≈ {num(s["cost"], 2)} $ para los
-      {len(s["models"])} modelos. El evaluador se para si alguien pide <code>gemini-2.5-pro</code> desde el 1-dic, para que ningún resultado
-      lleve el nombre de un modelo que no lo ha puntuado.
+      {len(s["models"])} modelos. Desde el 1-dic, <code>utils/llm</code> se niega a usar <code>gemini-2.5-pro</code> (evaluadores y scripts de datos), para que
+      ningún resultado lleve el nombre de un modelo que no lo ha producido, y cada llamada guarda qué modelo contestó.
     </div>
 {chart_panel('bridge', 'R@1 con Gemini 2.5 Pro y con Gemini 3.8 Flash, los dos con <code>graded_v3</code>',
              'Punto hueco: Gemini 2.5 Pro; punto lleno: Gemini 3.8 Flash. Mismas listas y misma rúbrica.',

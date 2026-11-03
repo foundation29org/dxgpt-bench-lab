@@ -488,6 +488,45 @@ Medición del 30-oct: mismas listas de los seis modelos, juez Pro
   dos veces) sobre las 178 opciones que cruzaban la línea del 2 (3,57 $).
   Se descartó con la decisión y no está en el código.
 
+### Juez de referencia: Gemini 3.8 Flash (3-nov-2026)
+
+Google retira Gemini 2.5 Pro el 1-dic-2026: desde ese día las peticiones a
+`gemini-2.5-pro` se contestan con Gemini 3.8 Flash. Cambios:
+
+- **Flash es el juez por defecto** en `evaluator.py` (`DEFAULT_JUDGE_MODEL`) y
+  en las 29 configs de V5. Las cifras publicadas siguen siendo las de Pro con
+  `graded_v2` hasta el re-scoring con `narrative_v2` v0.2; la cabecera del
+  informe dice qué juez y qué rúbrica hay detrás, y avisa si los runs
+  principales los mezclan.
+- **`utils/llm` se niega a usar `gemini-2.5-pro` desde el 1-dic**
+  (`RETIRED_GEMINI`), en los evaluadores V4 y V5 y en los scripts de datos, y
+  cada llamada a Gemini guarda en `served_model` el modelo que contestó.
+- **Puente antes de la retirada:** las mismas listas de los seis modelos,
+  puntuadas con `graded_v3` por Flash
+  (`<modelo>__judge_gemini_3_8_flash_graded_v3`, notas compartidas en
+  `judge_grades__gemini-3.8-flash__graded_v3.json`, 0,86 $; las 1.839
+  llamadas las contestó `gemini-3.8-flash`):
+
+| R@1, `graded_v3` | Reales, Pro | Reales, Flash | Raras reales, Pro | Raras reales, Flash | Total, Pro | Total, Flash |
+|---|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | 62,9 % | 62,9 % | 66,4 % | 65,5 % | 70,3 % | 70,3 % |
+| Claude Opus 5 | 56,7 % | 55,7 % | 55,2 % | 53,4 % | 66,7 % | 65,7 % |
+| Terra 5.6 | 53,3 % | 55,2 % | 55,2 % | 55,2 % | 62,3 % | 64,0 % |
+| gpt-6.1-terra | 53,8 % | 53,8 % | 58,6 % | 56,9 % | 61,7 % | 62,3 % |
+| Gemini 3.1 Pro | 46,7 % | 45,7 % | 48,3 % | 47,4 % | 57,7 % | 57,3 % |
+| gpt-5.4-mini | 44,3 % | 44,8 % | 44,0 % | 42,2 % | 56,7 % | 57,0 % |
+
+- Mismo acierto en P1 en el 97,3 % de los 1.800 casos y mismo «¿es un 2?» en
+  el 97,6 % de las 10.211 opciones (kappa 0,92). Ningún modelo se mueve más
+  de 2 puntos.
+- El orden en casos reales es el mismo salvo las dos Terra, que se cruzan
+  (con Pro estaban a 0,5 puntos).
+- Sol sigue ganando a Terra 5.6 con Flash: 23 / 7 en casos reales
+  (p = 0,005) y 15 / 3 en raras reales (p = 0,008).
+- El juez Flash cuesta unas 28 veces menos que Pro con la misma rúbrica
+  (0,86 $ frente a 23,93 $ los seis modelos); su precio se duplica el
+  1-ene-2027.
+
 ## Sol frente a Terra en raras (HPO v2, 29-oct-2026)
 
 Run completo de gpt-6.1-sol low sobre los seis datasets de HPO v2

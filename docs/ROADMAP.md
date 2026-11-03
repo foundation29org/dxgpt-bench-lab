@@ -122,8 +122,8 @@ lista).
    con el juez siguen un patrón, no por casos sueltos. Medido también el ruido del juez: Pro
    dos veces sobre las mismas listas cambia el acierto en P1 en 8 de 300
    casos.
-6. **Elegir el juez** con esa validación. Si el orden de los modelos no cambia
-   con un juez más barato, usar el más barato; si cambia, mantener Gemini 2.5 Pro.
+6. **Elegir el juez** con esa validación, entre Gemini 3.8 Flash y Claude Opus
+   5.5 (Gemini 2.5 Pro ya no es opción: Google lo retira el 1-dic-2026).
    Primera mitad hecha el 29-oct sobre las listas de los seis modelos: con
    Gemini 3.8 Flash y con Gemini 2.5 Flash el orden en R@1 no cambia, y 3.8
    Flash coincide con Pro en «¿es un 2?» casi tanto como Pro consigo mismo
@@ -137,7 +137,15 @@ lista).
    Un juez de otra familia, Claude Opus 5.5 (30-oct), da el mismo orden y el
    mismo «2 o no» que Flash (97,8 %), sin favorecer a Claude Opus 5: la
    conclusión no depende de usar Gemini.
-   Falta la segunda mitad: cuál se parece más a las notas de David (tarea 2).
+   **Google retira Gemini 2.5 Pro el 1-dic-2026** (las peticiones pasan a
+   contestarse con 3.8 Flash), así que **Flash es el juez de referencia desde
+   el 3-nov**: por defecto en el evaluador y en las configs, y `utils/llm` se
+   niega a usar `gemini-2.5-pro` desde el 1-dic. Puente medido antes de la
+   retirada, con `graded_v3` sobre las mismas listas: Flash coincide con Pro
+   en el acierto en P1 en el 97,3 % de los casos y en «¿es un 2?» en el
+   97,6 % de las opciones, ningún modelo se mueve más de 2 puntos y solo se
+   cruzan las dos Terra; 0,86 $ frente a 23,93 $. La tarea 2 de David elige
+   entre Flash y Claude Opus 5.5.
    Detalle en el [README de V5](../bench/pipelines/pipeline_v5/main/README.md).
 
 ### Después
