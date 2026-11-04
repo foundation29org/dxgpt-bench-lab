@@ -1,6 +1,6 @@
 # DxGPT — roadmap operativo
 
-**Última actualización:** 30-oct-2026. El detalle anterior al 15-sep está en
+**Última actualización:** 3-nov-2026. El detalle anterior al 15-sep está en
 [ROADMAP_HISTORY.md](ROADMAP_HISTORY.md).
 
 ## Estado
@@ -10,7 +10,7 @@
 | Evaluador | **Pipeline V5** (`bench/pipelines/pipeline_v5/main`, prompt `graded_v2`): solo SNOMED exacto decide sin juez y el juez puntúa 2/1/0 cada opción. Decisiones en el §12 de [JULIAN_HARNESS_REVIEW.md](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md). Pipeline V4 se mantiene para la serie histórica |
 | Dataset narrativo | **`narrative_v2` v0.1**, 300 casos, de los que 150 son case reports de jul–oct 2026. Pendiente de validación clínica. Ver `data29/data-repos/narrative-v2/README.md`. `all_256_clean` pasa a ser histórico |
 | Raras (HPO) | **HPO v2**: 3.006 casos; además del gold con gen vale el nombre de la enfermedad sin gen, y salen los gold dudosos de T3. Evaluados con V5. Ver `data29/data-repos/hpo-v2/README.md`. V4 strict sobre los 3.017 originales queda para la serie histórica |
-| Multimodal | MedReaMM, sin cambios |
+| Multimodal | MedReaMM pilot250 T+I con el Server v0.00196 (3-nov): gpt-6.1-sol 66,4 % R@1 frente a 58,8 % de Terra (p = 0,02). Ver [RESULTS.md](../bench/multimodal_beta/RESULTS.md) |
 
 Cifras de referencia con Terra low:
 
@@ -50,9 +50,10 @@ Cifras de referencia con Terra low:
    precisión: R@1 en casos reales 51,9 → 53,3 % y 58,1 → 59,5 %, sin
    diferencias significativas en ningún grupo. Todas las listas tienen 5
    opciones. **Decidido (30-oct): producción pide 5** en `withoutDiseases` y
-   `withDiseases` (cambiado en `develop` del servidor, pendiente de commit y
-   despliegue); las próximas ejecuciones oficiales del benchmark usarán el
-   mismo prompt (`juanjo_classic_v2_n5`).
+   `withDiseases`, desplegado en la v0.00196; las próximas ejecuciones
+   oficiales del benchmark usarán el mismo prompt (`juanjo_classic_v2_n5`).
+   Con imágenes tampoco resta (MedReaMM, 3-nov): Terra «5» frente a la «N»
+   del 24-sep, 16 / 21 en R@1 (p = 0,51).
 2. ~~**Raras para V5**~~. Hecho el 28-oct en HPO v2
    ([README](../data29/data-repos/hpo-v2/README.md)): en 1.495 casos vale
    también el nombre de la enfermedad sin gen («Leber congenital amaurosis»
@@ -171,8 +172,13 @@ lista).
    brazo mejora a Sol solo (64,7 %). Lo que la capa añadía a Terra era subirla
    al nivel de Sol: la palanca grande es el modelo. Lo apoyan dos pruebas del
    29 y 30-oct: con dos ejecuciones de cada modelo, Sol gana a Terra en raras
-   reales (p = 0,01) y empatan en no raras (paso 1); y Sol también gana a
-   Terra en las 3.006 raras de HPO v2 (paso 2). Pendiente:
+   reales (p = 0,01) y empatan en no raras (paso 1); Sol también gana a
+   Terra en las 3.006 raras de HPO v2 (paso 2); y con imágenes, en MedReaMM
+   (3-nov, 250 casos, mismo Server y solo cambia el modelo): R@1 66,4 % frente
+   a 58,8 % (39 / 20, p = 0,02), igual que Astra en los 100 del piloto. Para
+   llevar Sol a producción hace falta añadirlo a `isLongDiagnoseModel` (p95
+   de 38 s, más que el corte de 30 s de SWA) y que el camino de visión use su
+   despliegue. Pendiente:
    confirmarlo con `narrative_v2` v0.2. **La decisión entre Sol solo y el
    panel Terra + Sol espera a esa confirmación.**
 9. **Renovar el bloque `live` cada trimestre** con `harvest_pmc.py` y fechas

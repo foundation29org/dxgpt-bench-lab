@@ -284,10 +284,17 @@ juez. McNemar de «5» frente a «N»:
   fueron a la vez); no conviene leer la bajada como efecto del prompt.
 - **Decidido el 30-oct-2026: producción pide 5.** Cambiado en los dos prompts
   de diagnóstico de `Server/assets/prompts.js` (`withoutDiseases`: «generate 5
-  possible diagnoses»; `withDiseases`: «generate 5 more»), en la rama
-  `develop` de `Dx29_server_gpt`, sin commit ni despliegue todavía. Para que el
-  benchmark mida lo mismo que producción, las próximas ejecuciones oficiales
-  (el re-scoring con `narrative_v2` v0.2) usarán `juanjo_classic_v2_n5`.
+  possible diagnoses»; `withDiseases`: «generate 5 more»), desplegado en la
+  v0.00196. Para que el benchmark mida lo mismo que producción, las próximas
+  ejecuciones oficiales (el re-scoring con `narrative_v2` v0.2) usarán
+  `juanjo_classic_v2_n5`.
+- **Con imágenes tampoco resta** (MedReaMM pilot250 T+I, 3-nov, evaluador V4
+  strict): Terra «5» con el Server v0.00196 frente a la Terra «N» del 24-sep,
+  58,8 % frente a 60,8 % en R@1 (16 / 21, p = 0,51) y 78,8 % frente a 77,6 %
+  en R@5 (p = 0,70). Mismo día y mismo Server, gpt-6.1-sol: 66,4 % en R@1
+  (39 / 20 frente a Terra, p = 0,02) y 83,6 % en R@5 (p = 0,08). Detalle en
+  `bench/multimodal_beta/results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md`
+  y en la sección «Con imágenes» del informe.
 
 ## Prueba de juez más barato (29-oct-2026)
 

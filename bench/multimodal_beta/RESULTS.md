@@ -29,6 +29,8 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | strict | 100 | 76% | 87% | 88% | 88% | 1,205 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-plus-i-gpt6astra.md) |
 | 2026-09-08 | MedReaMM pilot100 | T | gpt6astra | strict | 100 | 54% | 66% | 67% | 67% | 1,313 | Provisional | [Informe](results/2026-09-08-medreamm-pilot100-t-gpt6astra.md) |
 | 2026-09-09 | MedReaMM 32 resumidos | T+I sin resumen | gpt5 | strict | 32 | 68,8% | 75% | 84,4% | 84,4% | 1,407 | Provisional | [Informe](results/2026-09-09-medreamm-pilot32-t-plus-i-gpt5-nosummary.md) |
+| 2026-11-03 | MedReaMM pilot250 | T+I, prompt «5» | gpt56terra | strict | 250 | 58,8% | 73,2% | 78,8% | 78,8% | 1,503 | Provisional | [Informe](results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md) |
+| 2026-11-03 | MedReaMM pilot250 | T+I, prompt «5» | gpt61sol | strict | 250 | 66,4% | 80,4% | 83,6% | 83,6% | 1,349 | Provisional | [Informe](results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md) |
 
 ## Resultado técnico por inferencia
 
@@ -49,6 +51,8 @@ condiciones, incidencias, casos sin match y conclusiones.
 | 2026-09-08 | MedReaMM pilot100 | T+I | gpt6astra | 100/100 | 32/100 | 55,1 s | Completa |
 | 2026-09-08 | MedReaMM pilot100 | T | gpt6astra | 100/100; 1 lista vacía | 32/100 | 47,3 s | Completa |
 | 2026-09-09 | MedReaMM 32 resumidos | T+I sin resumen | gpt5 | 32/32 | 0/32 | 43,2 s | Completa |
+| 2026-11-03 | MedReaMM pilot250 | T+I, prompt «5» | gpt56terra | 250/250; 3 listas vacías | 77/250 | 23,1 s | Completa |
+| 2026-11-03 | MedReaMM pilot250 | T+I, prompt «5» | gpt61sol | 250/250; 3 listas vacías | 77/250 | 29,2 s | Completa |
 
 Las filas strict y legacy de una misma cohorte reutilizan exactamente las
 mismas respuestas del modelo. Solo cambia la política del juez.
@@ -85,6 +89,15 @@ mismas respuestas del modelo. Solo cambia la política del juez.
 - Astra **usa la imagen**: T 67% / R@1 54% vs T+I 88% / 76% (22 vs 1;
   McNemar `p=0,00001`). En texto solo, cobertura indistinguible de Terra
   y gpt5; el R@1 vs gpt5 T sí (54% vs 43%, `p=0,007`).
+- **gpt-6.1-sol T+I** (3-nov, n=250, mismo Server v0.00196 con el prompt
+  «5» y solo cambia el modelo): R@1 66,4% frente a 58,8% de Terra (39 vs 20;
+  McNemar `p=0,018`). R@5 83,6% frente a 78,8% (`p=0,081`). En los 100
+  anidados, Sol empata con Astra (76% / 88%, `p=1,0`), y Astra tardaba 55 s por
+  caso. Latencia mediana: 28,3 s Sol y 22,3 s Terra. Pedir 5 tampoco resta con
+  imágenes: Terra «5» frente a la «N» del 24-sep, 16 vs 21 en R@1 (`p=0,51`).
+  Sol recibió las imágenes con un cambio solo de prueba, porque en producción
+  el camino de visión usa siempre el modelo por defecto.
+  Informe: [results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md](results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md).
 - Ablación de resumen (32 casos gpt5 T+I que superaban 1.000 caracteres):
   sin resumen, cobertura 27/32 vs 30/32 con resumen (3 vs 0; McNemar
   `p=0,25`). R@1 22 vs 21 (`p=1,0`). **El umbral se queda.** Informe:

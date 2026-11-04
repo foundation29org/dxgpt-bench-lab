@@ -89,6 +89,12 @@ EFFORT = [
 # Second run of the same model, config and cases (run-to-run variability): model id, run folder
 # Same model with the prompt that asks for exactly 5 diagnoses (production left «N» to the model until 30-oct-2026)
 N5_PROMPT = 'juanjo_classic_v2_n5'
+# MedReaMM pilot250 with text and images through the local Server (V4 strict evaluator, gemini-2.5-pro judge):
+# Sol and Terra on the v0.00196 build (prompt «5») on 3-nov, Terra «N» of 24-sep, and Astra on the nested 100 of 8-sep
+MEDREAMM_DIR = os.path.join(EVAL_ROOT, 'bench', 'multimodal_beta', 'outputs')
+MEDREAMM = [('sol5', 'pilot250_gpt61sol_TI_n5', 'gpt-6.1-sol «5»'), ('terra5', 'pilot250_gpt56terra_TI_n5', 'Terra 5.6 «5»'),
+            ('terraN', 'pilot250_gpt56terra_TI_phrase', 'Terra 5.6 «N» (24-sep)')]
+MEDREAMM_ASTRA = 'pilot100_gpt6astra_TI'
 N5 = [('terra56', 'gpt_5_6_terra_low_translated_en'), ('sol61', 'gpt_6_1_sol_low_translated_en')]
 RERUNS = [('terra56', 'gpt_5_6_terra_low_translated_en__rerun2'), ('sol61', 'gpt_6_1_sol_low_translated_en__rerun2')]
 
@@ -533,6 +539,39 @@ def judge_bridge(dataset):
     return result
 
 
+def medreamm_positions(folder):
+    path = os.path.join(MEDREAMM_DIR, folder, 'evaluation_v4_primary_strict', 'evaluation_details.txt')
+    if not os.path.exists(path):
+        return None
+    return {i: position(c['eval_details'].get('final_resolution')) for i, c in load_details(path).items()}
+
+
+def medreamm():
+    """Sol against Terra on MedReaMM pilot250 T+I, same Server build and evaluator; Astra on the nested 100."""
+    pos, arms = {}, []
+    for key, folder, name in MEDREAMM:
+        pos[key] = medreamm_positions(folder)
+        if pos[key] is None:
+            return None
+        with open(os.path.join(MEDREAMM_DIR, folder, 'responses.jsonl'), encoding='utf-8') as f:
+            times = sorted(r['duration_seconds'] for r in map(json.loads, f) if r.get('status') == 'success')
+        arms.append({'key': key, 'name': name, 'latency': round(statistics.median(times), 1),
+                     'p95': round(times[int(0.95 * (len(times) - 1))], 1)})
+    ids = sorted(set.intersection(*(set(p) for p in pos.values())))
+    for a in arms:
+        a.update(metrics([pos[a['key']][i] for i in ids]))
+    pairs = [{'a': a, 'b': b, 'n': len(ids), 'r1': paired(pos[a], pos[b], ids, 1), 'r5': paired(pos[a], pos[b], ids, 5)}
+             for a, b in (('sol5', 'terra5'), ('sol5', 'terraN'), ('terra5', 'terraN'))]
+    result = {'n': len(ids), 'arms': arms, 'pairs': pairs}
+    astra = medreamm_positions(MEDREAMM_ASTRA)
+    if astra:
+        nested = [i for i in ids if i in astra]
+        result['nested'] = {'n': len(nested), 'astra': metrics([astra[i] for i in nested]),
+                            **{key: metrics([pos[key][i] for i in nested]) for key in ('sol5', 'terra5')},
+                            'r1': paired(pos['sol5'], astra, nested, 1), 'r5': paired(pos['sol5'], astra, nested, 5)}
+    return result
+
+
 def hpo_sermas():
     """Sol and Terra with the sermas prompt against juanjo_classic_v2 on the same HPO v2 cases, Flash judge on both."""
     prompts = ('juanjo_classic_v2', SERMAS_PROMPT)
@@ -692,6 +731,10 @@ def collect():
                              'r1': paired(five, positions[mid], ids, 1), 'r5': paired(five, positions[mid], ids, 5)}
                        for key, ids in split_ids.items()},
         })
+
+    data['medreamm'] = medreamm()
+    if data['medreamm']:
+        data['medreamm']['colors'] = {'sol5': model_color(data, 'sol61'), 'terra5': model_color(data, 'terra56')}
 
     # Same model run twice: how many cases flip by chance, and whether the Sol gap holds in every pairing of runs
     data['rerun'] = None
@@ -1545,7 +1588,7 @@ def n5_section(data):
       <strong>{"Ninguna diferencia es significativa: pedir 5 no resta precisión." if not significant else "Hay diferencias significativas en " + ", ".join(dict.fromkeys(significant)) + "."}</strong>
       <br><strong>Decidido el 30-oct-2026: producción pide 5.</strong> Cambiado en los dos prompts de diagnóstico de
       <code>Server/assets/prompts.js</code> (<code>withoutDiseases</code>, «generate 5 possible diagnoses», y <code>withDiseases</code>,
-      «generate 5 more»), en la rama <code>develop</code>, pendiente de desplegar. Para medir lo mismo que producción, las próximas
+      «generate 5 more»), desplegado en la v0.00196. Para medir lo mismo que producción, las próximas
       ejecuciones oficiales del benchmark usarán <code>{N5_PROMPT}</code>.
     </div>
 {chart_panel('n5', '«N» frente a «5», mismo modelo y casos',
@@ -1569,6 +1612,72 @@ def n5_section(data):
     </div>
     <p class="note">McNemar exacto de «5» frente a «N» sobre los mismos casos. Una variación de este tamaño entra en lo que cambia un modelo
       al repetir la misma ejecución (ver «Variabilidad entre ejecuciones»).</p>
+  </div>
+'''
+
+
+def medreamm_section(data):
+    s = data.get('medreamm')
+    if not s:
+        return ''
+    arm = {a['key']: a for a in s['arms']}
+    pair = {(p['a'], p['b']): p for p in s['pairs']}
+    st, tn = pair[('sol5', 'terra5')], pair[('terra5', 'terraN')]
+    rows = '\n'.join(
+        f'<tr><td>{a["name"]}</td><td>{pct(a["r1"])}</td><td>{pct(a["r3"])}</td><td>{pct(a["r5"])}</td>'
+        f'<td>{num(a["latency"])} s</td><td>{num(a["p95"])} s</td></tr>' for a in s['arms'])
+    names = {a['key']: a['name'] for a in s['arms']}
+    pair_rows = [f'<tr><td>{names[p["a"]]} frente a {names[p["b"]]}</td><td>{p["n"]}</td>'
+                 f'<td>{p["r1"]["wins"]} / {p["r1"]["losses"]}</td><td>{p_value(p["r1"]["p"])}</td>'
+                 f'<td>{p["r5"]["wins"]} / {p["r5"]["losses"]}</td><td>{p_value(p["r5"]["p"])}</td></tr>' for p in s['pairs']]
+    nested = s.get('nested')
+    astra = ''
+    if nested:
+        pair_rows.append(f'<tr><td>{names["sol5"]} frente a Astra (8-sep)</td><td>{nested["n"]}</td>'
+                         f'<td>{nested["r1"]["wins"]} / {nested["r1"]["losses"]}</td><td>{p_value(nested["r1"]["p"])}</td>'
+                         f'<td>{nested["r5"]["wins"]} / {nested["r5"]["losses"]}</td><td>{p_value(nested["r5"]["p"])}</td></tr>')
+        astra = (f' En los {nested["n"]} casos del piloto anterior, Sol acierta en P1 el {pct(nested["sol5"]["r1"], 0)}, lo mismo que Astra'
+                 f' ({pct(nested["astra"]["r1"], 0)}, que tardaba 55 s por caso), y Terra «5» el {pct(nested["terra5"]["r1"], 0)}.')
+    return f'''
+  <div class="section">
+    <div class="section-title">Con imágenes · MedReaMM, gpt-6.1-sol frente a Terra 5.6</div>
+    <div class="callout callout-info">
+      {s["n"]} casos de MedReaMM con texto e imágenes, gold ICD-11 del propio dataset y el evaluador estricto de V4 (juez Gemini 2.5 Pro),
+      no el de <code>narrative_v2</code>: estas cifras no se comparan con las de arriba. Las dos ejecuciones del 3-nov pasan por el Server en
+      local con el código de la v0.00196 (prompt «5» y frase de imagen) y solo cambia el modelo. En producción el camino de visión usa
+      siempre el modelo por defecto, así que para que Sol recibiera las imágenes hizo falta un cambio solo de prueba.
+      <strong>Sol acierta en P1 el {pct(arm["sol5"]["r1"])} y Terra el {pct(arm["terra5"]["r1"])}</strong>
+      ({st["r1"]["wins"]} / {st["r1"]["losses"]}, {p_text(st["r1"]["p"])}); en R@5, {pct(arm["sol5"]["r5"])} frente a {pct(arm["terra5"]["r5"])}
+      ({st["r5"]["wins"]} / {st["r5"]["losses"]}, {p_text(st["r5"]["p"])}).{astra}
+      Pedir 5 tampoco resta con imágenes: Terra «5» frente a la «N» del 24-sep, {tn["r1"]["wins"]} / {tn["r1"]["losses"]} en R@1
+      ({p_text(tn["r1"]["p"])}).
+      Latencia de todo el flujo: mediana {num(arm["sol5"]["latency"])} s con Sol y {num(arm["terra5"]["latency"])} s con Terra, p95
+      {num(arm["sol5"]["p95"])} s y {num(arm["terra5"]["p95"])} s. Los dos pasan de los 30 s de SWA en la cola, así que Sol en producción
+      necesita la misma ruta asíncrona que Terra (<code>isLongDiagnoseModel</code>).
+    </div>
+{chart_panel('medreamm', 'MedReaMM con texto e imágenes, mismo Server y casos',
+             f'{s["n"]} casos. Mismo código de Server, mismo evaluador; solo cambia el modelo.',
+             [legend_dot(s['colors']['terra5'], 'Terra 5.6 «5»'), legend_dot(s['colors']['sol5'], 'gpt-6.1-sol «5»')], [])}
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Brazo</th><th>R@1</th><th>R@3</th><th>R@5</th><th>Latencia (mediana)</th><th>p95</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Comparación</th><th>Casos</th><th>R@1 gana / pierde</th><th>p</th><th>R@5 gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{chr(10).join(pair_rows)}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto sobre los mismos casos. La Terra «N» es del 24-sep, con el código de entonces; la diferencia con ella mezcla
+      el cambio a «5» con otros cambios del Server y con la variación entre ejecuciones. Astra es del piloto de 100 del 8-sep. Las 3 listas
+      vacías de cada brazo son los mismos casos, que el filtro clínico previo no deja pasar al diagnóstico. Detalle en
+      <code>bench/multimodal_beta/RESULTS.md</code>.</p>
   </div>
 '''
 
@@ -2013,6 +2122,7 @@ def build_html(data):
 
 {effort_section(data)}
 {n5_section(data)}
+{medreamm_section(data)}
 {poc_section(data)}
 {judges_section(data)}
 {graded_v3_section(data)}
@@ -2601,6 +2711,23 @@ CHART_JS = r'''
   }
   if (document.getElementById('bridge-tabs')) tabs('bridge-tabs', function (b) { bridgeG = b.getAttribute('data-k'); renderBridge(); });
 
+  // MedReaMM: Terra «5» vs Sol «5» on the same Server build
+  function renderMedreamm() {
+    var s = DATA.medreamm;
+    if (!s) return;
+    var arm = {};
+    s.arms.forEach(function (a) { arm[a.key] = a; });
+    var rows = [['r1', 'R@1'], ['r3', 'R@3'], ['r5', 'R@5']].map(function (k) {
+      return { label: k[1], line: '#94a3b8', k: k,
+               points: [{ value: arm.terra5[k[0]], color: s.colors.terra5 }, { value: arm.sol5[k[0]], color: s.colors.sol5 }] };
+    });
+    renderDots('medreamm-svg', rows, function (row) {
+      return '<strong>' + row.k[1] + '</strong> (' + s.n + ' casos)<br>Terra 5.6 «5»: <b>' + pc(arm.terra5[row.k[0]]) +
+        '</b><br>gpt-6.1-sol «5»: <b>' + pc(arm.sol5[row.k[0]]) + '</b><br>Terra 5.6 «N» (24-sep): ' + pc(arm.terraN[row.k[0]]);
+    });
+  }
+
+  renderMedreamm();
   renderBridge();
   renderHpoSol();
   renderHpoOpus();
