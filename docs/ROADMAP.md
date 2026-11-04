@@ -1,6 +1,6 @@
 # DxGPT — roadmap operativo
 
-**Última actualización:** 3-nov-2026. El detalle anterior al 15-sep está en
+**Última actualización:** 4-nov-2026. El detalle anterior al 15-sep está en
 [ROADMAP_HISTORY.md](ROADMAP_HISTORY.md).
 
 ## Estado
@@ -8,7 +8,7 @@
 | Pieza | Estado |
 |---|---|
 | Evaluador | **Pipeline V5** (`bench/pipelines/pipeline_v5/main`, prompt `graded_v2`): solo SNOMED exacto decide sin juez y el juez puntúa 2/1/0 cada opción. Decisiones en el §12 de [JULIAN_HARNESS_REVIEW.md](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md). Pipeline V4 se mantiene para la serie histórica |
-| Dataset narrativo | **`narrative_v2` v0.1**, 300 casos, de los que 150 son case reports de jul–oct 2026. Pendiente de validación clínica. Ver `data29/data-repos/narrative-v2/README.md`. `all_256_clean` pasa a ser histórico |
+| Dataset narrativo | **`narrative_v2` v0.2** (4-nov), 300 casos, de los que 150 son case reports de jul–oct 2026. Con la validación de David: 164 de los 210 casos reales validados y 46 de reserva pendientes. Ver `data29/data-repos/narrative-v2/README.md`. Las cifras publicadas aún son de la v0.1. `all_256_clean` pasa a ser histórico |
 | Raras (HPO) | **HPO v2**: 3.006 casos; además del gold con gen vale el nombre de la enfermedad sin gen, y salen los gold dudosos de T3. Evaluados con V5. Ver `data29/data-repos/hpo-v2/README.md`. V4 strict sobre los 3.017 originales queda para la serie histórica |
 | Multimodal | MedReaMM pilot250 T+I con el Server v0.00196 (3-nov): gpt-6.1-sol 66,4 % R@1 frente a 58,8 % de Terra (p = 0,02). Ver [RESULTS.md](../bench/multimodal_beta/RESULTS.md) |
 
@@ -88,13 +88,34 @@ Cifras de referencia con Terra low:
 
 Las revisiones de David tienen cada una su ficha en
 [docs/tareas-david/](tareas-david/README.md): validación de `narrative_v2`
-(tarea 1, encargada), escala del juez (tarea 2, se prepara tras la 1) y
-nombres sin gen de raras más los 9 casos de la causa C de T3 (tarea 3, hoja
-lista).
+(tarea 1, hecha el 4-nov; falta la tanda de reserva), escala del juez (tarea
+2, se prepara con la v0.2) y nombres sin gen de raras más los 9 casos de la
+causa C de T3 (tarea 3, hoja lista).
 
-4. **`narrative_v2` v0.2** (tras la tarea 1): aplicar sus correcciones y
-   exclusiones, cubrir las bajas con casos de reserva (la selección es estable
-   por caso) y re-puntuar los runs. Con eso, línea base oficial.
+4. ~~**`narrative_v2` v0.2**~~. Hecha el 4-nov con la tarea 1
+   (`decisions_v0.2.yaml`):
+   - de los 210 casos reales se excluyen 39: 9 por fuga, 25 por no ser
+     diagnosticables y 5 de urgencias con un gold que es un signo o una
+     categoría;
+   - otros 7 de urgencias quedan repetidos al corregir el gold;
+   - los 46 huecos se cubren con la reserva, pendiente de que David la
+     valide (≈ 1 h).
+
+   Por el camino, la anonimización de `urg` pasa a ser una regla de
+   `build_dataset.py`.
+
+   **Primera puntuación** (4-nov, mismas listas, Flash con `graded_v3`, 164
+   casos reales validados). Es provisional: 22 listas son del texto con la
+   fuga.
+   - R@1 de Sol 73,2 %, Terra 5.6 66,5 %, Opus 5 y gpt-6.1-terra 64,0 %,
+     Gemini 3.1 Pro 56,1 % y gpt-5.4-mini 53,7 %.
+   - Corregir el gold sube a todos de 1 a 4 puntos y no cambia el orden.
+   - Sol frente a Terra con dos ejecuciones de cada uno: 71,3 % frente a
+     63,7 % (p = 0,02), con la ventaja en raras (75,3 % frente a 64,8 %,
+     p = 0,03; en no raras, p = 0,48).
+
+   Falta la línea base oficial: listas nuevas en los 22 casos recortados y en
+   los 46 de reserva, cuando David los valide.
 5. **Validar la escala 2/1/0** (tarea 2) sobre casos de `narrative_v2`,
    incluida la frontera entre 1 y 0, y decidir si la nota laxa se publica.
    **Raras HPO v2** (tarea 3): aplicar sus correcciones a los nombres sin gen
@@ -178,9 +199,10 @@ lista).
    a 58,8 % (39 / 20, p = 0,02), igual que Astra en los 100 del piloto. Para
    llevar Sol a producción hace falta añadirlo a `isLongDiagnoseModel` (p95
    de 38 s, más que el corte de 30 s de SWA) y que el camino de visión use su
-   despliegue. Pendiente:
-   confirmarlo con `narrative_v2` v0.2. **La decisión entre Sol solo y el
-   panel Terra + Sol espera a esa confirmación.**
+   despliegue. Con el gold validado de `narrative_v2` v0.2 se confirma, de
+   forma provisional (4-nov): Sol gana a Terra en raras reales (75,3 % frente
+   a 64,8 %, p = 0,03) y empatan en no raras. **La decisión entre Sol solo y
+   el panel Terra + Sol espera a la línea base oficial de la v0.2.**
 9. **Renovar el bloque `live` cada trimestre** con `harvest_pmc.py` y fechas
    nuevas: los modelos acabarán entrenando con estos casos.
 10. **Track de «mimics»**, enfermedades raras que se presentan como algo

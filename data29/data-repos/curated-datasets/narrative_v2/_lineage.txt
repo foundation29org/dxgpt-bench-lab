@@ -1,6 +1,6 @@
 narrative_v2.json — Lineage Trace
 =================================
-Creado: 2026-10-28 con data29/data-repos/narrative-v2/build_dataset.py
+Creado: 2026-11-04 con data29/data-repos/narrative-v2/build_dataset.py; v0.2 aplica decisions_v0.2.yaml
 
 live : PubMed 'Case Reports'[pt] + PMC open access + English, Entrez date >= 2026-07-01
        harvest_pmc.py -> raw/pmc_live/candidates.json (licencias CC sin ND)
@@ -10,305 +10,305 @@ exam : raw/medqausmle4op.json + raw/medbulltes5op.json, pregunta final con 'diag
        -> select_internal_cases.py (muestra 150, seed 29), pregunta eliminada del texto
 synth: raw/rare_synthetic.json -> select_internal_cases.py (muestra 60, seed 29)
 
-CASOS
------
-L-PMC13634659	live	Desmoid-type fibromatosis
-L-PMC13630382	live	Facial diplegia variant of Guillain-Barre syndrome
-L-PMC13459778	live	Thoracic incisional hernia
-L-PMC13640235	live	Uterine perforation by intrauterine device
-L-PMC13477540	live	Ewing sarcoma
-L-PMC13331383	live	Histiocytic sarcoma
-L-PMC13623899	live	Solid pseudopapillary neoplasm of the pancreas
-L-PMC13576722	live	Brainstem radiation necrosis
-L-PMC13364497	live	Type 2 pneumocyte hyperplasia
-L-PMC13691139	live	Intimomedial mucoid degeneration
-L-PMC13678326	live	Aortic aneurysm
-L-PMC13529087	live	Exogenous insulin antibody syndrome
-L-PMC13407302	live	Thrombotic thrombocytopenic purpura
-L-PMC13668423	live	Myofibrosarcoma
-L-PMC13389709	live	Pheochromocytoma
-L-PMC13639508	live	Pancreatic neuroendocrine neoplasm
-L-PMC13581743	live	Indobufen-induced urticaria and angioedema
-L-PMC13696295	live	Multiple endocrine neoplasia type 1
-L-PMC13347962	live	Clavicle fracture
-L-PMC13585455	live	Primary adrenal diffuse large B-cell lymphoma
-L-PMC13381456	live	Thoracic actinomycosis
-L-PMC13544844	live	Giant cell tumor of bone
-L-PMC13588563	live	Septic arthritis due to Nocardia
-L-PMC13375274	live	Interstitial hernia
-L-PMC13657579	live	Pancreatic pseudocyst
-L-PMC13527473	live	Purpura annularis telangiectodes
-L-PMC13422329	live	Wilson's disease
-L-PMC13652573	live	Total anomalous pulmonary venous connection
-L-PMC13499017	live	Hepatocellular carcinoma
-L-PMC13565770	live	Herpes simplex encephalitis
-L-PMC13451555	live	Germinoma
-L-PMC13688359	live	Estrogen and cortisol co-secreting adrenocortical tumor
-L-PMC13597749	live	Anaplastic large cell lymphoma
-L-PMC13605063	live	Mucoepidermoid carcinoma of the tonsil
-L-PMC13425088	live	Pilar leiomyoma
-L-PMC13322919	live	Iatrogenic left main coronary artery to left ventricle fistula
-L-PMC13586463	live	IPMN-like mucinous neoplasm of the duodenum
-L-PMC13354413	live	Choledochoduodenal fistula
-L-PMC13361867	live	Sinus of Valsalva aneurysm
-L-PMC13647891	live	Aminolevulinic acid dehydratase deficiency porphyria
-L-PMC13653543	live	Ruptured ventricular aneurysm
-L-PMC13496488	live	Primary amyloidosis
-L-PMC13436859	live	Urinothorax
-L-PMC13398212	live	Osteonevus of Nanta
-L-PMC13385695	live	Euglycemic diabetic ketoacidosis
-L-PMC13691148	live	Post-varicella cerebellitis
-L-PMC13367599	live	B-cell acute lymphoblastic leukemia
-L-PMC13412247	live	Acute generalized exanthematous pustulosis
-L-PMC13620278	live	Monochorionic dizygotic twinning
-L-PMC13398406	live	Hydroa vacciniforme-like lymphoproliferative disorder
-L-PMC13460692	live	Acute appendicitis
-L-PMC13555724	live	Southern tick-associated rash illness
-L-PMC13661086	live	Herpes zoster
-L-PMC13380897	live	Syphilis
-L-PMC13328977	live	Spinal intradural hematoma
-L-PMC13535286	live	Spondyloarthritis
-L-PMC13605535	live	Fibroinflammatory granuloma
-L-PMC13582182	live	Chronic osteomyelitis
-L-PMC13694122	live	Type 1 diabetes mellitus
-L-PMC13552032	live	Sternoclavicular joint dislocation
-L-PMC13605741	live	Pleomorphic adenoma
-L-PMC13447501	live	Supplementary motor area syndrome
-L-PMC13453567	live	Prostate adenocarcinoma
-L-PMC13632872	live	Condyloma acuminatum
-L-PMC13651052	live	Iatrogenic coronary artery injury
-L-PMC13456877	live	Mixed phenotype acute leukemia
-L-PMC13649838	live	Histiocytosis
-L-PMC13383160	live	Precursor B-cell acute lymphoblastic leukemia
-L-PMC13477162	live	Orf virus infection
-L-PMC13496496	live	Extranodal marginal zone lymphoma of the breast
-L-PMC13657612	live	Alcohol-induced sleep disorder
-L-PMC13367200	live	Intestinal perforation
-L-PMC13464723	live	Pyoderma gangrenosum
-L-PMC13348465	live	Cervical digit
-L-PMC13551701	live	Tacrolimus toxicity
-L-PMC13391281	live	Bladder leiomyosarcoma
-L-PMC13414995	live	Azathioprine hypersensitivity
-L-PMC13461075	live	Cervical artery dissection
-L-PMC13435588	live	Extranodal NK/T-cell lymphoma, nasal type
-L-PMC13454894	live	Dysthyroid optic neuropathy
-L-PMC13402363	live	Gerstmann-Sträussler-Scheinker syndrome
-L-PMC13634195	live	Squamous cell carcinoma of the esophagus
-L-PMC13316698	live	Cutaneous melanocytoma with CRTC1::TRIM11 fusion
-L-PMC13546065	live	Bullous pemphigoid
-L-PMC13600029	live	Mycobacterium marinum infection
-L-PMC13461627	live	Cutaneous Crohn's disease
-L-PMC13408840	live	Wild-type transthyretin amyloidosis
-L-PMC13696143	live	Sjögren's disease
-L-PMC13609167	live	Adie's tonic pupil
-L-PMC13332505	live	Dosulepin intoxication
-L-PMC13441454	live	Gastrointestinal histoplasmosis
-L-PMC13500259	live	Angiomatoid fibrous histiocytoma
-L-PMC13511275	live	Papillary thyroid carcinoma
-L-PMC13456991	live	Cat-scratch disease
-L-PMC13443200	live	Acute chest syndrome
-L-PMC13475527	live	Lansoprazole-induced myoclonus
-L-PMC13588688	live	Transaldolase deficiency
-L-PMC13664193	live	Warsaw Breakage Syndrome
-L-PMC13623582	live	Adenoid cystic carcinoma
-L-PMC13336340	live	Unicystic ameloblastoma
-L-PMC13461623	live	Variant influenza A virus infection
-L-PMC13451738	live	Pure red cell aplasia
-L-PMC13610748	live	Paraquat poisoning
-L-PMC13591806	live	Nanophthalmos
-L-PMC13448005	live	Laryngeal schwannoma
-L-PMC13541454	live	Splenic angiosarcoma
-L-PMC13336542	live	Nocardial mycetoma
-L-PMC13461744	live	Epiglottic mineralisation
-L-PMC13496492	live	Branchial cleft cyst
-L-PMC13392320	live	Brain abscess
-L-PMC13355527	live	Drug-induced granulomatous interstitial nephritis
-L-PMC13634653	live	Adenocarcinoma of the lung
-L-PMC13461052	live	Polymyxin B-induced neurotoxicity
-L-PMC13493110	live	Tufted angioma
-L-PMC13442605	live	Serous carcinoma of the ovary
-L-PMC13621270	live	Lupus nephritis
-L-PMC13481352	live	Perihilar cholangiocarcinoma
-L-PMC13541744	live	Intrahepatic cholestasis of pregnancy
-L-PMC13693111	live	Cutaneous metastasis of urothelial carcinoma
-L-PMC13510912	live	von Willebrand disease type 2A
-L-PMC13525268	live	Extramedullary plasmacytoma
-L-PMC13579281	live	Antipsychotic-induced hypothermia
-L-PMC13599191	live	Gastric adenosquamous carcinoma
-L-PMC13679821	live	Gallbladder torsion
-L-PMC13387059	live	Left ventricular pseudoaneurysm
-L-PMC13322694	live	Therapy-related acute myeloid leukemia
-L-PMC13616667	live	Non-Sjögren's aqueous-deficient dry eye
-L-PMC13634193	live	Behçet's disease
-L-PMC13588111	live	Intracranial dermoid cyst
-L-PMC13549600	live	Aplastic anemia
-L-PMC13595072	live	Thymic carcinoma
-L-PMC13387445	live	Adnexal torsion
-L-PMC13490132	live	Invasive Klebsiella pneumoniae liver abscess syndrome
-L-PMC13391426	live	Actinomycetoma caused by Nocardia brasiliensis
-L-PMC13461132	live	Carotid-cavernous fistula
-L-PMC13440813	live	Chondroid meningioma
-L-PMC13484617	live	Basal cell carcinoma
-L-PMC13543876	live	Anomalous coronary artery with interarterial course
-L-PMC13412468	live	Desmoid-type fibromatosis of the breast
-L-PMC13540781	live	Blindness
-L-PMC13688335	live	Carney-Stratakis syndrome
-L-PMC13566190	live	Classical Ehlers-Danlos syndrome
-L-PMC13499649	live	Marburg variant of multiple sclerosis
-L-PMC13552804	live	Acute myeloid leukemia, myelodysplasia-related
-L-PMC13683158	live	Myocardial infarction
-L-PMC13520939	live	Diffuse large B-cell lymphoma
-L-PMC13623916	live	Primary intestinal lymphangiectasia
-L-PMC13335007	live	Tetanus
-L-PMC13317807	live	Gallstone ileus
-L-PMC13614255	live	Spontaneous coronary artery dissection
-U-T1306	urg	Cerebral infarction
-U-T1322	urg	Pneumonia
-U-T1057	urg	Acute bronchospasm
-U-T469	urg	Intercostal neuritis
-U-T458	urg	Inflammatory cervical adenopathy
-U-T1241	urg	Common cold
-U-T1292	urg	Respiratory failure
-U-T1073	urg	Acute nasopharyngitis
-U-T603	urg	Renal colic
-U-T1380	urg	Right lower lobe pneumonia
-U-T891	urg	Cellulitis of right upper limb
-U-T570	urg	Follicular hyperkeratosis
-U-T592	urg	Intercostal muscle contracture
-U-T541	urg	Migraine with aura
-U-T612	urg	Urinary tract infection
-U-T629	urg	Respiratory infection
-U-T815	urg	Acute pharyngitis
-U-T220	urg	Mild acute bronchiolitis
-U-T247	urg	Right cervicobrachial syndrome
-U-T1234	urg	Left otitis media
-U-T849	urg	Lower respiratory tract infection
-U-T798	urg	Biliary colic
-U-T1381	urg	Acute prostatitis
-U-T827	urg	Pelvic inflammatory disease
-U-T335	urg	Bronchitis
-U-T81	urg	Trochanteric bursitis
-U-T740	urg	Guttate psoriasis
-U-T706	urg	Vasovagal syncope
-U-T950	urg	Left acute otitis media
-U-T285	urg	Costal neuritis
-U-T965	urg	Right hand cellulitis
-U-T1179	urg	Chronic sinusitis
-U-T339	urg	Psoriasis
-U-T56	urg	Conjunctivitis
-U-T46	urg	Anxiety disorder
-U-T844	urg	Superficial thrombophlebitis
-U-T527	urg	Lumbar discopathy
-U-T32	urg	Cervical adenitis
-U-T156	urg	Bronchiolitis
-U-T417	urg	Gastroesophageal reflux disease
-U-T310	urg	Acute pharyngotonsillitis
-U-T836	urg	Otitis
-U-T1091	urg	Mild bronchospasm
-U-T499	urg	Infectious mononucleosis
-U-T850	urg	Knee synovitis
-U-T108	urg	Acute sinusitis
-U-T99	urg	Influenza
-U-T421	urg	Acute pyelonephritis
-U-T775	urg	Inguinal tendinitis
-U-T1055	urg	Ankle tenosynovitis
-U-T908	urg	Viral pharyngitis
-U-T709	urg	Supraventricular extrasystole
-U-T395	urg	Cervicobrachial syndrome
-U-T805	urg	Plantar fasciitis
-U-T1327	urg	Febrile syndrome of urinary origin
-U-T613	urg	Right ankle sprain
-U-T476	urg	Benign prostatic hyperplasia
-U-T450	urg	Traumatic conjunctival erosion
-U-T135	urg	Podagra
-U-T403	urg	Occipital neuralgia
-E-Q4564	exam	Sickle Cell Crisis
-E-Q4614	exam	Uterine adenomyosis
-E-Q2474	exam	Drug-induced myopathy
-E-Q528	exam	Bacillus cereus food poisoning
-E-Q1661	exam	Actinic keratosis
-E-Q3125	exam	Duchenne muscular dystrophy
-E-Q496	exam	Aortic valve stenosis
-E-Q2974	exam	Chronic venous insufficiency
-E-Q2366	exam	Toxic epidermal necrolysis
-E-Q3303	exam	Acute decompensated heart failure
-E-Q1005	exam	Adhesive capsulitis
-E-Q2642	exam	Multiple myeloma
-E-B64	exam	Vascular dementia
-E-Q2924	exam	Hemolytic anemia due to G6PD deficiency
-E-Q5147	exam	Pelvic inflammatory disease
-E-B55	exam	Left ventricular hypertrophy
-E-Q113	exam	Osteoarthritis
-E-Q2113	exam	Autism spectrum disorder
-E-Q2723	exam	Infectious mononucleosis
-E-Q1875	exam	Bronchiectasis
-E-Q5585	exam	Stress fracture of the fifth metatarsal
-E-Q507	exam	Adenocarcinoma of the Lung
-E-B1	exam	Parkinson disease
-E-Q1495	exam	Seborrheic dermatitis
-E-Q4600	exam	Abusive bruise
-E-Q3007	exam	Esophageal perforation
-E-Q5039	exam	Persistent depressive disorder
-E-Q6705	exam	Acute rheumatic fever
-E-Q1325	exam	Pertussis
-E-B5	exam	Foreign body obstruction
-E-Q6362	exam	Migraine without aura
-E-Q3512	exam	Ehrlichiosis
-E-Q5796	exam	Borderline personality disorder
-E-Q3000	exam	Schizotypal Personality Disorder
-E-Q2592	exam	Torus palatinus
-E-Q5660	exam	Eosinophilic Granulomatosis with Polyangiitis
-E-Q137	exam	Squamous cell carcinoma of the lip
-E-Q292	exam	Sarcoidosis
-E-Q6750	exam	Hyper-IgM syndrome
-E-Q2735	exam	Non-tropical sprue
-E-Q3772	exam	Disseminated Gonococcal Infection
-E-Q1499	exam	Central line-associated bloodstream infection
-E-Q4824	exam	Ornithine transcarbamylase deficiency
-E-B76	exam	Stable angina
-E-Q2701	exam	Chronic benign neutropenia
-E-Q2105	exam	VIPoma
-E-Q197	exam	Vaginal septum
-E-Q3300	exam	Bipolar II Disorder
-E-Q821	exam	Progressive multifocal leukoencephalopathy
-E-Q4328	exam	Atheroembolism
-E-Q6505	exam	Follicular lymphoma
-E-Q3680	exam	Schizoid personality disorder
-E-Q6448	exam	Pituitary apoplexy
-E-Q6429	exam	Cor pulmonale
-E-Q2899	exam	Primary polydipsia
-E-Q6716	exam	Signet ring cell carcinoma
-E-Q3986	exam	Dacryocystitis
-E-Q811	exam	Myasthenia Gravis
-E-Q5726	exam	Central cord syndrome
-E-Q1394	exam	Glossopharyngeal neuralgia
-Y-S74	synth	Post-transplant lymphoproliferative disorder
-Y-S156	synth	Atopic Keratoconjunctivitis
-Y-S40	synth	Hemorrhagic Fever with Renal Syndrome
-Y-S152	synth	Mucopolysaccharidosis Type I
-Y-S105	synth	Posterior Hypospadias
-Y-S67	synth	Partial Atrioventricular Canal Defect
-Y-S24	synth	Renal Cell Carcinoma
-Y-S159	synth	Dentinogenesis Imperfecta
-Y-S193	synth	Cystic Fibrosis
-Y-S129	synth	Anal Fistula
-Y-S178	synth	Hypermobile Ehlers-Danlos Syndrome
-Y-S153	synth	Early-Onset Parkinson's Disease
-Y-S88	synth	Esophageal Atresia
-Y-S11	synth	Congenital bilateral absence of the vas deferens
-Y-S34	synth	Uveitis
-Y-S161	synth	Progressive Supranuclear Palsy
-Y-S155	synth	Hereditary Cerebral Cavernous Malformation
-Y-S17	synth	Preeclampsia
-Y-S185	synth	Huntington's Disease
-Y-S62	synth	Peripartum Cardiomyopathy
-Y-S70	synth	Non-acquired combined pituitary hormone deficiency
-Y-S98	synth	Congenital hypothyroidism
-Y-S191	synth	Hemophilia A
-Y-S7	synth	Pneumonia caused by Pseudomonas aeruginosa infection
-Y-S113	synth	Alpha-1 Antitrypsin Deficiency
-Y-S38	synth	Primary Congenital Hypothyroidism
-Y-S164	synth	Primary Chronic Adrenal Insufficiency
-Y-S80	synth	Alopecia Universalis
-Y-S52	synth	Congenital Toxoplasmosis
-Y-S139	synth	X-linked Recessive Ichthyosis
+CASOS (id, bloque, diagnóstico principal, validación)
+-----------------------------------------------------
+L-PMC13634659	live	Desmoid-type fibromatosis	validated
+L-PMC13630382	live	Facial diplegia variant of Guillain-Barre syndrome	validated
+L-PMC13459778	live	Thoracic incisional hernia	validated
+L-PMC13640235	live	Uterine perforation by intrauterine device	validated
+L-PMC13555724	live	Southern tick-associated rash illness	validated
+L-PMC13623899	live	Solid pseudopapillary neoplasm of the pancreas	validated
+L-PMC13576722	live	Brainstem radiation necrosis	validated
+L-PMC13529087	live	Exogenous insulin antibody syndrome	validated
+L-PMC13407302	live	Thrombotic thrombocytopenic purpura	validated
+L-PMC13389709	live	Pheochromocytoma	validated
+L-PMC13639508	live	Pancreatic neuroendocrine tumor	validated
+L-PMC13581743	live	Indobufen-induced urticaria and angioedema	validated
+L-PMC13696295	live	Multiple endocrine neoplasia type 1	validated
+L-PMC13585455	live	Primary adrenal lymphoma	validated
+L-PMC13381456	live	Thoracic actinomycosis	validated
+L-PMC13544844	live	Giant cell tumor of bone	validated
+L-PMC13588563	live	Septic arthritis due to Nocardia	validated
+L-PMC13375274	live	Interstitial hernia	validated
+L-PMC13527473	live	Purpura annularis telangiectodes	validated
+L-PMC13422329	live	Wilson's disease	validated
+L-PMC13652573	live	Total anomalous pulmonary venous connection	validated
+L-PMC13499017	live	Hepatocellular carcinoma	validated
+L-PMC13565770	live	Herpes simplex encephalitis	validated
+L-PMC13451555	live	Germinoma	validated
+L-PMC13425088	live	Pilar leiomyoma	validated
+L-PMC13354413	live	Choledochoduodenal fistula	validated
+L-PMC13361867	live	Sinus of Valsalva aneurysm	validated
+L-PMC13647891	live	Aminolevulinic acid dehydratase deficiency porphyria	validated
+L-PMC13653543	live	Ruptured ventricular aneurysm	validated
+L-PMC13496488	live	Primary amyloidosis	validated
+L-PMC13436859	live	Urinothorax	validated
+L-PMC13385695	live	Euglycemic diabetic ketoacidosis	validated
+L-PMC13691148	live	Post-varicella cerebellitis	validated
+L-PMC13367599	live	B-cell acute lymphoblastic leukemia	validated
+L-PMC13412247	live	Acute generalized exanthematous pustulosis	validated
+L-PMC13620278	live	Monochorionic dizygotic twinning	validated
+L-PMC13398406	live	Hydroa vacciniforme-like lymphoproliferative disorder	validated
+L-PMC13383160	live	Precursor B-cell acute lymphoblastic leukemia	validated
+L-PMC13477162	live	Orf virus infection	validated
+L-PMC13496496	live	Extranodal marginal zone lymphoma of the breast	validated
+L-PMC13464723	live	Pyoderma gangrenosum	validated
+L-PMC13348465	live	Cervical digit	validated
+L-PMC13461075	live	Cervical artery dissection	validated
+L-PMC13435588	live	Extranodal NK/T-cell lymphoma, nasal type	validated
+L-PMC13454894	live	Dysthyroid optic neuropathy	validated
+L-PMC13402363	live	Gerstmann-Sträussler-Scheinker syndrome	validated
+L-PMC13634195	live	Squamous cell carcinoma of the esophagus	validated
+L-PMC13546065	live	Bullous pemphigoid	validated
+L-PMC13600029	live	Mycobacterium marinum infection	validated
+L-PMC13408840	live	Wild-type transthyretin amyloidosis	validated
+L-PMC13460692	live	Acute appendicitis	validated
+L-PMC13678326	live	Aortic aneurysm	validated
+L-PMC13661086	live	Herpes zoster	validated
+L-PMC13380897	live	Syphilis	validated
+L-PMC13328977	live	Spinal intradural hematoma	validated
+L-PMC13535286	live	Spondyloarthritis	validated
+L-PMC13605535	live	Foreign body granuloma	validated
+L-PMC13582182	live	Chronic osteomyelitis	validated
+L-PMC13347962	live	Clavicle fracture	validated
+L-PMC13694122	live	Type 1 diabetes mellitus	validated
+L-PMC13552032	live	Sternoclavicular joint dislocation	validated
+L-PMC13657579	live	Pancreatic pseudocyst	validated
+L-PMC13605741	live	Pleomorphic adenoma	validated
+L-PMC13447501	live	Supplementary motor area syndrome	validated
+L-PMC13453567	live	Prostate adenocarcinoma	validated
+L-PMC13651052	live	Iatrogenic coronary artery injury	validated
+L-PMC13657612	live	Alcohol-induced sleep disorder	validated
+L-PMC13367200	live	Intestinal perforation	validated
+L-PMC13551701	live	Tacrolimus toxicity	validated
+L-PMC13414995	live	Azathioprine hypersensitivity	validated
+L-PMC13461627	live	Cutaneous Crohn's disease	validated
+L-PMC13696143	live	Sjögren's disease	validated
+L-PMC13609167	live	Adie's tonic pupil	validated
+L-PMC13441454	live	Gastrointestinal histoplasmosis	validated
+L-PMC13443200	live	Acute chest syndrome	validated
+L-PMC13475527	live	Lansoprazole-induced myoclonus	validated
+L-PMC13588688	live	Transaldolase deficiency	validated
+L-PMC13664193	live	Warsaw Breakage Syndrome	validated
+L-PMC13623582	live	Adenoid cystic carcinoma	validated
+L-PMC13336340	live	Unicystic ameloblastoma	validated
+L-PMC13451738	live	Pure red cell aplasia	validated
+L-PMC13610748	live	Paraquat poisoning	validated
+L-PMC13591806	live	Nanophthalmos	validated
+L-PMC13448005	live	Cervical schwannoma	validated
+L-PMC13541454	live	Splenic angiosarcoma	validated
+L-PMC13336542	live	Nocardial mycetoma	validated
+L-PMC13496492	live	Branchial cleft cyst	validated
+L-PMC13392320	live	Brain abscess	validated
+L-PMC13355527	live	Drug-induced interstitial nephritis	validated
+L-PMC13634653	live	Adenocarcinoma of the lung	validated
+L-PMC13461052	live	Polymyxin B-induced neurotoxicity	validated
+L-PMC13493110	live	Tufted angioma	validated
+L-PMC13442605	live	Serous carcinoma of the ovary	validated
+L-PMC13621270	live	Lupus nephritis	validated
+L-PMC13481352	live	Perihilar cholangiocarcinoma	validated
+L-PMC13541744	live	Intrahepatic cholestasis of pregnancy	validated
+L-PMC13693111	live	Cutaneous metastasis of urothelial carcinoma	validated
+L-PMC13510912	live	von Willebrand disease	validated
+L-PMC13525268	live	Extramedullary plasmacytoma	validated
+L-PMC13579281	live	Antipsychotic-induced hypothermia	validated
+L-PMC13679821	live	Gallbladder torsion	validated
+L-PMC13322694	live	Therapy-related acute myeloid leukemia	validated
+L-PMC13616667	live	Non-Sjögren's aqueous-deficient dry eye	validated
+L-PMC13634193	live	Behçet's disease	validated
+L-PMC13588111	live	Intracranial dermoid cyst	validated
+L-PMC13549600	live	Aplastic anemia	validated
+L-PMC13595072	live	Thymic carcinoma	validated
+L-PMC13387445	live	Adnexal torsion	validated
+L-PMC13490132	live	Invasive Klebsiella pneumoniae liver abscess syndrome	validated
+L-PMC13391426	live	Mycetoma	validated
+L-PMC13461132	live	Carotid-cavernous fistula	validated
+L-PMC13484617	live	Basal cell carcinoma	validated
+L-PMC13412468	live	Desmoid-type fibromatosis of the breast	validated
+L-PMC13540781	live	Cortical blindness	validated
+L-PMC13688335	live	Carney-Stratakis syndrome	validated
+L-PMC13566190	live	Classical Ehlers-Danlos syndrome	validated
+L-PMC13499649	live	Marburg variant of multiple sclerosis	validated
+L-PMC13683158	live	Takotsubo syndrome	validated
+L-PMC13520939	live	Diffuse large B-cell lymphoma	validated
+L-PMC13623916	live	Primary intestinal lymphangiectasia	validated
+L-PMC13335007	live	Tetanus	validated
+L-PMC13614255	live	Spontaneous coronary artery dissection	validated
+L-PMC13642278	live	22q11.2 deletion syndrome	pending
+L-PMC13572277	live	Ampullary adenocarcinoma	pending
+L-PMC13389258	live	Unroofed coronary sinus	pending
+L-PMC13434376	live	Allergic fungal sinusitis-like syndrome	pending
+L-PMC13664576	live	Mixed epithelial stromal tumour of the seminal vesicle	pending
+L-PMC13571270	live	Malignant peripheral nerve sheath tumor	pending
+L-PMC13664445	live	Congenital pericardial agenesis	pending
+L-PMC13459500	live	Daptomycin-induced eosinophilic pneumonia	pending
+L-PMC13613187	live	Schizophrenia	pending
+L-PMC13562374	live	Pneumomediastinum	pending
+L-PMC13626618	live	Eisenmenger's syndrome	pending
+L-PMC13368711	live	Cerebral fat embolism syndrome	pending
+L-PMC13382086	live	Acephate poisoning	pending
+L-PMC13607652	live	ENPP1 deficiency	pending
+L-PMC13688631	live	Cavernous hemangioma	pending
+L-PMC13370285	live	Momelotinib-induced peripheral neuropathy	pending
+L-PMC13686739	live	Small intestinal neuroendocrine tumor	pending
+L-PMC13532220	live	Chikungunya virus infection	pending
+L-PMC13651677	live	Erosive pustular dermatosis of the scalp	pending
+L-PMC13708058	live	Pulmonary alveolar proteinosis	pending
+L-PMC13429217	live	Ventriculitis	pending
+L-PMC13640457	live	Progressive encephalomyelitis with rigidity and myoclonus	pending
+L-PMC13334072	live	Secondary adrenal insufficiency	pending
+L-PMC13683063	live	Intrahepatic cholangiocarcinoma	pending
+L-PMC13394491	live	Tracheal laceration	pending
+L-PMC13481231	live	Odontogenic keratocyst	pending
+L-PMC13474394	live	Ischemic stroke	pending
+L-PMC13574603	live	Glycogen storage disease type VII	pending
+U-T1306	urg	Cerebral infarction	validated
+U-T1322	urg	Pneumonia	validated
+U-T469	urg	Intercostal neuritis	validated
+U-T458	urg	Cervical lymphadenitis	validated
+U-T1241	urg	Common cold	validated
+U-T1073	urg	Acute nasopharyngitis	validated
+U-T603	urg	Renal colic	validated
+U-T891	urg	Cellulitis	validated
+U-T592	urg	Intercostal muscle contracture	validated
+U-T541	urg	Migraine with aura	validated
+U-T612	urg	Acute pyelonephritis	validated
+U-T815	urg	Acute pharyngitis	validated
+U-T220	urg	Acute bronchiolitis	validated
+U-T247	urg	Cervical radiculopathy	validated
+U-T1234	urg	Acute otitis media	validated
+U-T798	urg	Biliary colic	validated
+U-T1381	urg	Acute prostatitis	validated
+U-T827	urg	Pelvic inflammatory disease	validated
+U-T335	urg	Acute bronchitis	validated
+U-T706	urg	Vasovagal syncope	validated
+U-T1179	urg	Chronic sinusitis	validated
+U-T339	urg	Psoriasis	validated
+U-T56	urg	Conjunctivitis	validated
+U-T46	urg	Anxiety attack	validated
+U-T844	urg	Superficial thrombophlebitis	validated
+U-T32	urg	Cervical adenitis	validated
+U-T417	urg	Gastroesophageal reflux disease	validated
+U-T310	urg	Acute pharyngotonsillitis	validated
+U-T499	urg	Infectious mononucleosis	validated
+U-T850	urg	Meniscal tear	validated
+U-T108	urg	Acute sinusitis	validated
+U-T99	urg	Influenza	validated
+U-T775	urg	Inguinal tendinitis	validated
+U-T908	urg	Viral pharyngitis	validated
+U-T709	urg	Supraventricular extrasystole	validated
+U-T395	urg	Cervicobrachial syndrome	validated
+U-T1327	urg	Complicated urinary tract infection	validated
+U-T613	urg	Ankle sprain	validated
+U-T476	urg	Benign prostatic hyperplasia	validated
+U-T450	urg	Traumatic conjunctival erosion	validated
+U-T135	urg	Gout	validated
+U-T403	urg	Occipital neuralgia	validated
+U-T591	urg	Urinary tract infection	pending
+U-T916	urg	Acute tracheitis	pending
+U-T45	urg	Costochondritis	pending
+U-T1123	urg	Acute viral pharyngitis	pending
+U-T409	urg	Mild laryngitis	pending
+U-T758	urg	Acute laryngitis	pending
+U-T814	urg	Bronchitis	pending
+U-T1174	urg	Right piriformis syndrome	pending
+U-T120	urg	Mild sinusitis	pending
+U-T39	urg	Left hand synovitis	pending
+U-T1382	urg	Acute pancreatitis	pending
+U-T1351	urg	Acute cholecystitis	pending
+U-T513	urg	Lumbar discopathy	pending
+U-T319	urg	Iliotibial band syndrome	pending
+U-T934	urg	Episcleritis	pending
+U-T358	urg	Tarsometatarsal tenosynovitis	pending
+U-T889	urg	Cervicogenic dizziness	pending
+U-T356	urg	Fibromyalgia	pending
+E-Q4564	exam	Sickle Cell Crisis	not_reviewed
+E-Q4614	exam	Uterine adenomyosis	not_reviewed
+E-Q2474	exam	Drug-induced myopathy	not_reviewed
+E-Q528	exam	Bacillus cereus food poisoning	not_reviewed
+E-Q1661	exam	Actinic keratosis	not_reviewed
+E-Q3125	exam	Duchenne muscular dystrophy	not_reviewed
+E-Q496	exam	Aortic valve stenosis	not_reviewed
+E-Q2974	exam	Chronic venous insufficiency	not_reviewed
+E-Q2366	exam	Toxic epidermal necrolysis	not_reviewed
+E-Q3303	exam	Acute decompensated heart failure	not_reviewed
+E-Q1005	exam	Adhesive capsulitis	not_reviewed
+E-Q2642	exam	Multiple myeloma	not_reviewed
+E-B64	exam	Vascular dementia	not_reviewed
+E-Q2924	exam	Hemolytic anemia due to G6PD deficiency	not_reviewed
+E-Q5147	exam	Pelvic inflammatory disease	not_reviewed
+E-B55	exam	Left ventricular hypertrophy	not_reviewed
+E-Q113	exam	Osteoarthritis	not_reviewed
+E-Q2113	exam	Autism spectrum disorder	not_reviewed
+E-Q2723	exam	Infectious mononucleosis	not_reviewed
+E-Q1875	exam	Bronchiectasis	not_reviewed
+E-Q5585	exam	Stress fracture of the fifth metatarsal	not_reviewed
+E-Q507	exam	Adenocarcinoma of the Lung	not_reviewed
+E-B1	exam	Parkinson disease	not_reviewed
+E-Q1495	exam	Seborrheic dermatitis	not_reviewed
+E-Q4600	exam	Abusive bruise	not_reviewed
+E-Q3007	exam	Esophageal perforation	not_reviewed
+E-Q5039	exam	Persistent depressive disorder	not_reviewed
+E-Q6705	exam	Acute rheumatic fever	not_reviewed
+E-Q1325	exam	Pertussis	not_reviewed
+E-B5	exam	Foreign body obstruction	not_reviewed
+E-Q6362	exam	Migraine without aura	not_reviewed
+E-Q3512	exam	Ehrlichiosis	not_reviewed
+E-Q5796	exam	Borderline personality disorder	not_reviewed
+E-Q3000	exam	Schizotypal Personality Disorder	not_reviewed
+E-Q2592	exam	Torus palatinus	not_reviewed
+E-Q5660	exam	Eosinophilic Granulomatosis with Polyangiitis	not_reviewed
+E-Q137	exam	Squamous cell carcinoma of the lip	not_reviewed
+E-Q292	exam	Sarcoidosis	not_reviewed
+E-Q6750	exam	Hyper-IgM syndrome	not_reviewed
+E-Q2735	exam	Non-tropical sprue	not_reviewed
+E-Q3772	exam	Disseminated Gonococcal Infection	not_reviewed
+E-Q1499	exam	Central line-associated bloodstream infection	not_reviewed
+E-Q4824	exam	Ornithine transcarbamylase deficiency	not_reviewed
+E-B76	exam	Stable angina	not_reviewed
+E-Q2701	exam	Chronic benign neutropenia	not_reviewed
+E-Q2105	exam	VIPoma	not_reviewed
+E-Q197	exam	Vaginal septum	not_reviewed
+E-Q3300	exam	Bipolar II Disorder	not_reviewed
+E-Q821	exam	Progressive multifocal leukoencephalopathy	not_reviewed
+E-Q4328	exam	Atheroembolism	not_reviewed
+E-Q6505	exam	Follicular lymphoma	not_reviewed
+E-Q3680	exam	Schizoid personality disorder	not_reviewed
+E-Q6448	exam	Pituitary apoplexy	not_reviewed
+E-Q6429	exam	Cor pulmonale	not_reviewed
+E-Q2899	exam	Primary polydipsia	not_reviewed
+E-Q6716	exam	Signet ring cell carcinoma	not_reviewed
+E-Q3986	exam	Dacryocystitis	not_reviewed
+E-Q811	exam	Myasthenia Gravis	not_reviewed
+E-Q5726	exam	Central cord syndrome	not_reviewed
+E-Q1394	exam	Glossopharyngeal neuralgia	not_reviewed
+Y-S74	synth	Post-transplant lymphoproliferative disorder	not_reviewed
+Y-S156	synth	Atopic Keratoconjunctivitis	not_reviewed
+Y-S40	synth	Hemorrhagic Fever with Renal Syndrome	not_reviewed
+Y-S152	synth	Mucopolysaccharidosis Type I	not_reviewed
+Y-S105	synth	Posterior Hypospadias	not_reviewed
+Y-S67	synth	Partial Atrioventricular Canal Defect	not_reviewed
+Y-S24	synth	Renal Cell Carcinoma	not_reviewed
+Y-S159	synth	Dentinogenesis Imperfecta	not_reviewed
+Y-S193	synth	Cystic Fibrosis	not_reviewed
+Y-S129	synth	Anal Fistula	not_reviewed
+Y-S178	synth	Hypermobile Ehlers-Danlos Syndrome	not_reviewed
+Y-S153	synth	Early-Onset Parkinson's Disease	not_reviewed
+Y-S88	synth	Esophageal Atresia	not_reviewed
+Y-S11	synth	Congenital bilateral absence of the vas deferens	not_reviewed
+Y-S34	synth	Uveitis	not_reviewed
+Y-S161	synth	Progressive Supranuclear Palsy	not_reviewed
+Y-S155	synth	Hereditary Cerebral Cavernous Malformation	not_reviewed
+Y-S17	synth	Preeclampsia	not_reviewed
+Y-S185	synth	Huntington's Disease	not_reviewed
+Y-S62	synth	Peripartum Cardiomyopathy	not_reviewed
+Y-S70	synth	Non-acquired combined pituitary hormone deficiency	not_reviewed
+Y-S98	synth	Congenital hypothyroidism	not_reviewed
+Y-S191	synth	Hemophilia A	not_reviewed
+Y-S7	synth	Pneumonia caused by Pseudomonas aeruginosa infection	not_reviewed
+Y-S113	synth	Alpha-1 Antitrypsin Deficiency	not_reviewed
+Y-S38	synth	Primary Congenital Hypothyroidism	not_reviewed
+Y-S164	synth	Primary Chronic Adrenal Insufficiency	not_reviewed
+Y-S80	synth	Alopecia Universalis	not_reviewed
+Y-S52	synth	Congenital Toxoplasmosis	not_reviewed
+Y-S139	synth	X-linked Recessive Ichthyosis	not_reviewed

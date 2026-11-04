@@ -1,0 +1,731 @@
+# Decisiones de la validación clínica de narrative_v2 (tarea 1) para la v0.2.
+# Revisión: David Isla, hoja entregada el 4-nov-2026; revisada y aplicada el mismo día.
+# Las aplica build_dataset.py --decisions. Sin texto de casos: los cortes de texto
+# (fugas, anonimización y limpieza) están en work/text_edits_v0.2.json, fuera de git.
+#
+# decision: keep | exclude. reason: leak | not_diagnosable | unreliable_gold.
+# principal, accepted_names, rare, secondary: valores nuevos (solo si cambian).
+# text: leak_removed | anonymized | cleaned.
+version: '0.2'
+reviewer: David Isla
+reviewed: '2026-11-04'
+rules:
+  leak: hay fuga si el texto nombra el diagnóstico o da un resultado que por sí solo lo establece (biopsia, citología,
+    cultivo, serología, prueba confirmatoria, mutación); no la hay si son hallazgos de laboratorio o imagen que
+    hay que interpretar
+  leak_fix: si la fuga son una o pocas frases que se pueden quitar sin perder el caso, se quitan; si no, se excluye
+  not_diagnosable: se excluye
+  rare: Orphanet o prevalencia < 1/2.000; intoxicaciones, reacciones a fármacos, lesiones y complicaciones de procedimientos
+    no cuentan como raras salvo que Orphanet las recoja
+  duplicates: un caso por diagnóstico principal también después de corregir el gold (build_dataset.py)
+cases:
+  L-PMC13634659:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13630382:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13459778:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13640235:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13477540:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13331383:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13623899:
+    decision: keep
+  L-PMC13576722:
+    decision: keep
+    accepted_names:
+    - Radionecrosis of the brainstem
+    text:
+    - leak_removed
+  L-PMC13364497:
+    decision: exclude
+    reason: leak
+  L-PMC13691139:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13678326:
+    decision: keep
+    rare: false
+    text:
+    - leak_removed
+  L-PMC13529087:
+    decision: keep
+  L-PMC13407302:
+    decision: keep
+  L-PMC13668423:
+    decision: exclude
+    reason: leak
+  L-PMC13389709:
+    decision: keep
+  L-PMC13639508:
+    decision: keep
+    principal: Pancreatic neuroendocrine tumor
+    accepted_names:
+    - PanNET
+    text:
+    - leak_removed
+  L-PMC13581743:
+    decision: keep
+    accepted_names: []
+  L-PMC13696295:
+    decision: keep
+  L-PMC13347962:
+    decision: keep
+    rare: false
+  L-PMC13585455:
+    decision: keep
+    principal: Primary adrenal lymphoma
+    accepted_names: []
+  L-PMC13381456:
+    decision: keep
+  L-PMC13544844:
+    decision: keep
+  L-PMC13588563:
+    decision: keep
+  L-PMC13375274:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13657579:
+    decision: keep
+    accepted_names: []
+    rare: false
+  L-PMC13527473:
+    decision: keep
+  L-PMC13422329:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13652573:
+    decision: keep
+  L-PMC13499017:
+    decision: keep
+  L-PMC13565770:
+    decision: keep
+  L-PMC13451555:
+    decision: keep
+    accepted_names: []
+  L-PMC13688359:
+    decision: exclude
+    reason: leak
+  L-PMC13597749:
+    decision: exclude
+    reason: leak
+  L-PMC13605063:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13425088:
+    decision: keep
+  L-PMC13322919:
+    decision: exclude
+    reason: leak
+  L-PMC13586463:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13354413:
+    decision: keep
+    accepted_names:
+    - CDF
+  L-PMC13361867:
+    decision: keep
+  L-PMC13647891:
+    decision: keep
+  L-PMC13653543:
+    decision: keep
+  L-PMC13496488:
+    decision: keep
+  L-PMC13436859:
+    decision: keep
+  L-PMC13398212:
+    decision: exclude
+    reason: leak
+  L-PMC13385695:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13691148:
+    decision: keep
+  L-PMC13367599:
+    decision: keep
+  L-PMC13412247:
+    decision: keep
+  L-PMC13620278:
+    decision: keep
+  L-PMC13398406:
+    decision: keep
+  L-PMC13460692:
+    decision: keep
+  L-PMC13555724:
+    decision: keep
+    rare: true
+  L-PMC13661086:
+    decision: keep
+  L-PMC13380897:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13328977:
+    decision: keep
+    accepted_names:
+    - Spinal intradural hemorrhage
+    - SIDH
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13535286:
+    decision: keep
+  L-PMC13605535:
+    decision: keep
+    principal: Foreign body granuloma
+    accepted_names: []
+  L-PMC13582182:
+    decision: keep
+  L-PMC13694122:
+    decision: keep
+    accepted_names:
+    - T1DM
+    - Insulin-dependent diabetes mellitus
+    - IDDM
+    - Juvenile diabetes
+  L-PMC13552032:
+    decision: keep
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13605741:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13447501:
+    decision: keep
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13453567:
+    decision: keep
+  L-PMC13632872:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13651052:
+    decision: keep
+    accepted_names: []
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13456877:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13649838:
+    decision: exclude
+    reason: not_diagnosable
+    note: 'título: histiocitosis de células de Langerhans'
+  L-PMC13383160:
+    decision: keep
+  L-PMC13477162:
+    decision: keep
+    rare: true
+  L-PMC13496496:
+    decision: keep
+  L-PMC13657612:
+    decision: keep
+    accepted_names: []
+  L-PMC13367200:
+    decision: keep
+    rare: false
+  L-PMC13464723:
+    decision: keep
+  L-PMC13348465:
+    decision: keep
+    accepted_names: []
+  L-PMC13551701:
+    decision: keep
+    accepted_names: []
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+    text:
+    - leak_removed
+  L-PMC13391281:
+    decision: exclude
+    reason: leak
+  L-PMC13414995:
+    decision: keep
+  L-PMC13461075:
+    decision: keep
+    accepted_names: []
+  L-PMC13435588:
+    decision: keep
+  L-PMC13454894:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13402363:
+    decision: keep
+  L-PMC13634195:
+    decision: keep
+    rare: true
+  L-PMC13316698:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13546065:
+    decision: keep
+    accepted_names: []
+    text:
+    - leak_removed
+  L-PMC13600029:
+    decision: keep
+  L-PMC13461627:
+    decision: keep
+    accepted_names: []
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13408840:
+    decision: keep
+    accepted_names:
+    - Senile systemic amyloidosis
+    - ATTRwt amyloidosis
+  L-PMC13696143:
+    decision: keep
+  L-PMC13609167:
+    decision: keep
+    accepted_names:
+    - Adie's pupil
+    text:
+    - leak_removed
+  L-PMC13332505:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13441454:
+    decision: keep
+  L-PMC13500259:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13511275:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13456991:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13443200:
+    decision: keep
+  L-PMC13475527:
+    decision: keep
+    accepted_names: []
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13588688:
+    decision: keep
+  L-PMC13664193:
+    decision: keep
+  L-PMC13623582:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13336340:
+    decision: keep
+    accepted_names: []
+  L-PMC13461623:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13451738:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13610748:
+    decision: keep
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13591806:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13448005:
+    decision: keep
+    principal: Cervical schwannoma
+    accepted_names: []
+    note: 'título: schwannoma del nervio laríngeo superior; el nervio de origen solo se ve en cirugía'
+  L-PMC13541454:
+    decision: keep
+    accepted_names:
+    - Angiosarcoma of the spleen
+    text:
+    - leak_removed
+  L-PMC13336542:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13461744:
+    decision: exclude
+    reason: leak
+  L-PMC13496492:
+    decision: keep
+    rare: false
+  L-PMC13392320:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13355527:
+    decision: keep
+    principal: Drug-induced interstitial nephritis
+    accepted_names: []
+  L-PMC13634653:
+    decision: keep
+  L-PMC13461052:
+    decision: keep
+    accepted_names: []
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera
+      de Orphanet'
+  L-PMC13493110:
+    decision: keep
+  L-PMC13442605:
+    decision: keep
+    rare: false
+  L-PMC13621270:
+    decision: keep
+  L-PMC13481352:
+    decision: keep
+  L-PMC13541744:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13693111:
+    decision: keep
+  L-PMC13510912:
+    decision: keep
+    principal: von Willebrand disease
+    accepted_names: []
+  L-PMC13525268:
+    decision: keep
+    accepted_names:
+    - EMP
+  L-PMC13579281:
+    decision: keep
+  L-PMC13599191:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13679821:
+    decision: keep
+    accepted_names:
+    - Gallbladder volvulus
+  L-PMC13387059:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13322694:
+    decision: keep
+    accepted_names:
+    - t-AML
+    - Treatment-related acute myeloid leukemia
+    text:
+    - leak_removed
+  L-PMC13616667:
+    decision: keep
+    accepted_names:
+    - Non-Sjögren's ADDE
+  L-PMC13634193:
+    decision: keep
+  L-PMC13588111:
+    decision: keep
+    accepted_names: []
+  L-PMC13549600:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13595072:
+    decision: keep
+  L-PMC13387445:
+    decision: keep
+    accepted_names: []
+    rare: false
+  L-PMC13490132:
+    decision: keep
+    text:
+    - leak_removed
+  L-PMC13391426:
+    decision: keep
+    principal: Mycetoma
+    accepted_names:
+    - Actinomycetoma
+  L-PMC13461132:
+    decision: keep
+  L-PMC13440813:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13484617:
+    decision: keep
+    accepted_names:
+    - BCC
+    - Basal cell epithelioma
+    text:
+    - leak_removed
+  L-PMC13543876:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13412468:
+    decision: keep
+  L-PMC13540781:
+    decision: keep
+    principal: Cortical blindness
+    accepted_names:
+    - Cerebral blindness
+    - Cortical visual loss
+    note: 'título: ceguera cortical bilateral'
+  L-PMC13688335:
+    decision: keep
+    accepted_names:
+    - CSS
+    - Paraganglioma and gastric stromal sarcoma dyad
+  L-PMC13566190:
+    decision: keep
+  L-PMC13499649:
+    decision: keep
+    accepted_names: []
+  L-PMC13552804:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13683158:
+    decision: keep
+    principal: Takotsubo syndrome
+    accepted_names:
+    - Takotsubo cardiomyopathy
+    - Stress cardiomyopathy
+    - Apical ballooning syndrome
+    rare: true
+    note: 'fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea). Takotsubo: ORPHA:66529'
+  L-PMC13520939:
+    decision: keep
+    accepted_names: []
+    rare: true
+  L-PMC13623916:
+    decision: keep
+  L-PMC13335007:
+    decision: keep
+  L-PMC13317807:
+    decision: exclude
+    reason: not_diagnosable
+  L-PMC13614255:
+    decision: keep
+  U-T1306:
+    decision: keep
+    accepted_names:
+    - Ischemic stroke
+    text:
+    - anonymized
+  U-T1322:
+    decision: keep
+  U-T1057:
+    decision: exclude
+    reason: unreliable_gold
+    note: el gold es un signo (broncoespasmo); la corrección sería una reinterpretación
+  U-T469:
+    decision: keep
+  U-T458:
+    decision: keep
+    principal: Cervical lymphadenitis
+    accepted_names:
+    - Acute cervical lymphadenitis
+  U-T1241:
+    decision: keep
+    secondary: []
+  U-T1292:
+    decision: exclude
+    reason: unreliable_gold
+    note: el gold es un síndrome (insuficiencia respiratoria) y la PaO2 no lo cumple; sin sustituto
+  U-T1073:
+    decision: keep
+    accepted_names:
+    - Common cold
+    secondary: []
+  U-T603:
+    decision: keep
+  U-T1380:
+    decision: keep
+    principal: Pneumonia
+    accepted_names: []
+  U-T891:
+    decision: keep
+    principal: Cellulitis
+    accepted_names: []
+    text:
+    - anonymized
+  U-T570:
+    decision: exclude
+    reason: not_diagnosable
+  U-T592:
+    decision: keep
+    accepted_names: []
+  U-T541:
+    decision: keep
+  U-T612:
+    decision: keep
+    principal: Acute pyelonephritis
+    accepted_names: []
+  U-T629:
+    decision: exclude
+    reason: unreliable_gold
+    note: gold amplio con informe «probable»; la corrección sería una suposición
+  U-T815:
+    decision: keep
+  U-T220:
+    decision: keep
+    principal: Acute bronchiolitis
+    accepted_names:
+    - Bronchiolitis
+  U-T247:
+    decision: keep
+    principal: Cervical radiculopathy
+    accepted_names: []
+  U-T1234:
+    decision: keep
+    principal: Acute otitis media
+    accepted_names:
+    - AOM
+    secondary: []
+  U-T849:
+    decision: exclude
+    reason: unreliable_gold
+    note: gold amplio; el revisor duda entre bronquitis aguda y neumonía
+  U-T798:
+    decision: keep
+  U-T1381:
+    decision: keep
+    text:
+    - anonymized
+  U-T827:
+    decision: keep
+    text:
+    - anonymized
+  U-T335:
+    decision: keep
+    principal: Acute bronchitis
+    accepted_names: []
+    secondary: []
+  U-T81:
+    decision: exclude
+    reason: not_diagnosable
+  U-T740:
+    decision: exclude
+    reason: not_diagnosable
+  U-T706:
+    decision: keep
+    accepted_names:
+    - Neurocardiogenic syncope
+  U-T950:
+    decision: keep
+    principal: Acute otitis media
+    accepted_names:
+    - AOM
+  U-T285:
+    decision: keep
+    principal: Intercostal neuritis
+    accepted_names:
+    - Intercostal neuralgia
+  U-T965:
+    decision: keep
+    principal: Cellulitis
+    accepted_names: []
+  U-T1179:
+    decision: keep
+    accepted_names:
+    - Chronic rhinosinusitis
+  U-T339:
+    decision: keep
+  U-T56:
+    decision: keep
+  U-T46:
+    decision: keep
+    principal: Anxiety attack
+    accepted_names:
+    - Acute anxiety crisis
+    - Panic attack
+  U-T844:
+    decision: keep
+  U-T527:
+    decision: exclude
+    reason: leak
+  U-T32:
+    decision: keep
+  U-T156:
+    decision: keep
+    principal: Acute bronchiolitis
+    accepted_names: []
+  U-T417:
+    decision: keep
+    accepted_names:
+    - GERD
+    - Gastro-oesophageal reflux disease
+  U-T310:
+    decision: keep
+    secondary: []
+  U-T836:
+    decision: keep
+    principal: Acute otitis media
+    accepted_names: []
+  U-T1091:
+    decision: exclude
+    reason: unreliable_gold
+    note: el gold es un signo (broncoespasmo leve); la corrección sería una reinterpretación
+  U-T499:
+    decision: keep
+  U-T850:
+    decision: keep
+    principal: Meniscal tear
+    accepted_names:
+    - Meniscal lesion
+  U-T108:
+    decision: keep
+  U-T99:
+    decision: keep
+  U-T421:
+    decision: keep
+    accepted_names: []
+  U-T775:
+    decision: keep
+  U-T1055:
+    decision: exclude
+    reason: not_diagnosable
+  U-T908:
+    decision: keep
+    accepted_names: []
+  U-T709:
+    decision: keep
+  U-T395:
+    decision: keep
+    accepted_names:
+    - Cervicobrachial neuralgia
+  U-T805:
+    decision: exclude
+    reason: not_diagnosable
+  U-T1327:
+    decision: keep
+    principal: Complicated urinary tract infection
+    accepted_names:
+    - Catheter-associated urinary tract infection
+  U-T613:
+    decision: keep
+    principal: Ankle sprain
+    accepted_names:
+    - Sprained ankle
+    secondary:
+    - Traumatic synovitis of the knee
+    text:
+    - cleaned
+  U-T476:
+    decision: keep
+    accepted_names:
+    - BPH
+    - Benign prostatic hypertrophy
+  U-T450:
+    decision: keep
+    secondary:
+    - Conjunctival hemorrhage
+  U-T135:
+    decision: keep
+    principal: Gout
+    accepted_names:
+    - Gouty arthritis
+  U-T403:
+    decision: keep
+    accepted_names:
+    - Arnold's neuralgia

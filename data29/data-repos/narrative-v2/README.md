@@ -111,7 +111,8 @@ es Gemini 2.5 Pro.
      («viral illness», «… pain»);
    - un caso por diagnóstico y un máximo del 15 % por especialidad;
    - selección estable por caso (hash del identificador), para que excluir
-     uno no reordene los demás.
+     uno no reordene los demás;
+   - con `--decisions`, aplica la validación clínica (ver «Versión 0.2»).
 
 `leakage.py` es el control de fuga compartido. La fuga dura (el nombre, una
 abreviatura, un epónimo o una palabra de enfermedad como «-osis» o «-itis»)
@@ -146,6 +147,68 @@ Pendiente antes de publicarlo como línea base: la validación clínica de los
 público y la hoja contiene el texto completo de los casos de urgencias, que son
 confidenciales, y extractos de artículos. Se comparte con David por un canal
 privado y al repo solo vuelven sus decisiones, sin texto de casos.
+
+## Versión 0.2 (4-nov-2026)
+
+Aplica la validación clínica de David (tarea 1) a los 210 casos `live` y `urg`.
+Las decisiones están en `decisions_v0.2.yaml` (versionado, sin texto de
+casos); los cortes de texto, en `work/text_edits_v0.2.json` (fuera de git).
+
+```
+py build_dataset.py --version 0.2 --decisions decisions_v0.2.yaml --text-edits work/text_edits_v0.2.json
+```
+
+| | `live` | `urg` |
+|---|---:|---:|
+| Casos de la v0.1 | 150 | 60 |
+| Excluidos por fuga | 8 | 1 |
+| Excluidos por no ser diagnosticables | 20 | 5 |
+| Excluidos por gold poco firme (un signo o una categoría amplia) | — | 5 |
+| Fuera por gold repetido tras la corrección | — | 7 |
+| **Validados en la v0.2** | **122** | **42** |
+| De la reserva, pendientes de validar | 28 | 18 |
+
+`exam` y `synth` no cambian. Los casos reales quedan en 112 raros y 98 no raros
+(entre los validados, 91 y 73).
+
+Cambios en los casos validados:
+
+- **Gold corregido en 21**: sin lateralidad, gravedad ni el subtipo que solo
+  da la biopsia, o con la entidad en lugar de un signo. Tres los resuelve el
+  título del artículo (takotsubo, ceguera cortical, schwannoma del laríngeo
+  superior, que queda como «Cervical schwannoma» porque el nervio de origen
+  solo se ve en cirugía).
+- **Nombres aceptados** cambiados en 61, casi siempre quitando términos más
+  amplios o más estrechos.
+- **Fuga:** 22 casos se mantienen quitando la frase que da el diagnóstico
+  (biopsia, cultivo, serología, prueba confirmatoria). Otros 6 que David marcó
+  por un dato de laboratorio o de imagen que hay que interpretar se dejan como
+  estaban: según la regla del dataset, eso no es fuga.
+- **Rara:** 12 etiquetas cambian. Las intoxicaciones, las reacciones a
+  fármacos, las lesiones y las complicaciones de procedimientos no cuentan como
+  raras, salvo que Orphanet las recoja (el takotsubo sí: ORPHA:66529).
+- **Secundarios** de `urg`: 7 cambian (se quitan signos y diagnósticos sin
+  apoyo en el texto, y uno que la anamnesis ya nombraba).
+
+Cambios en la construcción:
+
+- **Anonimización de `urg`.** `build_dataset.py` quita de todos los casos
+  `urg`, incluida la reserva, la cabecera administrativa de los informes de
+  laboratorio, los nombres de especialistas consultados y las firmas.
+- **Reserva:** además de los inespecíficos, se descartan los gold que son un
+  signo o una categoría amplia («Bronchospasm», «Respiratory infection»), con la
+  misma regla de la validación.
+- **Los validados se eligen primero**; los huecos se llenan con la reserva en
+  el orden estable de siempre.
+- `curated-datasets/narrative_v2/narrative_v2.v0.1.json` (y la copia de
+  `bench/datasets/`) guarda la v0.1, anonimizada, para las ejecuciones
+  antiguas.
+
+Pendiente: que David valide los 46 casos de reserva
+(`curated-datasets/narrative_v2/validacion_clinica_reserva.md`, fuera de git)
+y volver a puntuar los modelos. Las listas de los 164 casos validados se
+reutilizan (`REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`); los 46 nuevos
+necesitan inferencia. Las cifras de contaminación de abajo son de la v0.1.
 
 ## Primera línea base: Terra low (28-oct-2026)
 
@@ -183,8 +246,10 @@ En `live`+`urg`, R@1 va de 41,9 % (gpt-5.4-mini) a 58,1 % (gpt-6.1-sol).
 ## Validación clínica
 
 Antes de publicarse como línea base, David revisa cada caso de `live` y `urg`:
-diagnóstico principal, nombres aceptados, fuga y si el caso es diagnosticable.
-La hoja la genera `build_dataset.py`.
+diagnóstico principal, nombres aceptados, fuga, si el caso es diagnosticable y
+si es raro. La hoja la genera `build_dataset.py`: la de la v0.1 con los 210
+casos, y con `--decisions` solo la de los casos de reserva que faltan. Hecho
+con la v0.1 el 4-nov-2026 (ver «Versión 0.2»).
 
 ## Contaminación
 

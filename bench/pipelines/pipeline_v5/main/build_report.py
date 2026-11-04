@@ -37,7 +37,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 EVAL_ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..', '..'))
 OUTPUT_ROOT = os.path.join(HERE, 'output')
 NARRATIVE_DIR = os.path.join(OUTPUT_ROOT, 'narrative_v2', 'juanjo_classic_v2')
-NARRATIVE_V2 = os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.json')
+# The published v0.1 sections read the v0.1 copy; the v0.2 section reads the current dataset
+NARRATIVE_V2 = os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.v0.1.json')
+NARRATIVE_V2_CURRENT = os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.json')
 NARRATIVE_TOOLS = os.path.join(EVAL_ROOT, 'data29', 'data-repos', 'narrative-v2')
 JUDGE_AUDIT = os.path.join(EVAL_ROOT, 'bench', 'multimodal_beta', 'outputs', 'judge_audit')
 BASELINE = 'terra56'
@@ -114,6 +116,10 @@ SERMAS_PROMPT = 'sermas_rare'
 # Same narrative_v2 lists graded with graded_v3 (Julián's point 6) and one grade per repeated option
 GRADED_V3_TAG = '__graded_v3'
 GRADED_V3_EXAMPLE = ('L-PMC13354413', 'terra56')
+# Same lists scored against the narrative_v2 v0.2 gold (David's validation, 4-nov-2026), graded_v3
+V02_TAGS = {'flash': '__v0_2_judge_gemini_3_8_flash_graded_v3', 'pro': '__v0_2_judge_gemini_2_5_pro_graded_v3',
+            'opus': '__v0_2_judge_claude_opus_5_5_graded_v3'}
+V02_JUDGES = {'flash': 'Gemini 3.8 Flash', 'pro': 'Gemini 2.5 Pro', 'opus': 'Claude Opus 5.5'}
 # Same lists graded with graded_v3 by Gemini 3.8 Flash: the bridge before Google retires 2.5 Pro on 1-dec-2026
 FLASH_V3_TAG = '__judge_gemini_3_8_flash_graded_v3'
 # Claude Opus 5 on the four smaller HPO v2 datasets, same prompt and judge (Gemini 2.5 Pro) as Sol and Terra
@@ -572,6 +578,64 @@ def medreamm():
     return result
 
 
+def narrative_v02():
+    """The six models on the validated real cases of narrative_v2 v0.2: same lists, v0.2 gold, graded_v3."""
+    if not os.path.exists(NARRATIVE_V2_CURRENT):
+        return None
+    with open(NARRATIVE_V2_CURRENT, 'r', encoding='utf-8') as f:
+        dataset = {c['id']: c for c in json.load(f)}
+    validated = [i for i, c in dataset.items() if c['metadata'].get('validation', {}).get('status') == 'validated']
+    if not validated:
+        return None
+    with open(os.path.join(NARRATIVE_TOOLS, 'decisions_v0.2.yaml'), 'r', encoding='utf-8') as f:
+        decisions = yaml.safe_load(f)['cases']
+    leak_cut = {i for i in validated if 'leak_removed' in decisions.get(i, {}).get('text', [])}
+    groups = {'realcases': validated,
+              'realRare': [i for i in validated if dataset[i]['metadata']['rare_disease']],
+              'realCommon': [i for i in validated if not dataset[i]['metadata']['rare_disease']],
+              'noLeakCut': [i for i in validated if i not in leak_cut]}
+
+    def run_positions(folder, tag, root=NARRATIVE_DIR):
+        for name in (folder + tag, folder.replace('_low', '') + tag):
+            run = finished_run(os.path.join(root, name))
+            if run:
+                details = load_details(os.path.join(run, 'evaluation_details.txt'))
+                with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
+                    cost = json.load(f)['judge'].get('estimated_cost_usd') or 0
+                return {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()}, details, cost
+        return None, None, 0
+
+    models, pos, details, cost = [], {}, {}, collections.Counter()
+    for mid, folder, _, name, color in MODELS:
+        for judge, tag in {**V02_TAGS, 'v01': FLASH_V3_TAG}.items():
+            pos[(mid, judge)], details[(mid, judge)], c = run_positions(folder, tag)
+            cost[judge] += c
+        if any(pos[(mid, j)] is None for j in (*V02_TAGS, 'v01')):
+            return None
+        flash = pos[(mid, 'flash')]
+        models.append({'id': mid, 'name': name, 'color': color,
+                       'groups': {key: {'n': len(ids), 'v02': metrics([flash[i] for i in ids]),
+                                        'v01': metrics([pos[(mid, 'v01')][i] for i in ids]),
+                                        'r1': paired(flash, pos[(mid, 'v01')], ids, 1)} for key, ids in groups.items()},
+                       'r1ByJudge': {j: metrics([pos[(mid, j)][i] for i in validated])['r1'] for j in V02_TAGS}})
+    result = {'n': len(validated), 'pending': sum(1 for c in dataset.values() if c['metadata'].get('validation', {}).get('status') == 'pending'),
+              'leakCut': len(leak_cut), 'models': models, 'cost': {j: round(cost[j], 2) for j in V02_TAGS},
+              'rare': len(groups['realRare']), 'common': len(groups['realCommon'])}
+    result['agreement'] = {f'{a}/{b}': compare_judges.summarize([compare_judges.agreement(details[(m['id'], a)], details[(m['id'], b)], validated)
+                                                                  for m in models])
+                           for a, b in (('flash', 'pro'), ('flash', 'opus'), ('pro', 'opus'))}
+    sol, terra = {}, {}
+    for mid, folder, store in (('sol61', 'gpt_6_1_sol_low_translated_en', sol), ('terra56', 'gpt_5_6_terra_low_translated_en', terra)):
+        store['runs'] = [pos[(mid, 'flash')], run_positions(folder, '__rerun2_' + V02_TAGS['flash'].lstrip('_'))[0]]
+        store['n5'] = run_positions(folder, V02_TAGS['flash'], NARRATIVE_DIR + '_n5')[0]
+    if all(sol['runs']) and all(terra['runs']):
+        result['solTerra'] = {key: pooled_sign_test(sol['runs'], terra['runs'], ids) for key, ids in groups.items()}
+    if sol['n5'] and terra['n5']:
+        result['solTerraN5'] = {key: {**paired(sol['n5'], terra['n5'], ids, 1), 'a': metrics([sol['n5'][i] for i in ids])['r1'],
+                                      'b': metrics([terra['n5'][i] for i in ids])['r1']} for key, ids in groups.items()}
+    return result
+
+
 def hpo_sermas():
     """Sol and Terra with the sermas prompt against juanjo_classic_v2 on the same HPO v2 cases, Flash judge on both."""
     prompts = ('juanjo_classic_v2', SERMAS_PROMPT)
@@ -851,12 +915,13 @@ def collect():
     data['hpoSyn'] = hpo_syn()
     data['hpoOpus'] = hpo_opus()
     data['hpoSermas'] = hpo_sermas()
-    judges = compare_judges.compare(JUDGE_CANDIDATES)
+    judges = compare_judges.compare(JUDGE_CANDIDATES, NARRATIVE_V2)
     if judges:
         judges['colors'] = {name: color for (_, name), (*_, color) in zip(compare_judges.MODELS, MODELS)}
     data['judges'] = judges
     data['gradedV3'] = graded_v3(dataset)
     data['judgeBridge'] = judge_bridge(dataset)
+    data['v02'] = narrative_v02()
 
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
@@ -1682,6 +1747,88 @@ def medreamm_section(data):
 '''
 
 
+def v02_section(data):
+    s = data.get('v02')
+    if not s:
+        return ''
+    by = {m['id']: m for m in s['models']}
+    order = sorted(s['models'], key=lambda m: -m['groups']['realcases']['v02']['r1'])
+    rows = '\n'.join(
+        f'<tr><td><span class="dot" style="background:{m["color"]}"></span> {m["name"].replace(" low", "")}</td>'
+        + ''.join(f'<td>{pct(m["groups"][k]["v02"]["r1"])}</td>' for k in ('realcases', 'realRare', 'realCommon'))
+        + f'<td>{pct(m["groups"]["realcases"]["v02"]["r5"])}</td><td>{pct(m["groups"]["noLeakCut"]["v02"]["r1"])}</td>'
+        + f'<td>{pct(m["groups"]["realcases"]["v01"]["r1"])}</td>'
+        + ''.join(f'<td>{pct(m["r1ByJudge"][j])}</td>' for j in ('pro', 'opus')) + '</tr>' for m in order)
+    labels = {'realcases': f'Casos reales validados ({s["n"]})', 'realRare': f'Raras ({s["rare"]})', 'realCommon': f'No raras ({s["common"]})',
+              'noLeakCut': f'Sin los {s["leakCut"]} con la fuga recortada ({s["n"] - s["leakCut"]})'}
+    st, n5 = s.get('solTerra'), s.get('solTerraN5')
+    sol_rows = '\n'.join(
+        f'<tr><td>{labels[k]}</td><td>{pct(st[k]["a"])}</td><td>{pct(st[k]["b"])}</td><td>{st[k]["wins"]} / {st[k]["losses"]}</td>'
+        f'<td>{p_value(st[k]["p"])}</td>'
+        + (f'<td>{pct(n5[k]["a"])}</td><td>{pct(n5[k]["b"])}</td><td>{n5[k]["wins"]} / {n5[k]["losses"]}</td><td>{p_value(n5[k]["p"])}</td>' if n5 else '')
+        + '</tr>' for k in labels) if st else ''
+    agree_rows = '\n'.join(
+        f'<tr><td>{V02_JUDGES[pair.split("/")[0]]} / {V02_JUDGES[pair.split("/")[1]]}</td><td>{pct(a["sameP1"])}</td><td>{pct(a["same2"])}</td>'
+        f'<td>{num(a["kappa2"], 2)}</td></tr>' for pair, a in s['agreement'].items())
+    up = [m for m in s['models'] if m['groups']['realcases']['v02']['r1'] > m['groups']['realcases']['v01']['r1']]
+    sig = [m['name'] for m in s['models'] if m['groups']['realcases']['r1']['p'] < 0.05]
+    sol_text = (f' <strong>Sol sigue por delante de Terra 5.6</strong> con las dos ejecuciones de cada uno: {pct(st["realcases"]["a"])} frente a '
+                f'{pct(st["realcases"]["b"])} en casos reales ({p_text(st["realcases"]["p"])}), {pct(st["realRare"]["a"])} frente a '
+                f'{pct(st["realRare"]["b"])} en raras ({p_text(st["realRare"]["p"])}) y {pct(st["realCommon"]["a"])} frente a '
+                f'{pct(st["realCommon"]["b"])} en no raras ({p_text(st["realCommon"]["p"])}).') if st else ''
+    fa, fo = s['agreement']['flash/pro'], s['agreement']['flash/opus']
+    return f'''
+  <div class="section">
+    <div class="section-title"><code>narrative_v2</code> v0.2 · primera puntuación con el gold validado (provisional)</div>
+    <div class="callout callout-info">
+      David validó los 210 casos reales el 4-nov. Con sus decisiones sale la v0.2, que tiene {s["n"]} casos reales validados
+      ({s["rare"]} raras y {s["common"]} no raras) y {s["pending"]} de reserva por validar. Aquí se puntúan con el gold nuevo las
+      mismas listas de los seis modelos, con <code>graded_v3</code>. Los casos de reserva no entran, porque aún no tienen lista.
+      Corregir el gold sube el R@1 de {"todos los modelos" if len(up) == len(s["models"]) else f"{len(up)} de los {len(s['models'])} modelos"}, entre 1 y 4 puntos,
+      {"sin diferencia significativa en ninguno" if not sig else "con diferencia significativa en " + ", ".join(sig)}, y no cambia el orden.{sol_text}
+      <br>Es provisional: en {s["leakCut"]} casos se recortó la frase que daba el diagnóstico, y sus listas se hicieron con el texto anterior.
+      Sin ellos, todos los modelos bajan unos 2–4 puntos. La línea base oficial necesita listas nuevas para esos casos y para los de reserva.
+    </div>
+{chart_panel('v02', 'R@1 con el gold de la v0.1 y con el de la v0.2, mismas listas y casos',
+             'Punto hueco: gold de la v0.1; punto lleno: gold validado de la v0.2. Juez Gemini 3.8 Flash con <code>graded_v3</code>.',
+             [legend_dot('#475569', 'Gold v0.1', True), legend_dot('#475569', 'Gold v0.2')],
+             [('tabs', [('realcases', 'Casos reales'), ('realRare', 'Raras'), ('realCommon', 'No raras')])])}
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>R@1 reales</th><th>R@1 raras</th><th>R@1 no raras</th><th>R@5 reales</th>
+        <th>R@1 sin recortados</th><th>R@1 con gold v0.1</th><th>R@1 con Pro</th><th>R@1 con Opus 5.5</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <h3>gpt-6.1-sol frente a Terra 5.6</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Grupo</th><th>Sol, dos runs</th><th>Terra, dos runs</th><th>Gana / pierde</th><th>p</th>
+        <th>Sol «5»</th><th>Terra «5»</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{sol_rows}
+      </tbody>
+    </table>
+    </div>
+    <h3>Los tres jueces sobre las mismas listas</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Jueces</th><th>Mismo acierto en P1</th><th>Mismo «¿es un 2?»</th><th>Kappa</th></tr></thead>
+      <tbody>
+{agree_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Juez de referencia: Gemini 3.8 Flash. Con Flash, Opus 5.5 coincide en «¿es un 2?» en el {pct(fo["same2"])} de las opciones y Pro en
+      el {pct(fa["same2"])}. Coste de esta puntuación: Flash ≈ {num(s["cost"]["flash"], 2)} $, Pro ≈ {num(s["cost"]["pro"], 2)} $ y Opus 5.5
+      ≈ {num(s["cost"]["opus"], 2)} $ (Flash y Pro reutilizan las notas de los gold que no cambian). Dos runs: test de signos sobre los aciertos
+      de cada caso en los dos runs de cada modelo. «5»: McNemar exacto. La hoja de la tarea 2 de David sale de estas notas.</p>
+  </div>
+'''
+
+
 def effort_section(data):
     effort = data.get('effort')
     if not effort:
@@ -2091,6 +2238,7 @@ def build_html(data):
     </div>
   </div>
 
+{v02_section(data)}
 {rerun_section(data)}
   <div class="section">
     <div class="section-title">Contaminación · ¿pudo ver el modelo los casos <code>live</code>?</div>
@@ -2727,6 +2875,25 @@ CHART_JS = r'''
     });
   }
 
+  // narrative_v2: v0.1 gold vs v0.2 gold on the same lists
+  var v02G = 'realcases';
+  function renderV02() {
+    var s = DATA.v02;
+    if (!s) return;
+    var rows = s.models.slice().sort(function (a, b) { return b.groups[v02G].v02.r1 - a.groups[v02G].v02.r1; }).map(function (m) {
+      var g = m.groups[v02G];
+      return { label: m.name.replace(' low', ''), line: m.color, src: g, model: m.name,
+               points: [{ value: g.v01.r1, color: m.color, hollow: true }, { value: g.v02.r1, color: m.color }] };
+    });
+    renderDots('v02-svg', rows, function (row) {
+      var g = row.src;
+      return '<strong>' + esc(row.model) + '</strong> (' + g.n + ' casos)<br>R@1 con el gold v0.1: <b>' + pc(g.v01.r1) +
+        '</b><br>R@1 con el gold v0.2: <b>' + pc(g.v02.r1) + '</b><br>v0.2 gana / pierde: ' + pTxt(g.r1);
+    });
+  }
+  if (document.getElementById('v02-tabs')) tabs('v02-tabs', function (b) { v02G = b.getAttribute('data-k'); renderV02(); });
+
+  renderV02();
   renderMedreamm();
   renderBridge();
   renderHpoSol();

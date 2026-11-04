@@ -1,6 +1,6 @@
 # Tarea 1 · Validación clínica de `narrative_v2`
 
-**Estado:** encargada · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
+**Estado:** hecha el 4-nov-2026; falta la tanda de reserva (ver al final) · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
 
 ## Para qué sirve
 
@@ -98,3 +98,34 @@ casos de reserva; esos casos nuevos te llegarían en una tanda corta aparte.
 Los 210 casos tienen marcada la decisión (mantener o excluir), y los que se
 mantienen tienen el diagnóstico principal, la fuga y la etiqueta de rara
 revisados.
+
+## Resultado (4-nov-2026)
+
+Hoja devuelta con los 210 casos y aplicada en `narrative_v2` v0.2
+(`data29/data-repos/narrative-v2/decisions_v0.2.yaml`):
+
+- **Exclusiones:** 39 casos, 9 por fuga, 25 por no ser diagnosticables y 5 de
+  urgencias con un gold que es un signo o una categoría amplia.
+- **Duplicados:** otros 7 de urgencias quedan repetidos al corregir el gold.
+- **En los que se mantienen:** se corrige el gold de 21, se quitan las frases
+  que daban el diagnóstico en 22 y cambian 12 etiquetas de rara.
+- **Datos identificativos:** los cuatro casos de urgencias que señalaste se
+  han limpiado.
+
+Al aplicarla se fijaron cuatro criterios, que ya van en la hoja de reserva:
+
+- **Fuga:** solo la biopsia, citología, cultivo, serología, prueba
+  confirmatoria o mutación, o una frase que nombra el diagnóstico. Un dato de
+  laboratorio o de imagen que hay que interpretar no es fuga (6 casos se
+  dejaron sin tocar).
+- **No diagnosticable → excluir**, aunque no haya fuga.
+- **Rara:** las intoxicaciones, las reacciones a fármacos, las lesiones y las
+  complicaciones de procedimientos no cuentan, salvo que Orphanet las recoja.
+- **Una sola casilla** de decisión por caso.
+
+## Tanda de reserva
+
+Los 46 casos que cubren las bajas (28 `L-` y 18 `U-`, ≈ 1 h), en
+`data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_reserva.md`
+(fuera de git), con la misma hoja y los criterios de arriba. Se devuelve igual,
+por canal privado.

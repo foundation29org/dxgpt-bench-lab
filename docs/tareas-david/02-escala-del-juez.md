@@ -1,6 +1,6 @@
 # Tarea 2 · Validar la escala del juez (2/1/0)
 
-**Estado:** pendiente de preparar · **Tiempo:** ≈ 2 h · **Depende de:** tarea 1
+**Estado:** lista para empezar (hoja del 4-nov) · **Tiempo:** ≈ 2 h · **Depende de:** tarea 1 (hecha)
 
 ## Para qué sirve
 
@@ -38,6 +38,9 @@ Con tus notas se decide:
    - Claude Opus 5.5, de otra familia (Anthropic), para no depender solo de
      Gemini.
 
+   Con el gold de la v0.2 y `graded_v3`, sobre las listas de los seis modelos
+   en los 164 casos reales validados, Flash y Opus 5.5 coinciden en «¿es un
+   2?» en el 98,3 % de las opciones (kappa 0,94), y Flash y Pro en el 97,4 %.
    Discrepan en unas 200 opciones en las que ninguno es claramente mejor. En
    raras, donde las discrepancias venían de sinónimos poco usados, el
    problema se resuelve pasando al juez los sinónimos del gold (tarea 3,
@@ -57,16 +60,22 @@ muestra llevará sobre todo los casos difíciles:
 
 - unas 35 parejas a las que el juez puso un 1 (la frontera que más mueve la cifra);
 - unas 25 con un 2 que no viene de un código idéntico;
-- unas 25 con un 0, sobre todo las que comparten código ICD-10 con la referencia;
+- unas 25 con un 0, sobre todo aquellas a las que otro juez puso un 1 o un 2
+  (los gold de `narrative_v2` no llevan códigos, así que no se puede filtrar
+  por ICD-10);
 - unas 15 «notas dobles»: listas en las que el juez da un 2 a más de una
   opción para la misma referencia (pasa en el 10–17 % de las listas). No se
   cuentan dos veces, pero el segundo 2 a veces es generoso, por ejemplo
   «insuficiencia aórtica crónica por dilatación de la raíz» para «aneurisma
   aórtico». Si uno de esos 2 dudosos queda el primero de la lista, infla la
   nota;
-- y, dentro de esas, sobre todo las parejas en que Gemini 3.8 Flash, Claude
-  Opus 5.5 y el juez anterior (Gemini 2.5 Pro) ponen notas distintas, para
-  ver cuál acierta.
+- y, dentro de cada grupo, un 60 % de parejas en que Gemini 3.8 Flash,
+  Claude Opus 5.5 y el juez anterior (Gemini 2.5 Pro) ponen notas distintas,
+  para ver cuál acierta, y un 40 % en que coinciden, para medir también el
+  caso habitual (los tres coinciden en el 83 % de las parejas).
+
+Las notas que se comparan son las de Flash, que es el juez de referencia. Los
+grupos se cuentan por la nota de Flash, y en la hoja van mezclados.
 
 Cada pareja irá con el caso (texto o resumen) por si hace falta contexto, pero
 la pregunta es solo si las dos son la misma enfermedad.
@@ -89,10 +98,16 @@ validación.
 
 ## Material
 
-Se prepara cuando termine la tarea 1, porque la muestra tiene que salir del
-gold ya corregido. Irá en
-`data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_escala.md`
-(fuera de git).
+- **Hoja:**
+  `data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_escala.md`
+  (fuera de git).
+- **Muestra:** 100 parejas de 75 casos reales ya validados de la v0.2, 54
+  `L-` y 21 `U-`, 34 de ellos raros. Hay como mucho dos parejas por caso, y
+  las de un mismo caso van juntas, con el texto del caso plegado.
+- **Clave privada:** el modelo que propuso cada diagnóstico y las notas de los
+  tres jueces están en
+  `data29/data-repos/narrative-v2/work/escala_v0.2_key.json` (fuera de git),
+  con el tamaño de cada grupo para poder ponderar.
 
 ## Cómo se devuelve
 

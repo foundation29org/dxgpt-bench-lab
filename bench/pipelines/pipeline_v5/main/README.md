@@ -534,6 +534,60 @@ Google retira Gemini 2.5 Pro el 1-dic-2026: desde ese día las peticiones a
   (0,86 $ frente a 23,93 $ los seis modelos); su precio se duplica el
   1-ene-2027.
 
+## `narrative_v2` v0.2: primera puntuación con el gold validado (4-nov-2026)
+
+Mismas listas de los seis modelos, con el gold de la v0.2 (validación de
+David) y `graded_v3`. Se lanza con `REUSE_LABELED_DDX` y
+`REFRESH_GOLD_FROM_DATASET`, en las carpetas
+`<modelo>__v0_2_judge_<juez>_graded_v3`. Cuenta solo los 164 casos reales
+validados: 91 raros y 73 no raros. Los 46 de reserva aún no tienen lista.
+
+**Es provisional.** En 22 casos se recortó la frase que daba el diagnóstico, y
+sus listas se hicieron con el texto anterior. Sin ellos, todos los modelos
+bajan entre 2 y 4 puntos.
+
+R@1 con Gemini 3.8 Flash:
+
+| Modelo | Reales | Raras | No raras | R@5 reales | Sin los 22 recortados | Mismos casos, gold v0.1 |
+|---|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | 73,2 % | 78,0 % | 67,1 % | 87,2 % | 70,4 % | 71,3 % |
+| Terra 5.6 | 66,5 % | 67,0 % | 65,8 % | 86,0 % | 64,1 % | 64,0 % |
+| Claude Opus 5 | 64,0 % | 62,6 % | 65,8 % | 83,5 % | 59,9 % | 61,6 % |
+| gpt-6.1-terra | 64,0 % | 68,1 % | 58,9 % | 79,3 % | 61,3 % | 62,2 % |
+| Gemini 3.1 Pro | 56,1 % | 59,3 % | 52,1 % | 69,5 % | 54,2 % | 51,8 % |
+| gpt-5.4-mini | 53,7 % | 53,8 % | 53,4 % | 75,6 % | 50,0 % | 50,6 % |
+
+- **Corregir el gold** sube el R@1 de todos los modelos entre 1 y 4 puntos,
+  sin diferencia significativa en ninguno, y no cambia el orden.
+- **Sol frente a Terra 5.6**, con las dos ejecuciones de cada uno:
+  - casos reales: 71,3 % frente a 63,7 % (27 / 12, p = 0,02);
+  - raras: 75,3 % frente a 64,8 % (16 / 5, p = 0,03);
+  - no raras: 66,4 % frente a 62,3 % (p = 0,48);
+  - sin los 22 casos recortados: p = 0,06.
+
+  Con el prompt «5», 72,0 % frente a 64,0 % (17 / 4, p = 0,007), y en raras
+  78,0 % frente a 65,9 % (p = 0,007). Es lo mismo que con la v0.1: la ventaja
+  de Sol está en las raras.
+- **Los tres jueces** sobre las mismas listas:
+
+  | Jueces | Mismo acierto en P1 | Mismo «¿es un 2?» | Kappa |
+  |---|---:|---:|---:|
+  | Flash / Opus 5.5 | 96,2 % | 98,3 % | 0,94 |
+  | Flash / Pro | 96,2 % | 97,4 % | 0,91 |
+  | Pro / Opus 5.5 | 95,7 % | 97,1 % | 0,90 |
+
+  Sol es el primero con los tres. Los del medio (Terra 5.6, gpt-6.1-terra y
+  Opus 5) se cruzan dentro de 2–3 puntos según el juez.
+- **Coste:** Flash 0,53 $ (con las segundas ejecuciones y las de «5»), Pro
+  4,70 $ y Opus 5.5 9,45 $. Flash y Pro reutilizan las notas de los gold que
+  no cambian.
+- **La hoja de la tarea 2** sale de estas notas: 100 parejas de casos
+  validados. El modelo y las notas de cada juez están en una clave aparte,
+  fuera de git.
+
+Para la línea base oficial faltan listas nuevas de los seis modelos en los 22
+casos recortados y en los 46 de reserva, cuando David los valide.
+
 ## Sol frente a Terra en raras (HPO v2, 29-oct-2026)
 
 Run completo de gpt-6.1-sol low sobre los seis datasets de HPO v2
@@ -742,8 +796,11 @@ Julián; detalle en el §12 de
 
 Pendiente de David (`docs/tareas-david/`):
 
-- **Tarea 1:** validar el gold de `narrative_v2`. Con su resultado sale la
-  v0.2 y se re-puntúan los runs con `REFRESH_GOLD_FROM_DATASET`.
+- ~~**Tarea 1:** validar el gold de `narrative_v2`~~. Hecha el 4-nov: sale la
+  v0.2 (164 casos reales validados y 46 de reserva pendientes; detalle en
+  `data29/data-repos/narrative-v2/README.md`). Falta volver a puntuar: los
+  164 validados con `REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`, y los
+  46 nuevos con inferencia.
 - **Tarea 2:** validar la escala 2/1/0 con `graded_v3` y elegir juez entre
   Gemini 3.8 Flash (el de referencia desde el 3-nov, porque Google retira 2.5 Pro
   el 1-dic) y Claude Opus 5.5.

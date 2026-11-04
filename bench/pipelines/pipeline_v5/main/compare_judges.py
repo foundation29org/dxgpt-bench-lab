@@ -131,9 +131,9 @@ def summarize(parts: List[Dict]) -> Dict:
     }
 
 
-def compare(judges: List[str]) -> Optional[Dict]:
-    """Everything the report needs; None if some judge has no run."""
-    with open(os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.json'), 'r', encoding='utf-8') as f:
+def compare(judges: List[str], dataset_path: Optional[str] = None) -> Optional[Dict]:
+    """Everything the report needs; None if some judge has no run. dataset_path: the dataset those runs scored."""
+    with open(dataset_path or os.path.join(EVAL_ROOT, 'bench', 'datasets', 'narrative_v2.json'), 'r', encoding='utf-8') as f:
         dataset = {c['id']: c for c in json.load(f)}
     subsets = {'total': list(dataset), 'realcases': [i for i, c in dataset.items() if c['metadata']['block'] in ('live', 'urg')]}
 

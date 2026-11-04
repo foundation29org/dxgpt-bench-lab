@@ -7,13 +7,19 @@ Selects accepted cases per block (live, urg, exam, synth) with these rules:
 one case per principal diagnosis, at most MAX_SPECIALTY_SHARE of a block from
 one specialty, and in `live` at least a third of rare diseases when available.
 
+With --decisions (the clinical validation), excluded cases leave the pool,
+kept ones take the corrected gold and text, and validated cases are picked
+before any reserve case, so each exclusion is filled by the next reserve.
+
 Writes:
 - curated-datasets/narrative_v2/narrative_v2.json (and a copy in bench/datasets/)
 - curated-datasets/narrative_v2/_metadata.yaml and _lineage.txt
-- curated-datasets/narrative_v2/validacion_clinica.md (live and urg cases)
+- curated-datasets/narrative_v2/validacion_clinica.md (live and urg cases), or
+  with --decisions validacion_clinica_reserva.md (only the reserve cases still to validate)
 
 Usage:
     py build_dataset.py [--live 150] [--urg 60] [--exam 60] [--synth 30]
+    py build_dataset.py --version 0.2 --decisions decisions_v0.2.yaml --text-edits work/text_edits_v0.2.json
 """
 
 import argparse
@@ -40,6 +46,27 @@ NONSPECIFIC = re.compile(
     r"\b(viral (infection|illness|syndrome|process)|viriasis|unspecified|non-?specific|undifferentiated)\b|\bpain\b",
     re.IGNORECASE,
 )
+# Signs and broad categories the clinical validation of v0.1 excluded as gold ("Bronchospasm",
+# "Respiratory infection"): the same rule keeps them out of the reserve.
+NOT_A_DIAGNOSIS = re.compile(
+    r"\b(bronchospasm|bronchial (spasm|hyperreactivity)|respiratory failure|(lower |upper )?respiratory (tract )?infection)\b",
+    re.IGNORECASE,
+)
+# Emergency reports may carry the lab printout header (patient name, ID numbers, birth date),
+# the name of a consulted specialist or a signature. The patterns hold no personal data.
+ANONYMIZE = [
+    (re.compile(r"Paciente:.*?P[áa]gina:\s*\d+\s*de\s*\d+\s*", re.DOTALL), ""),
+    (re.compile(r"(I/C A [A-ZÁÉÍÓÚÑ ]+?)\s*:\s*[A-ZÁÉÍÓÚÑ ]+\(\d{1,2}/\d{1,2}/\d{4}\s+[\d:]+\)"), r"\1"),
+    (re.compile(r"\s*\bDra?\.\s+[^\n]+\s*$"), ""),
+]
+
+
+def anonymize(text: str) -> str:
+    for pattern, replacement in ANONYMIZE:
+        text = pattern.sub(replacement, text)
+    return text
+
+
 # PubMed "Case Reports" also indexes veterinary journals.
 VETERINARY_JOURNAL = re.compile(r"veterinar|animals", re.IGNORECASE)
 HUMAN_PATIENT = re.compile(r"\b(man|woman|boy|girl|infant|newborn|neonate|child|adolescent|gentleman|lady)\b", re.IGNORECASE)
@@ -64,9 +91,44 @@ def stable_rank(row: Dict, seed: int) -> str:
     return hashlib.sha1(f"{seed}:{source_id}".encode()).hexdigest()
 
 
+def case_id(row: Dict) -> str:
+    return f"{BLOCK_PREFIX[row['block']]}-{row['pmcid'] if row['block'] == 'live' else row['source_id']}"
+
+
+def apply_text_edits(text: str, edits: List[Dict]) -> str:
+    """Exact replacements must match once; regex edits (anonymization) must match the expected number of times."""
+    for edit in edits:
+        if "regex" in edit:
+            text, count = re.subn(edit["regex"], edit["new"], text, flags=re.DOTALL)
+            if count != edit["count"]:
+                raise ValueError(f"text edit matched {count} times, expected {edit['count']}: {edit['regex']}")
+        else:
+            if text.count(edit["old"]) != 1:
+                raise ValueError(f"text edit does not match exactly once: {edit['old'][:60]}")
+            text = text.replace(edit["old"], edit["new"])
+    return text
+
+
+def apply_decision(row: Dict, decision: Dict, edits: List[Dict], reviewed: str) -> Dict:
+    """A kept, validated case with the reviewer's gold, names, rare label, secondaries and text."""
+    changes = [key for key in ("principal", "accepted_names", "rare", "secondary") if key in decision] + decision.get("text", [])
+    row = {**row, "validated": True, "validation": {"status": "validated", "reviewed": reviewed, "changes": changes}}
+    if "principal" in decision:
+        row["diagnosis"] = decision["principal"]
+    if "accepted_names" in decision:
+        row["accepted_names"] = decision["accepted_names"]
+    if "rare" in decision:
+        row["rare_disease"] = decision["rare"]
+    if "secondary" in decision:
+        row["secondary_diagnoses"] = decision["secondary"]
+    if edits:
+        row["case_text"] = apply_text_edits(row["case_text"], edits)
+    return row
+
+
 def select(rows: List[Dict], target: int, seed: int, min_rare: int = 0) -> List[Dict]:
-    """Seeded pick with unique diagnoses, a specialty cap and a rare-disease floor."""
-    rows = sorted(rows, key=lambda row: stable_rank(row, seed))
+    """Seeded pick with unique diagnoses, a specialty cap and a rare-disease floor; validated cases go first."""
+    rows = sorted(rows, key=lambda row: (not row.get("validated"), stable_rank(row, seed)))
     cap = max(1, int(target * MAX_SPECIALTY_SHARE))
     chosen, seen, specialties = [], set(), Counter()
     rare_needed = min_rare
@@ -111,6 +173,8 @@ def to_case(row: Dict) -> Dict:
         "other_conditions": [] if block == "urg" else secondaries,
         "contamination_risk": {"live": "low", "urg": "low", "exam": "high", "synth": "medium"}[block],
     }
+    if "validation" in row:
+        metadata["validation"] = row["validation"]
     if block == "live":
         metadata.update({
             "source": "pmc_oa", "pmid": row["pmid"], "pmcid": row["pmcid"], "journal": row["journal"],
@@ -135,10 +199,43 @@ def to_case(row: Dict) -> Dict:
     }
 
 
-def validation_sheet(cases: List[Dict], not_disease: Dict[str, str]) -> str:
+RESERVE_INTRO = [
+    "# Validación clínica — narrative_v2 v0.2, casos de reserva",
+    "",
+    "**Responsable:** David Isla · **Estado:** New",
+    "",
+    "Con tu revisión de los 210 casos salió la v0.2. Los casos que se excluyeron, y los",
+    "que quedaron repetidos al corregir el gold, se sustituyen por estos casos de",
+    "reserva, que hay que validar igual. La hoja y los criterios son los mismos, con",
+    "cuatro aclaraciones que salen de tu revisión:",
+    "",
+    "- **Fuga:** solo si el texto nombra el diagnóstico o da un resultado que por sí",
+    "  solo lo establece: biopsia, citología, cultivo, serología, prueba confirmatoria",
+    "  o mutación. Un dato de laboratorio o de imagen que hay que interpretar (una",
+    "  gasometría, unos ácidos biliares, una RM) no es fuga, aunque sea el dato clave.",
+    "- **No diagnosticable → excluir**, aunque no haya fuga.",
+    "- **Rara:** las intoxicaciones, las reacciones a fármacos, las lesiones y las",
+    "  complicaciones de procedimientos cuentan como no raras, salvo que Orphanet las",
+    "  recoja.",
+    "- **Decisión:** marca una sola casilla. Si se arregla quitando una frase, marca",
+    "  «mantener» y copia la frase exacta.",
+    "",
+    "En los casos de urgencias, «Diagnóstico de alta original» es el juicio clínico",
+    "del informe, no una referencia.",
+    "",
+]
+
+
+def validation_sheet(cases: List[Dict], not_disease: Dict[str, str], reserve: bool = False) -> str:
     live = sum(1 for c in cases if c["metadata"]["block"] == "live")
     urg = len(cases) - live
-    lines = [
+    if reserve:
+        lines = RESERVE_INTRO + [
+            f"**Alcance:** {len(cases)} casos: {live} `L-` y {urg} `U-`; a 1–2 min por caso, ≈ {max(1, round(len(cases) * 1.5 / 60))} h.",
+            "",
+        ]
+    else:
+        lines = [
         "# Validación clínica — narrative_v2",
         "",
         "**Responsable:** David Isla · **Estado:** New",
@@ -185,6 +282,7 @@ def validation_sheet(cases: List[Dict], not_disease: Dict[str, str]) -> str:
         principal = case["diagnoses"][0]
         secondaries = [d["name"] for d in case["diagnoses"][1:]]
         source = meta.get("url") or meta.get("original_diagnosis") or ""
+        source_label = "Diagnóstico de alta original" if reserve and meta["block"] == "urg" else "Fuente"
         lines += [f"## {case['id']}", ""]
         if case["id"] in not_disease:
             lines += ["⚠ **El juez cree que esta referencia no es una enfermedad.**", ""]
@@ -194,7 +292,7 @@ def validation_sheet(cases: List[Dict], not_disease: Dict[str, str]) -> str:
             f"- **Secundarios:** {', '.join(secondaries) or '—'}",
             f"- **Especialidad:** {meta.get('specialty') or '—'} · **Rara:** {'sí' if meta['rare_disease'] else 'no'}",
             f"- **Pistas a revisar:** {', '.join(meta['soft_leaked_terms']) or '—'}",
-            f"- **Fuente:** {source}",
+            f"- **{source_label}:** {source}",
             "",
             "<details><summary>Texto del caso</summary>",
             "",
@@ -224,7 +322,15 @@ def main():
     parser.add_argument("--seed", type=int, default=29)
     parser.add_argument("--judge-summary", type=Path, default=None,
                         help="summary.json of a Pipeline V5 run, to flag gold the judge says are not diseases")
+    parser.add_argument("--version", default="0.1")
+    parser.add_argument("--decisions", type=Path, default=None,
+                        help="clinical validation decisions (decisions_v0.2.yaml): exclusions and corrected gold")
+    parser.add_argument("--text-edits", type=Path, default=None,
+                        help="text cuts for kept cases (work/text_edits_v0.2.json, not versioned)")
     args = parser.parse_args()
+    review = yaml.safe_load(args.decisions.read_text(encoding="utf-8")) if args.decisions else {}
+    decisions = review.get("cases", {})
+    text_edits = json.loads(args.text_edits.read_text(encoding="utf-8")) if args.text_edits else {}
 
     live = json.loads((WORK_DIR / "live_extracted.json").read_text(encoding="utf-8"))
     internal = json.loads((WORK_DIR / "internal_triaged.json").read_text(encoding="utf-8"))
@@ -232,13 +338,28 @@ def main():
         "live": [{**r, "block": "live", "diagnosis": r["final_diagnosis"]} for r in live
                  if r.get("accepted") and is_human_case(r)],
         **{
-            block: [{**r, "diagnosis": r["principal_diagnosis"]} for r in internal
-                    if r["block"] == block and r.get("accepted")]
+            block: [{**r, "diagnosis": r["principal_diagnosis"],
+                     "case_text": anonymize(r["case_text"]) if block == "urg" else r["case_text"]}
+                    for r in internal if r["block"] == block and r.get("accepted")]
             for block in ("urg", "exam", "synth")
         },
     }
-    nonspecific = {block: [r for r in rows if NONSPECIFIC.search(r["diagnosis"])] for block, rows in pools.items()}
-    pools = {block: [r for r in rows if not NONSPECIFIC.search(r["diagnosis"])] for block, rows in pools.items()}
+    if decisions:
+        excluded = {block: sum(1 for r in rows if decisions.get(case_id(r), {}).get("decision") == "exclude") for block, rows in pools.items()}
+        pools = {
+            block: [apply_decision(r, decisions[case_id(r)], text_edits.get(case_id(r), []), review["reviewed"])
+                    if case_id(r) in decisions else
+                    {**r, "validation": {"status": "pending" if block in ("live", "urg") else "not_reviewed"}}
+                    for r in rows if decisions.get(case_id(r), {}).get("decision") != "exclude"]
+            for block, rows in pools.items()
+        }
+    def unusable(row: Dict) -> bool:
+        if row.get("validated"):
+            return False
+        return bool(NONSPECIFIC.search(row["diagnosis"]) or (decisions and NOT_A_DIAGNOSIS.search(row["diagnosis"])))
+
+    nonspecific = {block: [r for r in rows if unusable(r)] for block, rows in pools.items()}
+    pools = {block: [r for r in rows if not unusable(r)] for block, rows in pools.items()}
     targets = {"live": args.live, "urg": args.urg, "exam": args.exam, "synth": args.synth}
     selected = {
         block: select(pools[block], targets[block], args.seed, min_rare=targets[block] // 3 if block == "live" else 0)
@@ -263,12 +384,22 @@ def main():
         }
         for block in targets
     }
+    if decisions:
+        for block in targets:
+            composition[block].update({
+                "excluded_by_validation": excluded[block],
+                "validated": sum(1 for r in selected[block] if r.get("validated")),
+                "pending_validation": sum(1 for r in selected[block] if r["validation"]["status"] == "pending"),
+            })
+    validated = sum(composition[b].get("validated", 0) for b in targets)
+    pending = sum(composition[b].get("pending_validation", 0) for b in targets)
     live_dates = sorted(r["entrez_date"] for r in selected["live"])
     metadata = {
         "dataset": "narrative_v2",
-        "version": "0.1",
+        "version": args.version,
         "created": date.today().isoformat(),
-        "status": "PENDIENTE DE VALIDACION CLINICA",
+        "status": (f"VALIDADOS {validated} casos live y urg; PENDIENTES {pending} casos de reserva" if decisions
+                   else "PENDIENTE DE VALIDACION CLINICA"),
         "summary": {
             "total_cases": len(cases),
             "composition": composition,
@@ -290,6 +421,15 @@ def main():
             "seed": args.seed,
         },
     }
+    if decisions:
+        metadata["validation"] = {
+            "decisions": f"data29/data-repos/narrative-v2/{args.decisions.name}",
+            "reviewer": review.get("reviewer"),
+            "reviewed": review.get("reviewed"),
+            "decided_cases": len(decisions),
+            "excluded": dict(Counter(d.get("reason") for d in decisions.values() if d["decision"] == "exclude")),
+            "rules": review.get("rules"),
+        }
     (CURATED_DIR / "_metadata.yaml").write_text(
         "# Metadata — narrative_v2 (generado por build_dataset.py)\n"
         + yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False),
@@ -311,16 +451,25 @@ def main():
         "CASOS",
         "-----",
     ]
-    lineage += [f"{c['id']}\t{c['metadata']['block']}\t{c['diagnoses'][0]['name']}" for c in cases]
+    if decisions:
+        lineage[2] += f"; v{args.version} aplica {args.decisions.name}"
+        lineage[-2] = "CASOS (id, bloque, diagnóstico principal, validación)"
+        lineage[-1] = "-" * len(lineage[-2])
+    lineage += [f"{c['id']}\t{c['metadata']['block']}\t{c['diagnoses'][0]['name']}"
+                + (f"\t{c['metadata']['validation']['status']}" if decisions else "") for c in cases]
     (CURATED_DIR / "_lineage.txt").write_text("\n".join(lineage) + "\n", encoding="utf-8")
 
-    to_validate = [c for c in cases if c["metadata"]["block"] in ("live", "urg")]
-    not_disease = {}
-    if args.judge_summary:
-        flagged = json.loads(args.judge_summary.read_text(encoding="utf-8"))["global"]["reference_not_disease"]
-        validated_ids = {c["id"] for c in to_validate}
-        not_disease = {f["case_id"]: f["gdx"] for f in flagged if f["case_id"] in validated_ids}
-    (CURATED_DIR / "validacion_clinica.md").write_text(validation_sheet(to_validate, not_disease), encoding="utf-8")
+    if decisions:
+        to_validate = [c for c in cases if c["metadata"]["validation"]["status"] == "pending"]
+        (CURATED_DIR / "validacion_clinica_reserva.md").write_text(validation_sheet(to_validate, {}, reserve=True), encoding="utf-8")
+    else:
+        to_validate = [c for c in cases if c["metadata"]["block"] in ("live", "urg")]
+        not_disease = {}
+        if args.judge_summary:
+            flagged = json.loads(args.judge_summary.read_text(encoding="utf-8"))["global"]["reference_not_disease"]
+            validated_ids = {c["id"] for c in to_validate}
+            not_disease = {f["case_id"]: f["gdx"] for f in flagged if f["case_id"] in validated_ids}
+        (CURATED_DIR / "validacion_clinica.md").write_text(validation_sheet(to_validate, not_disease), encoding="utf-8")
     print(json.dumps(metadata["summary"], ensure_ascii=False, indent=1))
 
 
