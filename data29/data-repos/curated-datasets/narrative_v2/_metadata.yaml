@@ -2,7 +2,7 @@
 dataset: narrative_v2
 version: '0.2'
 created: '2026-11-04'
-status: VALIDADOS 164 casos live y urg; PENDIENTES 46 casos de reserva
+status: VALIDADOS 207 casos live y urg; PENDIENTES 3 casos de reserva
 summary:
   total_cases: 300
   composition:
@@ -11,23 +11,23 @@ summary:
       accepted_pool: 158
       excluded_nonspecific: 1
       selected: 150
-      rare: 111
+      rare: 112
       with_scored_secondary: 0
       soft_leak_flags: 80
       excluded_by_validation: 28
-      validated: 122
-      pending_validation: 28
+      validated: 150
+      pending_validation: 0
     urg:
       target: 60
-      accepted_pool: 116
+      accepted_pool: 115
       excluded_nonspecific: 56
       selected: 60
       rare: 1
-      with_scored_secondary: 14
+      with_scored_secondary: 12
       soft_leak_flags: 5
-      excluded_by_validation: 11
-      validated: 42
-      pending_validation: 18
+      excluded_by_validation: 12
+      validated: 57
+      pending_validation: 3
     exam:
       target: 60
       accepted_pool: 135
@@ -53,7 +53,7 @@ summary:
   languages:
     en: 240
     es: 60
-  rare_disease_cases: 157
+  rare_disease_cases: 158
   specialties:
     Neurology: 28
     Cardiology: 20
@@ -61,7 +61,7 @@ summary:
     Dermatology: 16
     Hematology: 15
     Orthopedics: 14
-    Urology: 11
+    Urology: 12
     Infectious Disease: 11
     Endocrinology: 10
     Rheumatology: 10
@@ -70,9 +70,9 @@ summary:
     Oncology: 8
     General Surgery: 8
     Ophthalmology: 8
-    General Medicine: 8
     Psychiatry: 7
     Otolaryngology: 6
+    General Medicine: 6
     Neurosurgery: 5
     Gynecology: 5
     Pulmonology: 5
@@ -93,6 +93,7 @@ summary:
     Medical Genetics: 2
     Toxicology: 2
     Thoracic surgery: 2
+    Internal Medicine: 2
     Dentistry: 2
     Allergy: 1
     Metabolism: 1
@@ -111,7 +112,6 @@ summary:
     Colorectal Surgery: 1
     Pediatric Pulmonology: 1
     Oral and Maxillofacial Surgery: 1
-    Internal Medicine: 1
     Vascular Medicine: 1
     Traumatology: 1
     Vascular Surgery: 1
@@ -135,11 +135,12 @@ validation:
   decisions: data29/data-repos/narrative-v2/decisions_v0.2.yaml
   reviewer: David Isla
   reviewed: '2026-11-04'
-  decided_cases: 210
+  decided_cases: 257
   excluded:
     not_diagnosable: 25
     leak: 9
     unreliable_gold: 5
+    duplicate: 1
   rules:
     leak: hay fuga si el texto nombra el diagnóstico o da un resultado que por sí
       solo lo establece (biopsia, citología, cultivo, serología, prueba confirmatoria,

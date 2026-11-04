@@ -120,6 +120,10 @@ GRADED_V3_EXAMPLE = ('L-PMC13354413', 'terra56')
 V02_TAGS = {'flash': '__v0_2_judge_gemini_3_8_flash_graded_v3', 'pro': '__v0_2_judge_gemini_2_5_pro_graded_v3',
             'opus': '__v0_2_judge_claude_opus_5_5_graded_v3'}
 V02_JUDGES = {'flash': 'Gemini 3.8 Flash', 'pro': 'Gemini 2.5 Pro', 'opus': 'Claude Opus 5.5'}
+# Official narrative_v2 v0.2 baseline (4-nov-2026): new lists with the «5» prompt on the final texts, Flash with graded_v3.
+# Generation prices that are on file: Server/services/costUtils.js and Anthropic's list price for Opus 5.
+BASELINE_TAG = '__v0_2'
+BASELINE_PRICES = {'gpt-6.1-sol': (2.0, 10.0), 'gpt-5.6-terra': (2.0, 12.0), 'gpt-5.4-mini': (0.75, 4.5), 'claude-opus-5': (5.0, 25.0)}
 # Same lists graded with graded_v3 by Gemini 3.8 Flash: the bridge before Google retires 2.5 Pro on 1-dec-2026
 FLASH_V3_TAG = '__judge_gemini_3_8_flash_graded_v3'
 # Claude Opus 5 on the four smaller HPO v2 datasets, same prompt and judge (Gemini 2.5 Pro) as Sol and Terra
@@ -589,11 +593,6 @@ def narrative_v02():
         return None
     with open(os.path.join(NARRATIVE_TOOLS, 'decisions_v0.2.yaml'), 'r', encoding='utf-8') as f:
         decisions = yaml.safe_load(f)['cases']
-    leak_cut = {i for i in validated if 'leak_removed' in decisions.get(i, {}).get('text', [])}
-    groups = {'realcases': validated,
-              'realRare': [i for i in validated if dataset[i]['metadata']['rare_disease']],
-              'realCommon': [i for i in validated if not dataset[i]['metadata']['rare_disease']],
-              'noLeakCut': [i for i in validated if i not in leak_cut]}
 
     def run_positions(folder, tag, root=NARRATIVE_DIR):
         for name in (folder + tag, folder.replace('_low', '') + tag):
@@ -605,23 +604,33 @@ def narrative_v02():
                 return {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()}, details, cost
         return None, None, 0
 
-    models, pos, details, cost = [], {}, {}, collections.Counter()
+    pos, details, cost = {}, {}, collections.Counter()
     for mid, folder, _, name, color in MODELS:
         for judge, tag in {**V02_TAGS, 'v01': FLASH_V3_TAG}.items():
             pos[(mid, judge)], details[(mid, judge)], c = run_positions(folder, tag)
             cost[judge] += c
-        if any(pos[(mid, j)] is None for j in (*V02_TAGS, 'v01')):
-            return None
+    if any(p is None for p in pos.values()):
+        return None
+    # Only the validated cases that already have lists; those from the reserve batch have none yet.
+    scored = [i for i in validated if all(i in p for p in pos.values())]
+    leak_cut = {i for i in scored if 'leak_removed' in decisions.get(i, {}).get('text', [])}
+    groups = {'realcases': scored,
+              'realRare': [i for i in scored if dataset[i]['metadata']['rare_disease']],
+              'realCommon': [i for i in scored if not dataset[i]['metadata']['rare_disease']],
+              'noLeakCut': [i for i in scored if i not in leak_cut]}
+    models = []
+    for mid, folder, _, name, color in MODELS:
         flash = pos[(mid, 'flash')]
         models.append({'id': mid, 'name': name, 'color': color,
                        'groups': {key: {'n': len(ids), 'v02': metrics([flash[i] for i in ids]),
                                         'v01': metrics([pos[(mid, 'v01')][i] for i in ids]),
                                         'r1': paired(flash, pos[(mid, 'v01')], ids, 1)} for key, ids in groups.items()},
-                       'r1ByJudge': {j: metrics([pos[(mid, j)][i] for i in validated])['r1'] for j in V02_TAGS}})
-    result = {'n': len(validated), 'pending': sum(1 for c in dataset.values() if c['metadata'].get('validation', {}).get('status') == 'pending'),
+                       'r1ByJudge': {j: metrics([pos[(mid, j)][i] for i in scored])['r1'] for j in V02_TAGS}})
+    result = {'n': len(scored), 'validated': len(validated),
+              'pending': sum(1 for c in dataset.values() if c['metadata'].get('validation', {}).get('status') == 'pending'),
               'leakCut': len(leak_cut), 'models': models, 'cost': {j: round(cost[j], 2) for j in V02_TAGS},
               'rare': len(groups['realRare']), 'common': len(groups['realCommon'])}
-    result['agreement'] = {f'{a}/{b}': compare_judges.summarize([compare_judges.agreement(details[(m['id'], a)], details[(m['id'], b)], validated)
+    result['agreement'] = {f'{a}/{b}': compare_judges.summarize([compare_judges.agreement(details[(m['id'], a)], details[(m['id'], b)], scored)
                                                                   for m in models])
                            for a, b in (('flash', 'pro'), ('flash', 'opus'), ('pro', 'opus'))}
     sol, terra = {}, {}
@@ -633,6 +642,76 @@ def narrative_v02():
     if sol['n5'] and terra['n5']:
         result['solTerraN5'] = {key: {**paired(sol['n5'], terra['n5'], ids, 1), 'a': metrics([sol['n5'][i] for i in ids])['r1'],
                                       'b': metrics([terra['n5'][i] for i in ids])['r1']} for key, ids in groups.items()}
+    return result
+
+
+def narrative_baseline():
+    """The official narrative_v2 v0.2 baseline: six models, new lists with the «5» prompt, Flash with graded_v3."""
+    if not os.path.exists(NARRATIVE_V2_CURRENT):
+        return None
+    with open(NARRATIVE_V2_CURRENT, 'r', encoding='utf-8') as f:
+        dataset = {c['id']: c for c in json.load(f)}
+    with open(NARRATIVE_V2, 'r', encoding='utf-8') as f:
+        v01 = {c['id']: c['case'] for c in json.load(f)}
+    meta = {i: c['metadata'] for i, c in dataset.items()}
+    status = {i: m.get('validation', {}).get('status') for i, m in meta.items()}
+    validated = [i for i in dataset if status[i] == 'validated']
+    groups = {'realcases': validated,
+              'realRare': [i for i in validated if meta[i]['rare_disease']],
+              'realCommon': [i for i in validated if not meta[i]['rare_disease']],
+              **{block: [i for i in (validated if block in ('live', 'urg') else dataset) if meta[i]['block'] == block]
+                 for block in ('live', 'urg', 'exam', 'synth')},
+              'total': list(dataset)}
+    # Validated cases whose text is the one the classic lists were made from
+    same_text = [i for i in validated if v01.get(i) == dataset[i]['case']]
+    root = NARRATIVE_DIR + '_n5'
+
+    def load(folder):
+        run = finished_run(os.path.join(root, folder))
+        if not run:
+            return None
+        details = load_details(os.path.join(run, 'evaluation_details.txt'))
+        with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
+            judge = json.load(f)['judge']
+        return {'run': run, 'judge': judge, 'strict': {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()},
+                'lax': {i: lax_position(c) for i, c in details.items()}}
+
+    runs, models = {}, []
+    for mid, folder, model, name, color in MODELS:
+        runs[mid] = load(folder + BASELINE_TAG)
+        if runs[mid] is None:
+            return None
+        labeled = load_labeled(os.path.join(root, folder + BASELINE_TAG))
+        with open(os.path.join(root, folder + BASELINE_TAG, 'emulator.log'), 'r', encoding='utf-8', errors='ignore') as f:
+            tokens = [(int(a), int(b)) for a, b in re.findall(r'(?:prompt|input)=(\d+), (?:completion|output)=(\d+)', f.read())]
+        price = BASELINE_PRICES.get(model)
+        classic = finished_run(os.path.join(NARRATIVE_DIR, folder + V02_TAGS['flash']))
+        classic = {i: position(c['eval_details'].get('final_resolution'))
+                   for i, c in load_details(os.path.join(classic, 'evaluation_details.txt')).items()}
+        strict, lax = runs[mid]['strict'], runs[mid]['lax']
+        models.append({
+            'id': mid, 'name': name.replace(' low', ''), 'color': color, 'run': os.path.basename(runs[mid]['run']),
+            'groups': {key: metrics([strict[i] for i in ids], [lax[i] for i in ids]) for key, ids in groups.items()},
+            'options': statistics.median(len(c.get('ddx_details') or {}) for c in labeled),
+            'latency': round(statistics.median(c['emulator_time_seconds'] for c in labeled if c.get('emulator_time_seconds')), 1),
+            'genCost': sum(a * price[0] + b * price[1] for a, b in tokens) / 1e6 / len(tokens) if price and tokens else None,
+            'judgeCost': runs[mid]['judge'].get('estimated_cost_usd') or 0, 'judgeFailed': runs[mid]['judge'].get('failed_calls', 0),
+            'prompt': {'n5': metrics([strict[i] for i in same_text])['r1'], 'classic': metrics([classic[i] for i in same_text])['r1'],
+                       'test': paired(strict, classic, same_text, 1)}})
+    for m in models:
+        m['vsTerra'] = paired(runs[m['id']]['strict'], runs[BASELINE]['strict'], validated, 1)
+    models.sort(key=lambda m: -m['groups']['realcases']['r1'])
+    top_pair = paired(runs[models[0]['id']]['strict'], runs[models[1]['id']]['strict'], validated, 1)
+    result = {'models': models, 'n': len(validated), 'rare': len(groups['realRare']), 'common': len(groups['realCommon']),
+              'live': len(groups['live']), 'urg': len(groups['urg']), 'total': len(dataset), 'sameText': len(same_text),
+              'pending': sum(1 for s in status.values() if s == 'pending'), 'topPair': top_pair}
+    reruns = {mid: load(folder + BASELINE_TAG + '_rerun2') for mid, folder, *_ in MODELS if mid in ('sol61', BASELINE)}
+    if all(reruns.values()):
+        result['solTerra'] = {key: pooled_sign_test([runs['sol61']['strict'], reruns['sol61']['strict']],
+                                                    [runs[BASELINE]['strict'], reruns[BASELINE]['strict']], groups[key])
+                              for key in ('realcases', 'realRare', 'realCommon', 'live', 'urg')}
+        result['rerunR1'] = {mid: metrics([r['strict'][i] for i in validated])['r1'] for mid, r in reruns.items()}
+        result['rerunCost'] = sum(r['judge'].get('estimated_cost_usd') or 0 for r in reruns.values())
     return result
 
 
@@ -922,6 +1001,7 @@ def collect():
     data['gradedV3'] = graded_v3(dataset)
     data['judgeBridge'] = judge_bridge(dataset)
     data['v02'] = narrative_v02()
+    data['baseline'] = narrative_baseline()
 
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
@@ -1747,6 +1827,108 @@ def medreamm_section(data):
 '''
 
 
+def baseline_section(data):
+    s = data.get('baseline')
+    if not s:
+        return ''
+    keys = ('realcases', 'realRare', 'realCommon', 'live', 'urg')
+    rows = '\n'.join(
+        f'<tr><td><span class="dot" style="background:{m["color"]}"></span> {m["name"]}</td>'
+        + ''.join(f'<td>{pct(m["groups"][k]["r1"])}</td>' for k in keys)
+        + f'<td>{pct(m["groups"]["realcases"]["r5"])}</td><td>{pct(m["groups"]["realcases"]["laxR5"])}</td>'
+        + ''.join(f'<td>{pct(m["groups"][k]["r1"])}</td>' for k in ('exam', 'synth', 'total')) + '</tr>' for m in s['models'])
+    vs_rows = '\n'.join(
+        f'<tr><td>{m["name"]}</td><td>{m["vsTerra"]["wins"]} / {m["vsTerra"]["losses"]}</td><td>{num(m["vsTerra"]["net"])} pp</td>'
+        f'<td>{p_value(m["vsTerra"]["p"])}</td></tr>' for m in s['models'] if m['id'] != BASELINE)
+    cost_rows = '\n'.join(
+        f'<tr><td>{m["name"]}</td><td>{num(m["options"], 0)}</td><td>{num(m["latency"])} s</td><td>{cents(m["genCost"])}</td>'
+        f'<td>{num(m["judgeCost"], 2)} $</td><td>{pct(m["prompt"]["n5"])}</td><td>{pct(m["prompt"]["classic"])}</td>'
+        f'<td>{m["prompt"]["test"]["wins"]} / {m["prompt"]["test"]["losses"]}</td><td>{p_value(m["prompt"]["test"]["p"])}</td></tr>'
+        for m in s['models'])
+    top, second = s['models'][:2]
+    tp, st = s['topPair'], s.get('solTerra')
+    labels = {'realcases': f'Casos reales validados ({s["n"]})', 'realRare': f'Raras ({s["rare"]})', 'realCommon': f'No raras ({s["common"]})',
+              'live': f'<code>live</code> ({s["live"]})', 'urg': f'<code>urg</code> ({s["urg"]})'}
+    sol_rows = '\n'.join(
+        f'<tr><td>{labels[k]}</td><td>{pct(st[k]["a"])}</td><td>{pct(st[k]["b"])}</td><td>{st[k]["wins"]} / {st[k]["losses"]}</td>'
+        f'<td>{p_value(st[k]["p"])}</td></tr>' for k in labels) if st else ''
+    sol_text = (f' Con las dos ejecuciones de cada uno, <strong>gpt-6.1-sol supera a Terra 5.6</strong>: {pct(st["realcases"]["a"])} frente a '
+                f'{pct(st["realcases"]["b"])} en casos reales ({p_text(st["realcases"]["p"])}): {pct(st["realRare"]["a"])} frente a '
+                f'{pct(st["realRare"]["b"])} en raras ({p_text(st["realRare"]["p"])}) y {pct(st["realCommon"]["a"])} frente a '
+                f'{pct(st["realCommon"]["b"])} en no raras ({p_text(st["realCommon"]["p"])}). Por bloques: '
+                f'{pct(st["live"]["a"])} frente a {pct(st["live"]["b"])} en los case reports (<code>live</code>, {p_text(st["live"]["p"])}) y '
+                f'{pct(st["urg"]["a"])} frente a {pct(st["urg"]["b"])} en urgencias ({p_text(st["urg"]["p"])}).') if st else (
+                ' Faltan las segundas ejecuciones de Sol y Terra 5.6 para compararlos con la prueba pareada.')
+    prompt_p = min(m['prompt']['test']['p'] for m in s['models'])
+    judge = sum(m['judgeCost'] for m in s['models']) + s.get('rerunCost', 0)
+    failed = sum(m['judgeFailed'] for m in s['models'])
+    gap = 'sin diferencia significativa entre ellos' if tp['p'] >= 0.05 else 'con diferencia significativa entre ellos'
+    prompt_text = ('En ningún modelo la diferencia es significativa' if prompt_p >= 0.05 else 'Hay diferencia significativa en '
+                   + ', '.join(m['name'] for m in s['models'] if m['prompt']['test']['p'] < 0.05))
+    return f'''
+  <div class="section">
+    <div class="section-title"><code>narrative_v2</code> v0.2 · línea base oficial</div>
+    <div class="callout callout-info">
+      Los seis modelos generan listas nuevas sobre los textos finales de la v0.2 con el prompt «5», el de producción desde la
+      v0.00196, y las puntúa Gemini 3.8 Flash con <code>graded_v3</code>. La cifra principal es <strong>R@1 estricta en los {s["n"]}
+      casos reales validados por David</strong> ({s["live"]} <code>live</code> y {s["urg"]} <code>urg</code>; {s["rare"]} raras y
+      {s["common"]} no raras). {s["pending"]} casos de recambio aún sin validar no cuentan como reales; cuando David los valide, se
+      vuelven a puntuar las mismas listas.
+      <br><strong>{top["name"]} y {second["name"]} quedan arriba</strong>, {pct(top["groups"]["realcases"]["r1"])} y
+      {pct(second["groups"]["realcases"]["r1"])}, {gap} ({tp["wins"]} / {tp["losses"]} casos, {p_text(tp["p"])}).{sol_text}
+      Las cifras son más bajas que las provisionales de más abajo, que puntuaban las listas antiguas en 164 casos. Ahora entran
+      los casos de la reserva, los que tenían la fuga recortada llevan listas hechas con el texto limpio, y todas las listas son
+      nuevas: en los casos cuyo texto no cambió, las del prompt «5» aciertan algo menos que las antiguas en
+      {sum(1 for m in s["models"] if m["prompt"]["n5"] < m["prompt"]["classic"])} de los {len(s["models"])} modelos (tabla del final).
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>R@1 reales</th><th>R@1 raras</th><th>R@1 no raras</th><th>R@1 <code>live</code></th>
+        <th>R@1 <code>urg</code></th><th>R@5 reales</th><th>R@5 laxa reales</th><th>R@1 <code>exam</code></th>
+        <th>R@1 <code>synth</code></th><th>R@1 total ({s["total"]})</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <h3>Frente a Terra 5.6, el modelo de producción (R@1 en casos reales)</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>Gana / pierde</th><th>Neto</th><th>p</th></tr></thead>
+      <tbody>
+{vs_rows}
+      </tbody>
+    </table>
+    </div>
+    {f"""<h3>gpt-6.1-sol frente a Terra 5.6, dos ejecuciones de cada uno</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Grupo</th><th>Sol</th><th>Terra 5.6</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{sol_rows}
+      </tbody>
+    </table>
+    </div>""" if st else ""}
+    <h3>Coste, latencia y efecto del prompt «5»</h3>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>Opciones (mediana)</th><th>s/caso</th><th>Generación por caso</th><th>Juez</th>
+        <th>R@1 «5»</th><th>R@1 clásico</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{cost_rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">«5» frente a clásico: R@1 en los {s["sameText"]} casos validados cuyo texto no cambió desde la v0.1, listas nuevas
+      frente a las del prompt clásico, mismo gold y juez. {prompt_text} ({p_text(prompt_p)} como mínimo).
+      Generación con los tokens de cada ejecución y los precios que constan (servidor de DxGPT y precio de lista de Anthropic);
+      gpt-6.1-terra y Gemini 3.1 Pro no tienen precio registrado. Juez: ≈ {num(judge, 2)} $ las {len(s["models"]) + (2 if st else 0)}
+      ejecuciones, {failed} llamadas fallidas. Dos ejecuciones: prueba de signos sobre los aciertos de cada caso; el resto, McNemar exacto.
+      Ejecuciones: {", ".join(f'{m["name"]} <code>{m["run"]}</code>' for m in s["models"])}.</p>
+  </div>
+'''
+
+
 def v02_section(data):
     s = data.get('v02')
     if not s:
@@ -1781,13 +1963,14 @@ def v02_section(data):
   <div class="section">
     <div class="section-title"><code>narrative_v2</code> v0.2 · primera puntuación con el gold validado (provisional)</div>
     <div class="callout callout-info">
-      David validó los 210 casos reales el 4-nov. Con sus decisiones sale la v0.2, que tiene {s["n"]} casos reales validados
-      ({s["rare"]} raras y {s["common"]} no raras) y {s["pending"]} de reserva por validar. Aquí se puntúan con el gold nuevo las
-      mismas listas de los seis modelos, con <code>graded_v3</code>. Los casos de reserva no entran, porque aún no tienen lista.
+      David validó los 210 casos reales y la tanda de reserva el 4-nov. Con sus decisiones sale la v0.2, que tiene
+      {s["validated"]} casos reales validados y {s["pending"]} de recambio por validar. Aquí se puntúan con el gold nuevo las
+      mismas listas de los seis modelos, con <code>graded_v3</code>, en los {s["n"]} casos validados que ya tenían lista
+      ({s["rare"]} raras y {s["common"]} no raras). Los {s["validated"] - s["n"]} que vienen de la reserva aún no tienen lista.
       Corregir el gold sube el R@1 de {"todos los modelos" if len(up) == len(s["models"]) else f"{len(up)} de los {len(s['models'])} modelos"}, entre 1 y 4 puntos,
       {"sin diferencia significativa en ninguno" if not sig else "con diferencia significativa en " + ", ".join(sig)}, y no cambia el orden.{sol_text}
       <br>Es provisional: en {s["leakCut"]} casos se recortó la frase que daba el diagnóstico, y sus listas se hicieron con el texto anterior.
-      Sin ellos, todos los modelos bajan unos 2–4 puntos. La línea base oficial necesita listas nuevas para esos casos y para los de reserva.
+      Sin ellos, todos los modelos bajan unos 2–4 puntos. La línea base oficial, con listas nuevas para todos los casos, está en la primera sección.
     </div>
 {chart_panel('v02', 'R@1 con el gold de la v0.1 y con el de la v0.2, mismas listas y casos',
              'Punto hueco: gold de la v0.1; punto lleno: gold validado de la v0.2. Juez Gemini 3.8 Flash con <code>graded_v3</code>.',
@@ -2064,8 +2247,8 @@ def build_html(data):
 <div class="hero">
   <div class="hero-badge">Borrador · Pipeline V5 <code>{judge_prompt}</code> · {stamp}</div>
   <h1>Pipeline V5: narrativo y raras</h1>
-  <p><code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5
-     y juez {judge_name}. La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
+  <p>{f"<code>narrative_v2</code> v0.2, con los casos reales validados por David: la línea base oficial está en la primera sección, con juez Gemini 3.8 Flash. Debajo, la v0.1 (sin validación clínica), las pruebas hechas con ella y raras HPO v2 (3.006 casos), con juez {judge_name} salvo donde se indica." if data.get("baseline") else f"<code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5 y juez {judge_name}."}
+     La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
 {mixed_note}
   <p class="hero-nav">
     <a href="benchmark-report-v5.html">V5 (este)</a> ·
@@ -2076,9 +2259,9 @@ def build_html(data):
   </p>
 </div>
 <div class="container">
-
+{baseline_section(data)}
   <div class="section">
-    <div class="section-title">Resumen</div>
+    <div class="section-title">Resumen{" de la v0.1 (sin validación clínica)" if data.get("baseline") else ""}</div>
     <div class="cards">
 {stratum_card('realRare', 'Raras, casos reales')}
 {stratum_card('realCommon', 'No raras, casos reales')}
@@ -2094,8 +2277,7 @@ def build_html(data):
       raras</strong>: son poblaciones distintas y mezclarlas diluye las diferencias. La cifra conjunta de casos reales
       ({pct(best['groups']['realcases']['r1'])} con {best['name']}, {pct(base['groups']['realcases']['r1'])} con Terra 5.6,
       {p_text(best_test['p'])}) queda como secundaria. <code>exam</code> apenas separa a los modelos y <code>synth</code> es demasiado fácil. La nota estricta solo cuenta la misma enfermedad (nota 2 del
-      juez); la laxa (2 o 1) es de uso interno. Todo es provisional hasta que David valide <code>narrative_v2</code>: las listas
-      no cambiarán, solo se re-puntúan. Más abajo, otras pruebas: Terra repetido para medir cuánto varía una ejecución,
+      juez); la laxa (2 o 1) es de uso interno. {"Estas cifras son de la v0.1, sin validación clínica; las oficiales son las de la sección anterior." if data.get("baseline") else "Todo es provisional hasta que David valide <code>narrative_v2</code>: las listas no cambiarán, solo se re-puntúan."} Más abajo, otras pruebas: Terra repetido para medir cuánto varía una ejecución,
       esfuerzo de razonamiento <code>medium</code>, una capa agéntica offline sobre las listas de Terra y de Sol, y Sol frente a
       Terra en raras.
     </div>

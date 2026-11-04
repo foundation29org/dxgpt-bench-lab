@@ -1,9 +1,10 @@
 # Decisiones de la validación clínica de narrative_v2 (tarea 1) para la v0.2.
 # Revisión: David Isla, hoja entregada el 4-nov-2026; revisada y aplicada el mismo día.
+# La tanda de reserva (46 casos, al final) se entregó, revisó y aplicó también el 4-nov.
 # Las aplica build_dataset.py --decisions. Sin texto de casos: los cortes de texto
 # (fugas, anonimización y limpieza) están en work/text_edits_v0.2.json, fuera de git.
 #
-# decision: keep | exclude. reason: leak | not_diagnosable | unreliable_gold.
+# decision: keep | exclude. reason: leak | not_diagnosable | unreliable_gold | duplicate.
 # principal, accepted_names, rare, secondary: valores nuevos (solo si cambian).
 # text: leak_removed | anonymized | cleaned.
 version: '0.2'
@@ -729,3 +730,180 @@ cases:
     decision: keep
     accepted_names:
     - Arnold's neuralgia
+  # Tanda de reserva (46 casos): hoja entregada y revisada el 4-nov-2026.
+  L-PMC13642278:
+    decision: keep
+    note: 'el revisor quita «DiGeorge syndrome»; se queda: OMIM (188400) y Orphanet lo usan como nombre de la deleción 22q11.2'
+  L-PMC13572277:
+    decision: keep
+  L-PMC13389258:
+    decision: keep
+  L-PMC13434376:
+    decision: keep
+    accepted_names:
+    - AFS-like syndrome
+    - Eosinophilic mucin rhinosinusitis
+    rare: true
+  L-PMC13664576:
+    decision: keep
+    accepted_names:
+    - MEST of the seminal vesicle
+    - Epithelial-stromal tumour of the seminal vesicle
+  L-PMC13571270:
+    decision: keep
+    principal: Plexiform neurofibroma
+    accepted_names:
+    - PNF
+    note: el gold era MPNST; la anatomía patológica del artículo es un neurofibroma plexiforme benigno
+  L-PMC13664445:
+    decision: keep
+    note: 'no se añade MINOCA: es la sospecha inicial, no un diagnóstico del paciente'
+  L-PMC13459500:
+    decision: keep
+  L-PMC13613187:
+    decision: keep
+  L-PMC13562374:
+    decision: keep
+    rare: false
+  L-PMC13626618:
+    decision: keep
+  L-PMC13368711:
+    decision: keep
+    accepted_names:
+    - CFES
+  L-PMC13382086:
+    decision: keep
+    accepted_names:
+    - O,S-dimethyl acetylphosphoramidothioate poisoning
+    rare_note: 'el revisor propone «rara»; no cuenta: intoxicación, reacción a fármaco, lesión o complicación fuera de Orphanet'
+  L-PMC13607652:
+    decision: keep
+    principal: Generalized arterial calcification of infancy
+    accepted_names:
+    - GACI
+    - ENPP1 deficiency
+    - Ectonucleotide pyrophosphatase/phosphodiesterase 1 deficiency
+  L-PMC13688631:
+    decision: keep
+    principal: Diffuse cavernous hemangioma of the rectum
+    accepted_names:
+    - Diffuse cavernous hemangioma of the rectosigmoid
+    - Rectal cavernous hemangioma
+  L-PMC13370285:
+    decision: keep
+    text:
+    - cleaned
+  L-PMC13686739:
+    decision: keep
+  L-PMC13532220:
+    decision: keep
+  L-PMC13651677:
+    decision: keep
+  L-PMC13708058:
+    decision: keep
+  L-PMC13429217:
+    decision: keep
+    rare: true
+    text:
+    - leak_removed
+  L-PMC13640457:
+    decision: keep
+  L-PMC13334072:
+    decision: keep
+    note: fuga por laboratorio o imagen según el revisor; no se quita (regla de la tarea)
+  L-PMC13683063:
+    decision: keep
+  L-PMC13394491:
+    decision: keep
+  L-PMC13481231:
+    decision: keep
+  L-PMC13474394:
+    decision: keep
+    text:
+    - leak_removed
+    note: se quita «stroke» del texto; la RM se queda (imagen que hay que interpretar)
+  L-PMC13574603:
+    decision: keep
+    text:
+    - leak_removed
+  U-T591:
+    decision: keep
+    note: 'el revisor propone pielonefritis aguda; afebril y con el dolor lumbar atribuido a un posible cólico, el texto no
+      distingue cistitis de pielonefritis: se queda la infección urinaria (un subtipo cuenta como acierto)'
+  U-T916:
+    decision: keep
+    accepted_names:
+    - Acute tracheobronchitis
+  U-T45:
+    decision: keep
+  U-T1123:
+    decision: keep
+    secondary: []
+  U-T409:
+    decision: keep
+    principal: Croup
+    accepted_names: &id001
+    - Acute laryngotracheitis
+    - Viral croup
+    - Laryngotracheobronchitis
+    secondary: []
+  U-T758:
+    decision: keep
+    principal: Croup
+    accepted_names: *id001
+  U-T814:
+    decision: keep
+    principal: Acute bronchitis
+    accepted_names: []
+  U-T1174:
+    decision: keep
+    principal: Piriformis syndrome
+    accepted_names:
+    - Piriformis muscle syndrome
+    note: 'no se añade «lumbalgia» como secundario: es un síntoma, y en U- los secundarios puntúan'
+  U-T120:
+    decision: keep
+    principal: Acute sinusitis
+    accepted_names:
+    - Acute rhinosinusitis
+  U-T39:
+    decision: keep
+    principal: Trapeziometacarpal joint synovitis
+    accepted_names:
+    - Thumb carpometacarpal joint synovitis
+  U-T1382:
+    decision: keep
+  U-T1351:
+    decision: keep
+    text:
+    - anonymized
+  U-T513:
+    decision: keep
+    note: el revisor excluye por fuga (pinzamiento L5-S1 en la radiografía); es imagen que hay que interpretar, se mantiene
+      (regla de la tarea)
+  U-T319:
+    decision: keep
+    principal: Patellar chondropathy
+    accepted_names:
+    - Chondromalacia patellae
+    secondary:
+    - Iliotibial band syndrome
+    note: el texto sostiene la condropatía (maniobras femoropatelares +) y no la cintilla; se intercambian los dos diagnósticos
+      del alta
+  U-T934:
+    decision: keep
+  U-T358:
+    decision: keep
+    principal: Dorsal foot tenosynovitis
+    accepted_names:
+    - Extensor tenosynovitis of the foot
+    - Tenosynovitis of the foot
+  U-T889:
+    decision: keep
+  U-T356:
+    decision: keep
+  # Recambio sin revisión clínica: se descarta porque, al quitarle la ambigüedad, repetiría un diagnóstico ya validado.
+  U-T414:
+    decision: exclude
+    reason: duplicate
+    note: «Sinusitis» de 3 días pasaría a «Acute sinusitis», que ya tiene U-T108

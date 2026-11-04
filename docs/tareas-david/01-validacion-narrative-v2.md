@@ -1,6 +1,6 @@
 # Tarea 1 · Validación clínica de `narrative_v2`
 
-**Estado:** hecha el 4-nov-2026; falta la tanda de reserva (ver al final) · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
+**Estado:** hecha el 4-nov-2026, también la tanda de reserva; faltan 3 recambios (ver al final) · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
 
 ## Para qué sirve
 
@@ -125,7 +125,29 @@ Al aplicarla se fijaron cuatro criterios, que ya van en la hoja de reserva:
 
 ## Tanda de reserva
 
-Los 46 casos que cubren las bajas (28 `L-` y 18 `U-`, ≈ 1 h), en
+Los 46 casos que cubrían las bajas (28 `L-` y 18 `U-`) se devolvieron y se
+aplicaron el 4-nov, con las decisiones al final de `decisions_v0.2.yaml`:
+
+- **Exclusiones:** ninguna.
+- **Duplicados:** 3 casos de urgencias quedan repetidos al corregir el gold
+  (crup, bronquitis aguda y sinusitis aguda).
+- **En los que se mantienen:**
+  - se corrige el gold de 11, uno porque estaba mal: la anatomía patológica del
+    artículo es un neurofibroma plexiforme benigno, no un tumor maligno;
+  - se quita la frase que daba el diagnóstico en 3;
+  - cambian 3 etiquetas de rara.
+- **Criterios de la hoja:** dos fugas marcadas por un dato de laboratorio o de
+  imagen se dejan sin tocar, con el mismo criterio de arriba.
+
+La revisión caso a caso está en
+`data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_reserva_revision.md`
+(fuera de git). La v0.2 queda con 207 casos reales validados (150 `L-` y
+57 `U-`).
+
+## Recambios
+
+Los 3 duplicados se cubren con 3 casos nuevos de urgencias (≈ 5 min), en
 `data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_reserva.md`
-(fuera de git), con la misma hoja y los criterios de arriba. Se devuelve igual,
-por canal privado.
+(fuera de git; la hoja sustituye a la de la tanda de reserva). Se rellena y
+se devuelve igual, por canal privado. Si alguno sale excluido o repetido, se
+cubre con otro y la vuelta siguiente es de uno o dos casos.

@@ -134,34 +134,34 @@ L-PMC13520939	live	Diffuse large B-cell lymphoma	validated
 L-PMC13623916	live	Primary intestinal lymphangiectasia	validated
 L-PMC13335007	live	Tetanus	validated
 L-PMC13614255	live	Spontaneous coronary artery dissection	validated
-L-PMC13642278	live	22q11.2 deletion syndrome	pending
-L-PMC13572277	live	Ampullary adenocarcinoma	pending
-L-PMC13389258	live	Unroofed coronary sinus	pending
-L-PMC13434376	live	Allergic fungal sinusitis-like syndrome	pending
-L-PMC13664576	live	Mixed epithelial stromal tumour of the seminal vesicle	pending
-L-PMC13571270	live	Malignant peripheral nerve sheath tumor	pending
-L-PMC13664445	live	Congenital pericardial agenesis	pending
-L-PMC13459500	live	Daptomycin-induced eosinophilic pneumonia	pending
-L-PMC13613187	live	Schizophrenia	pending
-L-PMC13562374	live	Pneumomediastinum	pending
-L-PMC13626618	live	Eisenmenger's syndrome	pending
-L-PMC13368711	live	Cerebral fat embolism syndrome	pending
-L-PMC13382086	live	Acephate poisoning	pending
-L-PMC13607652	live	ENPP1 deficiency	pending
-L-PMC13688631	live	Cavernous hemangioma	pending
-L-PMC13370285	live	Momelotinib-induced peripheral neuropathy	pending
-L-PMC13686739	live	Small intestinal neuroendocrine tumor	pending
-L-PMC13532220	live	Chikungunya virus infection	pending
-L-PMC13651677	live	Erosive pustular dermatosis of the scalp	pending
-L-PMC13708058	live	Pulmonary alveolar proteinosis	pending
-L-PMC13429217	live	Ventriculitis	pending
-L-PMC13640457	live	Progressive encephalomyelitis with rigidity and myoclonus	pending
-L-PMC13334072	live	Secondary adrenal insufficiency	pending
-L-PMC13683063	live	Intrahepatic cholangiocarcinoma	pending
-L-PMC13394491	live	Tracheal laceration	pending
-L-PMC13481231	live	Odontogenic keratocyst	pending
-L-PMC13474394	live	Ischemic stroke	pending
-L-PMC13574603	live	Glycogen storage disease type VII	pending
+L-PMC13642278	live	22q11.2 deletion syndrome	validated
+L-PMC13572277	live	Ampullary adenocarcinoma	validated
+L-PMC13389258	live	Unroofed coronary sinus	validated
+L-PMC13434376	live	Allergic fungal sinusitis-like syndrome	validated
+L-PMC13664576	live	Mixed epithelial stromal tumour of the seminal vesicle	validated
+L-PMC13571270	live	Plexiform neurofibroma	validated
+L-PMC13664445	live	Congenital pericardial agenesis	validated
+L-PMC13459500	live	Daptomycin-induced eosinophilic pneumonia	validated
+L-PMC13613187	live	Schizophrenia	validated
+L-PMC13562374	live	Pneumomediastinum	validated
+L-PMC13626618	live	Eisenmenger's syndrome	validated
+L-PMC13368711	live	Cerebral fat embolism syndrome	validated
+L-PMC13382086	live	Acephate poisoning	validated
+L-PMC13607652	live	Generalized arterial calcification of infancy	validated
+L-PMC13688631	live	Diffuse cavernous hemangioma of the rectum	validated
+L-PMC13370285	live	Momelotinib-induced peripheral neuropathy	validated
+L-PMC13686739	live	Small intestinal neuroendocrine tumor	validated
+L-PMC13532220	live	Chikungunya virus infection	validated
+L-PMC13651677	live	Erosive pustular dermatosis of the scalp	validated
+L-PMC13708058	live	Pulmonary alveolar proteinosis	validated
+L-PMC13429217	live	Ventriculitis	validated
+L-PMC13640457	live	Progressive encephalomyelitis with rigidity and myoclonus	validated
+L-PMC13334072	live	Secondary adrenal insufficiency	validated
+L-PMC13683063	live	Intrahepatic cholangiocarcinoma	validated
+L-PMC13394491	live	Tracheal laceration	validated
+L-PMC13481231	live	Odontogenic keratocyst	validated
+L-PMC13474394	live	Ischemic stroke	validated
+L-PMC13574603	live	Glycogen storage disease type VII	validated
 U-T1306	urg	Cerebral infarction	validated
 U-T1322	urg	Pneumonia	validated
 U-T469	urg	Intercostal neuritis	validated
@@ -180,9 +180,12 @@ U-T1234	urg	Acute otitis media	validated
 U-T798	urg	Biliary colic	validated
 U-T1381	urg	Acute prostatitis	validated
 U-T827	urg	Pelvic inflammatory disease	validated
+U-T591	urg	Urinary tract infection	validated
 U-T335	urg	Acute bronchitis	validated
 U-T706	urg	Vasovagal syncope	validated
+U-T916	urg	Acute tracheitis	validated
 U-T1179	urg	Chronic sinusitis	validated
+U-T45	urg	Costochondritis	validated
 U-T339	urg	Psoriasis	validated
 U-T56	urg	Conjunctivitis	validated
 U-T46	urg	Anxiety attack	validated
@@ -191,9 +194,11 @@ U-T32	urg	Cervical adenitis	validated
 U-T417	urg	Gastroesophageal reflux disease	validated
 U-T310	urg	Acute pharyngotonsillitis	validated
 U-T499	urg	Infectious mononucleosis	validated
+U-T1123	urg	Acute viral pharyngitis	validated
 U-T850	urg	Meniscal tear	validated
 U-T108	urg	Acute sinusitis	validated
 U-T99	urg	Influenza	validated
+U-T409	urg	Croup	validated
 U-T775	urg	Inguinal tendinitis	validated
 U-T908	urg	Viral pharyngitis	validated
 U-T709	urg	Supraventricular extrasystole	validated
@@ -204,24 +209,19 @@ U-T476	urg	Benign prostatic hyperplasia	validated
 U-T450	urg	Traumatic conjunctival erosion	validated
 U-T135	urg	Gout	validated
 U-T403	urg	Occipital neuralgia	validated
-U-T591	urg	Urinary tract infection	pending
-U-T916	urg	Acute tracheitis	pending
-U-T45	urg	Costochondritis	pending
-U-T1123	urg	Acute viral pharyngitis	pending
-U-T409	urg	Mild laryngitis	pending
-U-T758	urg	Acute laryngitis	pending
-U-T814	urg	Bronchitis	pending
-U-T1174	urg	Right piriformis syndrome	pending
-U-T120	urg	Mild sinusitis	pending
-U-T39	urg	Left hand synovitis	pending
-U-T1382	urg	Acute pancreatitis	pending
-U-T1351	urg	Acute cholecystitis	pending
-U-T513	urg	Lumbar discopathy	pending
-U-T319	urg	Iliotibial band syndrome	pending
-U-T934	urg	Episcleritis	pending
-U-T358	urg	Tarsometatarsal tenosynovitis	pending
-U-T889	urg	Cervicogenic dizziness	pending
-U-T356	urg	Fibromyalgia	pending
+U-T1174	urg	Piriformis syndrome	validated
+U-T39	urg	Trapeziometacarpal joint synovitis	validated
+U-T1382	urg	Acute pancreatitis	validated
+U-T1351	urg	Acute cholecystitis	validated
+U-T513	urg	Lumbar discopathy	validated
+U-T319	urg	Patellar chondropathy	validated
+U-T934	urg	Episcleritis	validated
+U-T358	urg	Dorsal foot tenosynovitis	validated
+U-T889	urg	Cervicogenic dizziness	validated
+U-T356	urg	Fibromyalgia	validated
+U-T698	urg	Acute tonsillitis	pending
+U-T1328	urg	Left orchitis	pending
+U-T675	urg	Community-acquired pneumonia	pending
 E-Q4564	exam	Sickle Cell Crisis	not_reviewed
 E-Q4614	exam	Uterine adenomyosis	not_reviewed
 E-Q2474	exam	Drug-induced myopathy	not_reviewed

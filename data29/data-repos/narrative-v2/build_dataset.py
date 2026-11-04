@@ -58,11 +58,19 @@ ANONYMIZE = [
     (re.compile(r"Paciente:.*?P[áa]gina:\s*\d+\s*de\s*\d+\s*", re.DOTALL), ""),
     (re.compile(r"(I/C A [A-ZÁÉÍÓÚÑ ]+?)\s*:\s*[A-ZÁÉÍÓÚÑ ]+\(\d{1,2}/\d{1,2}/\d{4}\s+[\d:]+\)"), r"\1"),
     (re.compile(r"\s*\bDra?\.\s+[^\n]+\s*$"), ""),
+    (re.compile(r"\n?Dr/a:[^\n]*(\n\d+ de \d+(?=\n|$))?"), ""),
+]
+# Export leftovers: an empty field written as "nan", the lab's note on a change of
+# technique and stray backticks.
+ARTIFACTS = [
+    (re.compile(r"\n-Complementarias:\n+nan\b"), ""),
+    (re.compile(r"Nueva t[ée]cnica[^\n]*\nNuevos valores de referencia\n[^\n]*\nDebido al cambio de t[ée]cnica\n.*?hist[óo]rico\.\n", re.DOTALL), ""),
+    (re.compile(r"`"), ""),
 ]
 
 
 def anonymize(text: str) -> str:
-    for pattern, replacement in ANONYMIZE:
+    for pattern, replacement in ANONYMIZE + ARTIFACTS:
         text = pattern.sub(replacement, text)
     return text
 
@@ -204,10 +212,10 @@ RESERVE_INTRO = [
     "",
     "**Responsable:** David Isla · **Estado:** New",
     "",
-    "Con tu revisión de los 210 casos salió la v0.2. Los casos que se excluyeron, y los",
-    "que quedaron repetidos al corregir el gold, se sustituyen por estos casos de",
-    "reserva, que hay que validar igual. La hoja y los criterios son los mismos, con",
-    "cuatro aclaraciones que salen de tu revisión:",
+    "Con tu revisión salió la v0.2. Los casos que se excluyeron, y los que quedaron",
+    "repetidos al corregir el gold, se sustituyen por estos casos de reserva, que hay",
+    "que validar igual. La hoja y los criterios son los mismos, con cuatro",
+    "aclaraciones que salen de tu revisión:",
     "",
     "- **Fuga:** solo si el texto nombra el diagnóstico o da un resultado que por sí",
     "  solo lo establece: biopsia, citología, cultivo, serología, prueba confirmatoria",
@@ -231,7 +239,8 @@ def validation_sheet(cases: List[Dict], not_disease: Dict[str, str], reserve: bo
     urg = len(cases) - live
     if reserve:
         lines = RESERVE_INTRO + [
-            f"**Alcance:** {len(cases)} casos: {live} `L-` y {urg} `U-`; a 1–2 min por caso, ≈ {max(1, round(len(cases) * 1.5 / 60))} h.",
+            f"**Alcance:** {len(cases)} casos: {live} `L-` y {urg} `U-`; a 1–2 min por caso, ≈ "
+            + (f"{round(len(cases) * 1.5 / 60)} h." if len(cases) >= 30 else f"{max(5, round(len(cases) * 1.5 / 5) * 5)} min."),
             "",
         ]
     else:
@@ -281,6 +290,7 @@ def validation_sheet(cases: List[Dict], not_disease: Dict[str, str], reserve: bo
         meta = case["metadata"]
         principal = case["diagnoses"][0]
         secondaries = [d["name"] for d in case["diagnoses"][1:]]
+        others = ", ".join(meta.get("other_conditions") or []) or "—"
         source = meta.get("url") or meta.get("original_diagnosis") or ""
         source_label = "Diagnóstico de alta original" if reserve and meta["block"] == "urg" else "Fuente"
         lines += [f"## {case['id']}", ""]
@@ -289,7 +299,8 @@ def validation_sheet(cases: List[Dict], not_disease: Dict[str, str], reserve: bo
         lines += [
             f"- **Diagnóstico principal:** {principal['name']}",
             f"- **Nombres aceptados:** {', '.join(principal['accepted_names']) or '—'}",
-            f"- **Secundarios:** {', '.join(secondaries) or '—'}",
+            f"- **Secundarios:** {', '.join(secondaries) or '—'}" if meta["block"] == "urg" else
+            f"- **Otros diagnósticos del caso (no puntúan):** {others}",
             f"- **Especialidad:** {meta.get('specialty') or '—'} · **Rara:** {'sí' if meta['rare_disease'] else 'no'}",
             f"- **Pistas a revisar:** {', '.join(meta['soft_leaked_terms']) or '—'}",
             f"- **{source_label}:** {source}",

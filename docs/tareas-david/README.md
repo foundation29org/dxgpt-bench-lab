@@ -6,12 +6,12 @@ cómo se devuelve y cuándo está hecha.
 
 | # | Tarea | Estado | Depende de | Tiempo orientativo |
 |---|---|---|---|---|
-| 1 | [Validación clínica de `narrative_v2`](01-validacion-narrative-v2.md) | Hecha (4-nov); falta la tanda de reserva | — | ≈ 5 h + ≈ 1 h |
+| 1 | [Validación clínica de `narrative_v2`](01-validacion-narrative-v2.md) | Hecha (4-nov), con la tanda de reserva; faltan 3 recambios | — | ≈ 5 h + ≈ 1 h + ≈ 5 min |
 | 2 | [Validar la escala del juez (2/1/0)](02-escala-del-juez.md) | Lista para empezar (4-nov) | Tarea 1 | ≈ 2 h |
 | 3 | [Raras: nombres sin gen, casos con HPO insuficientes y sinónimos del gold](03-nombres-sin-gen-raras.md) | Lista para empezar | — | ≈ 1 h 25 min |
 
-Las tres se pueden hacer ya y en cualquier orden: la tanda de reserva de la
-1, la 2 (sale de los casos ya validados de la v0.2) y la 3.
+Lo pendiente se puede hacer ya y en cualquier orden: los 3 recambios de la 1,
+la 2 (sale de los casos ya validados de la v0.2) y la 3.
 
 ## Reglas comunes
 

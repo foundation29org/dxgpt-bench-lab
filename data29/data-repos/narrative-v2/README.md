@@ -165,13 +165,15 @@ py build_dataset.py --version 0.2 --decisions decisions_v0.2.yaml --text-edits w
 | Excluidos por no ser diagnosticables | 20 | 5 |
 | Excluidos por gold poco firme (un signo o una categoría amplia) | — | 5 |
 | Fuera por gold repetido tras la corrección | — | 7 |
-| **Validados en la v0.2** | **122** | **42** |
-| De la reserva, pendientes de validar | 28 | 18 |
+| Validados en la tanda principal | 122 | 42 |
+| Reserva validada (46 casos; 3 `urg` fuera por gold repetido) | 28 | 15 |
+| **Validados en la v0.2** | **150** | **57** |
+| Recambios pendientes de validar | — | 3 |
 
-`exam` y `synth` no cambian. Los casos reales quedan en 112 raros y 98 no raros
-(entre los validados, 91 y 73).
+`exam` y `synth` no cambian. Los casos reales quedan en 113 raros y 97 no raros
+(entre los validados, 113 y 94).
 
-Cambios en los casos validados:
+Cambios en los casos validados de la tanda principal:
 
 - **Gold corregido en 21**: sin lateralidad, gravedad ni el subtipo que solo
   da la biopsia, o con la entidad en lugar de un signo. Tres los resuelve el
@@ -190,11 +192,40 @@ Cambios en los casos validados:
 - **Secundarios** de `urg`: 7 cambian (se quitan signos y diagnósticos sin
   apoyo en el texto, y uno que la anamnesis ya nombraba).
 
+Tanda de reserva (46 casos, revisada el mismo día; no se excluye ninguno):
+
+- **Gold corregido en 11**, 3 de ellos fuera por repetir un diagnóstico (crup,
+  bronquitis aguda y sinusitis aguda).
+  - Uno estaba mal: «Malignant peripheral nerve sheath tumor» pasa a «Plexiform
+    neurofibroma», que es lo que dice la anatomía patológica del artículo.
+  - Uno sube al nivel al que llega el texto: el déficit de ENPP1 pasa a
+    calcificación arterial generalizada de la infancia.
+  - Los demás quitan lateralidad o gravedad, o concretan la localización.
+  - En un caso de urgencias se intercambian los dos diagnósticos del alta,
+    porque el texto sostiene el secundario y no el principal.
+- **Nombres aceptados** cambiados en otros 5.
+- **Rara:** cambian 3 etiquetas.
+- **Fuga:** 3 casos se mantienen quitando la frase. Otros 2 que se marcaron
+  por un dato de laboratorio o de imagen se dejan como estaban, con la misma
+  regla que en la tanda principal.
+- **Recambios:** entran 3 casos, pendientes de validar. Uno más
+  («Sinusitis») se descarta antes de revisarlo, porque al corregirlo repetiría
+  «Acute sinusitis» (`reason: duplicate`).
+
 Cambios en la construcción:
 
 - **Anonimización de `urg`.** `build_dataset.py` quita de todos los casos
-  `urg`, incluida la reserva, la cabecera administrativa de los informes de
-  laboratorio, los nombres de especialistas consultados y las firmas.
+  `urg`, incluida la reserva:
+  - la cabecera administrativa de los informes de laboratorio;
+  - los nombres de especialistas consultados;
+  - las firmas.
+- **Restos de la exportación en `urg`**, que también se quitan:
+  - el campo «Complementarias» vacío, que salía como «nan» (19 casos de la
+    v0.2);
+  - la nota del laboratorio sobre un cambio de técnica;
+  - acentos graves sueltos.
+- **La hoja de validación muestra los otros diagnósticos de los casos `live`**,
+  que no puntúan. Antes salía «—».
 - **Reserva:** además de los inespecíficos, se descartan los gold que son un
   signo o una categoría amplia («Bronchospasm», «Respiratory infection»), con la
   misma regla de la validación.
@@ -204,11 +235,27 @@ Cambios en la construcción:
   `bench/datasets/`) guarda la v0.1, anonimizada, para las ejecuciones
   antiguas.
 
-Pendiente: que David valide los 46 casos de reserva
-(`curated-datasets/narrative_v2/validacion_clinica_reserva.md`, fuera de git)
-y volver a puntuar los modelos. Las listas de los 164 casos validados se
-reutilizan (`REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`); los 46 nuevos
-necesitan inferencia. Las cifras de contaminación de abajo son de la v0.1.
+**Línea base oficial (4-nov-2026):** los seis modelos generan listas nuevas
+sobre los 300 textos finales, con el prompt «5» y juez Gemini 3.8 Flash
+(`graded_v3`). R@1 en los 207 casos reales validados:
+
+| Modelo | R@1 |
+|---|---:|
+| gpt-6.1-sol | 64,7 % |
+| Claude Opus 5 | 63,3 % |
+| Terra 5.6 | 58,5 % |
+| gpt-6.1-terra | 58,0 % |
+| Gemini 3.1 Pro | 52,2 % |
+| gpt-5.4-mini | 46,9 % |
+
+El detalle está en el
+[README de Pipeline V5](../../../bench/pipelines/pipeline_v5/main/README.md).
+
+Pendiente: que David valide los 3 recambios
+(`curated-datasets/narrative_v2/validacion_clinica_reserva.md`, fuera de git).
+Después solo hay que volver a puntuar las mismas listas (`REUSE_LABELED_DDX` +
+`REFRESH_GOLD_FROM_DATASET`). Las cifras de contaminación de abajo son de la
+v0.1.
 
 ## Primera línea base: Terra low (28-oct-2026)
 
@@ -249,7 +296,7 @@ Antes de publicarse como línea base, David revisa cada caso de `live` y `urg`:
 diagnóstico principal, nombres aceptados, fuga, si el caso es diagnosticable y
 si es raro. La hoja la genera `build_dataset.py`: la de la v0.1 con los 210
 casos, y con `--decisions` solo la de los casos de reserva que faltan. Hecho
-con la v0.1 el 4-nov-2026 (ver «Versión 0.2»).
+con la v0.1 y con la tanda de reserva el 4-nov-2026 (ver «Versión 0.2»).
 
 ## Contaminación
 
