@@ -12,6 +12,86 @@ Origen de los cambios: la revisión de la rúbrica del juez
 (`bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md`, §9–§11) y el plan del
 evaluador en `docs/ROADMAP.md`.
 
+## Reglas congeladas (desde el 5-nov-2026)
+
+Son las reglas con las que se hizo la línea base oficial de `narrative_v2`
+v0.2. Julián señaló el riesgo: si las reglas se ajustan mirando qué falla
+cada modelo, las cifras mejoran en este dataset pero no se extrapolan a
+otro. Por eso quedan fijas.
+
+Un cambio solo se admite si cumple las tres condiciones:
+
+1. se decide sin mirar qué casos aciertan o fallan los modelos;
+2. se aplica a todos los casos;
+3. se vuelve a puntuar todo y se publican las cifras de antes y de después.
+
+**Generación**
+- Prompt `juanjo_classic_v2_n5`: pide exactamente 5 diagnósticos. Es el de
+  producción desde la v0.00196.
+- Temperatura 0,1 y razonamiento `low` (`thinking_level` `low` en Gemini).
+- Los casos de urgencias se traducen al inglés (`TRANSLATE_CASE`).
+- Las configuraciones salen de `config_<modelo>_low_narrative_v2.yaml`
+  cambiando solo el prompt.
+
+**Evaluación**
+- Juez `gemini-3.8-flash`, con `thinking_level` `low` y temperatura 0,1.
+  Puntúa cada opción con la rúbrica `graded_v3` y una caché de notas por juez
+  y rúbrica.
+- Solo el SNOMED exacto acierta sin juez.
+- Un caso se acierta cuando una opción saca un 2 frente a algún gold. Cuentan
+  el principal y, en urgencias, los diagnósticos simultáneos del alta.
+- La rúbrica no se ajusta con contraejemplos (decisión de Julián del 30-oct).
+  Criterio: misma enfermedad si está relacionada con el gold y se trata de la
+  misma forma.
+
+**Cifras**
+- Principal: R@1 estricta en los casos reales validados (`live` + `urg`).
+- Se dan también por raras y no raras y por bloque.
+- Secundarias: R@5 y la nota laxa (2 o 1), que es de uso interno.
+- `exam` es el control comparable con la literatura.
+- Pruebas: McNemar exacto con una ejecución por modelo; prueba de signos
+  agrupada con dos.
+
+**Gold de `narrative_v2`**
+- Rige el bloque `rules` de
+  `data29/data-repos/narrative-v2/decisions_v0.2.yaml`:
+  - fuga solo si el texto nombra el diagnóstico o da un resultado que lo
+    establece por sí solo;
+  - un caso no diagnosticable se excluye;
+  - rara = Orphanet o prevalencia < 1/2.000;
+  - un caso por diagnóstico principal.
+- Nombres aceptados: solo sinónimos y abreviaturas de la misma entidad, sin
+  términos más amplios ni más estrechos.
+- La validación clínica revisa todos los casos sin ver ningún resultado de
+  los modelos. Sus decisiones se aplican a todos antes de puntuar.
+
+**Raras (HPO v2)**
+- Siempre se publican las dos notas: con el gold con gen, y con el gold con
+  gen o sin gen.
+- Los nombres sin gen se validan sobre una muestra al azar, sin mirar si el
+  modelo acierta. Así está hecha la tarea 3 de David (bloques A–D).
+
+**Lo que no se hace**
+- Cambiar el gold, los nombres aceptados o la rúbrica, o excluir casos,
+  después de ver qué falla o acierta cada modelo.
+- Revisar solo los fallos. Si hace falta una revisión, entran aciertos y
+  fallos por igual, como en la tarea 2.
+
+**Lo único elegido mirando fallos hasta ahora** son los 11 casos de gold
+dudoso que salieron de HPO v2. Se buscaron entre los fallos de Terra (T3) y
+mueven el R@1 ≈ 0,15 puntos. En `narrative_v2` no se adaptó ningún caso por
+los resultados.
+
+Además, 7 de esos 11 siguen un patrón que tienen 115 casos de RAMEDIS
+(fenilcetonuria con hipertirosinemia), y los otros 109 siguen dentro. Se
+resolverá con una regla para los 115, que decide David en la tarea 3 (bloque
+G).
+
+**Comprobación:** la próxima renovación de casos `live` se construye con
+estas reglas, se valida sin ver resultados y se puntúa una sola vez. Hace de
+dataset virgen: si las cifras y el orden de los modelos se parecen a los de la
+v0.2, las reglas generalizan.
+
 ## Qué cambia respecto a V4
 
 | | V4 strict | V5 |
@@ -338,8 +418,11 @@ R@1 estricta en casos reales (`live`+`urg`, 210):
   «Aortic regurgitation… with aortic root dilatation» frente a «Aortic aneurysm».
 - **Gemini 3.8 Flash cuesta unas 30 veces menos y es 5 veces más rápido**
   (precio de Google hasta el 31-dic-2026; el doble después). La decisión
-  depende de cuál se parece más al criterio de David (tarea 2 de
-  `docs/tareas-david/`).
+  dependía de cuál se parece más al criterio de David (tarea 2 de
+  `docs/tareas-david/`). **Resuelta el 6-nov a favor de Flash:** en 96
+  parejas difíciles coincide con él en «¿es un 2?» en el 90 % (kappa 0,78),
+  frente al 84 % de Pro y el 83 % de Opus 5.5, y se equivoca hacia los dos
+  lados por igual.
 
 ### Juez de otra familia: Claude Opus 5.5 (30-oct-2026)
 
@@ -534,7 +617,7 @@ Google retira Gemini 2.5 Pro el 1-dic-2026: desde ese día las peticiones a
   (0,86 $ frente a 23,93 $ los seis modelos); su precio se duplica el
   1-ene-2027.
 
-## `narrative_v2` v0.2: línea base oficial (4-nov-2026)
+## `narrative_v2` v0.2: línea base oficial (4-nov-2026; 210 casos desde el 6-nov)
 
 Los seis modelos generan listas nuevas sobre los textos finales de la v0.2.
 Usan el prompt «5» (`juanjo_classic_v2_n5`), el de producción desde la
@@ -546,58 +629,80 @@ completas, con la caché de notas de Flash compartida:
 Las configuraciones salen de las seis `config_<modelo>_low_narrative_v2.yaml`
 cambiando el prompt, `OUTPUT_TAG` y la caché. Cada ejecución guarda su copia.
 
-**La cifra principal es R@1 estricta en los 207 casos reales validados**
-(150 `live` y 57 `urg`; 113 raras y 94 no raras). Los 3 recambios que David
-aún no ha validado no cuentan como reales. Cuando los valide se vuelven a
-puntuar las mismas listas (`REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`).
+**La cifra principal es R@1 estricta en los 210 casos reales validados**
+(150 `live` y 60 `urg`; 113 raras y 97 no raras).
+
+Los 3 recambios de la reserva (`U-T698`, `U-T1328` y `U-T675`) se validaron
+el 6-nov. Se volvieron a puntuar las mismas listas (`REUSE_LABELED_DDX` +
+`REFRESH_GOLD_FROM_DATASET`), en la misma carpeta de cada ejecución. La única
+excepción es `U-T675`: se le recortó una fuga, así que su lista se regeneró
+en las 8 ejecuciones con la configuración de cada una.
 
 | Modelo | R@1 reales | Raras | No raras | `live` | `urg` | R@5 reales | R@5 laxa reales | `exam` | `synth` | Total (300) |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| gpt-6.1-sol | 64,7 % | 67,3 % | 61,7 % | 66,0 % | 61,4 % | 86,0 % | 97,1 % | 86,7 % | 86,7 % | 71,3 % |
-| Claude Opus 5 | 63,3 % | 60,2 % | 67,0 % | 62,0 % | 66,7 % | 84,1 % | 97,1 % | 88,3 % | 93,3 % | 71,3 % |
-| Terra 5.6 | 58,5 % | 61,9 % | 54,3 % | 58,0 % | 59,6 % | 82,6 % | 95,7 % | 83,3 % | 86,7 % | 66,7 % |
-| gpt-6.1-terra | 58,0 % | 58,4 % | 57,4 % | 56,0 % | 63,2 % | 83,1 % | 98,6 % | 85,0 % | 93,3 % | 67,0 % |
-| Gemini 3.1 Pro | 52,2 % | 52,2 % | 52,1 % | 49,3 % | 59,6 % | 72,9 % | 96,6 % | 88,3 % | 76,7 % | 62,3 % |
-| gpt-5.4-mini | 46,9 % | 49,6 % | 43,6 % | 45,3 % | 50,9 % | 72,9 % | 94,7 % | 83,3 % | 86,7 % | 58,3 % |
+| gpt-6.1-sol | 64,8 % | 67,3 % | 61,9 % | 66,0 % | 61,7 % | 86,2 % | 97,1 % | 86,7 % | 86,7 % | 71,3 % |
+| Claude Opus 5 | 63,3 % | 60,2 % | 67,0 % | 62,0 % | 66,7 % | 84,3 % | 97,1 % | 88,3 % | 93,3 % | 71,3 % |
+| Terra 5.6 | 59,0 % | 61,9 % | 55,7 % | 58,0 % | 61,7 % | 82,9 % | 95,7 % | 83,3 % | 86,7 % | 66,7 % |
+| gpt-6.1-terra | 58,1 % | 58,4 % | 57,7 % | 56,0 % | 63,3 % | 83,3 % | 98,6 % | 85,0 % | 93,3 % | 67,0 % |
+| Gemini 3.1 Pro | 52,9 % | 52,2 % | 53,6 % | 49,3 % | 61,7 % | 73,3 % | 96,7 % | 88,3 % | 76,7 % | 62,3 % |
+| gpt-5.4-mini | 47,1 % | 49,6 % | 44,3 % | 45,3 % | 51,7 % | 73,3 % | 94,8 % | 83,3 % | 86,7 % | 58,3 % |
+
+**Antes y después de los 3 recambios** (R@1 en casos reales):
+
+| Modelo | 207 casos (4-nov) | 210 casos (6-nov) |
+|---|---:|---:|
+| gpt-6.1-sol | 64,7 % | 64,8 % |
+| Claude Opus 5 | 63,3 % | 63,3 % |
+| Terra 5.6 | 58,5 % | 59,0 % |
+| gpt-6.1-terra | 58,0 % | 58,1 % |
+| Gemini 3.1 Pro | 52,2 % | 52,9 % |
+| gpt-5.4-mini | 46,9 % | 47,1 % |
+
+El orden no cambia.
 
 - **Sol y Opus 5 quedan arriba, empatados**: 29 / 26 casos (p = 0,79).
 - **Frente a Terra 5.6 (producción)**, R@1 en casos reales:
 
   | Modelo | Gana / pierde | p |
   |---|---:|---:|
-  | Sol | 22 / 9 | 0,03 |
-  | Opus 5 | 32 / 22 | 0,22 |
-  | gpt-6.1-terra | 17 / 18 | 1,00 |
+  | Sol | 22 / 10 | 0,05 |
+  | Opus 5 | 32 / 23 | 0,28 |
+  | gpt-6.1-terra | 17 / 19 | 0,87 |
   | Gemini 3.1 Pro | 15 / 28 | 0,07 |
-  | gpt-5.4-mini | 9 / 33 | < 0,001 |
+  | gpt-5.4-mini | 9 / 34 | < 0,001 |
 
+  Con una sola ejecución, Sol queda justo en el límite: con los 207 casos
+  daba 22 / 9 y p = 0,03. La prueba más fuerte es la de las dos ejecuciones,
+  que va a continuación.
 - **Sol frente a Terra 5.6, con las dos ejecuciones de cada uno:**
 
   | Grupo | Sol | Terra 5.6 | p |
   |---|---:|---:|---:|
-  | Casos reales | 65,2 % | 59,2 % | 0,01 |
-  | R@5 en casos reales | 86,0 % | 82,4 % | 0,04 |
+  | Casos reales | 65,2 % | 59,5 % | 0,02 |
+  | R@5 en casos reales | 86,0 % | 82,6 % | 0,06 |
   | Raras | 67,7 % | 61,9 % | 0,12 |
-  | No raras | 62,2 % | 55,9 % | 0,08 |
+  | No raras | 62,4 % | 56,7 % | 0,13 |
   | `live` | 67,0 % | 58,3 % | 0,003 |
-  | `urg` | 60,5 % | 61,4 % | 1,00 |
+  | `urg` | 60,8 % | 62,5 % | 0,77 |
+
+  Con los 207 casos, la de R@5 daba p = 0,04. Con 210 ya no baja de 0,05.
 
   **Cambia la lectura de la puntuación provisional:** la ventaja ya no está en
   las raras. Está en los case reports (`live`), igual en raras que en no raras;
   en urgencias empatan.
-- **De una ejecución a otra:** Sol 64,7 % y 65,7 %, Terra 5.6 58,5 % y
-  59,9 %. El acierto en P1 coincide en 189 y 188 de los 207 casos.
+- **De una ejecución a otra:** Sol 64,8 % y 65,7 %, Terra 5.6 59,0 % y
+  60,0 %. El acierto en P1 coincide en 192 y 190 de los 210 casos.
 - **El prompt «5» frente al clásico** se ha medido en los 126 casos validados
   cuyo texto no cambió desde la v0.1, con el mismo gold y el mismo juez. No
   cambia el R@1 de forma significativa en ningún modelo. La mayor diferencia
   es la de Sol: 67,5 % con «5» frente a 72,2 % con el clásico (3 / 9,
   p = 0,15). Ahora todos dan 5 opciones; antes Opus 5 daba unas 10.
 - **Por qué baja respecto a la puntuación provisional** (Sol, de 73,2 % a
-  64,7 %):
+  64,8 %):
   - en los 126 casos sin cambios, las listas nuevas aciertan algo menos;
   - los 22 casos con la fuga recortada, ya con el texto limpio, son más
     difíciles para casi todos (Sol 54,5 %);
-  - entran los 43 de la reserva.
+  - entran los 46 de la reserva: 43 el 4-nov y los 3 recambios el 6-nov.
 - **Coste:**
   - generación de Sol 3,10 $, Terra 5.6 4,35 $, Opus 5 13,43 $ y
     gpt-5.4-mini 1,38 $; las segundas ejecuciones de Sol y Terra, 3,10 $ y
@@ -605,6 +710,8 @@ puntuar las mismas listas (`REUSE_LABELED_DDX` + `REFRESH_GOLD_FROM_DATASET`).
   - gpt-6.1-terra y Gemini 3.1 Pro no tienen precio registrado (gpt-6.1-terra
     serían ≈ 2,5 $ si cuesta como Terra 5.6);
   - juez, 0,89 $ las 8 ejecuciones, 0 llamadas fallidas;
+  - con los 3 recambios (6-nov): regenerar `U-T675` costó 0,10 $ más Gemini,
+    y volver a puntuar las 8 ejecuciones, 0,01 $ de juez;
   - en total, unos 33 $ más Gemini.
 - **Latencia** (mediana por caso con 8 llamadas en paralelo, 4 en Opus):
 
@@ -880,13 +987,12 @@ Julián; detalle en el §12 de
 
 Pendiente de David (`docs/tareas-david/`):
 
-- ~~**Tarea 1:** validar el gold de `narrative_v2`~~. Hecha el 4-nov: sale la
-  v0.2, y la tanda de reserva el mismo día: 207 casos reales validados y 3
-  recambios pendientes (detalle en `data29/data-repos/narrative-v2/README.md`).
-  La línea base oficial ya está hecha (4-nov). Con los 3 recambios solo hay
-  que volver a puntuar las mismas listas.
-- **Tarea 2:** validar la escala 2/1/0 con `graded_v3` y elegir juez entre
-  Gemini 3.8 Flash (el de referencia desde el 3-nov, porque Google retira 2.5 Pro
-  el 1-dic) y Claude Opus 5.5.
+- ~~**Tarea 1:** validar el gold de `narrative_v2`~~. Hecha:
+  - el 4-nov sale la v0.2, con la tanda de reserva;
+  - el 6-nov se validan los 3 recambios: 210 casos reales validados y ninguno
+    pendiente (detalle en `data29/data-repos/narrative-v2/README.md`);
+  - la línea base oficial ya está puntuada con los 210.
+- **Tarea 2:** hecha el 6-nov. Se queda Gemini 3.8 Flash como juez y la rúbrica
+  `graded_v3` no cambia (detalle en `docs/tareas-david/02-escala-del-juez.md`).
 - **Tarea 3:** revisar los nombres sin gen de raras y los 9 casos con HPO
   insuficientes.

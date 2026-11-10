@@ -71,9 +71,82 @@ amaurosis congénita de Leber, agnatia-otocefalia).
    motivo. Los 9 casos con HPO insuficientes (causa C) se quedan: el criterio
    para marcarlos está pendiente.
 
+   **Pendiente (5-nov):** los 11 salieron de revisar solo fallos de Terra. Las
+   7 fenilcetonurias no tienen nada especial: en RAMEDIS, 115 de los 148 casos
+   de fenilcetonuria llevan «Hypertyrosinemia» junto a «Hyperphenylalaninemia»,
+   y los otros 109 siguen dentro. Parece cosa de cómo RAMEDIS codifica estos
+   casos. Se resuelve con una regla para los 115: se quedan todos o salen todos.
+   Lo decide David en la tarea 3, bloque G, sin ver resultados de los modelos
+   (ver las reglas congeladas en el README de Pipeline V5).
+
 El nombre sin gen lo propone Gemini 2.5 Pro (el LLM de curación de
 `narrative_v2`), una vez por nombre de gold único (2.152), con las reglas de
 arriba en el prompt.
+
+## Versión v3 (10-nov-2026, pendiente de validar)
+
+David revisó una muestra al azar de la v2 en la
+[tarea 3](../../../docs/tareas-david/03-nombres-sin-gen-raras.md). Cerca de la
+mitad de las decisiones del LLM estaban mal o se podían mejorar: bien 16 de 25
+en el bloque A, 5 de 10 en el B y 4 de 10 en el C. Fallaban en los dos
+sentidos:
+
+- **Demasiado amplio.** Quedaba un nombre que engloba varias enfermedades
+  («tyrosinemia» para TAT, en lugar de «Tyrosinemia type II»).
+- **Demasiado estricto.** Se descartaba como rasgo genérico una enfermedad con
+  epónimo («Coffin-Siris syndrome» para SMARCC2).
+
+Por eso la v3 rehace los nombres de todos los casos:
+
+- **Instrucciones con los criterios de David.** Se quitan los tipos que se
+  numeran por gen. Si el nombre sin gen engloba varias enfermedades, se usa el
+  nombre propio sin gen: un subtipo anterior al gen o un epónimo. Se mantienen
+  los calificativos que no dependen del gen, y la herencia cuando separa
+  enfermedades distintas. Un título descriptivo con dos o más rasgos
+  obligatorios es una entidad.
+- **Gemini 3.8 Flash** en lugar de 2.5 Pro, que Google retira el 1-dic-2026.
+  Los 2.152 nombres costaron 0,44 $. Con razonamiento `medium` salió peor que
+  con `low`: lotes sin JSON y más fallos.
+- **Respuestas de David tal cual.** Sus 41 decisiones de los bloques A–C
+  (`REVIEWED_CLINICAL`) se aplican a todos los casos con esos gold. Sin
+  ellas, el LLM coincide con él en 37 de 41, frente a 25 de 41 en la v2. La
+  cifra es optimista, porque los criterios salen de esa muestra. Lo mide de
+  verdad la [tarea 4](../../../docs/tareas-david/04-nombres-sin-gen-v3.md),
+  con 24 casos nuevos.
+- **Vuelven las 7 fenilcetonurias con hipertirosinemia.** David decidió en el
+  bloque G que es ruido de la codificación de RAMEDIS y que los 115 casos se
+  quedan.
+- **Corregida una errata del gold:** «isobutryl» por «isobutyryl».
+
+| Dataset | Casos | Excluidos | Con nombre sin gen | Sin él: rasgo genérico | Sin él: está en los HPO |
+|---|---:|---:|---:|---:|---:|
+| DDD | 1.749 | 3 | 1.434 | 256 | 41 |
+| RAMEDIS | 624 | 1 | 180 | 0 | 2 |
+| LIRICAL | 370 | 0 | 146 | 16 | 0 |
+| MyGene2 | 146 | 0 | 41 | 5 | 0 |
+| HMS | 88 | 0 | 12 | 0 | 1 |
+| MME | 40 | 0 | 7 | 0 | 0 |
+| **Total** | **3.017** | **4** | **1.820** | **277** | **44** |
+
+Frente a la v2:
+- 308 casos que se quedaban sin nombre por «genéricos» lo tienen ahora, casi
+  siempre un epónimo.
+- 357 cambian de nombre.
+- 20 lo pierden.
+
+**Pendiente:**
+- La tarea 4 de David.
+- Volver a puntuar las listas de Terra y Sol y publicar las cifras de antes y
+  de después. No se hace hasta que la tarea 4 dé por buena la v3.
+
+**Sin aplicar todavía:**
+- **La regla de David para la causa C**, en `specific_terms`, a falta de su
+  visto bueno a la lista de términos. Excluiría 100 casos y reproduce sus 9
+  decisiones.
+- **El criterio del bloque D.**
+- **El nombre de dos gold de HMS.** HMS_011 y HMS_035 llevan «Reactive
+  arthritis», sacado de un grupo de códigos de artritis, mientras su OMIM es
+  Sjögren y fiebre mediterránea familiar.
 
 ## Versión v2 (28-oct-2026)
 
@@ -108,9 +181,15 @@ decisión por caso para que David revise una muestra.
 
 ```powershell
 cd "C:\repos\DxGPT\eval\data29\data-repos\hpo-v2"
-py clinical_gold.py propose   # LLM, con caché en work/clinical_gold_proposals.json
-py clinical_gold.py build     # escribe bench/datasets/<dataset>_v2.json y work/build_report.txt
+py clinical_gold.py check     # el prompt frente a las respuestas de David (céntimos)
+py clinical_gold.py propose   # Gemini 3.8 Flash, con caché en work/clinical_gold_proposals_v3.json
+py clinical_gold.py build     # escribe bench/datasets/<dataset>_v3.json y work/build_report_v3.txt
+py review_sheet_v3.py         # hoja de la tarea 4 de David
 ```
+
+La v2 se hizo igual, con Gemini 2.5 Pro y las instrucciones anteriores. Su
+caché (`work/clinical_gold_proposals.json`) y sus datasets (`*_v2.json`) se
+conservan para comparar.
 
 Los datasets y `work/` no se versionan (`*.json` en `.gitignore`).
 

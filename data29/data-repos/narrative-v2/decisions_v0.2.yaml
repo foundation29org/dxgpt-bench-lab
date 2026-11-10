@@ -1,6 +1,7 @@
 # Decisiones de la validación clínica de narrative_v2 (tarea 1) para la v0.2.
 # Revisión: David Isla, hoja entregada el 4-nov-2026; revisada y aplicada el mismo día.
 # La tanda de reserva (46 casos, al final) se entregó, revisó y aplicó también el 4-nov.
+# Los 3 casos de recambio de la reserva (U-T698, U-T1328, U-T675) se entregaron el 6-nov-2026.
 # Las aplica build_dataset.py --decisions. Sin texto de casos: los cortes de texto
 # (fugas, anonimización y limpieza) están en work/text_edits_v0.2.json, fuera de git.
 #
@@ -907,3 +908,24 @@ cases:
     decision: exclude
     reason: duplicate
     note: «Sinusitis» de 3 días pasaría a «Acute sinusitis», que ya tiene U-T108
+  # Recambios de la tanda de reserva (3 casos): hoja entregada y revisada el 6-nov-2026.
+  U-T698:
+    decision: keep
+    accepted_names:
+    - Acute pharyngotonsillitis
+    secondary: []
+    note: 'sale «Pharyngotonsillitis»: sin «aguda» incluye formas recurrentes y crónicas; la xerosis del alta no aparece
+      en el texto y en los U- los secundarios puntúan'
+  U-T1328:
+    decision: keep
+    principal: Acute orchitis
+    accepted_names:
+    - Acute epididymo-orchitis
+  U-T675:
+    decision: keep
+    text:
+    - leak_removed
+    - anonymized
+    - cleaned
+    note: 'se quita de la radiografía la mención de la consolidación (con fiebre y tos es el criterio de la neumonía; la
+      trama aumentada se queda), la fecha de la visita previa y la línea que anuncia una analítica que no está'

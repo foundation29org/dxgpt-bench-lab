@@ -1,8 +1,8 @@
 # Metadata — narrative_v2 (generado por build_dataset.py)
 dataset: narrative_v2
 version: '0.2'
-created: '2026-11-04'
-status: VALIDADOS 207 casos live y urg; PENDIENTES 3 casos de reserva
+created: '2026-11-06'
+status: VALIDADOS 210 casos live y urg; PENDIENTES 0 casos de reserva
 summary:
   total_cases: 300
   composition:
@@ -23,11 +23,11 @@ summary:
       excluded_nonspecific: 56
       selected: 60
       rare: 1
-      with_scored_secondary: 12
+      with_scored_secondary: 11
       soft_leak_flags: 5
       excluded_by_validation: 12
-      validated: 57
-      pending_validation: 3
+      validated: 60
+      pending_validation: 0
     exam:
       target: 60
       accepted_pool: 135
@@ -135,7 +135,7 @@ validation:
   decisions: data29/data-repos/narrative-v2/decisions_v0.2.yaml
   reviewer: David Isla
   reviewed: '2026-11-04'
-  decided_cases: 257
+  decided_cases: 260
   excluded:
     not_diagnosable: 25
     leak: 9

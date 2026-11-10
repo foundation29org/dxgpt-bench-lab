@@ -1,6 +1,43 @@
 # Tarea 2 · Validar la escala del juez (2/1/0)
 
-**Estado:** lista para empezar (hoja del 4-nov) · **Tiempo:** ≈ 2 h · **Depende de:** tarea 1 (hecha)
+**Estado:** hecha (6-nov) · **Tiempo:** ≈ 2 h · **Depende de:** tarea 1 (hecha)
+
+## Resultado (6-nov-2026)
+
+La hoja vuelve completa: 100 parejas, 96 con nota y 4 marcadas CONSULTAR MÉDICO.
+Coincidencia de cada juez con el revisor en las 96 notas firmes:
+
+| | Gemini 3.8 Flash | Gemini 2.5 Pro | Claude Opus 5.5 |
+|---|---:|---:|---:|
+| Misma nota (2/1/0) | **73 %** | 68 % | 66 % |
+| Mismo «¿es un 2?» (lo que cuenta la nota estricta) | **90 %** | 84 % | 83 % |
+| Kappa en «¿es un 2?» | **0,78** | 0,67 | 0,62 |
+
+La muestra lleva a propósito las parejas difíciles; ponderando cada grupo por
+su tamaño real, los tres coinciden con el revisor en «¿es un 2?» en un ~97 %
+de las opciones (estimación aproximada: algunos grupos salen de ~10 parejas).
+
+1. **Juez:** se queda Gemini 3.8 Flash, el que más se parece al revisor.
+   Claude Opus 5.5 es más estricto con el 2: en 15 parejas el revisor da un 2
+   y Opus no, y al revés solo en 1.
+2. **La nota estricta es fiable:** Flash se equivoca hacia los dos lados por
+   igual (5 doses de más y 5 de menos), y ningún 0 suyo es un 2 para el
+   revisor.
+3. **La nota laxa no está inflada:** en la frontera 1/0 Flash es más estricto
+   que el revisor (de las 25 parejas a las que puso un 0, el revisor dio un 1
+   a 14). Coinciden menos en «¿es un 0?» (83 %) que en «¿es un 2?».
+4. **La rúbrica no cambia.** Las discrepancias son casos sueltos. El único
+   patrón, que la tabla de notas y el criterio de tratamiento choquen, va en
+   las dos direcciones (Flash aplica el tratamiento en 5 parejas y la tabla en
+   2) y queda anotado como ambigüedad conocida, sin ajustar el juez (reglas
+   congeladas del README de V5).
+5. **Un gold dudoso** (`L-PMC13678326`, aneurisma aórtico) pasa a la próxima
+   tanda de revisión del dataset.
+
+Limitación: el revisor usó un asistente de IA como apoyo para preparar las
+notas y decidió él cada una. Si ese asistente se parece a los jueces, la
+coincidencia puede estar algo inflada. En las próximas tareas, la primera
+pasada se hace sin IA.
 
 ## Para qué sirve
 

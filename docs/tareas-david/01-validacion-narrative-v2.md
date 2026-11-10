@@ -1,6 +1,6 @@
 # Tarea 1 · Validación clínica de `narrative_v2`
 
-**Estado:** hecha el 4-nov-2026, también la tanda de reserva; faltan 3 recambios (ver al final) · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
+**Estado:** hecha: la tanda principal y la de reserva el 4-nov-2026, los 3 recambios el 6-nov (ver al final) · **Tiempo:** ≈ 5 h (1–2 min por caso) · **Depende de:** nada
 
 ## Para qué sirve
 
@@ -148,6 +148,22 @@ La revisión caso a caso está en
 
 Los 3 duplicados se cubren con 3 casos nuevos de urgencias (≈ 5 min), en
 `data29/data-repos/curated-datasets/narrative_v2/validacion_clinica_reserva.md`
-(fuera de git; la hoja sustituye a la de la tanda de reserva). Se rellena y
-se devuelve igual, por canal privado. Si alguno sale excluido o repetido, se
-cubre con otro y la vuelta siguiente es de uno o dos casos.
+(fuera de git; la hoja sustituye a la de la tanda de reserva).
+
+**Hecho el 6-nov-2026.** La hoja rellena es
+`validacion_clinica_reserva_3casos_hechos.md`, en la misma carpeta y fuera de
+git. Se quedan los tres:
+
+- **Orquitis:** se corrige el gold, sin lateralidad, y entra la
+  epididimoorquitis aguda como nombre aceptado.
+- **Amigdalitis aguda:**
+  - el nombre aceptado pasa a ser «Acute pharyngotonsillitis»;
+  - sale un secundario (xerosis) que el texto no sostiene.
+- **Neumonía adquirida en la comunidad:** se quita la mención de la
+  consolidación en la radiografía, que con fiebre y tos es el criterio
+  diagnóstico. La lista de ese caso se rehízo con el texto limpio.
+
+La revisión está en `validacion_clinica_reserva_3casos_revision.md`, también
+fuera de git. La v0.2 queda con **210 casos reales validados** (150 `L-` y
+60 `U-`) y ninguno pendiente. La línea base oficial ya está puntuada con los
+210 (README de Pipeline V5).

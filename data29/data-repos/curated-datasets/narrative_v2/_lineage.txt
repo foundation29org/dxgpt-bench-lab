@@ -1,6 +1,6 @@
 narrative_v2.json — Lineage Trace
 =================================
-Creado: 2026-11-04 con data29/data-repos/narrative-v2/build_dataset.py; v0.2 aplica decisions_v0.2.yaml
+Creado: 2026-11-06 con data29/data-repos/narrative-v2/build_dataset.py; v0.2 aplica decisions_v0.2.yaml
 
 live : PubMed 'Case Reports'[pt] + PMC open access + English, Entrez date >= 2026-07-01
        harvest_pmc.py -> raw/pmc_live/candidates.json (licencias CC sin ND)
@@ -211,6 +211,7 @@ U-T135	urg	Gout	validated
 U-T403	urg	Occipital neuralgia	validated
 U-T1174	urg	Piriformis syndrome	validated
 U-T39	urg	Trapeziometacarpal joint synovitis	validated
+U-T698	urg	Acute tonsillitis	validated
 U-T1382	urg	Acute pancreatitis	validated
 U-T1351	urg	Acute cholecystitis	validated
 U-T513	urg	Lumbar discopathy	validated
@@ -219,9 +220,8 @@ U-T934	urg	Episcleritis	validated
 U-T358	urg	Dorsal foot tenosynovitis	validated
 U-T889	urg	Cervicogenic dizziness	validated
 U-T356	urg	Fibromyalgia	validated
-U-T698	urg	Acute tonsillitis	pending
-U-T1328	urg	Left orchitis	pending
-U-T675	urg	Community-acquired pneumonia	pending
+U-T1328	urg	Acute orchitis	validated
+U-T675	urg	Community-acquired pneumonia	validated
 E-Q4564	exam	Sickle Cell Crisis	not_reviewed
 E-Q4614	exam	Uterine adenomyosis	not_reviewed
 E-Q2474	exam	Drug-induced myopathy	not_reviewed

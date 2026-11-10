@@ -1,14 +1,14 @@
 # DxGPT — roadmap operativo
 
-**Última actualización:** 4-nov-2026. El detalle anterior al 15-sep está en
+**Última actualización:** 6-nov-2026. El detalle anterior al 15-sep está en
 [ROADMAP_HISTORY.md](ROADMAP_HISTORY.md).
 
 ## Estado
 
 | Pieza | Estado |
 |---|---|
-| Evaluador | **Pipeline V5** (`bench/pipelines/pipeline_v5/main`, prompt `graded_v2`): solo SNOMED exacto decide sin juez y el juez puntúa 2/1/0 cada opción. Decisiones en el §12 de [JULIAN_HARNESS_REVIEW.md](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md). Pipeline V4 se mantiene para la serie histórica |
-| Dataset narrativo | **`narrative_v2` v0.2** (4-nov), 300 casos, de los que 150 son case reports de jul–oct 2026. Con la validación de David y la tanda de reserva: 207 de los 210 casos reales validados y 3 recambios pendientes. Ver `data29/data-repos/narrative-v2/README.md`. **Línea base oficial** del 4-nov (seis modelos, prompt «5», juez Flash con `graded_v3`): R@1 en casos reales validados de Sol 64,7 %, Opus 5 63,3 % y Terra 5.6 58,5 %. `all_256_clean` pasa a ser histórico |
+| Evaluador | **Pipeline V5** (`bench/pipelines/pipeline_v5/main`, juez Gemini 3.8 Flash con `graded_v3`): solo SNOMED exacto decide sin juez y el juez puntúa 2/1/0 cada opción. **Reglas congeladas desde el 5-nov** (README de V5): nada se cambia mirando qué falla cada modelo. Decisiones en el §12 de [JULIAN_HARNESS_REVIEW.md](../bench/multimodal_beta/JULIAN_HARNESS_REVIEW.md). Pipeline V4 se mantiene para la serie histórica |
+| Dataset narrativo | **`narrative_v2` v0.2** (4-nov), 300 casos, de los que 150 son case reports de jul–oct 2026. Con la validación de David, la tanda de reserva y los 3 recambios (6-nov): los 210 casos reales validados, ninguno pendiente. Ver `data29/data-repos/narrative-v2/README.md`. **Línea base oficial** del 4-nov, puntuada de nuevo el 6-nov con los 210 casos (seis modelos, prompt «5», juez Flash con `graded_v3`): R@1 en casos reales validados de Sol 64,8 %, Opus 5 63,3 % y Terra 5.6 59,0 %. `all_256_clean` pasa a ser histórico |
 | Raras (HPO) | **HPO v2**: 3.006 casos; además del gold con gen vale el nombre de la enfermedad sin gen, y salen los gold dudosos de T3. Evaluados con V5. Ver `data29/data-repos/hpo-v2/README.md`. V4 strict sobre los 3.017 originales queda para la serie histórica |
 | Multimodal | MedReaMM pilot250 T+I con el Server v0.00196 (3-nov): gpt-6.1-sol 66,4 % R@1 frente a 58,8 % de Terra (p = 0,02). Ver [RESULTS.md](../bench/multimodal_beta/RESULTS.md) |
 
@@ -88,7 +88,7 @@ Cifras de referencia con Terra low:
 
 Las revisiones de David tienen cada una su ficha en
 [docs/tareas-david/](tareas-david/README.md): validación de `narrative_v2`
-(tarea 1, hecha el 4-nov con la tanda de reserva; faltan 3 recambios), escala del juez (tarea
+(tarea 1, hecha el 4-nov con la tanda de reserva y cerrada el 6-nov con los 3 recambios), escala del juez (tarea
 2, se prepara con la v0.2) y nombres sin gen de raras más los 9 casos de la
 causa C de T3 (tarea 3, hoja lista).
 
@@ -99,8 +99,8 @@ causa C de T3 (tarea 3, hoja lista).
      categoría;
    - otros 7 de urgencias quedan repetidos al corregir el gold;
    - los 46 huecos se cubren con la reserva, que David validó el mismo día:
-     ninguna exclusión; 3 quedan repetidos y se cubren con 3 recambios
-     pendientes (≈ 5 min). Queda en 207 casos reales validados.
+     ninguna exclusión; 3 quedan repetidos y se cubren con 3 recambios,
+     que David validó el 6-nov. Queda en 210 casos reales validados.
 
    Por el camino, la anonimización de `urg` pasa a ser una regla de
    `build_dataset.py`.
@@ -118,31 +118,40 @@ causa C de T3 (tarea 3, hoja lista).
    **Línea base oficial** (4-nov): listas nuevas de los seis modelos sobre los
    textos finales de los 300 casos, con el prompt «5». Juez Flash con
    `graded_v3`. Cuesta unos 33 $, más Gemini, que no tiene precio registrado.
-   R@1 en los 207 casos reales validados:
+   R@1 en los casos reales validados, con los 207 del 4-nov y con los 210 del
+   6-nov:
 
-   | Modelo | R@1 |
-   |---|---:|
-   | Sol | 64,7 % |
-   | Opus 5 | 63,3 % |
-   | Terra 5.6 | 58,5 % |
-   | gpt-6.1-terra | 58,0 % |
-   | Gemini 3.1 Pro | 52,2 % |
-   | gpt-5.4-mini | 46,9 % |
+   | Modelo | 207 casos | 210 casos |
+   |---|---:|---:|
+   | Sol | 64,7 % | 64,8 % |
+   | Opus 5 | 63,3 % | 63,3 % |
+   | Terra 5.6 | 58,5 % | 59,0 % |
+   | gpt-6.1-terra | 58,0 % | 58,1 % |
+   | Gemini 3.1 Pro | 52,2 % | 52,9 % |
+   | gpt-5.4-mini | 46,9 % | 47,1 % |
+
+   Con los 210 casos el orden no cambia.
 
    - Sol y Opus 5 empatan entre sí (p = 0,79).
    - Sol frente a Terra 5.6, con dos ejecuciones de cada uno: 65,2 % frente a
-     59,2 % (p = 0,01).
+     59,5 % (p = 0,02).
      - La ventaja ya no está en las raras: raras p = 0,12, no raras
-       p = 0,08.
+       p = 0,13.
      - Está en los case reports: 67,0 % frente a 58,3 % en `live`
        (p = 0,003).
      - En urgencias empatan.
    - El prompt «5» no cambia el R@1 de ningún modelo de forma significativa.
 
-   Detalle en el README de V5. Con los 3 recambios de David solo hay que
-   volver a puntuar las mismas listas.
+   Detalle en el README de V5. Con los 3 recambios (6-nov) se volvieron a
+   puntuar las mismas listas. La de `U-T675`, al que se le recortó una fuga,
+   se regeneró en las 8 ejecuciones.
 5. **Validar la escala 2/1/0** (tarea 2) sobre casos de `narrative_v2`,
    incluida la frontera entre 1 y 0, y decidir si la nota laxa se publica.
+   **Hecha (6-nov):** en 96 parejas difíciles, Flash coincide con el revisor
+   en «¿es un 2?» en el 90 % (kappa 0,78), con errores hacia los dos lados
+   por igual; en la frontera 1/0 es más estricto que él, así que la nota laxa
+   no está inflada. La rúbrica no cambia (detalle en la
+   [tarea 2](tareas-david/02-escala-del-juez.md)).
    **Raras HPO v2** (tarea 3): aplicar sus correcciones a los nombres sin gen
    y a la causa C, y re-puntuar. Propuesta para la misma versión: pasar al
    juez los sinónimos del gold (MONDO u Orphanet, desde sus códigos OMIM y
@@ -166,7 +175,8 @@ causa C de T3 (tarea 3, hoja lista).
    y se trata de la misma forma. Es el juez por defecto; las cifras
    publicadas cambian al volver a puntuar con v0.2. La tarea 2 de David
    valida v3 con ese criterio, y la rúbrica solo cambia si sus discrepancias
-   con el juez siguen un patrón, no por casos sueltos. Medido también el ruido del juez: Pro
+   con el juez siguen un patrón, no por casos sueltos (6-nov: son casos
+   sueltos, así que no cambia). Medido también el ruido del juez: Pro
    dos veces sobre las mismas listas cambia el acierto en P1 en 8 de 300
    casos.
 6. **Elegir el juez** con esa validación, entre Gemini 3.8 Flash y Claude Opus
@@ -191,8 +201,9 @@ causa C de T3 (tarea 3, hoja lista).
    retirada, con `graded_v3` sobre las mismas listas: Flash coincide con Pro
    en el acierto en P1 en el 97,3 % de los casos y en «¿es un 2?» en el
    97,6 % de las opciones, ningún modelo se mueve más de 2 puntos y solo se
-   cruzan las dos Terra; 0,86 $ frente a 23,93 $. La tarea 2 de David elige
-   entre Flash y Claude Opus 5.5.
+   cruzan las dos Terra; 0,86 $ frente a 23,93 $. La tarea 2 (6-nov) confirma
+   Flash: coincide con el revisor en «¿es un 2?» en el 90 % de las parejas,
+   frente al 84 % de Pro y el 83 % de Claude Opus 5.5.
    Detalle en el [README de V5](../bench/pipelines/pipeline_v5/main/README.md).
 
 ### Después

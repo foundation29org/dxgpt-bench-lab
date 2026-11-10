@@ -148,7 +148,7 @@ público y la hoja contiene el texto completo de los casos de urgencias, que son
 confidenciales, y extractos de artículos. Se comparte con David por un canal
 privado y al repo solo vuelven sus decisiones, sin texto de casos.
 
-## Versión 0.2 (4-nov-2026)
+## Versión 0.2 (4-nov-2026; recambios validados el 6-nov)
 
 Aplica la validación clínica de David (tarea 1) a los 210 casos `live` y `urg`.
 Las decisiones están en `decisions_v0.2.yaml` (versionado, sin texto de
@@ -167,11 +167,11 @@ py build_dataset.py --version 0.2 --decisions decisions_v0.2.yaml --text-edits w
 | Fuera por gold repetido tras la corrección | — | 7 |
 | Validados en la tanda principal | 122 | 42 |
 | Reserva validada (46 casos; 3 `urg` fuera por gold repetido) | 28 | 15 |
-| **Validados en la v0.2** | **150** | **57** |
-| Recambios pendientes de validar | — | 3 |
+| Recambios validados el 6-nov | — | 3 |
+| **Validados en la v0.2** | **150** | **60** |
 
-`exam` y `synth` no cambian. Los casos reales quedan en 113 raros y 97 no raros
-(entre los validados, 113 y 94).
+`exam` y `synth` no cambian. Los casos reales quedan en 113 raros y 97 no raros,
+todos validados.
 
 Cambios en los casos validados de la tanda principal:
 
@@ -208,9 +208,26 @@ Tanda de reserva (46 casos, revisada el mismo día; no se excluye ninguno):
 - **Fuga:** 3 casos se mantienen quitando la frase. Otros 2 que se marcaron
   por un dato de laboratorio o de imagen se dejan como estaban, con la misma
   regla que en la tanda principal.
-- **Recambios:** entran 3 casos, pendientes de validar. Uno más
-  («Sinusitis») se descarta antes de revisarlo, porque al corregirlo repetiría
-  «Acute sinusitis» (`reason: duplicate`).
+- **Recambios:** entran 3 casos. Uno más («Sinusitis») se descarta antes de
+  revisarlo, porque al corregirlo repetiría «Acute sinusitis»
+  (`reason: duplicate`).
+
+Recambios (3 casos `urg`, hoja entregada y revisada el 6-nov; se quedan los
+tres):
+
+- **Gold corregido en 1:** «Left orchitis» pasa a «Acute orchitis», sin
+  lateralidad. Entra «Acute epididymo-orchitis» como nombre aceptado.
+- **Nombres aceptados:** en la amigdalitis aguda, «Pharyngotonsillitis» pasa a
+  «Acute pharyngotonsillitis». Sin «aguda», el término incluye formas
+  recurrentes y crónicas.
+- **Secundarios:** sale una xerosis del alta que el texto no menciona. En
+  `urg` los secundarios puntúan.
+- **Fuga:** en la neumonía adquirida en la comunidad se quita la mención de la
+  consolidación en la radiografía. Con fiebre y tos es el criterio diagnóstico.
+  La trama aumentada se queda. También se quitan la fecha exacta de una visita
+  previa y una línea que anunciaba una analítica que no está.
+- **Listas:** la de ese caso se regeneró en las 8 ejecuciones de la línea
+  base, porque cambió su texto. Las otras dos solo se volvieron a puntuar.
 
 Cambios en la construcción:
 
@@ -235,27 +252,25 @@ Cambios en la construcción:
   `bench/datasets/`) guarda la v0.1, anonimizada, para las ejecuciones
   antiguas.
 
-**Línea base oficial (4-nov-2026):** los seis modelos generan listas nuevas
-sobre los 300 textos finales, con el prompt «5» y juez Gemini 3.8 Flash
-(`graded_v3`). R@1 en los 207 casos reales validados:
+**Línea base oficial (4-nov-2026; puntuada de nuevo el 6-nov):** los seis
+modelos generan listas nuevas sobre los 300 textos finales, con el prompt «5»
+y juez Gemini 3.8 Flash (`graded_v3`). R@1 en los casos reales validados, con
+los 207 del 4-nov y con los 210 del 6-nov:
 
-| Modelo | R@1 |
-|---|---:|
-| gpt-6.1-sol | 64,7 % |
-| Claude Opus 5 | 63,3 % |
-| Terra 5.6 | 58,5 % |
-| gpt-6.1-terra | 58,0 % |
-| Gemini 3.1 Pro | 52,2 % |
-| gpt-5.4-mini | 46,9 % |
+| Modelo | 207 casos | 210 casos |
+|---|---:|---:|
+| gpt-6.1-sol | 64,7 % | 64,8 % |
+| Claude Opus 5 | 63,3 % | 63,3 % |
+| Terra 5.6 | 58,5 % | 59,0 % |
+| gpt-6.1-terra | 58,0 % | 58,1 % |
+| Gemini 3.1 Pro | 52,2 % | 52,9 % |
+| gpt-5.4-mini | 46,9 % | 47,1 % |
 
 El detalle está en el
 [README de Pipeline V5](../../../bench/pipelines/pipeline_v5/main/README.md).
 
-Pendiente: que David valide los 3 recambios
-(`curated-datasets/narrative_v2/validacion_clinica_reserva.md`, fuera de git).
-Después solo hay que volver a puntuar las mismas listas (`REUSE_LABELED_DDX` +
-`REFRESH_GOLD_FROM_DATASET`). Las cifras de contaminación de abajo son de la
-v0.1.
+No queda ningún caso pendiente de validar. Las cifras de contaminación de
+abajo son de la v0.1.
 
 ## Primera línea base: Terra low (28-oct-2026)
 
@@ -296,7 +311,8 @@ Antes de publicarse como línea base, David revisa cada caso de `live` y `urg`:
 diagnóstico principal, nombres aceptados, fuga, si el caso es diagnosticable y
 si es raro. La hoja la genera `build_dataset.py`: la de la v0.1 con los 210
 casos, y con `--decisions` solo la de los casos de reserva que faltan. Hecho
-con la v0.1 y con la tanda de reserva el 4-nov-2026 (ver «Versión 0.2»).
+con la v0.1 y con la tanda de reserva el 4-nov-2026, y con los 3 recambios el
+6-nov (ver «Versión 0.2»).
 
 ## Contaminación
 

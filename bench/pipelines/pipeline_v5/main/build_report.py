@@ -673,7 +673,13 @@ def narrative_baseline():
         details = load_details(os.path.join(run, 'evaluation_details.txt'))
         with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
             judge = json.load(f)['judge']
-        return {'run': run, 'judge': judge, 'strict': {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()},
+        # Judge cost of every scoring in the folder: the first one and the rescorings after each gold change
+        judge_cost = 0
+        for evaluation in glob.glob(os.path.join(root, folder, '2*', 'summary.json')):
+            with open(evaluation, 'r', encoding='utf-8') as f:
+                judge_cost += json.load(f)['judge'].get('estimated_cost_usd') or 0
+        return {'run': run, 'judge': judge, 'judgeCost': judge_cost,
+                'strict': {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()},
                 'lax': {i: lax_position(c) for i, c in details.items()}}
 
     runs, models = {}, []
@@ -695,7 +701,7 @@ def narrative_baseline():
             'options': statistics.median(len(c.get('ddx_details') or {}) for c in labeled),
             'latency': round(statistics.median(c['emulator_time_seconds'] for c in labeled if c.get('emulator_time_seconds')), 1),
             'genCost': sum(a * price[0] + b * price[1] for a, b in tokens) / 1e6 / len(tokens) if price and tokens else None,
-            'judgeCost': runs[mid]['judge'].get('estimated_cost_usd') or 0, 'judgeFailed': runs[mid]['judge'].get('failed_calls', 0),
+            'judgeCost': runs[mid]['judgeCost'], 'judgeFailed': runs[mid]['judge'].get('failed_calls', 0),
             'prompt': {'n5': metrics([strict[i] for i in same_text])['r1'], 'classic': metrics([classic[i] for i in same_text])['r1'],
                        'test': paired(strict, classic, same_text, 1)}})
     for m in models:
@@ -711,7 +717,7 @@ def narrative_baseline():
                                                     [runs[BASELINE]['strict'], reruns[BASELINE]['strict']], groups[key])
                               for key in ('realcases', 'realRare', 'realCommon', 'live', 'urg')}
         result['rerunR1'] = {mid: metrics([r['strict'][i] for i in validated])['r1'] for mid, r in reruns.items()}
-        result['rerunCost'] = sum(r['judge'].get('estimated_cost_usd') or 0 for r in reruns.values())
+        result['rerunCost'] = sum(r['judgeCost'] for r in reruns.values())
     return result
 
 
@@ -1852,7 +1858,9 @@ def baseline_section(data):
     sol_rows = '\n'.join(
         f'<tr><td>{labels[k]}</td><td>{pct(st[k]["a"])}</td><td>{pct(st[k]["b"])}</td><td>{st[k]["wins"]} / {st[k]["losses"]}</td>'
         f'<td>{p_value(st[k]["p"])}</td></tr>' for k in labels) if st else ''
-    sol_text = (f' Con las dos ejecuciones de cada uno, <strong>gpt-6.1-sol supera a Terra 5.6</strong>: {pct(st["realcases"]["a"])} frente a '
+    sol_lead = ('<strong>gpt-6.1-sol supera a Terra 5.6</strong>' if st and st['realcases']['p'] < 0.05
+                else 'gpt-6.1-sol no se separa de forma significativa de Terra 5.6')
+    sol_text = (f' Con las dos ejecuciones de cada uno, {sol_lead}: {pct(st["realcases"]["a"])} frente a '
                 f'{pct(st["realcases"]["b"])} en casos reales ({p_text(st["realcases"]["p"])}): {pct(st["realRare"]["a"])} frente a '
                 f'{pct(st["realRare"]["b"])} en raras ({p_text(st["realRare"]["p"])}) y {pct(st["realCommon"]["a"])} frente a '
                 f'{pct(st["realCommon"]["b"])} en no raras ({p_text(st["realCommon"]["p"])}). Por bloques: '
@@ -1863,6 +1871,10 @@ def baseline_section(data):
     judge = sum(m['judgeCost'] for m in s['models']) + s.get('rerunCost', 0)
     failed = sum(m['judgeFailed'] for m in s['models'])
     gap = 'sin diferencia significativa entre ellos' if tp['p'] >= 0.05 else 'con diferencia significativa entre ellos'
+    pending_text = (f'{s["pending"]} casos de recambio aún sin validar no cuentan como reales; cuando David los valide, se vuelven a '
+                    'puntuar las mismas listas.' if s['pending'] else
+                    'Los 3 casos de recambio de la reserva ya están validados (6-nov): se volvieron a puntuar las mismas listas, salvo '
+                    'la de <code>U-T675</code>, que se regeneró porque se le recortó una fuga.')
     prompt_text = ('En ningún modelo la diferencia es significativa' if prompt_p >= 0.05 else 'Hay diferencia significativa en '
                    + ', '.join(m['name'] for m in s['models'] if m['prompt']['test']['p'] < 0.05))
     return f'''
@@ -1872,8 +1884,7 @@ def baseline_section(data):
       Los seis modelos generan listas nuevas sobre los textos finales de la v0.2 con el prompt «5», el de producción desde la
       v0.00196, y las puntúa Gemini 3.8 Flash con <code>graded_v3</code>. La cifra principal es <strong>R@1 estricta en los {s["n"]}
       casos reales validados por David</strong> ({s["live"]} <code>live</code> y {s["urg"]} <code>urg</code>; {s["rare"]} raras y
-      {s["common"]} no raras). {s["pending"]} casos de recambio aún sin validar no cuentan como reales; cuando David los valide, se
-      vuelven a puntuar las mismas listas.
+      {s["common"]} no raras). {pending_text}
       <br><strong>{top["name"]} y {second["name"]} quedan arriba</strong>, {pct(top["groups"]["realcases"]["r1"])} y
       {pct(second["groups"]["realcases"]["r1"])}, {gap} ({tp["wins"]} / {tp["losses"]} casos, {p_text(tp["p"])}).{sol_text}
       Las cifras son más bajas que las provisionales de más abajo, que puntuaban las listas antiguas en 164 casos. Ahora entran

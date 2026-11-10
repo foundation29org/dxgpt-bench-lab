@@ -1,6 +1,6 @@
 # Tarea 3 · Raras: nombres sin gen y casos con HPO insuficientes
 
-**Estado:** lista para empezar · **Tiempo:** ≈ 1 h 25 min · **Depende de:** nada
+**Estado:** hecha (10-nov) · **Tiempo:** ≈ 1 h 30 min · **Depende de:** nada · **Sigue en:** [tarea 4](04-nombres-sin-gen-v3.md)
 
 ## Para qué sirve
 
@@ -63,12 +63,23 @@ casilla por caso:
 | D. No se añadió porque ya es un síntoma de la lista | 5 | ¿Bien así, o el caso debería salir del benchmark? |
 | E. Causa C de T3 | 9 | ¿Mantener, excluir, o mantener pero contar aparte como «no diagnosticable sin genética o metabolitos»? |
 | F. Sinónimos de MONDO | 10 | ¿El diagnóstico del modelo es la misma enfermedad que la referencia? ¿Algún sinónimo añadido está mal? Son parejas en las que añadir los sinónimos cambia si la respuesta cuenta como acierto; no se dice en qué sentido |
+| G. Fenilcetonuria con hipertirosinemia (añadido el 5-nov) | 1 pregunta, con 3 ejemplos | ¿Un caso con hiperfenilalaninemia e hipertirosinemia en la lista sigue siendo diagnosticable como fenilcetonuria? |
 
 Si de los casos E sale una regla general (por ejemplo, «menos de N síntomas y
 ninguno específico»), escríbela al final de la hoja: se aplicaría a todo el
-dataset, no solo a esos 9.
+dataset, no solo a esos 9. Es la única forma de cambiar algo con ellos. Los 9
+salen de fallos de Terra, y excluirlos sueltos sería ajustar el dataset a los
+resultados. Ver las
+[reglas congeladas](../../bench/pipelines/pipeline_v5/main/README.md#reglas-congeladas-desde-el-5-nov-2026).
 
 La muestra es fija y sale de `data29/data-repos/hpo-v2/review_sheet.py`.
+
+El bloque G va al final de la hoja y es una sola pregunta sobre un patrón,
+no sobre casos sueltos. En RAMEDIS, 115 de los 148 casos de fenilcetonuria
+llevan hipertirosinemia en la lista. En T3 quitamos 7 por eso, pero los
+encontraste revisando fallos, y el resto sigue dentro. La respuesta se aplica
+a los 115 por igual: o se quedan todos o salen todos. Así lo piden las
+[reglas congeladas](../../bench/pipelines/pipeline_v5/main/README.md#reglas-congeladas-desde-el-5-nov-2026).
 
 ## Material
 
@@ -86,4 +97,5 @@ bien), se reconstruye HPO v2 y se re-puntúan las listas de Terra.
 
 ## Hecho cuando
 
-Los 69 casos tienen una casilla marcada, y los 9 de la causa C tienen decisión.
+Los 69 casos tienen una casilla marcada, los 9 de la causa C tienen decisión
+y la pregunta G tiene respuesta.
