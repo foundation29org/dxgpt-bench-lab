@@ -1,0 +1,35 @@
+DATASET_PATH: bench/datasets/mme_hpo_v2.json
+DXGPT_EMULATOR:
+  CANDIDATE_PROMPT_PATH: bench/candidate-prompts/juanjo_classic_v2.txt
+  MODEL: gpt-5.6-terra
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: bench/candidate-prompts/candidate_output_schema.json
+  PARALLEL_WORKERS: 4
+  PARAMS:
+    max_tokens: 12000
+    reasoning_effort: low
+    temperature: 0.1
+  TRANSLATE_CASE:
+    ENABLED: false
+EVALUATOR:
+  JUDGE_GRADE_CACHE: C:/Users/W11/AppData/Local/Temp/claude/c0397b33aebaa155/2fafb6d6-f894-4d6b-8d34-b2d0acd1962d/scratchpad/v3_rescore/grade_cache_gpt_5_6_terra_low_graded_v3.json
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_MODEL: gemini-3.8-flash
+  JUDGE_PARAMS:
+    max_tokens: 10000
+    temperature: 0.1
+    thinking_level: low
+  JUDGE_PROMPT_VERSION: graded_v3
+  PARALLEL_WORKERS: 8
+EXPERIMENT_DESCRIPTION: Gold de HPO v2 con la rubrica graded_v3, para comparar con
+  HPO v3 con la misma rubrica. Cache de notas sacada de la puntuacion v3 del mismo
+  modelo.
+EXPERIMENT_NAME: mme_hpo_v2-juanjo_classic_v2-gpt_5_6_terra_low-v5-judge_gemini-3.8-flash-graded_v3
+MAIN:
+  SHOULD_EMULATE: false
+  SHOULD_EVALUATE: true
+  SHOULD_LABEL: false
+OUTPUT_TAG: judge_gemini-3.8-flash_graded_v3
+REFRESH_GOLD_FROM_DATASET: true
+REUSE_LABELED_DDX: bench/pipelines/pipeline_v4 - fork/main/output/mme_hpo/juanjo_classic_v2/gpt_5_6_terra_low/juanjo_classic_v2___gpt_5_6_terra_low___ddxs_from_labeler.json
+TIMESTAMP: '2026-11-10T16:52:53.982050'

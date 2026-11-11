@@ -71,7 +71,8 @@ PRICES_PER_MILLION = {"gemini-3.8-flash": (0.75, 3.75), "gemini-2.5-pro": (1.25,
 # phenylketonurias with hypertyrosinemia came back in v3: in task 3 (block G)
 # David ruled that the pattern is coding noise and all 115 such cases stay.
 T3_DOUBTFUL_GOLD = {
-    "RAMEDIS_132": "Alkaptonuria with seizures and death in childhood",
+    # RAMEDIS_132 (alkaptonuria with seizures and death in childhood) came back in
+    # task 4: death terms are coding noise in RAMEDIS
     "DDD_G2P00467": "HPO terms do not match the gold",
     "DDD_G2P00757": "HPO terms do not match the gold",
     "DDD_G2P00780": "Inheritance contradicts the gold",
@@ -141,6 +142,53 @@ REVIEWED_CLINICAL = {
     "CRYBA1-related cataract": None,
     "RTN4IP1-related optic atrophy with or without ataxia, intellectual developmental disorder, and seizures": None,
     "HACE1-related disorder": "Spastic paraplegia and psychomotor retardation with or without seizures",
+    # Task 3, cases left open and answered in task 4. COX15 Leigh is provisional: David
+    # still checks with a clinician whether the biochemical subtype is the right level.
+    "IFT43-related cranioectodermal dysplasia": "Cranioectodermal dysplasia",
+    "COX15-related Leigh syndrome": "Leigh syndrome due to cytochrome c oxidase deficiency",
+    # D. The gene-free name is an HPO term of the case: a more specific gene-free name
+    "Cutis Laxa, Autosomal Recessive, Type Ia": "Autosomal recessive cutis laxa type I",
+    "MMUT-related methylmalonic aciduria": "Methylmalonic aciduria due to methylmalonyl-CoA mutase deficiency",
+    "SPG11-related spastic paraplegia": "Spastic paraplegia with thin corpus callosum",
+    # Task 4 (v3, a new random sample, 10-nov-2026): A
+    "PEX5-related Zellweger syndrome": "Zellweger syndrome",
+    "CAV1-related congenital generalized lipodystrophy": "Congenital generalized lipodystrophy",
+    "STN1-related cerebroretinal microangiopathy with calcifications and cysts":
+        "Cerebroretinal microangiopathy with calcifications and cysts",
+    "KMT2C-related intellectual disability": "Kleefstra syndrome",
+    "WDR35-related cranioectodermal dysplasia": "Cranioectodermal dysplasia",
+    "HMX1-related oculoauricular syndrome": "Oculoauricular syndrome",
+    "BCKDHB-related maple syrup urine disease": "Maple syrup urine disease",
+    "ALDOA-related glycogen storage disease": "Glycogen storage disease type XII",
+    "ZNF462-related craniofacial anomalies, corpus callosum dysgenesis, ptosis, and developmental delay":
+        "Weiss-Kruszka syndrome",
+    "SYN1-related epilepsy with variable learning disabilities and behavior disorders": None,
+    "SMARCB1-related rhabdoid tumor predisposition syndrome": "Rhabdoid tumor predisposition syndrome",
+    "SHOC2-related Noonan-like syndrome with loose anagen hair": "Noonan-like syndrome with loose anagen hair",
+    # Task 4: B
+    "Retinitis Pigmentosa 18": "Retinitis pigmentosa",
+    "Noonan Syndrome 6": "Noonan syndrome",
+    "Myasthenic Syndrome, Congenital, 22": "Congenital myasthenic syndrome",
+    "Adrenal Hyperplasia, Congenital, Due To 21-Hydroxylase Deficiency": None,
+    "Diarrhea 3, Secretory Sodium, Congenital, With Or Without Other Congenital Anomalies":
+        "Syndromic congenital sodium diarrhea",
+    "DA9": "Congenital contractural arachnodactyly",
+    # Task 4: C
+    "CEP135-related primary microcephaly and disturbed centrosomal function": "Autosomal recessive primary microcephaly",
+    "GDI1-related intellectual developmental disorder": None,
+    "PPP3CA-related severe neurodevelopmental disease with seizures": "Developmental and epileptic encephalopathy",
+    "FBXO11-related variable neurodevelopmental disorder": None,
+    "NRXN3-related autism": None,
+    "WDFY3-related primary microcephaly or macrocephaly with developmental delay": None,
+}
+
+# Gold names that the normalization took from the wrong code (task 4). In RareBench
+# these HMS cases carry their disease's OMIM code plus a group of four Orphanet
+# arthritis codes that shows up in several cases, and «Reactive arthritis» came
+# from that group. The gold is the disease of the OMIM code.
+GOLD_FIXES = {
+    "HMS_011": ("Reactive arthritis", "Primary Sjögren syndrome"),  # OMIM 270150
+    "HMS_035": ("Reactive arthritis", "Familial Mediterranean fever"),  # OMIM 249100, 134610
 }
 
 # Synonyms David gave for some of those names
@@ -154,21 +202,49 @@ REVIEWED_SYNONYMS = {
 # removing the terms that do not describe the patient and the generic
 # neurodevelopmental ones. In RAMEDIS, deaths and the analytes that are not the
 # gold's marker are coding noise (task 3, block G).
-NOT_PATIENT_TERMS = [r"inheritance$", r"^phenotypic variability$", r"^obsolete "]
-GENERIC_NEURO_TERMS = [
-    r"intellectual disability", r"developmental delay", r"^motor delay$",
-    r"^delayed (speech and language|gross motor|fine motor|social) development$", r"language delay$",
-    r"^speech delay$", r"^seizures?$", r"hypotonia$", r"^autism$", r"^autistic behavior$", r"^eeg abnormality$",
-    r"^abnormality of ", r"^abnormality$",
+# Rule for T3 cause C that David wrote in task 3 and completed in task 4. A case is
+# excluded when no specific term is left after removing the terms that do not
+# describe the patient (inheritance, modifiers, onset, obsolete terms, terms that
+# repeat the gold or its gene-free name) and the generic neurodevelopmental ones.
+# In RAMEDIS the death terms are coding noise too (task 4, block G: only the deaths,
+# not the analytes).
+NOT_PATIENT_TERMS = [
+    r"inheritance$", r"^phenotypic variability$", r"^obsolete ", r"^sporadic$", r"^variable expressivity$",
+    r"incomplete penetrance", r"^progressive$", r"\bonset$",
 ]
-RAMEDIS_NOISE_TERMS = [r"^death in ", r"^neonatal death$", r"^hypertyrosinemia$", r"^hyperphenylalaninemia$",
-                       r"^abnormal circulating porphyrin concentration$"]
-RAMEDIS_MARKERS = {"phenylketonuria": "hyperphenylalaninemia", "tyrosinemia": "hypertyrosinemia"}
+GENERIC_NEURO_TERMS = [
+    r"intellectual disability", r"developmental delay", r"^motor delay$", r"^neurodevelopmental delay$",
+    r"^delayed (speech and language|gross motor|fine motor|social) development$", r"language delay$",
+    r"^speech delay$", r"^seizures?$", r"hypotonia$", r"^eeg abnormality$", r"^abnormality of ", r"^abnormality$",
+    # Autism and the behaviours of its spectrum, with the serotonin of its annotation
+    r"^autism$", r"^autistic behavior$", r"^inflexible adherence to routines$",
+    r"^abnormal nonverbal communicative behavior$", r"^motor stereotypy$", r"^lack of spontaneous play$",
+    r"^reduced ability to form peer relationships$", r"^restrictive behavior$", r"^increased serum serotonin$",
+]
+RAMEDIS_NOISE_TERMS = [r"^death in ", r"^neonatal death$"]
+# Two opposite terms in the same case (macrocephaly and microcephaly, long and short
+# philtrum): neither counts as specific
+OPPOSITES = [("macro", "micro"), ("long", "short"), ("increased", "decreased"), ("hyper", "hypo"),
+             ("high", "low"), ("wide", "narrow"), ("broad", "narrow"), ("large", "small"), ("thick", "thin"),
+             ("tall", "short")]
 
 
-def specific_terms(case: Dict, dataset: str) -> List[str]:
-    """The HPO terms of a case that count for the cause C rule."""
+def opposite_of(term: str) -> List[str]:
+    """The term with each opposite swapped in (macrocephaly -> microcephaly)."""
+    variants = []
+    for a, b in OPPOSITES:
+        for x, y in ((a, b), (b, a)):
+            if re.search(rf"\b{x}|^{x}", term):
+                variants.append(re.sub(rf"(\b|^){x}", rf"\g<1>{y}", term, count=1))
+    return variants
+
+
+def specific_terms(case: Dict, dataset: str, extra_names: List[str] = ()) -> List[str]:
+    """The HPO terms of a case that count for the cause C rule. extra_names are the
+    gene-free names of its gold: an HPO term equal to one of them is a leak of the
+    diagnosis (task 4, block D) and does not count either."""
     golds = [norm(d["name"]) for d in case["diagnoses"] if d.get("role") != "clinical"]
+    golds += [norm(name) for name in extra_names if name]
     kept = []
     for raw in (case.get("case_en") or case.get("case") or "").split(","):
         term = raw.strip().lower()
@@ -176,25 +252,26 @@ def specific_terms(case: Dict, dataset: str) -> List[str]:
             continue
         if any(norm(term) in gold or gold in norm(term) for gold in golds):
             continue
-        if dataset == "ramedis_hpo" and any(re.search(p, term) for p in RAMEDIS_NOISE_TERMS) and not any(
-                disease in gold and term == marker for disease, marker in RAMEDIS_MARKERS.items() for gold in golds):
+        if dataset == "ramedis_hpo" and any(re.search(p, term) for p in RAMEDIS_NOISE_TERMS):
             continue
         kept.append(raw.strip())
-    return kept
+    present = {norm(term) for term in kept}
+    return [term for term in kept if not any(norm(other) in present for other in opposite_of(term.lower()))]
 
 PROMPT = """You curate the reference diagnoses of a rare-disease benchmark. The model under test only sees a list of HPO phenotype terms: no genes, no variants, no molecular or enzyme tests unless an HPO term states them.
 
 For each reference below, return:
 
 1. "clinical_name": the specific disease a clinician could name from the phenotype alone, without the gene.
-   - Remove gene symbols and "<GENE>-related", and subtypes that only the gene or the complementation group defines: numbers or letters such as "Bardet-Biedl syndrome 9", "Joubert syndrome 5", "Leber congenital amaurosis 2", "MSUD type Ia", "complementation group B". When the types of a named disease are numbered by gene, use the name without the number.
+   - Remove gene symbols and "<GENE>-related", and subtypes that only the gene or the complementation group defines: numbers or letters such as "Bardet-Biedl syndrome 9", "Joubert syndrome 5", "Leber congenital amaurosis 2", "MSUD type Ia", "complementation group B". When the types of a named disease are numbered by gene, use the name without the number, also when the number reads like a clinical type ("Kleefstra syndrome 2", "Spastic paraplegia 50", "Rhizomelic chondrodysplasia punctata type 3" -> without the number).
+   - When the gene's disease is one entry of a numbered series named after a clinical entity, the series name without the number is its gene-free name: "Developmental and epileptic encephalopathy 91" -> "Developmental and epileptic encephalopathy"; "Primary microcephaly 8" -> "Autosomal recessive primary microcephaly". The intellectual disability series ("Intellectual developmental disorder, autosomal dominant 19", "X-linked 108") are not an entity: they stay generic.
    - Do not end with an umbrella term that covers several distinct diseases. If removing the gene leaves one, give the name of this gene's disease that does not need the gene: a clinical or biochemical subtype named before the gene was known, or its eponym or syndrome name ("GALNS-related mucopolysaccharidosis" -> "Mucopolysaccharidosis type IVA"; "NSD1-related overgrowth syndrome" -> "Sotos syndrome"). Only give such a name if you are sure it is this gene's disease.
    - Keep subtypes that are distinct clinical or biochemical diseases (mucopolysaccharidosis, tyrosinemia, glycogen storage disease and Ehlers-Danlos types; Usher syndrome type 1 vs 2), qualifiers that do not depend on the gene ("non-deletion type", "with deafness", "neonatal", "infantile"), and inheritance qualifiers when the dominant and recessive forms are clinically distinct diseases ("Polycystic kidney disease, autosomal recessive"). Remove inheritance qualifiers that only separate genetic subtypes of the same disease.
    - For long descriptive titles, use the syndrome name if there is one (acronym or eponym), otherwise the descriptive title without the gene.
    - If the reference is an abbreviation, apply these rules to its full name ("DA8" -> "Distal arthrogryposis").
    - Correct obvious misspellings of the disease name.
    - If the reference has no gene or genetic subtype to remove, return it unchanged.
-2. "diagnosable": true if "clinical_name" is a disease or syndrome with its own clinical identity that a clinician could put in a differential from the phenotype: named syndromes and eponyms, metabolic diseases named by the enzyme or metabolite, clinically defined groups (Bardet-Biedl syndrome, retinitis pigmentosa, hereditary spastic paraplegia, Charcot-Marie-Tooth disease, neuronal ceroid lipofuscinosis, cutis laxa), and descriptive titles with two or more required features ("Intellectual developmental disorder with cardiac defects and dysmorphic facies"). false if it is a generic phenotype or broad descriptive category (intellectual disability, developmental delay, epilepsy, developmental and epileptic encephalopathy, neurodevelopmental disorder, microcephaly, hearing loss, retinal dystrophy, cataract, short stature, congenital heart defect, "disorder"), a mechanism rather than a disease ("chromatin remodeling disorder"), one required feature with optional ones ("hearing loss with or without vestibular dysfunction"), or features joined by "and/or". Before answering false, check whether this gene's disease has an eponym or syndrome name that does not mention the gene: if it does, return that name as "clinical_name" and true.
+2. "diagnosable": true if "clinical_name" is a disease or syndrome with its own clinical identity that a clinician could put in a differential from the phenotype: named syndromes and eponyms, metabolic diseases named by the enzyme or metabolite, clinically defined groups (Bardet-Biedl syndrome, retinitis pigmentosa, hereditary spastic paraplegia, Charcot-Marie-Tooth disease, neuronal ceroid lipofuscinosis, cutis laxa), and descriptive titles with two or more required features ("Intellectual developmental disorder with cardiac defects and dysmorphic facies"). Series names such as developmental and epileptic encephalopathy and autosomal recessive primary microcephaly are diagnosable. false if it is a generic phenotype or broad descriptive category (intellectual disability, developmental delay, epilepsy, neurodevelopmental disorder, microcephaly as a single feature, hearing loss, retinal dystrophy, cataract, short stature, congenital heart defect, "disorder"), a mechanism rather than a disease ("chromatin remodeling disorder"), one required feature with optional ones ("hearing loss with or without vestibular dysfunction"), or features joined by "and/or". Before answering false, check whether this gene's disease has an eponym or syndrome name that does not mention the gene: if it does, return that name as "clinical_name" and true.
 3. "readable_name": only when the reference is an abbreviation or a list of repeated synonyms ("DA8", "Neurofibromatosis, Type 2,Neurofibromatosis type 2"): the same entity written out in full. If you are not sure what an abbreviation means, return null. For bare codes ("ORPHA:761") return null: they are resolved by hand. Otherwise null.
 
 References:
@@ -298,6 +375,48 @@ def propose(args) -> None:
     print(f"{args.model}: {usage_cost(args.model)}")
 
 
+TRAILING_TYPE = re.compile(r"\b(\d+[a-z]?|type [ivx]+[a-z]?|type \d+[a-z]?)$", re.I)
+
+
+def refine(args) -> None:
+    """Propose again, with the current prompt, the golds the last build left generic or
+    with a trailing number or type (task 4: the series names and the types numbered by
+    gene). The rest of v3, validated in task 4, keeps its proposal."""
+    proposals = json.loads(PROPOSALS_PATH.read_text(encoding="utf-8"))
+    names = set()
+    for line in REPORT_PATH.read_text(encoding="utf-8").splitlines():
+        parts = line.split("\t")
+        if len(parts) != 4:
+            continue
+        original, _, proposed = parts[3].partition(" -> ")
+        if parts[2] == "not_diagnosable" or (parts[2] == "clinical" and TRAILING_TYPE.search(proposed)):
+            names.add(original)
+    names -= set(REVIEWED_CLINICAL)
+    backup = PROPOSALS_PATH.with_name(PROPOSALS_PATH.stem + "_before_refine.json")
+    if not backup.exists():
+        backup.write_text(PROPOSALS_PATH.read_text(encoding="utf-8"), encoding="utf-8")
+    golds = unique_golds()
+    pending = [(name, golds.get(name, "")) for name in sorted(names)]
+    llm = get_llm(args.model)
+    batches = [pending[i:i + BATCH_SIZE] for i in range(0, len(pending), BATCH_SIZE)]
+    changed = 0
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        for rows in executor.map(lambda b: propose_batch(llm, b, thinking=args.thinking), batches):
+            for row in rows:
+                if "error" in row:
+                    continue
+                new = {k: v for k, v in row.items() if k not in ("name", "i")}
+                old = proposals.get(row["name"], {})
+                if (new.get("clinical_name"), new.get("diagnosable")) != (old.get("clinical_name"), old.get("diagnosable")):
+                    changed += 1
+                    print(f"{row['name']}\n   before: {old.get('clinical_name')} ({old.get('diagnosable')})"
+                          f"\n   now:    {new.get('clinical_name')} ({new.get('diagnosable')})")
+                proposals[row["name"]] = new
+    PROPOSALS_PATH.write_text(json.dumps(proposals, indent=1, ensure_ascii=False), encoding="utf-8")
+    print(f"\n{len(pending)} golds proposed again, {changed} changed. Backup: {backup.name}")
+    print(f"{args.model}: {usage_cost(args.model)}")
+
+
 def check(args) -> None:
     """The prompt on the golds David reviewed, without his overrides, against his answers."""
     golds = unique_golds()
@@ -334,16 +453,22 @@ def build(args) -> None:
     totals = {}
     for name in DATASETS:
         cases = load(name)
-        out, stats = [], dict(cases=len(cases), excluded=0, clinical=0, same=0, not_diagnosable=0,
-                              in_input=0, readable=0, missing=0)
+        out, stats = [], dict(cases=len(cases), excluded=0, excluded_cause_c=0, clinical=0, same=0,
+                              not_diagnosable=0, in_input=0, readable=0, missing=0, gold_fixed=0)
         for case in cases:
             if case["id"] in T3_DOUBTFUL_GOLD:
                 stats["excluded"] += 1
                 report.append(f"{name}\t{case['id']}\texcluded\tT3 cause B: {T3_DOUBTFUL_GOLD[case['id']]}")
                 continue
             case = json.loads(json.dumps(case))
-            clinical = []
+            clinical, leaked = [], []
             for diag in case["diagnoses"]:
+                old_name, fixed_name = GOLD_FIXES.get(case["id"], (None, None))
+                if diag["name"] == old_name:
+                    diag["name"], diag["replaced_name"] = fixed_name, old_name
+                    stats["gold_fixed"] += 1
+                    report.append(f"{name}\t{case['id']}\tgold_fixed\t{old_name} -> {fixed_name}")
+                    continue
                 proposal = proposals.get(diag["name"]) or {}
                 if (not proposal or "error" in proposal) and diag["name"] not in REVIEWED_CLINICAL:
                     stats["missing"] += 1
@@ -364,6 +489,7 @@ def build(args) -> None:
                     stats["not_diagnosable"] += 1
                     report.append(f"{name}\t{case['id']}\tnot_diagnosable\t{diag['name']} -> {clinical_name}")
                 elif norm(clinical_name) in input_terms(case):
+                    leaked.append(clinical_name)
                     stats["in_input"] += 1
                     report.append(f"{name}\t{case['id']}\tin_input\t{diag['name']} -> {clinical_name}")
                 else:
@@ -371,6 +497,12 @@ def build(args) -> None:
                     if clinical_name in REVIEWED_SYNONYMS:
                         entry["accepted_names"] = REVIEWED_SYNONYMS[clinical_name]
                     clinical.append(entry)
+            # Causa C: sin ningún término específico (quitados también los que repiten el
+            # gold o su nombre sin gen) el caso no se puede diagnosticar
+            if not specific_terms(case, name, [entry["name"] for entry in clinical] + leaked):
+                stats["excluded_cause_c"] += 1
+                report.append(f"{name}\t{case['id']}\texcluded\tcause C: no specific HPO term left")
+                continue
             if clinical:
                 stats["clinical"] += 1
                 for entry in clinical:
@@ -389,12 +521,12 @@ def build(args) -> None:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", choices=["check", "propose", "build"])
+    parser.add_argument("step", choices=["check", "propose", "refine", "build"])
     parser.add_argument("--workers", type=int, default=6)
     parser.add_argument("--model", default="gemini-3.8-flash")
     parser.add_argument("--thinking", default="low", help="Gemini thinking_level; empty to leave it to the model")
     args = parser.parse_args()
-    {"check": check, "propose": propose, "build": build}[args.step](args)
+    {"check": check, "propose": propose, "refine": refine, "build": build}[args.step](args)
 
 
 if __name__ == "__main__":

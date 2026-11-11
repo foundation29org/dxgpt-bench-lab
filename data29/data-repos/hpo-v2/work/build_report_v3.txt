@@ -6,14 +6,14 @@ ddd_hpo	DDD_G2P00003	clinical	ARG1-related argininemia -> Argininemia
 ddd_hpo	DDD_G2P00004	clinical	ATR-related Seckel syndrome -> Seckel syndrome
 ddd_hpo	DDD_G2P00005	clinical	FANCB-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P00007	clinical	NTRK1-related congenital insensitivity to pain with anhidrosis -> Congenital insensitivity to pain with anhidrosis
-ddd_hpo	DDD_G2P00008	not_diagnosable	YAP1-related coloboma, ocular, with or without hearing impairment, cleft lip/palate, and/or intellectual developmental disorder -> Coloboma, ocular, with or without hearing impairment, cleft lip/palate, and/or intellectual developmental disorder
+ddd_hpo	DDD_G2P00008	not_diagnosable	YAP1-related coloboma, ocular, with or without hearing impairment, cleft lip/palate, and/or intellectual developmental disorder -> Ocular coloboma with or without hearing impairment, cleft lip/palate, and/or intellectual developmental disorder
 ddd_hpo	DDD_G2P00009	clinical	BBS9-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
 ddd_hpo	DDD_G2P00010	clinical	TRIM32-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
 ddd_hpo	DDD_G2P00011	clinical	PAX2-related papillorenal syndrome -> Papillorenal syndrome
 ddd_hpo	DDD_G2P00013	clinical	ADAR-related dyschromatosis symmetrica hereditaria -> Dyschromatosis symmetrica hereditaria
 ddd_hpo	DDD_G2P00015	clinical	FLNB-related spondylocarpotarsal synostosis syndrome -> Spondylocarpotarsal synostosis syndrome
 ddd_hpo	DDD_G2P00017	clinical	MOGS-related congenital disorder of glycosylation -> Congenital disorder of glycosylation type IIb
-ddd_hpo	DDD_G2P00018	clinical	AGPS-related rhizomelic chondrodysplasia punctata -> Rhizomelic chondrodysplasia punctata type 3
+ddd_hpo	DDD_G2P00018	clinical	AGPS-related rhizomelic chondrodysplasia punctata -> Rhizomelic chondrodysplasia punctata
 ddd_hpo	DDD_G2P00019	clinical	OFD1-related oral-facial-digital syndrome -> Oral-facial-digital syndrome type 1
 ddd_hpo	DDD_G2P00020	clinical	PAFAH1B1-related lissencephaly -> Isolated lissencephaly sequence
 ddd_hpo	DDD_G2P00021	clinical	COL1A1-related osteogenesis imperfecta spectrum -> Osteogenesis imperfecta
@@ -37,7 +37,7 @@ ddd_hpo	DDD_G2P00043	clinical	CLN3-related neuronal ceroid lipofuscinosis -> Neu
 ddd_hpo	DDD_G2P00044	clinical	LRP5-related osteopetrosis -> Osteopetrosis, autosomal dominant
 ddd_hpo	DDD_G2P00045	not_diagnosable	FOXP2-related speech-language disorder -> Speech-language disorder
 ddd_hpo	DDD_G2P00046	clinical	DOCK6-related Adams-Oliver syndrome -> Adams-Oliver syndrome
-ddd_hpo	DDD_G2P00048	not_diagnosable	CHAMP1-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P00048	clinical	CHAMP1-related neurodevelopmental disorder -> Neurodevelopmental disorder with hypotonia, speech impairment, and variable dysmorphic facies
 ddd_hpo	DDD_G2P00049	clinical	XPC-related xeroderma pigmentosum -> Xeroderma pigmentosum
 ddd_hpo	DDD_G2P00050	clinical	FOXE3-related congenital primary aphakia -> Congenital primary aphakia
 ddd_hpo	DDD_G2P00051	not_diagnosable	SUMO1-related cleft lip with or without cleft palate -> Cleft lip with or without cleft palate
@@ -46,7 +46,7 @@ ddd_hpo	DDD_G2P00053	clinical	MKKS-related Mckusick-Kaufman syndrome -> McKusick
 ddd_hpo	DDD_G2P00054	clinical	NPHS1-related nephrotic syndrome -> Congenital nephrotic syndrome, Finnish type
 ddd_hpo	DDD_G2P00055	in_input	ACAN-related spondyloepiphyseal dysplasia -> Spondyloepiphyseal dysplasia
 ddd_hpo	DDD_G2P00058	clinical	NAGA-related Kanzaki disease -> Kanzaki disease
-ddd_hpo	DDD_G2P00059	not_diagnosable	PLCB1-related epileptic encephalopathy, early infantile -> Early infantile epileptic encephalopathy
+ddd_hpo	DDD_G2P00059	clinical	PLCB1-related epileptic encephalopathy, early infantile -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00060	clinical	NT5C3A-related hemolytic anemia -> Pyrimidine 5'-nucleotidase deficiency hemolytic anemia
 ddd_hpo	DDD_G2P00061	clinical	SLC4A11-related corneal endothelial dystrophy with or without deafness -> Harboyan syndrome
 ddd_hpo	DDD_G2P00062	clinical	ARX-related intellectual developmental disorder -> Partington syndrome
@@ -72,7 +72,7 @@ ddd_hpo	DDD_G2P00085	clinical	HADH-related 3-hydroxyacyl-CoA dehydrogenase defic
 ddd_hpo	DDD_G2P00087	clinical	GDF5-related acromesomelic chondrodysplasia, Grebe type -> Acromesomelic chondrodysplasia, Grebe type
 ddd_hpo	DDD_G2P00088	clinical	OTC-related ornithine transcarbamylase deficiency -> Ornithine transcarbamylase deficiency
 ddd_hpo	DDD_G2P00091	clinical	ZEB1-related corneal dystrophy Fuchs endothelial -> Fuchs endothelial corneal dystrophy
-ddd_hpo	DDD_G2P00092	not_diagnosable	CRYBB2-related cataract -> Cataract
+ddd_hpo	DDD_G2P00092	not_diagnosable	CRYBB2-related cataract -> Congenital cataract
 ddd_hpo	DDD_G2P00093	clinical	STAT5B-related growth hormone insensitivity with immunodeficiency -> Growth hormone insensitivity with immunodeficiency
 ddd_hpo	DDD_G2P00094	clinical	SALL1-related Townes-Brocks syndrome -> Townes-Brocks syndrome
 ddd_hpo	DDD_G2P00095	clinical	PDE6G-related retinitis pigmentosa -> Retinitis pigmentosa
@@ -105,7 +105,7 @@ ddd_hpo	DDD_G2P00127	clinical	PXDN-related anterior segment dysgenesis with scle
 ddd_hpo	DDD_G2P00129	clinical	EBP-related chondrodysplasia punctata -> Conradi-Hünermann syndrome
 ddd_hpo	DDD_G2P00131	clinical	PSMB8-related Nakajo syndrome -> Nakajo-Nishimura syndrome
 ddd_hpo	DDD_G2P00132	clinical	NALCN-related hypotonia, infantile, with psychomotor retardation and characteristic facies -> Hypotonia, infantile, with psychomotor retardation and characteristic facies
-ddd_hpo	DDD_G2P00134	not_diagnosable	LAMC3-related occipital cortical malformations -> Occipital cortical malformations
+ddd_hpo	DDD_G2P00134	clinical	LAMC3-related occipital cortical malformations -> Occipital cortical malformations
 ddd_hpo	DDD_G2P00136	clinical	MAT1A-related methionine adenosyltransferase deficiency -> Methionine adenosyltransferase deficiency
 ddd_hpo	DDD_G2P00138	clinical	COL9A1-related Stickler syndrome -> Stickler syndrome
 ddd_hpo	DDD_G2P00139	clinical	NKX2-5-related atrial septal defect with atrioventricular conduction defects -> Atrial septal defect with atrioventricular conduction defects
@@ -128,9 +128,9 @@ ddd_hpo	DDD_G2P00157	clinical	ATP7A-related spinal muscular atrophy, distal -> D
 ddd_hpo	DDD_G2P00158	clinical	RFT1-related congenital disorder of glycosylation -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P00159	clinical	ALDH18A1-related spastic paraplegia -> Hereditary spastic paraplegia
 ddd_hpo	DDD_G2P00160	clinical	PYCR1-related cutis laxa -> Cutis laxa
-ddd_hpo	DDD_G2P00161	not_diagnosable	GDI1-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P00161	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00163	clinical	GLDC-related glycine encephalopathy -> Glycine encephalopathy
-ddd_hpo	DDD_G2P00164	not_diagnosable	TBL1XR1-related intellectual disability with autism spectrum disorder -> Intellectual disability with autism spectrum disorder
+ddd_hpo	DDD_G2P00164	clinical	TBL1XR1-related intellectual disability with autism spectrum disorder -> Pierpont syndrome
 ddd_hpo	DDD_G2P00165	clinical	NOP10-related dyskeratosis congenita -> Dyskeratosis congenita
 ddd_hpo	DDD_G2P00168	clinical	COL2A1-related achondrogenesis -> Achondrogenesis type II
 ddd_hpo	DDD_G2P00169	clinical	PLEC-related epidermolysis bullosa simplex and limb-girdle muscular dystrophy -> Epidermolysis bullosa simplex with muscular dystrophy
@@ -176,13 +176,13 @@ ddd_hpo	DDD_G2P00217	clinical	RARS2-related pontocerebellar hypoplasia -> Pontoc
 ddd_hpo	DDD_G2P00218	clinical	POLD1-related subcutaneous lipodystrophy, deafness, mandibular hypoplasia and male hypogonadism -> Mandibular hypoplasia, deafness, progeroid features, and lipodystrophy syndrome
 ddd_hpo	DDD_G2P00219	clinical	LRAT-related Leber congenital amaurosis -> Leber congenital amaurosis
 ddd_hpo	DDD_G2P00220	not_diagnosable	KARS1-related leukoencephalopathy with or without deafness -> Leukoencephalopathy with or without deafness
-ddd_hpo	DDD_G2P00221	clinical	SLC35C1-related congenital disorder of glycosylation -> Congenital disorder of glycosylation type IIc
+ddd_hpo	DDD_G2P00221	clinical	SLC35C1-related congenital disorder of glycosylation -> Leukocyte adhesion deficiency type II
 ddd_hpo	DDD_G2P00222	clinical	SATB2-related Glass syndrome -> Glass syndrome
 ddd_hpo	DDD_G2P00223	clinical	SNX3-related microphthalmia syndromic -> Syndromic microphthalmia
 ddd_hpo	DDD_G2P00224	clinical	NDUFS8-related mitochondrial respiratory chain complex I deficiency -> Mitochondrial complex I deficiency
 ddd_hpo	DDD_G2P00228	clinical	SCN4A-related hypokalemic periodic paralysis -> Hypokalemic periodic paralysis
 ddd_hpo	DDD_G2P00229	clinical	KRIT1-related cerebral cavernous malformation -> Cerebral cavernous malformation
-ddd_hpo	DDD_G2P00230	clinical	ALG11-related congenital disorder of glycosylation -> Congenital disorder of glycosylation type Ip
+ddd_hpo	DDD_G2P00230	clinical	ALG11-related congenital disorder of glycosylation -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P00233	clinical	DLL3-related spondylocostal dysostosis -> Spondylocostal dysostosis
 ddd_hpo	DDD_G2P00235	clinical	FH-related fumarase deficiency -> Fumarase deficiency
 ddd_hpo	DDD_G2P00236	clinical	POMGNT1-related muscular dystrophy-dystroglycanopathy congenital with brain and eye anomalies -> Walker-Warburg syndrome
@@ -229,7 +229,8 @@ ddd_hpo	DDD_G2P00287	clinical	ASAH1-related Farber lipogranulomatosis -> Farber 
 ddd_hpo	DDD_G2P00288	in_input	MMAA-related methylmalonic aciduria -> Methylmalonic aciduria
 ddd_hpo	DDD_G2P00289	clinical	FLNB-related AUTOSOMAL DOMINANT LARSEN SYNDROME -> Larsen syndrome
 ddd_hpo	DDD_G2P00291	clinical	STRA6-related syndromic microphthalmia -> Syndromic microphthalmia
-ddd_hpo	DDD_G2P00292	not_diagnosable	ZNF711-related intellectual developmental disorder, X-linked -> X-linked intellectual disability
+ddd_hpo	DDD_G2P00292	not_diagnosable	ZNF711-related intellectual developmental disorder, X-linked -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P00292	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00293	not_diagnosable	PRSS12-related intellectual developmental disorder autosomal recessive -> Autosomal recessive intellectual disability
 ddd_hpo	DDD_G2P00294	clinical	FKRP-related congenital alpha-dystroglycanopathy with brain and eye anomalies -> Congenital alpha-dystroglycanopathy with brain and eye anomalies
 ddd_hpo	DDD_G2P00295	clinical	HCCS-related linear skin defects with microphthalmia -> Linear skin defects with microphthalmia syndrome
@@ -251,7 +252,7 @@ ddd_hpo	DDD_G2P00313	clinical	ARHGAP31-related Adams-Oliver syndrome -> Adams-Ol
 ddd_hpo	DDD_G2P00314	clinical	BBS5-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
 ddd_hpo	DDD_G2P00317	clinical	DHTKD1-related 2-aminoadipic and 2-oxoadipic aciduria -> 2-aminoadipic and 2-oxoadipic aciduria
 ddd_hpo	DDD_G2P00318	clinical	ABCB6-related microphthalmia, isolated, with coloboma -> Microphthalmia, isolated, with coloboma
-ddd_hpo	DDD_G2P00319	clinical	SLC6A1-related epilepsy with myoclonic-atonic seizures -> Epilepsy with myoclonic-atonic seizures
+ddd_hpo	DDD_G2P00319	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00320	clinical	HSPD1-related leukodystrophy hypomyelinating -> Hypomyelinating leukodystrophy
 ddd_hpo	DDD_G2P00321	clinical	GAMT-related guanidinoacetate methyltransferase deficiency -> Guanidinoacetate methyltransferase deficiency
 ddd_hpo	DDD_G2P00322	clinical	SLC2A10-related arterial tortuosity syndrome -> Arterial tortuosity syndrome
@@ -285,10 +286,10 @@ ddd_hpo	DDD_G2P00353	clinical	EHMT1-related Kleefstra syndrome -> Kleefstra synd
 ddd_hpo	DDD_G2P00354	clinical	CDT1-related Meier-Gorlin syndrome -> Meier-Gorlin syndrome
 ddd_hpo	DDD_G2P00355	clinical	TTN-related titinopathy with arthrogryposis and/or myopathy -> Arthrogryposis multiplex congenita
 ddd_hpo	DDD_G2P00356	clinical	FBLN1-related synpolydactyly, 3/3-prime/4, associated with metacarpal and metatarsal synostoses -> Synpolydactyly with metacarpal and metatarsal synostoses
-ddd_hpo	DDD_G2P00358	not_diagnosable	SLC13A5-related epileptic encephalopathy with seizure onset in the first days of life -> Early infantile epileptic encephalopathy
+ddd_hpo	DDD_G2P00358	clinical	SLC13A5-related epileptic encephalopathy with seizure onset in the first days of life -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00359	clinical	MANBA-related lysosomal beta-mannosidosis -> Beta-mannosidosis
 ddd_hpo	DDD_G2P00360	clinical	PTDSS1-related Lenz-Majewski hyperostotic dwarfism -> Lenz-Majewski hyperostotic dwarfism
-ddd_hpo	DDD_G2P00361	clinical	RSPO4-related anonychia congenita -> Anonychia congenita
+ddd_hpo	DDD_G2P00361	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00362	clinical	SLC25A20-related carnitine-acylcarnitine translocase deficiency -> Carnitine-acylcarnitine translocase deficiency
 ddd_hpo	DDD_G2P00363	clinical	WNT10B-related split-hand/foot malformation -> Split-hand/foot malformation
 ddd_hpo	DDD_G2P00364	clinical	PEX1-related peroxisome biogenesis disorder -> Zellweger syndrome spectrum
@@ -296,7 +297,7 @@ ddd_hpo	DDD_G2P00365	clinical	TREX1-related Aicardi-Goutieres syndrome -> Aicard
 ddd_hpo	DDD_G2P00367	clinical	RAD21-related cohesinopathy -> Cornelia de Lange syndrome
 ddd_hpo	DDD_G2P00369	clinical	HPD-related hawkinsinuria -> Hawkinsinuria
 ddd_hpo	DDD_G2P00370	clinical	GNPAT-related rhizomelic chondrodysplasia punctata -> Rhizomelic chondrodysplasia punctata
-ddd_hpo	DDD_G2P00371	not_diagnosable	DNM1-related microcephaly, developmental and epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P00371	clinical	DNM1-related microcephaly, developmental and epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00373	clinical	HEXB-related GM2-gangliosidosis -> Sandhoff disease
 ddd_hpo	DDD_G2P00374	clinical	MED13L-related intellectual disability -> MED13L syndrome
 ddd_hpo	DDD_G2P00375	clinical	MESP2-related spondylocostal dysostosis -> Spondylocostal dysostosis
@@ -304,14 +305,14 @@ ddd_hpo	DDD_G2P00376	clinical	CDK5RAP2-related primary microcephaly -> Autosomal
 ddd_hpo	DDD_G2P00377	clinical	PCBD1-related hyperphenylalaninemia, BH4-deficient, D -> Tetrahydrobiopterin-deficient hyperphenylalaninemia
 ddd_hpo	DDD_G2P00378	clinical	BCAP31-related deafness, dystonia, and central hypomyelination with disorganization of the Golgi apparatus -> Deafness, dystonia, and central hypomyelination
 ddd_hpo	DDD_G2P00379	not_diagnosable	MYH6-related atrial septal defect -> Atrial septal defect
-ddd_hpo	DDD_G2P00380	not_diagnosable	KANK1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
+ddd_hpo	DDD_G2P00380	clinical	KANK1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
 ddd_hpo	DDD_G2P00381	clinical	ANKRD11-related KBG syndrome -> KBG syndrome
 ddd_hpo	DDD_G2P00382	clinical	PHF21A-related Potocki-Shaffer syndrome -> Potocki-Shaffer syndrome
 ddd_hpo	DDD_G2P00383	not_diagnosable	VANGL1-related neural tube defects -> Neural tube defects
 ddd_hpo	DDD_G2P00384	clinical	OFD1-related Joubert syndrome -> Joubert syndrome
 ddd_hpo	DDD_G2P00385	clinical	IKBKG-related incontinentia pigmenti -> Incontinentia pigmenti
 ddd_hpo	DDD_G2P00388	clinical	FLG-related ichthyosis vulgaris -> Ichthyosis vulgaris
-ddd_hpo	DDD_G2P00390	clinical	ALDH18A1-related developmental disorder-joint hypermobility-skin laxity with or without metabolic abnormalities -> Cutis laxa, autosomal recessive, type IIIA
+ddd_hpo	DDD_G2P00390	clinical	ALDH18A1-related developmental disorder-joint hypermobility-skin laxity with or without metabolic abnormalities -> De Barsy syndrome
 ddd_hpo	DDD_G2P00391	clinical	WNT7A- related skeletal malformations syndrome -> Fuhrmann syndrome
 ddd_hpo	DDD_G2P00392	clinical	SCN4A-related hyperkalemic periodic paralysis -> Hyperkalemic periodic paralysis
 ddd_hpo	DDD_G2P00393	clinical	FOXL2-related blepharophimosis, ptosis, and epicanthus inversus syndrome -> Blepharophimosis, ptosis, and epicanthus inversus syndrome
@@ -335,6 +336,7 @@ ddd_hpo	DDD_G2P00414	clinical	FGFR1-related osteoglophonic dysplasia -> Osteoglo
 ddd_hpo	DDD_G2P00415	clinical	SGSH-related mucopolysaccharidosis -> Mucopolysaccharidosis type IIIA
 ddd_hpo	DDD_G2P00416	not_diagnosable	TLL1-related atrial septal defect -> Atrial septal defect
 ddd_hpo	DDD_G2P00418	not_diagnosable	GRIK2-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P00418	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00419	clinical	ORC1-related Meier-Gorlin syndrome -> Meier-Gorlin syndrome
 ddd_hpo	DDD_G2P00420	clinical	FANCE-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P00421	clinical	ARL6-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
@@ -362,7 +364,7 @@ ddd_hpo	DDD_G2P00447	clinical	KIT-related piebaldism -> Piebaldism
 ddd_hpo	DDD_G2P00448	clinical	IGF2-related Beckwith-Wiedemann syndrome -> Beckwith-Wiedemann syndrome
 ddd_hpo	DDD_G2P00449	clinical	RBM28-related alopecia neurologic defects and endocrinopathy syndrome -> Alopecia-neurologic defects-endocrinopathy syndrome
 ddd_hpo	DDD_G2P00450	clinical	HGSNAT-related mucopolysaccharidosis type IIIC -> Mucopolysaccharidosis type IIIC
-ddd_hpo	DDD_G2P00451	clinical	GCDH-related glutaricacidemia -> Glutaric acidemia type 1
+ddd_hpo	DDD_G2P00451	clinical	GCDH-related glutaricacidemia -> Glutaric acidemia type I
 ddd_hpo	DDD_G2P00452	clinical	PIGL-related coloboma, congenital heart disease, ichthyosiform dermatosis, impaired intellectual development, and ear anomalies syndrome (CHIME) -> CHIME syndrome
 ddd_hpo	DDD_G2P00453	clinical	ZFPM2-related malformation syndrome -> Diaphragmatic hernia, congenital
 ddd_hpo	DDD_G2P00458	clinical	KDM6A-related Kabuki syndrome -> Kabuki syndrome
@@ -373,7 +375,7 @@ ddd_hpo	DDD_G2P00462	clinical	GDF6-related oculo-skeletal syndrome -> Microphtha
 ddd_hpo	DDD_G2P00463	clinical	TMEM67-related Coach syndrome -> COACH syndrome
 ddd_hpo	DDD_G2P00466	clinical	HRAS-related congenital myopathy with excess of muscle spindles -> Costello syndrome
 ddd_hpo	DDD_G2P00467	excluded	T3 cause B: HPO terms do not match the gold
-ddd_hpo	DDD_G2P00468	clinical	CHRNB2-related nocturnal frontal lobe epilepsy -> Autosomal dominant sleep-related hypermotor epilepsy
+ddd_hpo	DDD_G2P00468	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00469	clinical	MMADHC-related methylmalonic aciduria and homocystinuria, cblD type -> Methylmalonic aciduria and homocystinuria, cblD type
 ddd_hpo	DDD_G2P00470	clinical	GALK1-related galactokinase deficiency with cataracts -> Galactokinase deficiency
 ddd_hpo	DDD_G2P00471	clinical	NYX-related congenital stationary night blindness -> Congenital stationary night blindness
@@ -395,33 +397,33 @@ ddd_hpo	DDD_G2P00488	clinical	ABCD4-related methylmalonic aciduria and homocysti
 ddd_hpo	DDD_G2P00489	clinical	OPHN1-related intellectual developmental disorder -> Intellectual developmental disorder, X-linked, with cerebellar hypoplasia
 ddd_hpo	DDD_G2P00490	not_diagnosable	ZDHHC15-related intellectual developmental disorder -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P00491	clinical	ACADM-related medium chain acyl-CoA dehydrogenase deficiency -> Medium-chain acyl-CoA dehydrogenase deficiency
-ddd_hpo	DDD_G2P00493	not_diagnosable	TACR3-related hypogonadotropic hypogonadism -> Hypogonadotropic hypogonadism
+ddd_hpo	DDD_G2P00493	in_input	TACR3-related hypogonadotropic hypogonadism -> Hypogonadotropic hypogonadism
 ddd_hpo	DDD_G2P00494	clinical	DNAAF11-related primary ciliary dyskinesia -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P00495	clinical	CASK-related intellectual developmental disorder -> Microcephaly with pontine and cerebellar hypoplasia
-ddd_hpo	DDD_G2P00496	clinical	ETFDH-related glutaric aciduria -> Glutaric aciduria type II
+ddd_hpo	DDD_G2P00496	clinical	ETFDH-related glutaric aciduria -> Glutaric acidemia type II
 ddd_hpo	DDD_G2P00497	clinical	TFAP2B-related Char syndrome -> Char syndrome
-ddd_hpo	DDD_G2P00498	not_diagnosable	DDX3X-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P00498	clinical	DDX3X-related intellectual disability -> DDX3X syndrome
 ddd_hpo	DDD_G2P00499	clinical	AR-related spinal and bulb muscul atrophy -> Spinal and bulbar muscular atrophy
 ddd_hpo	DDD_G2P00500	clinical	TRPV3-related Olmsted syndrome -> Olmsted syndrome
 ddd_hpo	DDD_G2P00502	clinical	IRF6-related Van der Woude syndrome -> Van der Woude syndrome
-ddd_hpo	DDD_G2P00503	clinical	ARFGEF2-related periventricular heterotopia with microcephaly -> Periventricular nodular heterotopia with microcephaly
+ddd_hpo	DDD_G2P00503	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00504	clinical	HYLS1-related hydrolethalus syndrome -> Hydrolethalus syndrome
 ddd_hpo	DDD_G2P00505	clinical	SACS-related spastic ataxia, Charlevoix-Saguenay type -> Autosomal recessive spastic ataxia of Charlevoix-Saguenay
 ddd_hpo	DDD_G2P00506	clinical	BANF1-related Nestor-Guillermo progeria syndrome -> Nestor-Guillermo progeria syndrome
 ddd_hpo	DDD_G2P00507	clinical	AR-related androgen insensitivity syndrome -> Androgen insensitivity syndrome
-ddd_hpo	DDD_G2P00509	not_diagnosable	ZDHHC9-related syndromic intellectual developmental disorder -> Syndromic intellectual disability
+ddd_hpo	DDD_G2P00509	clinical	ZDHHC9-related syndromic intellectual developmental disorder -> Raymond syndrome
 ddd_hpo	DDD_G2P00510	clinical	FOXC1-related Axenfeld-Rieger syndrome -> Axenfeld-Rieger syndrome
 ddd_hpo	DDD_G2P00511	clinical	KCNMA1-related generalized epilepsy and paroxysmal dyskinesia -> Generalized epilepsy and paroxysmal dyskinesia
 ddd_hpo	DDD_G2P00512	clinical	NDUFV1-related mitochondrial complex I deficiency -> Mitochondrial complex I deficiency
 ddd_hpo	DDD_G2P00513	clinical	DOLK-related congenital disorder of glycosylation -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P00514	clinical	IFT122-related cranioectodermal dysplasia -> Cranioectodermal dysplasia
-ddd_hpo	DDD_G2P00515	not_diagnosable	NKX2-5-related tetralogy of Fallot -> Tetralogy of Fallot
+ddd_hpo	DDD_G2P00515	in_input	NKX2-5-related tetralogy of Fallot -> Tetralogy of Fallot
 ddd_hpo	DDD_G2P00516	clinical	SLC6A5-related hyperekplexia -> Hyperekplexia
 ddd_hpo	DDD_G2P00517	clinical	WDR19-related cranioectodermal dysplasia -> Cranioectodermal dysplasia
 ddd_hpo	DDD_G2P00518	clinical	CEP152-related developmental disorder -> Microcephaly, Seckel syndrome type
 ddd_hpo	DDD_G2P00519	clinical	DSPP-related deafness with dentinogenesis imperfecta -> Deafness with dentinogenesis imperfecta
 ddd_hpo	DDD_G2P00520	in_input	CLCN7-related osteopetrosis -> Osteopetrosis
-ddd_hpo	DDD_G2P00521	not_diagnosable	OTOGL-related moderate sensorineural hearing loss -> Autosomal recessive non-syndromic sensorineural hearing loss
+ddd_hpo	DDD_G2P00521	not_diagnosable	OTOGL-related moderate sensorineural hearing loss -> Moderate sensorineural hearing loss
 ddd_hpo	DDD_G2P00523	clinical	MAFB-related multicentric carpotarsal osteolysis syndrome -> Multicentric carpotarsal osteolysis syndrome
 ddd_hpo	DDD_G2P00524	clinical	MTRFR-related combined oxidative phosphorylation deficiency -> Combined oxidative phosphorylation deficiency
 ddd_hpo	DDD_G2P00525	clinical	PKHD1-related polycystic kidney disease -> Autosomal recessive polycystic kidney disease
@@ -430,8 +432,9 @@ ddd_hpo	DDD_G2P00527	clinical	FAM111A-related Kenny-Caffey syndrome -> Kenny-Caf
 ddd_hpo	DDD_G2P00528	clinical	MPI-related congenital disorder of glycosylation -> Congenital disorder of glycosylation type Ib
 ddd_hpo	DDD_G2P00530	clinical	MCCC2-related 3-methylcrotonyl-CoA carboxylase deficiency -> 3-Methylcrotonyl-CoA carboxylase deficiency
 ddd_hpo	DDD_G2P00531	clinical	CRX-related Leber congenital amaurosis -> Leber congenital amaurosis
-ddd_hpo	DDD_G2P00533	not_diagnosable	GJC2-related lymphatic malformation -> Lymphatic malformation
+ddd_hpo	DDD_G2P00533	clinical	GJC2-related lymphatic malformation -> Lymphedema, hereditary
 ddd_hpo	DDD_G2P00534	not_diagnosable	NRXN2-related autism -> Autism
+ddd_hpo	DDD_G2P00534	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00536	clinical	PMM2-related congenital disorder of glycosylation -> Congenital disorder of glycosylation type Ia
 ddd_hpo	DDD_G2P00537	clinical	SOX10-related peripheral demyelinating neuropathy, central dysmyelinating leukodystrophy, waardenburg syndrome, and hirschsprung disease -> PCWH syndrome
 ddd_hpo	DDD_G2P00538	clinical	UMPS-related orotic aciduria -> Hereditary orotic aciduria
@@ -443,12 +446,12 @@ ddd_hpo	DDD_G2P00543	clinical	BLOC1S6-related Hermansky-Pudlak syndrome -> Herma
 ddd_hpo	DDD_G2P00544	in_input	LDB3-related myopathy myofibrillar -> Myofibrillar myopathy
 ddd_hpo	DDD_G2P00546	clinical	SPTAN1-related neurodevelopmental disorder with epilepsy and spastic paraplegia -> Neurodevelopmental disorder with epilepsy and spastic paraplegia
 ddd_hpo	DDD_G2P00547	clinical	ABCB11-related intrahepatic cholestasis -> Progressive familial intrahepatic cholestasis type 2
-ddd_hpo	DDD_G2P00548	not_diagnosable	GNAO1-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P00548	clinical	GNAO1-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00549	clinical	ALAD-related acute hepatic porphyria -> ALAD deficiency porphyria
 ddd_hpo	DDD_G2P00550	clinical	LEMD3-related Buschke-Ollendorff syndrome -> Buschke-Ollendorff syndrome
 ddd_hpo	DDD_G2P00551	clinical	FLVCR1-related ataxia, posterior column, with retinitis pigmentosa -> Posterior column ataxia with retinitis pigmentosa
 ddd_hpo	DDD_G2P00552	clinical	TMEM216-related Joubert syndrome -> Joubert syndrome
-ddd_hpo	DDD_G2P00553	not_diagnosable	THRA-related hypothyroidism, congenital, nongoitrous -> Congenital nongoitrous hypothyroidism
+ddd_hpo	DDD_G2P00553	clinical	THRA-related hypothyroidism, congenital, nongoitrous -> Congenital nongoitrous hypothyroidism
 ddd_hpo	DDD_G2P00554	clinical	CLCNKB-related Bartter syndrome, type 4b -> Bartter syndrome with sensorineural deafness
 ddd_hpo	DDD_G2P00555	not_diagnosable	BFSP2-related cataract -> Cataract
 ddd_hpo	DDD_G2P00556	clinical	TUBGCP6-related microcephaly with chorioretinopathy with or without developmental delay -> Microcephaly with chorioretinopathy
@@ -462,7 +465,7 @@ ddd_hpo	DDD_G2P00564	in_input	ZIC2-related holoprosencephaly -> Holoprosencephal
 ddd_hpo	DDD_G2P00566	not_diagnosable	GRIN2A-related epilepsy, focal, with speech disorder, and with or without intellectual developmental disorder -> Epilepsy, focal, with speech disorder, and with or without intellectual developmental disorder
 ddd_hpo	DDD_G2P00567	clinical	FMR1-related fragile X tremor/ataxia syndrome -> Fragile X tremor/ataxia syndrome
 ddd_hpo	DDD_G2P00568	clinical	TBC1D24-related myoclonic epilepsy, infantile, familial -> Familial infantile myoclonic epilepsy
-ddd_hpo	DDD_G2P00569	not_diagnosable	NFIA-related macrocephaly with intellectual disability -> Macrocephaly with intellectual disability
+ddd_hpo	DDD_G2P00569	clinical	NFIA-related macrocephaly with intellectual disability -> Macrocephaly with intellectual disability
 ddd_hpo	DDD_G2P00570	clinical	WDR45-related neurodegeneration with brain iron accumulation -> Neurodegeneration with brain iron accumulation
 ddd_hpo	DDD_G2P00571	clinical	TECPR2-related hereditary spastic paraparesis -> Hereditary spastic paraparesis
 ddd_hpo	DDD_G2P00572	clinical	ROR2-related brachydactyly -> Brachydactyly type B
@@ -478,43 +481,45 @@ ddd_hpo	DDD_G2P00584	clinical	ZFPM2-related malformation syndrome -> Diaphragmat
 ddd_hpo	DDD_G2P00585	not_diagnosable	SOX17-related vesicoureteral reflux -> Vesicoureteral reflux
 ddd_hpo	DDD_G2P00587	clinical	AGK-related Sengers syndrome -> Sengers syndrome
 ddd_hpo	DDD_G2P00588	clinical	CRYAB-related myopathy, myofibrillar, fatal infantile hypertonic, alpha-B crystallin-related -> Fatal infantile hypertonic myofibrillar myopathy
-ddd_hpo	DDD_G2P00589	not_diagnosable	ARHGEF6-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P00589	not_diagnosable	ARHGEF6-related intellectual developmental disorder -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P00590	clinical	BCL11A-related intellectual disability -> Dias-Logan syndrome
 ddd_hpo	DDD_G2P00591	in_input	GNAS-related pseudohypoparathyroidism -> Pseudohypoparathyroidism
 ddd_hpo	DDD_G2P00592	clinical	GNS-related mucopolysaccharidosis -> Mucopolysaccharidosis type IIID
 ddd_hpo	DDD_G2P00595	clinical	ARX-related Partington syndrome -> Partington syndrome
-ddd_hpo	DDD_G2P00596	not_diagnosable	CRYBB1-related cataract -> Cataract
+ddd_hpo	DDD_G2P00596	not_diagnosable	CRYBB1-related cataract -> Congenital cataract
 ddd_hpo	DDD_G2P00597	clinical	SLC6A8-related creatine deficiency syndrome -> Cerebral creatine deficiency syndrome
 ddd_hpo	DDD_G2P00599	clinical	LMNA-related familial partial lipodystrophy -> Familial partial lipodystrophy, Dunnigan type
 ddd_hpo	DDD_G2P00600	clinical	ALDH5A1-related succinate semialdehyde dehydrogenase deficiency -> Succinic semialdehyde dehydrogenase deficiency
 ddd_hpo	DDD_G2P00601	not_diagnosable	COL4A1-related porencephaly -> Porencephaly
 ddd_hpo	DDD_G2P00602	clinical	POMT1-related muscular dystrophy-dystroglycanopathy congenital with brain and eye anomalies -> Walker-Warburg syndrome
-ddd_hpo	DDD_G2P00603	not_diagnosable	NRXN3-related autism -> Autism
+ddd_hpo	DDD_G2P00603	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00604	clinical	PTHLH-related brachydactyly -> Brachydactyly type E
 ddd_hpo	DDD_G2P00605	clinical	CFAP418-related cone-rod dystrophy -> Cone-rod dystrophy
 ddd_hpo	DDD_G2P00606	clinical	CAV1-related congenital generalized lipodystrophy -> Congenital generalized lipodystrophy
 ddd_hpo	DDD_G2P00607	clinical	SLC39A13-related spondyloepimetaphyseal dysplasia with abnormal dentition -> Spondyloepimetaphyseal dysplasia with abnormal dentition
 ddd_hpo	DDD_G2P00611	clinical	B4GALT7-related spondylo-dysplastic Ehlers Danlos syndrome -> Spondylodysplastic Ehlers-Danlos syndrome
 ddd_hpo	DDD_G2P00614	clinical	DHFR-related megaloblastic anemia due to dihydrofolate reductase deficiency -> Dihydrofolate reductase deficiency
-ddd_hpo	DDD_G2P00615	clinical	HARS1-related Usher syndrome -> Usher syndrome type 3
+ddd_hpo	DDD_G2P00615	clinical	HARS1-related Usher syndrome -> Usher syndrome
 ddd_hpo	DDD_G2P00616	clinical	CA2-related osteopetrosis -> Osteopetrosis with renal tubular acidosis
 ddd_hpo	DDD_G2P00617	clinical	GCSH-related glycine encephalopathy -> Glycine encephalopathy
 ddd_hpo	DDD_G2P00618	clinical	CHUK-related Cocoon syndrome -> Cocoon syndrome
 ddd_hpo	DDD_G2P00619	not_diagnosable	HSF4-related cataract -> Cataract
-ddd_hpo	DDD_G2P00620	clinical	RAD51-related mirror movements -> Congenital mirror movements
+ddd_hpo	DDD_G2P00620	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00621	clinical	FGFR2-related lacrimo-auriculo-dento-digital syndrome (LADD) -> Lacrimo-auriculo-dento-digital syndrome
 ddd_hpo	DDD_G2P00622	clinical	FGFR1-related Pfeiffer syndrome -> Pfeiffer syndrome
 ddd_hpo	DDD_G2P00623	clinical	GALC-related Krabbe disease -> Krabbe disease
 ddd_hpo	DDD_G2P00624	clinical	RNASEH2B-related Aicardi-Goutieres syndrome -> Aicardi-Goutières syndrome
 ddd_hpo	DDD_G2P00625	clinical	ACOX1-related adrenoleukodystrophy pseudoneonatal -> Pseudoneonatal adrenoleukodystrophy
-ddd_hpo	DDD_G2P00626	not_diagnosable	CACNA1A-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P00626	clinical	CACNA1A-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00627	not_diagnosable	CDH15-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P00627	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00628	clinical	MIR17HG-related Feingold syndrome -> Feingold syndrome
 ddd_hpo	DDD_G2P00630	clinical	ZBTB16-related skeletal defects, genital hypoplasia, and intellectual developmental disorder -> Skeletal defects, genital hypoplasia, and intellectual developmental disorder
 ddd_hpo	DDD_G2P00631	clinical	GFAP-related Alexander disease -> Alexander disease
 ddd_hpo	DDD_G2P00634	clinical	MAP2K1-related cardiofaciocutaneous syndrome -> Cardiofaciocutaneous syndrome
 ddd_hpo	DDD_G2P00636	not_diagnosable	NRXN1-related autism -> Autism
-ddd_hpo	DDD_G2P00638	not_diagnosable	SOX3-related sex reversal -> 46,XX sex reversal
+ddd_hpo	DDD_G2P00636	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P00638	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00639	clinical	TIMM8A-related Mohr-Tranebjaerg syndrome -> Mohr-Tranebjærg syndrome
 ddd_hpo	DDD_G2P00640	clinical	SCARF2-related Van den Ende-Gupta syndrome -> Van den Ende-Gupta syndrome
 ddd_hpo	DDD_G2P00641	clinical	DCAF17-related Woodhouse-Sakati syndrome -> Woodhouse-Sakati syndrome
@@ -527,7 +532,7 @@ ddd_hpo	DDD_G2P00648	clinical	COL10A1-related metaphyseal chondrodysplasia, Schm
 ddd_hpo	DDD_G2P00649	clinical	FBN2-related congenital contractural arachnodactyly -> Congenital contractural arachnodactyly
 ddd_hpo	DDD_G2P00650	clinical	AAAS-related chalasia-addisonianism-alacrima syndrome -> Triple A syndrome
 ddd_hpo	DDD_G2P00652	clinical	BPNT2-related chondrodysplasia with joint dislocations, Grapp type -> Chondrodysplasia with joint dislocations, gpapp type
-ddd_hpo	DDD_G2P00653	not_diagnosable	USP9X-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P00653	not_diagnosable	USP9X-related intellectual developmental disorder -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P00654	clinical	HPD-related tyrosinemia -> Tyrosinemia type III
 ddd_hpo	DDD_G2P00655	clinical	DNAAF3-related primary ciliary dyskineasia -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P00657	clinical	DNMT3B-related immunodeficiency-centromeric instability-facial anomalies syndrome -> Immunodeficiency-centromeric instability-facial anomalies syndrome
@@ -564,7 +569,7 @@ ddd_hpo	DDD_G2P00695	clinical	GJC2-related leukodystrophy, hypomyelinating -> Pe
 ddd_hpo	DDD_G2P00696	clinical	SLC12A5-related epilepsy of infancy with migrating focal seizures -> Epilepsy of infancy with migrating focal seizures
 ddd_hpo	DDD_G2P00697	clinical	MNX1-related Currarino syndrome -> Currarino syndrome
 ddd_hpo	DDD_G2P00698	clinical	ADA-related adenosine deaminase deficiency -> Adenosine deaminase deficiency
-ddd_hpo	DDD_G2P00699	not_diagnosable	GRIN2B-related epileptic encelopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P00699	clinical	GRIN2B-related epileptic encelopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00700	clinical	ATP7A-related Menkes disease -> Menkes disease
 ddd_hpo	DDD_G2P00701	in_input	AASS-related hyperlysinemia -> Hyperlysinemia
 ddd_hpo	DDD_G2P00702	clinical	GATA6-related pancreatic agenesis, diaphragmatic hernia, and congenital heart defects -> Pancreatic agenesis, diaphragmatic hernia, and congenital heart defects
@@ -575,7 +580,7 @@ ddd_hpo	DDD_G2P00708	clinical	COL11A1-related fibrochondrogenesis -> Fibrochondr
 ddd_hpo	DDD_G2P00709	clinical	SCN4A-related paramyotonia congenita of von Eulenburg -> Paramyotonia congenita of von Eulenburg
 ddd_hpo	DDD_G2P00712	clinical	UBE2A-related syndromic intellectual developmental disorder -> UBE2A deficiency syndrome
 ddd_hpo	DDD_G2P00713	clinical	FZD6-related nail disorder non-syndromic congenital -> Nail dysplasia, isolated congenital
-ddd_hpo	DDD_G2P00714	not_diagnosable	CEP135-related primary microcephaly and disturbed centrosomal function -> Primary microcephaly
+ddd_hpo	DDD_G2P00714	clinical	CEP135-related primary microcephaly and disturbed centrosomal function -> Autosomal recessive primary microcephaly
 ddd_hpo	DDD_G2P00715	clinical	FGF3-related deafness with labyrinthine aplasia, microtia and microdontia -> Deafness with labyrinthine aplasia, microtia, and microdontia
 ddd_hpo	DDD_G2P00716	clinical	CRPPA-related Walker-Warburg syndrome -> Walker-Warburg syndrome
 ddd_hpo	DDD_G2P00718	clinical	WRAP53-related dyskeratosis congenita -> Dyskeratosis congenita
@@ -583,11 +588,11 @@ ddd_hpo	DDD_G2P00719	not_diagnosable	MAP3K1-related 46XY sex reversal -> 46,XY s
 ddd_hpo	DDD_G2P00720	clinical	KRAS-related cardiofaciocutaneous syndrome -> Cardiofaciocutaneous syndrome
 ddd_hpo	DDD_G2P00722	clinical	TBX5-related Holt-Oram syndrome -> Holt-Oram syndrome
 ddd_hpo	DDD_G2P00723	clinical	MITF-related Tietz syndrome -> Tietz syndrome
-ddd_hpo	DDD_G2P00724	clinical	FLNB-related atelosteogenesis, type 3 -> Atelosteogenesis type III
+ddd_hpo	DDD_G2P00724	clinical	FLNB-related atelosteogenesis, type 3 -> Atelosteogenesis type 3
 ddd_hpo	DDD_G2P00725	clinical	COL9A2-related Stickler syndrome -> Stickler syndrome
 ddd_hpo	DDD_G2P00726	clinical	PEX3-related peroxisome biogenesis disorder -> Zellweger syndrome spectrum
-ddd_hpo	DDD_G2P00728	not_diagnosable	LRBA-related childhood-onset hypogammaglobulinemia -> Childhood-onset hypogammaglobulinemia
-ddd_hpo	DDD_G2P00729	not_diagnosable	KIF5C-related cortical dysplasia, complex, with other brain malformations -> Cortical dysplasia, complex, with other brain malformations
+ddd_hpo	DDD_G2P00728	clinical	LRBA-related childhood-onset hypogammaglobulinemia -> Immunodeficiency with susceptibility to autoimmune disease
+ddd_hpo	DDD_G2P00729	clinical	KIF5C-related cortical dysplasia, complex, with other brain malformations -> Complex cortical dysplasia with other brain malformations
 ddd_hpo	DDD_G2P00730	clinical	EXOSC3-related pontocerebellar hypoplasia -> Pontocerebellar hypoplasia
 ddd_hpo	DDD_G2P00731	clinical	FANCD2-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P00732	clinical	AUH-related 3-methylglutaconic aciduria -> 3-methylglutaconic aciduria type I
@@ -600,7 +605,7 @@ ddd_hpo	DDD_G2P00738	clinical	KMT2D-related Kabuki syndrome -> Kabuki syndrome
 ddd_hpo	DDD_G2P00739	clinical	HINT1-related neuromyotonia and axonal neuropathy -> Neuromyotonia and axonal neuropathy
 ddd_hpo	DDD_G2P00740	clinical	UBR1-related Johanson-Blizzard syndrome -> Johanson-Blizzard syndrome
 ddd_hpo	DDD_G2P00741	clinical	AIRE-related autoimmune polyendocrinopathy syndrome -> Autoimmune polyendocrinopathy syndrome type 1
-ddd_hpo	DDD_G2P00742	not_diagnosable	CRYGD-related cataract -> Cataract
+ddd_hpo	DDD_G2P00742	not_diagnosable	CRYGD-related cataract -> Congenital cataract
 ddd_hpo	DDD_G2P00744	clinical	YY1-related intellectual disability -> Gabriele-de Vries syndrome
 ddd_hpo	DDD_G2P00745	clinical	SLC17A5-related Salla disease -> Salla disease
 ddd_hpo	DDD_G2P00746	clinical	ARID1A-related Coffin-Siris Syndrome -> Coffin-Siris syndrome
@@ -610,13 +615,14 @@ ddd_hpo	DDD_G2P00749	clinical	SRY-related 46XY sex reversal -> 46,XY sex reversa
 ddd_hpo	DDD_G2P00752	clinical	RAI1-related Smith-Magenis syndrome -> Smith-Magenis syndrome
 ddd_hpo	DDD_G2P00753	clinical	CD96-related C syndrome -> C syndrome
 ddd_hpo	DDD_G2P00755	clinical	TUBB3-related cortical dysplasia, complex, with other brain malformations -> Cortical dysplasia, complex, with other brain malformations
-ddd_hpo	DDD_G2P00756	not_diagnosable	SETD5-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P00756	not_diagnosable	SETD5-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P00757	excluded	T3 cause B: HPO terms do not match the gold
 ddd_hpo	DDD_G2P00759	clinical	KCNJ6-related Keppen-Lubinsky syndrome -> Keppen-Lubinsky syndrome
 ddd_hpo	DDD_G2P00761	clinical	TP63-related ectrodactyly, ectodermal dysplasia, and cleft lip/palate syndrome -> EEC syndrome
 ddd_hpo	DDD_G2P00762	clinical	MMP13-related spondyloepimetaphyseal dysplasia, Missouri type -> Spondyloepimetaphyseal dysplasia, Missouri type
 ddd_hpo	DDD_G2P00764	clinical	GAA-related glycogen storage disease -> Glycogen storage disease type II
-ddd_hpo	DDD_G2P00765	not_diagnosable	KIRREL3-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P00765	not_diagnosable	KIRREL3-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P00765	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P00767	clinical	PTH1R-related primary failure of tooth eruption -> Primary failure of tooth eruption
 ddd_hpo	DDD_G2P00768	clinical	PIK3R2-related megalencephaly-polymicrogyria-polydactyly-hydrocephalus syndrome -> Megalencephaly-polymicrogyria-polydactyly-hydrocephalus syndrome
 ddd_hpo	DDD_G2P00769	clinical	KCTD1-related scalp-ear-nipple syndrome -> Scalp-ear-nipple syndrome
@@ -630,7 +636,7 @@ ddd_hpo	DDD_G2P00776	clinical	HYCC1-related leukodystrophy, hypomyelinating -> H
 ddd_hpo	DDD_G2P00777	clinical	HNF1B-related renal cysts and diabetes syndrome -> Renal cysts and diabetes syndrome
 ddd_hpo	DDD_G2P00779	in_input	MOCS2-related molybdenum cofactor deficiency -> Molybdenum cofactor deficiency
 ddd_hpo	DDD_G2P00780	excluded	T3 cause B: Inheritance contradicts the gold
-ddd_hpo	DDD_G2P00781	not_diagnosable	ANKRD26-related thrombocytopenia -> Thrombocytopenia
+ddd_hpo	DDD_G2P00781	not_diagnosable	ANKRD26-related thrombocytopenia -> Thrombocytopenia 2
 ddd_hpo	DDD_G2P00782	clinical	ATRX-related alpha-thalassemia intellectual developmental disorder syndrome non-deletion type -> Alpha-thalassemia intellectual developmental disorder syndrome, non-deletion type
 ddd_hpo	DDD_G2P00783	clinical	IRF6-related popliteal pterygium syndrome -> Popliteal pterygium syndrome
 ddd_hpo	DDD_G2P00784	clinical	SLC12A6-related agenesis of the corpus callosum with peripheral neuropathy -> Agenesis of the corpus callosum with peripheral neuropathy
@@ -647,7 +653,7 @@ ddd_hpo	DDD_G2P00795	clinical	SAMHD1-related Aicardi-Goutieres syndrome -> Aicar
 ddd_hpo	DDD_G2P00796	clinical	ASL-related argininosuccinate lyase deficiency -> Argininosuccinate lyase deficiency
 ddd_hpo	DDD_G2P00797	clinical	STX1B-related generalized epilepsy with febrile seizures plus -> Generalized epilepsy with febrile seizures plus
 ddd_hpo	DDD_G2P00798	clinical	COL2A1-related Stickler syndrome, non-syndromic ocular -> Stickler syndrome, ocular type
-ddd_hpo	DDD_G2P00799	clinical	SLC26A2-related achondrogenesis -> Achondrogenesis type 1B
+ddd_hpo	DDD_G2P00799	clinical	SLC26A2-related achondrogenesis -> Achondrogenesis type IB
 ddd_hpo	DDD_G2P00800	clinical	GABRA1-related juvenile myoclonic epilepsy -> Juvenile myoclonic epilepsy
 ddd_hpo	DDD_G2P00801	clinical	MYH8-related Carney complex variant -> Carney complex variant
 ddd_hpo	DDD_G2P00802	clinical	LMNA-related Hutchinson-Gilford progeria syndrome -> Hutchinson-Gilford progeria syndrome
@@ -666,7 +672,7 @@ ddd_hpo	DDD_G2P00817	clinical	KRAS-related Noonan syndrome -> Noonan syndrome
 ddd_hpo	DDD_G2P00818	clinical	PNPLA2-related neutral lipid storage disease with myopathy -> Neutral lipid storage disease with myopathy
 ddd_hpo	DDD_G2P00819	clinical	AP4B1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
 ddd_hpo	DDD_G2P00821	clinical	HOXB1-related facial paresis, congenital -> Congenital facial paresis
-ddd_hpo	DDD_G2P00823	clinical	ETFA-related glutaric aciduria -> Glutaric aciduria type II
+ddd_hpo	DDD_G2P00823	clinical	ETFA-related glutaric aciduria -> Glutaric acidemia type II
 ddd_hpo	DDD_G2P00824	clinical	CHMP1A-related pontocerebellar hypoplasia and microcephaly -> Pontocerebellar hypoplasia
 ddd_hpo	DDD_G2P00826	clinical	NECTIN1-related cleft lip/palate-ectodermal dysplasia syndrome -> Cleft lip/palate-ectodermal dysplasia syndrome
 ddd_hpo	DDD_G2P00827	not_diagnosable	NOTCH1-related left ventricular outflow tract obstruction -> Left ventricular outflow tract obstruction
@@ -702,7 +708,7 @@ ddd_hpo	DDD_G2P00866	clinical	TNFRSF13B-related immunodeficiency, common variabl
 ddd_hpo	DDD_G2P00867	clinical	PAX6-related Peters anomaly -> Peters anomaly
 ddd_hpo	DDD_G2P00868	clinical	ARSB-related mucopolysaccharidosis -> Mucopolysaccharidosis type VI
 ddd_hpo	DDD_G2P00869	clinical	PCGF2-related craniofacial neurological cardiovascular and skeletal features (Turnpenny-Fry syndrome) -> Turnpenny-Fry syndrome
-ddd_hpo	DDD_G2P00870	not_diagnosable	RMND1-related encephalopathy associated with multiple oxidative phosphorylation complex deficiencies and a mitochondrial translation defect -> Encephalopathy associated with multiple oxidative phosphorylation complex deficiencies and a mitochondrial translation defect
+ddd_hpo	DDD_G2P00870	clinical	RMND1-related encephalopathy associated with multiple oxidative phosphorylation complex deficiencies and a mitochondrial translation defect -> Combined oxidative phosphorylation deficiency
 ddd_hpo	DDD_G2P00871	clinical	ANO5-related limb-girdle muscular dystrophy -> Limb-girdle muscular dystrophy
 ddd_hpo	DDD_G2P00872	clinical	PIK3CA-related overgrowth spectrum disorder with or without megalencephaly, capillary malformation, polymicrogyria and lipomatous overgrowth -> PIK3CA-related overgrowth spectrum
 ddd_hpo	DDD_G2P00873	clinical	NHS-related Nance-Horan syndrome -> Nance-Horan syndrome
@@ -736,7 +742,7 @@ ddd_hpo	DDD_G2P00906	clinical	FANCA-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P00908	clinical	FAM20A-related amelogenesis imperfecta and gingival fibromatosis syndrome -> Amelogenesis imperfecta and gingival fibromatosis syndrome
 ddd_hpo	DDD_G2P00909	clinical	ACY1-related aminoacylase 1 deficiency -> Aminoacylase 1 deficiency
 ddd_hpo	DDD_G2P00910	clinical	PROP1-related combined pituitary hormone deficiency -> Combined pituitary hormone deficiency
-ddd_hpo	DDD_G2P00912	not_diagnosable	PTCHD1-related autism and intellectual disability -> Autism and intellectual disability
+ddd_hpo	DDD_G2P00912	not_diagnosable	PTCHD1-related autism and intellectual disability -> X-linked intellectual disability with autism spectrum disorder
 ddd_hpo	DDD_G2P00913	clinical	MED12-related Lujan-Fryns syndrome -> Lujan-Fryns syndrome
 ddd_hpo	DDD_G2P00914	clinical	ITGA3-related interstitial lung disease, nephrotic syndrome, and epidermolysis bullosa, congenital -> Congenital interstitial lung disease, nephrotic syndrome, and epidermolysis bullosa
 ddd_hpo	DDD_G2P00916	clinical	DDR2-related spondyloepimetaphyseal dysplasia short limb-hand type -> Spondyloepimetaphyseal dysplasia, short limb-hand type
@@ -746,25 +752,25 @@ ddd_hpo	DDD_G2P00921	clinical	HSD17B4-related D-bifunctional protein deficiency 
 ddd_hpo	DDD_G2P00924	clinical	ASXL3-related Bainbridge-Ropers syndrome -> Bainbridge-Ropers syndrome
 ddd_hpo	DDD_G2P00925	clinical	DAG1-related muscular dystrophy-dystroglycanopathy limb-girdle -> Limb-girdle muscular dystrophy-dystroglycanopathy
 ddd_hpo	DDD_G2P00926	not_diagnosable	COL11A2-related deafness -> Nonsyndromic hearing loss
-ddd_hpo	DDD_G2P00927	not_diagnosable	KCNT1-related epilepsy -> Epilepsy
+ddd_hpo	DDD_G2P00927	clinical	KCNT1-related epilepsy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P00928	clinical	ABCB7-related anemia, sideroblastic, with ataxia -> X-linked sideroblastic anemia with ataxia
 ddd_hpo	DDD_G2P00929	clinical	PTH1R-related Jansen metaphyseal chondrodysplasia -> Jansen metaphyseal chondrodysplasia
 ddd_hpo	DDD_G2P00930	clinical	CTC1-related cerebroretinal microangiopathy with calcifications and cysts -> Cerebroretinal microangiopathy with calcifications and cysts
 ddd_hpo	DDD_G2P00931	clinical	KCNE1-related long QT syndrome -> Long QT syndrome
-ddd_hpo	DDD_G2P00932	not_diagnosable	GDF3-related multiple malformations -> Multiple malformations
+ddd_hpo	DDD_G2P00932	not_diagnosable	GDF3-related multiple malformations -> Microphthalmia with coloboma
 ddd_hpo	DDD_G2P00934	clinical	FAH-related tyrosinemia -> Tyrosinemia type 1
 ddd_hpo	DDD_G2P00935	clinical	CEP290-related Joubert syndrome -> Joubert syndrome
 ddd_hpo	DDD_G2P00936	clinical	SMC1A-related Cornelia de Lange syndrome -> Cornelia de Lange syndrome
 ddd_hpo	DDD_G2P00937	clinical	CENPJ-related developmental disorder -> Microcephaly, primary autosomal recessive
-ddd_hpo	DDD_G2P00938	not_diagnosable	PRPS1-related deafness -> Deafness
+ddd_hpo	DDD_G2P00938	not_diagnosable	PRPS1-related deafness -> Nonsyndromic deafness, X-linked
 ddd_hpo	DDD_G2P00940	clinical	CHST14-related Ehlers-Danlos syndrome, musculocontractural type -> Musculocontractural Ehlers-Danlos syndrome
-ddd_hpo	DDD_G2P00941	not_diagnosable	CRYBB3-related cataract -> Cataract
+ddd_hpo	DDD_G2P00941	not_diagnosable	CRYBB3-related cataract -> Congenital cataract
 ddd_hpo	DDD_G2P00942	clinical	IHH-related brachydactyly -> Brachydactyly type A1
 ddd_hpo	DDD_G2P00943	in_input	CDON-related holoprosencephaly -> Holoprosencephaly
 ddd_hpo	DDD_G2P00944	clinical	FGFR3-related achondroplasia -> Achondroplasia
 ddd_hpo	DDD_G2P00946	clinical	GBA1-related Gaucher disease perinatal lethal -> Gaucher disease, perinatal lethal
 ddd_hpo	DDD_G2P00947	clinical	FUCA1-related fucosidosis -> Fucosidosis
-ddd_hpo	DDD_G2P00948	clinical	TRIP11-related achondrogenesis -> Achondrogenesis type 1A
+ddd_hpo	DDD_G2P00948	clinical	TRIP11-related achondrogenesis -> Achondrogenesis type IA
 ddd_hpo	DDD_G2P00949	clinical	HOXD13-related brachydactyly-syndactyly syndrome -> Brachydactyly-syndactyly syndrome
 ddd_hpo	DDD_G2P00950	clinical	COL4A3-related Alport syndrome -> Alport syndrome
 ddd_hpo	DDD_G2P00951	clinical	IDS-related mucopolysaccharidosis -> Mucopolysaccharidosis type II
@@ -782,7 +788,7 @@ ddd_hpo	DDD_G2P00964	clinical	SRD5A3-related congenital disorder of glycosylatio
 ddd_hpo	DDD_G2P00965	clinical	IGF1R-related insulin-like growth factor I, resistance to -> Insulin-like growth factor I resistance
 ddd_hpo	DDD_G2P00968	clinical	FAM161A-related retinitis pigmentosa -> Retinitis pigmentosa
 ddd_hpo	DDD_G2P00969	clinical	MID1-related Opitz GBBB syndrome -> Opitz GBBB syndrome
-ddd_hpo	DDD_G2P00970	not_diagnosable	PNPT1-related respiratory chain disorder -> Mitochondrial respiratory chain disorder
+ddd_hpo	DDD_G2P00970	clinical	PNPT1-related respiratory chain disorder -> Mitochondrial DNA depletion syndrome
 ddd_hpo	DDD_G2P00972	in_input	PLCE1-related nephrotic syndrome -> Nephrotic syndrome
 ddd_hpo	DDD_G2P00973	clinical	VLDLR-related cerebellar ataxia, intellectual developmental disorder, and dysequilibrium syndrome, -> Dysequilibrium syndrome
 ddd_hpo	DDD_G2P00974	clinical	MEF2C-related intellectual developmental disorder-stereotypic movements-epilepsy and/or cerebral malformations -> MEF2C haploinsufficiency syndrome
@@ -807,6 +813,7 @@ ddd_hpo	DDD_G2P00996	clinical	LMBRD1-related methylmalonic aciduria and homocyst
 ddd_hpo	DDD_G2P00997	clinical	RMRP-related cartilage-hair hypoplasia -> Cartilage-hair hypoplasia
 ddd_hpo	DDD_G2P00998	clinical	GAD1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
 ddd_hpo	DDD_G2P00999	in_input	HNF4A-related maturity-onset diabetes of the young (MODY) -> Maturity-onset diabetes of the young
+ddd_hpo	DDD_G2P00999	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01000	not_diagnosable	LTBP2-related microspherophakia and/or megalocornea, with ectopia lentis and with or without secondary glaucoma -> Microspherophakia and/or megalocornea, with ectopia lentis and with or without secondary glaucoma
 ddd_hpo	DDD_G2P01001	clinical	MAPK10-related epileptic encephalopathy, Lennox-Gastaut type -> Lennox-Gastaut syndrome
 ddd_hpo	DDD_G2P01002	in_input	SLC26A2-related multiple epiphyseal dysplasia -> Multiple epiphyseal dysplasia
@@ -814,12 +821,13 @@ ddd_hpo	DDD_G2P01003	clinical	OTX2-related syndromic microphthalmia -> Syndromic
 ddd_hpo	DDD_G2P01005	clinical	FGFR2-related Jackson-Weiss syndrome -> Jackson-Weiss syndrome
 ddd_hpo	DDD_G2P01006	clinical	NSDHL-related congenital hemidysplasia with ichthyosiform erythroderma and limb defects -> CHILD syndrome
 ddd_hpo	DDD_G2P01008	clinical	ERCC6-related Cockayne syndrome -> Cockayne syndrome
-ddd_hpo	DDD_G2P01009	not_diagnosable	DIP2B-related intellectual developmental disorder, FRA12A type -> FRA12A fragile site-associated intellectual disability
+ddd_hpo	DDD_G2P01009	not_diagnosable	DIP2B-related intellectual developmental disorder, FRA12A type -> Intellectual developmental disorder, FRA12A type
+ddd_hpo	DDD_G2P01009	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01011	clinical	GATA2-related Emberger syndrome -> Emberger syndrome
 ddd_hpo	DDD_G2P01012	clinical	SDHAF1-related mitochondrial complex II deficiency -> Mitochondrial complex II deficiency
 ddd_hpo	DDD_G2P01013	clinical	FBN1-related Marfan syndrome -> Marfan syndrome
 ddd_hpo	DDD_G2P01014	clinical	ATP8B1-related intrahepatic cholestasis -> Progressive familial intrahepatic cholestasis type 1
-ddd_hpo	DDD_G2P01015	not_diagnosable	SECISBP2-related thyroid hormone metabolism, abnormal -> Abnormal thyroid hormone metabolism
+ddd_hpo	DDD_G2P01015	clinical	SECISBP2-related thyroid hormone metabolism, abnormal -> Thyroid hormone metabolism defect due to SECISBP2 deficiency
 ddd_hpo	DDD_G2P01016	clinical	MAN2B1-related lysosomal alpha-mannosidosis -> Alpha-mannosidosis
 ddd_hpo	DDD_G2P01017	clinical	RAD51C-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P01018	clinical	FOXG1-related congenital variant of Rett syndrome -> FOXG1 syndrome
@@ -865,7 +873,7 @@ ddd_hpo	DDD_G2P01066	clinical	JAK3-related severe combined immunodeficiency, T-c
 ddd_hpo	DDD_G2P01067	clinical	AP4S1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
 ddd_hpo	DDD_G2P01068	clinical	COX10-related Leigh syndrome -> Leigh syndrome
 ddd_hpo	DDD_G2P01069	clinical	PEX2-related peroxisome biogenesis disorder 5A (Zellweger) -> Zellweger syndrome
-ddd_hpo	DDD_G2P01072	not_diagnosable	NDE1-related lissencephaly -> Lissencephaly
+ddd_hpo	DDD_G2P01072	clinical	NDE1-related lissencephaly -> Microlissencephaly
 ddd_hpo	DDD_G2P01073	clinical	KANSL1-related chromosome 17q21.31 microdeletion syndrome -> Koolen-de Vries syndrome
 ddd_hpo	DDD_G2P01074	clinical	COL11A2-related Stickler syndrome -> Stickler syndrome
 ddd_hpo	DDD_G2P01075	not_diagnosable	ALDH1A3-related anophthalmia/microphthalmia -> Anophthalmia/microphthalmia
@@ -874,9 +882,10 @@ ddd_hpo	DDD_G2P01077	clinical	SOS1-related Noonan syndrome -> Noonan syndrome
 ddd_hpo	DDD_G2P01078	clinical	HAX1-related neutropenia, severe congenital -> Severe congenital neutropenia
 ddd_hpo	DDD_G2P01079	clinical	COX14-related mitochondrial complex IV deficiency -> Mitochondrial complex IV deficiency
 ddd_hpo	DDD_G2P01080	clinical	ITGA7-related congenital muscular dystrophy -> Congenital muscular dystrophy
-ddd_hpo	DDD_G2P01081	not_diagnosable	TSPAN7-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P01081	not_diagnosable	TSPAN7-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01081	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01082	clinical	MYOC-related primary congenital glaucoma -> Primary congenital glaucoma
-ddd_hpo	DDD_G2P01084	not_diagnosable	MBD5-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01084	not_diagnosable	MBD5-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01085	clinical	GCH1-related dystonia -> Dopa-responsive dystonia
 ddd_hpo	DDD_G2P01086	clinical	RPE65-related Leber congenital amaurosis -> Leber congenital amaurosis
 ddd_hpo	DDD_G2P01087	clinical	CUL4B-related syndromic intellectual developmental disorder, Cabezas type -> Cabezas syndrome
@@ -893,17 +902,17 @@ ddd_hpo	DDD_G2P01097	not_diagnosable	ASH1L-related intellectual disability -> In
 ddd_hpo	DDD_G2P01098	clinical	SDHA-related Leigh syndrome -> Leigh syndrome
 ddd_hpo	DDD_G2P01099	clinical	TSHR-related hypothyroidism, congenital, nongoitrous -> Congenital nongoitrous hypothyroidism
 ddd_hpo	DDD_G2P01100	clinical	COL9A3-related multiple epiphyseal dysplasia -> Multiple epiphyseal dysplasia
-ddd_hpo	DDD_G2P01101	clinical	FGFR3-related thanatophoric dysplasia, type 2 -> Thanatophoric dysplasia, type 2
+ddd_hpo	DDD_G2P01101	clinical	FGFR3-related thanatophoric dysplasia, type 2 -> Thanatophoric dysplasia type 2
 ddd_hpo	DDD_G2P01102	not_diagnosable	GRIA3-related intellectual developmental disorder -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P01103	clinical	PHIP-related developmental delay, intellectual disability, obesity, and dysmorphic features -> Chung-Jansen syndrome
 ddd_hpo	DDD_G2P01104	clinical	ERCC5-related xeroderma pigmentosum, group G -> Xeroderma pigmentosum
 ddd_hpo	DDD_G2P01105	clinical	HSD17B10-related syndromic intellectual developmental disorder -> HSD10 deficiency
 ddd_hpo	DDD_G2P01106	clinical	VDR-related rickets vitamin D-dependent -> Vitamin D-dependent rickets
-ddd_hpo	DDD_G2P01107	not_diagnosable	PRSS56-related microphthalmia -> Microphthalmia
+ddd_hpo	DDD_G2P01107	not_diagnosable	PRSS56-related microphthalmia -> Microphthalmia, isolated
 ddd_hpo	DDD_G2P01108	clinical	TUFM-related combined oxidative phosphorylation deficiency -> Combined oxidative phosphorylation deficiency
 ddd_hpo	DDD_G2P01110	clinical	PIGT-related multiple congenital anomalies-hypotonia-seizures syndrome -> Multiple congenital anomalies-hypotonia-seizures syndrome
 ddd_hpo	DDD_G2P01111	clinical	MIR184-related keratoconus with cataract (EDICT syndrome) -> EDICT syndrome
-ddd_hpo	DDD_G2P01112	clinical	SPG11-related spastic paraplegia -> Hereditary spastic paraplegia
+ddd_hpo	DDD_G2P01112	clinical	SPG11-related spastic paraplegia -> Spastic paraplegia with thin corpus callosum
 ddd_hpo	DDD_G2P01114	clinical	TGFBR1-related Loeys-Dietz syndrome -> Loeys-Dietz syndrome
 ddd_hpo	DDD_G2P01115	clinical	HPRT1-related Lesch-Nyhan syndrome -> Lesch-Nyhan syndrome
 ddd_hpo	DDD_G2P01116	clinical	TYRP1-related oculocutaneous albinism -> Oculocutaneous albinism type 3
@@ -915,7 +924,7 @@ ddd_hpo	DDD_G2P01124	clinical	SKIC3-related trichohepatoenteric syndrome -> Tric
 ddd_hpo	DDD_G2P01125	clinical	P3H1-related osteogenesis imperfecta -> Osteogenesis imperfecta
 ddd_hpo	DDD_G2P01126	clinical	SOX2-related microphthalmia syndromic -> Microphthalmia syndromic
 ddd_hpo	DDD_G2P01127	clinical	GNAI3-related auriculocondylar syndrome -> Auriculocondylar syndrome
-ddd_hpo	DDD_G2P01128	not_diagnosable	STXBP1-related epileptic encephalopathy early infantile -> Early infantile epileptic encephalopathy
+ddd_hpo	DDD_G2P01128	clinical	STXBP1-related epileptic encephalopathy early infantile -> Early infantile epileptic encephalopathy
 ddd_hpo	DDD_G2P01129	clinical	ALDH4A1-related hyperprolinemia -> Hyperprolinemia type II
 ddd_hpo	DDD_G2P01130	clinical	CRYBA4-related microphthalmia isolated with cataract -> Microphthalmia isolated with cataract
 ddd_hpo	DDD_G2P01131	clinical	RBPJ-related Adams-Oliver syndrome -> Adams-Oliver syndrome
@@ -930,7 +939,7 @@ ddd_hpo	DDD_G2P01143	clinical	ACAD9-related acyl-CoA dehydrogenase family member
 ddd_hpo	DDD_G2P01144	clinical	SPR-related DOPA-responsive dystonia due to sepiapterin reductase deficiency -> Sepiapterin reductase deficiency
 ddd_hpo	DDD_G2P01146	clinical	SMOC2-related dentin dysplasia with microdontia and misshapen teeth -> Dentin dysplasia with microdontia and misshapen teeth
 ddd_hpo	DDD_G2P01147	clinical	MCEE-related methylmalonyl-CoA epimerase deficiency -> Methylmalonyl-CoA epimerase deficiency
-ddd_hpo	DDD_G2P01148	clinical	CNKSR2-related intellectual disability with epilepsy -> Houge-Janssens syndrome
+ddd_hpo	DDD_G2P01148	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01150	clinical	ATIC-related AICA-ribosiduria -> AICA-ribosiduria
 ddd_hpo	DDD_G2P01151	clinical	AP4E1-related cerebral palsy spastic quadriplegic -> Spastic quadriplegic cerebral palsy
 ddd_hpo	DDD_G2P01152	clinical	ESCO2-related Roberts syndrome -> Roberts syndrome
@@ -939,12 +948,12 @@ ddd_hpo	DDD_G2P01155	clinical	KPTN-related macrocephaly, neurodevelopmental dela
 ddd_hpo	DDD_G2P01156	clinical	CPS1-related carbamoyl phosphate synthetase 1 deficiency -> Carbamoyl phosphate synthetase 1 deficiency
 ddd_hpo	DDD_G2P01157	clinical	INPPL1-related opsismodysplasia -> Opsismodysplasia
 ddd_hpo	DDD_G2P01158	clinical	MC2R-related glucocorticoid deficiency -> Familial glucocorticoid deficiency
-ddd_hpo	DDD_G2P01159	clinical	GLB1-related GM1-gangliosidosis, type 3 -> GM1 gangliosidosis type 3
+ddd_hpo	DDD_G2P01159	clinical	GLB1-related GM1-gangliosidosis, type 3 -> GM1-gangliosidosis, type 3
 ddd_hpo	DDD_G2P01160	clinical	DYRK1A-related intellectual developmental disorder -> DYRK1A syndrome
 ddd_hpo	DDD_G2P01162	clinical	PREPL-related hypotonia-cystinuria syndrome -> Hypotonia-cystinuria syndrome
 ddd_hpo	DDD_G2P01163	clinical	RIGI-related Singleton-Merten syndrome -> Singleton-Merten syndrome
 ddd_hpo	DDD_G2P01164	clinical	POMGNT2-related Walker Warberg spectrum disorder -> Walker-Warburg syndrome
-ddd_hpo	DDD_G2P01166	not_diagnosable	CERT1-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P01166	clinical	CERT1-related intellectual disability -> Intellectual developmental disorder with microcephaly and seizures
 ddd_hpo	DDD_G2P01167	clinical	GNAS-related McCune-Albright syndrome -> McCune-Albright syndrome
 ddd_hpo	DDD_G2P01168	clinical	AKT1-related Proteus syndrome -> Proteus syndrome
 ddd_hpo	DDD_G2P01170	clinical	LAMB1-related cobblestone brain malformation without muscular or ocular abnormalities -> Cobblestone brain malformation without muscular or ocular abnormalities
@@ -953,23 +962,24 @@ ddd_hpo	DDD_G2P01173	clinical	TAFAZZIN-related Barth syndrome -> Barth syndrome
 ddd_hpo	DDD_G2P01175	clinical	MTR-related methylcobalamin deficiency -> Methylcobalamin deficiency
 ddd_hpo	DDD_G2P01176	clinical	MYCN-related Feingold syndrome -> Feingold syndrome
 ddd_hpo	DDD_G2P01177	clinical	ACP5-related spondyloenchondrodysplasia with immune dysregulation -> Spondyloenchondrodysplasia with immune dysregulation
-ddd_hpo	DDD_G2P01180	not_diagnosable	IL1RAPL1-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01180	not_diagnosable	IL1RAPL1-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01181	clinical	ST3GAL5-related Amish infantile epilepsy syndrome -> Amish infantile epilepsy syndrome
 ddd_hpo	DDD_G2P01182	clinical	RBM8A-related thrombocytopenia-absent radius syndrome -> Thrombocytopenia-absent radius syndrome
 ddd_hpo	DDD_G2P01184	clinical	KCNJ10-related seizures-sensorineural deafness-ataxia-intellectual developmental disorder-electrolyte imbalance -> EAST syndrome
-ddd_hpo	DDD_G2P01185	not_diagnosable	SHH-related microphthalmia isolated with coloboma -> Microphthalmia isolated with coloboma
+ddd_hpo	DDD_G2P01185	not_diagnosable	SHH-related microphthalmia isolated with coloboma -> Isolated microphthalmia with coloboma
 ddd_hpo	DDD_G2P01186	clinical	PLOD2-related Bruck syndrome -> Bruck syndrome
 ddd_hpo	DDD_G2P01187	clinical	COL18A1-related Knobloch syndrome -> Knobloch syndrome
 ddd_hpo	DDD_G2P01189	clinical	TYR-related oculocutaneous albinism -> Oculocutaneous albinism
 ddd_hpo	DDD_G2P01190	not_diagnosable	GDF1-related congenital heart defects, multiple types -> Congenital heart defects, multiple types
 ddd_hpo	DDD_G2P01191	clinical	IGHMBP2-related spinal muscular atrophy with respiratory distress -> Spinal muscular atrophy with respiratory distress
-ddd_hpo	DDD_G2P01192	not_diagnosable	TUBA1A-related tubulinopathy -> Tubulinopathy
+ddd_hpo	DDD_G2P01192	in_input	TUBA1A-related tubulinopathy -> Lissencephaly
 ddd_hpo	DDD_G2P01193	clinical	KLF1-related anemia, dyserythropoietic congenital -> Congenital dyserythropoietic anemia type IV
 ddd_hpo	DDD_G2P01194	clinical	MLC1-relatedleukoencephalopathy megalencephalic with subcortical cysts -> Megalencephalic leukoencephalopathy with subcortical cysts
 ddd_hpo	DDD_G2P01195	clinical	CRB1-related Leber congenital amaurosis and retinitis pigmentosa -> Leber congenital amaurosis
 ddd_hpo	DDD_G2P01196	clinical	TGFB2-related Loeys-Dietz syndrome -> Loeys-Dietz syndrome
 ddd_hpo	DDD_G2P01197	clinical	DNAAF5-related primary ciliary dyskinesia -> Primary ciliary dyskinesia
-ddd_hpo	DDD_G2P01199	not_diagnosable	ACSL4-related intellectual developmental disorder X-linked -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01199	not_diagnosable	ACSL4-related intellectual developmental disorder X-linked -> X-linked intellectual developmental disorder
+ddd_hpo	DDD_G2P01199	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01201	clinical	PTEN-related Proteus syndrome -> Proteus syndrome
 ddd_hpo	DDD_G2P01202	clinical	FGFR3-related camptodactyly tall stature and hearing loss syndrome -> CATSHL syndrome
 ddd_hpo	DDD_G2P01204	clinical	HIBCH-related 3-hydroxyisobutryl-CoA hydrolase deficiency -> 3-hydroxyisobutyryl-CoA hydrolase deficiency
@@ -978,7 +988,7 @@ ddd_hpo	DDD_G2P01206	clinical	LHX3-related pituitary hormone deficiency combined
 ddd_hpo	DDD_G2P01207	clinical	NHP2-related dyskeratosis congenita -> Dyskeratosis congenita
 ddd_hpo	DDD_G2P01208	clinical	UROS-related congenital erythropoietic porphyria -> Congenital erythropoietic porphyria
 ddd_hpo	DDD_G2P01209	clinical	HSPG2-related ydssegmental dysplasia, Silverman-Handmaker type -> Dyssegmental dysplasia, Silverman-Handmaker type
-ddd_hpo	DDD_G2P01210	not_diagnosable	SHANK2-related susceptibility to autism -> Autism spectrum disorder
+ddd_hpo	DDD_G2P01210	not_diagnosable	SHANK2-related susceptibility to autism -> Autism
 ddd_hpo	DDD_G2P01211	clinical	NEB-related typical nemaline myopathy -> Nemaline myopathy
 ddd_hpo	DDD_G2P01212	clinical	L2HGDH-related L-2-hydroxyglutaric aciduria -> L-2-hydroxyglutaric aciduria
 ddd_hpo	DDD_G2P01214	clinical	FGF9-related multiple synostoses syndrome -> Multiple synostoses syndrome
@@ -1007,11 +1017,11 @@ ddd_hpo	DDD_G2P01244	in_input	NPHP1-related nephronophthisis -> Nephronophthisis
 ddd_hpo	DDD_G2P01246	not_diagnosable	TAB2-related nonsyndromic congenital heart disease -> Nonsyndromic congenital heart disease
 ddd_hpo	DDD_G2P01247	clinical	LTBP3-related platyspondyly with amelogenesis imperfecta -> Platyspondyly with amelogenesis imperfecta
 ddd_hpo	DDD_G2P01248	clinical	PHGDH-related phosphoglycerate dehydrogenase deficiency -> Phosphoglycerate dehydrogenase deficiency
-ddd_hpo	DDD_G2P01250	not_diagnosable	KDM6B-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01250	not_diagnosable	KDM6B-related intellectual developmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P01251	not_diagnosable	GJA8-related cataract -> Cataract
 ddd_hpo	DDD_G2P01252	clinical	IFT80-related asphyxiating thoracic dystrophy -> Asphyxiating thoracic dystrophy
 ddd_hpo	DDD_G2P01254	clinical	FOXC2-related lymphedema-distichiasis syndrome -> Lymphedema-distichiasis syndrome
-ddd_hpo	DDD_G2P01255	not_diagnosable	LINS1-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01255	not_diagnosable	LINS1-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01256	clinical	DLD-related dihydrolipoamide dehydrogenase E3 deficiency -> Dihydrolipoamide dehydrogenase deficiency
 ddd_hpo	DDD_G2P01257	clinical	FGFR3-related hypochondroplasia -> Hypochondroplasia
 ddd_hpo	DDD_G2P01258	clinical	PAX8-related congenital hypothyroidism non-goitrous -> Congenital hypothyroidism, nongoitrous
@@ -1022,12 +1032,11 @@ ddd_hpo	DDD_G2P01262	not_diagnosable	TRAPPC9-related intellectual developmental 
 ddd_hpo	DDD_G2P01263	clinical	CTNNB1-related intellectual developmental disorder -> Neurodevelopmental disorder with spastic diplegia and visual defects
 ddd_hpo	DDD_G2P01265	clinical	KDM5C-related intellectual developmental disorder, syndromic X-linked -> Claes-Jensen syndrome
 ddd_hpo	DDD_G2P01266	clinical	FLT4-related Milroy disease -> Milroy disease
-ddd_hpo	DDD_G2P01268	not_diagnosable	CACNA1G-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01268	not_diagnosable	CACNA1G-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01269	clinical	MPV17-related mitochondrial DNA depletion syndrome -> Mitochondrial DNA depletion syndrome, hepatocerebral type
 ddd_hpo	DDD_G2P01270	clinical	TSC1-related tuberous sclerosis -> Tuberous sclerosis
 ddd_hpo	DDD_G2P01271	clinical	ALG13-related congenital disorder of glycosylation -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P01273	clinical	FGFR2-related Beare-Stevenson cutis gyrata syndrome -> Beare-Stevenson cutis gyrata syndrome
-ddd_hpo	DDD_G2P01274	clinical	SYN1-related epilepsy with variable learning disabilities and behavior disorders -> Epilepsy with variable learning disabilities and behavior disorders
 ddd_hpo	DDD_G2P01276	clinical	SKI-related Shprintzen-Goldberg craniosynostosis syndrome -> Shprintzen-Goldberg syndrome
 ddd_hpo	DDD_G2P01278	clinical	SHOX-related Leri-Weill dyschondrosteosis -> Leri-Weill dyschondrosteosis
 ddd_hpo	DDD_G2P01279	clinical	CDH23-related Usher syndrome -> Usher syndrome type 1
@@ -1036,7 +1045,7 @@ ddd_hpo	DDD_G2P01282	clinical	PLCG2-related familial cold autoinflammatory syndr
 ddd_hpo	DDD_G2P01283	clinical	ACVR1-related fibrodysplasia ossificans progressiva -> Fibrodysplasia ossificans progressiva
 ddd_hpo	DDD_G2P01284	clinical	PHOX2B-related central hypoventilation syndrome, congenital, with or without Hirschsprung disease -> Congenital central hypoventilation syndrome
 ddd_hpo	DDD_G2P01285	clinical	ST14-related ichthyosis with hypotrichosis -> Ichthyosis with hypotrichosis
-ddd_hpo	DDD_G2P01286	not_diagnosable	BRWD3-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01286	not_diagnosable	BRWD3-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01287	clinical	WDR62-related microcephaly, cortical malformations, and intellectual developmental disorder -> Microcephaly with cortical malformations and intellectual developmental disorder
 ddd_hpo	DDD_G2P01288	clinical	PEX10-related peroxisome biogenesis disorder 6A (Zellweger) -> Zellweger syndrome
 ddd_hpo	DDD_G2P01289	clinical	PPP2R5D-related intellectual disability -> Jordan's syndrome
@@ -1051,11 +1060,13 @@ ddd_hpo	DDD_G2P01299	clinical	GALE-related epimerase-deficiency galactosemia -> 
 ddd_hpo	DDD_G2P01300	clinical	GLI3-related Pallister-Hall syndrome -> Pallister-Hall syndrome
 ddd_hpo	DDD_G2P01301	clinical	MMACHC-related methylmalonic aciduria and homocystinuria, cblC type -> Methylmalonic aciduria and homocystinuria, cblC type
 ddd_hpo	DDD_G2P01302	not_diagnosable	FYCO1-related congenital cataract -> Congenital cataract
+ddd_hpo	DDD_G2P01302	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01303	clinical	BBS2-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
 ddd_hpo	DDD_G2P01304	clinical	COA8-related mitochondrial complex IV deficiency -> Mitochondrial complex IV deficiency
 ddd_hpo	DDD_G2P01306	clinical	FBP1-related fructose-1,6-bisphosphatase deficiency -> Fructose-1,6-bisphosphatase deficiency
 ddd_hpo	DDD_G2P01307	clinical	AGXT-related hyperoxaluria, primary -> Primary hyperoxaluria type 1
-ddd_hpo	DDD_G2P01309	not_diagnosable	TUSC3-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P01309	not_diagnosable	TUSC3-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01309	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01311	clinical	LRIG2-related urofacial syndrome -> Urofacial syndrome
 ddd_hpo	DDD_G2P01312	clinical	SNIP1-related symptomatic epilepsy and skull dysplasia -> Epilepsy and skull dysplasia
 ddd_hpo	DDD_G2P01313	clinical	PCYT1A-related spondylometaphyseal dysplasia with cone-rod dystrophy -> Spondylometaphyseal dysplasia with cone-rod dystrophy
@@ -1063,7 +1074,7 @@ ddd_hpo	DDD_G2P01314	clinical	ZSWIM6-related acromelic frontonasal dysostosis ->
 ddd_hpo	DDD_G2P01315	clinical	MAP2K2-related cardiofaciocutaneous syndrome -> Cardiofaciocutaneous syndrome
 ddd_hpo	DDD_G2P01318	clinical	PRPS1-related phosphoribosylpyrophosphate synthetase superactivity -> Phosphoribosylpyrophosphate synthetase superactivity
 ddd_hpo	DDD_G2P01320	clinical	GDF5-related symphalangism spectrum disorder -> Symphalangism spectrum disorder
-ddd_hpo	DDD_G2P01321	clinical	FGFR3-related thanatophoric dysplasia, type 1 -> Thanatophoric dysplasia, type 1
+ddd_hpo	DDD_G2P01321	clinical	FGFR3-related thanatophoric dysplasia, type 1 -> Thanatophoric dysplasia type 1
 ddd_hpo	DDD_G2P01322	clinical	RAB23-related acrocephalopolysyndactyly -> Carpenter syndrome
 ddd_hpo	DDD_G2P01323	clinical	TMPRSS6-related iron-refractory iron deficiency anemia -> Iron-refractory iron deficiency anemia
 ddd_hpo	DDD_G2P01324	not_diagnosable	GATA6-related atrial septal defect -> Atrial septal defect
@@ -1074,8 +1085,9 @@ ddd_hpo	DDD_G2P01332	not_diagnosable	PITX1-related congenital clubfoot -> Congen
 ddd_hpo	DDD_G2P01333	clinical	PLA2G6-related infantile neuroaxonal dystrophy -> Infantile neuroaxonal dystrophy
 ddd_hpo	DDD_G2P01334	clinical	TCOF1-related Treacher Collins syndrome -> Treacher Collins syndrome
 ddd_hpo	DDD_G2P01336	clinical	AIMP1-related leukodystrophy, hypomyelinating -> Hypomyelinating leukodystrophy
-ddd_hpo	DDD_G2P01337	not_diagnosable	EDA-related tooth agenesis selective -> Tooth agenesis, selective
-ddd_hpo	DDD_G2P01339	not_diagnosable	CRBN-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01337	not_diagnosable	EDA-related tooth agenesis selective -> Selective tooth agenesis
+ddd_hpo	DDD_G2P01339	not_diagnosable	CRBN-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P01339	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01340	not_diagnosable	FMR1-related premature ovarian failure syndrome -> Premature ovarian failure
 ddd_hpo	DDD_G2P01341	in_input	MYH3-related distal arthrogryposis -> Distal arthrogryposis
 ddd_hpo	DDD_G2P01342	clinical	LMNA-related Emery-Dreifuss muscular dystrophy -> Emery-Dreifuss muscular dystrophy
@@ -1086,43 +1098,46 @@ ddd_hpo	DDD_G2P01346	clinical	NBN-related Nijmegen breakage syndrome -> Nijmegen
 ddd_hpo	DDD_G2P01347	clinical	LMX1B-related nail-patella syndrome -> Nail-patella syndrome
 ddd_hpo	DDD_G2P01348	clinical	COL2A1-related spondyloepimetaphyseal dysplasia, Strudwick type -> Spondyloepimetaphyseal dysplasia, Strudwick type
 ddd_hpo	DDD_G2P01349	clinical	ACAT1-related alpha-methylacetoacetic aciduria -> Alpha-methylacetoacetic aciduria
-ddd_hpo	DDD_G2P01350	not_diagnosable	TSHB-related hypothryoidism, congenital, nongoitrous -> Congenital hypothyroidism, nongoitrous
-ddd_hpo	DDD_G2P01351	clinical	COX15-related Leigh syndrome -> Leigh syndrome
+ddd_hpo	DDD_G2P01350	clinical	TSHB-related hypothryoidism, congenital, nongoitrous -> Congenital nongoitrous hypothyroidism
+ddd_hpo	DDD_G2P01351	clinical	COX15-related Leigh syndrome -> Leigh syndrome due to cytochrome c oxidase deficiency
 ddd_hpo	DDD_G2P01354	clinical	DIS3L2-related Perlman syndrome -> Perlman syndrome
 ddd_hpo	DDD_G2P01355	clinical	GTF2H5-related trichothiodystrophy photosensitive -> Photosensitive trichothiodystrophy
 ddd_hpo	DDD_G2P01356	clinical	COL9A2-related multiple epiphyseal dysplasia -> Multiple epiphyseal dysplasia
 ddd_hpo	DDD_G2P01357	clinical	HYAL1-related mucopolysaccharidosis -> Mucopolysaccharidosis type IX
-ddd_hpo	DDD_G2P01358	not_diagnosable	HCFC1-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01358	not_diagnosable	HCFC1-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01359	clinical	IHH-related acrocapitofemoral dysplasia -> Acrocapitofemoral dysplasia
-ddd_hpo	DDD_G2P01360	not_diagnosable	NKX2-5-related congenital hypothyroidism non-goitrous -> Congenital hypothyroidism, nongoitrous
+ddd_hpo	DDD_G2P01360	clinical	NKX2-5-related congenital hypothyroidism non-goitrous -> Congenital hypothyroidism, non-goitrous
 ddd_hpo	DDD_G2P01361	clinical	RNF168-related RIDDLE syndrome -> RIDDLE syndrome
-ddd_hpo	DDD_G2P01363	not_diagnosable	CHD8-related autism -> Autism
+ddd_hpo	DDD_G2P01363	not_diagnosable	CHD8-related autism -> Autism spectrum disorder
+ddd_hpo	DDD_G2P01363	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01364	in_input	CYP1B1-related primary congenital glaucoma, type 3A -> Primary congenital glaucoma
 ddd_hpo	DDD_G2P01365	clinical	SF3B4-related acrofacial dysostosis, Nager type -> Nager acrofacial dysostosis
-ddd_hpo	DDD_G2P01366	not_diagnosable	HNRNPU-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01366	clinical	HNRNPU-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01368	clinical	BTD-related biotinidase deficiency -> Biotinidase deficiency
-ddd_hpo	DDD_G2P01369	not_diagnosable	SYP-related intellectual developmental disorder, X-linked -> Intellectual disability
+ddd_hpo	DDD_G2P01369	not_diagnosable	SYP-related intellectual developmental disorder, X-linked -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01369	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01370	clinical	UROC1-related urocanase deficiency -> Urocanase deficiency
 ddd_hpo	DDD_G2P01371	clinical	IGFBP7-related retinal arterial macroaneurysm with supravalvular pulmonic stenosis -> Retinal arterial macroaneurysm with supravalvular pulmonic stenosis
 ddd_hpo	DDD_G2P01372	clinical	IVD-related isovaleric acidemia -> Isovaleric acidemia
 ddd_hpo	DDD_G2P01373	clinical	LRIT3-related complete congenital stationary night blindness -> Complete congenital stationary night blindness
 ddd_hpo	DDD_G2P01374	clinical	SIL1-related Marinesco-Sjoegren syndrome -> Marinesco-Sjögren syndrome
-ddd_hpo	DDD_G2P01375	not_diagnosable	KARS1-related deafness -> Deafness
+ddd_hpo	DDD_G2P01375	not_diagnosable	KARS1-related deafness -> Nonsyndromic hearing loss
+ddd_hpo	DDD_G2P01375	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01376	clinical	SOX5-related 12p12.5 intragenic deletions associated with intellectual disability -> Lamb-Shaffer syndrome
 ddd_hpo	DDD_G2P01377	clinical	ANO5-related gnathodiaphyseal dysplasia -> Gnathodiaphyseal dysplasia
 ddd_hpo	DDD_G2P01378	clinical	PORCN-related focal dermal hypoplasia -> Focal dermal hypoplasia
 ddd_hpo	DDD_G2P01380	clinical	FKTN-related muscular dystrophy-dystroglycanopathy limb-girdle -> Limb-girdle muscular dystrophy-dystroglycanopathy
-ddd_hpo	DDD_G2P01381	clinical	NAA15-related congenital heart disease and neurodevelopmental disorder -> Congenital heart disease and neurodevelopmental disorder
+ddd_hpo	DDD_G2P01381	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01383	clinical	BBS7-related Bardet-Biedl syndrome -> Bardet-Biedl syndrome
 ddd_hpo	DDD_G2P01384	clinical	PTH-related familial isolated hypoparathyroidism -> Familial isolated hypoparathyroidism
 ddd_hpo	DDD_G2P01385	clinical	ETHE1-related ethylmalonic encephalopathy -> Ethylmalonic encephalopathy
 ddd_hpo	DDD_G2P01386	clinical	CTSK-related pycnodysostosis -> Pycnodysostosis
 ddd_hpo	DDD_G2P01387	clinical	CCDC8-related 3-M syndrome -> 3-M syndrome
 ddd_hpo	DDD_G2P01388	clinical	LIPN-related ichthyosis, lamellar -> Lamellar ichthyosis
-ddd_hpo	DDD_G2P01389	clinical	SLC24A1-related NIGHT BLINDNESS, CONGENITAL STATIONARY, TYPE 1D -> Congenital stationary night blindness
+ddd_hpo	DDD_G2P01389	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01390	clinical	ATM-related ataxia-telangiectasia -> Ataxia-telangiectasia
 ddd_hpo	DDD_G2P01391	clinical	TMEM70-related mitochondrial complex V (ATP synthase) deficiency, nuclear -> Mitochondrial complex V deficiency
-ddd_hpo	DDD_G2P01392	not_diagnosable	MECP2-related encephalopathy neonatal severe -> Severe neonatal encephalopathy
+ddd_hpo	DDD_G2P01392	not_diagnosable	MECP2-related encephalopathy neonatal severe -> Neonatal severe encephalopathy
 ddd_hpo	DDD_G2P01394	clinical	PGM1-related congenital disorder of glycosylation -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P01395	clinical	NEK1-related short rib-polydactyly syndrome -> Short-rib polydactyly syndrome, Majewski type
 ddd_hpo	DDD_G2P01396	clinical	KCTD7-related progressive myoclonic epilepsy -> Progressive myoclonic epilepsy
@@ -1139,12 +1154,12 @@ ddd_hpo	DDD_G2P01409	clinical	CRADD-related intellectual developmental disorder 
 ddd_hpo	DDD_G2P01410	clinical	PHF8-related syndromic intellectual developmental disorder, Siderius type -> Siderius X-linked intellectual disability syndrome
 ddd_hpo	DDD_G2P01411	clinical	ARSL-related chondrodysplasia punctata -> Chondrodysplasia punctata, X-linked recessive
 ddd_hpo	DDD_G2P01412	clinical	GRM1-related congenital cerebellar ataxia -> Congenital cerebellar ataxia
-ddd_hpo	DDD_G2P01413	clinical	STIL-related primary microcephaly -> Autosomal recessive primary microcephaly
+ddd_hpo	DDD_G2P01413	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01414	clinical	PIGN-related multiple congenital anomalies-hypotonia-seizures syndrome -> Multiple congenital anomalies-hypotonia-seizures syndrome
 ddd_hpo	DDD_G2P01416	clinical	BIN1-related centronuclear myopathy -> Centronuclear myopathy
 ddd_hpo	DDD_G2P01418	clinical	SRPX2-related bilateral perisylvian polymicrogyria -> Bilateral perisylvian polymicrogyria
 ddd_hpo	DDD_G2P01419	clinical	CDKN1C-related Beckwith-Wiedemann syndrome -> Beckwith-Wiedemann syndrome
-ddd_hpo	DDD_G2P01420	not_diagnosable	CHD2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01420	clinical	CHD2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01421	clinical	CHM-related choroideremia -> Choroideremia
 ddd_hpo	DDD_G2P01422	clinical	IKBKG-related ectodermal dysplasia and immunodeficiency -> Anhidrotic ectodermal dysplasia with immune deficiency
 ddd_hpo	DDD_G2P01423	clinical	TSHR-related hyperthyroidism, familial gestational -> Familial gestational hyperthyroidism
@@ -1152,7 +1167,7 @@ ddd_hpo	DDD_G2P01424	clinical	PTCH1-related holoprosencephaly -> Holoprosencepha
 ddd_hpo	DDD_G2P01425	clinical	BMPR1B-related brachydactyly -> Brachydactyly type A2
 ddd_hpo	DDD_G2P01426	clinical	PEX5-related Zellweger syndrome -> Zellweger syndrome
 ddd_hpo	DDD_G2P01427	not_diagnosable	MAF-related cataract -> Cataract
-ddd_hpo	DDD_G2P01428	in_input	MMUT-related methylmalonic aciduria -> Methylmalonic aciduria
+ddd_hpo	DDD_G2P01428	clinical	MMUT-related methylmalonic aciduria -> Methylmalonic aciduria due to methylmalonyl-CoA mutase deficiency
 ddd_hpo	DDD_G2P01429	clinical	PDE6H-related retinal cone dystrophy -> Retinal cone dystrophy
 ddd_hpo	DDD_G2P01430	in_input	TMEM67-related nephronophthisis -> Nephronophthisis
 ddd_hpo	DDD_G2P01431	clinical	TSHZ1-related aural atresia, congenital -> Congenital aural atresia
@@ -1168,8 +1183,9 @@ ddd_hpo	DDD_G2P01449	clinical	NPC2-related Niemann-Pick disease -> Niemann-Pick 
 ddd_hpo	DDD_G2P01451	clinical	NDUFS1-related mitochondrial respiratory chain complex I deficiency -> Mitochondrial complex I deficiency
 ddd_hpo	DDD_G2P01452	not_diagnosable	CIC-related neurodevelopmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P01455	not_diagnosable	ST3GAL3-related intellectual developmental disorder -> Intellectual developmental disorder
-ddd_hpo	DDD_G2P01456	not_diagnosable	KCNQ2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P01457	clinical	CLCN4-related infantile epileptic encephalopathy and/or intellectual disability -> Raynaud-Claes syndrome
+ddd_hpo	DDD_G2P01455	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01456	clinical	KCNQ2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01457	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01458	clinical	ATP6AP2-related intellectual developmental disorder with epilepsy -> Hedera syndrome
 ddd_hpo	DDD_G2P01459	clinical	SMAD4-related juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome -> Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome
 ddd_hpo	DDD_G2P01461	clinical	FGD1-related Aarskog-Scott syndrome -> Aarskog-Scott syndrome
@@ -1197,8 +1213,8 @@ ddd_hpo	DDD_G2P01486	clinical	NFIX-related Marshall-Smith syndrome -> Marshall-S
 ddd_hpo	DDD_G2P01487	clinical	PTCH1-related Gorlin syndrome (basal cell nevus syndrome) -> Gorlin syndrome
 ddd_hpo	DDD_G2P01488	clinical	ACAN-related spondyloepimetaphyseal dysplasia, aggrecan type -> Spondyloepimetaphyseal dysplasia
 ddd_hpo	DDD_G2P01490	clinical	PQBP1-related Renpenning syndrome -> Renpenning syndrome
-ddd_hpo	DDD_G2P01491	not_diagnosable	MCPH1-related microcephaly primary -> Primary microcephaly
-ddd_hpo	DDD_G2P01492	not_diagnosable	NEXMIF-related intellectual disability and epilepsy -> Intellectual disability and epilepsy
+ddd_hpo	DDD_G2P01491	clinical	MCPH1-related microcephaly primary -> Autosomal recessive primary microcephaly
+ddd_hpo	DDD_G2P01492	clinical	NEXMIF-related intellectual disability and epilepsy -> Intellectual disability and epilepsy
 ddd_hpo	DDD_G2P01494	clinical	GLE1-related arthrogryposis, lethal, with anterior horn cell disease -> Lethal arthrogryposis with anterior horn cell disease
 ddd_hpo	DDD_G2P01497	clinical	NUBPL-related mitochondrial complex I deficiency -> Mitochondrial complex I deficiency
 ddd_hpo	DDD_G2P01498	clinical	MYH9-related macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss -> MYH9-related disease
@@ -1208,9 +1224,9 @@ ddd_hpo	DDD_G2P01501	clinical	POMP-related keratosis linearis with ichthyosis co
 ddd_hpo	DDD_G2P01502	clinical	MYO5A-related Griscelli syndrome -> Griscelli syndrome type 1
 ddd_hpo	DDD_G2P01503	clinical	EZH2-related Weaver syndrome -> Weaver syndrome
 ddd_hpo	DDD_G2P01504	clinical	PTH1R-related chondrodysplasia, Blomstrand type -> Blomstrand chondrodysplasia
-ddd_hpo	DDD_G2P01505	clinical	GLMN-related glomuvenous malformations -> Glomuvenous malformations
+ddd_hpo	DDD_G2P01505	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01506	clinical	COL4A4-related Alport syndrome -> Alport syndrome
-ddd_hpo	DDD_G2P01508	clinical	ETFB-related glutaric aciduria -> Glutaric aciduria type II
+ddd_hpo	DDD_G2P01508	clinical	ETFB-related glutaric aciduria -> Glutaric acidemia type II
 ddd_hpo	DDD_G2P01511	clinical	GJA1-related oculodentodigital dysplasia -> Oculodentodigital dysplasia
 ddd_hpo	DDD_G2P01512	clinical	TXNL4A-related Burn Mckeown syndrome -> Burn-McKeown syndrome
 ddd_hpo	DDD_G2P01513	clinical	COL2A1-related spondyloepiphyseal dysplasia congenita -> Spondyloepiphyseal dysplasia congenita
@@ -1219,7 +1235,7 @@ ddd_hpo	DDD_G2P01515	not_diagnosable	ITGA8-related renal hypodysplasia/aplasia -
 ddd_hpo	DDD_G2P01516	clinical	ORC6-related Meier-Gorlin syndrome -> Meier-Gorlin syndrome
 ddd_hpo	DDD_G2P01517	clinical	POU1F1-related combined pituitary hormone deficiency -> Combined pituitary hormone deficiency
 ddd_hpo	DDD_G2P01518	clinical	PDHA1-related intellectual disabiltiy -> Pyruvate dehydrogenase E1-alpha deficiency
-ddd_hpo	DDD_G2P01519	clinical	COL11A1-related Stickler syndrome -> Stickler syndrome type 2
+ddd_hpo	DDD_G2P01519	clinical	COL11A1-related Stickler syndrome -> Stickler syndrome
 ddd_hpo	DDD_G2P01522	clinical	EFNB1-related craniofrontonasal syndrome -> Craniofrontonasal syndrome
 ddd_hpo	DDD_G2P01523	not_diagnosable	CC2D1A-related intellectual developmental disorder -> Intellectual disability
 ddd_hpo	DDD_G2P01527	clinical	GM2A-related GM2-Gangliosidosis, type AB -> GM2-gangliosidosis, AB variant
@@ -1239,21 +1255,21 @@ ddd_hpo	DDD_G2P01546	clinical	SMARCB1-related Coffin-Siris syndrome -> Coffin-Si
 ddd_hpo	DDD_G2P01547	clinical	PALB2-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P01548	clinical	SOX9-related campomelic dysplasia -> Campomelic dysplasia
 ddd_hpo	DDD_G2P01549	clinical	TBC1D24-related DOORS syndrome -> DOORS syndrome
-ddd_hpo	DDD_G2P01552	not_diagnosable	PGM3-related immunodeficiency -> Immunodeficiency, congenital disorder of glycosylation
+ddd_hpo	DDD_G2P01552	clinical	PGM3-related immunodeficiency -> Immunodeficiency with hyper-IgE and impaired glycosylation
 ddd_hpo	DDD_G2P01554	clinical	LRP5-related osteoporosis-pseudoglioma syndrome on a spectrum with FEVR with osteopenia -> Osteoporosis-pseudoglioma syndrome
 ddd_hpo	DDD_G2P01555	in_input	PAX6-related aniridia -> Aniridia
 ddd_hpo	DDD_G2P01557	not_diagnosable	PAK3-related intellectual developmental disorder -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P01560	clinical	CSTB-related Unverricht-Lundborg disease -> Unverricht-Lundborg disease
-ddd_hpo	DDD_G2P01561	clinical	DSPP-related dentinogenesis imperfecta, Shields type -> Dentinogenesis imperfecta, Shields type II
+ddd_hpo	DDD_G2P01561	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01562	clinical	TH-related DOPA-responsive dystonia -> DOPA-responsive dystonia
 ddd_hpo	DDD_G2P01563	clinical	FBN1-related Weill-Marchesani syndrome -> Weill-Marchesani syndrome
-ddd_hpo	DDD_G2P01564	clinical	MAGT1-related intellectual developmental disorder -> X-linked immunodeficiency with magnesium defect, Epstein-Barr virus infection, and neoplasia
+ddd_hpo	DDD_G2P01564	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01566	clinical	POMGNT1-related muscular dystrophy-dystroglycanopathy limb-girdle -> Limb-girdle muscular dystrophy-dystroglycanopathy
 ddd_hpo	DDD_G2P01567	clinical	DRC1-related primary cilary dyskinesia -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P01568	clinical	RAD50-related Nijmegen breakage syndrome-like disorder -> Nijmegen breakage syndrome-like disorder
 ddd_hpo	DDD_G2P01569	clinical	RNASEH2C-related Aicardi-Goutieres syndrome -> Aicardi-Goutières syndrome
 ddd_hpo	DDD_G2P01570	clinical	WNT4-related mullerian aplasia and hyperandrogenism -> Müllerian aplasia and hyperandrogenism
-ddd_hpo	DDD_G2P01572	not_diagnosable	GUCY2C-related familial diarrhea -> Familial diarrhea
+ddd_hpo	DDD_G2P01572	clinical	GUCY2C-related familial diarrhea -> Familial diarrhea
 ddd_hpo	DDD_G2P01574	clinical	COL4A3-related Alport syndrome -> Alport syndrome
 ddd_hpo	DDD_G2P01575	clinical	FANCL-related Fanconi anemia -> Fanconi anemia
 ddd_hpo	DDD_G2P01577	clinical	RTTN-related bilateral diffuse polymicrogyria -> Bilateral diffuse polymicrogyria
@@ -1272,16 +1288,16 @@ ddd_hpo	DDD_G2P01593	clinical	CHRNA1-related multiple pterygium syndrome lethal 
 ddd_hpo	DDD_G2P01594	not_diagnosable	MFRP-related microphthalmia isolated -> Isolated microphthalmia
 ddd_hpo	DDD_G2P01595	clinical	ANKH-related chondrocalcinosis -> Chondrocalcinosis
 ddd_hpo	DDD_G2P01596	clinical	CDKL5-related epileptic encephalopathy early infantile -> CDKL5 deficiency disorder
-ddd_hpo	DDD_G2P01597	not_diagnosable	KCNB1-related epileptic encephalopathy, early infantile -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01597	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01598	clinical	PSAP-related atypical Krabbe disease -> Atypical Krabbe disease
-ddd_hpo	DDD_G2P01600	not_diagnosable	EEF1A2-related infantile epileptic encephalopathy -> Early infantile epileptic encephalopathy
+ddd_hpo	DDD_G2P01600	clinical	EEF1A2-related infantile epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01601	clinical	TPP1-related neuronal ceroid lipofuscinosis -> Late infantile neuronal ceroid lipofuscinosis
 ddd_hpo	DDD_G2P01602	clinical	PIEZO2-related arthrogryposis, distal -> Distal arthrogryposis
 ddd_hpo	DDD_G2P01603	clinical	ZBTB20-related Primrose syndrome -> Primrose syndrome
-ddd_hpo	DDD_G2P01604	not_diagnosable	CASK-related intellectual developmental disorder, with or without nystagmus -> Intellectual disability with or without nystagmus
+ddd_hpo	DDD_G2P01604	not_diagnosable	CASK-related intellectual developmental disorder, with or without nystagmus -> Intellectual disability
 ddd_hpo	DDD_G2P01606	clinical	VIPAS39-related arthrogryposis, renal dysfunction, and cholestasis -> Arthrogryposis, renal dysfunction, and cholestasis syndrome
 ddd_hpo	DDD_G2P01607	clinical	CISD2-related Wolfram syndrome -> Wolfram syndrome
-ddd_hpo	DDD_G2P01608	not_diagnosable	SCN8A-related epileptic encephalopathy, early infantile -> Early infantile epileptic encephalopathy
+ddd_hpo	DDD_G2P01608	clinical	SCN8A-related epileptic encephalopathy, early infantile -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01609	clinical	DDX11-related Warsaw breakage syndrome -> Warsaw breakage syndrome
 ddd_hpo	DDD_G2P01611	clinical	KAT6B-related genitopatellar syndrome -> Genitopatellar syndrome
 ddd_hpo	DDD_G2P01612	clinical	FOXRED1-related mitochondrial complex I deficiency -> Mitochondrial complex I deficiency
@@ -1289,6 +1305,7 @@ ddd_hpo	DDD_G2P01614	clinical	GALNS-related mucopolysaccharidosis -> Mucopolysac
 ddd_hpo	DDD_G2P01617	clinical	PLOD1-related Ehlers-Danlos syndrome, kyphoscoliotic type -> Ehlers-Danlos syndrome, kyphoscoliotic type
 ddd_hpo	DDD_G2P01618	clinical	POC1A-related short stature, onychodysplasia, facial dysmorphism, and hypotrichosis (SOFT syndrome) -> SOFT syndrome
 ddd_hpo	DDD_G2P01620	not_diagnosable	SHANK1-related autism -> Autism
+ddd_hpo	DDD_G2P01620	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01621	clinical	DMD-related Duchenne muscular dystrophy -> Duchenne muscular dystrophy
 ddd_hpo	DDD_G2P01622	clinical	HYDIN-related primary ciliary dyskinesia -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P01623	clinical	TCTN3-related Mohr-Majewski syndrome -> Mohr-Majewski syndrome
@@ -1308,15 +1325,15 @@ ddd_hpo	DDD_G2P01639	clinical	CLN6-related neuronal ceroid lipofuscinosis, Kufs 
 ddd_hpo	DDD_G2P01640	clinical	RECQL4-related Baller-Gerold syndrome -> Baller-Gerold syndrome
 ddd_hpo	DDD_G2P01642	clinical	PSAT1-related Neu-Laxova syndrome -> Neu-Laxova syndrome
 ddd_hpo	DDD_G2P01645	clinical	USB1-related poikiloderma with neutropenia -> Poikiloderma with neutropenia
-ddd_hpo	DDD_G2P01647	clinical	RIN2-related macrocephaly, alopecia, cutis laxa, and scoliosis tall forehead, sparse hair, skin hyperextensibility, and scoliosis -> RIN2 syndrome
-ddd_hpo	DDD_G2P01648	clinical	HACE1-related disorder -> Spastic paraplegia and psychomotor retardation with or without seizures
+ddd_hpo	DDD_G2P01647	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01648	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01649	clinical	KIAA0586-related Joubert syndrome -> Joubert syndrome
 ddd_hpo	DDD_G2P01650	clinical	MMP21-related heterotaxy -> Heterotaxy
 ddd_hpo	DDD_G2P01651	clinical	PRMT7-related pseudohypoparathyroidism-like disorder -> Short stature, brachydactyly, intellectual developmental disorder, and seizures
 ddd_hpo	DDD_G2P01653	clinical	AHI1-related Joubert syndrome -> Joubert syndrome
-ddd_hpo	DDD_G2P01656	clinical	MECOM-related radioulnar synostosis with amegakaryocytic thrombocytopenia -> Radioulnar synostosis with amegakaryocytic thrombocytopenia
+ddd_hpo	DDD_G2P01656	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01658	clinical	SCYL1-related episodes of liver failure, peripheral neuropathy, cerebellar atrophy, and ataxia -> Spinobulbar neurodegeneration, infantile
-ddd_hpo	DDD_G2P01660	clinical	SLC39A8-related intellectual disability with cerebellar atrophy -> Congenital disorder of glycosylation type IIn
+ddd_hpo	DDD_G2P01660	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01661	clinical	GMNN-related primordial dwarfism associated with Meier-Gorlin syndrome -> Meier-Gorlin syndrome
 ddd_hpo	DDD_G2P01662	clinical	TAF1-related dysmorphic features, intellectual disability, and neurological manifestations -> X-linked intellectual disability, syndromic, Hedera type
 ddd_hpo	DDD_G2P01665	in_input	TPM2-related arthrogryposis, distal -> Distal arthrogryposis
@@ -1340,27 +1357,30 @@ ddd_hpo	DDD_G2P01700	clinical	GPX4-related spondylometaphyseal dysplasia, Sedagh
 ddd_hpo	DDD_G2P01701	not_diagnosable	CNOT3-related neurodevelopmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P01703	clinical	GNAI1-related neurodevelopmental disorder with hypotonia, impaired speech, and behavioural abnormalities -> Neurodevelopmental disorder with hypotonia, impaired speech, and behavioural abnormalities
 ddd_hpo	DDD_G2P01705	not_diagnosable	KDM5B-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P01705	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01706	clinical	MSL3-related intellectual developmental disorder -> Basilicata-Akhtar syndrome
-ddd_hpo	DDD_G2P01707	not_diagnosable	MYT1L-related intellectual developmental syndrome -> MYT1L-related neurodevelopmental disorder
+ddd_hpo	DDD_G2P01707	not_diagnosable	MYT1L-related intellectual developmental syndrome -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P01708	clinical	PPM1D-related intellectual developmental disorder -> Jansen-de Vries syndrome
 ddd_hpo	DDD_G2P01709	clinical	PUF60-related Verheij syndrome -> Verheij syndrome
 ddd_hpo	DDD_G2P01710	clinical	QRICH1-related syndrome -> Ververi-Brady syndrome
-ddd_hpo	DDD_G2P01711	not_diagnosable	SET-related intellectual developmental disorder -> Intellectual developmental disorder
-ddd_hpo	DDD_G2P01712	not_diagnosable	KMT5B-related intellectual developmental disorder -> Intellectual developmental disorder
+ddd_hpo	DDD_G2P01711	not_diagnosable	SET-related intellectual developmental disorder -> Intellectual disability
+ddd_hpo	DDD_G2P01711	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01712	not_diagnosable	KMT5B-related intellectual developmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P01713	not_diagnosable	TCF20-related developmental delay with variable intellectual impairment and behavioral abnormalities -> Developmental delay with variable intellectual impairment and behavioral abnormalities
 ddd_hpo	DDD_G2P01714	not_diagnosable	ZBTB18-related intellectual developmental disordere -> Intellectual developmental disorder
 ddd_hpo	DDD_G2P01715	clinical	WAC-related Desanto-Shinawi syndrome -> DeSanto-Shinawi syndrome
-ddd_hpo	DDD_G2P01716	not_diagnosable	SCN2A-related infantile epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01716	clinical	SCN2A-related infantile epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01717	clinical	UNC80-related persistent hypotonia, encephalopathy, growth retardation, and severe intellectual disability -> Persistent hypotonia, encephalopathy, growth retardation, and severe intellectual disability
 ddd_hpo	DDD_G2P01718	clinical	CCDC115-related disorder of Golgi homeostasis -> Congenital disorder of glycosylation
 ddd_hpo	DDD_G2P01720	clinical	TANGO2-related infancy-onset recurrent metabolic crises with encephalocardiomyopathy -> Infancy-onset recurrent metabolic crises with encephalocardiomyopathy
 ddd_hpo	DDD_G2P01723	clinical	DVL3-related Robinow syndrome -> Robinow syndrome
 ddd_hpo	DDD_G2P01724	clinical	EMC1-related global developmental delay, hypotonia, scoliosis, and cerebellar atrophy -> Global developmental delay, hypotonia, scoliosis, and cerebellar atrophy
-ddd_hpo	DDD_G2P01730	not_diagnosable	TBCK-related severe infantile syndromic encephalopathy -> TBCK-related encephalopathy
+ddd_hpo	DDD_G2P01730	clinical	TBCK-related severe infantile syndromic encephalopathy -> Infantile hypotonia with psychomotor retardation and characteristic facies
 ddd_hpo	DDD_G2P01733	clinical	TELO2-related syndromic intellectual disability disorder -> You-Hoover-Fang syndrome
 ddd_hpo	DDD_G2P01734	clinical	RERE-related phenocopy of proximal 1p36 deletions -> Proximal 1p36 deletion syndrome phenocopy
 ddd_hpo	DDD_G2P01737	clinical	GNB1-related severe neurodevelopmental disability, hypotonia, and seizures -> Neurodevelopmental disability, hypotonia, and seizures
-ddd_hpo	DDD_G2P01749	not_diagnosable	FZD5-related coloboma -> Ocular coloboma
+ddd_hpo	DDD_G2P01749	not_diagnosable	FZD5-related coloboma -> Coloboma
+ddd_hpo	DDD_G2P01749	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01751	clinical	CDC45-related Meier-Gorlin syndrome and craniosynostosis -> Meier-Gorlin syndrome
 ddd_hpo	DDD_G2P01753	clinical	VAC14-related progressive neurological disorder and regression of developmental milestones -> Striatonigral degeneration, childhood-onset
 ddd_hpo	DDD_G2P01754	clinical	TMEM126B-related muscle weakness and isolated complex I deficiency -> Mitochondrial complex I deficiency
@@ -1368,9 +1388,10 @@ ddd_hpo	DDD_G2P01755	clinical	TSEN15-related pontocerebellar hypoplasia and prog
 ddd_hpo	DDD_G2P01757	clinical	CCDC88A-related PEHO-like syndrome with neuronal migration disorder, seizures and microcephaly -> PEHO-like syndrome
 ddd_hpo	DDD_G2P01758	clinical	PPP1CB-related rasopathy with developmental delay, short stature, and sparse slow-growing hair -> Mazzanti syndrome
 ddd_hpo	DDD_G2P01759	not_diagnosable	NONO-related syndromic intellectual disability -> Syndromic intellectual disability
+ddd_hpo	DDD_G2P01759	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01760	clinical	ATAD3A-related disorder with global developmental delay, hypotonia, optic atrophy, axonal neuropathy, and hypertrophic cardiomyopathy -> Harel-Yoon syndrome
 ddd_hpo	DDD_G2P01761	clinical	GORAB-related geroderma osteodysplasticum -> Geroderma osteodysplasticum
-ddd_hpo	DDD_G2P01763	not_diagnosable	UBA5-related severe infantile-onset encephalopathy -> Severe infantile-onset encephalopathy
+ddd_hpo	DDD_G2P01763	clinical	UBA5-related severe infantile-onset encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01765	clinical	CHD4-related syndromic intellectual disability with or without congenital heart disease -> Sifrim-Hitz-Weiss syndrome
 ddd_hpo	DDD_G2P01767	clinical	CDK13-related syndromic intellectual disability with or without congenital heart disease -> Congenital heart defects, dysmorphic facial features, and intellectual developmental disorder
 ddd_hpo	DDD_G2P01768	not_diagnosable	PRKD1-related syndromic congenital heart defects -> Syndromic congenital heart defects
@@ -1379,11 +1400,12 @@ ddd_hpo	DDD_G2P01771	clinical	PPA2-related sudden arrhythmic cardiac death after
 ddd_hpo	DDD_G2P01773	clinical	SMCHD1-related isolated arhinia/Bosma arhinia syndrome -> Bosma arhinia microphthalmia syndrome
 ddd_hpo	DDD_G2P01775	clinical	PKD1L1-related laterality defects -> Visceral heterotaxy
 ddd_hpo	DDD_G2P01776	clinical	MAP3K7-related frontometaphyseal dysplasia -> Frontometaphyseal dysplasia
-ddd_hpo	DDD_G2P01777	not_diagnosable	IL11RA-related craniosynostosis -> Craniosynostosis
+ddd_hpo	DDD_G2P01777	clinical	IL11RA-related craniosynostosis -> Craniosynostosis and dental anomalies
 ddd_hpo	DDD_G2P01778	clinical	EIF2S3-related syndromic intellectual disability with severe microcephaly -> MEHMO syndrome
 ddd_hpo	DDD_G2P01780	not_diagnosable	NCAPD2-related microcephaly with short stature -> Microcephaly with short stature
-ddd_hpo	DDD_G2P01781	not_diagnosable	NCAPD3-related microcephaly with short stature -> Microcephaly with short stature
-ddd_hpo	DDD_G2P01783	not_diagnosable	ARCN1-related microcephalic dwarfism -> Microcephalic dwarfism
+ddd_hpo	DDD_G2P01780	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01781	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01783	clinical	ARCN1-related microcephalic dwarfism -> Microcephalic dwarfism
 ddd_hpo	DDD_G2P01789	clinical	USP18-related severe pseudo-TORCH syndrome -> Pseudo-TORCH syndrome
 ddd_hpo	DDD_G2P01790	clinical	BGN-related severe syndromic form of thoracic aortic aneurysm and dissection -> Meester-Loeys syndrome
 ddd_hpo	DDD_G2P01791	clinical	NANS-related infantile-onset severe developmental delay and skeletal dysplasia -> Spondyloepimetaphyseal dysplasia, Genevieve type
@@ -1392,63 +1414,64 @@ ddd_hpo	DDD_G2P01849	clinical	PIEZO2-related ataxia, dysmetria, contractures and
 ddd_hpo	DDD_G2P01853	clinical	MAF-related cataracts, congenital, with sensorineural deafness, down syndrome-like facial appearance, short stature, and mental retardation -> Aymé-Gripp syndrome
 ddd_hpo	DDD_G2P01858	clinical	BRPF1-related syndromic intellectual disability with ptosis -> Intellectual developmental disorder with dysmorphic facies and ptosis
 ddd_hpo	DDD_G2P01859	clinical	HIVEP2-related syndromic developmental delay with intellectual disability with or without microcephaly -> Intellectual developmental disorder with mild dysmorphic facies
-ddd_hpo	DDD_G2P01860	clinical	CRIM1-related colobomatous macrophthalmia with microcornea syndrome -> Colobomatous macrophthalmia with microcornea syndrome
-ddd_hpo	DDD_G2P01861	clinical	HMGB3-related colobomatous microphthalmia, microcephaly, intellectual disability, and short stature -> Microphthalmia, syndromic 13
+ddd_hpo	DDD_G2P01860	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01861	clinical	HMGB3-related colobomatous microphthalmia, microcephaly, intellectual disability, and short stature -> Colobomatous microphthalmia, microcephaly, intellectual disability, and short stature
 ddd_hpo	DDD_G2P01862	clinical	KMT2B-related complex early-onset dystonia -> Dystonia 28, childhood-onset
 ddd_hpo	DDD_G2P01863	not_diagnosable	SETD1A-related intellectual disability -> Intellectual disability
-ddd_hpo	DDD_G2P01864	not_diagnosable	STAG1-related syndromic intellectual disability -> Syndromic intellectual disability
-ddd_hpo	DDD_G2P01865	not_diagnosable	SLC1A2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01864	clinical	STAG1-related syndromic intellectual disability -> Cornelia de Lange syndrome
+ddd_hpo	DDD_G2P01865	clinical	SLC1A2-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01866	clinical	ELMO2-related intraosseous vascular malformation -> Intraosseous vascular malformation
 ddd_hpo	DDD_G2P01867	clinical	IARS1-related growth retardation with prenatal onset, intellectual disability, muscular hypotonia, and infantile hepatopathy -> Growth retardation with prenatal onset, intellectual disability, muscular hypotonia, and infantile hepatopathy
 ddd_hpo	DDD_G2P01868	not_diagnosable	GNA14-related congenital vascular tumours -> Congenital vascular tumours
 ddd_hpo	DDD_G2P01869	clinical	ODAD4-related primary ciliary dyskinesia with left-right body asymmetry randomization -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P01870	clinical	DNAJB13-related primary ciliary dyskinesia and male infertility -> Primary ciliary dyskinesia
-ddd_hpo	DDD_G2P01871	not_diagnosable	CIT-related primary microcephaly -> Primary microcephaly
+ddd_hpo	DDD_G2P01871	clinical	CIT-related primary microcephaly -> Autosomal recessive primary microcephaly
 ddd_hpo	DDD_G2P01872	clinical	SIN3A-related syndromic intellectual disability -> Witteveen-Kolk syndrome
-ddd_hpo	DDD_G2P01874	clinical	SON-related intellectual disability, congenital malformations, and failure to thrive -> ZTTK syndrome
-ddd_hpo	DDD_G2P01875	clinical	HNRNPH2-related neurodevelopmental disorder -> Bain type syndromic intellectual disability
+ddd_hpo	DDD_G2P01874	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01875	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01876	clinical	SLC5A7-related congenital myasthenic syndrome with episodic apnea -> Congenital myasthenic syndrome with episodic apnea
-ddd_hpo	DDD_G2P01878	not_diagnosable	GRIN2D-related severe epileptic encephalopathy treatable with NMDA receptor channel blockers -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P01879	clinical	ATAD3A-related disorder with global developmental delay, hypotonia, optic atrophy, axonal neuropathy, and hypertrophic cardiomyopathy -> Harel-Yoon syndrome
+ddd_hpo	DDD_G2P01878	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01879	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01880	clinical	SLC25A4-related severe early-onset mitochondrial disease and loss of mitochondrial DNA copy number -> Mitochondrial DNA depletion syndrome
 ddd_hpo	DDD_G2P01881	clinical	NAXE-related lethal neurometabolic disorder of early childhood -> PEBAT
-ddd_hpo	DDD_G2P01882	not_diagnosable	FGF12-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P01882	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01883	clinical	EBF3-related intellectual disability, ataxia, and facial dysmorphism -> HADDS
-ddd_hpo	DDD_G2P01884	clinical	KIDINS220-related spastic paraplegia, intellectual disability, nystagmus, and obesity -> SINO syndrome
-ddd_hpo	DDD_G2P01885	clinical	MBOAT7-related intellectual disability accompanied by epilepsy and autistic features -> Intellectual developmental disorder with epilepsy and autistic features
+ddd_hpo	DDD_G2P01884	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01885	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01886	clinical	GLDN-related lethal arthroogryposis -> Lethal congenital contracture syndrome
-ddd_hpo	DDD_G2P01887	not_diagnosable	TBCD-related early-onset neurodegenerative encephalopathy -> Neurodegenerative encephalopathy
+ddd_hpo	DDD_G2P01887	clinical	TBCD-related early-onset neurodegenerative encephalopathy -> Early-onset neurodegenerative encephalopathy
 ddd_hpo	DDD_G2P01888	clinical	TBCE-related early-onset progressive encephalopathy with distal spinal muscular atrophy -> Encephalopathy with distal spinal muscular atrophy
 ddd_hpo	DDD_G2P01889	clinical	ASXL2-related developmental delay, macrocephaly, and dysmorphic features -> Shashi-Pena syndrome
 ddd_hpo	DDD_G2P01890	clinical	ARID2-related Coffin-Siris like disorder -> Coffin-Siris syndrome
 ddd_hpo	DDD_G2P01891	clinical	CARS2-related epileptic encephalopathy with complex movement disorder and regression -> Epileptic encephalopathy with complex movement disorder and regression
 ddd_hpo	DDD_G2P01892	not_diagnosable	DLG4-related intellectual disability -> Intellectual disability
-ddd_hpo	DDD_G2P01893	not_diagnosable	HECW2-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P01893	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01894	clinical	MORC2-related axonal neuropathy and neurodevelopmental disorder -> Axonal neuropathy and neurodevelopmental disorder
-ddd_hpo	DDD_G2P01895	clinical	TRIP12-related intellectual disability with/without autism spectrum disorder -> Clark-Baraitser syndrome
+ddd_hpo	DDD_G2P01895	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01896	clinical	PYROXD1-related early-onset myopathy with internalized nuclei and myofibrillar disorganization -> Early-onset myopathy with internalized nuclei and myofibrillar disorganization
 ddd_hpo	DDD_G2P01897	clinical	SLC6A9-related glycine encephalopathy with arthrogryposis -> Glycine encephalopathy with arthrogryposis
-ddd_hpo	DDD_G2P01898	clinical	TMTC3-related cobblestone lissencephaly -> Cobblestone lissencephaly
+ddd_hpo	DDD_G2P01898	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01899	clinical	MECR-related childhood-onset dystonia and optic atrophy -> Dystonia, childhood-onset, with optic atrophy and basal ganglia abnormalities
 ddd_hpo	DDD_G2P01900	clinical	PLPBP-related vitamin-B6-dependent epilepsy -> Pyridoxine-dependent epilepsy
 ddd_hpo	DDD_G2P01901	clinical	CPAMD8-related anterior segment dysgenesis -> Anterior segment dysgenesis
-ddd_hpo	DDD_G2P01902	not_diagnosable	DENND5A-related epileptic encephalopathy -> Epileptic encephalopathy
+ddd_hpo	DDD_G2P01902	clinical	DENND5A-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P01903	clinical	AP3B2-related epileptic encephalopathy with optic atrophy -> Epileptic encephalopathy with optic atrophy
 ddd_hpo	DDD_G2P01904	clinical	MITF-related coloboma, osteopetrosis, microphthalmia, macrocephaly, albinism, and deafness (COMMAD syndrome) -> COMMAD syndrome
 ddd_hpo	DDD_G2P01905	not_diagnosable	MDH2-related early-onset severe encephalopathy -> Early-onset severe encephalopathy
 ddd_hpo	DDD_G2P01906	clinical	DNAAF6-related primary ciliary dyskinesia with outer and inner dynein arm defects -> Primary ciliary dyskinesia
-ddd_hpo	DDD_G2P01907	clinical	MYPN-related childhood-onset, slowly progressive nemaline myopathy -> Nemaline myopathy
-ddd_hpo	DDD_G2P01908	clinical	DNAJC12-related hyperphenylalaninemia, dystonia, and intellectual disability -> Hyperphenylalaninemia, dystonia, and intellectual disability
-ddd_hpo	DDD_G2P01923	not_diagnosable	NEXMIF-related intellectual disability and epilepsy -> Intellectual disability and epilepsy
+ddd_hpo	DDD_G2P01907	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01908	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P01923	clinical	NEXMIF-related intellectual disability and epilepsy -> Intellectual disability and epilepsy
 ddd_hpo	DDD_G2P01930	not_diagnosable	MYH10-related multiple congenital anomalies -> Multiple congenital anomalies
-ddd_hpo	DDD_G2P01943	not_diagnosable	LRP6-related tooth agenesis -> Tooth agenesis
+ddd_hpo	DDD_G2P01943	not_diagnosable	LRP6-related tooth agenesis -> Selective tooth agenesis
 ddd_hpo	DDD_G2P01946	clinical	ACBD5-related deficiency -> Retinal dystrophy with leukodystrophy
 ddd_hpo	DDD_G2P01962	clinical	INPP5K-related muscular dystrophy, congenital, with cataracts, and intellectual disability -> Muscular dystrophy, congenital, with cataracts, and intellectual disability
 ddd_hpo	DDD_G2P01968	clinical	PRUNE1-related PEHO like condition -> PEHO-like syndrome
 ddd_hpo	DDD_G2P01969	clinical	H4C3-related Tessadori-Bicknell-van Haaften neurodevelopmental syndrome -> Tessadori-Bicknell-van Haaften neurodevelopmental syndrome
 ddd_hpo	DDD_G2P01970	not_diagnosable	EPB41L1-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P01970	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P01971	clinical	H1-4-related Rahman syndrome -> Rahman syndrome
-ddd_hpo	DDD_G2P01972	not_diagnosable	RAB11B-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P01972	clinical	RAB11B-related intellectual disability -> Neurodevelopmental disorder with ataxic gait, absent speech, and decreased cortical white matter
 ddd_hpo	DDD_G2P01973	clinical	PSMD12-related global developmental delay, multiple malformations -> Stankiewicz-Isidor syndrome
 ddd_hpo	DDD_G2P01974	clinical	CDH1-related blepharo-cheiro-dontic syndrome -> Blepharo-cheiro-dontic syndrome
 ddd_hpo	DDD_G2P01975	clinical	CTNND1-related blepharo-cheiro-dontic syndrome -> Blepharo-cheiro-dontic syndrome
@@ -1460,11 +1483,13 @@ ddd_hpo	DDD_G2P01987	clinical	THOC6-related Beaulieu-Boycott-Innes syndrome -> B
 ddd_hpo	DDD_G2P02007	clinical	DNAH5-related primary ciliary dyskinesia -> Primary ciliary dyskinesia
 ddd_hpo	DDD_G2P02008	not_diagnosable	FRMPD4-related intellectual disability -> Intellectual disability
 ddd_hpo	DDD_G2P02009	not_diagnosable	KLHL15-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P02009	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02010	clinical	LAS1L-related intellectual disability -> Wilson-Turner syndrome
 ddd_hpo	DDD_G2P02011	clinical	RLIM-related intellectual disability -> Tonne-Kalscheuer syndrome
 ddd_hpo	DDD_G2P02012	not_diagnosable	USP27X-related intellectual disability -> Intellectual disability
 ddd_hpo	DDD_G2P02013	not_diagnosable	CDK16-related intellectual disability -> Intellectual disability
-ddd_hpo	DDD_G2P02020	not_diagnosable	CFAP410-related retinal dystrophy with or without axial spondylometaphyseal dysplasia -> Retinal dystrophy with or without axial spondylometaphyseal dysplasia
+ddd_hpo	DDD_G2P02013	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02020	clinical	CFAP410-related retinal dystrophy with or without axial spondylometaphyseal dysplasia -> Axial spondylometaphyseal dysplasia
 ddd_hpo	DDD_G2P02021	clinical	RRM2B-related mitochondrial depletion syndrome -> Mitochondrial DNA depletion syndrome
 ddd_hpo	DDD_G2P02025	clinical	BHLHA9-related split hand and foot malformation -> Split hand and foot malformation
 ddd_hpo	DDD_G2P02048	clinical	ADAMTS18-related microcornea, myopic chorioretinal atrophy, and telecanthus -> Microcornea, myopic chorioretinal atrophy, and telecanthus
@@ -1479,13 +1504,14 @@ ddd_hpo	DDD_G2P02091	clinical	COL9A3-related Stickler syndrome -> Stickler syndr
 ddd_hpo	DDD_G2P02096	clinical	CTSD-related neuronal ceroid lipofuscinosis -> Neuronal ceroid lipofuscinosis
 ddd_hpo	DDD_G2P02114	clinical	GJA1-related oculodentodigital dysplasia -> Oculodentodigital dysplasia
 ddd_hpo	DDD_G2P02133	clinical	GZF1-related joint laxity, short stature, and myopia -> Joint laxity, short stature, and myopia
-ddd_hpo	DDD_G2P02160	not_diagnosable	MAB21L2-related syndromic microphthalmia -> Syndromic microphthalmia
+ddd_hpo	DDD_G2P02160	clinical	MAB21L2-related syndromic microphthalmia -> Syndromic microphthalmia
 ddd_hpo	DDD_G2P02201	clinical	PEX11B-related peroxisome biogenesis disorder 14B -> Peroxisome biogenesis disorder
 ddd_hpo	DDD_G2P02215	clinical	MRPS34-related Leigh syndrome with instability of the small mitoribosomal subunit -> Leigh syndrome
-ddd_hpo	DDD_G2P02218	not_diagnosable	UBTF-related childhood-onset neurodegeneration -> Childhood-onset neurodegeneration
+ddd_hpo	DDD_G2P02218	clinical	UBTF-related childhood-onset neurodegeneration -> Neurodegeneration, childhood-onset, with brain atrophy
 ddd_hpo	DDD_G2P02219	clinical	LIPT2-related mitochondrial lipoylation defect associated with severe neonatal encephalopathy -> Neonatal encephalopathy with defective mitochondrial lipoylation
 ddd_hpo	DDD_G2P02220	clinical	TRAPPC12-related progressive childhood encephalopathy and Golgi dysfunction -> Progressive childhood encephalopathy and Golgi dysfunction
 ddd_hpo	DDD_G2P02221	not_diagnosable	YWHAG-related early-onset epilepsy -> Early-onset epilepsy
+ddd_hpo	DDD_G2P02221	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02223	clinical	LIAS-related neonatal-onset epilepsy, defective mitochondrial energy metabolism and glycine elevation -> Neonatal-onset epilepsy, defective mitochondrial energy metabolism and glycine elevation
 ddd_hpo	DDD_G2P02224	clinical	LIPT1-related Leigh syndrome with secondary deficiency for pyruvate and alpha-ketoglutarate dehydrogenase -> Leigh syndrome
 ddd_hpo	DDD_G2P02226	not_diagnosable	KCNQ5-related intellectual disability with or without epileptic encephalopathy -> Intellectual disability with or without epileptic encephalopathy
@@ -1494,8 +1520,10 @@ ddd_hpo	DDD_G2P02228	clinical	NKX6-2-related progressive spastic ataxia and hypo
 ddd_hpo	DDD_G2P02231	clinical	PLAA-related lethal infantile epileptic encephalopathy -> Neurodevelopmental disorder with progressive microcephaly, spasticity, and brain anomalies
 ddd_hpo	DDD_G2P02232	clinical	EED-related Weaver-like overgrowth syndrome -> Cohen-Gibson syndrome
 ddd_hpo	DDD_G2P02234	not_diagnosable	SLC45A1-related intellectual disability and epilepsy -> Intellectual disability and epilepsy
+ddd_hpo	DDD_G2P02234	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02236	clinical	CWC27-related retinitis pigmentosa, short stature, skeletal anomalies and intellectual disability with or without ectodermal features -> Retinitis pigmentosa, short stature, skeletal anomalies and intellectual disability with or without ectodermal features
 ddd_hpo	DDD_G2P02237	in_input	LGI4-related arthrogryposis multiplex congenita -> Arthrogryposis multiplex congenita
+ddd_hpo	DDD_G2P02237	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02238	clinical	TMEM260-related neurodevelopmental, cardiac, and renal syndrome -> Neurodevelopmental, cardiac, and renal syndrome
 ddd_hpo	DDD_G2P02239	clinical	OTUD6B-related intellectual disability syndrome associated with seizures and dysmorphic features -> Intellectual disability syndrome associated with seizures and dysmorphic features
 ddd_hpo	DDD_G2P02247	clinical	RPS23-related microcephaly, hearing loss, and dysmorphic features -> Microcephaly, hearing loss, and dysmorphic features
@@ -1506,7 +1534,7 @@ ddd_hpo	DDD_G2P02255	clinical	DCC-related midline-bridging neuronal commissure d
 ddd_hpo	DDD_G2P02256	clinical	ABL1-related congenital heart defects and skeletal malformations -> Congenital heart defects and skeletal malformations
 ddd_hpo	DDD_G2P02257	clinical	TOE1-related pontocerebellar hypoplasia -> Pontocerebellar hypoplasia
 ddd_hpo	DDD_G2P02298	clinical	SLC52A2-related Brown-Vialetto-Van Laere syndrome -> Brown-Vialetto-Van Laere syndrome
-ddd_hpo	DDD_G2P02308	not_diagnosable	KDM1A-related developmental delay and distinctive facial features -> Developmental delay and distinctive facial features
+ddd_hpo	DDD_G2P02308	clinical	KDM1A-related developmental delay and distinctive facial features -> Intellectual developmental disorder with distinctive facial features and behavioral abnormalities
 ddd_hpo	DDD_G2P02315	clinical	FLNA-related periventricular nodular heterotopia -> Periventricular nodular heterotopia
 ddd_hpo	DDD_G2P02324	clinical	COLEC10-related 3MC syndrome -> 3MC syndrome
 ddd_hpo	DDD_G2P02351	not_diagnosable	DHRS3 related craniosynostosis -> Craniosynostosis
@@ -1515,55 +1543,58 @@ ddd_hpo	DDD_G2P02359	clinical	FGFR1-related Hartsfield syndrome -> Hartsfield sy
 ddd_hpo	DDD_G2P02360	clinical	CANT1-related Desbuquois dysplasia -> Desbuquois dysplasia
 ddd_hpo	DDD_G2P02365	clinical	CDK10-related severe growth retardation, spine malformations, and developmental delays -> Al Kaissi syndrome
 ddd_hpo	DDD_G2P02366	clinical	TBC1D23-related non-degenerative pontocerebellar hypoplasia -> Non-degenerative pontocerebellar hypoplasia
-ddd_hpo	DDD_G2P02367	not_diagnosable	RAC1-related neurodevelopmental disorder -> Neurodevelopmental disorder
-ddd_hpo	DDD_G2P02368	not_diagnosable	PACS2-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P02367	clinical	RAC1-related neurodevelopmental disorder -> Neurodevelopmental disorder with structural brain anomalies and dysmorphic facies
+ddd_hpo	DDD_G2P02368	clinical	PACS2-related neurodevelopmental disorder -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P02369	clinical	BPTF-related developmental and speech delay, postnatal microcephaly, and dysmorphic features -> Developmental and speech delay, postnatal microcephaly, and dysmorphic features
-ddd_hpo	DDD_G2P02370	not_diagnosable	PPP3CA-related severe neurodevelopmental disease with seizures -> Severe neurodevelopmental disease with seizures
+ddd_hpo	DDD_G2P02370	clinical	PPP3CA-related severe neurodevelopmental disease with seizures -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P02371	clinical	C1QBP-related severe neonatal-, childhood-, or later-onset cardiomyopathy associated with combined respiratory-chain deficiencies -> Mitochondrial combined oxidative phosphorylation deficiency
 ddd_hpo	DDD_G2P02372	clinical	SUFU-related Joubert syndrome with cranio-facial and skeletal defects -> Joubert syndrome with cranio-facial and skeletal defects
-ddd_hpo	DDD_G2P02373	not_diagnosable	CLTC-related epilepsy and intellectual disability -> Epilepsy and intellectual disability
-ddd_hpo	DDD_G2P02374	not_diagnosable	NTRK2-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02375	not_diagnosable	NUS1-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02376	not_diagnosable	RAB11A-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02377	not_diagnosable	GABRB2-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02378	not_diagnosable	SNAP25-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02379	not_diagnosable	DHDDS-related epilepsy and intellectual disability -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P02373	not_diagnosable	CLTC-related epilepsy and intellectual disability -> Intellectual disability and epilepsy
+ddd_hpo	DDD_G2P02373	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02374	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02375	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02376	not_diagnosable	RAB11A-related epilepsy and intellectual disability -> Neurodevelopmental disorder with epilepsy and intellectual disability
+ddd_hpo	DDD_G2P02376	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02377	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02378	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02379	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02380	clinical	DHX30-related neurodevelopmental disorder -> Neurodevelopmental disorder with severe motor and speech impairment, absent language, and cerebral abnormalities
 ddd_hpo	DDD_G2P02381	not_diagnosable	CAMK2A-related intellectual disability -> Intellectual disability
 ddd_hpo	DDD_G2P02382	not_diagnosable	CAMK2B-related intellectual disability -> Intellectual disability
+ddd_hpo	DDD_G2P02382	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02383	clinical	SLC25A24-related hypertrichosis, progeroid appearance, and mitochondrial dysfunction (Gorlin-Chaudhry-Moss syndrome ) -> Gorlin-Chaudhry-Moss syndrome
 ddd_hpo	DDD_G2P02384	clinical	FN1-related spondylometaphyseal dysplasia with corner fractures -> Spondylometaphyseal dysplasia, Sutcliffe type
-ddd_hpo	DDD_G2P02385	clinical	GPAA1-related developmental delay, epilepsy, cerebellar atrophy, and osteopenia -> Developmental delay, epilepsy, cerebellar atrophy, and osteopenia
+ddd_hpo	DDD_G2P02385	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02386	clinical	OSGEP-related nephrotic syndrome with primary microcephaly -> Galloway-Mowat syndrome
 ddd_hpo	DDD_G2P02387	clinical	NADK2-related dienoyl-CoA reductase deficiency with hyperlysinemia -> 2,4-dienoyl-CoA reductase deficiency
 ddd_hpo	DDD_G2P02411	clinical	TBC1D20-related Warburg micro syndrome -> Warburg micro syndrome
 ddd_hpo	DDD_G2P02414	clinical	CAD-related uridine-responsive epileptic encephalopathy -> Early infantile epileptic encephalopathy with uridine responsiveness
-ddd_hpo	DDD_G2P02415	not_diagnosable	SMC1A-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P02415	clinical	SMC1A-related epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P02416	clinical	SRP54-related syndromic neutropenia with Shwachman-Diamond-like features -> Syndromic neutropenia with Shwachman-Diamond-like features
 ddd_hpo	DDD_G2P02417	clinical	RPL11-related Diamond-Blackfan anemia with cleft palate and abnormal thumbs -> Diamond-Blackfan anemia
 ddd_hpo	DDD_G2P02418	in_input	EDAR-related hypohidrotic ectodermal dysplasia -> Hypohidrotic ectodermal dysplasia
 ddd_hpo	DDD_G2P02419	clinical	CDKN1C-related IMAGE Syndrome -> IMAGE syndrome
-ddd_hpo	DDD_G2P02420	not_diagnosable	CUX2-related developmental epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P02420	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02421	clinical	SETD2-related overgrowth syndrome (Luscan-Lumish syndrome) -> Luscan-Lumish syndrome
-ddd_hpo	DDD_G2P02422	not_diagnosable	MSI1-related microcephaly -> Primary microcephaly
+ddd_hpo	DDD_G2P02422	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02423	clinical	DEAF1-related autism, intellectual disability, basal ganglia dysfunction and epilepsy -> Autism, intellectual disability, basal ganglia dysfunction and epilepsy
 ddd_hpo	DDD_G2P02424	clinical	PIGM-related glycosylphosphatidylinositol deficiency -> Glycosylphosphatidylinositol deficiency
 ddd_hpo	DDD_G2P02431	clinical	PRR12-related intellectual disability and iris abnormalities -> Intellectual disability and iris abnormalities
 ddd_hpo	DDD_G2P02438	clinical	PGAP1-related Intellectual disability, encephalopathy, impaired GPI-anchor maturation -> Intellectual disability, encephalopathy, impaired GPI-anchor maturation
 ddd_hpo	DDD_G2P02439	clinical	DPF2-related Coffin-Siris like disorder -> Coffin-Siris syndrome
 ddd_hpo	DDD_G2P02440	clinical	CHD3-related macrocephaly and impaired speech and language -> Snijders Blok-Campeau syndrome
-ddd_hpo	DDD_G2P02442	clinical	KMT2C-related intellectual disability -> Kleefstra syndrome 2
+ddd_hpo	DDD_G2P02442	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02443	clinical	H3-3A-related Bryant-Li-Bhoj neurodevelopmental syndrome -> Bryant-Li-Bhoj neurodevelopmental syndrome
 ddd_hpo	DDD_G2P02444	not_diagnosable	RORA-related intellectual disability -> Intellectual disability
-ddd_hpo	DDD_G2P02445	clinical	DDX6-related intellectual disability -> Intellectual developmental disorder with dysmorphic facies and ptosis
+ddd_hpo	DDD_G2P02445	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02446	not_diagnosable	NOVA2-related neurodevelopmental disorder -> Neurodevelopmental disorder
-ddd_hpo	DDD_G2P02447	not_diagnosable	OTUD7A-related 15q13.3 deletions phenocopy -> 15q13.3 microdeletion syndrome phenocopy
+ddd_hpo	DDD_G2P02447	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02469	clinical	RPS6KA3-related Coffin-Lowry syndrome -> Coffin-Lowry syndrome
 ddd_hpo	DDD_G2P02489	clinical	GAN-related giant axonal neuropathy -> Giant axonal neuropathy
 ddd_hpo	DDD_G2P02492	clinical	SLC37A4-related glycogen storage disease -> Glycogen storage disease type Ib
 ddd_hpo	DDD_G2P02511	clinical	LIFR-related Stuve-Wiedeman syndrome -> Stuve-Wiedemann syndrome
 ddd_hpo	DDD_G2P02514	clinical	TEK-related venous malformations, multiple cutaneous and mucosal -> Venous malformations, multiple cutaneous and mucosal
-ddd_hpo	DDD_G2P02537	not_diagnosable	CTNNA2-related disordered cortical neuronal migration -> Disordered cortical neuronal migration
+ddd_hpo	DDD_G2P02537	clinical	CTNNA2-related disordered cortical neuronal migration -> Pachygyria, microcephaly, and developmental delay
 ddd_hpo	DDD_G2P02542	clinical	MYF5-related external ophthalmoplegia, rib, and vertebral anomalies -> External ophthalmoplegia, rib, and vertebral anomalies
 ddd_hpo	DDD_G2P02543	clinical	UFM1-related severe early-onset encephalopathy with progressive microcephaly -> Severe early-onset encephalopathy with progressive microcephaly
 ddd_hpo	DDD_G2P02544	clinical	UFC1-related severe early-onset encephalopathy with progressive microcephaly -> Severe early-onset encephalopathy with progressive microcephaly
@@ -1575,11 +1606,13 @@ ddd_hpo	DDD_G2P02550	clinical	PCYT2-related complex hereditary spastic paraplegi
 ddd_hpo	DDD_G2P02551	clinical	SELENOI-related complex progressive hereditary spastic paraplegia -> Complex progressive hereditary spastic paraplegia
 ddd_hpo	DDD_G2P02552	clinical	RSPO2-related tetraamelia with lung agenesis -> Tetraamelia with lung agenesis
 ddd_hpo	DDD_G2P02554	not_diagnosable	PRRX1-related craniosynostosis -> Craniosynostosis
+ddd_hpo	DDD_G2P02554	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02555	not_diagnosable	SMAD6-related non-syndromic craniosynostosis -> Non-syndromic craniosynostosis
+ddd_hpo	DDD_G2P02555	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02556	clinical	EPHB4-related capillary malformation-arteriovenous malformation -> Capillary malformation-arteriovenous malformation
-ddd_hpo	DDD_G2P02557	clinical	CRKL-related bladder exstrophy plus -> Bladder exstrophy plus
+ddd_hpo	DDD_G2P02557	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02558	clinical	ERBB3-related Hirschprung disease with intestinal pseudo-obstruction -> Hirschsprung disease with intestinal pseudo-obstruction
-ddd_hpo	DDD_G2P02559	clinical	MYH11-related megacystis-microcolon-intestinal hypoperistalsis syndrome -> Megacystis-microcolon-intestinal hypoperistalsis syndrome
+ddd_hpo	DDD_G2P02559	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02560	clinical	CENPF-related Stromme syndrome -> Stromme syndrome
 ddd_hpo	DDD_G2P02561	clinical	KMT2E-related neurodevelopmental disorder/O'Donnell-Luria-Rodan syndrome -> O'Donnell-Luria-Rodan syndrome
 ddd_hpo	DDD_G2P02562	clinical	DNMT3A-related microcephalic primordial dwarfism -> Microcephalic primordial dwarfism
@@ -1587,10 +1620,10 @@ ddd_hpo	DDD_G2P02563	clinical	SLC10A7-related chondrodysplasia with multiple dis
 ddd_hpo	DDD_G2P02564	clinical	TONSL-related sponastrime dysplasia -> Sponastrime dysplasia
 ddd_hpo	DDD_G2P02565	clinical	PISD-related spondyloepimetaphyseal dysplasia with large epiphyses and disturbed mitochondrial function -> Spondyloepimetaphyseal dysplasia with large epiphyses and disturbed mitochondrial function
 ddd_hpo	DDD_G2P02566	clinical	KLHL7-related PERCHING syndrome (developmental delay, dysmorphism, feeding and respiratory difficulties, hypotonia, and joint contractures) -> PERCHING syndrome
-ddd_hpo	DDD_G2P02567	clinical	KCNK4-related facial dysmorphism, hypertrichosis, epilepsy, intellectual and developmental delay, and gingival overgrowth syndrome -> Facial dysmorphism, hypertrichosis, epilepsy, intellectual and developmental delay, and gingival overgrowth syndrome
+ddd_hpo	DDD_G2P02567	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02568	clinical	TMX2-related primary microcephaly, cortical malformation, and epileptic encephalopathy -> Primary microcephaly, cortical malformation, and epileptic encephalopathy
 ddd_hpo	DDD_G2P02569	clinical	NUP188-related neurodegeneration, cataracts and facial dysmorphisms -> Neurodegeneration, cataracts, and facial dysmorphisms
-ddd_hpo	DDD_G2P02570	not_diagnosable	RAC3-related neurodevelopment disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P02570	not_diagnosable	RAC3-related neurodevelopment disorder -> Neurodevelopmental disorder with brain anomalies and with or without vertebral or limb anomalies
 ddd_hpo	DDD_G2P02571	clinical	LZTR1-related Noonan syndrome -> Noonan syndrome
 ddd_hpo	DDD_G2P02572	clinical	SLC25A4-related Fontaine progeroid syndrome -> Fontaine progeroid syndrome
 ddd_hpo	DDD_G2P02573	clinical	POLE-related IMAGE syndrome with variable immunodeficiency -> IMAGE syndrome with variable immunodeficiency
@@ -1603,13 +1636,13 @@ ddd_hpo	DDD_G2P02581	clinical	PRRX1-related agnathia-otocephaly complex -> Agnat
 ddd_hpo	DDD_G2P02585	not_diagnosable	PHACTR1-related neurodevelopment disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P02587	clinical	FARS2-related neurometabolic disorder -> Combined oxidative phosphorylation deficiency
 ddd_hpo	DDD_G2P02588	clinical	KCNJ8-related Cantu syndrome -> Cantú syndrome
-ddd_hpo	DDD_G2P02589	not_diagnosable	RHOBTB2-related developmental and epileptic encephalopathy -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P02589	clinical	RHOBTB2-related developmental and epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P02590	clinical	FUT8-related congenital disorder of glycosylation with defective fucosylation -> Congenital disorder of glycosylation with defective fucosylation
 ddd_hpo	DDD_G2P02591	in_input	ATP6V1E1-related cutis laxa -> Cutis laxa
 ddd_hpo	DDD_G2P02592	in_input	ATP6V1A-related cutis laxa -> Cutis laxa
 ddd_hpo	DDD_G2P02593	clinical	EXTL3-related neuro immuno skeletal dysplasia syndrome -> Neuro-immuno-skeletal dysplasia syndrome
 ddd_hpo	DDD_G2P02594	clinical	DSTYK-related complicated spastic paraparesis -> Complicated hereditary spastic paraplegia
-ddd_hpo	DDD_G2P02595	not_diagnosable	CNPY3-related early onset epileptic encephalopathy -> Early-onset epileptic encephalopathy
+ddd_hpo	DDD_G2P02595	clinical	CNPY3-related early onset epileptic encephalopathy -> Developmental and epileptic encephalopathy
 ddd_hpo	DDD_G2P02596	clinical	NDUFB8-related mitochondrial complex I deficiency -> Mitochondrial complex I deficiency
 ddd_hpo	DDD_G2P02597	clinical	ATP5F1D-related metabolic disorder -> Mitochondrial complex V deficiency
 ddd_hpo	DDD_G2P02598	clinical	EPRS1-related hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
@@ -1622,10 +1655,9 @@ ddd_hpo	DDD_G2P02604	clinical	SEPSECS-related pontocerebellar hypoplasia -> Pont
 ddd_hpo	DDD_G2P02605	clinical	VPS53-related progressive cerebella-cerebral atrophy -> Progressive cerebello-cerebral atrophy
 ddd_hpo	DDD_G2P02606	clinical	SPTBN2-related infantile ataxia with oculomotor and pyramidal signs -> Infantile ataxia with oculomotor and pyramidal signs
 ddd_hpo	DDD_G2P02612	clinical	TRAF7-related developmental delay congenital anomalies and dysmorphic features -> CAFDADD syndrome
-ddd_hpo	DDD_G2P02617	not_diagnosable	FBXO11-related variable neurodevelopmental disorder -> Variable neurodevelopmental disorder
 ddd_hpo	DDD_G2P02618	clinical	IRF2BPL-related neurodevelopmental disorder -> NEDAMSS
 ddd_hpo	DDD_G2P02623	clinical	COG4-related Saul Wilson syndrome -> Saul-Wilson syndrome
-ddd_hpo	DDD_G2P02628	clinical	NFIB-related macrocephaly, acquired, with impaired intellectual development -> Acquired macrocephaly with impaired intellectual development
+ddd_hpo	DDD_G2P02628	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02629	clinical	POLR3A-related Wiedemann Rautenstrauch syndrome -> Wiedemann-Rautenstrauch syndrome
 ddd_hpo	DDD_G2P02636	clinical	SMARCC2-related syndromic intellectual disability and developmental delay -> Coffin-Siris syndrome
 ddd_hpo	DDD_G2P02640	not_diagnosable	ZMIZ1-related syndromic neurodevelopmental disorder -> Syndromic neurodevelopmental disorder
@@ -1633,42 +1665,43 @@ ddd_hpo	DDD_G2P02643	not_diagnosable	SOX4-related neurodevelopmental disease ass
 ddd_hpo	DDD_G2P02646	not_diagnosable	TRRAP-related autism and syndromic intellectual disability -> Autism and syndromic intellectual disability
 ddd_hpo	DDD_G2P02647	clinical	ATN1-related congenital hypotonia, epilepsy, developmental delay, digit abnormalities -> CHEDDA syndrome
 ddd_hpo	DDD_G2P02648	clinical	SUZ12-related Weaver-like overgrowth syndrome -> Imagawa-Matsumoto syndrome
+ddd_hpo	DDD_G2P02649	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02650	not_diagnosable	NBEA-related neurodevelopment disorder with seizures -> Neurodevelopmental disorder with seizures
 ddd_hpo	DDD_G2P02651	clinical	HNRNPK-related Au-Kline syndrome -> Au-Kline syndrome
 ddd_hpo	DDD_G2P02654	clinical	KDM3B-related Diets-Jongmans syndrome -> Diets-Jongmans syndrome
 ddd_hpo	DDD_G2P02656	clinical	BRD4-related Cornelia de Lange-like syndrome -> Cornelia de Lange-like syndrome
 ddd_hpo	DDD_G2P02659	clinical	MN1-related  C-terminal truncation syndrome -> MN1 C-terminal truncation syndrome
-ddd_hpo	DDD_G2P02660	not_diagnosable	SETD1B-related intellectual disability, epilepsy and autism -> Intellectual disability, epilepsy, and autism
+ddd_hpo	DDD_G2P02660	clinical	SETD1B-related intellectual disability, epilepsy and autism -> Intellectual disability with seizures and language delay
 ddd_hpo	DDD_G2P02663	clinical	ANAPC1-related Rothmund-Thomson syndrome -> Rothmund-Thomson syndrome
 ddd_hpo	DDD_G2P02753	clinical	MYOCD-related congenital megabladder -> Congenital megabladder
 ddd_hpo	DDD_G2P02760	not_diagnosable	WDR37-related syndromic intellectual disability -> Syndromic intellectual disability
-ddd_hpo	DDD_G2P02762	not_diagnosable	POLR2A-related syndromic intellectual disability -> Syndromic intellectual disability
+ddd_hpo	DDD_G2P02762	not_diagnosable	POLR2A-related syndromic intellectual disability -> Neurodevelopmental disorder with hypotonia and variable intellectual and behavioral abnormalities
 ddd_hpo	DDD_G2P02776	in_input	CNOT1-related holoprosencephaly with or without pancreatic agenesis -> Holoprosencephaly
 ddd_hpo	DDD_G2P02777	clinical	POLA1-related Van Esch-O'Driscoll syndrome -> Van Esch-O'Driscoll syndrome
 ddd_hpo	DDD_G2P02780	clinical	ACTL6B-related intellectual developmental disorder with severe speech and ambulation defects -> Intellectual developmental disorder with severe speech and ambulation defects
-ddd_hpo	DDD_G2P02783	not_diagnosable	CDK8-related syndromic intellectual disability -> Syndromic intellectual disability
+ddd_hpo	DDD_G2P02783	clinical	CDK8-related syndromic intellectual disability -> Intellectual developmental disorder with hypotonia and behavioral abnormalities
 ddd_hpo	DDD_G2P02793	clinical	NBAS-related acute liver failure in infancy and childhood; short stature, optic nerve atrophy, and Pelger-Huet anomaly -> SOPH syndrome
-ddd_hpo	DDD_G2P02796	not_diagnosable	WDFY3-related primary microcephaly or macrocephaly with developmental delay -> Microcephaly or macrocephaly with developmental delay
+ddd_hpo	DDD_G2P02796	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02797	clinical	MYRF-related pulmonary artery and lung hypoplasia, agonadism, omphalocele, diaphragmatic defects, hypoplastic left heart, and scimitar syndrome -> Scimitar syndrome
-ddd_hpo	DDD_G2P02798	not_diagnosable	LINGO1 related intellectual disability with microcephaly, speech and motor delay -> Intellectual disability with microcephaly, speech and motor delay
+ddd_hpo	DDD_G2P02798	clinical	LINGO1 related intellectual disability with microcephaly, speech and motor delay -> Intellectual disability with microcephaly, speech and motor delay
 ddd_hpo	DDD_G2P02800	clinical	LARGE1-related muscular dystrophy-dystroglycanopathy congenital with intellectual developmental disorder -> Congenital muscular dystrophy-dystroglycanopathy with intellectual developmental disorder
-ddd_hpo	DDD_G2P02802	not_diagnosable	KCNT2-related developmental and infantile epileptic encephalopathy -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02804	not_diagnosable	KIF14-related severe microcephaly and short stature -> Microcephaly and short stature
-ddd_hpo	DDD_G2P02805	clinical	DACT1-related multiple malformations of neural tube, ear, genitourinary and gastrointestinal systems -> Multiple malformations of neural tube, ear, genitourinary and gastrointestinal systems
+ddd_hpo	DDD_G2P02802	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P02804	clinical	KIF14-related severe microcephaly and short stature -> Microcephaly-short stature disorder
+ddd_hpo	DDD_G2P02805	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02829	not_diagnosable	NCOR1-related developmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P02847	clinical	EMC1-related global developmental delay, hypotonia, scoliosis, and cerebellar atrophy -> Global developmental delay, hypotonia, scoliosis, and cerebellar atrophy
-ddd_hpo	DDD_G2P02850	not_diagnosable	MAB21L2-related syndromic microphthalmia -> Syndromic microphthalmia
+ddd_hpo	DDD_G2P02850	clinical	MAB21L2-related syndromic microphthalmia -> Syndromic microphthalmia
 ddd_hpo	DDD_G2P02857	not_diagnosable	KCND3-related developmental disorder -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P02858	clinical	HK1-related developmental disorder -> Neurodevelopmental disorder with visual defects and brain anomalies
 ddd_hpo	DDD_G2P02860	clinical	MEIS2-related developmental disorder -> Cleft palate, cardiac defects, and intellectual disability
 ddd_hpo	DDD_G2P02862	clinical	NSD2-related developmental disorder -> Rauch-Steindl syndrome
-ddd_hpo	DDD_G2P02865	not_diagnosable	PBX1-related developmental disorder -> Congenital anomalies of kidney and urinary tract with or without hearing loss, abnormal ears, or developmental delay
+ddd_hpo	DDD_G2P02865	not_diagnosable	PBX1-related developmental disorder -> Congenital anomalies of kidney and urinary tract syndrome with or without hearing loss, abnormal ears, or developmental delay
 ddd_hpo	DDD_G2P02871	clinical	ZNF292-related developmental disorder -> Neurodevelopmental disorder with hypotonia and dysmorphic facies
-ddd_hpo	DDD_G2P02876	not_diagnosable	GNB2-related developmental disorder -> Global developmental delay with speech and behavioral abnormalities
+ddd_hpo	DDD_G2P02876	not_diagnosable	GNB2-related developmental disorder -> Developmental disorder
 ddd_hpo	DDD_G2P02881	clinical	GRIA2-related developmental disorder -> Neurodevelopmental disorder with language impairment and behavioral abnormalities
 ddd_hpo	DDD_G2P02884	not_diagnosable	U2AF2-related neurodevelopmental disorder -> Neurodevelopmental disorder
-ddd_hpo	DDD_G2P02891	not_diagnosable	ATP6V0A1-related developmental disorder -> Developmental and epileptic encephalopathy
-ddd_hpo	DDD_G2P02893	not_diagnosable	SATB1-related developmental disorder -> SATB1-related neurodevelopmental disorder
+ddd_hpo	DDD_G2P02891	clinical	ATP6V0A1-related developmental disorder -> Developmental and epileptic encephalopathy
+ddd_hpo	DDD_G2P02893	not_diagnosable	SATB1-related developmental disorder -> Developmental disorder
 ddd_hpo	DDD_G2P02903	clinical	ZMYM2-related developmental disorder -> Neurodevelopmental disorder with dysmorphic facies and variable congenital anomalies
 ddd_hpo	DDD_G2P02905	clinical	ARHGEF9-related developmental disorder -> Hyperekplexia and epilepsy
 ddd_hpo	DDD_G2P02909	clinical	USP7-related developmental disorder -> Hao-Fountain syndrome
@@ -1676,27 +1709,32 @@ ddd_hpo	DDD_G2P02910	clinical	EDAR-related hypohidrotic ectodermal dysplasia -> 
 ddd_hpo	DDD_G2P02928	clinical	TET3-related DNA demethylation disorder -> Beck-Fahrner syndrome
 ddd_hpo	DDD_G2P02936	not_diagnosable	SPOP-related neurodevelopmental disorder, gain of function -> Neurodevelopmental disorder
 ddd_hpo	DDD_G2P02941	clinical	POLR1C-related leukodystrophy -> Hypomyelinating leukodystrophy
-ddd_hpo	DDD_G2P02951	clinical	KATNB1-related complex cerebral malformations -> Lissencephaly with microcephaly
+ddd_hpo	DDD_G2P02951	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02959	not_diagnosable	SIAH1-related neurodevelopmental disorder -> Neurodevelopmental disorder
-ddd_hpo	DDD_G2P02967	clinical	SOX6-related neurodevelopmental syndrome -> Tolchin-Le Caignec syndrome
+ddd_hpo	DDD_G2P02967	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P02974	clinical	ECM1-related lipoid proteinosis -> Lipoid proteinosis
 ddd_hpo	DDD_G2P02986	clinical	GATA3-related hypoparathyroidism, sensorineural deafness, and renal disease -> Hypoparathyroidism, sensorineural deafness, and renal disease
 ddd_hpo	DDD_G2P02991	clinical	CYFIP2-related epileptic encephalopathy, early infantile -> Epileptic encephalopathy, early infantile
-ddd_hpo	DDD_G2P02994	clinical	GEMIN4-related neurodevelopmental disorder with microcephaly, cataracts, and renal abnormalities -> Neurodevelopmental disorder with microcephaly, cataracts, and renal abnormalities
+ddd_hpo	DDD_G2P02994	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03005	clinical	TRMT10A-related intellectual developmental disorder -> Microcephaly, short stature, and impaired glucose metabolism
 ddd_hpo	DDD_G2P03006	clinical	WFS1-related Wolfram-like syndrome -> Wolfram-like syndrome
 ddd_hpo	DDD_G2P03007	clinical	WFS1-related Wolfram-like syndrome -> Wolfram-like syndrome
 ddd_hpo	DDD_G2P03013	clinical	TFE3-related intellectual disability with pigmentary mosaicism and coarse features -> Intellectual disability with pigmentary mosaicism and coarse features
 ddd_hpo	DDD_G2P03018	clinical	ATP1A2-related migraine, familial hemiplegic -> Familial hemiplegic migraine
 ddd_hpo	DDD_G2P03019	in_input	DISP1-related holoprosencephaly -> Holoprosencephaly
+ddd_hpo	DDD_G2P03019	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03020	not_diagnosable	TANC2-related neurodevelopmental and psychiatric disorders -> Neurodevelopmental and psychiatric disorders
-ddd_hpo	DDD_G2P03021	clinical	CHD1-related neurodevelopment disorder -> Pilarowski-Bjornsson syndrome
+ddd_hpo	DDD_G2P03020	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P03021	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03022	not_diagnosable	RBFOX1-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P03022	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03023	clinical	CNNM2-related neurodevelopmental disorder with hypomagnesemia -> Hypomagnesemia, seizures, and impaired intellectual development
-ddd_hpo	DDD_G2P03024	clinical	CNNM2-related neurodevelopmental disorder with hypomagnesemia -> Hypomagnesemia, seizures, and impaired intellectual development
+ddd_hpo	DDD_G2P03024	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03025	not_diagnosable	CTNND2-related neurodevelopmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P03025	excluded	cause C: no specific HPO term left
 ddd_hpo	DDD_G2P03026	in_input	FGF14-related episodic ataxia -> Episodic ataxia
-ddd_hpo	DDD_G2P03037	not_diagnosable	ZBTB7A-related developmental disorder -> Neurodevelopmental disorder
+ddd_hpo	DDD_G2P03026	excluded	cause C: no specific HPO term left
+ddd_hpo	DDD_G2P03037	not_diagnosable	ZBTB7A-related developmental disorder -> Developmental disorder
 ddd_hpo	DDD_G2P03104	clinical	BRF1-related cerebellofaciodental syndrome -> Cerebellofaciodental syndrome
 ddd_hpo	DDD_G2P03112	clinical	NFE2L2-related leukoencephalopathy, immune deficiency and hypohomocysteinaemia -> Leukoencephalopathy, immune deficiency, and hypohomocysteinemia
 ddd_hpo	DDD_G2P03125	clinical	FBN1-related Marfan syndrome -> Marfan syndrome
@@ -1724,10 +1762,10 @@ ddd_hpo	DDD_G2P03499	clinical	MYH8-related Trismus-pseudocamptodactyly syndrome 
 ddd_hpo	DDD_G2P03520	clinical	TMEM63B-related developmental and epileptic encephalopathy with anaemia -> Developmental and epileptic encephalopathy with anemia
 ddd_hpo	DDD_G2P03525	clinical	INTS1-related neurodevelopmental disorder with cataracts, hypotonia and gait abnormality -> Neurodevelopmental disorder with cataracts, hypotonia, and gait abnormality
 ddd_hpo	DDD_G2P03549	clinical	INTS11-related neurodevelopmental disorder with motor and language delay, ocular defects, and brain abnormalities -> Neurodevelopmental disorder with motor and language delay, ocular defects, and brain abnormalities
-ddd_hpo	DDD_G2P03560	not_diagnosable	PLS3-related osteoporosis with fractures -> Osteoporosis with fractures
+ddd_hpo	DDD_G2P03560	not_diagnosable	PLS3-related osteoporosis with fractures -> Osteoporosis, X-linked
 ddd_hpo	DDD_G2P03561	clinical	PLS3-related diaphragmatic hernia and body-wall defects -> Diaphragmatic hernia and body-wall defects
 ddd_hpo	DDD_G2P03594	not_diagnosable	UBA2-related congenital anomalies with or without aplasia cutis congenita and ectrodactyly and variable developmental delay -> Congenital anomalies with or without aplasia cutis congenita and ectrodactyly and variable developmental delay
-ddd_hpo	DDD_G2P03704	not_diagnosable	PLD1-related cardiac valvular dysplasia -> Cardiac valvular dysplasia
+ddd_hpo	DDD_G2P03704	not_diagnosable	PLD1-related cardiac valvular dysplasia -> Congenital cardiac valvular dysplasia
 ddd_hpo	DDD_G2P03703	clinical	GSC-related short stature, auditory canal atresia, mandibular hypoplasia, and skeletal abnormalities (SAMS) -> SAMS syndrome
 ddd_hpo	DDD_G2P03724	clinical	WBP4-related neurodevelopmental disorder with hypotonia, feeding difficulties, facial dysmorphism, and brain abnormalities -> Neurodevelopmental disorder with hypotonia, feeding difficulties, facial dysmorphism, and brain abnormalities
 ddd_hpo	DDD_G2P03725	clinical	MIR140-related spondyloepiphyseal dysplasia, Nishimura type -> Spondyloepiphyseal dysplasia, Nishimura type
@@ -1737,68 +1775,52 @@ ddd_hpo	DDD_G2P03740	clinical	NUDCD2-related brain and cardiac malformations wit
 ramedis_hpo	RAMEDIS_003	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_004	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_007	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_008	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_010	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_012	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_015	clinical	Hyperinsulinemic Hypoglycemia, Familial, 2 -> Familial hyperinsulinemic hypoglycemia
 ramedis_hpo	RAMEDIS_018	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_020	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
 ramedis_hpo	RAMEDIS_021	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_022	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_025	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_038	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_043	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_048	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_050	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_055	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_074	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_075	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_076	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_078	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_079	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_081	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_083	clinical	Glycogen storage disease due to glycogen debranching enzyme deficiency -> Glycogen storage disease type III
-ramedis_hpo	RAMEDIS_084	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_090	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_097	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_098	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_108	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_110	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_114	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_120	clinical	GLYCOGEN STORAGE DISEASE IXb -> Glycogen storage disease type IX
 ramedis_hpo	RAMEDIS_122	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_124	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_126	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_129	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
-ramedis_hpo	RAMEDIS_132	excluded	T3 cause B: Alkaptonuria with seizures and death in childhood
 ramedis_hpo	RAMEDIS_133	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_134	clinical	ACYL-CoA DEHYDROGENASE, VERY LONG-CHAIN, DEFICIENCY OF -> Very long-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_138	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_145	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_146	clinical	ACYL-CoA DEHYDROGENASE, SHORT-CHAIN, DEFICIENCY OF -> Short-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_161	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
 ramedis_hpo	RAMEDIS_164	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_165	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_168	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_170	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_173	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_180	clinical	ACYL-CoA DEHYDROGENASE, VERY LONG-CHAIN, DEFICIENCY OF -> Very long-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_182	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_192	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_196	clinical	GLYCOGEN STORAGE DISEASE Ia -> Glycogen storage disease type Ia
 ramedis_hpo	RAMEDIS_198	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_199	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_201	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_204	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_209	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_212	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_215	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_217	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_225	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_228	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_239	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_240	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_242	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_247	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_253	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_254	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
@@ -1806,78 +1828,57 @@ ramedis_hpo	RAMEDIS_257	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENC
 ramedis_hpo	RAMEDIS_259	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
 ramedis_hpo	RAMEDIS_269	clinical	Carnitine palmitoyl transferase 1A deficiency -> Carnitine palmitoyltransferase 1A deficiency
 ramedis_hpo	RAMEDIS_271	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_272	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_273	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_274	clinical	ACYL-CoA DEHYDROGENASE, VERY LONG-CHAIN, DEFICIENCY OF -> Very long-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_283	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_284	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_291	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_293	clinical	Adrenal Hyperplasia, Congenital, Due To 21-Hydroxylase Deficiency -> Congenital adrenal hyperplasia due to 21-hydroxylase deficiency
-ramedis_hpo	RAMEDIS_295	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_296	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_298	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_299	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_300	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_302	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_303	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_307	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_308	clinical	Adrenal Hyperplasia, Congenital, Due To 21-Hydroxylase Deficiency -> Congenital adrenal hyperplasia due to 21-hydroxylase deficiency
 ramedis_hpo	RAMEDIS_311	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_314	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_316	in_input	D-2-Hydroxyglutaric Aciduria 1 -> D-2-hydroxyglutaric aciduria
 ramedis_hpo	RAMEDIS_317	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_323	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_326	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
-ramedis_hpo	RAMEDIS_330	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_340	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_345	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_346	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_354	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_356	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_361	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
-ramedis_hpo	RAMEDIS_364	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_367	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_375	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_384	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_386	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_387	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_398	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
-ramedis_hpo	RAMEDIS_399	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
+ramedis_hpo	RAMEDIS_406	excluded	cause C: no specific HPO term left
 ramedis_hpo	RAMEDIS_408	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_411	clinical	Mucopolysaccharidosis type 2 -> Mucopolysaccharidosis type II
 ramedis_hpo	RAMEDIS_416	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_418	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-ramedis_hpo	RAMEDIS_421	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_424	in_input	METHYLMALONIC ACIDURIA, cblA TYPE -> Methylmalonic aciduria
-ramedis_hpo	RAMEDIS_428	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_431	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_434	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_435	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_437	clinical	Alpha-Methylacetoacetic Aciduria -> Beta-ketothiolase deficiency
-ramedis_hpo	RAMEDIS_438	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_439	clinical	Ceroid Lipofuscinosis, Neuronal, 1 -> Neuronal ceroid lipofuscinosis
 ramedis_hpo	RAMEDIS_442	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
-ramedis_hpo	RAMEDIS_447	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_449	clinical	Homocystinuria Due To Deficiency Of N(5,10)-Methylenetetrahydrofolate Reductase Activity -> Homocystinuria due to methylene tetrahydrofolate reductase deficiency
 ramedis_hpo	RAMEDIS_450	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_454	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
 ramedis_hpo	RAMEDIS_455	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_458	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_460	clinical	Fructose Intolerance, Hereditary -> Hereditary fructose intolerance
-ramedis_hpo	RAMEDIS_461	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_465	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_467	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
+ramedis_hpo	RAMEDIS_466	excluded	cause C: no specific HPO term left
 ramedis_hpo	RAMEDIS_470	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_472	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_477	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_480	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_492	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_493	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
+ramedis_hpo	RAMEDIS_494	excluded	cause C: no specific HPO term left
 ramedis_hpo	RAMEDIS_495	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
-ramedis_hpo	RAMEDIS_496	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_497	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_500	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_505	clinical	GLYCOGEN STORAGE DISEASE Ia -> Glycogen storage disease type Ia
 ramedis_hpo	RAMEDIS_512	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_513	clinical	ACYL-CoA DEHYDROGENASE, VERY LONG-CHAIN, DEFICIENCY OF -> Very long-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_515	clinical	Carnitine palmitoyl transferase II deficiency, myopathic form -> Carnitine palmitoyltransferase II deficiency, myopathic form
@@ -1890,24 +1891,17 @@ ramedis_hpo	RAMEDIS_539	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENC
 ramedis_hpo	RAMEDIS_543	clinical	Carnitine Deficiency, Systemic Primary -> Systemic primary carnitine deficiency
 ramedis_hpo	RAMEDIS_547	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_551	clinical	ACYL-CoA DEHYDROGENASE, SHORT-CHAIN, DEFICIENCY OF -> Short-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_556	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_557	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_559	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
 ramedis_hpo	RAMEDIS_564	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_565	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_567	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_572	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syrup urine disease
 ramedis_hpo	RAMEDIS_579	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
-ramedis_hpo	RAMEDIS_580	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_581	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_589	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_591	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_592	clinical	GLYCOGEN STORAGE DISEASE IXb -> Glycogen storage disease type IX
 ramedis_hpo	RAMEDIS_594	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_596	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
 ramedis_hpo	RAMEDIS_600	clinical	ACYL-CoA DEHYDROGENASE, VERY LONG-CHAIN, DEFICIENCY OF -> Very long-chain acyl-CoA dehydrogenase deficiency
-ramedis_hpo	RAMEDIS_601	clinical	GLYCOGEN STORAGE DISEASE Ib -> Glycogen storage disease type Ib
-ramedis_hpo	RAMEDIS_602	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 ramedis_hpo	RAMEDIS_606	clinical	Mitochondrial Complex Iv Deficiency, Nuclear Type 1 -> Mitochondrial complex IV deficiency
 ramedis_hpo	RAMEDIS_608	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_609	clinical	Ornithine Transcarbamylase Deficiency, Hyperammonemia Due To -> Ornithine transcarbamylase deficiency
@@ -1917,11 +1911,10 @@ ramedis_hpo	RAMEDIS_617	clinical	Maple Syrup Urine Disease, Type Ia -> Maple syr
 ramedis_hpo	RAMEDIS_618	clinical	Mitochondrial Dna Depletion Syndrome 3 (Hepatocerebral Type) -> Mitochondrial DNA depletion syndrome, hepatocerebral form
 ramedis_hpo	RAMEDIS_622	clinical	ACYL-CoA DEHYDROGENASE, MEDIUM-CHAIN, DEFICIENCY OF -> Medium-chain acyl-CoA dehydrogenase deficiency
 ramedis_hpo	RAMEDIS_623	clinical	PMM2-CDG -> Congenital disorder of glycosylation type Ia
-lirical_hpo	LIRICAL_001	clinical	Glutaric Acidemia I -> Glutaric acidemia type I
 lirical_hpo	LIRICAL_002	clinical	Autosomal dominant hyper-IgE syndrome -> Hyper-IgE syndrome, autosomal dominant
-lirical_hpo	LIRICAL_005	not_diagnosable	Intellectual Developmental Disorder, Autosomal Dominant 42 -> Intellectual developmental disorder
+lirical_hpo	LIRICAL_005	not_diagnosable	Intellectual Developmental Disorder, Autosomal Dominant 42 -> Intellectual disability
 lirical_hpo	LIRICAL_007	clinical	Trichomegaly-retina pigmentary degeneration-dwarfism syndrome -> Oliver-McFarlane syndrome
-lirical_hpo	LIRICAL_009	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_009	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_010	clinical	Arthrogryposis, Distal, With Impaired Proprioception And Touch -> Distal arthrogryposis with impaired proprioception and touch
 lirical_hpo	LIRICAL_011	clinical	Ehlers-Danlos Syndrome, Classic Type, 2 -> Classic Ehlers-Danlos syndrome
 lirical_hpo	LIRICAL_015	clinical	Trichothiodystrophy 3, Photosensitive -> Trichothiodystrophy, photosensitive
@@ -1945,7 +1938,7 @@ lirical_hpo	LIRICAL_051	clinical	Osteogenesis Imperfecta, Type Viii -> Osteogene
 lirical_hpo	LIRICAL_055	clinical	Cutis Laxa, Autosomal Recessive, Type Iid -> Cutis laxa, autosomal recessive
 lirical_hpo	LIRICAL_056	clinical	Long Qt Syndrome 14 -> Long QT syndrome
 lirical_hpo	LIRICAL_057	clinical	Myasthenic Syndrome, Congenital, 9, Associated With Acetylcholine Receptor Deficiency -> Congenital myasthenic syndrome with acetylcholine receptor deficiency
-lirical_hpo	LIRICAL_058	clinical	ALG9-CDG -> Congenital disorder of glycosylation type IL
+lirical_hpo	LIRICAL_058	clinical	ALG9-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_059	clinical	Holoprosencephaly 5 -> Holoprosencephaly
 lirical_hpo	LIRICAL_060	clinical	NKX6-2-related autosomal recessive hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
 lirical_hpo	LIRICAL_066	clinical	Imerslund-Grasbeck Syndrome 1 -> Imerslund-Grasbeck syndrome
@@ -1960,7 +1953,7 @@ lirical_hpo	LIRICAL_087	clinical	Encephalopathy, Neonatal Severe, With Lactic Ac
 lirical_hpo	LIRICAL_092	clinical	Fanconi Anemia, Complementation Group I -> Fanconi anemia
 lirical_hpo	LIRICAL_095	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
 lirical_hpo	LIRICAL_096	clinical	Cockayne Syndrome A -> Cockayne syndrome
-lirical_hpo	LIRICAL_099	not_diagnosable	Bleeding Disorder, Platelet-Type, 15 -> Bleeding disorder, platelet-type
+lirical_hpo	LIRICAL_099	clinical	Bleeding Disorder, Platelet-Type, 15 -> Bleeding disorder, platelet-type
 lirical_hpo	LIRICAL_100	clinical	Marfan syndrome type 1 -> Marfan syndrome
 lirical_hpo	LIRICAL_101	clinical	Retinitis Pigmentosa 11 -> Retinitis pigmentosa
 lirical_hpo	LIRICAL_104	clinical	NKX6-2-related autosomal recessive hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
@@ -1968,9 +1961,9 @@ lirical_hpo	LIRICAL_108	clinical	Distal myotilinopathy -> Distal myopathy
 lirical_hpo	LIRICAL_109	clinical	Cornelia De Lange Syndrome 3 With Or Without Midline Brain Defects -> Cornelia de Lange syndrome
 lirical_hpo	LIRICAL_116	clinical	Spondylocostal Dysostosis 1, Autosomal Recessive -> Spondylocostal dysostosis
 lirical_hpo	LIRICAL_123	clinical	Congenital Myopathy 2A, Typical, Autosomal Dominant -> Congenital myopathy
-lirical_hpo	LIRICAL_124	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_124	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_125	clinical	Bardet-Biedl Syndrome 4 -> Bardet-Biedl syndrome
-lirical_hpo	LIRICAL_127	not_diagnosable	Cardiomyopathy, Dilated, 1G -> Dilated cardiomyopathy
+lirical_hpo	LIRICAL_127	in_input	Cardiomyopathy, Dilated, 1G -> Dilated cardiomyopathy
 lirical_hpo	LIRICAL_129	clinical	Joubert Syndrome 30 -> Joubert syndrome
 lirical_hpo	LIRICAL_133	clinical	Galloway-Mowat Syndrome 4 -> Galloway-Mowat syndrome
 lirical_hpo	LIRICAL_137	clinical	Ectodermal Dysplasia 9, Hair/Nail Type -> Ectodermal dysplasia, hair/nail type
@@ -1983,7 +1976,7 @@ lirical_hpo	LIRICAL_147	clinical	Autosomal recessive spastic paraplegia type 76 
 lirical_hpo	LIRICAL_148	clinical	Neurodegeneration With Brain Iron Accumulation 2B -> Neurodegeneration with brain iron accumulation
 lirical_hpo	LIRICAL_150	clinical	Palmoplantar Keratoderma, Punctate Type Ia -> Punctate palmoplantar keratoderma
 lirical_hpo	LIRICAL_151	clinical	Neurofibromatosis type 1 due to NF1 mutation or intragenic deletion -> Neurofibromatosis type 1
-lirical_hpo	LIRICAL_152	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_152	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_153	clinical	Retinitis Pigmentosa 78 -> Retinitis pigmentosa
 lirical_hpo	LIRICAL_154	clinical	NKX6-2-related autosomal recessive hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
 lirical_hpo	LIRICAL_158	clinical	Platelet Disorder, Familial, With Associated Myeloid Malignancy -> Familial platelet disorder with associated myeloid malignancy
@@ -1992,14 +1985,14 @@ lirical_hpo	LIRICAL_162	clinical	Ehlers-Danlos Syndrome, Musculocontractural Typ
 lirical_hpo	LIRICAL_163	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
 lirical_hpo	LIRICAL_164	clinical	Autosomal dominant spastic paraplegia type 10 -> Hereditary spastic paraplegia
 lirical_hpo	LIRICAL_168	clinical	Noonan Syndrome 6 -> Noonan syndrome
-lirical_hpo	LIRICAL_171	clinical	Autosomal dominant Charcot-Marie-Tooth disease type 2A2 -> Charcot-Marie-Tooth disease type 2
+lirical_hpo	LIRICAL_171	clinical	Autosomal dominant Charcot-Marie-Tooth disease type 2A2 -> Autosomal dominant Charcot-Marie-Tooth disease type 2
 lirical_hpo	LIRICAL_172	clinical	Treacher Collins Syndrome 2 -> Treacher Collins syndrome
 lirical_hpo	LIRICAL_173	clinical	Holoprosencephaly 4 -> Holoprosencephaly
-lirical_hpo	LIRICAL_176	clinical	Cutis Laxa, Autosomal Recessive, Type Ia -> Autosomal recessive cutis laxa type 1
+lirical_hpo	LIRICAL_176	clinical	Cutis Laxa, Autosomal Recessive, Type Ia -> Autosomal recessive cutis laxa type I
 lirical_hpo	LIRICAL_179	clinical	Cutis Laxa, Autosomal Recessive, Type Iid -> Cutis laxa, autosomal recessive
 lirical_hpo	LIRICAL_182	clinical	Myotonia Congenita, Autosomal Dominant -> Myotonia congenita
 lirical_hpo	LIRICAL_183	clinical	Elliptocytosis 2 -> Hereditary elliptocytosis
-lirical_hpo	LIRICAL_184	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_184	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_185	clinical	Amyotrophic Lateral Sclerosis 1 -> Amyotrophic lateral sclerosis
 lirical_hpo	LIRICAL_186	clinical	Combined oxidative phosphorylation defect type 30 -> Combined oxidative phosphorylation deficiency
 lirical_hpo	LIRICAL_188	clinical	Spherocytosis, Type 5 -> Hereditary spherocytosis
@@ -2014,7 +2007,7 @@ lirical_hpo	LIRICAL_216	clinical	Marfan syndrome type 1 -> Marfan syndrome
 lirical_hpo	LIRICAL_217	clinical	COG8-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_220	clinical	Fetal Gaucher disease -> Perinatal lethal Gaucher disease
 lirical_hpo	LIRICAL_222	clinical	Microcephaly 3, Primary, Autosomal Recessive -> Primary autosomal recessive microcephaly
-lirical_hpo	LIRICAL_223	not_diagnosable	Developmental And Epileptic Encephalopathy 28 -> Developmental and epileptic encephalopathy
+lirical_hpo	LIRICAL_223	clinical	Developmental And Epileptic Encephalopathy 28 -> Developmental and epileptic encephalopathy
 lirical_hpo	LIRICAL_224	clinical	Autosomal recessive cutis laxa type 2B -> Autosomal recessive cutis laxa type 2
 lirical_hpo	LIRICAL_225	clinical	Geleophysic Dysplasia 1 -> Geleophysic dysplasia
 lirical_hpo	LIRICAL_226	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
@@ -2022,24 +2015,24 @@ lirical_hpo	LIRICAL_227	clinical	Cutis Laxa, Autosomal Recessive, Type Iic -> Cu
 lirical_hpo	LIRICAL_230	clinical	Noonan Syndrome 3 -> Noonan syndrome
 lirical_hpo	LIRICAL_231	clinical	Cutis Laxa, Autosomal Recessive, Type Iid -> Cutis laxa, autosomal recessive
 lirical_hpo	LIRICAL_234	clinical	Palmoplantar Keratoderma, Epidermolytic, 1 -> Epidermolytic palmoplantar keratoderma
-lirical_hpo	LIRICAL_235	not_diagnosable	Developmental And Epileptic Encephalopathy 4 -> Developmental and epileptic encephalopathy
+lirical_hpo	LIRICAL_235	clinical	Developmental And Epileptic Encephalopathy 4 -> Developmental and epileptic encephalopathy
 lirical_hpo	LIRICAL_236	clinical	Long Qt Syndrome 15 -> Long QT syndrome
 lirical_hpo	LIRICAL_238	clinical	Microcephaly 6, Primary, Autosomal Recessive -> Primary autosomal recessive microcephaly
 lirical_hpo	LIRICAL_239	clinical	Osteogenesis Imperfecta, Type Xii -> Osteogenesis imperfecta
 lirical_hpo	LIRICAL_244	clinical	Tuberous Sclerosis 2 -> Tuberous sclerosis
 lirical_hpo	LIRICAL_247	clinical	Combined oxidative phosphorylation defect type 30 -> Combined oxidative phosphorylation deficiency
-lirical_hpo	LIRICAL_248	not_diagnosable	Developmental And Epileptic Encephalopathy 14 -> Developmental and epileptic encephalopathy
-lirical_hpo	LIRICAL_249	not_diagnosable	Sick Sinus Syndrome 2 -> Sick sinus syndrome
+lirical_hpo	LIRICAL_248	clinical	Developmental And Epileptic Encephalopathy 14 -> Developmental and epileptic encephalopathy
+lirical_hpo	LIRICAL_249	clinical	Sick Sinus Syndrome 2 -> Sick sinus syndrome
 lirical_hpo	LIRICAL_251	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
 lirical_hpo	LIRICAL_252	clinical	Osteogenesis Imperfecta, Type Ix -> Osteogenesis imperfecta
-lirical_hpo	LIRICAL_255	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_255	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_257	clinical	Retinitis Pigmentosa 78 -> Retinitis pigmentosa
-lirical_hpo	LIRICAL_260	not_diagnosable	Intellectual Developmental Disorder, Autosomal Recessive 18, With Or Without Epilepsy -> Intellectual developmental disorder with or without epilepsy
+lirical_hpo	LIRICAL_260	not_diagnosable	Intellectual Developmental Disorder, Autosomal Recessive 18, With Or Without Epilepsy -> Intellectual disability with or without epilepsy
 lirical_hpo	LIRICAL_261	clinical	Myasthenic Syndrome, Congenital, 8 -> Congenital myasthenic syndrome
 lirical_hpo	LIRICAL_266	clinical	NKX6-2-related autosomal recessive hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
 lirical_hpo	LIRICAL_267	clinical	Tuberous Sclerosis 1 -> Tuberous sclerosis
 lirical_hpo	LIRICAL_270	clinical	Rubinstein-Taybi syndrome due to EP300 haploinsufficiency -> Rubinstein-Taybi syndrome
-lirical_hpo	LIRICAL_272	not_diagnosable	TMEM199-CDG -> Congenital disorder of glycosylation
+lirical_hpo	LIRICAL_272	clinical	TMEM199-CDG -> Congenital disorder of glycosylation
 lirical_hpo	LIRICAL_278	clinical	Microcephalic cortical malformations-short stature due to RTTN deficiency -> Microcephalic cortical malformations-short stature
 lirical_hpo	LIRICAL_281	clinical	Retinitis Pigmentosa 27 -> Retinitis pigmentosa
 lirical_hpo	LIRICAL_283	clinical	Parkinson Disease 23, Autosomal Recessive Early-Onset -> Early-onset Parkinson disease
@@ -2049,13 +2042,13 @@ lirical_hpo	LIRICAL_289	clinical	Cockayne Syndrome B -> Cockayne syndrome
 lirical_hpo	LIRICAL_293	clinical	Bardet-Biedl Syndrome 5 -> Bardet-Biedl syndrome
 lirical_hpo	LIRICAL_294	clinical	Myasthenic Syndrome, Congenital, 22 -> Congenital myasthenic syndrome
 lirical_hpo	LIRICAL_295	clinical	Cutis Laxa, Autosomal Recessive, Type Iic -> Cutis laxa, autosomal recessive
-lirical_hpo	LIRICAL_298	not_diagnosable	Predisposition to invasive fungal disease due to CARD9 deficiency -> Predisposition to invasive fungal disease
+lirical_hpo	LIRICAL_298	not_diagnosable	Predisposition to invasive fungal disease due to CARD9 deficiency -> Susceptibility to invasive fungal disease
 lirical_hpo	LIRICAL_300	clinical	Bardet-Biedl Syndrome 2 -> Bardet-Biedl syndrome
 lirical_hpo	LIRICAL_301	clinical	Marfan syndrome type 1 -> Marfan syndrome
 lirical_hpo	LIRICAL_302	clinical	Diarrhea 8, Secretory Sodium, Congenital -> Congenital secretory sodium diarrhea
 lirical_hpo	LIRICAL_309	clinical	Brugada Syndrome 1 -> Brugada syndrome
 lirical_hpo	LIRICAL_315	clinical	Parkinson Disease 23, Autosomal Recessive Early-Onset -> Early-onset Parkinson disease
-lirical_hpo	LIRICAL_317	clinical	Diarrhea 3, Secretory Sodium, Congenital, With Or Without Other Congenital Anomalies -> Congenital sodium diarrhea
+lirical_hpo	LIRICAL_317	clinical	Diarrhea 3, Secretory Sodium, Congenital, With Or Without Other Congenital Anomalies -> Syndromic congenital sodium diarrhea
 lirical_hpo	LIRICAL_320	clinical	Retinitis Pigmentosa 18 -> Retinitis pigmentosa
 lirical_hpo	LIRICAL_322	clinical	Osteogenesis Imperfecta, Type Xv -> Osteogenesis imperfecta
 lirical_hpo	LIRICAL_324	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
@@ -2067,11 +2060,11 @@ lirical_hpo	LIRICAL_333	clinical	Spherocytosis, Type 4 -> Hereditary spherocytos
 lirical_hpo	LIRICAL_334	clinical	Dyskeratosis Congenita, Autosomal Dominant 3 -> Dyskeratosis congenita
 lirical_hpo	LIRICAL_336	clinical	Congenital Myopathy 4B, Autosomal Recessive -> Congenital myopathy
 lirical_hpo	LIRICAL_337	clinical	Autosomal recessive spastic paraplegia type 76 -> Hereditary spastic paraplegia
-lirical_hpo	LIRICAL_339	not_diagnosable	Bleeding Disorder, Platelet-Type, 17 -> Platelet-type bleeding disorder
+lirical_hpo	LIRICAL_339	clinical	Bleeding Disorder, Platelet-Type, 17 -> Bleeding disorder, platelet-type
 lirical_hpo	LIRICAL_344	clinical	Tuberous Sclerosis 1 -> Tuberous sclerosis
 lirical_hpo	LIRICAL_348	clinical	Cortical Dysplasia, Complex, With Other Brain Malformations 7 -> Complex cortical dysplasia with other brain malformations
 lirical_hpo	LIRICAL_351	clinical	Ventricular Tachycardia, Catecholaminergic Polymorphic, 1, With Or Without Atrial Dysfunction And/Or Dilated Cardiomyopathy -> Catecholaminergic polymorphic ventricular tachycardia
-lirical_hpo	LIRICAL_354	clinical	Bartter Syndrome, Type 4A, Neonatal, With Sensorineural Deafness -> Bartter syndrome type 4
+lirical_hpo	LIRICAL_354	clinical	Bartter Syndrome, Type 4A, Neonatal, With Sensorineural Deafness -> Bartter syndrome, neonatal, with sensorineural deafness
 lirical_hpo	LIRICAL_356	clinical	Thrombocytopenia 3 -> Congenital amegakaryocytic thrombocytopenia
 lirical_hpo	LIRICAL_357	clinical	NKX6-2-related autosomal recessive hypomyelinating leukodystrophy -> Hypomyelinating leukodystrophy
 lirical_hpo	LIRICAL_358	clinical	Niemann-Pick Disease, Type C1 -> Niemann-Pick disease type C
@@ -2091,7 +2084,8 @@ mygene2_hpo	mygene2_386	clinical	Arthrogryposis, Distal, Type 2A -> Freeman-Shel
 mygene2_hpo	mygene2_387	clinical	Arthrogryposis, Distal, Type 2A -> Freeman-Sheldon syndrome
 mygene2_hpo	mygene2_1510	clinical	Mucopolysaccharidosis type 4B -> Mucopolysaccharidosis type IVB
 mygene2_hpo	mygene2_1476	clinical	ADNP-related multiple congenital anomalies-intellectual disability-autism spectrum disorder -> Helsmoortel-Van der Aa syndrome
-mygene2_hpo	mygene2_2541	not_diagnosable	autism (disease) -> Autism
+mygene2_hpo	mygene2_2541	in_input	autism (disease) -> Autism
+mygene2_hpo	mygene2_2541	excluded	cause C: no specific HPO term left
 mygene2_hpo	mygene2_59	clinical	DA2B -> Sheldon-Hall syndrome
 mygene2_hpo	mygene2_1639	clinical	Aicardi-Goutieres syndrome 7 -> Aicardi-Goutières syndrome
 mygene2_hpo	mygene2_1408	clinical	Encephalopathy, Progressive, Early-Onset, with Brain Atrophy and Thin Corpus Callosum; PEBAT -> Progressive early-onset encephalopathy with brain atrophy and thin corpus callosum
@@ -2103,20 +2097,22 @@ mygene2_hpo	mygene2_843	clinical	Postaxial acrofacial dysostosis -> Miller syndr
 mygene2_hpo	mygene2_844	clinical	Postaxial acrofacial dysostosis -> Miller syndrome
 mygene2_hpo	mygene2_4099	clinical	facial dysmorphism-developmental delay-behavioral abnormalities syndrome due to WAC point mutation -> DeSanto-Shinawi syndrome
 mygene2_hpo	mygene2_8	clinical	DA8 -> Distal arthrogryposis
-mygene2_hpo	mygene2_2373	not_diagnosable	autism (disease) -> Autism
+mygene2_hpo	mygene2_2373	in_input	autism (disease) -> Autism
+mygene2_hpo	mygene2_2373	excluded	cause C: no specific HPO term left
 mygene2_hpo	mygene2_1263	clinical	Arthrogryposis, Distal, Type 1A -> Distal arthrogryposis type 1
 mygene2_hpo	mygene2_1264	clinical	Arthrogryposis, Distal, Type 1A -> Distal arthrogryposis type 1
 mygene2_hpo	mygene2_1292	clinical	Arthrogryposis, Distal, Type 1A -> Distal arthrogryposis type 1
 mygene2_hpo	mygene2_16	clinical	DA9 -> Congenital contractural arachnodactyly
 mygene2_hpo	mygene2_17	clinical	DA9 -> Congenital contractural arachnodactyly
-mygene2_hpo	mygene2_225	not_diagnosable	Mental Retardation, Autosomal Dominant 19 -> Autosomal dominant intellectual disability
-mygene2_hpo	mygene2_1391	clinical	Alternating Hemiplegia of Childhood 1 -> Alternating hemiplegia of childhood
+mygene2_hpo	mygene2_225	not_diagnosable	Mental Retardation, Autosomal Dominant 19 -> Intellectual disability
+mygene2_hpo	mygene2_1391	excluded	cause C: no specific HPO term left
 mygene2_hpo	mygene2_20	clinical	DA2B -> Sheldon-Hall syndrome
 mygene2_hpo	mygene2_46	clinical	Dyskinesia, Familial, With Facial Myokymia -> Familial dyskinesia with facial myokymia
 mygene2_hpo	mygene2_1280	clinical	Riboflavin transporter deficiency -> Brown-Vialetto-Van Laere syndrome
+mygene2_hpo	mygene2_2409	excluded	cause C: no specific HPO term left
 mygene2_hpo	mygene2_1569	clinical	Epileptic Encephalopathy, Early Infantile, 2,Early infantile epileptic encephalopathy 2 -> CDKL5 deficiency disorder
-mygene2_hpo	mygene2_2378	not_diagnosable	autism (disease) -> Autism
-mygene2_hpo	mygene2_2379	not_diagnosable	autism (disease) -> Autism
+mygene2_hpo	mygene2_2378	excluded	cause C: no specific HPO term left
+mygene2_hpo	mygene2_2379	excluded	cause C: no specific HPO term left
 mygene2_hpo	mygene2_838	clinical	Hypotonia, Infantile, with Psychomotor Retardation and Characteristic Facies 3; IHPRF3 -> Hypotonia, infantile, with psychomotor retardation and characteristic facies
 mygene2_hpo	mygene2_1359	clinical	osteogenesis imperfecta type 14 -> Osteogenesis imperfecta
 mygene2_hpo	mygene2_79	clinical	DA2B -> Sheldon-Hall syndrome
@@ -2127,9 +2123,11 @@ mygene2_hpo	mygene2_1294	clinical	Arthrogryposis, Distal, Type 1A -> Distal arth
 mygene2_hpo	mygene2_94	clinical	Opitz Gbbb Syndrome, Type 1 -> Opitz G/BBB syndrome
 hms_hpo	HMS_000	clinical	Spondyloarthropathy, Susceptibility To, 1 -> Ankylosing spondylitis
 hms_hpo	HMS_008	clinical	Spondyloarthropathy, Susceptibility To, 1 -> Ankylosing spondylitis
+hms_hpo	HMS_011	gold_fixed	Reactive arthritis -> Primary Sjögren syndrome
 hms_hpo	HMS_012	in_input	Focal Segmental Glomerulosclerosis 1 -> Focal segmental glomerulosclerosis
 hms_hpo	HMS_028	clinical	Spondyloarthropathy, Susceptibility To, 1 -> Ankylosing spondylitis
 hms_hpo	HMS_034	clinical	Spondyloarthropathy, Susceptibility To, 1 -> Ankylosing spondylitis
+hms_hpo	HMS_035	gold_fixed	Reactive arthritis -> Familial Mediterranean fever
 hms_hpo	HMS_048	clinical	Antiphospholipid Syndrome, Familial -> Antiphospholipid syndrome
 hms_hpo	HMS_055	clinical	Tumor necrosis factor receptor 1 associated periodic syndrome -> Tumor necrosis factor receptor-associated periodic syndrome
 hms_hpo	HMS_056	clinical	Familial Mediterranean Fever, Autosomal Dominant -> Familial Mediterranean fever

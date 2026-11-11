@@ -83,7 +83,7 @@ El nombre sin gen lo propone Gemini 2.5 Pro (el LLM de curación de
 `narrative_v2`), una vez por nombre de gold único (2.152), con las reglas de
 arriba en el prompt.
 
-## Versión v3 (10-nov-2026, pendiente de validar)
+## Versión v3 (10-nov-2026, validada en la tarea 4)
 
 David revisó una muestra al azar de la v2 en la
 [tarea 3](../../../docs/tareas-david/03-nombres-sin-gen-raras.md). Cerca de la
@@ -99,54 +99,91 @@ sentidos:
 Por eso la v3 rehace los nombres de todos los casos:
 
 - **Instrucciones con los criterios de David.** Se quitan los tipos que se
-  numeran por gen. Si el nombre sin gen engloba varias enfermedades, se usa el
-  nombre propio sin gen: un subtipo anterior al gen o un epónimo. Se mantienen
-  los calificativos que no dependen del gen, y la herencia cuando separa
+  numeran por gen, también cuando parecen tipos clínicos («Kleefstra syndrome
+  2»). Si el nombre sin gen engloba varias enfermedades, se usa el nombre propio
+  sin gen: un subtipo anterior al gen o un epónimo. Se mantienen los
+  calificativos que no dependen del gen, y la herencia cuando separa
   enfermedades distintas. Un título descriptivo con dos o más rasgos
-  obligatorios es una entidad.
+  obligatorios es una entidad. El nombre de una serie numerada por gen, sin el
+  número, es una entidad («Developmental and epileptic encephalopathy»,
+  «Autosomal recessive primary microcephaly»), salvo las de discapacidad
+  intelectual.
 - **Gemini 3.8 Flash** en lugar de 2.5 Pro, que Google retira el 1-dic-2026.
-  Los 2.152 nombres costaron 0,44 $. Con razonamiento `medium` salió peor que
-  con `low`: lotes sin JSON y más fallos.
-- **Respuestas de David tal cual.** Sus 41 decisiones de los bloques A–C
-  (`REVIEWED_CLINICAL`) se aplican a todos los casos con esos gold. Sin
-  ellas, el LLM coincide con él en 37 de 41, frente a 25 de 41 en la v2. La
-  cifra es optimista, porque los criterios salen de esa muestra. Lo mide de
-  verdad la [tarea 4](../../../docs/tareas-david/04-nombres-sin-gen-v3.md),
-  con 24 casos nuevos.
-- **Vuelven las 7 fenilcetonurias con hipertirosinemia.** David decidió en el
-  bloque G que es ruido de la codificación de RAMEDIS y que los 115 casos se
-  quedan.
+  Los 2.152 nombres costaron 0,44 $, y repasar 335 con el criterio de las series,
+  0,07 $ (`refine`). Con razonamiento `medium` salió peor que con `low`: lotes
+  sin JSON y más fallos.
+- **Respuestas de David tal cual.** Sus 70 decisiones de las tareas 3 y 4
+  (`REVIEWED_CLINICAL`) se aplican a todos los casos con esos gold.
+- **Validación (tarea 4).** Una muestra nueva al azar de 24 casos, sin ver
+  resultados de los modelos. Bien 19 de 24 (79 %): 10 de 12 en el bloque A, 5 de
+  6 en el B y 4 de 6 en el C. Los fallos eran el número de una serie y series
+  dadas por genéricas, y de ahí sale el repaso con `refine`, que cambió 167
+  nombres y no se ha validado aparte.
+- **Vuelven las 7 fenilcetonurias con hipertirosinemia y la alcaptonuria
+  RAMEDIS_132.** David decidió que la hipertirosinemia de RAMEDIS y los términos
+  de muerte son ruido de la codificación.
+- **Regla de la causa C (David, tareas 3 y 4).** Sale el caso que, tras quitar
+  los términos que no describen al paciente y los genéricos del neurodesarrollo,
+  no conserva ningún término específico (`specific_terms`):
+  - Términos que no describen al paciente: herencia, modificadores, edad de
+    inicio, obsoletos y los que repiten el gold o su nombre sin gen.
+  - Genéricos del neurodesarrollo: discapacidad intelectual, retrasos, crisis
+    sin tipo, hipotonía, autismo y sus conductas, EEG anormal y los términos
+    «Abnormality of…».
+  - En RAMEDIS se quitan también los términos de muerte.
+  - Dos términos opuestos (macrocefalia y microcefalia) no cuentan.
+
+  Salen 107 casos. Reproduce 8 de sus 9 decisiones: el caso CHD8 de autismo
+  (DDD_G2P01363), que él marcó «contar aparte», sale con la lista ampliada.
+- **Gold corregido en HMS_011 y HMS_035.** El nombre «Reactive arthritis» venía
+  de un grupo de códigos de artritis del origen. Pasa a ser la enfermedad de su
+  código OMIM: síndrome de Sjögren y fiebre mediterránea familiar.
+- **Bloque D.** El término HPO igual al nombre sin gen es una fuga del
+  diagnóstico. Si sin él no queda fenotipo, el caso sale (regla de la causa C).
+  Si queda, no se acepta ese nombre. En los 3 casos que revisó David se usa uno
+  más específico (cutis laxa autosómica recesiva tipo I, aciduria
+  metilmalónica por déficit de mutasa, paraplejia espástica con cuerpo calloso
+  fino).
 - **Corregida una errata del gold:** «isobutryl» por «isobutyryl».
 
-| Dataset | Casos | Excluidos | Con nombre sin gen | Sin él: rasgo genérico | Sin él: está en los HPO |
-|---|---:|---:|---:|---:|---:|
-| DDD | 1.749 | 3 | 1.434 | 256 | 41 |
-| RAMEDIS | 624 | 1 | 180 | 0 | 2 |
-| LIRICAL | 370 | 0 | 146 | 16 | 0 |
-| MyGene2 | 146 | 0 | 41 | 5 | 0 |
-| HMS | 88 | 0 | 12 | 0 | 1 |
-| MME | 40 | 0 | 7 | 0 | 0 |
-| **Total** | **3.017** | **4** | **1.820** | **277** | **44** |
+| Dataset | Casos | Excluidos (T3) | Excluidos (causa C) | Con nombre sin gen | Sin él: rasgo genérico | Sin él: está en los HPO |
+|---|---:|---:|---:|---:|---:|---:|
+| DDD | 1.749 | 3 | 98 | 1.459 | 169 | 43 |
+| RAMEDIS | 624 | 0 | 3 | 134 | 0 | 2 |
+| LIRICAL | 370 | 0 | 0 | 157 | 3 | 1 |
+| MyGene2 | 146 | 0 | 6 | 40 | 1 | 2 |
+| HMS | 88 | 0 | 0 | 12 | 0 | 1 |
+| MME | 40 | 0 | 0 | 7 | 0 | 0 |
+| **Total** | **3.017** | **3** | **107** | **1.809** | **173** | **49** |
 
-Frente a la v2:
-- 308 casos que se quedaban sin nombre por «genéricos» lo tienen ahora, casi
-  siempre un epónimo.
-- 357 cambian de nombre.
-- 20 lo pierden.
+En RAMEDIS bajan los nombres sin gen porque muchos solo reescribían el mismo
+nombre («Glutaric acidemia type I») y ahora salen igual que el gold: no cambia
+la nota.
+
+**Puntuación (10-nov-2026).** Sobre los mismos casos, con el mismo juez y la
+misma rúbrica, los nombres de la v3 suben el R@1 de Terra del 41,6 % al 43,3 %
+y el de Sol del 47,7 % al 49,3 %. El total, con los 107 casos fuera, pasa al
+43,1 % en Terra y al 49,2 % en Sol. Detalle en el README de Pipeline V5 («HPO
+v3: Terra y Sol con el gold nuevo»).
 
 **Pendiente:**
-- La tarea 4 de David.
-- Volver a puntuar las listas de Terra y Sol y publicar las cifras de antes y
-  de después. No se hace hasta que la tarea 4 dé por buena la v3.
+- **Nombre legible que en realidad es el nombre sin gen.** En algunos gold, el
+  nombre legible (`readable_name`, que solo debía desarrollar abreviaturas)
+  quita el gen: «Constitutional mismatch repair deficiency syndrome» para el
+  gold de PMS2. Va en `accepted_names` del gold con gen y cuenta en la nota
+  «solo con gen». Corregirlo en la siguiente versión: no aceptar un nombre
+  legible que quite el gen.
+- **«Contar aparte».** Hay dos grupos de casos que siguen dentro pero se cuentan
+  por separado:
+  - los que solo se distinguen por un metabolito, una enzima o un gen ausentes
+    del caso (causa C);
+  - los del bloque D sin un nombre más específico.
 
-**Sin aplicar todavía:**
-- **La regla de David para la causa C**, en `specific_terms`, a falta de su
-  visto bueno a la lista de términos. Excluiría 100 casos y reproduce sus 9
-  decisiones.
-- **El criterio del bloque D.**
-- **El nombre de dos gold de HMS.** HMS_011 y HMS_035 llevan «Reactive
-  arthritis», sacado de un grupo de códigos de artritis, mientras su OMIM es
-  Sjögren y fiebre mediterránea familiar.
+  Para marcarlos hace falta un clasificador y que el informe lo separe.
+- David consulta todavía el nivel de Leigh por COX15. Mientras, se usa «Leigh
+  syndrome due to cytochrome c oxidase deficiency».
+- «Glycogen storage disease IXb» conserva la letra del gen tras `refine` (2
+  casos).
 
 ## Versión v2 (28-oct-2026)
 
@@ -183,6 +220,7 @@ decisión por caso para que David revise una muestra.
 cd "C:\repos\DxGPT\eval\data29\data-repos\hpo-v2"
 py clinical_gold.py check     # el prompt frente a las respuestas de David (céntimos)
 py clinical_gold.py propose   # Gemini 3.8 Flash, con caché en work/clinical_gold_proposals_v3.json
+py clinical_gold.py refine    # repasa los genéricos y los nombres con número (tarea 4)
 py clinical_gold.py build     # escribe bench/datasets/<dataset>_v3.json y work/build_report_v3.txt
 py review_sheet_v3.py         # hoja de la tarea 4 de David
 ```

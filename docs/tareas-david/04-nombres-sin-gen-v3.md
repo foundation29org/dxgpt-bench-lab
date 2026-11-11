@@ -1,6 +1,6 @@
 # Tarea 4 · Raras: comprobar los nombres sin gen rehechos
 
-**Estado:** lista para empezar · **Tiempo:** ≈ 45 min · **Depende de:** tarea 3
+**Estado:** hecha (10-nov) · **Tiempo:** ≈ 45 min · **Depende de:** tarea 3
 
 ## Para qué sirve
 

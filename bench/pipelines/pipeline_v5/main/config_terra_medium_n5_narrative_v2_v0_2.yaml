@@ -1,0 +1,40 @@
+# Pipeline V5 - gpt-5.6-terra medium sobre narrative_v2 v0.2, igual que la línea base oficial
+# (prompt de 5 diagnósticos, juez gemini-3.8-flash con graded_v3, caché de notas compartida).
+# Ampliación de modelos para /aboutus (11-nov-2026).
+
+EXPERIMENT_NAME: "narrative_v2-v0.2-juanjo_classic_v2_n5-terra_medium-v5-v0_2"
+EXPERIMENT_DESCRIPTION: "gpt-5.6-terra medium sobre narrative_v2 v0.2 con el prompt de 5 diagnósticos y juez gemini-3.8-flash con graded_v3."
+
+DATASET_PATH: "bench/datasets/narrative_v2.json"
+OUTPUT_TAG: "v0_2"
+
+DXGPT_EMULATOR:
+  MODEL: "gpt-5.6-terra"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2_n5.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "medium"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: true
+  PARALLEL_WORKERS: 8
+
+EVALUATOR:
+  JUDGE_MODEL: "gemini-3.8-flash"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_PROMPT_VERSION: "graded_v3"
+  JUDGE_GRADE_CACHE: "bench/pipelines/pipeline_v5/main/output/narrative_v2/judge_grades__gemini-3.8-flash__graded_v3.json"
+  PARALLEL_WORKERS: 8
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null

@@ -33,6 +33,21 @@ models:
     released: 2026-07-24
     source: "Anthropic, ficha de Claude Opus 5: «Reliable knowledge cutoff» y «Training data cutoff», los dos May 2026"
     url: https://platform.claude.com/docs/en/models/opus-5/overview
+  claude-fable-5-2:
+    cutoff: 2026-06
+    released: 2026-11-09
+    source: "Anthropic, Models overview: «Training data cutoff» y «Reliable knowledge cutoff», los dos Jun 2026 (consultado el 11-nov-2026)"
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
+  claude-opus-5-5:
+    cutoff: 2026-06
+    released: 2026-09-21
+    source: "Anthropic, Models overview: «Training data cutoff» y «Reliable knowledge cutoff», los dos Jun 2026 (consultado el 11-nov-2026)"
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
+  claude-sonnet-5-5:
+    cutoff: 2026-06
+    released: 2026-09-28
+    source: "Anthropic, Models overview: «Training data cutoff» y «Reliable knowledge cutoff», los dos Jun 2026 (consultado el 11-nov-2026)"
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
   gemini-3.1-pro-preview:
     cutoff: 2025-01
     released: 2026-02-19

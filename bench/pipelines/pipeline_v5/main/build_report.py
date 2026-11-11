@@ -123,6 +123,43 @@ V02_JUDGES = {'flash': 'Gemini 3.8 Flash', 'pro': 'Gemini 2.5 Pro', 'opus': 'Cla
 # Official narrative_v2 v0.2 baseline (4-nov-2026): new lists with the «5» prompt on the final texts, Flash with graded_v3.
 # Generation prices that are on file: Server/services/costUtils.js and Anthropic's list price for Opus 5.
 BASELINE_TAG = '__v0_2'
+# 17 more models on the same baseline (11-nov-2026, for /aboutus): same cases, prompt «5», translation, judge and
+# shared grade cache (config_<model>_n5_narrative_v2_v0_2.yaml). Claude and grok through the Anthropic and xAI APIs.
+EXTRA_BASELINE = [
+    ('fable52', 'claude_fable_5_2_low_translated_en', 'claude-fable-5-2', 'Claude Fable 5.2 low', '#b91c1c'),
+    ('opus55', 'claude_opus_5_5_low_translated_en', 'claude-opus-5-5', 'Claude Opus 5.5 low', '#ef4444'),
+    ('sonnet55', 'claude_sonnet_5_5_low_translated_en', 'claude-sonnet-5-5', 'Claude Sonnet 5.5 low', '#fb923c'),
+    ('sol61med', 'gpt_6_1_sol_medium_translated_en', 'gpt-6.1-sol', 'gpt-6.1-sol medium', '#475569'),
+    ('terra56med', 'gpt_5_6_terra_medium_translated_en', 'gpt-5.6-terra', 'gpt-5.6-terra medium', '#10b981'),
+    ('terra56high', 'gpt_5_6_terra_high_translated_en', 'gpt-5.6-terra', 'gpt-5.6-terra high', '#6ee7b7'),
+    ('gpt54', 'gpt_5_4_low_translated_en', 'gpt-5.4', 'gpt-5.4 low', '#2563eb'),
+    ('luna', 'gpt_5_6_luna_low_translated_en', 'gpt-5.6-luna', 'gpt-5.6-luna low', '#f59e0b'),
+    ('gpt4o', 'gpt_4o_low_translated_en', 'gpt-4o', 'gpt-4o', '#94a3b8'),
+    ('o3', 'o3_dxgpt_high_translated_en', 'o3-dxgpt', 'o3 high', '#64748b'),
+    ('gem4carbon', 'gemini_4_carbon_low_translated_en', 'gemini-4-carbon', 'gemini-4-carbon low', '#1d4ed8'),
+    ('gem4argon', 'gemini_4_argon_low_translated_en', 'gemini-4-argon', 'gemini-4-argon low', '#3b82f6'),
+    ('gem38flash', 'gemini_3_8_flash_low_translated_en', 'gemini-3.8-flash', 'gemini-3.8-flash low', '#0891b2'),
+    ('gem35flash', 'gemini_3_5_flash_low_translated_en', 'gemini-3.5-flash', 'gemini-3.5-flash low', '#06b6d4'),
+    ('gem31lite', 'gemini_3_1_flash_lite_low_translated_en', 'gemini-3.1-flash-lite', 'gemini-3.1-flash-lite low', '#67e8f9'),
+    ('grok47', 'grok_4_7_low_translated_en', 'grok-4.7', 'grok-4.7 low', '#7c3aed'),
+    ('grok46', 'grok_4_6_low_translated_en', 'grok-4.6', 'grok-4.6 low', '#a78bfa'),
+]
+# List prices per 1M tokens (input, output), checked on 11-nov-2026 on the Anthropic, OpenAI, Google and xAI pricing
+# pages; gpt-5.6-terra and gpt-6.1-sol as in Server/services/costUtils.js. Gemini 4 doubles from 1-dec-2026 and
+# gemini-3.8-flash from 1-jan-2027. gemini-3.5-flash has no published price.
+LIST_PRICES = {'claude-fable-5-2': (8.0, 40.0), 'claude-opus-5-5': (4.0, 20.0), 'claude-sonnet-5-5': (2.0, 10.0),
+               'claude-opus-5': (5.0, 25.0), 'gpt-6.1-sol': (2.0, 10.0), 'gpt-5.6-terra': (2.0, 12.0),
+               'gpt-6.1-terra': (1.0, 5.0), 'gpt-5.4-mini': (0.75, 4.5), 'gpt-5.4': (2.5, 15.0), 'gpt-5.6-luna': (0.2, 1.2),
+               'gpt-4o': (2.5, 10.0), 'o3-dxgpt': (2.0, 8.0), 'gemini-4-carbon': (2.0, 10.0), 'gemini-4-argon': (2.0, 10.0),
+               'gemini-3.8-flash': (0.75, 3.75), 'gemini-3.1-flash-lite': (0.25, 1.5), 'gemini-3.1-pro-preview': (2.0, 12.0),
+               'grok-4.7': (2.0, 6.0), 'grok-4.6': (2.0, 6.0)}
+# Mean tokens per case for the models whose emulator.log has no token counts (Gemini, grok): 20 live cases, same prompt
+TOKEN_SAMPLE = os.path.join(OUTPUT_ROOT, 'narrative_v2', 'token_sample_2026-11-11.json')
+# MedReaMM pilot250 T+I re-scored with the V5 evaluator (11-nov-2026): same lists as MEDREAMM sol5 / terra5
+MEDREAMM_V5_DIR = os.path.join(OUTPUT_ROOT, 'medreamm_pilot250_ti', 'juanjo_classic_v2_n5')
+MEDREAMM_V5 = {'sol5': 'gpt_6_1_sol_low__server_v0_00196', 'terra5': 'gpt_5_6_terra_low__server_v0_00196'}
+# HPO v3 (10-nov-2026): same Terra and Sol lists, Gemini 3.8 Flash with graded_v3
+HPO_V3_TAG = '__judge_gemini_3_8_flash'
 BASELINE_PRICES = {'gpt-6.1-sol': (2.0, 10.0), 'gpt-5.6-terra': (2.0, 12.0), 'gpt-5.4-mini': (0.75, 4.5), 'claude-opus-5': (5.0, 25.0)}
 # Same lists graded with graded_v3 by Gemini 3.8 Flash: the bridge before Google retires 2.5 Pro on 1-dec-2026
 FLASH_V3_TAG = '__judge_gemini_3_8_flash_graded_v3'
@@ -573,6 +610,23 @@ def medreamm():
     pairs = [{'a': a, 'b': b, 'n': len(ids), 'r1': paired(pos[a], pos[b], ids, 1), 'r5': paired(pos[a], pos[b], ids, 5)}
              for a, b in (('sol5', 'terra5'), ('sol5', 'terraN'), ('terra5', 'terraN'))]
     result = {'n': len(ids), 'arms': arms, 'pairs': pairs}
+    # Same Sol and Terra lists with the V5 evaluator (Gemini 3.8 Flash, graded_v3), gold = principal diagnosis as in V4
+    v5, judge_cost = {}, 0.0
+    for key, folder in MEDREAMM_V5.items():
+        run = finished_run(os.path.join(MEDREAMM_V5_DIR, folder))
+        if not run:
+            v5 = None
+            break
+        v5[key] = {i: position(c['eval_details'].get('final_resolution'))
+                   for i, c in load_details(os.path.join(run, 'evaluation_details.txt')).items()}
+        with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
+            judge_cost += json.load(f)['judge'].get('estimated_cost_usd') or 0
+    if v5:
+        ids5 = sorted(set(v5['sol5']) & set(v5['terra5']))
+        result['v5'] = {'n': len(ids5), 'judgeCost': round(judge_cost, 2),
+                        **{key: metrics([v5[key][i] for i in ids5]) for key in v5},
+                        'r1': paired(v5['sol5'], v5['terra5'], ids5, 1), 'r5': paired(v5['sol5'], v5['terra5'], ids5, 5),
+                        'vsV4': {key: paired(v5[key], pos[key], [i for i in ids5 if i in pos[key]], 1) for key in v5}}
     astra = medreamm_positions(MEDREAMM_ASTRA)
     if astra:
         nested = [i for i in ids if i in astra]
@@ -645,14 +699,13 @@ def narrative_v02():
     return result
 
 
-def narrative_baseline():
-    """The official narrative_v2 v0.2 baseline: six models, new lists with the «5» prompt, Flash with graded_v3."""
+def baseline_groups():
+    """Cases of narrative_v2 v0.2 by group: the validated real cases (all, rare, not rare, live, urg), exam, synth
+    and the total. Returns (dataset, status, validated, groups) or None."""
     if not os.path.exists(NARRATIVE_V2_CURRENT):
         return None
     with open(NARRATIVE_V2_CURRENT, 'r', encoding='utf-8') as f:
         dataset = {c['id']: c for c in json.load(f)}
-    with open(NARRATIVE_V2, 'r', encoding='utf-8') as f:
-        v01 = {c['id']: c['case'] for c in json.load(f)}
     meta = {i: c['metadata'] for i, c in dataset.items()}
     status = {i: m.get('validation', {}).get('status') for i, m in meta.items()}
     validated = [i for i in dataset if status[i] == 'validated']
@@ -662,6 +715,17 @@ def narrative_baseline():
               **{block: [i for i in (validated if block in ('live', 'urg') else dataset) if meta[i]['block'] == block]
                  for block in ('live', 'urg', 'exam', 'synth')},
               'total': list(dataset)}
+    return dataset, status, validated, groups
+
+
+def narrative_baseline():
+    """The official narrative_v2 v0.2 baseline: six models, new lists with the «5» prompt, Flash with graded_v3."""
+    found = baseline_groups()
+    if not found:
+        return None
+    dataset, status, validated, groups = found
+    with open(NARRATIVE_V2, 'r', encoding='utf-8') as f:
+        v01 = {c['id']: c['case'] for c in json.load(f)}
     # Validated cases whose text is the one the classic lists were made from
     same_text = [i for i in validated if v01.get(i) == dataset[i]['case']]
     root = NARRATIVE_DIR + '_n5'
@@ -719,6 +783,94 @@ def narrative_baseline():
         result['rerunR1'] = {mid: metrics([r['strict'][i] for i in validated])['r1'] for mid, r in reruns.items()}
         result['rerunCost'] = sum(r['judgeCost'] for r in reruns.values())
     return result
+
+
+def baseline_strict(folder):
+    """Strict positions, labeler lists and the run's judge summary of a finished narrative_v2 v0.2 run, or None."""
+    path = os.path.join(NARRATIVE_DIR + '_n5', folder + BASELINE_TAG)
+    run = finished_run(path)
+    if not run:
+        return None
+    details = load_details(os.path.join(run, 'evaluation_details.txt'))
+    with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
+        judge = json.load(f)['judge']
+    return {'run': run, 'path': path, 'judge': judge, 'labeled': load_labeled(path),
+            'strict': {i: position(c['eval_details'].get('final_resolution')) for i, c in details.items()}}
+
+
+def list_cost(path, model):
+    """Mean generation cost per case in USD at list price: tokens from emulator.log, or from TOKEN_SAMPLE
+    (output plus reasoning) when the log has none. Returns (cost, source) or (None, None)."""
+    price = LIST_PRICES.get(model)
+    if not price:
+        return None, None
+    with open(os.path.join(path, 'emulator.log'), 'r', encoding='utf-8', errors='ignore') as f:
+        tokens = [(int(a), int(b)) for a, b in re.findall(r'(?:prompt|input)=(\d+), (?:completion|output)=(\d+)', f.read())]
+    if tokens:
+        return sum(a * price[0] + b * price[1] for a, b in tokens) / 1e6 / len(tokens), 'log'
+    if os.path.exists(TOKEN_SAMPLE):
+        with open(TOKEN_SAMPLE, 'r', encoding='utf-8') as f:
+            sample = json.load(f)['models'].get(model)
+        if sample:
+            return (sample['input_tokens'] * price[0] + (sample['output_tokens'] + sample['reasoning_tokens']) * price[1]) / 1e6, 'sample'
+    return None, None
+
+
+def narrative_extra():
+    """The 17 models added to the v0.2 baseline on 11-nov-2026, and every baseline model against gpt-6.1-sol."""
+    found = baseline_groups()
+    if not found:
+        return None
+    _, _, validated, groups = found
+    base = {mid: baseline_strict(folder) for mid, folder, *_ in MODELS}
+    if not all(base.values()):
+        return None
+    sol = base['sol61']['strict']
+    rows, pending = [], []
+    for mid, folder, model, name, color in EXTRA_BASELINE:
+        r = baseline_strict(folder)
+        if not r:
+            pending.append(name)
+            continue
+        cost, source = list_cost(r['path'], model)
+        strict = r['strict']
+        rows.append({
+            'id': mid, 'name': name, 'color': color, 'run': os.path.basename(r['run']),
+            'groups': {key: metrics([strict.get(i) for i in ids]) for key, ids in groups.items()},
+            'options': statistics.median(len(c.get('ddx_details') or {}) for c in r['labeled']),
+            'latency': round(statistics.median(c['emulator_time_seconds'] for c in r['labeled'] if c.get('emulator_time_seconds')), 1),
+            'genCost': cost, 'costSource': source,
+            'judgeCost': r['judge'].get('estimated_cost_usd') or 0, 'judgeFailed': r['judge'].get('failed_calls', 0),
+            'vsSol': paired(strict, sol, validated, 1)})
+    return {'models': rows, 'pending': pending,
+            'baselineVsSol': {mid: paired(b['strict'], sol, validated, 1) for mid, b in base.items() if mid != 'sol61'},
+            'baselineCost': {mid: list_cost(base[mid]['path'], model) for mid, _, model, *_ in MODELS}}
+
+
+def hpo_v3():
+    """Terra and Sol on HPO v3 (10-nov-2026): same lists as HPO v2, Gemini 3.8 Flash with graded_v3.
+    Strict position with the gold with or without gene, as in the HPO v2 section."""
+    rows, every = [], {'terra': {}, 'sol': {}}
+    judge_cost = 0.0
+    for key, label, _ in HPO:
+        folder = os.path.join(OUTPUT_ROOT, f'{key}_v3', 'juanjo_classic_v2')
+        runs = {m: finished_run(os.path.join(folder, f + HPO_V3_TAG)) for m, f in HPO_FOLDERS.items()}
+        if not all(runs.values()):
+            return None
+        details = {m: load_details(os.path.join(runs[m], 'evaluation_details.txt')) for m in HPO_FOLDERS}
+        for m in HPO_FOLDERS:
+            with open(os.path.join(runs[m], 'summary.json'), 'r', encoding='utf-8') as f:
+                judge_cost += json.load(f)['judge'].get('estimated_cost_usd') or 0
+        ids = [i for i in details['terra'] if i in details['sol']]
+        pos = {m: {i: strict_position(details[m][i], False) for i in ids} for m in HPO_FOLDERS}
+        for m in HPO_FOLDERS:
+            every[m].update({f'{key}:{i}': p for i, p in pos[m].items()})
+        rows.append({'label': label, 'n': len(ids), **{m: metrics(list(pos[m].values())) for m in HPO_FOLDERS},
+                     'r1': paired(pos['sol'], pos['terra'], ids, 1), 'r5': paired(pos['sol'], pos['terra'], ids, 5)})
+    keys = list(every['terra'])
+    total = {'label': 'Total', 'n': len(keys), **{m: metrics([every[m][k] for k in keys]) for m in HPO_FOLDERS},
+             'r1': paired(every['sol'], every['terra'], keys, 1), 'r5': paired(every['sol'], every['terra'], keys, 5)}
+    return {'rows': rows, 'total': total, 'judgeCost': round(judge_cost, 2)}
 
 
 def hpo_sermas():
@@ -1008,6 +1160,8 @@ def collect():
     data['judgeBridge'] = judge_bridge(dataset)
     data['v02'] = narrative_v02()
     data['baseline'] = narrative_baseline()
+    data['extra'] = narrative_extra()
+    data['hpoV3'] = hpo_v3()
 
     data['hpoTotal'] = {'label': 'Total', 'nOriginal': sum(r['nOriginal'] for r in data['hpo']),
                         'n': len(totals['v4']), 'nClinical': sum(r['nClinical'] for r in data['hpo']),
@@ -1789,9 +1943,36 @@ def medreamm_section(data):
                          f'<td>{nested["r5"]["wins"]} / {nested["r5"]["losses"]}</td><td>{p_value(nested["r5"]["p"])}</td></tr>')
         astra = (f' En los {nested["n"]} casos del piloto anterior, Sol acierta en P1 el {pct(nested["sol5"]["r1"], 0)}, lo mismo que Astra'
                  f' ({pct(nested["astra"]["r1"], 0)}, que tardaba 55 s por caso), y Terra «5» el {pct(nested["terra5"]["r1"], 0)}.')
+    v5 = s.get('v5')
+    v5_block = ''
+    if v5:
+        v5_rows = '\n'.join(
+            f'<tr><td>{arm[key]["name"]}</td><td>{pct(v5[key]["r1"])}</td><td>{pct(v5[key]["r3"])}</td><td>{pct(v5[key]["r5"])}</td>'
+            f'<td>{num(v5[key]["avgPos"], 3)}</td><td>{pct(arm[key]["r1"])}</td><td>{pct(arm[key]["r5"])}</td>'
+            f'<td>{v5["vsV4"][key]["wins"]} / {v5["vsV4"][key]["losses"]} ({p_text(v5["vsV4"][key]["p"])})</td></tr>'
+            for key in ('sol5', 'terra5'))
+        v5_block = f'''
+    <div class="callout callout-info">
+      <strong>Con el evaluador V5 (11-nov)</strong>, el mismo que el resto de este informe: las mismas listas, labeler, SNOMED
+      idéntico y juez Gemini 3.8 Flash con <code>graded_v3</code>; el gold sigue siendo el diagnóstico principal.
+      <strong>Sol acierta en P1 el {pct(v5["sol5"]["r1"])} y Terra el {pct(v5["terra5"]["r1"])}</strong>
+      ({v5["r1"]["wins"]} / {v5["r1"]["losses"]}, {p_text(v5["r1"]["p"])}); en R@5, {pct(v5["sol5"]["r5"])} frente a
+      {pct(v5["terra5"]["r5"])} ({v5["r5"]["wins"]} / {v5["r5"]["losses"]}, {p_text(v5["r5"]["p"])}). Juez: ≈ {num(v5["judgeCost"], 2)} $.
+      Conversión de las respuestas: <code>medreamm_to_v5.py</code>.
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Listas</th><th>R@1 V5</th><th>R@3 V5</th><th>R@5 V5</th><th>Pos. media V5</th><th>R@1 V4</th><th>R@5 V4</th>
+        <th>V5 frente a V4 (R@1)</th></tr></thead>
+      <tbody>
+{v5_rows}
+      </tbody>
+    </table>
+    </div>
+    <h3>Evaluación original (evaluador V4, 3-nov)</h3>'''
     return f'''
   <div class="section">
-    <div class="section-title">Con imágenes · MedReaMM, gpt-6.1-sol frente a Terra 5.6</div>
+    <div class="section-title">Con imágenes · MedReaMM, gpt-6.1-sol frente a Terra 5.6</div>{v5_block}
     <div class="callout callout-info">
       {s["n"]} casos de MedReaMM con texto e imágenes, gold ICD-11 del propio dataset y el evaluador estricto de V4 (juez Gemini 2.5 Pro),
       no el de <code>narrative_v2</code>: estas cifras no se comparan con las de arriba. Las dos ejecuciones del 3-nov pasan por el Server en
@@ -2181,6 +2362,135 @@ def all256_table():
                      for m, e, a, b, c in ALL256)
 
 
+def extra_section(data):
+    """The 17 models added to the v0.2 baseline (11-nov-2026), ranked with the six of the baseline."""
+    s, b = data.get('extra'), data.get('baseline')
+    if not s or not b:
+        return ''
+    base = [{**m, 'added': '4/6-nov', 'vsSol': s['baselineVsSol'].get(m['id']), 'genCost': s['baselineCost'][m['id']][0],
+             'costSource': s['baselineCost'][m['id']][1]} for m in b['models']]
+    models = sorted(base + [{**m, 'added': '11-nov'} for m in s['models']], key=lambda m: -m['groups']['realcases']['r1'])
+    sol = next(m for m in models if m['id'] == 'sol61')
+
+    def vs(m):
+        v = m.get('vsSol')
+        return '—' if not v else f'{v["wins"]} / {v["losses"]} ({p_text(v["p"])})'
+
+    # Same blue ramp as the «Acierto por bloque» heat table, one scale for every percentage of this table
+    ramp = ['#cde2fb', '#b7d3f6', '#9ec5f4', '#86b6ef', '#6da7ec', '#5598e7', '#3987e5', '#2a78d6', '#256abf', '#1c5cab', '#184f95']
+    cols = [(k, 'r1') for k in ('realcases', 'realRare', 'realCommon', 'live', 'urg')] + [('realcases', 'r5'), ('exam', 'r1'), ('total', 'r1')]
+    values = [m['groups'][k][r] for m in models for k, r in cols]
+    lo, hi = min(values), max(values)
+
+    def heat(v):
+        idx = round((v - lo) / max(1, hi - lo) * (len(ramp) - 1))
+        return f'<td style="background:{ramp[idx]};color:{"#ffffff" if idx >= 6 else "#0f172a"}">{pct(v)}</td>'
+
+    def cost(m):
+        if not m.get('genCost'):
+            return '—'
+        return ('≈ ' if m.get('costSource') == 'sample' else '') + cents(m['genCost'])
+
+    rows = '\n'.join(
+        f'<tr><td><span class="dot" style="background:{m["color"]}"></span> {m["name"]}{" <strong>(producción)</strong>" if m["id"] == "sol61" else ""}</td>'
+        + ''.join(heat(m['groups'][k][r]) for k, r in cols)
+        + f'<td>{num(m["latency"])} s</td><td>{cost(m)}</td><td>{vs(m)}</td><td>{m["added"]}</td></tr>'
+        for m in models)
+    ahead = [m for m in models if m.get('vsSol') and m['vsSol']['p'] < 0.05 and m['vsSol']['wins'] > m['vsSol']['losses']]
+    ties = [m['name'] for m in models if m.get('vsSol') and m['vsSol']['p'] >= 0.05]
+    behind = [m['name'] for m in models if m.get('vsSol') and m['vsSol']['p'] < 0.05 and m['vsSol']['wins'] < m['vsSol']['losses']]
+    lead = ''
+    if ahead:
+        a = ahead[0]
+        g, gs = a['groups'], sol['groups']
+        ratio = f' y cuesta unas {round(a["genCost"] / sol["genCost"])} veces más por caso ({cents(a["genCost"])} frente a {cents(sol["genCost"])})' \
+            if a.get('genCost') and sol.get('genCost') else ''
+        lead = (f'<strong>{a["name"]} es el único que supera a gpt-6.1-sol de forma significativa:</strong> '
+                f'{pct(g["realcases"]["r1"])} frente a {pct(gs["realcases"]["r1"])} en casos reales '
+                f'({a["vsSol"]["wins"]} / {a["vsSol"]["losses"]}, {p_text(a["vsSol"]["p"])}), con una ventaja parecida en '
+                f'<code>live</code> (+{num(g["live"]["r1"] - gs["live"]["r1"])}) y en <code>urg</code> '
+                f'(+{num(g["urg"]["r1"] - gs["urg"]["r1"])}). No se explica por contaminación: según Anthropic, su corte de '
+                f'entrenamiento es junio de 2026, anterior a todos los casos <code>live</code> (julio–octubre), y los de urgencias '
+                f'son confidenciales y nunca han estado en el repositorio. Tarda {num(a["latency"])} s por caso frente a {num(sol["latency"])} s{ratio}. '
+                'Antes de plantearlo para producción falta medirlo en raras (HPO), con imágenes y por el camino del Server.')
+    judge = sum(m['judgeCost'] for m in s['models'])
+    failed = sum(m['judgeFailed'] for m in s['models'])
+    pending = f' Sin terminar: {", ".join(s["pending"])}.' if s['pending'] else ''
+    return f'''
+  <div class="section">
+    <div class="section-title"><code>narrative_v2</code> v0.2 · {len(s["models"])} modelos más (11-nov)</div>
+    <div class="callout callout-info">
+      Para la página /aboutus se añaden {len(s["models"])} modelos con la misma configuración que la línea base: los mismos
+      {b["total"]} casos, el prompt «5», la traducción de <code>urg</code> al inglés y el juez Gemini 3.8 Flash con
+      <code>graded_v3</code> y la caché de notas compartida. Claude y grok van por las API de Anthropic y xAI; el resto, por Azure
+      OpenAI y la API de Gemini. La comparación es con gpt-6.1-sol low, el modelo de diagnóstico, en los {b["n"]} casos reales.
+      <br>{lead}
+      <br>No se separan de Sol: {", ".join(ties)}. Quedan por debajo (p &lt; 0,05): {", ".join(behind)}.{pending}
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Modelo</th><th>R@1 reales</th><th>R@1 raras</th><th>R@1 no raras</th><th>R@1 <code>live</code></th>
+        <th>R@1 <code>urg</code></th><th>R@5 reales</th><th>R@1 <code>exam</code></th><th>R@1 total ({b["total"]})</th>
+        <th>s/caso</th><th>Generación por caso</th><th>Frente a Sol (R@1 reales)</th><th>Ejecución</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto frente a gpt-6.1-sol low en los {b["n"]} casos reales. Más razonamiento en Sol o en Terra sube 1–2
+      puntos, sin significación. gemini-3.8-flash es el mismo modelo que el juez: su cifra lleva esa salvedad. gpt-4o da diagnósticos
+      menos específicos («Stress Fracture», «Lung Cancer») y el juez estricto solo acepta la misma enfermedad; sus listas están completas.
+      Más oscuro = más acierto, en la misma escala para todos los porcentajes de la tabla. Generación a precio de lista (Anthropic,
+      OpenAI, Google y xAI, consultados el 11-nov-2026) con los tokens de cada ejecución; en Gemini y grok, «≈» = tokens medios de una
+      muestra de 20 casos (<code>token_sample_2026-11-11.json</code>), con el razonamiento facturado como salida. gemini-3.5-flash no
+      tiene precio publicado. Gemini 4 duplica precio desde el 1-dic-2026. Juez de los {len(s["models"])} modelos nuevos: ≈ {num(judge, 2)} $,
+      {failed} llamadas fallidas. Configuraciones: <code>config_&lt;modelo&gt;_n5_narrative_v2_v0_2.yaml</code>.</p>
+  </div>
+'''
+
+
+def hpo_v3_section(data):
+    s = data.get('hpoV3')
+    if not s:
+        return ''
+    t = s['total']
+
+    def cells(r):
+        return (f'<td>{pct(r["terra"]["r1"])}</td><td>{pct(r["sol"]["r1"])}</td><td>{r["r1"]["wins"]} / {r["r1"]["losses"]}</td>'
+                f'<td>{p_value(r["r1"]["p"])}</td><td>{pct(r["terra"]["r5"])}</td><td>{pct(r["sol"]["r5"])}</td>'
+                f'<td>{r["r5"]["wins"]} / {r["r5"]["losses"]}</td><td>{p_value(r["r5"]["p"])}</td>')
+
+    rows = '\n'.join(f'<tr><td>{r["label"]}</td><td>{thousands(r["n"])}</td>{cells(r)}</tr>' for r in s['rows'])
+    rows += f'\n<tr class="group-row"><td>Total</td><td>{thousands(t["n"])}</td>{cells(t)}</tr>'
+    worse = [r['label'] for r in s['rows'] if r['sol']['r1'] < r['terra']['r1']]
+    return f'''
+  <div class="section">
+    <div class="section-title">Raras HPO v3 · gpt-6.1-sol frente a Terra 5.6 (10-nov)</div>
+    <div class="callout callout-info">
+      HPO v3 (<code>data29/data-repos/hpo-v2/README.md</code>) rehace los nombres sin gen con los criterios de David (tareas 3 y 4),
+      saca 107 casos por la regla de la causa C y recupera 8 de RAMEDIS: {thousands(t["n"])} casos. Son las mismas listas de Terra
+      (julio) y Sol (29-oct), puntuadas con Gemini 3.8 Flash y <code>graded_v3</code>, con el gold con gen o sin gen.
+      <strong>Sol acierta en P1 el {pct(t["sol"]["r1"])} y Terra el {pct(t["terra"]["r1"])}</strong>
+      ({t["r1"]["wins"]} / {t["r1"]["losses"]}, {p_text(t["r1"]["p"])}); en R@5, {pct(t["sol"]["r5"])} frente a {pct(t["terra"]["r5"])}
+      ({t["r5"]["wins"]} / {t["r5"]["losses"]}, {p_text(t["r5"]["p"])}).
+      {f'Sol queda por debajo solo en {", ".join(worse)}, dentro del azar.' if worse else 'Sol queda por delante en todos los datasets.'}
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Dataset</th><th>Casos</th><th>R@1 Terra</th><th>R@1 Sol</th><th>Gana / pierde</th><th>p</th>
+        <th>R@5 Terra</th><th>R@5 Sol</th><th>Gana / pierde</th><th>p</th></tr></thead>
+      <tbody>
+{rows}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">McNemar exacto; «gana» son los casos que acierta Sol y no Terra. Juez: ≈ {num(s["judgeCost"], 2)} $ las dos
+      puntuaciones. El antes y después de la v3 con la misma rúbrica está en el README de Pipeline V5 (sección «HPO v3»). Las secciones
+      de raras de más abajo son de HPO v2.</p>
+  </div>
+'''
+
+
 def build_html(data):
     # Judge and prompt behind the main narrative figures: the report reads each model's latest run,
     # so re-running one model with another judge would mix them
@@ -2258,7 +2568,7 @@ def build_html(data):
 <div class="hero">
   <div class="hero-badge">Borrador · Pipeline V5 <code>{judge_prompt}</code> · {stamp}</div>
   <h1>Pipeline V5: narrativo y raras</h1>
-  <p>{f"<code>narrative_v2</code> v0.2, con los casos reales validados por David: la línea base oficial está en la primera sección, con juez Gemini 3.8 Flash. Debajo, la v0.1 (sin validación clínica), las pruebas hechas con ella y raras HPO v2 (3.006 casos), con juez {judge_name} salvo donde se indica." if data.get("baseline") else f"<code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5 y juez {judge_name}."}
+  <p>{f"<code>narrative_v2</code> v0.2, con los casos reales validados por David: la línea base oficial y los 17 modelos añadidos el 11-nov están en las primeras secciones, con juez Gemini 3.8 Flash. Raras HPO v3 (2.907 casos) y MedReaMM con imágenes también tienen ya cifras con el evaluador V5 y Flash. Debajo, la v0.1 (sin validación clínica), las pruebas hechas con ella y raras HPO v2 (3.006 casos), con juez {judge_name} salvo donde se indica." if data.get("baseline") else f"<code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5 y juez {judge_name}."}
      La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
 {mixed_note}
   <p class="hero-nav">
@@ -2271,6 +2581,7 @@ def build_html(data):
 </div>
 <div class="container">
 {baseline_section(data)}
+{extra_section(data)}
   <div class="section">
     <div class="section-title">Resumen{" de la v0.1 (sin validación clínica)" if data.get("baseline") else ""}</div>
     <div class="cards">
@@ -2467,6 +2778,7 @@ def build_html(data):
 {poc_section(data)}
 {judges_section(data)}
 {graded_v3_section(data)}
+{hpo_v3_section(data)}
   <div class="section">
     <div class="section-title">Raras HPO v2 · Terra 5.6 low · 3.006 casos</div>
     <div class="callout callout-info">
@@ -3106,13 +3418,62 @@ CHART_JS = r'''
 '''
 
 
+# Index at the top of the report: groups of sections, in this order, by words in their titles
+TOC_GROUPS = [
+    ('Resultados actuales (evaluador V5, juez Gemini 3.8 Flash)', ('línea base oficial', 'modelos más', 'HPO v3', 'Con imágenes')),
+    ('narrative_v2 v0.1 y otras pruebas', ()),
+    ('Jueces', ('Prueba de jueces', 'Punto 6')),
+    ('Raras HPO v2 y pruebas', ('Raras HPO v2', 'Prompt de sermas')),
+    ('Histórico', ('Serie histórica',)),
+]
+TOC_CSS = """<style>
+  html { scroll-behavior: smooth; }
+  .section { scroll-margin-top: 12px; }
+  .toc { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px 22px; margin: 0 0 22px; }
+  .toc-head { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px 26px; }
+  .toc-title { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #475569; margin-bottom: 4px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { font-size: 0.86rem; margin: 3px 0; line-height: 1.35; }
+  .toc a { color: #1d4ed8; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc-back { position: fixed; right: 16px; bottom: 16px; z-index: 50; background: #0f172a; color: #fff; padding: 8px 14px;
+    border-radius: 999px; font-size: 0.8rem; font-weight: 600; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); }
+  .toc-back:hover { background: #1e293b; }
+</style>"""
+
+
+def add_toc(page):
+    """Give every section an id and put a grouped index at the top, plus a fixed button back to it."""
+    sections = []
+
+    def tag(match):
+        sid = f'sec-{len(sections) + 1}'
+        sections.append((sid, html.unescape(re.sub(r'<[^>]+>', '', match.group(2))).strip()))
+        return f'<div class="section" id="{sid}">{match.group(1)}<div class="section-title">{match.group(2)}</div>'
+
+    page = re.sub(r'<div class="section">(\s*)<div class="section-title">(.*?)</div>', tag, page, flags=re.S)
+    other = TOC_GROUPS[1][0]
+    groups = {name: [] for name, _ in TOC_GROUPS}
+    for sid, title in sections:
+        groups[next((name for name, keys in TOC_GROUPS if any(k in title for k in keys)), other)].append((sid, title))
+    items = ''.join(
+        f'<div class="toc-group"><div class="toc-title">{html.escape(name)}</div><ol>'
+        + ''.join(f'<li><a href="#{sid}">{html.escape(title)}</a></li>' for sid, title in groups[name]) + '</ol></div>'
+        for name, _ in TOC_GROUPS if groups[name])
+    toc = f'<nav class="toc" id="indice" aria-label="Índice"><div class="toc-head">Índice</div><div class="toc-grid">{items}</div></nav>'
+    page = page.replace('<div class="container">', '<div class="container">' + chr(10) + toc, 1)
+    page = page.replace('</body>', '<a class="toc-back" href="#indice">↑ Índice</a>' + chr(10) + '</body>', 1)
+    return page.replace('</head>', TOC_CSS + chr(10) + '</head>', 1)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', default=os.path.join(EVAL_ROOT, 'docs', 'benchmark-report-v5.html'))
     args = parser.parse_args()
     data = collect()
     with open(args.output, 'w', encoding='utf-8') as f:
-        f.write(build_html(data))
+        f.write(add_toc(build_html(data)))
     print(f'Wrote {args.output}')
 
 

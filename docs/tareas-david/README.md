@@ -9,9 +9,9 @@ cómo se devuelve y cuándo está hecha.
 | 1 | [Validación clínica de `narrative_v2`](01-validacion-narrative-v2.md) | Hecha (4-nov, con la tanda de reserva; los 3 recambios, el 6-nov) | — | ≈ 5 h + ≈ 1 h + ≈ 5 min |
 | 2 | [Validar la escala del juez (2/1/0)](02-escala-del-juez.md) | Hecha (6-nov): Flash coincide en «¿es un 2?» en el 90 %; la rúbrica no cambia | Tarea 1 | ≈ 2 h |
 | 3 | [Raras: nombres sin gen, casos con HPO insuficientes y sinónimos del gold](03-nombres-sin-gen-raras.md) | Hecha (10-nov): los nombres sin gen fallaban en cerca de la mitad y se rehicieron (HPO v3); la fenilcetonuria con hipertirosinemia se queda | — | ≈ 1 h 30 min |
-| 4 | [Raras: comprobar los nombres sin gen rehechos](04-nombres-sin-gen-v3.md) | Lista para empezar | Tarea 3 | ≈ 45 min |
+| 4 | [Raras: comprobar los nombres sin gen rehechos](04-nombres-sin-gen-v3.md) | Hecha (10-nov): la v3 acierta en 19 de 24 casos (79 %); sus criterios de series y de la causa C ya están aplicados | Tarea 3 | ≈ 45 min |
 
-Lo pendiente se puede hacer ya: la 4.
+No queda nada pendiente. David consulta todavía el nivel de Leigh por COX15.
 
 ## Reglas comunes
 

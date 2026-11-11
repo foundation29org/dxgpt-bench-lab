@@ -65,11 +65,11 @@ Un cambio solo se admite si cumple las tres condiciones:
 - La validación clínica revisa todos los casos sin ver ningún resultado de
   los modelos. Sus decisiones se aplican a todos antes de puntuar.
 
-**Raras (HPO v2)**
+**Raras (HPO)**
 - Siempre se publican las dos notas: con el gold con gen, y con el gold con
   gen o sin gen.
 - Los nombres sin gen se validan sobre una muestra al azar, sin mirar si el
-  modelo acierta. Así está hecha la tarea 3 de David (bloques A–D).
+  modelo acierta. Así están hechas las tareas 3 y 4 de David.
 
 **Lo que no se hace**
 - Cambiar el gold, los nombres aceptados o la rúbrica, o excluir casos,
@@ -83,9 +83,9 @@ mueven el R@1 ≈ 0,15 puntos. En `narrative_v2` no se adaptó ningún caso por
 los resultados.
 
 Además, 7 de esos 11 siguen un patrón que tienen 115 casos de RAMEDIS
-(fenilcetonuria con hipertirosinemia), y los otros 109 siguen dentro. Se
-resolverá con una regla para los 115, que decide David en la tarea 3 (bloque
-G).
+(fenilcetonuria con hipertirosinemia), y los otros 109 siguen dentro. David
+decidió en la tarea 3 que se quedan los 115. En HPO v3 vuelven esos 7 y la
+alcaptonuria RAMEDIS_132, y siguen fuera los 3 de DDD.
 
 **Comprobación:** la próxima renovación de casos `live` se construye con
 estas reglas, se valida sin ver resultados y se puntúa una sola vez. Hace de
@@ -961,6 +961,202 @@ estaban puntuadas las listas del prompt de DxGPT
   `dxgptswitzerland` tienen un despliegue llamado `gpt-6.1-sol`, porque antes
   era `o3-sermas`.
 
+## HPO v3: Terra y Sol con el gold nuevo (10-nov-2026)
+
+HPO v3 (`data29/data-repos/hpo-v2/README.md`) cambia tres cosas:
+
+- rehace los nombres sin gen con los criterios de David (tareas 3 y 4);
+- saca 107 casos por la regla de la causa C;
+- recupera 8 casos de RAMEDIS.
+
+Son las mismas listas de Terra (julio) y Sol (29-oct), con el juez Gemini 3.8
+Flash y la rúbrica `graded_v3` (carpetas
+`output/<dataset>_hpo_v3/juanjo_classic_v2/<modelo>__judge_gemini_3_8_flash`).
+Sol no tenía listas de los 8 casos de RAMEDIS que vuelven, porque se generó
+sobre la v2. Se han generado con la misma configuración
+(`output/ramedis_hpo_v3_sol_missing`).
+
+**Antes y después con la misma rúbrica.** Las cifras v2 publicadas son de
+`graded_v2`. Para medir solo el efecto del gold, el gold v2 se ha vuelto a
+puntuar con `graded_v3` (carpetas `<modelo>__judge_gemini_3_8_flash_graded_v3`).
+Esa puntuación usa una caché de notas sacada de la puntuación v3 del mismo
+modelo. En cada caso, el gold que no cambia lleva la misma nota en los dos
+lados, así que la diferencia solo viene de los nombres que cambian.
+
+En los mismos 2.899 casos, R@1 y R@5 estrictas con el gold con gen o sin gen:
+
+| Listas | R@1 gold v2 | R@1 gold v3 | gana / pierde | p | R@5 gold v2 | R@5 gold v3 | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Terra 5.6 | 41,6 % | 43,3 % | 68 / 19 | < 0,001 | 56,5 % | 59,4 % | 99 / 14 | < 0,001 |
+| gpt-6.1-sol | 47,7 % | 49,3 % | 64 / 19 | < 0,001 | 64,9 % | 67,5 % | 90 / 16 | < 0,001 |
+
+Totales (la v2 tiene 3.006 casos y la v3, 2.907):
+
+| Listas | R@1 v2 publicada (`graded_v2`) | R@1 v2 con `graded_v3` | R@1 v3 | R@5 v2 publicada | R@5 v3 | R@1 v3, solo gold con gen |
+|---|---:|---:|---:|---:|---:|---:|
+| Terra 5.6 | 40,5 % | 40,4 % | 43,1 % | 55,0 % | 59,2 % | 28,3 % |
+| gpt-6.1-sol | 46,6 % | 46,4 % | 49,2 % | 63,3 % | 67,4 % | 34,1 % |
+
+Sol frente a Terra con la v3 (McNemar exacto):
+
+| Dataset | Casos | R@1 Terra | R@1 Sol | gana / pierde | p | R@5 Terra | R@5 Sol | gana / pierde | p |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| DDD | 1.648 | 46,7 % | 52,9 % | 169 / 68 | < 0,001 | 59,8 % | 66,3 % | 166 / 59 | < 0,001 |
+| RAMEDIS | 621 | 32,9 % | 37,5 % | 63 / 34 | 0,004 | 55,1 % | 69,4 % | 115 / 26 | < 0,001 |
+| LIRICAL | 370 | 43,5 % | 48,6 % | 34 / 15 | 0,009 | 60,5 % | 67,3 % | 40 / 15 | 0,001 |
+| MyGene2 | 140 | 41,4 % | 57,1 % | 28 / 6 | < 0,001 | 60,7 % | 73,6 % | 24 / 6 | 0,001 |
+| HMS | 88 | 45,5 % | 43,2 % | 5 / 7 | 0,77 | 68,2 % | 62,5 % | 2 / 7 | 0,18 |
+| MME | 40 | 52,5 % | 67,5 % | 8 / 2 | 0,11 | 65,0 % | 75,0 % | 6 / 2 | 0,29 |
+| **Total** | **2.907** | **43,1 %** | **49,2 %** | **307 / 132** | **< 0,001** | **59,2 %** | **67,4 %** | **353 / 115** | **< 0,001** |
+
+- **Los nombres de la v3 suben el R@1 unos 1,7 puntos en los dos modelos**,
+  sobre los mismos casos.
+  - Las ganancias son sobre todo de DDD: nombres de serie sin número
+    («Developmental and epileptic encephalopathy», «Hereditary spastic
+    paraplegia», «Autosomal recessive primary microcephaly») y epónimos.
+  - Las pérdidas son gold más específicos, según los criterios de David. Por
+    ejemplo, «Mucopolysaccharidosis type IIIB» donde antes valía
+    «Mucopolysaccharidosis», o «Griscelli syndrome type 1» cuando la lista dice
+    la tipo 2.
+- **Parte de la subida depende de `refine`, que no está validado:** 15 de las
+  68 ganancias de Terra y 8 de las 64 de Sol. Sin ellas la subida sigue siendo
+  significativa: 53 / 19 en Terra y 56 / 19 en Sol.
+- **La regla de la causa C explica el resto de la subida del total.**
+  - Los 107 casos que salen tenían un R@1 del 8,4 % con Terra y del 11,2 % con
+    Sol.
+  - Ninguno de los dos modelos acierta en P1 los 8 de RAMEDIS que vuelven: las
+    7 fenilcetonurias con hipertirosinemia y la alcaptonuria.
+- **La rúbrica no mueve las raras.** Con el gold v2, pasar de `graded_v2` a
+  `graded_v3` da 20 / 24 en Terra y 12 / 18 en Sol (p = 0,65 y 0,36).
+- **Solo con el gold con gen la nota casi no cambia:** 3 / 0 en los dos
+  modelos.
+  - Uno es HMS_011, por el gold corregido.
+  - Los otros dos son un fallo de la v3: el nombre sin gen se guardó como
+    nombre legible del gold con gen (`accepted_names`), así que cuenta también
+    en la nota «solo con gen». Por ejemplo, «Constitutional mismatch repair
+    deficiency syndrome» para el gold de PMS2.
+  - La v3 tiene 17 casos más que la v2 con nombre legible en el gold con gen,
+    aunque no todos son este fallo. En la nota principal no cambia nada,
+    porque ese nombre ya valía como nombre sin gen. Pendiente de corregir en la
+    siguiente versión.
+- **Sol sigue ganando a Terra con la v3:** +6,1 puntos de R@1 y +8,2 de R@5.
+  Gana en todos los datasets salvo HMS (88 casos), donde la diferencia está
+  dentro del azar.
+- **Coste del juez:**
+  - 4,68 $ las dos puntuaciones v3;
+  - 0,81 $ el gold v2 con `graded_v3`, porque con la caché solo se puntúan los
+    nombres que cambian;
+  - unos céntimos las 8 listas de Sol.
+
+## Con imágenes: MedReaMM con el evaluador V5 (11-nov-2026)
+
+Las listas de Sol y Terra con imágenes del 3-nov (MedReaMM pilot250 T+I, Server
+v0.00196, prompt «5»; `bench/multimodal_beta/results/2026-11-03-medreamm-pilot250-t-plus-i-sol-vs-terra-n5.md`)
+se habían puntuado con el evaluador V4 (`strict_equivalence`, juez Gemini 2.5
+Pro). Ahora se puntúan con el V5, como el resto: labeler, SNOMED idéntico y
+juez Gemini 3.8 Flash con `graded_v3`. Son las mismas listas y el gold es
+solo el diagnóstico principal, como en V4.
+
+- `medreamm_to_v5.py` pasa los `responses.jsonl` al formato del evaluador:
+  `bench/datasets/medreamm_pilot250_ti.json` y un
+  `*___ddxs_from_emulator.json` por modelo.
+- `config_gpt61sol_medreamm250_ti.yaml` y `config_gpt56terra_medreamm250_ti.yaml`
+  no emulan (`SHOULD_EMULATE: false`): solo etiquetan y evalúan.
+- Salida: `output/medreamm_pilot250_ti/juanjo_classic_v2_n5/<modelo>__server_v0_00196`.
+
+| Listas | R@1 V4 | R@1 V5 | R@3 V5 | R@5 V4 | R@5 V5 | Pos. media V5 |
+|---|---:|---:|---:|---:|---:|---:|
+| gpt-6.1-sol | 66,4 % | 68,4 % | 79,2 % | 83,6 % | 82,0 % | 1,298 |
+| Terra 5.6 | 58,8 % | 62,0 % | 72,8 % | 78,8 % | 78,0 % | 1,421 |
+
+- **Sol sigue por delante de Terra:** R@1 31 / 15 (p = 0,026); R@5 26 / 16
+  (p = 0,16). Con V4 era 39 / 20 (p = 0,018) y p = 0,081.
+- **El evaluador V5 sube algo el R@1 en los dos**, con las mismas listas:
+  Sol +2,0 puntos (13 / 8, p = 0,38) y Terra +3,2 (10 / 2, p = 0,04). R@5
+  baja un poco en los dos.
+- Las 3 listas vacías son los mismos casos en los dos modelos: el filtro
+  clínico previo los clasifica como pregunta general o con datos
+  insuficientes.
+- **Coste:** juez 0,23 $ (247 llamadas por modelo, 0 fallidas), más el labeler.
+- Estas son las cifras de imágenes de la página /aboutus y de la sección «Con
+  imágenes» de `benchmark-report-v5.html`, que mantiene debajo la evaluación
+  V4 original.
+
+## `narrative_v2` v0.2: 17 modelos más (11-nov-2026)
+
+Para la página /aboutus, misma configuración que la línea base oficial: los 300
+casos de la v0.2, prompt «5» (`juanjo_classic_v2_n5.txt`), traducción de `urg`
+al inglés, juez Gemini 3.8 Flash con `graded_v3` y la caché de notas
+compartida (`output/narrative_v2/judge_grades__gemini-3.8-flash__graded_v3.json`).
+Configuraciones: `config_<modelo>_n5_narrative_v2_v0_2.yaml`; salida en
+`output/narrative_v2/juanjo_classic_v2_n5/<modelo>_translated_en__v0_2`.
+Claude y grok van por las API de Anthropic y xAI; el resto, por Azure OpenAI y
+la API de Gemini.
+
+R@1 y R@5 estrictas. «Reales» son los 210 casos validados (113 raras y 97 no
+raras; 150 `live` y 60 `urg`); «total», los 300. Comparación con Sol low por
+McNemar exacto sobre los 210 reales. Coste de generación a precio de lista
+(Anthropic, OpenAI, Google y xAI, consultados el 11-nov-2026; `LIST_PRICES`
+en `build_report.py`) con los tokens del `emulator.log`. Gemini, grok y o3 no
+guardan el recuento en el log: «≈» son los tokens medios de una muestra de 20
+casos (`output/narrative_v2/token_sample_2026-11-11.json`), con el
+razonamiento facturado como salida. gemini-3.5-flash no tiene precio
+publicado; Gemini 4 duplica precio desde el 1-dic-2026.
+
+| Modelo | R@1 reales | Raras | No raras | live | urg | R@5 reales | R@1 exam | R@1 total | s/caso | Coste/caso | Frente a Sol, R@1 reales |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Claude Fable 5.2 low | 77,1 % | 79,6 % | 74,2 % | 79,3 % | 71,7 % | 91,4 % | 86,7 % | 80,3 % | 14,4 | 7,26 c$ | 34 / 8 (p < 0,001) |
+| gpt-6.1-sol medium | 66,7 % | 69,9 % | 62,9 % | 68,0 % | 63,3 % | 83,8 % | 85,0 % | 72,3 % | 20,8 | 1,16 c$ | 12 / 8 (p = 0,503) |
+| Claude Opus 5.5 low | 66,2 % | 69,9 % | 61,9 % | 67,3 % | 63,3 % | 85,2 % | 83,3 % | 72,0 % | 12,8 | 3,29 c$ | 23 / 20 (p = 0,761) |
+| gemini-4-carbon low | 64,8 % | 69,9 % | 58,8 % | 67,3 % | 58,3 % | 87,1 % | 85,0 % | 70,3 % | 15,2 | ≈ 1,45 c$ | 24 / 24 (p = 1,000) |
+| **gpt-6.1-sol low** (producción) | 64,8 % | 67,3 % | 61,9 % | 66,0 % | 61,7 % | 86,2 % | 86,7 % | 71,3 % | 18,2 | 1,03 c$ | — |
+| Claude Opus 5 low | 63,3 % | 60,2 % | 67,0 % | 62,0 % | 66,7 % | 84,3 % | 88,3 % | 71,3 % | 18,9 | 4,48 c$ | 26 / 29 (p = 0,788) |
+| gemini-4-argon low | 63,3 % | 65,5 % | 60,8 % | 64,0 % | 61,7 % | 84,8 % | 90,0 % | 70,0 % | 18,2 | ≈ 1,19 c$ | 21 / 24 (p = 0,766) |
+| gpt-5.6-terra medium | 61,0 % | 64,6 % | 56,7 % | 62,7 % | 56,7 % | 82,9 % | 85,0 % | 68,3 % | 9,6 | 1,57 c$ | 14 / 22 (p = 0,243) |
+| gpt-5.6-terra high | 60,5 % | 61,9 % | 58,8 % | 59,3 % | 63,3 % | 82,9 % | 81,7 % | 67,0 % | 12,4 | 2,12 c$ | 13 / 22 (p = 0,175) |
+| Claude Sonnet 5.5 low | 59,5 % | 60,2 % | 58,8 % | 58,0 % | 63,3 % | 78,6 % | 88,3 % | 68,3 % | 10,3 | 1,72 c$ | 20 / 31 (p = 0,161) |
+| gpt-5.6-terra low | 59,0 % | 61,9 % | 55,7 % | 58,0 % | 61,7 % | 82,9 % | 83,3 % | 66,7 % | 8,8 | 1,45 c$ | 10 / 22 (p = 0,050) |
+| gpt-6.1-terra low | 58,1 % | 58,4 % | 57,7 % | 56,0 % | 63,3 % | 83,3 % | 85,0 % | 67,0 % | 4,6 | 0,36 c$ | 12 / 26 (p = 0,034) |
+| gpt-5.4 low | 56,7 % | 54,9 % | 58,8 % | 50,7 % | 71,7 % | 82,9 % | 81,7 % | 64,7 % | 11,5 | 1,67 c$ | 15 / 32 (p = 0,019) |
+| grok-4.7 low | 56,7 % | 57,5 % | 55,7 % | 54,7 % | 61,7 % | 79,0 % | 86,7 % | 65,3 % | 20,8 | ≈ 1,30 c$ | 11 / 28 (p = 0,009) |
+| gemini-3.8-flash low | 55,7 % | 60,2 % | 50,5 % | 54,0 % | 60,0 % | 77,1 % | 88,3 % | 64,7 % | 8,6 | ≈ 0,41 c$ | 16 / 35 (p = 0,011) |
+| gpt-5.6-luna low | 54,3 % | 52,2 % | 56,7 % | 52,0 % | 60,0 % | 81,4 % | 86,7 % | 63,7 % | 6,7 | 0,13 c$ | 10 / 32 (p = 0,001) |
+| o3 high | 53,8 % | 52,2 % | 55,7 % | 51,3 % | 60,0 % | 76,7 % | 85,0 % | 62,0 % | 21,8 | ≈ 2,02 c$ | 21 / 44 (p = 0,006) |
+| gemini-3.1-pro-preview low | 52,9 % | 52,2 % | 53,6 % | 49,3 % | 61,7 % | 73,3 % | 88,3 % | 62,3 % | 13,1 | ≈ 2,17 c$ | 11 / 36 (p < 0,001) |
+| grok-4.6 low | 51,9 % | 52,2 % | 51,5 % | 50,7 % | 55,0 % | 79,5 % | 83,3 % | 61,3 % | 18,4 | ≈ 0,90 c$ | 7 / 34 (p < 0,001) |
+| gemini-3.5-flash low | 49,5 % | 51,3 % | 47,4 % | 47,3 % | 55,0 % | 75,7 % | 83,3 % | 59,7 % | 5,3 | — | 12 / 44 (p < 0,001) |
+| gpt-5.4-mini low | 47,1 % | 49,6 % | 44,3 % | 45,3 % | 51,7 % | 73,3 % | 83,3 % | 58,3 % | 6,7 | 0,46 c$ | 11 / 48 (p < 0,001) |
+| gemini-3.1-flash-lite low | 42,9 % | 42,5 % | 43,3 % | 39,3 % | 51,7 % | 66,7 % | 75,0 % | 53,0 % | 2,9 | ≈ 0,15 c$ | 9 / 55 (p < 0,001) |
+| gpt-4o | 31,0 % | 22,1 % | 41,2 % | 24,0 % | 48,3 % | 49,0 % | 56,7 % | 39,0 % | 6,5 | 0,74 c$ | 8 / 79 (p < 0,001) |
+
+- **Claude Fable 5.2 es el único que supera a Sol con claridad:** +12,3
+  puntos de R@1 en casos reales (34 / 8, p < 0,001), en raras y en no raras.
+  - La ventaja es parecida en `live` (+13,3) y en `urg` (+10,0).
+  - **No es contaminación.** Anthropic da junio de 2026 como corte de
+    entrenamiento de Fable 5.2 (y de Opus 5.5 y Sonnet 5.5; ver
+    `model_cutoffs.yaml`), aunque el modelo saliera el 9-nov: todos los casos
+    `live` son de julio a octubre. Los 60 de urgencias son confidenciales: ningún
+    fragmento aparece en el repositorio ni en su historial.
+  - Por mes de publicación, la ventaja sobre Sol es de +16,7 (julio, 42
+    casos), +16,2 (agosto, 37), +10,5 (septiembre, 38) y +9,1 (octubre, 33):
+    diferencias entre meses dentro del azar con tan pocos casos.
+  - Es más rápido que Sol (14,4 s frente a 18,2 s), pero cuesta unas 7 veces
+    más por caso (7,26 c$ frente a 1,03 c$, a 8 / 40 $ por millón de tokens).
+  - Antes de plantearlo para producción falta medirlo en raras (HPO),
+    con imágenes y por el camino del Server.
+- **Sol medium, Claude Opus 5.5, gemini-4-carbon y gemini-4-argon empatan con
+  Sol low.** Más razonamiento en Sol o en Terra sube 1–2 puntos, sin
+  significación.
+- **grok-4.7 mejora a grok-4.6** (56,7 % frente a 51,9 %), pero queda por
+  debajo de Sol.
+- **o3 (el modelo anterior de producción) y gpt-4o quedan muy por debajo.**
+  gpt-4o da diagnósticos menos específicos («Stress Fracture», «Lung Cancer»)
+  y el juez estricto solo acepta la misma enfermedad. Las listas están
+  completas (5 opciones en los 300 casos).
+- gemini-3.8-flash es el mismo modelo que el juez: su cifra lleva esa salvedad.
+- Coste total de los 17 runs: unos 70 $ de generación más el labeler y el
+  juez (unos 0,1 $ por run gracias a la caché).
+
 ## Pendiente
 
 Decidido e implementado en `graded_v2` (reglas de la rúbrica que contestó
@@ -994,5 +1190,6 @@ Pendiente de David (`docs/tareas-david/`):
   - la línea base oficial ya está puntuada con los 210.
 - **Tarea 2:** hecha el 6-nov. Se queda Gemini 3.8 Flash como juez y la rúbrica
   `graded_v3` no cambia (detalle en `docs/tareas-david/02-escala-del-juez.md`).
-- **Tarea 3:** revisar los nombres sin gen de raras y los 9 casos con HPO
-  insuficientes.
+- **Tareas 3 y 4:** hechas el 10-nov. Salen HPO v3 y su puntuación (sección
+  «HPO v3: Terra y Sol con el gold nuevo»). Quedan los casos que se cuentan
+  aparte y el nivel de Leigh por COX15 (`data29/data-repos/hpo-v2/README.md`).
