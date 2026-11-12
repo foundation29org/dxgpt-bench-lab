@@ -244,6 +244,8 @@ class BetaApiClient:
         self.timezone = str(request_config.get("timezone") or "UTC")
         self.model = str(request_config.get("model") or "").strip()
         self.force_diagnosis = bool(request_config.get("force_diagnosis"))
+        # Tras el diagnóstico normal, pedir el modo avanzado como la web (Fable, nov-2026)
+        self.advanced = bool(request_config.get("advanced"))
         # Empty keeps the historical request (no location sentence in the prompt).
         self.country_code = str(request_config.get("country_code") or "").strip()
         self.connect_timeout = float(api.get("connect_timeout_seconds") or 15)
@@ -299,7 +301,106 @@ class BetaApiClient:
                 inbox["error"] = f"WebSocket processing error: {json.dumps(message)}"
                 done.set()
                 return
+            if message_type == "preprocessing":
+                # description y uploadId: lo que la web guarda para las peticiones siguientes
+                inbox["preprocessing"] = message.get("data") or {}
             progress.append({"type": "unhandled", "message": message})
+
+    def _advanced_description(
+        self,
+        case: dict[str, Any],
+        first_result: dict[str, Any],
+        preprocessing: dict[str, Any] | None,
+    ) -> tuple[str, bool]:
+        """El texto que manda la web en la segunda petición (undiagnosed-page):
+        el anonimizado si el primer diagnóstico encontró datos personales, si no
+        la descripción del preprocesado (salvo solo imágenes), si no el texto."""
+        anonymization = (first_result or {}).get("anonymization") or {}
+        if anonymization.get("hasPersonalInfo") and anonymization.get("anonymizedText"):
+            return str(anonymization["anonymizedText"]), True
+        if preprocessing and preprocessing.get("description") and preprocessing.get("isImageOnly") is False:
+            return str(preprocessing["description"]), False
+        return str(case["text"] or ""), False
+
+    def _run_advanced(
+        self,
+        socket: websocket.WebSocket,
+        case: dict[str, Any],
+        user_id: str,
+        first_result: dict[str, Any],
+        preprocessing: dict[str, Any] | None,
+    ) -> dict[str, Any]:
+        """Segunda petición, como el botón «Probar el modo avanzado» de la web:
+        /diagnose con advanced y la misma subida de imágenes."""
+        if not ((first_result or {}).get("data") or []):
+            return {"status": "skipped", "reason": "first diagnosis had no list: the web does not offer it"}
+        description, used_anonymized = self._advanced_description(case, first_result, preprocessing)
+        upload_id = (preprocessing or {}).get("uploadId")
+        body: dict[str, Any] = {
+            "description": description,
+            "diseases_list": "",
+            "diseases_list_en": True,
+            "myuuid": user_id,
+            "lang": self.lang,
+            "timezone": self.timezone,
+            "iframeParams": {},
+            "forceDiagnosis": False,
+            "advanced": True,
+            "advancedReason": "other",
+            "advancedSource": "button",
+        }
+        if upload_id:
+            body["uploadId"] = upload_id
+        if self.country_code:
+            body["countryCode"] = self.country_code
+        progress: list[dict[str, Any]] = []
+        inbox: dict[str, Any] = {}
+        done = threading.Event()
+        listener = threading.Thread(
+            target=self._listen_for_result,
+            args=(socket, progress, inbox, done),
+            daemon=True,
+        )
+        listener.start()
+        started = time.monotonic()
+        payload: dict[str, Any] | None = None
+        try:
+            response = self.session.post(
+                f"{self.base_url}/diagnose",
+                json=body,
+                headers=self.headers,
+                timeout=self.request_timeout,
+                verify=self.verify_tls,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            if payload.get("result") != "processing":
+                raise EvaluationError(f"Unexpected advanced response: {json.dumps(payload)}")
+            if not done.wait(timeout=self.result_timeout):
+                raise EvaluationError(
+                    f"No advanced WebSocket result after {self.result_timeout:.0f} seconds"
+                )
+            if inbox.get("error"):
+                raise EvaluationError(str(inbox["error"]))
+            status, error = "success", None
+        except Exception as error_:
+            status, error = "error", f"{type(error_).__name__}: {error_}"
+        finally:
+            done.set()
+            listener.join(timeout=6)
+        return {
+            "status": status,
+            "duration_seconds": round(time.monotonic() - started, 3),
+            "description_chars": len(description),
+            "used_anonymized_text": used_anonymized,
+            "has_upload": bool(upload_id),
+            "http_response": payload,
+            "progress_steps": [
+                item.get("step") for item in progress if isinstance(item, dict) and item.get("step")
+            ],
+            "final_response": inbox.get("result"),
+            "error": error,
+        }
 
     def submit_case(self, case: dict[str, Any]) -> dict[str, Any]:
         user_id = str(uuid.uuid4())
@@ -394,15 +495,23 @@ class BetaApiClient:
                 )
             if inbox.get("error"):
                 raise EvaluationError(str(inbox["error"]))
+            advanced = None
+            if self.advanced:
+                advanced = self._run_advanced(
+                    socket, case, user_id, inbox.get("result"), inbox.get("preprocessing")
+                )
             return self._record(
                 case=case,
                 user_id=user_id,
                 started_at=started_at,
                 started=started,
-                status="success",
+                # Con --advanced, un fallo del segundo paso deja el caso para --resume
+                status="error" if advanced and advanced["status"] == "error" else "success",
                 http_payload=http_payload,
                 progress=progress,
                 final_response=inbox.get("result"),
+                advanced=advanced,
+                error=(advanced or {}).get("error"),
             )
         except Exception as error:
             response = (
@@ -453,6 +562,7 @@ class BetaApiClient:
         error: str | None = None,
         rate_limited: bool = False,
         retry_after_seconds: float | None = None,
+        advanced: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         description = str((http_payload or {}).get("description") or "")
         summarized = (http_payload or {}).get("summarized")
@@ -493,6 +603,8 @@ class BetaApiClient:
             "error": error,
             "rate_limited": rate_limited,
             "retry_after_seconds": retry_after_seconds,
+            # Con --advanced: la segunda petición (modo avanzado), con su propia respuesta
+            "advanced": advanced,
         }
 
 
@@ -541,6 +653,11 @@ def parse_args() -> argparse.Namespace:
         "--force-diagnosis",
         action="store_true",
         help="Skip the intent modal and diagnose even with empty text (needed for condition I).",
+    )
+    parser.add_argument(
+        "--advanced",
+        action="store_true",
+        help="After the normal diagnosis, ask for the advanced mode (Claude Fable) as the web does.",
     )
     parser.add_argument(
         "--country-code",
@@ -595,6 +712,8 @@ def main() -> int:
 
     if args.force_diagnosis:
         config.setdefault("request", {})["force_diagnosis"] = True
+    if args.advanced:
+        config.setdefault("request", {})["advanced"] = True
     if args.country_code:
         config.setdefault("request", {})["country_code"] = args.country_code
 

@@ -1078,9 +1078,57 @@ solo el diagnóstico principal, como en V4.
   clínico previo los clasifica como pregunta general o con datos
   insuficientes.
 - **Coste:** juez 0,23 $ (247 llamadas por modelo, 0 fallidas), más el labeler.
-- Estas son las cifras de imágenes de la página /aboutus y de la sección «Con
-  imágenes» de `benchmark-report-v5.html`, que mantiene debajo la evaluación
-  V4 original.
+- Estas eran las cifras de imágenes de /aboutus hasta el 12-nov; desde entonces
+  /aboutus usa las de la pasada con Fable (abajo). La sección «Con imágenes» de
+  `benchmark-report-v5.html` mantiene las dos, y debajo la evaluación V4 original.
+
+### Análisis en profundidad (Claude Fable 5.2) con imágenes (12-nov-2026)
+
+En la web, «Análisis en profundidad» (internamente `advanced`, modelo
+`claudefable52`) pide otra lista a Claude Fable 5.2 después de la de Sol.
+Para medirlo con imágenes, los mismos 250 casos de MedReaMM T+I pasaron por el
+Server local igual que en la web:
+
+1. `/medical/analyze` con Sol, que sube las imágenes y da la primera lista;
+2. `/diagnose` con `advanced`, la misma subida y el texto que manda la web en la
+   segunda petición: el anonimizado si Sol encontró datos personales (6 casos)
+   o la descripción del preprocesado.
+
+- **Script:** `bench/multimodal_beta/run_beta_api.py --advanced`, en cuatro
+  procesos. Las respuestas están en
+  `bench/multimodal_beta/outputs/pilot250_fable52_advanced_TI_n5/responses.jsonl`.
+- **Conversión:** `medreamm_advanced_to_v5.py` saca dos brazos: Sol de la misma
+  pasada y Fable.
+- **Configuraciones:** `config_claudefable52_medreamm250_ti_adv.yaml` y
+  `config_gpt61sol_medreamm250_ti_adv.yaml`, con la etiqueta
+  `server_v0_00200_advanced`.
+- **Evaluador:** el mismo V5 que arriba, con el diagnóstico principal como gold.
+
+| Listas | R@1 | R@3 | R@5 | Pos. media | Coste por caso |
+|---|---:|---:|---:|---:|---:|
+| Claude Fable 5.2, análisis en profundidad | **78,0 %** | **86,0 %** | **86,4 %** | **1,134** | 10,4 c$ |
+| gpt-6.1-sol, misma pasada | 71,2 % | 80,4 % | 82,8 % | 1,251 | 2,0 c$ |
+| gpt-6.1-sol (3-nov) | 68,4 % | 79,2 % | 82,0 % | 1,298 | — |
+
+- **Fable frente al Sol de la misma pasada:**
+  - R@1: 30 / 13 (p = 0,014);
+  - R@5: 15 / 6 (p = 0,078).
+- **Fable frente al Sol del 3-nov:**
+  - R@1: 40 / 16 (p = 0,002);
+  - R@5: 20 / 9 (p = 0,061).
+- **Sol de hoy frente al del 3-nov:** 14 / 7 en R@1 (p = 0,19). Es la variación
+  normal entre pasadas; el código de diagnóstico no ha cambiado.
+- **La ventaja de Fable es la misma que en texto:** +7 a +10 puntos en R@1
+  (narrative_v2: 77,1 % frente a 66,7 %).
+- **Espera del análisis en profundidad:** mediana 20,6 s, p95 24,5 s y máximo
+  42,1 s, con imágenes. El primer paso, con Sol y la subida, tardó 33,8 s de
+  mediana.
+- **Listas vacías:** en 3 casos Sol no devolvió lista, porque el filtro previo
+  los toma por pregunta o con datos insuficientes. Como la web no ofrece el
+  análisis en profundidad en ese caso, cuentan como fallo en los dos brazos.
+- **Coste real:** 25,7 $ de Fable (10,4 c$ por caso; unos 11k tokens de entrada
+  con imágenes) y 5,1 $ de Sol, sumados de los registros de coste del Server
+  local. A esto se suman 0,23 $ de juez más el labeler.
 
 ## `narrative_v2` v0.2: 17 modelos más (11-nov-2026)
 

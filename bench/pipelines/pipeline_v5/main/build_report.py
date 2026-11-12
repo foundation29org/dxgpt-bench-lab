@@ -158,6 +158,12 @@ TOKEN_SAMPLE = os.path.join(OUTPUT_ROOT, 'narrative_v2', 'token_sample_2026-11-1
 # MedReaMM pilot250 T+I re-scored with the V5 evaluator (11-nov-2026): same lists as MEDREAMM sol5 / terra5
 MEDREAMM_V5_DIR = os.path.join(OUTPUT_ROOT, 'medreamm_pilot250_ti', 'juanjo_classic_v2_n5')
 MEDREAMM_V5 = {'sol5': 'gpt_6_1_sol_low__server_v0_00196', 'terra5': 'gpt_5_6_terra_low__server_v0_00196'}
+# Modo avanzado (12-nov-2026): los mismos 250 casos por el Server local como la web, primero Sol y
+# después /diagnose con advanced (Claude Fable 5.2). medreamm_advanced_to_v5.py hace los dos brazos.
+MEDREAMM_ADV = {'fable_adv': 'claude_fable_5_2_low__server_v0_00200_advanced', 'sol_adv': 'gpt_6_1_sol_low__server_v0_00200_advanced'}
+MEDREAMM_ADV_RUN = 'pilot250_fable52_advanced_TI_n5'
+# Coste real de la pasada, sumado de los registros de coste del Server local (logs del 12-nov)
+MEDREAMM_ADV_COST = {'fable_adv': (25.706, 246), 'sol_adv': (5.064, 249)}
 # HPO v3 (10-nov-2026): same Terra and Sol lists, Gemini 3.8 Flash with graded_v3
 HPO_V3_TAG = '__judge_gemini_3_8_flash'
 BASELINE_PRICES = {'gpt-6.1-sol': (2.0, 10.0), 'gpt-5.6-terra': (2.0, 12.0), 'gpt-5.4-mini': (0.75, 4.5), 'claude-opus-5': (5.0, 25.0)}
@@ -593,6 +599,43 @@ def medreamm_positions(folder):
     return {i: position(c['eval_details'].get('final_resolution')) for i, c in load_details(path).items()}
 
 
+def medreamm_advanced(sol_3nov):
+    """Fable 5.2 en el modo avanzado (12-nov) frente a Sol de la misma pasada y al del 3-nov, con V5."""
+    pos, judge_cost = {}, 0.0
+    for key, folder in MEDREAMM_ADV.items():
+        run = finished_run(os.path.join(MEDREAMM_V5_DIR, folder))
+        if not run:
+            continue
+        pos[key] = {i: position(c['eval_details'].get('final_resolution'))
+                    for i, c in load_details(os.path.join(run, 'evaluation_details.txt')).items()}
+        with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
+            judge_cost += json.load(f)['judge'].get('estimated_cost_usd') or 0
+    if 'fable_adv' not in pos:
+        return None
+    responses = os.path.join(MEDREAMM_DIR, MEDREAMM_ADV_RUN, 'responses.jsonl')
+    if not os.path.isfile(responses):
+        return None
+    pos['sol5'] = sol_3nov
+    ids = sorted(set.intersection(*(set(p) for p in pos.values())))
+    with open(responses, encoding='utf-8') as f:
+        rows = [json.loads(line) for line in f if line.strip()]
+    adv = sorted(r['advanced']['duration_seconds'] for r in rows if (r.get('advanced') or {}).get('status') == 'success')
+    first = sorted(r['duration_seconds'] - ((r.get('advanced') or {}).get('duration_seconds') or 0) for r in rows)
+    pct_of = lambda v, p: v[min(len(v) - 1, int(p * len(v)))]
+    result = {
+        'n': len(ids), 'judgeCost': round(judge_cost, 2),
+        **{key: metrics([pos[key][i] for i in ids]) for key in pos},
+        'pairs': {f'{a}|{b}': {'r1': paired(pos[a], pos[b], ids, 1), 'r5': paired(pos[a], pos[b], ids, 5)}
+                  for a, b in (('fable_adv', 'sol5'), ('fable_adv', 'sol_adv'), ('sol_adv', 'sol5')) if a in pos and b in pos},
+        'wait': {'median': statistics.median(adv), 'p95': pct_of(adv, 0.95), 'max': adv[-1], 'n': len(adv)},
+        'firstStep': {'median': statistics.median(first), 'p95': pct_of(first, 0.95)},
+        'skipped': sum(1 for r in rows if (r.get('advanced') or {}).get('status') == 'skipped'),
+        'anonymized': sum(1 for r in rows if (r.get('advanced') or {}).get('used_anonymized_text')),
+        'cost': {key: {'total': total, 'perCase': total / n} for key, (total, n) in MEDREAMM_ADV_COST.items()},
+    }
+    return result
+
+
 def medreamm():
     """Sol against Terra on MedReaMM pilot250 T+I, same Server build and evaluator; Astra on the nested 100."""
     pos, arms = {}, []
@@ -622,6 +665,7 @@ def medreamm():
         with open(os.path.join(run, 'summary.json'), 'r', encoding='utf-8') as f:
             judge_cost += json.load(f)['judge'].get('estimated_cost_usd') or 0
     if v5:
+        result['advanced'] = medreamm_advanced(v5['sol5'])
         ids5 = sorted(set(v5['sol5']) & set(v5['terra5']))
         result['v5'] = {'n': len(ids5), 'judgeCost': round(judge_cost, 2),
                         **{key: metrics([v5[key][i] for i in ids5]) for key in v5},
@@ -1943,6 +1987,46 @@ def medreamm_section(data):
                          f'<td>{nested["r5"]["wins"]} / {nested["r5"]["losses"]}</td><td>{p_value(nested["r5"]["p"])}</td></tr>')
         astra = (f' En los {nested["n"]} casos del piloto anterior, Sol acierta en P1 el {pct(nested["sol5"]["r1"], 0)}, lo mismo que Astra'
                  f' ({pct(nested["astra"]["r1"], 0)}, que tardaba 55 s por caso), y Terra «5» el {pct(nested["terra5"]["r1"], 0)}.')
+    adv = s.get('advanced')
+    adv_block = ''
+    if adv:
+        pr = adv['pairs']
+        fs = pr['fable_adv|sol5']
+        same = pr.get('fable_adv|sol_adv')
+        cost = adv['cost']
+        adv_names = [('fable_adv', 'Claude Fable 5.2, análisis en profundidad (12-nov)', f'{num(cost["fable_adv"]["perCase"] * 100, 1)} c$'),
+                     ('sol_adv', 'gpt-6.1-sol, misma pasada (12-nov)', f'{num(cost["sol_adv"]["perCase"] * 100, 1)} c$'),
+                     ('sol5', 'gpt-6.1-sol (3-nov)', '—')]
+        adv_rows = '\n'.join(
+            f'<tr><td>{name}</td><td>{pct(adv[key]["r1"])}</td><td>{pct(adv[key]["r3"])}</td><td>{pct(adv[key]["r5"])}</td>'
+            f'<td>{num(adv[key]["avgPos"], 3)}</td><td>{per_case}</td></tr>'
+            for key, name, per_case in adv_names if key in adv)
+        same_text = (f' Frente al Sol de la misma pasada, {same["r1"]["wins"]} / {same["r1"]["losses"]} en P1 ({p_text(same["r1"]["p"])})'
+                     f' y {same["r5"]["wins"]} / {same["r5"]["losses"]} en R@5 ({p_text(same["r5"]["p"])}).'
+                     if same else ' El Sol de la misma pasada aún no está puntuado.')
+        adv_block = f'''
+    <h3>Análisis en profundidad: Claude Fable 5.2 con imágenes (12-nov)</h3>
+    <div class="callout callout-info">
+      Los mismos {adv["n"]} casos por el Server local como en la web: primero <code>/medical/analyze</code> con Sol, que sube las
+      imágenes, y después <code>/diagnose</code> con el análisis en profundidad (<code>advanced</code>), con la misma subida y el texto que manda la web
+      (el anonimizado en {adv["anonymized"]} casos en que Sol encontró datos personales). En {adv["skipped"]} casos Sol no devolvió
+      lista, la web no ofrece el análisis en profundidad y cuentan como fallo en los dos brazos. Evaluador V5, gold = diagnóstico principal.
+      <strong>Fable acierta en P1 el {pct(adv["fable_adv"]["r1"])} frente al {pct(adv["sol5"]["r1"])} de Sol del 3-nov</strong>
+      ({fs["r1"]["wins"]} / {fs["r1"]["losses"]}, {p_text(fs["r1"]["p"])}); en R@5, {pct(adv["fable_adv"]["r5"])} frente a
+      {pct(adv["sol5"]["r5"])} ({fs["r5"]["wins"]} / {fs["r5"]["losses"]}, {p_text(fs["r5"]["p"])}).{same_text}
+      Espera del análisis en profundidad: mediana {num(adv["wait"]["median"], 1)} s, p95 {num(adv["wait"]["p95"], 1)} s y máximo
+      {num(adv["wait"]["max"], 1)} s. Coste real de la pasada: {num(cost["fable_adv"]["total"], 1)} $ de Fable y
+      {num(cost["sol_adv"]["total"], 1)} $ de Sol; juez ≈ {num(adv["judgeCost"], 2)} $.
+      Respuestas: <code>bench/multimodal_beta/outputs/{MEDREAMM_ADV_RUN}</code>; conversión: <code>medreamm_advanced_to_v5.py</code>.
+    </div>
+    <div class="table-scroll">
+    <table class="num">
+      <thead><tr><th>Listas</th><th>R@1</th><th>R@3</th><th>R@5</th><th>Pos. media</th><th>Coste por caso</th></tr></thead>
+      <tbody>
+{adv_rows}
+      </tbody>
+    </table>
+    </div>'''
     v5 = s.get('v5')
     v5_block = ''
     if v5:
@@ -1972,7 +2056,7 @@ def medreamm_section(data):
     <h3>Evaluación original (evaluador V4, 3-nov)</h3>'''
     return f'''
   <div class="section">
-    <div class="section-title">Con imágenes · MedReaMM, gpt-6.1-sol frente a Terra 5.6</div>{v5_block}
+    <div class="section-title">Con imágenes · MedReaMM: Fable 5.2 (análisis en profundidad), gpt-6.1-sol y Terra 5.6</div>{adv_block}{v5_block}
     <div class="callout callout-info">
       {s["n"]} casos de MedReaMM con texto e imágenes, gold ICD-11 del propio dataset y el evaluador estricto de V4 (juez Gemini 2.5 Pro),
       no el de <code>narrative_v2</code>: estas cifras no se comparan con las de arriba. Las dos ejecuciones del 3-nov pasan por el Server en
@@ -2412,7 +2496,8 @@ def extra_section(data):
                 f'(+{num(g["urg"]["r1"] - gs["urg"]["r1"])}). No se explica por contaminación: según Anthropic, su corte de '
                 f'entrenamiento es junio de 2026, anterior a todos los casos <code>live</code> (julio–octubre), y los de urgencias '
                 f'son confidenciales y nunca han estado en el repositorio. Tarda {num(a["latency"])} s por caso frente a {num(sol["latency"])} s{ratio}. '
-                'Antes de plantearlo para producción falta medirlo en raras (HPO), con imágenes y por el camino del Server.')
+                'Con imágenes y por el camino del Server (análisis en profundidad, 12-nov) mantiene la ventaja: ver «Con imágenes · MedReaMM». '
+                'En raras (HPO) aún no se ha medido.')
     judge = sum(m['judgeCost'] for m in s['models'])
     failed = sum(m['judgeFailed'] for m in s['models'])
     pending = f' Sin terminar: {", ".join(s["pending"])}.' if s['pending'] else ''
@@ -2568,7 +2653,7 @@ def build_html(data):
 <div class="hero">
   <div class="hero-badge">Borrador · Pipeline V5 <code>{judge_prompt}</code> · {stamp}</div>
   <h1>Pipeline V5: narrativo y raras</h1>
-  <p>{f"<code>narrative_v2</code> v0.2, con los casos reales validados por David: la línea base oficial y los 17 modelos añadidos el 11-nov están en las primeras secciones, con juez Gemini 3.8 Flash. Raras HPO v3 (2.907 casos) y MedReaMM con imágenes también tienen ya cifras con el evaluador V5 y Flash. Debajo, la v0.1 (sin validación clínica), las pruebas hechas con ella y raras HPO v2 (3.006 casos), con juez {judge_name} salvo donde se indica." if data.get("baseline") else f"<code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5 y juez {judge_name}."}
+  <p>{f"<code>narrative_v2</code> v0.2, con los casos reales validados por David: la línea base oficial y los 17 modelos añadidos el 11-nov están en las primeras secciones, con juez Gemini 3.8 Flash. Raras HPO v3 (2.907 casos) y MedReaMM con imágenes también tienen ya cifras con el evaluador V5 y Flash; con imágenes, también Claude Fable 5.2 por el análisis en profundidad del Server (12-nov). Debajo, la v0.1 (sin validación clínica), las pruebas hechas con ella y raras HPO v2 (3.006 casos), con juez {judge_name} salvo donde se indica." if data.get("baseline") else f"<code>narrative_v2</code> v0.1 (300 casos, sin validación clínica) y raras HPO v2 (3.006 casos), con el evaluador V5 y juez {judge_name}."}
      La serie histórica (Pipeline V4, <code>all_256_clean</code>) sigue en el informe strict de texto.</p>
 {mixed_note}
   <p class="hero-nav">
