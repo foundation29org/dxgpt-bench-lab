@@ -245,6 +245,37 @@ Límite: no hay fotos clínicas "normales" sin lesión visible (cara, mano,
 boca) fuera de MedReaMM. El prompt las excluye de forma explícita, pero
 conviene probarlas en el smoke test.
 
+## V2 con otros modelos (13-nov-2026)
+
+Fase 3 del plan de despliegue: ¿conviene cambiar el modelo del clasificador
+(hoy `gpt-5.6-terra`)? Mismo prompt y política V2 que producción, el mismo día
+y sobre el mismo recurso (eu1), con 4 llamadas en paralelo por modelo. Son las
+45 imágenes del manifest y 63 de las 64 no médicas: el logo de catsalut ya no
+está en el cliente. `gpt-6-luna` no está desplegado en ese recurso.
+
+| Modelo | Ruta correcta (45) | Rutas inseguras | Médicas descartadas | No médicas descartadas (63) | Latencia p50 / p95 | Coste por imagen |
+|---|---:|---:|---:|---:|---:|---:|
+| gpt-5.6-terra (producción) | 45 | 0 | 0 | 56 | 1,73 / 3,33 s | 0,205 c$ |
+| gpt-6.1-terra | 43 | 0 | 0 | 57 | 1,80 / 3,40 s | 0,112 c$ |
+| gpt-5.6-luna | 44 | 0 | 0 | 56 | 1,72 / 3,54 s | 0,084 c$ |
+
+- Los tres aciertan la clase en las 45 imágenes y ninguno pierde una imagen médica.
+- Las diferencias de ruta no son inseguras:
+  - Terra 6.1 manda dos variantes mixtas de embolia pulmonar a visión directa sin
+    OCR. Marca el texto con confianza 0,88 y no llega al umbral de 0,90.
+  - Luna añade OCR a una imagen MedReaMM que iba solo a visión.
+- La latencia es la misma con los tres modelos. En producción la mediana de la
+  etapa es de 4,2 s (6–12 nov), así que la diferencia con el banco no viene
+  del modelo.
+- El ahorro posible es pequeño. Con 240 imágenes al día, el clasificador cuesta
+  unos 26 $ al mes en producción; con Luna serían unos 11 $.
+- Propuesta: no cambiar el modelo por ahora. Si se cambia a Luna, antes hay que
+  pasar las 667 imágenes de MedReaMM pilot250 para comprobar que no descarta
+  ninguna médica.
+
+Salidas: `outputs/classification-v2-<modelo>-2026-11-13.jsonl` y
+`outputs/classification-v2-not-medical-<modelo>-2026-11-13.jsonl`.
+
 ## Decisión
 
 La ruta V1 para imágenes exclusivamente documentales queda validada: OCR sin

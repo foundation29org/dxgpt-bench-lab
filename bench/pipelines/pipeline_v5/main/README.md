@@ -1048,6 +1048,51 @@ Sol frente a Terra con la v3 (McNemar exacto):
     nombres que cambian;
   - unos céntimos las 8 listas de Sol.
 
+## Claude Fable 5.2 en raras (HPO v3, 13-nov-2026)
+
+Fable 5.2 es el modelo del análisis en profundidad de la web. En casos reales
+narrados y con imágenes acierta más que Sol. Faltaba comprobar las raras con
+solo fenotipo, donde Opus 5 quedó claramente por detrás de Sol (sección
+«Claude Opus 5 en raras»).
+
+Se hizo un run completo de Fable low (`config_claudefable52_low_<dataset>_hpo_v3.yaml`)
+sobre los cuatro datasets pequeños de HPO v3. Usa el mismo prompt
+(`juanjo_classic_v2`) y los mismos parámetros que las listas de Sol y Terra, y
+el mismo juez que su puntuación v3: Gemini 3.8 Flash con `graded_v3`. La
+comparación es por pares, caso a caso (McNemar exacto).
+
+| Dataset | Casos | R@1 Fable | R@1 Sol | R@1 Terra | Fable frente a Sol (R@1) | p | R@5 Fable | R@5 Sol | R@5 Terra |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| LIRICAL | 370 | 54,1 % | 48,6 % | 43,5 % | 41 / 21 | 0,015 | 67,0 % | 67,3 % | 60,5 % |
+| MyGene2 | 140 | 44,3 % | 57,1 % | 41,4 % | 11 / 29 | 0,006 | 73,6 % | 73,6 % | 60,7 % |
+| HMS | 88 | 52,3 % | 43,2 % | 45,5 % | 11 / 3 | 0,06 | 73,9 % | 62,5 % | 68,2 % |
+| MME | 40 | 70,0 % | 67,5 % | 52,5 % | 2 / 1 | 1,0 | 77,5 % | 75,0 % | 65,0 % |
+| **Total** | **638** | **52,7 %** | **50,9 %** | **43,9 %** | **65 / 54** | **0,36** | **70,1 %** | **68,5 %** | **61,9 %** |
+
+- **Fable empata con Sol en raras:**
+  - en R@1 queda 1,8 puntos por delante (p = 0,36);
+  - en R@5, 53 / 43 (p = 0,36);
+  - a Terra le gana con claridad: 96 / 40 en R@1 y 89 / 37 en R@5.
+- **No le pasa lo que a Opus 5.** Opus 5 perdía con Sol 106 / 30 en estos
+  mismos datasets (con HPO v2 y juez Pro).
+- **Por dataset se compensa:**
+  - gana en LIRICAL (p = 0,015) y en R@5 de HMS (11 / 1, p = 0,006);
+  - pierde en R@1 de MyGene2. 25 de esos 29 casos son cinco enfermedades
+    repetidas en varias familias (CLIFAHDD 8, artrogriposis distal tipo 5 5,
+    opsismodisplasia 5, Gordon 4, Nager 3), así que la p exagera la diferencia.
+    En la artrogriposis distal pone otras artrogriposis en P1, el mismo fallo
+    que tenía Opus 5.
+- **Fable da 5–6 opciones de mediana** con este prompt.
+- **Coste de generación: 44,25 $, unos 6,9 c$ por caso**, frente a unos 1 c$
+  de Sol. Sale de las líneas «Claude usage» del `emulator.log`, a 8 / 40 $ por
+  millón de tokens.
+- **Para el análisis en profundidad**, las raras con solo fenotipo no son
+  donde Fable marca la diferencia, pero tampoco empeora. Su ventaja está en
+  los casos reales narrados (77,1 frente a 64,8 %) y con imágenes (78,0 frente
+  a 71,2 %).
+- En Windows hay que lanzar `main.py` con `PYTHONUTF8=1`: imprime emojis y la
+  consola cp1252 falla al redirigir la salida.
+
 ## Con imágenes: MedReaMM con el evaluador V5 (11-nov-2026)
 
 Las listas de Sol y Terra con imágenes del 3-nov (MedReaMM pilot250 T+I, Server

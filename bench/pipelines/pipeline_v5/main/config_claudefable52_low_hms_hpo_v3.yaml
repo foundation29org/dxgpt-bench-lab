@@ -1,0 +1,41 @@
+# Pipeline V5 - claude-fable-5-2 low sobre hms_hpo v3
+# ==============================================================
+# Run completo (genera, etiqueta y puntua) con el mismo prompt y parametros que
+# las listas de Sol y Terra en HPO (juanjo_classic_v2) y el mismo juez que su
+# puntuacion v3 (gemini-3.8-flash, graded_v3), para comparar por pares en raras
+# antes de ampliar el analisis en profundidad (13-nov-2026).
+
+EXPERIMENT_NAME: "hms_hpo_v3-juanjo_classic_v2-claude_fable52_low-v5"
+EXPERIMENT_DESCRIPTION: "claude-fable-5-2 low sobre hms_hpo v3 con el evaluador V5, para comparar con Sol y Terra en raras."
+
+DATASET_PATH: "bench/datasets/hms_hpo_v3.json"
+
+DXGPT_EMULATOR:
+  MODEL: "claude-fable-5-2"
+  CANDIDATE_PROMPT_PATH: "bench/candidate-prompts/juanjo_classic_v2.txt"
+  PARAMS:
+    temperature: 0.1
+    max_tokens: 12000
+    reasoning_effort: "low"
+  OUTPUT_SCHEMA: false
+  OUTPUT_SCHEMA_PATH: "bench/candidate-prompts/candidate_output_schema.json"
+  TRANSLATE_CASE:
+    ENABLED: false
+  PARALLEL_WORKERS: 4
+
+EVALUATOR:
+  JUDGE_MODEL: "gemini-3.8-flash"
+  JUDGE_PARAMS:
+    thinking_level: "low"
+    max_tokens: 10000
+    temperature: 0.1
+  JUDGE_MAX_ATTEMPTS: 3
+  JUDGE_PROMPT_VERSION: "graded_v3"
+  PARALLEL_WORKERS: 8
+
+MAIN:
+  SHOULD_EMULATE: true
+  SHOULD_LABEL: true
+  SHOULD_EVALUATE: true
+
+TIMESTAMP: null
